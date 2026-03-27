@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-export default function HomeHero() {
+export default function IndustryLeader() {
     const brands = [
         "Google",
         "Walmart",
