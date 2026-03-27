@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
 
 
 const poppins = Poppins({
@@ -20,25 +21,25 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Eledent Dental Hospitals",
+    default: "Insights-Opinion Dental Hospitals",
     template: "%s",
   },
   description:
-    "Eledent Dental Hospitals offers advanced dental care, painless treatments, expert dentists, and modern technology across Hyderabad.",
-  applicationName: "Eledent Dental Hospitals",
-  authors: [{ name: "Eledent Dental Hospitals" }],
-  creator: "Eledent Dental Hospitals",
-  publisher: "Eledent Dental Hospitals",
+    "Insights-Opinion Dental Hospitals offers advanced dental care, painless treatments, expert dentists, and modern technology across Hyderabad.",
+  applicationName: "Insights-Opinion Dental Hospitals",
+  authors: [{ name: "Insights-Opinion Dental Hospitals" }],
+  creator: "Insights-Opinion Dental Hospitals",
+  publisher: "Insights-Opinion Dental Hospitals",
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
-    title: "Eledent Dental Hospitals",
+    title: "Insights-Opinion Dental Hospitals",
     description:
-      "Eledent Dental Hospitals offers advanced dental care, painless treatments, expert dentists, and modern technology across Hyderabad.",
+      "Insights-Opinion Dental Hospitals offers advanced dental care, painless treatments, expert dentists, and modern technology across Hyderabad.",
     url: siteUrl,
-    siteName: "Eledent Dental Hospitals",
+    siteName: "Insights-Opinion Dental Hospitals",
     type: "website",
     locale: "en_IN",
     images: [
@@ -46,15 +47,15 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Eledent Dental Hospitals",
+        alt: "Insights-Opinion Dental Hospitals",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Eledent Dental Hospitals",
+    title: "Insights-Opinion Dental Hospitals",
     description:
-      "Eledent Dental Hospitals offers advanced dental care, painless treatments, expert dentists, and modern technology across Hyderabad.",
+      "Insights-Opinion Dental Hospitals offers advanced dental care, painless treatments, expert dentists, and modern technology across Hyderabad.",
     images: ["/og-image.jpg"],
   },
   icons: {
@@ -78,7 +79,8 @@ export default function RootLayout({
         className={`${poppins.variable} ${geistMono.variable} antialiased`}
       >
         <html lang="en">
-          <body>{children}</body>
+          <Navbar />
+          <body className="lg:mt-20 mt-8 ">{children}</body>
         </html>
       </body>
     </html>

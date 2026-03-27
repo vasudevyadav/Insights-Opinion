@@ -402,7 +402,7 @@ export const SERVICE_DETAILS_DATA: Record<string, ServiceDetailsPageData> = {
 
         beforeAfter: {
             heading: "Before and After",
-            subheading: "Eledent Dental Implants",
+            subheading: "Insights-Opinion Dental Implants",
             items: [
                 {
                     beforeSrc: "/services/chose-plan-image-1.png",

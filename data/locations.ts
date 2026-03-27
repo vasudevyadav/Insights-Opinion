@@ -96,7 +96,7 @@ export const LOCATIONS: LocationData[] = [
       "With 20 years of excellence in dental care, we use digital scanners, 3D X-rays, lasers, and CAD/CAM systems to deliver precise and minimally invasive treatment.",
     ],
     aboutImageSrc: "/location/location-image_.png",
-    aboutImageAlt: "Eledent International team at Kondapur",
+    aboutImageAlt: "Insights-Opinion International team at Kondapur",
 
     // ✅ SERVICES
     services: [
@@ -116,12 +116,12 @@ export const LOCATIONS: LocationData[] = [
     ],
 
     // ✅ TRUST
-    trustHeading: "Why Patients Trust Eledent Dental Hospital in Kondapur?",
+    trustHeading: "Why Patients Trust Insights-Opinion Dental Hospital in Kondapur?",
     trustCards: [
       {
         title: "Strong Clinical Track Record",
         imageSrc: "/location/why-patient.png",
-        imageAlt: "Dentist consultation at Eledent",
+        imageAlt: "Dentist consultation at Insights-Opinion",
         bullets: [
           "20+ years of combined clinical experience.",
           "30,000+ successful dental cases completed across branches.",
@@ -134,7 +134,7 @@ export const LOCATIONS: LocationData[] = [
       {
         title: "Technology-Driven, Faster Care",
         imageSrc: "/location/why-patient-1.png",
-        imageAlt: "Digital dentistry setup at Eledent",
+        imageAlt: "Digital dentistry setup at Insights-Opinion",
         bullets: [
           "3D scans for accurate planning and fewer repeat visits.",
           "CAD/CAM workflows for precise crowns and restorations.",
@@ -174,9 +174,9 @@ export const LOCATIONS: LocationData[] = [
 
     // ✅ GALLERY
     gallery: [
-      { src: "/location/location-image_.png", alt: "Eledent clinic team" },
-      { src: "/location/location-image_.png", alt: "Eledent doctors group" },
-      { src: "/location/location-image_.png", alt: "Eledent reception area" },
+      { src: "/location/location-image_.png", alt: "Insights-Opinion clinic team" },
+      { src: "/location/location-image_.png", alt: "Insights-Opinion doctors group" },
+      { src: "/location/location-image_.png", alt: "Insights-Opinion reception area" },
       { src: "/location/why-patient-1.png", alt: "Digital dentistry consultation" },
     ],
 
@@ -234,7 +234,7 @@ export const LOCATIONS: LocationData[] = [
       "Our team uses modern tools like 3D imaging, lasers, and CAD/CAM workflows for precise treatment.",
     ],
     aboutImageSrc: "/location/location-image_.png",
-    aboutImageAlt: "Eledent International team at Kukatpally",
+    aboutImageAlt: "Insights-Opinion International team at Kukatpally",
 
     // ✅ SERVICES
     services: [
@@ -250,12 +250,12 @@ export const LOCATIONS: LocationData[] = [
     ],
 
     // ✅ TRUST
-    trustHeading: "Why Patients Trust Eledent Dental Hospital in Kukatpally?",
+    trustHeading: "Why Patients Trust Insights-Opinion Dental Hospital in Kukatpally?",
     trustCards: [
       {
         title: "Clear Diagnosis First",
         imageSrc: "/location/why-patient.png",
-        imageAlt: "Dentist consultation at Eledent",
+        imageAlt: "Dentist consultation at Insights-Opinion",
         bullets: [
           "Simple explanation of the problem and treatment options.",
           "X-rays or scans only when needed for accurate planning.",
@@ -268,7 +268,7 @@ export const LOCATIONS: LocationData[] = [
       {
         title: "Modern Tools for Precise Treatment",
         imageSrc: "/location/why-patient-1.png",
-        imageAlt: "Digital dentistry setup at Eledent",
+        imageAlt: "Digital dentistry setup at Insights-Opinion",
         bullets: [
           "3D imaging support for complex cases.",
           "CAD/CAM planning for better-fitting restorations.",

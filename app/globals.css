@@ -35,6 +35,7 @@
 }
 
 @media (min-width: 1024px) {
+
   .wp-heading-content h1,
   .wp-heading-content h2,
   .wp-heading-content h3,
@@ -58,6 +59,7 @@
 }
 
 @media (min-width: 768px) {
+
   .wp-body-content p,
   .wp-body-content div,
   .wp-body-content li {
@@ -120,19 +122,12 @@ body {
   background: #484848;
 }
 
-.home-about-bg {
+/* .home-about-bg {
   background: url("../public/home/home-about-bg.png") no-repeat;
   background-size: contain;
   background-position: left;
-}
+} */
 
-.home-servic-bg {
-  background-color: #f7f9fc;
-  background-image: url("../public/home/home-servic-bg.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: top right;
-}
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -141,4 +136,22 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.header-image {
+  background: url(../public/header-image.png) no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+.homebg {
+  background: url(../public/home-hero-img-1.png) no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+.indstrybg {
+  background: url(../public/indstry-leader.png) no-repeat;
+  background-size: cover;
+  width: 100%;
 }
