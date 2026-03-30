@@ -151,7 +151,8 @@ body {
 }
 
 .indstrybg {
-  background: url(../public/indstry-leader.png) no-repeat;
+  background: url(../public/about-bg.png) no-repeat;
   background-size: cover;
   width: 100%;
+  height: 650px;
 }

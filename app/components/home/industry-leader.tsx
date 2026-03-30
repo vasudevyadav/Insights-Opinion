@@ -48,7 +48,7 @@ export default function IndustryLeader() {
 
     return (
         <section
-            className="bg-[#f5f7fa] py-12"
+            className=" bg-[#edf6ff] py-12"
             style={{ position: "relative", overflow: "hidden" }}
         >
             <style>{`
