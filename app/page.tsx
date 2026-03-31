@@ -1,5 +1,6 @@
 
 import BusinessChallenge from "./components/home/business-challenge";
+import CaseStudies from "./components/home/case-studies";
 import CoreSolution from "./components/home/core-solution";
 import HomeHero from "./components/home/hero-section";
 import HomeIndustry from "./components/home/home-industry";
@@ -13,6 +14,7 @@ export default function Home() {
       <HomeIndustry />
       <BusinessChallenge />
       <CoreSolution />
+      <CaseStudies />
     </section>
   );
 }
