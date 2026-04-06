@@ -89,14 +89,14 @@ function Accordion({
                         >
                             <div>
                                 <h3
-                                    className={`text-base font-semibold ${isOpen ? "text-[#16af9f]" : "text-[#384250]"
+                                    className={`lg:text-lg text-sm font-semibold ${isOpen ? "text-[#16af9f]" : "text-[#384250]"
                                         }`}
                                 >
                                     {item.title}
                                 </h3>
 
                                 {isOpen && (
-                                    <p className="mt-2 max-w-[300px] text-xs leading-[1.55] text-[#d6dbef]">
+                                    <p className="mt-2 max-w-[300px] text-xs lg:text-sm leading-[1.55] text-[#d6dbef]">
                                         {item.content}
                                     </p>
                                 )}
@@ -157,16 +157,16 @@ export default function WhyChoose() {
                                 <div
                                     className={`${isEven ? "lg:order-1" : "lg:order-2"} max-w-[500px]`}
                                 >
-                                    <p className="text-2xl font-light leading-[0.95] tracking-[-0.02em] text-[#4a5565] lg:text-[38px]">
+                                    <p className="text-2xl font-light leading-[0.95] tracking-[-0.02em] text-[#4a5565] lg:text-[45px]">
                                         {section.headingLight}
                                     </p>
 
-                                    <h2 className="text-2xl font-medium leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[38px]">
+                                    <h2 className="text-2xl font-medium leading-tight text-transparent bg-clip-text bg-[linear-gradient(130deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">
 
                                         {section.headingBold}
                                     </h2>
 
-                                    <p className="mt-5 text-xs leading-[1.6] text-[#5a6472] lg:text-base">
+                                    <p className="mt-5 text-xs leading-[1.6] text-[#5a6472] lg:text-lg">
                                         {section.description}
                                     </p>
 

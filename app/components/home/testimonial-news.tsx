@@ -252,14 +252,14 @@ export default function TestimonialNews() {
 
             <div className="relative z-10 mx-auto">
                 {/* TESTIMONIALS */}
-                <div className="mb-16 pl-6 pr-6 lg:pl-[12.6rem] lg:pr-0">
-                    <div className="mb-6 flex items-end justify-between gap-4">
+                <div className="mb-16 pl-6 pr-6 lg:pl-[12.6rem] lg:pr-0 relative">
+                    <div className="mb-6 flex pl-54 mb-12 gap-4 ">
                         <div>
-                            <h2 className="text-2xl font-light leading-tight text-[#2f3643] sm:text-[38px]">
+                            <h2 className="text-2xl font-light leading-tight text-[#2f3643] sm:text-[45px]">
                                 A word from our
                             </h2>
                             <h3
-                                className="text-[28px] font-semibold leading-tight text-transparent sm:text-[38px]"
+                                className="text-[28px] font-semibold leading-tight text-transparent sm:text-[45px]"
                                 style={{
                                     background:
                                         "linear-gradient(90deg, #20b7a6 0%, #5da6f6 100%)",
@@ -270,19 +270,23 @@ export default function TestimonialNews() {
                             >
                                 customers
                             </h3>
-                            <p className="mt-2 max-w-[520px] text-xs leading-6 text-black sm:text-base">
+                            <p className="mt-2 max-w-[520px] text-xs leading-6 text-black sm:text-lg">
                                 Lorem Ipsum is simply dummy text of the printing and typesetting
                                 industry.
                             </p>
                         </div>
 
-                        <div className="mr-10 hidden items-center gap-3 md:flex lg:mr-20">
-                            <button className="testimonial-prev flex h-10 w-10 items-center justify-center rounded-full border border-[#1b224f] text-[#1b224f] transition hover:bg-[#1b224f] hover:text-white">
-                                <ArrowLeft size={18} />
-                            </button>
-                            <button className="testimonial-next flex h-10 w-10 items-center justify-center rounded-full border border-[#1b224f] text-[#1b224f] transition hover:bg-[#1b224f] hover:text-white">
-                                <ArrowRight size={18} />
-                            </button>
+                        <div className="absolute -bottom-16 right-0">
+
+                            <div className="mr-10 hidden items-center gap-3 md:flex lg:mr-20">
+                                <button className="testimonial-prev flex h-10 w-10 items-center justify-center rounded-full border border-[#1b224f] text-[#1b224f] transition hover:bg-[#1b224f] hover:text-white">
+                                    <ArrowLeft size={18} />
+                                </button>
+                                <button className="testimonial-next flex h-10 w-10 items-center justify-center rounded-full border border-[#1b224f] text-[#1b224f] transition hover:bg-[#1b224f] hover:text-white">
+                                    <ArrowRight size={18} />
+                                </button>
+                            </div>
+
                         </div>
                     </div>
 
@@ -363,9 +367,9 @@ export default function TestimonialNews() {
                 </div>
 
                 {/* NEWS & ARTICLES */}
-                <div className="mx-auto max-w-5xl px-6 lg:px-10">
+                <div className="mx-auto max-w-5xl px-6 lg:px-0">
                     <div className="mb-8">
-                        <h2 className="text-[24px] font-light leading-tight text-[#2f3643] sm:text-[30px]">
+                        <h2 className="text-[24px] font-light leading-tight text-[#2f3643] lg:text-[42px]">
                             Latest
                         </h2>
                         <h3

@@ -118,12 +118,12 @@ export default function CoreTab() {
 
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-16 py-6">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                 <div className="shrink-0">
-                    <p className="text-xl font-normal leading-none text-black lg:text-[38px]">
+                    <p className="text-xl font-normal leading-none text-black lg:text-[45px]">
                         Core
                     </p>
-                    <h2 className="text-2xl font-semibold leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[38px]">
+                    <h2 className="text-2xl font-semibold leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">
                         Solutions
                     </h2>
                 </div>
@@ -137,7 +137,7 @@ export default function CoreTab() {
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(index)}
-                                    className={`h-14 px-3 text-center text-[12px] font-semibold transition-all md:text-sm ${isActive
+                                    className={`h-16 px-3 text-center text-sm font-semibold transition-all md:text-base ${isActive
                                         ? "rounded-[8px] bg-gradient-to-r from-[#37c9c7] to-[#4a8fe8] text-white shadow-[0_8px_24px_rgba(74,143,232,0.22)]"
                                         : "bg-transparent text-[#2f3743]"
                                         }`}
@@ -175,7 +175,7 @@ export default function CoreTab() {
                             {activeData.description}
                         </p>
 
-                        <h3 className="my-5 max-w-[430px] text-[28px] font-semibold leading-[1.25] line-clamp-2 text-[#2e3540] md:text-2xl">
+                        <h3 className="my-5 max-w-[430px] text-[28px] font-semibold leading-[1.25] line-clamp-2 text-[#2e3540] lg:text-[27px]">
                             {activeData.cardsTitle}
                         </h3>
                     </div>
@@ -198,7 +198,7 @@ export default function CoreTab() {
                                     </div>
 
                                     <div className="flex flex-1 items-center px-4 py-3">
-                                        <p className="text-xs font-semibold leading-5 text-[#2f3743] line-clamp-3">
+                                        <p className="text-sm font-semibold leading-5 text-[#2f3743] line-clamp-3">
                                             {service.title}
                                         </p>
                                     </div>
@@ -206,14 +206,14 @@ export default function CoreTab() {
                             ))}
                         </div>
 
-                        <div className="mt-6 flex items-center gap-5">
+                        <div className="mt-6 flex items-center">
                             <button
                                 onClick={handlePrevCard}
                                 className="flex h-10 w-10 items-center justify-center rounded-full text-[#111827] transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-40"
                                 aria-label="Previous card"
                                 disabled={cardIndex === 0}
                             >
-                                <ArrowLeft className="h-6 w-6 stroke-[2.4]" />
+                                <ArrowLeft className="h-7 w-7 stroke-[2.4]" />
                             </button>
 
                             <button
@@ -222,7 +222,7 @@ export default function CoreTab() {
                                 aria-label="Next card"
                                 disabled={cardIndex >= activeData.services.length - 2}
                             >
-                                <ArrowRight className="h-6 w-6 stroke-[2.4]" />
+                                <ArrowRight className="h-7 w-7 stroke-[2.4]" />
                             </button>
                         </div>
                     </div>

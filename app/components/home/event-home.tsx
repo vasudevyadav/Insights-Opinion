@@ -46,11 +46,11 @@ export default function EventHome() {
             <div className="mx-auto w-full pl-4 sm:pl-6 lg:pl-8">
                 <div className="mx-auto max-w-5xl">
                     <div className="mb-5 flex flex-col gap-10 pr-4 lg:mb-12 lg:flex-row lg:items-center lg:justify-between lg:pr-8">
-                        <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[42px]">
+                        <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-medium leading-tight text-transparent lg:text-[45px]">
                             Events and highlights
                         </h2>
 
-                        <p className="max-w-[480px] text-xs leading-6 text-white/70 lg:text-base">
+                        <p className="max-w-[450px] text-xs leading-6 text-white/90 lg:text-base">
                             Lorem Ipsum is simply dummy text of the printing and typesetting
                             industry. Lorem Ipsum has been the industry&apos;s standard dummy
                             text ever since the 1500s.

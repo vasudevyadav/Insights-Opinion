@@ -65,14 +65,14 @@ export default function AccreditationsRecognitions() {
                 />
             ))}
 
-            <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
+            <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-16">
                 {/* top heading + paragraph */}
-                <div className="mb-14 lg:flex justify-between items-center">
-                    <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[42px]">
+                <div className="mb-10 lg:flex justify-between items-center">
+                    <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[40px]">
                         Accreditations <br /> & Recognitions
                     </h2>
 
-                    <p className="mt-5 max-w-3xl text-sm leading-7 text-[#4b5563] sm:text-[15px]">
+                    <p className="mt-5 max-w-2xl text-sm leading-7 text-[#4b5563] sm:text-base">
                         Our commitment to quality and innovation has earned us prestigious
                         recognitions, establishing us as a best market research company.
                         Recognized by Forbes for having one of the most innovative CEOs and

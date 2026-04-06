@@ -148,13 +148,14 @@ body {
   background: url(../public/home-hero-img-1.png) no-repeat;
   background-size: cover;
   width: 100%;
+  background-position: bottom;
 }
 
 .indstrybg {
   background: url(../public/about-bg.png) no-repeat;
   background-size: cover;
   width: 100%;
-  height: 650px;
+  height: 580px;
 }
 
 .globe-spin {

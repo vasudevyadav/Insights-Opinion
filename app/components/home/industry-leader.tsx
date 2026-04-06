@@ -106,10 +106,10 @@ export default function IndustryLeader() {
             >
                 <div className="flex items-center justify-center px-2 py-10 md:col-span-2">
                     <div className="w-full max-w-[400px]">
-                        <p className="text-xl font-medium leading-tight text-[#5d6778] lg:text-[38px] mb-2">
+                        <p className="text-xl font-light leading-tight text-[#5d6778] lg:text-5xl mb-1">
                             Trusted by
                         </p>
-                        <h2 className="text-2xl font-semibold leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#17ae8f_0%,#539ae2_50%,#5a8fc8_100%)] lg:text-[38px]">
+                        <h2 className="text-2xl font-semibold leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#17ae8f_0%,#539ae2_50%,#5a8fc8_100%)] lg:text-[45px]">
                             Industry Leaders
                         </h2>
                     </div>
@@ -119,7 +119,7 @@ export default function IndustryLeader() {
                     {brands.map((brand, index) => (
                         <div
                             key={index}
-                            className="flex min-h-[110px] items-center justify-center px-6 lg:py-8 py-2 lg:pt-4 pt-1"
+                            className="flex min-h-[110px] items-center justify-center px-6 lg:py-4 py-1 lg:pt-2 pt-1"
                         >
                             <div className="relative h-10 w-32">
                                 <Image

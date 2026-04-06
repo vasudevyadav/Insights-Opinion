@@ -96,7 +96,7 @@ function IndustryCard({
         <div
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
-            className="relative h-[220px] min-w-0 cursor-pointer overflow-hidden bg-white"
+            className="relative h-[250px] min-w-0 cursor-pointer overflow-hidden bg-white"
             style={{
                 flex: isExpanded ? 2.4 : 1,
                 transition: "flex 0.55s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s",
@@ -112,13 +112,13 @@ function IndustryCard({
                     transition: "opacity 0.25s",
                 }}
             >
-                <p className="mb-2 lg:text-xl text-lg font-semibold text-[#1a2340]">{title}</p>
-                <p className="line-clamp-3 text-xs leading-[1.65] max-w-48 text-[#6b7280] ">
+                <p className="mb-2 lg:text-xl text-xl font-semibold text-[#1a2340]">{title}</p>
+                <p className="line-clamp-3 text-base leading-[1.65] max-w-48 text-[#6b7280] ">
                     {description}
                 </p>
                 <a
                     href="#"
-                    className="mt-3 inline-flex items-center gap-1 text-[11.5px] font-semibold text-[#00b4a6] no-underline"
+                    className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#00b4a6] no-underline"
                 >
                     Learn More <ArrowIcon />
                 </a>
@@ -147,13 +147,13 @@ function IndustryCard({
 
                 {/* Content — horizontally & vertically centered */}
                 <div className="relative z-10 flex h-full flex-col items-left justify-center px-5 text-left">
-                    <p className="mb-2 text-base lg:text-xl font-bold text-white">{title}</p>
-                    <p className="line-clamp-3 text-xs lg:text-sm leading-[1.65] max-w-60 text-white/80">
+                    <p className="mb-2 text-base lg:text-2xl font-bold text-white">{title}</p>
+                    <p className="line-clamp-3 text-xs lg:text-lg leading-[1.65] max-w-60 text-white/80">
                         {description}
                     </p>
                     <a
                         href="#"
-                        className="mt-3 inline-flex items-center gap-1 text-[11.5px] font-semibold text-white no-underline"
+                        className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-white no-underline"
                     >
                         Learn More <ArrowIcon color="white" />
                     </a>
@@ -176,13 +176,13 @@ export default function Industries() {
         <section className="px-6 py-5">
 
             <div className="mb-10 text-center">
-                <h2 className="text-2xl font-normal leading-tight text-black text-[#1a2340] lg:text-[38px]">
+                <h2 className="text-2xl font-normal leading-tight text-black text-[#1a2340] lg:text-[45px]">
                     Industries
-                    <span className="text-2xl ml-2 font-semibold leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[38px]">We serve</span>
+                    <span className="text-2xl ml-2 font-semibold leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">We serve</span>
                 </h2>
             </div>
 
-            <div className="mx-auto flex max-w-5xl flex-col gap-[14px]">
+            <div className="mx-auto flex max-w-6xl flex-col gap-[14px]">
                 {rows.map((row, rowIdx) => (
                     <div key={rowIdx} className="flex gap-[14px]">
                         {row.map((ind) => (

@@ -52,10 +52,10 @@ export default function HomeIndustry() {
 
                             <div className="flex items-center px-5 pb-12 py-8 sm:px-8 lg:px-10 lg:pb-10 lg:py-16">
                                 <div className="max-w-[550px]">
-                                    <p className="mb-2 text-[28px] font-light leading-none text-white/80 sm:text-[34px]">
+                                    <p className="mb-2 text-[28px] font-light leading-none text-white/80 sm:text-[40px]">
                                         About
                                     </p>
-                                    <h2 className="mb-5 text-2xl font-medium leading-tight text-transparent bg-clip-text bg-[linear-gradient(110deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[38px]">
+                                    <h2 className="mb-5 text-2xl font-medium leading-tight text-transparent bg-clip-text bg-[linear-gradient(110deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[40px]">
                                         Insights Opinion
                                     </h2>
                                     <p className="max-w-[550px] text-base leading-6 text-white/80 sm:text-[15px]">
@@ -73,10 +73,9 @@ export default function HomeIndustry() {
                             </div>
                         </div>
 
-
                     </div>
                 </div>
-                <div className="absolute inset-x-0 bottom-20 z-50 px-2 sm:px-4 lg:px-6">
+                <div className="absolute inset-x-0 bottom-10 z-30 px-2 sm:px-4 lg:px-6">
                     <Swiper
                         modules={[Autoplay]}
                         spaceBetween={12}
@@ -97,7 +96,7 @@ export default function HomeIndustry() {
                     >
                         {featureCards.map((item, index) => (
                             <SwiperSlide key={index}>
-                                <div className="relative flex min-h-[85px] items-center rounded-2xl bg-white px-14 py-4 shadow-[0_10px_25px_rgba(15,23,42,0.12)]">
+                                <div className="relative flex min-h-[85px] items-center rounded-2xl bg-white pl-14 pr-4 py-4 shadow-[0_10px_25px_rgba(15,23,42,0.12)]">
                                     <div className="absolute left-0 top-0 h-14 w-14">
                                         <Image
                                             src={item.icon}
@@ -107,7 +106,7 @@ export default function HomeIndustry() {
                                         />
                                     </div>
 
-                                    <p className="max-w-[150px] pl-1 text-[11px] font-semibold text-[#2f3850] lg:text-sm">
+                                    <p className="max-w-[180px] pl-1 text-sm font-semibold text-[#2f3850] lg:text-base">
                                         {item.title}
                                     </p>
                                 </div>

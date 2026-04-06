@@ -80,7 +80,7 @@ function ChallengeCardItem({ card, index }: { card: ChallengeCard; index: number
                         {card.title}
                     </h3>
 
-                    <p className="mt-2 max-w-[350px] text-sm leading-5 text-[#5d6478]">
+                    <p className="mt-2 max-w-[350px] text-base leading-5 text-black/90">
                         {card.description}
                     </p>
                 </div>
@@ -93,14 +93,14 @@ function ChallengeCardItem({ card, index }: { card: ChallengeCard; index: number
 
 export default function BusinessChallenge() {
     return (
-        <section className="bg-white py-14 lg:py-12">
+        <section className="bg-white py-14 lg:py-18">
             <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
                 <div className=" lg:pt-2 lg:pl-20">
-                    <h2 className="max-w-[400px] text-[34px] font-light leading-[1.1] text-[#4a5370]  lg:text-[40px]">
+                    <h2 className="max-w-[400px] text-[34px] font-light leading-[1.1] text-[#4a5370]  lg:text-[45px]">
                         The Business
                         Challenges
                         <br />
-                        <span className="text-2xl font-semibold leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[40px]">we solve</span>
+                        <span className="text-2xl font-semibold leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">we solve</span>
                     </h2>
                 </div>
                 <div className="grid grid-cols-1 gap-6 -mt-8">

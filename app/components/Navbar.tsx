@@ -70,14 +70,14 @@ export default function Navbar() {
         <>
             <header className="fixed top-0 z-50 w-full">
                 <div className="header-image">
-                    <div className="mx-auto flex h-14 max-w-[1280px] items-center justify-between px-6 lg:h-20 lg:px-8">
+                    <div className="mx-auto flex h-14 max-w-[1380px] items-center justify-between px-6 lg:h-24 lg:px-8">
                         <Link href="/" className="flex items-center">
                             <Image
                                 src="/logo.png"
                                 alt="Logo"
                                 width={180}
                                 height={48}
-                                className="h-auto w-32 lg:w-48"
+                                className="h-auto w-32 lg:w-60"
                                 priority
                             />
                         </Link>
@@ -98,7 +98,7 @@ export default function Navbar() {
                                         <Link
                                             key={item.href}
                                             href={item.href}
-                                            className={`text-sm font-semibold transition-colors ${isActive(item.href)
+                                            className={`text-[17px] font-semibold transition-colors ${isActive(item.href)
                                                 ? "text-[#14d8d0]"
                                                 : "text-white hover:text-[#14d8d0]"
                                                 }`}
@@ -117,7 +117,7 @@ export default function Navbar() {
                                     >
                                         <Link
                                             href={item.href || "/services"}
-                                            className={`flex items-center gap-1 text-sm font-semibold transition-colors ${isServicesActive
+                                            className={`flex items-center gap-1 text-[17px] font-semibold transition-colors ${isServicesActive
                                                 ? "text-[#14d8d0]"
                                                 : "text-white hover:text-[#14d8d0]"
                                                 }`}
@@ -141,7 +141,7 @@ export default function Navbar() {
                                 aria-label="Search"
                                 className="text-white transition hover:text-[#14d8d0]"
                             >
-                                <Search className="h-5 w-5" />
+                                <Search className="h-7 w-7" />
                             </button>
 
                             <button
@@ -149,12 +149,12 @@ export default function Navbar() {
                                 aria-label="Account"
                                 className="text-white transition hover:text-[#14d8d0]"
                             >
-                                <User className="h-5 w-5" />
+                                <User className="h-7 w-7" />
                             </button>
 
                             <Link
                                 href="/contact-us"
-                                className="rounded-full bg-[#15c9a8] px-4 py-2 text-sm font-medium text-[#07233f] transition hover:bg-[#0fd2b0]"
+                                className="rounded-full bg-[#15c9a8] px-4 py-1.5 text-sm font-medium text-[#07233f] transition hover:bg-[#0fd2b0]"
                             >
                                 Contact Sales
                             </Link>
