@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronUp, ChevronDown } from "lucide-react";
+import Image from "next/image";
 
 const sectionsData = [
     {
@@ -64,7 +65,11 @@ const sectionsData = [
     },
 ];
 
-function Accordion({ accordionData }: { accordionData: { title: string; content: string }[] }) {
+function Accordion({
+    accordionData,
+}: {
+    accordionData: { title: string; content: string }[];
+}) {
     const [openIndex, setOpenIndex] = useState(0);
 
     return (
@@ -84,14 +89,14 @@ function Accordion({ accordionData }: { accordionData: { title: string; content:
                         >
                             <div>
                                 <h3
-                                    className={`text-[15px] font-semibold ${isOpen ? "text-[#3fd1e6]" : "text-[#384250]"
+                                    className={`text-base font-semibold ${isOpen ? "text-[#16af9f]" : "text-[#384250]"
                                         }`}
                                 >
                                     {item.title}
                                 </h3>
 
                                 {isOpen && (
-                                    <p className="mt-2 max-w-[300px] text-[12.5px] leading-[1.55] text-[#d6dbef]">
+                                    <p className="mt-2 max-w-[300px] text-xs leading-[1.55] text-[#d6dbef]">
                                         {item.content}
                                     </p>
                                 )}
@@ -104,16 +109,30 @@ function Accordion({ accordionData }: { accordionData: { title: string; content:
                                         className={isOpen ? "text-white" : "text-[#4b5563]"}
                                     />
                                 ) : (
-                                    <ChevronDown
-                                        size={18}
-                                        className="text-[#4b5563]"
-                                    />
+                                    <ChevronDown size={18} className="text-[#4b5563]" />
                                 )}
                             </span>
                         </button>
                     </div>
                 );
             })}
+        </div>
+    );
+}
+
+function AnimatedWhyChooseFigure() {
+    return (
+        <div className="relative inline-flex w-fit items-end justify-center overflow-visible bg-transparent">
+            <img
+                src="/globe-image.png"
+                alt="Animated figure"
+                className="globe-spin"
+            />
+            <img
+                src="/why-men.png"
+                alt="Animated figure"
+                className="absolute -left-10 -bottom-14 w-[22rem] object-cover"
+            />
         </div>
     );
 }
@@ -135,13 +154,15 @@ export default function WhyChoose() {
                                 key={sectionIndex}
                                 className="grid items-center gap-10 lg:grid-cols-[1.02fr_1fr]"
                             >
-
-                                <div className={`${isEven ? "lg:order-1" : "lg:order-2"} max-w-[500px]`}>
-                                    <p className="text-2xl leading-[0.95] font-light tracking-[-0.02em] text-[#4a5565] lg:text-5xl">
+                                <div
+                                    className={`${isEven ? "lg:order-1" : "lg:order-2"} max-w-[500px]`}
+                                >
+                                    <p className="text-2xl font-light leading-[0.95] tracking-[-0.02em] text-[#4a5565] lg:text-[38px]">
                                         {section.headingLight}
                                     </p>
 
-                                    <h2 className="mt-1 text-2xl leading-[0.95] font-medium tracking-[-0.03em] text-[#59c8dd] lg:text-5xl">
+                                    <h2 className="text-2xl font-medium leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[38px]">
+
                                         {section.headingBold}
                                     </h2>
 
@@ -152,17 +173,22 @@ export default function WhyChoose() {
                                     <Accordion accordionData={section.accordionData} />
                                 </div>
 
-                                {/* Image Block */}
                                 <div
                                     className={`relative flex min-h-[420px] items-center justify-center lg:min-h-[520px] ${isEven ? "lg:order-2" : "lg:order-1"
                                         }`}
                                 >
-                                    <div className="relative flex w-full items-center justify-center overflow-hidden bg-transparent">
-                                        <img
-                                            src={section.image}
-                                            alt="Person"
-                                            className="relative z-10 object-contain"
-                                        />
+                                    <div className="relative flex w-full items-center justify-center overflow-visible bg-transparent">
+                                        {sectionIndex === 0 ? (
+                                            <AnimatedWhyChooseFigure />
+                                        ) : (
+                                            <Image
+                                                src={section.image}
+                                                alt="Section visual"
+                                                width={520}
+                                                height={520}
+                                                className="relative z-10 h-auto w-full max-w-[420px] object-contain"
+                                            />
+                                        )}
                                     </div>
                                 </div>
                             </div>

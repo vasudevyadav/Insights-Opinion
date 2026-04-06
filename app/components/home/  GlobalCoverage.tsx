@@ -320,25 +320,15 @@ export default function GlobalCoverage() {
                 >
                     Global
                 </h2>
-                <h2
-                    style={{
-                        fontSize: "2.6rem",
-                        fontWeight: 700,
-                        letterSpacing: "0.05em",
-                        lineHeight: 1.1,
-                        marginTop: 0,
-                        marginBottom: "18px",
-                        color: "#22d3ee",
-                    }}
-                >
+                <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[42px] mb-4">
                     Coverage
                 </h2>
                 <p
                     style={{
-                        fontSize: "0.85rem",
+                        fontSize: "14px",
                         lineHeight: 1.8,
                         color: "rgba(255,255,255,0.52)",
-                        margin: "0 0 28px 0",
+                        margin: "0 0 18px 0",
                     }}
                 >
                     Lorem ipsum is simply dummy text of the printing and typesetting industry.
@@ -347,15 +337,14 @@ export default function GlobalCoverage() {
                 <button
                     style={{
                         borderRadius: "9999px",
-                        background: "linear-gradient(to right, #22d3ee, #2dd4bf)",
-                        padding: "11px 28px",
-                        fontSize: "0.85rem",
-                        fontWeight: 600,
-                        letterSpacing: "0.05em",
-                        color: "#07102b",
+                        background: "#17ae8f",
+                        padding: "11px 38px",
+                        fontSize: "16px",
+                        fontWeight: 500,
+                        color: "#fff",
                         border: "none",
                         cursor: "pointer",
-                        boxShadow: "0 0 24px rgba(6,182,212,0.45)",
+                        boxShadow: "0 0 12px rgba(6,182,212,0.35)",
                     }}
                 >
                     Get Started

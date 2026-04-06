@@ -63,12 +63,12 @@ export default function CoreTab() {
 
         {
             id: "support",
-            label: "Quantitative Research",
-            heroTitle: "Enhance Your Growth\nwith Quantitative Research",
+            label: "Support Services",
+            heroTitle: "Enhance Your Growth\nwith Support Services",
             heroImage: "/core-1.png",
             description:
-                "As the trusted best market research company, we provide quantitative research services to help brands measure demand, track market shifts, understand buyer behaviour, and make data-backed business decisions with clarity.",
-            cardsTitle: "Choose The Right Quantitative Research That Suits Your Business",
+                "As the trusted best market research company, we provide support services to help brands measure demand, track market shifts, understand buyer behaviour, and make data-backed business decisions with clarity.",
+            cardsTitle: "Choose The Right Support Services That Suits Your Business",
             services: [
                 {
                     title: "CATI (Computer-Assisted Telephone Interviewing)",
@@ -120,15 +120,15 @@ export default function CoreTab() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-16 py-6">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
                 <div className="shrink-0">
-                    <p className="text-xl font-normal leading-none text-[#5b6472] lg:text-4xl">
+                    <p className="text-xl font-normal leading-none text-black lg:text-[38px]">
                         Core
                     </p>
-                    <h2 className="mt-1 text-xl font-medium leading-none text-[#53c6dd] lg:text-4xl">
+                    <h2 className="text-2xl font-semibold leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[38px]">
                         Solutions
                     </h2>
                 </div>
 
-                <div className="w-full max-w-[760px]">
+                <div className="w-full max-w-[750px]">
                     <div className="grid grid-cols-3 gap-0">
                         {tabs.map((tab, index) => {
                             const isActive = activeTab === index;
@@ -162,7 +162,7 @@ export default function CoreTab() {
                         />
                         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,25,52,0.12)_0%,rgba(10,20,48,0.72)_100%)]" />
                         <div className="absolute bottom-7 left-5 max-w-[78%]">
-                            <h3 className="whitespace-pre-line text-[26px] font-semibold leading-[1.25] text-white md:text-[34px]">
+                            <h3 className="whitespace-pre-line text-[26px] font-medium leading-[1.25] text-white md:text-[34px]">
                                 {activeData.heroTitle}
                             </h3>
                         </div>
@@ -198,7 +198,7 @@ export default function CoreTab() {
                                     </div>
 
                                     <div className="flex flex-1 items-center px-4 py-3">
-                                        <p className="text-[13px] font-semibold leading-5 text-[#2f3743]">
+                                        <p className="text-xs font-semibold leading-5 text-[#2f3743] line-clamp-3">
                                             {service.title}
                                         </p>
                                     </div>
