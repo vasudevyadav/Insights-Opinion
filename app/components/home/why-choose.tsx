@@ -131,7 +131,7 @@ function AnimatedWhyChooseFigure() {
             <img
                 src="/why-men.png"
                 alt="Animated figure"
-                className="absolute -left-10 -bottom-14 w-[22rem] object-cover"
+                className="absolute lg:-left-10 left-0 -bottom-32 lg:-bottom-14 w-[22rem] object-cover"
             />
         </div>
     );
@@ -144,8 +144,8 @@ export default function WhyChoose() {
                 <div className="h-full w-full" />
             </div>
 
-            <div className="relative z-10 mx-auto max-w-6xl px-4 py-10 lg:px-0 lg:py-16">
-                <div className="space-y-20">
+            <div className="relative z-10 mx-auto max-w-6xl px-4 py-2 lg:px-0 lg:py-16">
+                <div className="lg:space-y-20 space-y-44">
                     {sectionsData.map((section, sectionIndex) => {
                         const isEven = sectionIndex % 2 === 0;
 
@@ -157,16 +157,16 @@ export default function WhyChoose() {
                                 <div
                                     className={`${isEven ? "lg:order-1" : "lg:order-2"} max-w-[500px]`}
                                 >
-                                    <p className="text-2xl font-light leading-[0.95] tracking-[-0.02em] text-[#4a5565] lg:text-[45px]">
+                                    <p className="text-3xl font-light leading-[0.95] tracking-[-0.02em] text-[#4a5565] lg:text-[45px]">
                                         {section.headingLight}
                                     </p>
 
-                                    <h2 className="text-2xl font-medium leading-tight text-transparent bg-clip-text bg-[linear-gradient(130deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">
+                                    <h2 className="text-3xl font-medium leading-tight text-transparent bg-clip-text bg-[linear-gradient(130deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">
 
                                         {section.headingBold}
                                     </h2>
 
-                                    <p className="mt-5 text-xs leading-[1.6] text-[#5a6472] lg:text-lg">
+                                    <p className="mt-5 text-base leading-[1.6] text-[#5a6472] lg:text-lg">
                                         {section.description}
                                     </p>
 

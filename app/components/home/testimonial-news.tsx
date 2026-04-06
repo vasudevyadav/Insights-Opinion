@@ -194,7 +194,7 @@ export default function TestimonialNews() {
     };
 
     return (
-        <section className="relative overflow-hidden bg-[#eef5fb] py-14 lg:py-16">
+        <section className="relative overflow-hidden bg-[#eef5fb] py-8 lg:py-16">
             <style>{`
         @keyframes moveLineGlow {
           0% { top: -140px; }
@@ -252,8 +252,8 @@ export default function TestimonialNews() {
 
             <div className="relative z-10 mx-auto">
                 {/* TESTIMONIALS */}
-                <div className="mb-16 pl-6 pr-6 lg:pl-[12.6rem] lg:pr-0 relative">
-                    <div className="mb-6 flex pl-54 mb-12 gap-4 ">
+                <div className="lg:mb-16 mb-8 pl-6 pr-6 lg:pl-[12.6rem] lg:pr-0 relative">
+                    <div className="lg:mb-6 mb-6 flex lg:pl-54 pl-4  gap-4 ">
                         <div>
                             <h2 className="text-2xl font-light leading-tight text-[#2f3643] sm:text-[45px]">
                                 A word from our

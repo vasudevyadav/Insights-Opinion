@@ -64,11 +64,11 @@ const quickLinks = [
 export default function Footer() {
     return (
         <footer className="relative overflow-hidden bg-[#151b4a] text-white">
-            <div className="mx-auto max-w-[1400px] px-6 pb-0 pt-10 sm:px-8 lg:px-14 lg:pt-12">
+            <div className="mx-auto max-w-[1400px] px-5 pb-0 pt-10 sm:px-8 lg:px-14 lg:pt-12">
                 <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.15fr_0.8fr_0.95fr_1fr]">
                     {/* Left section */}
-                    <div className="max-w-[250px]">
-                        <div className="mb-10">
+                    <div className="max-w-full md:max-w-[250px]">
+                        <div className="mb-8 sm:mb-10">
                             <Image
                                 src="/logo.png"
                                 alt="Insights Opinion"
@@ -78,7 +78,7 @@ export default function Footer() {
                             />
                         </div>
 
-                        <h3 className="text-xl font-light uppercase leading-[1.55] tracking-[2.8px] text-white/80">
+                        <h3 className="text-lg font-light uppercase leading-[1.55] tracking-[2px] text-white/80 sm:text-xl sm:tracking-[2.8px]">
                             We listen
                             <br />
                             you prosper
@@ -88,12 +88,12 @@ export default function Footer() {
                             Stay Up-to-date with latest News
                         </p>
 
-                        <div className="mt-5 max-w-[140px]">
+                        <div className="mt-5 w-full lg:max-w-[220px] sm:max-w-[180px] md:max-w-[140px]">
                             <div className="flex items-center justify-between border-b border-white/80 pb-2">
                                 <input
                                     type="email"
                                     placeholder="email address"
-                                    className="w-full bg-transparent text-[13px] text-white placeholder:text-white/60 focus:outline-none"
+                                    className="w-full min-w-0 bg-transparent text-[13px] text-white placeholder:text-white/60 focus:outline-none"
                                 />
                                 <button
                                     type="button"
@@ -107,7 +107,7 @@ export default function Footer() {
 
                     {/* Company */}
                     <div>
-                        <h4 className="mb-6 text-2xl font-light text-[#29c7c3]">
+                        <h4 className="mb-5 text-[24px] font-light text-[#29c7c3] sm:mb-6 sm:text-2xl">
                             Company
                         </h4>
 
@@ -116,7 +116,7 @@ export default function Footer() {
                                 <li key={item.label}>
                                     <a
                                         href={item.href}
-                                        className="text-base leading-6 text-white/75 transition hover:text-white"
+                                        className="text-[15px] leading-6 text-white/75 transition hover:text-white sm:text-base"
                                     >
                                         {item.label}
                                     </a>
@@ -127,7 +127,7 @@ export default function Footer() {
 
                     {/* Service */}
                     <div>
-                        <h4 className="mb-6 text-2xl font-light text-[#29c7c3]">
+                        <h4 className="mb-5 text-[24px] font-light text-[#29c7c3] sm:mb-6 sm:text-2xl">
                             Service
                         </h4>
 
@@ -147,7 +147,7 @@ export default function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="mb-6 text-2xl font-light text-[#29c7c3]">
+                        <h4 className="mb-5 text-[24px] font-light text-[#29c7c3] sm:mb-6 sm:text-2xl">
                             Quick Links
                         </h4>
 
@@ -164,7 +164,7 @@ export default function Footer() {
                             ))}
                         </ul>
 
-                        <div className="mt-8 flex items-center gap-3">
+                        <div className="mt-8 flex flex-wrap items-center gap-3">
                             <a
                                 href="https://www.facebook.com/MRInsightsopinion/"
                                 target="_blank"
@@ -212,10 +212,12 @@ export default function Footer() {
 
             {/* bottom bar */}
             <div className="mt-10 bg-[#60d4d0]">
-                <div className="mx-auto flex flex-col gap-2 px-6 py-4 text-base font-medium text-white/90 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-14">
-                    <p>Copyright © Insight Opinion. All rights received 2026</p>
+                <div className="mx-auto flex flex-col gap-3 px-5 py-4 text-sm font-medium text-white/90 sm:px-8 sm:text-base lg:flex-row lg:items-center lg:justify-between lg:px-14">
+                    <p className="text-left w-full">
+                        Copyright © Insight Opinion. All rights received 2026
+                    </p>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-2 lg:text-left text-center justify-center lg:justify-end">
                         <a
                             href="https://insightsopinion.com/cookies-policy/"
                             className="transition hover:text-[#151b4a]"

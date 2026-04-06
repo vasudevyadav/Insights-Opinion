@@ -40,7 +40,7 @@ const featureCards = [
 
 export default function HomeIndustry() {
     return (
-        <div className="bg-[#edf6ff] lg:-mt-32">
+        <div className="bg-[#edf6ff] lg:-mt-32 -mt-32">
 
             <section className="py-10 lg:py-14 bg-[#edf6ff] indstrybg relative ">
                 <div className="mx-auto max-w-7xl px-4 lg:px-4">
@@ -58,7 +58,7 @@ export default function HomeIndustry() {
                                     <h2 className="mb-5 text-2xl font-medium leading-tight text-transparent bg-clip-text bg-[linear-gradient(110deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[40px]">
                                         Insights Opinion
                                     </h2>
-                                    <p className="max-w-[550px] text-base leading-6 text-white/80 sm:text-[15px]">
+                                    <p className="lg:max-w-[550px] max-w-[400px] lg:font-normal font-semibold  text-base leading-6 text-white/80 sm:text-[15px]">
                                         Insights Opinion is one of the leading global market research
                                         companies, specializes in research outsourcing and data
                                         processing services. Our highly skilled, multilingual team
@@ -75,7 +75,7 @@ export default function HomeIndustry() {
 
                     </div>
                 </div>
-                <div className="absolute inset-x-0 bottom-10 z-30 px-2 sm:px-4 lg:px-6">
+                <div className="absolute inset-x-0 lg:bottom-10 bottom-6 z-30 px-2 sm:px-4 lg:px-6">
                     <Swiper
                         modules={[Autoplay]}
                         spaceBetween={12}
@@ -86,9 +86,9 @@ export default function HomeIndustry() {
                             disableOnInteraction: false,
                         }}
                         breakpoints={{
-                            0: { slidesPerView: 1.2 },
-                            480: { slidesPerView: 2.1 },
-                            768: { slidesPerView: 3.1 },
+                            0: { slidesPerView: 2 },
+                            480: { slidesPerView: 2 },
+                            768: { slidesPerView: 2 },
                             1024: { slidesPerView: 4.2 },
                             1280: { slidesPerView: 5.2 },
                         }}
@@ -106,7 +106,7 @@ export default function HomeIndustry() {
                                         />
                                     </div>
 
-                                    <p className="max-w-[180px] pl-1 text-sm font-semibold text-[#2f3850] lg:text-base">
+                                    <p className="lg:max-w-[180px]  pl-1 text-sm font-semibold text-[#2f3850] lg:text-base">
                                         {item.title}
                                     </p>
                                 </div>

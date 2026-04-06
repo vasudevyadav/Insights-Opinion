@@ -16,7 +16,7 @@ export default function CoreSolution() {
 
 
     return (
-        <section className="relative overflow-hidden bg-[#eef5fb] py-14">
+        <section className="relative overflow-hidden bg-[#eef5fb] lg:py-14 py-6">
             <style>{`
                 @keyframes moveLineGlow {
                     0% { top: -140px; }

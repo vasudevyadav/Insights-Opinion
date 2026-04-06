@@ -171,3 +171,19 @@ body {
     transform: rotate(360deg);
   }
 }
+
+
+@media (max-width: 768px) {
+  .homebg {
+    background: url(../public/home-mob.png) no-repeat;
+    background-size: cover;
+    width: 100%;
+  }
+
+  .indstrybg {
+    background: url(../public/mob-about.png) no-repeat;
+    background-size: cover;
+    height: 550px;
+  }
+
+}

@@ -5,7 +5,15 @@ import { useEffect, useRef } from "react";
 // ── Types ──────────────────────────────────────────────────────────────────
 type ContinentDot = { lat: number; lng: number };
 type LandRegion = { latMin: number; latMax: number; lngMin: number; lngMax: number; density: number };
-type Connection = { fromLat: number; fromLng: number; toLat: number; toLng: number; color: string; progress: number; speed: number };
+type Connection = {
+    fromLat: number;
+    fromLng: number;
+    toLat: number;
+    toLng: number;
+    color: string;
+    progress: number;
+    speed: number;
+};
 type City = { lat: number; lng: number; color: string };
 type Point3D = { x: number; y: number; z: number };
 type Projected = { x: number; y: number; visible: boolean; depth: number };
@@ -18,18 +26,13 @@ function GlobeCanvas() {
         const canvas = canvasRef.current;
         if (!canvas) return;
 
-        const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
-        if (!ctx) return;
+        const ctx = canvas.getContext("2d")!;
 
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-
-        const W = canvas.width;
-        const H = canvas.height;
-
-        const R = Math.min(W * 0.58, H * 0.50);
-        const cx = W * 0.36;
-        const cy = R * 1.28 + 16;
+        let W = 0;
+        let H = 0;
+        let R = 0;
+        let cx = 0;
+        let cy = 0;
 
         // ── Continent dots ────────────────────────────────────────────────
         const continentDots: ContinentDot[] = [];
@@ -57,6 +60,31 @@ function GlobeCanvas() {
         }
 
         // ── Helpers ───────────────────────────────────────────────────────
+        function updateCanvasSize() {
+            const parent = canvas?.parentElement;
+            if (!parent || !canvas) return;
+
+            const dpr = window.devicePixelRatio || 1;
+            const rect = parent.getBoundingClientRect();
+
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            canvas.style.width = `${rect.width}px`;
+            canvas.style.height = `${rect.height}px`;
+
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.scale(dpr, dpr);
+
+            W = rect.width;
+            H = rect.height;
+
+            const isMobile = window.innerWidth <= 768;
+
+            R = Math.min(W * (isMobile ? 0.34 : 0.58), H * (isMobile ? 0.36 : 0.5));
+            cx = isMobile ? W * 0.5 : W * 0.36;
+            cy = isMobile ? H * 0.54 : R * 1.28 + 16;
+        }
+
         function latLngTo3D(lat: number, lng: number, rotY: number): Point3D {
             const phi = ((90 - lat) * Math.PI) / 180;
             const theta = ((lng + rotY) * Math.PI) / 180;
@@ -115,9 +143,17 @@ function GlobeCanvas() {
                 const sx = cx + px * R;
                 const sy = cy - py * R;
 
-                if (pz < -0.05) { started = false; continue; }
-                if (!started) { ctx.moveTo(sx, sy); started = true; }
-                else ctx.lineTo(sx, sy);
+                if (pz < -0.05) {
+                    started = false;
+                    continue;
+                }
+
+                if (!started) {
+                    ctx.moveTo(sx, sy);
+                    started = true;
+                } else {
+                    ctx.lineTo(sx, sy);
+                }
             }
 
             ctx.strokeStyle = color;
@@ -196,9 +232,16 @@ function GlobeCanvas() {
                 for (let lng = -180; lng <= 180; lng += 3) {
                     const p3 = latLngTo3D(lat, lng, rotY);
                     const p2 = project(p3);
-                    if (!p2.visible) { first = true; continue; }
-                    if (first) { ctx.moveTo(p2.x, p2.y); first = false; }
-                    else ctx.lineTo(p2.x, p2.y);
+                    if (!p2.visible) {
+                        first = true;
+                        continue;
+                    }
+                    if (first) {
+                        ctx.moveTo(p2.x, p2.y);
+                        first = false;
+                    } else {
+                        ctx.lineTo(p2.x, p2.y);
+                    }
                 }
                 ctx.stroke();
             }
@@ -209,9 +252,16 @@ function GlobeCanvas() {
                 for (let lat = -90; lat <= 90; lat += 3) {
                     const p3 = latLngTo3D(lat, lng, rotY);
                     const p2 = project(p3);
-                    if (!p2.visible) { first = true; continue; }
-                    if (first) { ctx.moveTo(p2.x, p2.y); first = false; }
-                    else ctx.lineTo(p2.x, p2.y);
+                    if (!p2.visible) {
+                        first = true;
+                        continue;
+                    }
+                    if (first) {
+                        ctx.moveTo(p2.x, p2.y);
+                        first = false;
+                    } else {
+                        ctx.lineTo(p2.x, p2.y);
+                    }
                 }
                 ctx.stroke();
             }
@@ -258,9 +308,17 @@ function GlobeCanvas() {
             animRef.current = requestAnimationFrame(draw);
         }
 
+        updateCanvasSize();
         draw();
 
+        const handleResize = () => {
+            updateCanvasSize();
+        };
+
+        window.addEventListener("resize", handleResize);
+
         return () => {
+            window.removeEventListener("resize", handleResize);
             if (animRef.current !== null) cancelAnimationFrame(animRef.current);
         };
     }, []);
@@ -275,80 +333,73 @@ function GlobeCanvas() {
 
 export default function GlobalCoverage() {
     return (
-        <section
-            style={{
-                position: "relative",
-                display: "grid",
-                gridTemplateColumns: "7fr 5fr",
-                alignItems: "center",
-                height: "650px",
-                overflow: "hidden",
-                background: "#07102b",
-            }}
-        >
-            {/* ── LEFT col-7 : Globe ── */}
-            <div style={{ position: "relative", height: "100%", overflow: "hidden" }}>
-                <GlobeCanvas />
-                <div
-                    style={{
-                        position: "absolute",
-                        inset: 0,
-                        background:
-                            "linear-gradient(to right, transparent 0%, transparent 52%, rgba(7,16,43,0.55) 72%, #07102b 100%)",
-                        pointerEvents: "none",
-                    }}
-                />
+        <section className="relative grid h-auto min-h-[650px] grid-cols-1 overflow-hidden bg-[#07102b] md:h-[650px] md:grid-cols-[7fr_5fr]">
+            {/* ── RIGHT col-5 : Content ── */}
+            <div className="relative z-10 order-1 flex items-center px-5 pb-0 lg:pb-12 py-12 text-white sm:px-8 md:order-2 md:px-0 md:pr-[52px]">
+                <div className="max-w-[520px]">
+                    <h2
+                        style={{
+                            fontSize: "clamp(2rem, 5vw, 2.9rem)",
+                            fontWeight: 300,
+                            letterSpacing: "0.05em",
+                            lineHeight: 1.1,
+                            margin: 0,
+                        }}
+                    >
+                        Global
+                    </h2>
+
+                    <h2 className="mb-4 bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-semibold leading-tight text-transparent sm:text-4xl lg:text-[45px]">
+                        Coverage
+                    </h2>
+
+                    <p
+                        style={{
+                            fontSize: "14px",
+                            lineHeight: 1.8,
+                            color: "rgba(255,255,255,0.52)",
+                            margin: "0 0 18px 0",
+                        }}
+                    >
+                        Lorem ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem ipsum has been the industry's standard dummy text ever since the 1500s.
+                    </p>
+
+                    <button
+                        style={{
+                            borderRadius: "9999px",
+                            background: "#17ae8f",
+                            padding: "12px 50px",
+                            fontSize: "18px",
+                            fontWeight: 500,
+                            color: "#fff",
+                            border: "none",
+                            cursor: "pointer",
+                            boxShadow: "0 0 12px rgba(6,182,212,0.35)",
+                        }}
+                    >
+                        Get Started
+                    </button>
+                </div>
             </div>
 
-            {/* ── RIGHT col-5 : Content ── */}
-            <div
-                style={{
-                    position: "relative",
-                    zIndex: 10,
-                    paddingRight: "52px",
-                    color: "#fff",
-                }}
-            >
-                <h2
+            {/* ── LEFT col-7 : Globe ── */}
+            <div className="relative order-2 h-[340px] overflow-hidden sm:h-[420px] md:order-1 md:h-full">
+                <GlobeCanvas />
+                <div
+                    className="pointer-events-none absolute inset-0"
                     style={{
-                        fontSize: "2.9rem",
-                        fontWeight: 300,
-                        letterSpacing: "0.05em",
-                        lineHeight: 1.1,
-                        margin: 0,
+                        background:
+                            "linear-gradient(to bottom, transparent 0%, rgba(7,16,43,0.08) 100%)",
                     }}
-                >
-                    Global
-                </h2>
-                <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[45px] mb-4">
-                    Coverage
-                </h2>
-                <p
+                />
+                <div
+                    className="pointer-events-none absolute inset-0 hidden md:block"
                     style={{
-                        fontSize: "14px",
-                        lineHeight: 1.8,
-                        color: "rgba(255,255,255,0.52)",
-                        margin: "0 0 18px 0",
+                        background:
+                            "linear-gradient(to right, transparent 0%, transparent 52%, rgba(7,16,43,0.55) 72%, #07102b 100%)",
                     }}
-                >
-                    Lorem ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem ipsum has been the industry's standard dummy text ever since the 1500s.
-                </p>
-                <button
-                    style={{
-                        borderRadius: "9999px",
-                        background: "#17ae8f",
-                        padding: "12px 50px",
-                        fontSize: "18px",
-                        fontWeight: 500,
-                        color: "#fff",
-                        border: "none",
-                        cursor: "pointer",
-                        boxShadow: "0 0 12px rgba(6,182,212,0.35)",
-                    }}
-                >
-                    Get Started
-                </button>
+                />
             </div>
         </section>
     );

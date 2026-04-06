@@ -96,14 +96,13 @@ function IndustryCard({
         <div
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
-            className="relative h-[250px] min-w-0 cursor-pointer overflow-hidden bg-white"
+            className="relative h-[250px] min-w-0 cursor-pointer overflow-hidden bg-white md:h-[240px] lg:h-[250px]"
             style={{
                 flex: isExpanded ? 2.4 : 1,
                 transition: "flex 0.55s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s",
                 boxShadow: isExpanded ? "0 12px 40px rgba(0,0,0,0.22)" : "none",
             }}
         >
-            {/* ── Default (not hovered) state ── */}
             <div
                 className="absolute inset-0 flex flex-col justify-center px-5"
                 style={{
@@ -112,8 +111,10 @@ function IndustryCard({
                     transition: "opacity 0.25s",
                 }}
             >
-                <p className="mb-2 lg:text-xl text-xl font-semibold text-[#1a2340]">{title}</p>
-                <p className="line-clamp-3 text-base leading-[1.65] max-w-48 text-[#6b7280] ">
+                <p className="mb-2 text-xl font-semibold text-[#1a2340] lg:text-xl">
+                    {title}
+                </p>
+                <p className="line-clamp-3 max-w-48 text-base leading-[1.65] text-[#6b7280]">
                     {description}
                 </p>
                 <a
@@ -124,7 +125,6 @@ function IndustryCard({
                 </a>
             </div>
 
-            {/* ── Expanded (hovered) state ── */}
             <div
                 className="absolute inset-0 flex flex-col"
                 style={{
@@ -133,7 +133,6 @@ function IndustryCard({
                     transition: "opacity 0.3s 0.15s",
                 }}
             >
-                {/* Background image */}
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{
@@ -142,13 +141,13 @@ function IndustryCard({
                         transition: "transform 0.55s cubic-bezier(0.4,0,0.2,1)",
                     }}
                 />
-                {/* Dark overlay */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(8,18,50,0.93)_25%,rgba(8,18,50,0.45)_100%)]" />
 
-                {/* Content — horizontally & vertically centered */}
-                <div className="relative z-10 flex h-full flex-col items-left justify-center px-5 text-left">
-                    <p className="mb-2 text-base lg:text-2xl font-bold text-white">{title}</p>
-                    <p className="line-clamp-3 text-xs lg:text-lg leading-[1.65] max-w-60 text-white/80">
+                <div className="relative z-10 flex h-full flex-col items-start justify-center px-5 text-left">
+                    <p className="mb-2 text-base font-bold text-white lg:text-2xl">
+                        {title}
+                    </p>
+                    <p className="line-clamp-3 max-w-60 text-xs leading-[1.65] text-white/80 lg:text-lg">
                         {description}
                     </p>
                     <a
@@ -166,36 +165,79 @@ function IndustryCard({
 export default function Industries() {
     const [hoveredId, setHoveredId] = useState<number | null>(null);
 
-    const rows = [
+    const mobileRows = industries.map((item) => [item]);
+    const tabletRows = [
+        industries.slice(0, 2),
+        industries.slice(2, 4),
+        industries.slice(4, 6),
+        industries.slice(6, 8),
+        industries.slice(8, 9),
+    ];
+    const desktopRows = [
         industries.slice(0, 3),
         industries.slice(3, 6),
         industries.slice(6, 9),
     ];
 
     return (
-        <section className="px-6 py-5">
-
+        <section className="px-4 py-5 sm:px-6">
             <div className="mb-10 text-center">
-                <h2 className="text-2xl font-normal leading-tight text-black text-[#1a2340] lg:text-[45px]">
+                <h2 className="text-3xl font-normal leading-tight text-[#1a2340] lg:text-[45px]">
                     Industries
-                    <span className="text-2xl ml-2 font-semibold leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">We serve</span>
+                    <span className="ml-2 bg-clip-text text-3xl font-semibold leading-tight text-transparent bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">
+                        We serve
+                    </span>
                 </h2>
             </div>
 
-            <div className="mx-auto flex max-w-6xl flex-col gap-[14px]">
-                {rows.map((row, rowIdx) => (
-                    <div key={rowIdx} className="flex gap-[14px]">
-                        {row.map((ind) => (
-                            <IndustryCard
-                                key={ind.id}
-                                {...ind}
-                                isExpanded={hoveredId === ind.id}
-                                onMouseEnter={() => setHoveredId(ind.id)}
-                                onMouseLeave={() => setHoveredId(null)}
-                            />
-                        ))}
-                    </div>
-                ))}
+            <div className="mx-auto max-w-6xl">
+                <div className="flex flex-col gap-[14px] md:hidden">
+                    {mobileRows.map((row, rowIdx) => (
+                        <div key={rowIdx} className="flex gap-[14px]">
+                            {row.map((ind) => (
+                                <IndustryCard
+                                    key={ind.id}
+                                    {...ind}
+                                    isExpanded={hoveredId === ind.id}
+                                    onMouseEnter={() => setHoveredId(ind.id)}
+                                    onMouseLeave={() => setHoveredId(null)}
+                                />
+                            ))}
+                        </div>
+                    ))}
+                </div>
+
+                <div className="hidden flex-col gap-[14px] md:flex lg:hidden">
+                    {tabletRows.map((row, rowIdx) => (
+                        <div key={rowIdx} className="flex gap-[14px]">
+                            {row.map((ind) => (
+                                <IndustryCard
+                                    key={ind.id}
+                                    {...ind}
+                                    isExpanded={hoveredId === ind.id}
+                                    onMouseEnter={() => setHoveredId(ind.id)}
+                                    onMouseLeave={() => setHoveredId(null)}
+                                />
+                            ))}
+                        </div>
+                    ))}
+                </div>
+
+                <div className="hidden flex-col gap-[14px] lg:flex">
+                    {desktopRows.map((row, rowIdx) => (
+                        <div key={rowIdx} className="flex gap-[14px]">
+                            {row.map((ind) => (
+                                <IndustryCard
+                                    key={ind.id}
+                                    {...ind}
+                                    isExpanded={hoveredId === ind.id}
+                                    onMouseEnter={() => setHoveredId(ind.id)}
+                                    onMouseLeave={() => setHoveredId(null)}
+                                />
+                            ))}
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );

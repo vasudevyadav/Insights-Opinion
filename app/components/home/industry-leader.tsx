@@ -48,7 +48,7 @@ export default function IndustryLeader() {
 
     return (
         <section
-            className=" bg-[#edf6ff] py-12"
+            className=" bg-[#edf6ff] lg:py-12 py-2"
             style={{ position: "relative", overflow: "hidden" }}
         >
             <style>{`
@@ -101,27 +101,27 @@ export default function IndustryLeader() {
             ))}
 
             <div
-                className="mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-5 z-50 lg:pb-20"
+                className="mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-5 z-50 pb-20 "
                 style={{ position: "relative", zIndex: 1 }}
             >
-                <div className="flex items-center justify-center px-2 py-10 md:col-span-2">
+                <div className="flex items-center justify-center px-2 lg:py-10 py-6 md:col-span-2">
                     <div className="w-full max-w-[400px]">
-                        <p className="text-xl font-light leading-tight text-[#5d6778] lg:text-5xl mb-1">
+                        <p className="text-3xl font-light leading-tight text-[#5d6778] lg:text-5xl mb-1">
                             Trusted by
                         </p>
-                        <h2 className="text-2xl font-semibold leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#17ae8f_0%,#539ae2_50%,#5a8fc8_100%)] lg:text-[45px]">
+                        <h2 className="text-3xl font-semibold leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#17ae8f_0%,#539ae2_50%,#5a8fc8_100%)] lg:text-[45px]">
                             Industry Leaders
                         </h2>
                     </div>
                 </div>
 
-                <div className="grid grid-cols-2 md:col-span-3 md:grid-cols-4">
+                <div className="grid grid-cols-3 md:col-span-3 md:grid-cols-4">
                     {brands.map((brand, index) => (
                         <div
                             key={index}
-                            className="flex min-h-[110px] items-center justify-center px-6 lg:py-4 py-1 lg:pt-2 pt-1"
+                            className="flex lg:min-h-[110px] min-h-[60px] items-center justify-center px-6 lg:py-4 py-1 lg:pt-2 pt-1"
                         >
-                            <div className="relative h-10 w-32">
+                            <div className="relative lg:h-10 lg:w-32 h-6 w-20">
                                 <Image
                                     src={brand.src}
                                     alt={brand.name}

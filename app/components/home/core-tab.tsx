@@ -117,13 +117,13 @@ export default function CoreTab() {
     return (
 
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-16 py-6">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-16 py-2">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-                <div className="shrink-0">
-                    <p className="text-xl font-normal leading-none text-black lg:text-[45px]">
+                <div className="shrink-0 flex lg:block items-center gap-2">
+                    <p className="text-3xl font-normal leading-none text-black lg:text-[45px]">
                         Core
                     </p>
-                    <h2 className="text-2xl font-semibold leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">
+                    <h2 className="text-3xl font-semibold leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">
                         Solutions
                     </h2>
                 </div>
@@ -152,7 +152,7 @@ export default function CoreTab() {
 
             <div className="mt-8 grid grid-cols-1 lg:grid-cols-[1.05fr_1fr]">
                 <div>
-                    <div className="relative h-[440px] w-11/12 overflow-hidden">
+                    <div className="relative h-[440px] lg:w-11/12 overflow-hidden">
                         <Image
                             src={activeData.heroImage}
                             alt={activeData.label}
@@ -169,7 +169,7 @@ export default function CoreTab() {
                     </div>
                 </div>
 
-                <div className="flex h-full flex-col justify-between bg-transparent px-5 py-5 md:px-7 md:py-6">
+                <div className="flex h-full flex-col justify-between bg-transparent px-0 py-5 md:px-7 md:py-6">
                     <div>
                         <p className="max-w-[460px] text-[13.5px] leading-7 text-gray-700 md:text-[15px]">
                             {activeData.description}
@@ -206,7 +206,7 @@ export default function CoreTab() {
                             ))}
                         </div>
 
-                        <div className="mt-6 flex items-center">
+                        <div className="mt-6 flex justify-center lg:justify-start items-center">
                             <button
                                 onClick={handlePrevCard}
                                 className="flex h-10 w-10 items-center justify-center rounded-full text-[#111827] transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-40"

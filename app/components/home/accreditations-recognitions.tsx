@@ -67,8 +67,8 @@ export default function AccreditationsRecognitions() {
 
             <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-16">
                 {/* top heading + paragraph */}
-                <div className="mb-10 lg:flex justify-between items-center">
-                    <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[40px]">
+                <div className="lg:mb-10 mb-4 lg:flex justify-between items-center">
+                    <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-semibold leading-tight text-transparent lg:text-[40px]">
                         Accreditations <br /> & Recognitions
                     </h2>
 
@@ -81,7 +81,7 @@ export default function AccreditationsRecognitions() {
                     </p>
                 </div>
 
-                <div className="relative p-8 ">
+                <div className="relative lg:p-8 ">
 
                     <img
                         src="../accreditation.png"

@@ -13,7 +13,7 @@ export default function BookDemo() {
     ];
 
     return (
-        <section className="relative overflow-hidden bg-[#eef4fa] pt-10 lg:pt-16">
+        <section className="relative overflow-hidden bg-[#eef4fa] pt-0 lg:pt-16">
             <style>{`
         @keyframes moveLineGlow {
           0% { top: -140px; }
@@ -100,12 +100,12 @@ export default function BookDemo() {
 
                         <div className="flex w-full items-center px-6 pb-8 pt-10 md:w-[52%] md:px-14 md:pb-14 md:pt-0 lg:w-[48%] lg:px-16">
                             <div >
-                                <h2 className="text-[28px] font-light leading-[1.15] text-[#202020] lg:text-[45px]">
+                                <h2 className="text-3xl font-light leading-[1.15] text-[#202020] lg:text-[45px]">
                                     Book a Demo &
                                 </h2>
 
                                 <h2
-                                    className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[45px]"
+                                    className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-semibold leading-tight text-transparent lg:text-[45px]"
 
                                 >
                                     See Us In Action
