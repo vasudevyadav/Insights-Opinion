@@ -347,6 +347,7 @@ export default function GlobalCoverage() {
                         }}
                     >
                         Global
+
                     </h2>
 
                     <h2 className="mb-4 bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-semibold leading-tight text-transparent sm:text-4xl lg:text-[45px]">
@@ -361,8 +362,7 @@ export default function GlobalCoverage() {
                             margin: "0 0 18px 0",
                         }}
                     >
-                        Lorem ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem ipsum has been the industry's standard dummy text ever since the 1500s.
+                        Insights Opinion delivers research across 100+ countries and 60+ languages through coordinated fieldwork, localized execution, and consistent project management.
                     </p>
 
                     <button

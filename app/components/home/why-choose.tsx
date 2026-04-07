@@ -7,59 +7,71 @@ import Image from "next/image";
 const sectionsData = [
     {
         headingLight: "Why",
-        headingBold: "Choose us",
+        headingBold: " Choose Us? ",
         description:
-            "Our expertise makes us a trusted leader in market research. Insights Opinion is capable of serving in 60 foreign languages, covering more than 100 countries.",
+            " Insights Opinion is trusted for research quality, international reach, & dependable project execution. Businesses choose our market research services for accurate data, multilingual capabilities, and strong operational support.  ",
         image: "/why-choose-img.png",
         accordionData: [
             {
-                title: "Global Expertise",
+                title: "Global Expertisee",
                 content:
-                    "Our research capabilities help brands run studies across markets with consistency, speed, and dependable delivery.",
+                    "Run studies across 100+ countries with local coordination and market-specific execution.",
             },
             {
-                title: "Enterprise Reliability",
+                title: "Accuracy, Speed, and Security",
                 content:
-                    "We follow reliable processes, secure workflows, and structured project execution for enterprise-grade research delivery.",
+                    "Maintain data quality, meet timelines, and protect information throughout every project.",
             },
             {
                 title: "Multi-Language Capabilities",
                 content:
-                    "We support multilingual research execution to help brands engage audiences across regions with local relevance.",
+                    "Conduct research in 60+ languages with localized fieldwork and respondent engagement.",
             },
             {
-                title: "Faster Time-to-Insight",
+                title: "Quick Turnaround Time",
                 content:
-                    "Our workflows are built to reduce delays and help teams move from data collection to actionable insights faster.",
+                    "Keep projects moving with responsive execution and efficient fieldwork delivery.",
             },
+
+            {
+                title: "Profound Research Capabilities",
+                content:
+                    "Support quantitative, qualitative, and multi-market studies with strong operational expertise.",
+            },
+            {
+                title: "Integrity and Transparency",
+                content:
+                    "Work with a team that values clear communication, accountability, and responsible research practices.",
+            },
+
         ],
     },
     {
-        headingLight: "What’s New at ",
-        headingBold: " Insights Opinion ",
+        headingLight: " What’s New at ",
+        headingBold: " Insights Opinion? ",
         description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+            "Insights Opinion continues to improve how clients follow research progress, manage project workflows, and receive updates across active studies.",
         image: "/why-choose-img-1.png",
         accordionData: [
             {
-                title: "Real-time dashboards",
+                title: "Live Project Visibility",
                 content:
-                    "We run projects through structured workflows that help reduce delays and improve delivery quality.",
+                    "Clients can now track project milestones, field status, and progress updates with better clarity.",
             },
             {
-                title: "Multi-country project management",
+                title: "Workflow Efficiency",
                 content:
-                    "Our team supports enterprise research needs with consistency and dependable communication.",
+                    "Improved internal coordination helps reduce delays and keep active research stages moving smoothly.",
             },
             {
-                title: "AI-assisted data cleaning",
+                title: "Centralized Oversight",
                 content:
-                    "We help brands connect with audiences across markets through well-managed multilingual execution.",
+                    "Projects are managed through a more connected structure that improves control across teams and tasks.",
             },
             {
-                title: " End-to-end research lifecycle ",
+                title: " Reporting Experience ",
                 content:
-                    "Our approach helps businesses move faster from raw data to useful market understanding.",
+                    "Findings are now delivered through clearer outputs that are easier to review and act on.",
             },
         ],
     },

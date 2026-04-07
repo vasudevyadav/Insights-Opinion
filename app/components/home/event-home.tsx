@@ -47,13 +47,12 @@ export default function EventHome() {
                 <div className="mx-auto max-w-5xl">
                     <div className="mb-5 flex flex-col lg:gap-10 gap-2 pr-4 lg:mb-12 lg:flex-row lg:items-center lg:justify-between lg:pr-8">
                         <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-medium leading-tight text-transparent lg:text-[45px]">
-                            Events and highlights
+                            Events & Highlights
                         </h2>
 
                         <p className="max-w-[450px] text-xs leading-6 text-white/90 lg:text-base">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry&apos;s standard dummy
-                            text ever since the 1500s.
+                            Explore how Insights Opinion, a market research firm, stays connected through industry events, shared expertise, and key company highlights.
+
                         </p>
                     </div>
                 </div>

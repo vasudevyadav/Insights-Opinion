@@ -7,45 +7,45 @@ const industries = [
         id: 1,
         title: "Chemical",
         description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "Studies on industrial demand, product usage, buyer behavior, and sector-specific market opportunities.",
         image: "/camikal-ind.png",
     },
     {
         id: 2,
         title: "Education",
-        description: "Lorem Ipsum is simply dummy text of the printing.",
+        description: "Research on student behavior, course demand, learning platforms, and institutional decision-making.",
         image: "/education-ind.png",
     },
     {
         id: 3,
         title: "Telecom",
-        description: "Lorem Ipsum is simply dummy text of the printing.",
+        description: "Insights into customer expectations, network experience, service usage, and digital adoption.",
         image: "/automotive-ind.png",
     },
     {
         id: 4,
         title: "IT",
-        description: "Lorem Ipsum is simply dummy text of the printing.",
+        description: "Research for software, SaaS, digital products, and enterprise technology buying decisions.",
         image: "/camikal-ind.png",
     },
     {
         id: 5,
         title: "Agriculture",
-        description: "Lorem Ipsum is simply dummy text of the printing.",
+        description: "Studies on farmer behavior, product adoption, rural demand, and agri-market preferences.",
         image: "/education-ind.png",
     },
     {
         id: 6,
         title: "Automotive",
         description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "Research covering buyer preferences, vehicle demand, EV interest, and aftermarket behavior.",
         image: "/automotive-ind.png",
     },
     {
         id: 7,
         title: "Construction",
-        description: "Lorem Ipsum is simply dummy text of the printing.",
-        image: "/automotive-ind.png",
+        description: " Insights into buyer needs, material demand, project trends, and industry purchasing behavior. ",
+        image: "/automo tive-ind.png",
     },
     {
         id: 8,
@@ -56,8 +56,8 @@ const industries = [
     },
     {
         id: 9,
-        title: "Healthcare",
-        description: "Lorem Ipsum is simply dummy text of the printing.",
+        title: " Healthcare ",
+        description: " Research across patients, providers, treatment experience, and healthcare market behavior.",
         image: "/camikal-ind.png",
     },
 ];
@@ -185,7 +185,7 @@ export default function Industries() {
                 <h2 className="text-3xl font-normal leading-tight text-[#1a2340] lg:text-[45px]">
                     Industries
                     <span className="ml-2 bg-clip-text text-3xl font-semibold leading-tight text-transparent bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">
-                        We serve
+                        We Serve
                     </span>
                 </h2>
             </div>

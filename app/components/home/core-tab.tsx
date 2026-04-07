@@ -8,13 +8,18 @@ export default function CoreTab() {
     const tabs = [
         {
             id: "quantitative",
-            label: "Quantitative Research",
-            heroTitle: "Enhance Your Growth\nwith Quantitative Research",
+            label: " Quantitative Research ",
+            heroTitle: " Quantitative Research ",
             heroImage: "/core-1.png",
             description:
-                "As the trusted best market research company, we provide quantitative research services to help brands measure demand, track market shifts, understand buyer behaviour, and make data-backed business decisions with clarity.",
-            cardsTitle: "Choose The Right Quantitative Research That Suits Your Business",
+                "Measure demand, track customer behavior, and evaluate opportunities through structured methods built for reliable, data-backed decisions.",
+            cardsTitle: " RESEARCH METHODS  ",
             services: [
+
+                {
+                    title: "Global Panel ",
+                    image: "/core-slide-1.png",
+                },
                 {
                     title: "CATI (Computer-Assisted Telephone Interviewing)",
                     image: "/core-slide.png",
@@ -24,38 +29,35 @@ export default function CoreTab() {
                     image: "/core-slide-1.png",
                 },
                 {
-                    title: "CAWI (Computer-Assisted Web Interviewing)",
+                    title: "CLT (Central Location Testing)",
                     image: "/core-slide-1.png",
                 },
-                {
-                    title: "CLT (Central Location Test)",
-                    image: "/core-slide-1.png",
-                },
+
             ],
         },
         {
             id: "qualitative",
-            label: "Quantitative Research",
-            heroTitle: "Enhance Your Growth\nwith Quantitative Research",
+            label: "Qualitative Research",
+            heroTitle: "Qualitative Research",
             heroImage: "/core-1.png",
             description:
-                "As the trusted best market research company, we provide quantitative research services to help brands measure demand, track market shifts, understand buyer behaviour, and make data-backed business decisions with clarity.",
-            cardsTitle: "Choose The Right Quantitative Research That Suits Your Business",
+                "Understand customer motivations, perceptions, and unmet needs through deeper, discussion-led research that reveals the reasons behind decisions and behavior.",
+            cardsTitle: "RESEARCH METHODS ",
             services: [
                 {
-                    title: "CATI (Computer-Assisted Telephone Interviewing)",
+                    title: "Focus Group Discussions ",
                     image: "/core-slide.png",
                 },
                 {
-                    title: "CAPI (Computer-Assisted Personal Interviewing)",
+                    title: "In-Depth Interviews ",
                     image: "/core-slide-1.png",
                 },
                 {
-                    title: "CAWI (Computer-Assisted Web Interviewing)",
+                    title: "In-Home Usage Testings ",
                     image: "/core-slide-1.png",
                 },
                 {
-                    title: "CLT (Central Location Test)",
+                    title: "Mystery Shopping ",
                     image: "/core-slide-1.png",
                 },
             ],
@@ -64,28 +66,25 @@ export default function CoreTab() {
         {
             id: "support",
             label: "Support Services",
-            heroTitle: "Enhance Your Growth\nwith Support Services",
+            heroTitle: "Support Services",
             heroImage: "/core-1.png",
             description:
-                "As the trusted best market research company, we provide support services to help brands measure demand, track market shifts, understand buyer behaviour, and make data-backed business decisions with clarity.",
-            cardsTitle: "Choose The Right Support Services That Suits Your Business",
+                "Keep studies accurate, efficient, and easier to manage with the technical and operational support needed from setup through final delivery.",
+            cardsTitle: " RESEARCH METHODS  ",
             services: [
                 {
-                    title: "CATI (Computer-Assisted Telephone Interviewing)",
+                    title: "Survey Programming ",
                     image: "/core-slide.png",
                 },
                 {
-                    title: "CAPI (Computer-Assisted Personal Interviewing)",
+                    title: "Translation ",
                     image: "/core-slide-1.png",
                 },
                 {
-                    title: "CAWI (Computer-Assisted Web Interviewing)",
+                    title: "Data Insights",
                     image: "/core-slide-1.png",
                 },
-                {
-                    title: "CLT (Central Location Test)",
-                    image: "/core-slide-1.png",
-                },
+
             ],
         },
     ];

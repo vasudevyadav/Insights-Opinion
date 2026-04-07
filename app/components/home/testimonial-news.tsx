@@ -256,7 +256,7 @@ export default function TestimonialNews() {
                     <div className="lg:mb-6 mb-6 flex lg:pl-54 pl-4  gap-4 ">
                         <div>
                             <h2 className="text-2xl font-light leading-tight text-[#2f3643] sm:text-[45px]">
-                                A word from our
+                              What Our 
                             </h2>
                             <h3
                                 className="text-[28px] font-semibold leading-tight text-transparent sm:text-[45px]"
@@ -268,11 +268,11 @@ export default function TestimonialNews() {
                                     backgroundClip: "text",
                                 }}
                             >
-                                customers
+                              Clients Say
                             </h3>
                             <p className="mt-2 max-w-[520px] text-xs leading-6 text-black sm:text-lg">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.
+                              Feedback from clients who partner with Insights Opinion for practical insights and dependable market research services.
+
                             </p>
                         </div>
 

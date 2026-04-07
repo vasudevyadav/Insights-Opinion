@@ -124,11 +124,10 @@ export default function CaseStudies() {
                     {/* Header */}
                     <div className="mb-8 lg:-mb-12">
                         <h2 className="bg-[linear-gradient(120deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-3xl font-normal text-transparent lg:text-[45px]">
-                            Case Studies
+                          Case Studies 
                         </h2>
                         <p className="mt-2 max-w-md text-sm leading-6 text-white/90 sm:text-base">
-                            Lorem ipsum is simply dummy text of the printing and typesetting industry.
-                        </p>
+Explore how our market research services help businesses solve real challenges, uncover insights, and make better strategic decisions across industries.                        </p>
                     </div>
 
                     {/* Mobile and Tablet */}

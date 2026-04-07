@@ -9,13 +9,14 @@ export default function HomeHero() {
 
                     <div className="max-w-2xl">
 
-                        <h1 className="text-2xl font-medium leading-tight lg:text-[56px]">
+                        <h1 className="text-2xl font-medium leading-tight lg:text-[50px]">
 
-                            Insights Behind <br /> Confident Decisions.
+                            Global Market Research
+                            <br /> For Better Business Decisions
                         </h1>
-                        <p className="mt-5 max-w-md text-base leading-7 text-white/90 sm:text-xl">
+                        <p className="mt-5 max-w-xl text-base leading-7 text-white/90 sm:text-xl">
 
-                            Evidence-led market intelligence across global markets.
+                            Evidence-Based Insights Across 8+ Key Industries
                         </p>
                         <div className="mt-8 flex flex-wrap items-center gap-4">
 

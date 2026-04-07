@@ -69,22 +69,18 @@ export default function AccreditationsRecognitions() {
                 {/* top heading + paragraph */}
                 <div className="lg:mb-10 mb-4 lg:flex justify-between items-center">
                     <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-semibold leading-tight text-transparent lg:text-[40px]">
-                        Accreditations <br /> & Recognitions
+                        Accreditations <br />  & Recognitions
                     </h2>
 
                     <p className="mt-5 max-w-2xl text-sm leading-7 text-[#4b5563] sm:text-base">
-                        Our commitment to quality and innovation has earned us prestigious
-                        recognitions, establishing us as a best market research company.
-                        Recognized by Forbes for having one of the most innovative CEOs and
-                        selected by Silicon India among the 10 Best Market Research
-                        Consultants, we continue to lead the industry.
+                        Insights Opinion is recognized for its commitment to research quality, data security, and dependable execution. From ISO 20252 and ISO 27001 certifications to recognition from Quirk’s, Silicon India, and Forbes, these credentials reflect the standards expected from trusted top market research firms.
                     </p>
                 </div>
 
                 <div className="relative lg:p-8 ">
 
                     <img
-                        src="../accreditation.png"
+                        src="../Accreditations-Recognitions.gif"
                         alt="title"
                         className=" h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
