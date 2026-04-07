@@ -13,25 +13,29 @@ const industries = [
     {
         id: 2,
         title: "Education",
-        description: "Research on student behavior, course demand, learning platforms, and institutional decision-making.",
+        description:
+            "Research on student behavior, course demand, learning platforms, and institutional decision-making.",
         image: "/education-ind.png",
     },
     {
         id: 3,
         title: "Telecom",
-        description: "Insights into customer expectations, network experience, service usage, and digital adoption.",
+        description:
+            "Insights into customer expectations, network experience, service usage, and digital adoption.",
         image: "/automotive-ind.png",
     },
     {
         id: 4,
         title: "IT",
-        description: "Research for software, SaaS, digital products, and enterprise technology buying decisions.",
+        description:
+            "Research for software, SaaS, digital products, and enterprise technology buying decisions.",
         image: "/camikal-ind.png",
     },
     {
         id: 5,
         title: "Agriculture",
-        description: "Studies on farmer behavior, product adoption, rural demand, and agri-market preferences.",
+        description:
+            "Studies on farmer behavior, product adoption, rural demand, and agri-market preferences.",
         image: "/education-ind.png",
     },
     {
@@ -44,8 +48,9 @@ const industries = [
     {
         id: 7,
         title: "Construction",
-        description: " Insights into buyer needs, material demand, project trends, and industry purchasing behavior. ",
-        image: "/automo tive-ind.png",
+        description:
+            "Insights into buyer needs, material demand, project trends, and industry purchasing behavior.",
+        image: "/automotive-ind.png",
     },
     {
         id: 8,
@@ -56,8 +61,9 @@ const industries = [
     },
     {
         id: 9,
-        title: " Healthcare ",
-        description: " Research across patients, providers, treatment experience, and healthcare market behavior.",
+        title: "Healthcare",
+        description:
+            "Research across patients, providers, treatment experience, and healthcare market behavior.",
         image: "/camikal-ind.png",
     },
 ];
@@ -82,6 +88,7 @@ type IndustryCardProps = {
     isExpanded: boolean;
     onMouseEnter: () => void;
     onMouseLeave: () => void;
+    mobileExpanded?: boolean;
 };
 
 function IndustryCard({
@@ -91,24 +98,29 @@ function IndustryCard({
     isExpanded,
     onMouseEnter,
     onMouseLeave,
+    mobileExpanded = false,
 }: IndustryCardProps) {
+    const showExpanded = mobileExpanded || isExpanded;
+
     return (
         <div
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
             className="relative h-[250px] min-w-0 cursor-pointer overflow-hidden bg-white md:h-[240px] lg:h-[250px]"
             style={{
-                flex: isExpanded ? 2.4 : 1,
-                transition: "flex 0.55s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s",
-                boxShadow: isExpanded ? "0 12px 40px rgba(0,0,0,0.22)" : "none",
+                flex: mobileExpanded ? 1 : isExpanded ? 2.4 : 1,
+                transition: mobileExpanded
+                    ? "none"
+                    : "flex 0.55s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s",
+                boxShadow: showExpanded ? "0 12px 40px rgba(0,0,0,0.22)" : "none",
             }}
         >
             <div
                 className="absolute inset-0 flex flex-col justify-center px-5"
                 style={{
-                    opacity: isExpanded ? 0 : 1,
-                    pointerEvents: isExpanded ? "none" : "auto",
-                    transition: "opacity 0.25s",
+                    opacity: showExpanded ? 0 : 1,
+                    pointerEvents: showExpanded ? "none" : "auto",
+                    transition: mobileExpanded ? "none" : "opacity 0.25s",
                 }}
             >
                 <p className="mb-2 text-xl font-semibold text-[#1a2340] lg:text-xl">
@@ -128,17 +140,19 @@ function IndustryCard({
             <div
                 className="absolute inset-0 flex flex-col"
                 style={{
-                    opacity: isExpanded ? 1 : 0,
-                    pointerEvents: isExpanded ? "auto" : "none",
-                    transition: "opacity 0.3s 0.15s",
+                    opacity: showExpanded ? 1 : 0,
+                    pointerEvents: showExpanded ? "auto" : "none",
+                    transition: mobileExpanded ? "none" : "opacity 0.3s 0.15s",
                 }}
             >
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{
                         backgroundImage: `url(${image})`,
-                        transform: isExpanded ? "scale(1)" : "scale(1.08)",
-                        transition: "transform 0.55s cubic-bezier(0.4,0,0.2,1)",
+                        transform: showExpanded ? "scale(1)" : "scale(1.08)",
+                        transition: mobileExpanded
+                            ? "none"
+                            : "transform 0.55s cubic-bezier(0.4,0,0.2,1)",
                     }}
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(8,18,50,0.93)_25%,rgba(8,18,50,0.45)_100%)]" />
@@ -165,7 +179,6 @@ function IndustryCard({
 export default function Industries() {
     const [hoveredId, setHoveredId] = useState<number | null>(null);
 
-    const mobileRows = industries.map((item) => [item]);
     const tabletRows = [
         industries.slice(0, 2),
         industries.slice(2, 4),
@@ -173,6 +186,7 @@ export default function Industries() {
         industries.slice(6, 8),
         industries.slice(8, 9),
     ];
+
     const desktopRows = [
         industries.slice(0, 3),
         industries.slice(3, 6),
@@ -184,29 +198,34 @@ export default function Industries() {
             <div className="mb-10 text-center">
                 <h2 className="text-3xl font-normal leading-tight text-[#1a2340] lg:text-[45px]">
                     Industries
-                    <span className="ml-2 bg-clip-text text-3xl font-semibold leading-tight text-transparent bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">
+                    <span className="ml-2 bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-3xl font-semibold leading-tight text-transparent lg:text-[45px]">
                         We Serve
                     </span>
                 </h2>
             </div>
 
             <div className="mx-auto max-w-6xl">
-                <div className="flex flex-col gap-[14px] md:hidden">
-                    {mobileRows.map((row, rowIdx) => (
-                        <div key={rowIdx} className="flex gap-[14px]">
-                            {row.map((ind) => (
+                {/* Mobile Slider */}
+                <div className="md:hidden">
+                    <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth scrollbar-hide">
+                        {industries.map((ind) => (
+                            <div
+                                key={ind.id}
+                                className="min-w-full snap-center"
+                            >
                                 <IndustryCard
-                                    key={ind.id}
                                     {...ind}
-                                    isExpanded={hoveredId === ind.id}
-                                    onMouseEnter={() => setHoveredId(ind.id)}
-                                    onMouseLeave={() => setHoveredId(null)}
+                                    isExpanded={true}
+                                    mobileExpanded={true}
+                                    onMouseEnter={() => {}}
+                                    onMouseLeave={() => {}}
                                 />
-                            ))}
-                        </div>
-                    ))}
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
+                {/* Tablet Layout */}
                 <div className="hidden flex-col gap-[14px] md:flex lg:hidden">
                     {tabletRows.map((row, rowIdx) => (
                         <div key={rowIdx} className="flex gap-[14px]">
@@ -223,6 +242,7 @@ export default function Industries() {
                     ))}
                 </div>
 
+                {/* Desktop Layout */}
                 <div className="hidden flex-col gap-[14px] lg:flex">
                     {desktopRows.map((row, rowIdx) => (
                         <div key={rowIdx} className="flex gap-[14px]">
