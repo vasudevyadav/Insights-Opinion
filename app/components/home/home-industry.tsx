@@ -7,34 +7,44 @@ import "swiper/css";
 
 const featureCards = [
     {
-        title: "Quick TAT",
+        title: "Global Reach ",
         icon: "/cost-1.png",
         alt: "Quick TAT icon",
     },
     {
-        title: "Accuracy, Speed, and Security",
+        title: "Data Quality ",
         icon: "/speed-1.png",
         alt: "Accuracy Speed and Security icon",
     },
     {
-        title: "Domain Expertise with Global Reach",
+        title: " Fast Turnaround ",
         icon: "/globle-marketing-1.png",
         alt: "Domain Expertise icon",
     },
     {
-        title: "Profound Research Capabilities",
+        title: "Industry Expertise ",
         icon: "/profound-1.png",
         alt: "Profound Research Capabilities icon",
     },
     {
-        title: "Integrity & Transparency",
+        title: " Panel Access ",
         icon: "/intergrity-1.png",
         alt: "Integrity and Transparency icon",
     },
     {
-        title: "Cost Effectiveness",
+        title: "Multilingual Research",
         icon: "/cost-1.png",
         alt: "Cost Effectiveness icon",
+    },
+    {
+        title: "Project Management  ",
+        icon: "/globle-marketing-1.png",
+        alt: "Domain Expertise icon",
+    },
+    {
+        title: "Data Security  ",
+        icon: "/profound-1.png",
+        alt: "Profound Research Capabilities icon",
     },
 ];
 
@@ -59,11 +69,7 @@ export default function HomeIndustry() {
                                         Insights Opinion
                                     </h2>
                                     <p className="lg:max-w-[550px] max-w-[400px] lg:font-normal font-semibold  text-base leading-6 text-white/80 sm:text-[15px]">
-                                        Insights Opinion is one of the leading global market research
-                                        companies, specializes in research outsourcing and data
-                                        processing services. Our highly skilled, multilingual team
-                                        operates in 100 countries, offering services in over 60
-                                        languages.
+                                        A global market research company that helps businesses collect reliable data, understand market behavior, and make informed decisions. We provide market research services across industries, combining data collection, fieldwork execution, and research support to help clients run studies more efficiently and act on stronger evidence.
                                     </p>
                                     <button className="mt-6 inline-flex items-center gap-2 text-lg font-normal text-white/90 transition hover:text-[#28c7d8]">
                                         Learn More

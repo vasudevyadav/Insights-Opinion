@@ -17,36 +17,44 @@ interface CardImageAreaProps {
 
 const challengeCards: ChallengeCard[] = [
     {
-        title: "Market Expansion Comes with Uncertainty",
+        title: "Need More Reliable Market Data?",
         description:
-            "Limited market intelligence makes it difficult to assess demand, risk, and opportunity in new regions.",
+            " Improve decision-making with structured data collection, validation, and quality control. ",
         image: "/challenges-1.png",
         alt: "Market expansion challenge",
         className: "lg:mt-16",
     },
     {
-        title: "Data Is Fragmented and Unreliable",
+        title: "Struggling to Understand Customers?",
         description:
-            "Siloed data sources and inconsistent quality result in unclear insights and poor decision-making.",
+            "Identify customer needs, buying behavior, and shifting preferences through targeted research.",
         image: "/challenges-2.png",
         alt: "Data challenge",
         className: "",
     },
     {
-        title: "Consumer Behavior Varies Across Markets",
+        title: "Managing Research Across Markets?",
         description:
-            "Regional, cultural, and economic differences directly impact customer preferences and outcomes.",
+            "Manage multi-country research with consistent fieldwork, local coordination, and centralized oversight.",
         image: "/challenges-2.png",
         alt: "Consumer behavior challenge",
         className: "",
     },
     {
-        title: "Lack of Trusted Local Research Partners",
+        title: "Trying to Reach Niche Audiences?",
         description:
-            "Without reliable in-market expertise, global research becomes slow, complex, and inefficient.",
+            "Access verified audiences across consumer, B2B, healthcare, and niche research segments.",
         image: "/challenges-2.png",
         alt: "Local research partners challenge",
         className: "lg:-mt-16",
+    },
+    {
+        title: "Trying to Reach Niche Audiences?",
+        description:
+            "Access verified audiences across consumer, B2B, healthcare, and niche research segments.",
+        image: "/challenges-2.png",
+        alt: "Consumer behavior challenge",
+        className: "",
     },
 ];
 
@@ -97,8 +105,8 @@ export default function BusinessChallenge() {
             <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
                 <div className=" lg:pt-2 lg:pl-20">
                     <h2 className="max-w-[400px] text-3xl font-light leading-[1.1] text-[#4a5370]  lg:text-[45px] lg:mb-0 mb-8">
-                        The Business
-                        Challenges
+                        Business Challenges
+
                         <br />
                         <span className=" text-3xl font-semibold leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">we solve</span>
                     </h2>
@@ -120,6 +128,7 @@ export default function BusinessChallenge() {
                     <div className="lg:col-start-3">
                         <ChallengeCardItem card={challengeCards[3]} index={3} />
                     </div>
+
                 </div>
             </div>
         </section>

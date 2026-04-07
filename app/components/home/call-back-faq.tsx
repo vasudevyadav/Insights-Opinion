@@ -6,25 +6,49 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
     {
-        question: "Real-time dashboards",
+        question: "What does a market research company do?",
         answer:
-            "Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing.",
+            "A market research company helps businesses collect and analyze information about customers, markets, competitors, and demand trends. Through surveys, interviews, and structured data collection, companies gain insights that support product development, market expansion, and better strategic decisions.",
     },
     {
-        question: "Multi-country project management",
+        question: "Why should businesses work with a global market research company?",
         answer:
-            "Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing.",
+            "A global market research company allows businesses to run studies across multiple countries with consistent research methods and coordinated fieldwork. This helps organizations compare market behavior across regions, understand cultural differences, and make more informed global business decisions.",
     },
     {
-        question: "AI-assisted data cleaning",
+        question: "How is a market research firm different from internal research teams?",
         answer:
-            "Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing.",
+            "A market research firm provides specialized expertise, research infrastructure, and access to verified respondent panels that internal teams may not have. This allows businesses to run large-scale or multi-market studies more efficiently while maintaining high standards for data accuracy and analysis.",
     },
     {
-        question: "End-to-end research lifecycle",
+        question: "What types of market research services do companies usually provide?",
         answer:
-            "Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum is simply dummy text of the printing.",
+            "Professional market research services typically include quantitative surveys, qualitative interviews, focus groups, data collection, and analysis. These services help organizations measure customer behavior, test new ideas, evaluate brand perception, and identify opportunities in competitive markets.",
     },
+    {
+        question: "What is commercial market research and how is it used?",
+        answer:
+            "Commercial market research focuses on understanding market demand, competitive positioning, and customer preferences to support business growth. Companies use it to evaluate new products, improve marketing strategies, and make data-backed decisions in competitive industries.",
+    },
+
+    {
+        question: "How can businesses identify the best market research company for their needs?",
+        answer:
+            "The best market research company is typically one that demonstrates research expertise, strong data quality standards, and the ability to manage studies across industries and markets. Businesses should evaluate experience, methodology, and the reliability of data collection processes.",
+    },
+
+
+    {
+        question: " What should companies look for when choosing among top market research firms? ",
+        answer:
+            " When comparing top market research firms, businesses usually consider global coverage, industry expertise, data quality controls, and the ability to manage complex research projects. Strong project coordination and transparent reporting are also key factors. ",
+    },
+    {
+        question: " How does a market research consulting firm support business strategy? ",
+        answer:
+            " A market research consulting firm helps organizations interpret research findings and translate them into actionable business insights. This support helps companies make strategic decisions around product development, market entry, customer experience, and competitive positioning. ",
+    },
+
 ];
 
 export default function CallbackFaqSection() {
