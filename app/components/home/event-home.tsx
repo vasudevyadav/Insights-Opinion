@@ -43,16 +43,15 @@ export default function EventHome() {
 
     return (
         <section className="overflow-hidden bg-[#151b4a] py-8 lg:py-12">
-            <div className="mx-auto w-full pl-4 sm:pl-6 lg:pl-8">
+            <div className="mx-auto w-full px-4 sm:px-6 lg:pl-8 lg:pr-0">
                 <div className="mx-auto max-w-5xl">
-                    <div className="mb-5 flex flex-col lg:gap-10 gap-2 pr-4 lg:mb-12 lg:flex-row lg:items-center lg:justify-between lg:pr-8">
+                    <div className="mb-5 flex flex-col gap-2 pr-0 lg:mb-12 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:pr-8">
                         <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-medium leading-tight text-transparent lg:text-[45px]">
                             Events & Highlights
                         </h2>
 
                         <p className="max-w-[450px] text-xs leading-6 text-white/90 lg:text-base">
                             Explore how Insights Opinion, a market research firm, stays connected through industry events, shared expertise, and key company highlights.
-
                         </p>
                     </div>
                 </div>
@@ -69,19 +68,19 @@ export default function EventHome() {
                     }}
                     breakpoints={{
                         0: {
-                            slidesPerView: 1.2,
+                            slidesPerView: 1,
                             spaceBetween: 12,
                         },
                         480: {
-                            slidesPerView: 2.2,
+                            slidesPerView: 1.15,
                             spaceBetween: 12,
                         },
                         640: {
-                            slidesPerView: 2.8,
+                            slidesPerView: 2.2,
                             spaceBetween: 14,
                         },
                         768: {
-                            slidesPerView: 3.5,
+                            slidesPerView: 3.1,
                             spaceBetween: 14,
                         },
                         1024: {
@@ -96,8 +95,8 @@ export default function EventHome() {
                     className="event-swiper"
                 >
                     {events.map((event, index) => (
-                        <SwiperSlide key={index}>
-                            <div className="group relative h-[400px] overflow-hidden rounded-[10px] bg-white p-2">
+                        <SwiperSlide key={index} className="!h-auto">
+                            <div className="group relative h-[400px] w-full overflow-hidden rounded-[10px] bg-white p-2">
                                 <div className="relative z-20 flex h-[35px] items-center transition-all duration-500 group-hover:opacity-0">
                                     <h3 className="line-clamp-2 text-[11px] font-semibold leading-4 text-[#2a2f4f] lg:text-[12px]">
                                         {event.title}
@@ -109,8 +108,9 @@ export default function EventHome() {
                                         src={event.image}
                                         alt={event.title}
                                         fill
-                                        className={`object-cover transition-all duration-500 ${event.colored ? "" : "grayscale"
-                                            } group-hover:scale-105 group-hover:grayscale-0`}
+                                        className={`object-cover transition-all duration-500 ${
+                                            event.colored ? "" : "grayscale"
+                                        } group-hover:scale-105 group-hover:grayscale-0`}
                                     />
                                 </div>
                             </div>

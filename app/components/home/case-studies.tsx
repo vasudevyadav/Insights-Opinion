@@ -3,7 +3,6 @@
 import { ArrowRight } from "lucide-react";
 import GlobalCoverage from "./  GlobalCoverage";
 
-
 type CaseStudy = {
     title: string;
     desc: string;
@@ -70,7 +69,7 @@ function CaseCard({
     return (
         <div
             className={`group relative overflow-hidden rounded-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/20 hover:shadow-[0_12px_40px_rgba(0,200,255,0.08)]
-      h-[330px] sm:h-[380px] md:h-[420px] lg:${large ? "h-[430px]" : "h-[495px]"}`}
+            h-[330px] sm:h-[380px] md:h-[420px] lg:${large ? "h-[430px]" : "h-[495px]"}`}
         >
             <img
                 src={image}
@@ -110,31 +109,33 @@ export default function CaseStudies() {
     return (
         <div>
             <section className="relative overflow-hidden bg-[#07102b] py-12 text-white sm:py-14 lg:py-16">
-                {/* Background Glows */}
                 <div className="pointer-events-none absolute inset-0">
                     <div className="absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-cyan-500/[0.08] blur-[130px]" />
                     <div className="absolute -right-40 bottom-0 h-[500px] w-[500px] rounded-full bg-blue-600/[0.08] blur-[130px]" />
                 </div>
 
-                {/* Side border lines */}
                 <div className="absolute inset-y-0 left-0 w-px bg-white/10" />
                 <div className="absolute inset-y-0 right-0 w-px bg-white/10" />
 
                 <div className="relative mx-auto max-w-5xl px-4 sm:px-5 md:px-6">
-                    {/* Header */}
                     <div className="mb-8 lg:-mb-12">
                         <h2 className="bg-[linear-gradient(120deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-3xl font-normal text-transparent lg:text-[45px]">
-                          Case Studies 
+                            Case Studies
                         </h2>
                         <p className="mt-2 max-w-md text-sm leading-6 text-white/90 sm:text-base">
-Explore how our market research services help businesses solve real challenges, uncover insights, and make better strategic decisions across industries.                        </p>
+                            Explore how our market research services help businesses solve real challenges, uncover insights, and make better strategic decisions across industries.
+                        </p>
                     </div>
 
-                    {/* Mobile and Tablet */}
-                    <div className="flex flex-col gap-6 sm:gap-8 lg:hidden">
-                        {caseStudies.map((item, i) => (
-                            <CaseCard key={i} {...item} />
-                        ))}
+                    {/* Mobile Slider */}
+                    <div className="lg:hidden">
+                        <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth scrollbar-hide">
+                            {caseStudies.map((item, i) => (
+                                <div key={i} className="min-w-full snap-center">
+                                    <CaseCard {...item} />
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
                     {/* Desktop - unchanged */}

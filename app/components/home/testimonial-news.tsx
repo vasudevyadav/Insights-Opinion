@@ -107,8 +107,8 @@ export default function TestimonialNews() {
         return (
             <div
                 className={`group/news overflow-hidden rounded-[16px] border border-[#d7e3ef] bg-white transition-all duration-500 ease-in-out hover:border-[#1a1f52] hover:bg-[#1a1f52] ${isOpen
-                    ? "w-full md:flex-[1.5]"
-                    : "w-full md:flex-1 md:hover:flex-[1.5]"
+                        ? "w-full md:flex-[1.5]"
+                        : "w-full md:flex-1 md:hover:flex-[1.5]"
                     }`}
             >
                 <div className="relative h-[260px] w-full overflow-hidden">
@@ -122,23 +122,23 @@ export default function TestimonialNews() {
 
                 <div
                     className={`border-t px-5 py-4 transition-all duration-500 ${isOpen
-                        ? "border-white/10 bg-[#1a1f52]"
-                        : "border-[#d7e3ef] bg-white group-hover/news:border-white/10 group-hover/news:bg-[#1a1f52]"
+                            ? "border-white/10 bg-[#1a1f52]"
+                            : "border-[#d7e3ef] bg-white group-hover/news:border-white/10 group-hover/news:bg-[#1a1f52]"
                         }`}
                 >
                     <h4
-                        className={`text-lg  lg:text-xl mb-2 font-semibold transition-colors duration-500 line-clamp-2 ${isOpen
-                            ? "text-white"
-                            : "text-[#1f2937] group-hover/news:text-white"
+                        className={`mb-2 line-clamp-2 text-lg font-semibold transition-colors duration-500 lg:text-xl ${isOpen
+                                ? "text-white"
+                                : "text-[#1f2937] group-hover/news:text-white"
                             }`}
                     >
                         {item.title}
                     </h4>
 
                     <p
-                        className={`mt-2 text-xs lg:text-sm leading-5 transition-colors duration-500 line-clamp-2 ${isOpen
-                            ? "text-white/75"
-                            : "text-[#667085] group-hover/news:text-white/75"
+                        className={`mt-2 line-clamp-2 text-xs leading-5 transition-colors duration-500 lg:text-sm ${isOpen
+                                ? "text-white/75"
+                                : "text-[#667085] group-hover/news:text-white/75"
                             }`}
                     >
                         {item.shortDesc}
@@ -148,8 +148,8 @@ export default function TestimonialNews() {
                         <button
                             onClick={() => toggleAccordion(index)}
                             className={`inline-flex items-center gap-1 text-sm font-medium transition-colors duration-300 ${isOpen
-                                ? "text-[#7ddbd1]"
-                                : "text-[#1b224f] group-hover/news:text-white"
+                                    ? "text-[#7ddbd1]"
+                                    : "text-[#1b224f] group-hover/news:text-white"
                                 }`}
                         >
                             {isOpen ? "Read Less" : "Read More"}
@@ -162,8 +162,8 @@ export default function TestimonialNews() {
 
                         <ArrowRight
                             className={`transition-colors duration-500 ${isOpen
-                                ? "text-white"
-                                : "text-[#1a1f52] group-hover/news:text-white"
+                                    ? "text-white"
+                                    : "text-[#1a1f52] group-hover/news:text-white"
                                 }`}
                             size={18}
                         />
@@ -196,46 +196,50 @@ export default function TestimonialNews() {
     return (
         <section className="relative overflow-hidden bg-[#eef5fb] py-8 lg:py-16">
             <style>{`
-        @keyframes moveLineGlow {
-          0% { top: -140px; }
-          100% { top: 110%; }
-        }
+                @keyframes moveLineGlow {
+                  0% { top: -140px; }
+                  100% { top: 110%; }
+                }
 
-        .industry-v-line {
-          position: absolute;
-          top: 0;
-          height: 100%;
-          width: 1px;
-          background: #d5e1ec;
-          pointer-events: none;
-          z-index: 0;
-        }
+                .industry-v-line {
+                  position: absolute;
+                  top: 0;
+                  height: 100%;
+                  width: 1px;
+                  background: #d5e1ec;
+                  pointer-events: none;
+                  z-index: 0;
+                }
 
-        .industry-v-line::after {
-          content: "";
-          position: absolute;
-          top: -140px;
-          left: 0;
-          width: 100%;
-          height: 140px;
-          background: linear-gradient(
-            180deg,
-            transparent 0%,
-            rgba(72, 214, 168, 0.15) 20%,
-            rgba(72, 214, 168, 0.9) 50%,
-            rgba(255,255,255,0.95) 65%,
-            rgba(72, 214, 168, 0.6) 80%,
-            transparent 100%
-          );
-          animation: moveLineGlow 3.6s linear infinite;
-          animation-delay: var(--line-delay);
-        }
+                .industry-v-line::after {
+                  content: "";
+                  position: absolute;
+                  top: -140px;
+                  left: 0;
+                  width: 100%;
+                  height: 140px;
+                  background: linear-gradient(
+                    180deg,
+                    transparent 0%,
+                    rgba(72, 214, 168, 0.15) 20%,
+                    rgba(72, 214, 168, 0.9) 50%,
+                    rgba(255,255,255,0.95) 65%,
+                    rgba(72, 214, 168, 0.6) 80%,
+                    transparent 100%
+                  );
+                  animation: moveLineGlow 3.6s linear infinite;
+                  animation-delay: var(--line-delay);
+                }
 
-        .testimonial-swiper .swiper-button-disabled {
-          opacity: 0.35;
-          pointer-events: none;
-        }
-      `}</style>
+                .testimonial-swiper .swiper-button-disabled {
+                  opacity: 0.35;
+                  pointer-events: none;
+                }
+
+                .news-swiper .swiper-slide {
+                  height: auto;
+                }
+            `}</style>
 
             {vlines.map((line, i) => (
                 <div
@@ -252,11 +256,11 @@ export default function TestimonialNews() {
 
             <div className="relative z-10 mx-auto">
                 {/* TESTIMONIALS */}
-                <div className="lg:mb-16 mb-8 pl-6 pr-6 lg:pl-[12.6rem] lg:pr-0 relative">
-                    <div className="lg:mb-6 mb-6 flex lg:pl-54 pl-4  gap-4 ">
+                <div className="relative mb-8 pl-6 pr-6 lg:mb-16 lg:pl-[12.6rem] lg:pr-0">
+                    <div className="mb-6 flex gap-4 pl-4 lg:pl-54">
                         <div>
                             <h2 className="text-2xl font-light leading-tight text-[#2f3643] sm:text-[45px]">
-                              What Our 
+                                What Our
                             </h2>
                             <h3
                                 className="text-[28px] font-semibold leading-tight text-transparent sm:text-[45px]"
@@ -268,16 +272,14 @@ export default function TestimonialNews() {
                                     backgroundClip: "text",
                                 }}
                             >
-                              Clients Say
+                                Clients Say
                             </h3>
                             <p className="mt-2 max-w-[520px] text-xs leading-6 text-black sm:text-lg">
-                              Feedback from clients who partner with Insights Opinion for practical insights and dependable market research services.
-
+                                Feedback from clients who partner with Insights Opinion for practical insights and dependable market research services.
                             </p>
                         </div>
 
                         <div className="absolute -bottom-16 right-0">
-
                             <div className="mr-10 hidden items-center gap-3 md:flex lg:mr-20">
                                 <button className="testimonial-prev flex h-10 w-10 items-center justify-center rounded-full border border-[#1b224f] text-[#1b224f] transition hover:bg-[#1b224f] hover:text-white">
                                     <ArrowLeft size={18} />
@@ -286,7 +288,6 @@ export default function TestimonialNews() {
                                     <ArrowRight size={18} />
                                 </button>
                             </div>
-
                         </div>
                     </div>
 
@@ -316,7 +317,7 @@ export default function TestimonialNews() {
                         {testimonials.map((item, index) => (
                             <SwiperSlide key={index}>
                                 <div className="group rounded-none border border-[#c7d2e2] bg-white p-4 transition-all duration-500 hover:border-[#1a1f52] hover:bg-[#1a1f52]">
-                                    <p className="min-h-[98px] text-xs lg:text-sm line-clamp-4 leading-5 text-[#344054] transition-colors duration-500 group-hover:text-white/85">
+                                    <p className="min-h-[98px] line-clamp-4 text-xs leading-5 text-[#344054] transition-colors duration-500 group-hover:text-white/85 lg:text-sm">
                                         "{item.quote}"
                                     </p>
 
@@ -332,7 +333,7 @@ export default function TestimonialNews() {
 
                                     <div className="mt-5 flex items-end justify-between gap-3">
                                         <div className="flex items-center gap-3">
-                                            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1a1f52] transition-all duration-500 overflow-hidden">
+                                            <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-[#1a1f52] transition-all duration-500">
                                                 <Image
                                                     src="/book-demo.png"
                                                     alt="testimonial logo"
@@ -343,7 +344,7 @@ export default function TestimonialNews() {
                                             </div>
 
                                             <div>
-                                                <p className="text-xs lg:text-sm font-semibold text-[#1a1f52] transition-colors duration-500 group-hover:text-white mb-1">
+                                                <p className="mb-1 text-xs font-semibold text-[#1a1f52] transition-colors duration-500 group-hover:text-white lg:text-sm">
                                                     {item.company}
                                                 </p>
                                                 <p className="text-xs text-[#667085] transition-colors duration-500 group-hover:text-white/70">
@@ -375,7 +376,8 @@ export default function TestimonialNews() {
                         <h3
                             className="text-[28px] font-semibold leading-tight sm:text-[38px]"
                             style={{
-                                background: "linear-gradient(90deg, #20b7a6 0%, #5da6f6 100%)",
+                                background:
+                                    "linear-gradient(90deg, #20b7a6 0%, #5da6f6 100%)",
                                 WebkitBackgroundClip: "text",
                                 WebkitTextFillColor: "transparent",
                                 backgroundClip: "text",
@@ -385,7 +387,27 @@ export default function TestimonialNews() {
                         </h3>
                     </div>
 
-                    <div className="space-y-5">
+                    {/* Mobile slider */}
+                    <div className="md:hidden">
+                        <Swiper
+                            modules={[Autoplay]}
+                            autoplay={{ delay: 3000, disableOnInteraction: false }}
+                            speed={800}
+                            loop
+                            spaceBetween={16}
+                            slidesPerView={1}
+                            className="news-swiper"
+                        >
+                            {news.map((item, index) => (
+                                <SwiperSlide key={index}>
+                                    <NewsCard item={item} index={index} />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+
+                    {/* Desktop unchanged */}
+                    <div className="hidden space-y-5 md:block">
                         <div className="flex flex-col gap-5 md:flex-row">
                             <NewsCard item={news[0]} index={0} />
                             <NewsCard item={news[1]} index={1} />

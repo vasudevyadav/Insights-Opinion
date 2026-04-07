@@ -65,24 +65,35 @@ export default function AccreditationsRecognitions() {
                 />
             ))}
 
-            <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-16">
+            <div className="relative z-10  px-6 lg:px-16">
                 {/* top heading + paragraph */}
-                <div className="lg:mb-10 mb-4 lg:flex justify-between items-center">
-                    <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-semibold leading-tight text-transparent lg:text-[40px]">
-                        Accreditations <br />  & Recognitions
-                    </h2>
+                <div className="mx-auto max-w-6xl">
+                    <div className="lg:mb-10 mb-4 lg:flex justify-between items-center ">
+                        <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-semibold leading-tight text-transparent lg:text-[40px]">
+                            Accreditations <br />  & Recognitions
+                        </h2>
 
-                    <p className="mt-5 max-w-2xl text-sm leading-7 text-[#4b5563] sm:text-base">
-                        Insights Opinion is recognized for its commitment to research quality, data security, and dependable execution. From ISO 20252 and ISO 27001 certifications to recognition from Quirk’s, Silicon India, and Forbes, these credentials reflect the standards expected from trusted top market research firms.
-                    </p>
+                        <p className="mt-5 max-w-2xl text-sm leading-7 text-[#4b5563] sm:text-base">
+                            Insights Opinion is recognized for its commitment to research quality, data security, and dependable execution. From ISO 20252 and ISO 27001 certifications to recognition from Quirk’s, Silicon India, and Forbes, these credentials reflect the standards expected from trusted top market research firms.
+                        </p>
+                    </div>
+
                 </div>
 
-                <div className="relative lg:p-8 ">
+                <div className="relative lg:p-0 lg:-mt-[80px]">
 
+                    <div>
+
+                        <img
+                            src="../recognitions.gif"
+                            alt="title"
+                            className=" h-[500px] w-full object-cover object-center  transition-transform duration-700 group-hover:scale-105 hidden lg:block"
+                        />
+                    </div>
                     <img
-                        src="../Accreditations-Recognitions.gif"
+                        src="../recognitions-mob.gif"
                         alt="title"
-                        className=" h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className=" h-[550px] w-full object-cover object-center  transition-transform duration-700 group-hover:scale-105 lg:hidden block"
                     />
 
                 </div>
