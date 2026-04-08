@@ -138,12 +138,11 @@ export default function CoreTab() {
     };
 
     return (
-        <div className="relative z-10 mx-auto max-w-7xl px-4 py-2 sm:px-6 lg:px-16">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-2 sm:px-6 lg:px-16" >
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                 <div
                     className="flex shrink-0 items-center gap-2 lg:block"
-                    data-aos="fade-up"
-                    data-aos-duration="900"
+
                 >
                     <p className="text-3xl font-normal leading-none text-black lg:text-[45px]">
                         Core
@@ -155,9 +154,7 @@ export default function CoreTab() {
 
                 <div
                     className="w-full max-w-[750px]"
-                    data-aos="fade-up"
-                    data-aos-delay="100"
-                    data-aos-duration="900"
+
                 >
                     <div className="overflow-x-auto scrollbar-hide">
                         <div className="flex min-w-max gap-2 sm:grid sm:min-w-0 sm:grid-cols-3 sm:gap-0">
@@ -182,11 +179,11 @@ export default function CoreTab() {
                 </div>
             </div>
 
-            <div className="mt-8 grid grid-cols-1 lg:grid-cols-[1.05fr_1fr]">
+            <div className="mt-8 grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] " data-aos="fade-up"
+                data-aos-duration="900">
                 <div
                     key={`hero-${activeTab}`}
-                    data-aos="fade-right"
-                    data-aos-duration="1000"
+
                 >
                     <div className="relative h-[300px] overflow-hidden sm:h-[380px] lg:h-[440px] lg:w-11/12">
                         <Image
@@ -215,9 +212,7 @@ export default function CoreTab() {
                         <p
                             key={`desc-${activeTab}`}
                             className="max-w-[460px] text-[13.5px] leading-7 text-gray-700 md:text-[15px]"
-                            data-aos="fade-up"
-                            data-aos-delay="150"
-                            data-aos-duration="900"
+
                         >
                             {activeData.description}
                         </p>
@@ -225,9 +220,7 @@ export default function CoreTab() {
                         <h3
                             key={`title-${activeTab}`}
                             className="my-5 max-w-[430px] line-clamp-2 text-[26px] font-semibold leading-[1.25] text-[#2e3540] lg:text-[27px]"
-                            data-aos="fade-up"
-                            data-aos-delay="220"
-                            data-aos-duration="900"
+
                         >
                             {activeData.cardsTitle}
                         </h3>
@@ -238,9 +231,7 @@ export default function CoreTab() {
                             {visibleCards.map((service, idx) => (
                                 <div
                                     key={`${activeTab}-${service.title}-${cardIndex}-${idx}`}
-                                    data-aos="zoom-in-up"
-                                    data-aos-delay={idx * 120}
-                                    data-aos-duration="850"
+
                                     className="flex min-h-[100px] overflow-hidden rounded-[14px] bg-white shadow-[0_10px_30px_rgba(22,34,56,0.08)]"
                                 >
                                     <div className="relative h-auto w-[42%] min-w-[100px]">
@@ -269,9 +260,7 @@ export default function CoreTab() {
 
                         <div
                             className="mt-6 flex items-center justify-center lg:justify-start"
-                            data-aos="fade-up"
-                            data-aos-delay="260"
-                            data-aos-duration="900"
+
                         >
                             <button
                                 onClick={handlePrevCard}

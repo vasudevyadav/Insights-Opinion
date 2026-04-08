@@ -80,7 +80,7 @@ function GlobeCanvas() {
 
             const isMobile = window.innerWidth <= 768;
 
-            R = Math.min(W * (isMobile ? 0.34 : 0.58), H * (isMobile ? 0.36 : 0.5));
+            R = Math.min(W * (isMobile ? 0.42 : 0.58), H * (isMobile ? 0.40 : 0.5));
             cx = isMobile ? W * 0.5 : W * 0.36;
             cy = isMobile ? H * 0.54 : R * 1.28 + 16;
         }
@@ -332,11 +332,67 @@ function GlobeCanvas() {
 }
 
 export default function GlobalCoverage() {
+    const sectionRef = useRef<HTMLElement | null>(null);
+    const globeColRef = useRef<HTMLDivElement | null>(null);
+    const contentInnerRef = useRef<HTMLDivElement | null>(null);
+    const overlayRightRef = useRef<HTMLDivElement | null>(null);
+    const triggeredRef = useRef(false);
+
+    useEffect(() => {
+        const section = sectionRef.current;
+        if (!section) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !triggeredRef.current) {
+                        triggeredRef.current = true;
+
+                        // Step 1: slide globe from right → left
+                        if (globeColRef.current) {
+                            globeColRef.current.style.transform = "translateX(0%)";
+                        }
+
+                        // Step 2: show right overlay fade
+                        if (overlayRightRef.current) {
+                            overlayRightRef.current.style.opacity = "1";
+                        }
+
+                        // Step 3: content slides in from top after globe settles
+                        setTimeout(() => {
+                            if (contentInnerRef.current) {
+                                contentInnerRef.current.style.transform = "translateY(0)";
+                                contentInnerRef.current.style.opacity = "1";
+                            }
+                        }, 650);
+                    }
+                });
+            },
+            { threshold: 0.3 }
+        );
+
+        observer.observe(section);
+        return () => observer.disconnect();
+    }, []);
+
     return (
-        <section className="relative grid h-auto min-h-[650px] grid-cols-1 overflow-hidden bg-[#07102b] md:h-[650px] md:grid-cols-[7fr_5fr]">
+        <section
+            ref={sectionRef}
+            className="relative grid h-auto min-h-[650px] grid-cols-1 overflow-hidden bg-[#07102b] md:h-[650px] md:grid-cols-[7fr_5fr]"
+        >
             {/* ── RIGHT col-5 : Content ── */}
             <div className="relative z-10 order-1 flex items-center px-5 pb-0 lg:pb-12 py-12 text-white sm:px-8 md:order-2 md:px-0 md:pr-[52px]">
-                <div className="max-w-[520px]">
+                <div
+                    ref={contentInnerRef}
+                    className="max-w-[520px] mb-12"
+                    style={{
+                        transform: "translateY(-60px)",
+                        opacity: 0,
+                        transition:
+                            "transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease",
+                        willChange: "transform, opacity",
+                    }}
+                >
                     <h2
                         style={{
                             fontSize: "clamp(2rem, 5vw, 2.9rem)",
@@ -347,7 +403,6 @@ export default function GlobalCoverage() {
                         }}
                     >
                         Global
-
                     </h2>
 
                     <h2 className="mb-4 bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-semibold leading-tight text-transparent sm:text-4xl lg:text-[45px]">
@@ -362,7 +417,9 @@ export default function GlobalCoverage() {
                             margin: "0 0 18px 0",
                         }}
                     >
-                        Insights Opinion delivers research across 100+ countries and 60+ languages through coordinated fieldwork, localized execution, and consistent project management.
+                        Insights Opinion delivers research across 100+ countries and 60+
+                        languages through coordinated fieldwork, localized execution, and
+                        consistent project management.
                     </p>
 
                     <button
@@ -384,8 +441,21 @@ export default function GlobalCoverage() {
             </div>
 
             {/* ── LEFT col-7 : Globe ── */}
-            <div className="relative order-2 h-[340px] overflow-hidden sm:h-[420px] md:order-1 md:h-full">
+            <div
+                ref={globeColRef}
+                className="relative order-2 h-[400px] overflow-hidden sm:h-[420px] md:order-1 md:h-full"
+                style={{
+                    // Globe starts shifted to the right (over the content column area)
+                    // 7fr + 5fr = 12fr total, content is 5fr → 5/12 = ~41.67%
+                    // Globe col is 7fr → shift = (5/7)*100% ≈ 71.43%
+                    transform: "translateX(75.43%)",
+                    transition: "transform 1.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                    willChange: "transform",
+                }}
+            >
                 <GlobeCanvas />
+
+                {/* bottom fade */}
                 <div
                     className="pointer-events-none absolute inset-0"
                     style={{
@@ -393,11 +463,16 @@ export default function GlobalCoverage() {
                             "linear-gradient(to bottom, transparent 0%, rgba(7,16,43,0.08) 100%)",
                     }}
                 />
+
+                {/* right fade — fades in after globe settles */}
                 <div
+                    ref={overlayRightRef}
                     className="pointer-events-none absolute inset-0 hidden md:block"
                     style={{
                         background:
                             "linear-gradient(to right, transparent 0%, transparent 52%, rgba(7,16,43,0.55) 72%, #07102b 100%)",
+                        opacity: 0,
+                        transition: "opacity 0.5s ease 0.4s",
                     }}
                 />
             </div>
