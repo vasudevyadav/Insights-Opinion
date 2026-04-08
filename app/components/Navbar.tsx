@@ -70,14 +70,14 @@ export default function Navbar() {
         <>
             <header className="fixed top-0 z-50 w-full">
                 <div className="header-image">
-                    <div className="mx-auto flex h-14 max-w-[1380px] items-center justify-between px-6 lg:h-24 lg:px-8">
+                    <div className="mx-auto flex h-18 max-w-[1380px] items-center justify-between px-6 lg:h-24 lg:px-8">
                         <Link href="/" className="flex items-center">
                             <Image
                                 src="/logo.png"
                                 alt="Logo"
                                 width={180}
                                 height={48}
-                                className="h-auto w-32 lg:w-60"
+                                className="h-auto w-44 lg:w-60"
                                 priority
                             />
                         </Link>
@@ -88,7 +88,7 @@ export default function Navbar() {
                             className="text-white lg:hidden"
                             aria-label="Toggle menu"
                         >
-                            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-7 w-7" />}
                         </button>
 
                         <nav className="hidden items-center gap-8 lg:flex">

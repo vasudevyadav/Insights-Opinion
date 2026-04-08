@@ -5,6 +5,8 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 
 export default function AccreditationsRecognitions() {
+
+    // Desktop lines (6)
     const vlines = [
         { left: "14%", delay: "0s" },
         { left: "28%", delay: "0.8s" },
@@ -12,6 +14,13 @@ export default function AccreditationsRecognitions() {
         { left: "56%", delay: "0.4s" },
         { left: "70%", delay: "1.2s" },
         { left: "84%", delay: "2s" },
+    ];
+
+    const mobileVlines = [
+        { left: "20%", delay: "0s" },
+        { left: "40%", delay: "0.8s" },
+        { left: "60%", delay: "1.6s" },
+        { left: "80%", delay: "1.6s" },
     ];
 
     useEffect(() => {
@@ -24,6 +33,7 @@ export default function AccreditationsRecognitions() {
 
     return (
         <section className="relative overflow-hidden bg-[#eef5fb] py-8 lg:py-12">
+
             <style>{`
         @keyframes moveLineGlow {
           0% { top: -140px; }
@@ -83,10 +93,11 @@ export default function AccreditationsRecognitions() {
         }
       `}</style>
 
-            {vlines.map((line, i) => (
+            {/* ✅ Mobile Lines */}
+            {mobileVlines.map((line, i) => (
                 <div
-                    key={i}
-                    className="industry-v-line"
+                    key={`m-${i}`}
+                    className="industry-v-line block lg:hidden"
                     style={
                         {
                             left: line.left,
@@ -96,6 +107,21 @@ export default function AccreditationsRecognitions() {
                 />
             ))}
 
+            {/* ✅ Desktop Lines */}
+            {vlines.map((line, i) => (
+                <div
+                    key={`d-${i}`}
+                    className="industry-v-line hidden lg:block"
+                    style={
+                        {
+                            left: line.left,
+                            ["--line-delay" as any]: line.delay,
+                        } as React.CSSProperties
+                    }
+                />
+            ))}
+
+            {/* Content */}
             <div className="relative z-10 px-6 lg:px-16">
                 <div className="mx-auto max-w-6xl">
                     <div className="mb-4 justify-between lg:mb-10 lg:flex lg:items-center">

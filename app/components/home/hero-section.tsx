@@ -5,16 +5,16 @@ export default function HomeHero() {
         <section className="bg-[#edf6fe]">
 
             <div className="relative overflow-hidden homebg text-white lg:mt-20 mt-8  ">
-                <div className="relative z-10 mx-auto flex lg:min-h-[540px] min-h-[600px] w-full max-w-7xl lg:pt-0 pt-16 lg:items-center px-5 sm:px-4">
+                <div className="relative z-10 mx-auto flex lg:min-h-[540px] min-h-[600px] w-full max-w-7xl lg:pt-0 pt-20 lg:items-center px-5 sm:px-4">
 
                     <div className="max-w-2xl">
 
-                        <h1 className="text-[26px] font-semibold lg:font-medium leading-tight lg:text-[50px]">
+                        <h1 className="text-xl font-semibold lg:font-medium lg:leading-tight lg:text-[50px]">
 
                             Global Market Research
                             <br /> For Better Business Decisions
                         </h1>
-                        <p className="mt-3 max-w-xl text-base leading-7 text-white/90 sm:text-xl">
+                        <p className="mt-3 max-w-xl text-sm leading-7 text-white/90 sm:text-xl">
 
                             Evidence-Based Insights Across 8+ Key Industries
                         </p>

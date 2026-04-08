@@ -23,6 +23,13 @@ export default function TestimonialNews() {
         { left: "84%", delay: "2s" },
     ];
 
+    const mobileVlines = [
+        { left: "20%", delay: "0s" },
+        { left: "40%", delay: "0.8s" },
+        { left: "60%", delay: "1.6s" },
+        { left: "80%", delay: "1.6s" },
+    ];
+
     const testimonials = [
         {
             quote:
@@ -239,10 +246,25 @@ export default function TestimonialNews() {
         }
       `}</style>
 
+            {/* ✅ Mobile Lines */}
+            {mobileVlines.map((line, i) => (
+                <div
+                    key={`m-${i}`}
+                    className="demo-v-line block md:hidden"
+                    style={
+                        {
+                            left: line.left,
+                            ["--line-delay" as any]: line.delay,
+                        } as React.CSSProperties
+                    }
+                />
+            ))}
+
+            {/* ✅ Desktop Lines */}
             {vlines.map((line, i) => (
                 <div
-                    key={i}
-                    className="industry-v-line"
+                    key={`d-${i}`}
+                    className="demo-v-line hidden md:block"
                     style={
                         {
                             left: line.left,

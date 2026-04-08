@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import Image from "next/image";
-// @ts-ignore - no type declarations for 'aos'
+// @ts-ignore
 import AOS from "aos";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -11,157 +11,90 @@ import "swiper/css";
 
 export default function EventHome() {
     const events = [
-        {
-            title: "Event 1",
-            image: "/highlight1.webp",
-            colored: true,
-        },
-        {
-            title: "Event 2",
-            image: "/highlight-2.webp",
-            colored: false,
-        },
-        {
-            title: "Event 3",
-            image: "/highlight3.webp",
-            colored: false,
-        },
-        {
-            title: "Event 1",
-            image: "/highlight1.webp",
-            colored: true,
-        },
-        {
-            title: "Event 2",
-            image: "/highlight-2.webp",
-            colored: false,
-        },
-        {
-            title: "Event 3",
-            image: "/highlight3.webp",
-            colored: false,
-        },
+        { title: "Event 1", image: "/highlight1.webp", colored: true },
+        { title: "Event 2", image: "/highlight-2.webp", colored: false },
+        { title: "Event 3", image: "/highlight3.webp", colored: false },
+        { title: "Event 1", image: "/highlight1.webp", colored: true },
+        { title: "Event 2", image: "/highlight-2.webp", colored: false },
+        { title: "Event 3", image: "/highlight3.webp", colored: false },
     ];
 
     useEffect(() => {
         const timer = setTimeout(() => {
             AOS.refreshHard();
         }, 250);
-
         return () => clearTimeout(timer);
     }, []);
 
     return (
         <section className="overflow-hidden bg-[#151b4a] py-8 lg:py-12">
             <div className="mx-auto w-full px-4 sm:px-6 lg:pl-8 lg:pr-0">
+                
+                {/* Heading (unchanged) */}
                 <div className="mx-auto max-w-5xl">
-                    <div className="mb-5 flex flex-col gap-2 pr-0 lg:mb-12 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:pr-8">
-                        <h2
-                            className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-medium leading-tight text-transparent lg:text-[45px]"
-                            data-aos="fade-up"
-                            data-aos-duration="900"
-                        >
+                    <div className="mb-5 flex flex-col gap-2 lg:mb-12 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+                        <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-medium leading-tight text-transparent lg:text-[45px]">
                             Events & Highlights
                         </h2>
 
-                        <p
-                            className="max-w-[450px] text-xs leading-6 text-white/90 lg:text-base"
-                            data-aos="fade-up"
-                            data-aos-delay="120"
-                            data-aos-duration="900"
-                        >
-                            Explore how Insights Opinion, a market research firm, stays connected
-                            through industry events, shared expertise, and key company highlights.
+                        <p className="max-w-[450px] text-xs leading-6 text-white/90 lg:text-base">
+                            Explore how Insights Opinion stays connected through industry events and highlights.
                         </p>
                     </div>
                 </div>
 
-                <div
-                    data-aos="fade-up"
-                    data-aos-delay="180"
-                    data-aos-duration="950"
+                {/* Slider */}
+                <Swiper
+                    modules={[Autoplay]}
+                    spaceBetween={16}
+                    loop
+                    speed={900}
+                    autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    }}
+                    breakpoints={{
+                        0: { slidesPerView: 1 },
+                        480: { slidesPerView: 1.15 },
+                        640: { slidesPerView: 2.2 },
+                        768: { slidesPerView: 3.1 },
+                        1024: { slidesPerView: 4.5 },
+                    }}
                 >
-                    <Swiper
-                        modules={[Autoplay]}
-                        spaceBetween={16}
-                        loop={true}
-                        speed={900}
-                        autoplay={{
-                            delay: 2500,
-                            disableOnInteraction: false,
-                            pauseOnMouseEnter: false,
-                        }}
-                        onInit={() => {
-                            setTimeout(() => {
-                                AOS.refreshHard();
-                            }, 220);
-                        }}
-                        onSlideChange={() => {
-                            setTimeout(() => {
-                                AOS.refresh();
-                            }, 100);
-                        }}
-                        breakpoints={{
-                            0: {
-                                slidesPerView: 1,
-                                spaceBetween: 12,
-                            },
-                            480: {
-                                slidesPerView: 1.15,
-                                spaceBetween: 12,
-                            },
-                            640: {
-                                slidesPerView: 2.2,
-                                spaceBetween: 14,
-                            },
-                            768: {
-                                slidesPerView: 3.1,
-                                spaceBetween: 14,
-                            },
-                            1024: {
-                                slidesPerView: 4.5,
-                                spaceBetween: 16,
-                            },
-                            1280: {
-                                slidesPerView: 4.5,
-                                spaceBetween: 18,
-                            },
-                        }}
-                        className="event-swiper"
-                    >
-                        {events.map((event, index) => (
-                            <SwiperSlide key={index} className="!h-auto">
-                                <div
-                                    className="group relative h-[400px] w-full overflow-hidden rounded-[10px] bg-white p-2"
-                                    data-aos="zoom-in-up"
-                                    data-aos-delay={index * 70}
-                                    data-aos-duration="850"
-                                >
-                                    <div className="relative z-20 flex h-[35px] items-center transition-all duration-500 group-hover:opacity-0">
-                                        <h3 className="line-clamp-2 text-[11px] font-semibold leading-4 text-[#2a2f4f] lg:text-[12px]">
-                                            {event.title}
-                                        </h3>
-                                    </div>
+                    {events.map((event, index) => (
+                        <SwiperSlide key={index}>
+                            <div className="group relative h-[400px] w-full overflow-hidden rounded-[10px] bg-white p-2">
 
-                                    <div className="absolute bottom-2 left-2 right-2 top-[54px] z-10 overflow-hidden rounded-[8px] transition-all duration-500 group-hover:bottom-0 group-hover:left-0 group-hover:right-0 group-hover:top-0 group-hover:rounded-[10px]">
-                                        <Image
-                                            src={event.image}
-                                            alt={event.title}
-                                            fill
-                                            className={`object-cover transition-all duration-500 ${event.colored ? "" : "grayscale"
-                                                } group-hover:scale-105 group-hover:grayscale-0`}
-                                            onLoadingComplete={() => {
-                                                setTimeout(() => {
-                                                    AOS.refresh();
-                                                }, 100);
-                                            }}
-                                        />
-                                    </div>
+                                {/* ❌ TITLE REMOVED */}
+
+                                <div className="absolute inset-2 overflow-hidden rounded-[8px] transition-all duration-500 group-hover:inset-0">
+                                    <Image
+                                        src={event.image}
+                                        alt={event.title}
+                                        fill
+                                        className={`
+                                            object-cover transition-all duration-500
+                                            
+                                            /* 📱 Mobile → always colored */
+                                            grayscale-0
+                                            
+                                            /* 🖥️ Desktop → grayscale */
+                                            md:grayscale
+                                            md:group-hover:grayscale-0
+                                            md:group-hover:scale-105
+                                        `}
+                                        onLoadingComplete={() => {
+                                            setTimeout(() => {
+                                                AOS.refresh();
+                                            }, 100);
+                                        }}
+                                    />
                                 </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </div>
+
+                            </div>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
         </section>
     );

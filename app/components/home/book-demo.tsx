@@ -4,6 +4,8 @@ import React from "react";
 import Image from "next/image";
 
 export default function BookDemo() {
+
+    // ✅ Desktop lines (5)
     const vlines = [
         { left: "16%", delay: "0s" },
         { left: "34%", delay: "0.8s" },
@@ -12,8 +14,17 @@ export default function BookDemo() {
         { left: "88%", delay: "1.2s" },
     ];
 
+    // ✅ Mobile lines (3)
+    const mobileVlines = [
+        { left: "20%", delay: "0s" },
+        { left: "40%", delay: "0.8s" },
+        { left: "60%", delay: "1.6s" },
+        { left: "80%", delay: "1.6s" },
+    ];
+
     return (
         <section className="relative overflow-hidden bg-[#eef4fa] pt-0 lg:pt-16">
+
             <style>{`
         @keyframes moveLineGlow {
           0% { top: -140px; }
@@ -51,10 +62,25 @@ export default function BookDemo() {
         }
       `}</style>
 
+            {/* ✅ Mobile Lines */}
+            {mobileVlines.map((line, i) => (
+                <div
+                    key={`m-${i}`}
+                    className="demo-v-line block md:hidden"
+                    style={
+                        {
+                            left: line.left,
+                            ["--line-delay" as any]: line.delay,
+                        } as React.CSSProperties
+                    }
+                />
+            ))}
+
+            {/* ✅ Desktop Lines */}
             {vlines.map((line, i) => (
                 <div
-                    key={i}
-                    className="demo-v-line"
+                    key={`d-${i}`}
+                    className="demo-v-line hidden md:block"
                     style={
                         {
                             left: line.left,
@@ -67,7 +93,7 @@ export default function BookDemo() {
             <div className="relative z-10 mx-auto max-w-[1440px] px-4 md:px-8 lg:px-10">
                 <div className="relative min-h-[320px] overflow-hidden lg:min-h-[450px]">
 
-                    <div className="pointer-events-none absolute -bottom-7 w-full h-[500px] hidden md:block">
+                    <div className="pointer-events-none absolute -bottom-7 hidden h-[500px] w-full md:block">
                         <svg
                             width="100%"
                             height="100%"
@@ -99,15 +125,12 @@ export default function BookDemo() {
                     <div className="relative z-10 flex min-h-[320px] flex-col md:min-h-[360px] md:flex-row md:items-end lg:min-h-[325px]">
 
                         <div className="flex w-full items-center px-6 pb-8 pt-10 md:w-[52%] md:px-14 md:pb-14 md:pt-0 lg:w-[48%] lg:px-16">
-                            <div >
+                            <div>
                                 <h2 className="text-3xl font-light leading-[1.15] text-[#202020] lg:text-[45px]">
                                     Book a Demo &
                                 </h2>
 
-                                <h2
-                                    className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-semibold leading-tight text-transparent lg:text-[45px]"
-
-                                >
+                                <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-semibold leading-tight text-transparent lg:text-[45px]">
                                     See Us In Action
                                 </h2>
 
@@ -127,7 +150,6 @@ export default function BookDemo() {
                             </div>
                         </div>
 
-                        {/* right image */}
                         <div className="relative flex w-full items-end justify-end md:w-[48%] lg:w-[52%]">
                             <div className="relative h-[260px] w-full lg:h-[450px]">
                                 <Image

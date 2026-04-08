@@ -113,7 +113,7 @@ export default function HomeIndustry() {
                             <div className="flex items-center px-5 pb-16 py-8 lg:px-10 lg:pb-24 lg:py-8">
                                 <div className="max-w-[550px] lg:mt-6">
                                     <p
-                                        className="mb-2 text-[28px] font-light leading-none text-white/80 sm:text-[40px]"
+                                        className="mb-2 text-[24px] font-light leading-none text-white/80 sm:text-[40px]"
                                         data-aos="fade-up"
                                         data-aos-delay="100"
                                     >
@@ -129,7 +129,7 @@ export default function HomeIndustry() {
                                     </h2>
 
                                     <p
-                                        className="lg:max-w-[550px] max-w-[400px] lg:font-normal font-semibold text-base leading-6 text-white/80 sm:text-[15px] line-clamp-5"
+                                        className="lg:max-w-[550px] max-w-[400px] font-normal text-sm leading-6 text-white/80 sm:text-[15px] line-clamp-5"
                                         data-aos="fade-up"
                                         data-aos-delay="300"
                                     >
@@ -138,7 +138,7 @@ export default function HomeIndustry() {
                                     </p>
 
                                     <button
-                                        className="mt-6 inline-flex items-center gap-2 text-lg font-normal text-white/90 transition hover:text-[#28c7d8]"
+                                        className="mt-2 inline-flex items-center gap-2 lg:text-lg text-base font-normal text-white/90 transition hover:text-[#28c7d8]"
                                         data-aos="fade-up"
                                         data-aos-delay="400"
                                     >
@@ -154,7 +154,7 @@ export default function HomeIndustry() {
                 </div>
 
                 <div
-                    className="absolute inset-x-0 lg:bottom-10 bottom-6 z-30 px-2 sm:px-4 lg:px-6"
+                    className="absolute inset-x-0 lg:bottom-10 bottom-10 z-30 px-2 sm:px-4 lg:px-6"
                     data-aos="fade-up"
                     data-aos-delay="500"
                     data-aos-duration="1000"
@@ -191,11 +191,11 @@ export default function HomeIndustry() {
                         {featureCards.map((item, index) => (
                             <SwiperSlide key={index}>
                                 <div
-                                    className="relative flex min-h-[85px] items-center rounded-2xl bg-white pl-14 pr-4 py-4 shadow-[0_10px_25px_rgba(15,23,42,0.12)] transition-transform"
+                                    className="relative flex min-h-[69px] lg:min-h-[85px] items-center rounded-2xl bg-white pl-14 pr-4 py-4 shadow-[0_10px_25px_rgba(15,23,42,0.12)] transition-transform"
                                     data-aos="zoom-in-up"
                                     data-aos-delay={index * 80}
                                 >
-                                    <div className="absolute left-0 top-0 h-14 w-14">
+                                    <div className="absolute left-0 top-0 lg:h-14 lg:w-14 h-12 w-12">
                                         <Image
                                             src={item.icon}
                                             alt={item.alt}

@@ -151,7 +151,7 @@ export default function BusinessChallenge() {
 
                 >
                     <Swiper
-                        modules={[Pagination, Autoplay]}
+                        modules={[Autoplay]}
                         slidesPerView={1}
                         spaceBetween={20}
                         pagination={{ clickable: true }}

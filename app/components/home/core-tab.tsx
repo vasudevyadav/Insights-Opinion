@@ -14,7 +14,7 @@ export default function CoreTab() {
             heroTitle: "Quantitative Research",
             heroImage: "/_Qualitative-Research.jpg",
             description:
-                "Measure demand, track customer behavior, and evaluate opportunities through structured methods built for reliable, data-backed decisions.",
+                "Use structured research methods to collect measurable data from defined audience groups across markets. Measure demand, track customer behavior, and evaluate opportunities through structured methods built for reliable, data-backed decisions.",
             cardsTitle: "RESEARCH METHODS",
             services: [
                 {
@@ -41,7 +41,7 @@ export default function CoreTab() {
             heroTitle: "Qualitative Research",
             heroImage: "/managing-Research.jpg",
             description:
-                "Understand customer motivations, perceptions, and unmet needs through deeper, discussion-led research that reveals the reasons behind decisions and behavior.",
+                "Use moderated conversations and observation-based research to understand why people think, choose, and respond the way they do. Understand customer motivations, perceptions, and unmet needs through deeper, discussion-led research that reveals the reasons behind decisions and behavior.",
             cardsTitle: "RESEARCH METHODS",
             services: [
                 {
@@ -68,7 +68,7 @@ export default function CoreTab() {
             heroTitle: "Support Services",
             heroImage: "/_Support-Services.jpg",
             description:
-                "Keep studies accurate, efficient, and easier to manage with the technical and operational support needed from setup through final delivery.",
+                "Support research delivery with the technical setup, language adaptation, and reporting inputs needed to run studies smoothly. Keep studies accurate, efficient, and easier to manage with the technical and operational support needed from setup through final delivery.",
             cardsTitle: "RESEARCH METHODS",
             services: [
                 {

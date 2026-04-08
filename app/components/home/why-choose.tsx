@@ -29,23 +29,14 @@ const sectionsData: Section[] = [
             {
                 title: "Global Expertisee",
                 content:
-                    "Run studies across 100+ countries with local coordination and market-specific execution.",
+                    "Run studies across 100+ countries and in 60+ languages with local coordination and market-specific execution.",
             },
             {
                 title: "Accuracy, Speed, and Security",
                 content:
-                    "Maintain data quality, meet timelines, and protect information throughout every project.",
+                    "Maintain data quality, responsive execution, and protect information throughout every project.",
             },
-            {
-                title: "Multi-Language Capabilities",
-                content:
-                    "Conduct research in 60+ languages with localized fieldwork and respondent engagement.",
-            },
-            {
-                title: "Quick Turnaround Time",
-                content:
-                    "Keep projects moving with responsive execution and efficient fieldwork delivery.",
-            },
+
             {
                 title: "Profound Research Capabilities",
                 content:
