@@ -17,10 +17,7 @@ export default function CoreTab() {
                 "Use structured research methods to collect measurable data from defined audience groups across markets. Measure demand, track customer behavior, and evaluate opportunities through structured methods built for reliable, data-backed decisions.",
             cardsTitle: "RESEARCH METHODS",
             services: [
-                {
-                    title: "Global Panel",
-                    image: "/core-slide-1.png",
-                },
+
                 {
                     title: "CATI (Computer-Assisted Telephone Interviewing)",
                     image: "/core-slide.png",
@@ -32,6 +29,10 @@ export default function CoreTab() {
                 {
                     title: "CLT (Central Location Testing)",
                     image: "/CLT-(Central-Location-Testing).jpg",
+                },
+                {
+                    title: "Global Panel",
+                    image: "/core-slide-1.png",
                 },
             ],
         },

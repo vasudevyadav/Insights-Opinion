@@ -29,7 +29,7 @@ export default function EventHome() {
     return (
         <section className="overflow-hidden bg-[#151b4a] py-8 lg:py-12">
             <div className="mx-auto w-full px-4 sm:px-6 lg:pl-8 lg:pr-0">
-                
+
                 {/* Heading (unchanged) */}
                 <div className="mx-auto max-w-5xl">
                     <div className="mb-5 flex flex-col gap-2 lg:mb-12 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
@@ -73,7 +73,7 @@ export default function EventHome() {
                                         alt={event.title}
                                         fill
                                         className={`
-                                            object-cover transition-all duration-500
+                                            object-cover object-top transition-all duration-500
                                             
                                             /* 📱 Mobile → always colored */
                                             grayscale-0
