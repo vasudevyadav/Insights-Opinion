@@ -137,6 +137,7 @@ export default function TestimonialNews() {
                         src={item.image}
                         alt={item.title}
                         fill
+
                         className="object-fill transition-transform duration-500 group-hover/news:scale-105"
                         onLoadingComplete={() => {
                             setTimeout(() => {
@@ -390,7 +391,7 @@ export default function TestimonialNews() {
                 </div>
 
                 {/* NEWS & ARTICLES */}
-                <div className="mx-auto max-w-5xl px-6 lg:px-0">
+                <div className="mx-auto max-w-[1150px] px-6 lg:px-0">
                     <div
                         className="mb-8"
                         data-aos="fade-up"

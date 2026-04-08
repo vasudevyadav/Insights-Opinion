@@ -100,9 +100,7 @@ function ChallengeCardItem({
 }) {
     return (
         <div
-            data-aos="fade-up"
-            data-aos-delay={delay}
-            data-aos-duration="900"
+
             className={`group overflow-hidden rounded-[18px] border border-[#97a8d8] bg-white hover:shadow-[0_8px_24px_rgba(30,41,59,0.25)] ${card.className}`}
         >
             <div className="p-5">
@@ -119,7 +117,7 @@ function ChallengeCardItem({
                 </div>
             </div>
 
-            <div data-aos="zoom-in" data-aos-delay={delay + 100} data-aos-duration="800">
+            <div>
                 <CardImageArea
                     image={card.image}
                     hoverImage={card.hoverImage}
@@ -136,8 +134,7 @@ export default function BusinessChallenge() {
             <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
                 <div
                     className="lg:pt-2 lg:pl-20"
-                    data-aos="fade-up"
-                    data-aos-duration="900"
+
                 >
                     <h2 className="mb-8 max-w-[400px] text-3xl font-light leading-[1.1] text-[#4a5370] lg:mb-0 lg:text-[45px]">
                         Business Challenges
@@ -151,9 +148,7 @@ export default function BusinessChallenge() {
                 {/* Mobile Slider */}
                 <div
                     className="block lg:hidden"
-                    data-aos="fade-up"
-                    data-aos-delay="150"
-                    data-aos-duration="900"
+
                 >
                     <Swiper
                         modules={[Pagination, Autoplay]}

@@ -141,12 +141,11 @@ export default function CallbackFaqSection() {
                 {/* Right FAQ */}
                 <div className="w-full md:flex-1">
                     <div className="mb-8">
-                        <h2 className="text-[34px] font-light leading-tight text-white md:text-[45px]">
+                        <h2 className="text-[26px] font-light leading-tight text-white md:text-[42px]">
                             Frequently Asked
                         </h2>
                         <h2
-                            className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[45px]"
-
+                            className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[42px]"
                         >
                             Questions
                         </h2>
@@ -165,7 +164,7 @@ export default function CallbackFaqSection() {
                                             }`}
                                     >
                                         <span
-                                            className={`text-lg font-semibold transition ${isOpen ? "text-[#18aea1]" : "text-white"
+                                            className={`text-base font-medium transition ${isOpen ? "text-[#18aea1]" : "text-white"
                                                 }`}
                                         >
                                             {faq.question}
@@ -187,7 +186,7 @@ export default function CallbackFaqSection() {
                                     >
                                         <div className="overflow-hidden">
                                             <div className="px-5 pb-5">
-                                                <p className="text-base leading-6 text-[#6b7280]">
+                                                <p className="text-sm leading-6 text-[#6b7280]">
                                                     {faq.answer}
                                                 </p>
                                             </div>
