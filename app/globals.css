@@ -173,6 +173,7 @@ body {
 }
 
 
+
 @media (max-width: 768px) {
   .homebg {
     background: url(../public/home-mob.png) no-repeat;

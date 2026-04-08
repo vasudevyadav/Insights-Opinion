@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+// @ts-ignore - no type declarations for 'aos'
+import AOS from 'aos';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 
@@ -66,12 +68,16 @@ function CardImageArea({ image, hoverImage, alt }: CardImageAreaProps) {
         <div className="relative mt-5">
             <div className="flex items-end justify-center">
                 <div className="relative h-[18rem] w-full overflow-hidden rounded-b-[18px]">
-
                     <Image
                         src={image}
                         alt={alt}
                         fill
                         className="object-cover object-bottom transition-delay duration-800 ease-in-out lg:group-hover:opacity-0"
+                        onLoadingComplete={() => {
+                            setTimeout(() => {
+                                AOS.refreshHard();
+                            }, 100);
+                        }}
                     />
                     <Image
                         src={hoverImage}
@@ -85,9 +91,18 @@ function CardImageArea({ image, hoverImage, alt }: CardImageAreaProps) {
     );
 }
 
-function ChallengeCardItem({ card }: { card: ChallengeCard }) {
+function ChallengeCardItem({
+    card,
+    delay = 0,
+}: {
+    card: ChallengeCard;
+    delay?: number;
+}) {
     return (
         <div
+            data-aos="fade-up"
+            data-aos-delay={delay}
+            data-aos-duration="900"
             className={`group overflow-hidden rounded-[18px] border border-[#97a8d8] bg-white hover:shadow-[0_8px_24px_rgba(30,41,59,0.25)] ${card.className}`}
         >
             <div className="p-5">
@@ -104,11 +119,13 @@ function ChallengeCardItem({ card }: { card: ChallengeCard }) {
                 </div>
             </div>
 
-            <CardImageArea
-                image={card.image}
-                hoverImage={card.hoverImage}
-                alt={card.alt}
-            />
+            <div data-aos="zoom-in" data-aos-delay={delay + 100} data-aos-duration="800">
+                <CardImageArea
+                    image={card.image}
+                    hoverImage={card.hoverImage}
+                    alt={card.alt}
+                />
+            </div>
         </div>
     );
 }
@@ -117,7 +134,11 @@ export default function BusinessChallenge() {
     return (
         <section className="bg-white py-8 lg:py-18">
             <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-                <div className="lg:pt-2 lg:pl-20">
+                <div
+                    className="lg:pt-2 lg:pl-20"
+                    data-aos="fade-up"
+                    data-aos-duration="900"
+                >
                     <h2 className="mb-8 max-w-[400px] text-3xl font-light leading-[1.1] text-[#4a5370] lg:mb-0 lg:text-[45px]">
                         Business Challenges
                         <br />
@@ -128,38 +149,56 @@ export default function BusinessChallenge() {
                 </div>
 
                 {/* Mobile Slider */}
-                <div className="block lg:hidden">
+                <div
+                    className="block lg:hidden"
+                    data-aos="fade-up"
+                    data-aos-delay="150"
+                    data-aos-duration="900"
+                >
                     <Swiper
                         modules={[Pagination, Autoplay]}
                         slidesPerView={1}
                         spaceBetween={20}
                         pagination={{ clickable: true }}
                         autoplay={{ delay: 3000, disableOnInteraction: false }}
+                        onInit={() => {
+                            setTimeout(() => {
+                                AOS.refreshHard();
+                            }, 200);
+                        }}
+                        onSlideChange={() => {
+                            setTimeout(() => {
+                                AOS.refresh();
+                            }, 100);
+                        }}
                     >
                         {challengeCards.map((card, index) => (
                             <SwiperSlide key={index}>
-                                <ChallengeCardItem card={{ ...card, className: "" }} />
+                                <ChallengeCardItem
+                                    card={{ ...card, className: "" }}
+                                    delay={index * 100}
+                                />
                             </SwiperSlide>
                         ))}
                     </Swiper>
                 </div>
 
-                {/* Desktop Grid Same As Your Existing Layout */}
+                {/* Desktop Grid */}
                 <div className="hidden grid-cols-1 gap-6 lg:-mt-8 lg:grid">
                     <div className="lg:col-start-2">
-                        <ChallengeCardItem card={challengeCards[0]} />
+                        <ChallengeCardItem card={challengeCards[0]} delay={100} />
                     </div>
 
                     <div className="lg:col-start-3">
-                        <ChallengeCardItem card={challengeCards[1]} />
+                        <ChallengeCardItem card={challengeCards[1]} delay={200} />
                     </div>
 
                     <div className="lg:col-start-2">
-                        <ChallengeCardItem card={challengeCards[2]} />
+                        <ChallengeCardItem card={challengeCards[2]} delay={300} />
                     </div>
 
                     <div className="lg:col-start-3">
-                        <ChallengeCardItem card={challengeCards[3]} />
+                        <ChallengeCardItem card={challengeCards[3]} delay={400} />
                     </div>
                 </div>
             </div>

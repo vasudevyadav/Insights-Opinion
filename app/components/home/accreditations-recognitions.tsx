@@ -1,6 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
+// @ts-ignore - no type declarations for 'aos'
+import AOS from "aos";
 
 export default function AccreditationsRecognitions() {
     const vlines = [
@@ -12,6 +14,13 @@ export default function AccreditationsRecognitions() {
         { left: "84%", delay: "2s" },
     ];
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            AOS.refreshHard();
+        }, 250);
+
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <section className="relative overflow-hidden bg-[#eef5fb] py-8 lg:py-12">
@@ -50,6 +59,28 @@ export default function AccreditationsRecognitions() {
           animation: moveLineGlow 3.6s linear infinite;
           animation-delay: var(--line-delay);
         }
+
+        [data-aos="recognition-image-rise"] {
+          opacity: 0;
+          transform: translate3d(0, 80px, 0) scale(0.97);
+          transition-property: transform, opacity;
+        }
+
+        [data-aos="recognition-image-rise"].aos-animate {
+          opacity: 1;
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+
+        [data-aos="soft-fade-up"] {
+          opacity: 0;
+          transform: translate3d(0, 35px, 0);
+          transition-property: transform, opacity;
+        }
+
+        [data-aos="soft-fade-up"].aos-animate {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
       `}</style>
 
             {vlines.map((line, i) => (
@@ -65,37 +96,51 @@ export default function AccreditationsRecognitions() {
                 />
             ))}
 
-            <div className="relative z-10  px-6 lg:px-16">
-                {/* top heading + paragraph */}
+            <div className="relative z-10 px-6 lg:px-16">
                 <div className="mx-auto max-w-6xl">
-                    <div className="lg:mb-10 mb-4 lg:flex justify-between items-center ">
-                        <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-semibold leading-tight text-transparent lg:text-[40px]">
-                            Accreditations <br />  & Recognitions
+                    <div className="mb-4 justify-between lg:mb-10 lg:flex lg:items-center">
+                        <h2
+                            className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-semibold leading-tight text-transparent lg:text-[40px]"
+                            data-aos="soft-fade-up"
+                            data-aos-duration="900"
+                        >
+                            Accreditations <br /> & Recognitions
                         </h2>
 
-                        <p className="mt-5 max-w-2xl text-sm leading-7 text-[#4b5563] sm:text-base">
-                            Insights Opinion is recognized for its commitment to research quality, data security, and dependable execution. From ISO 20252 and ISO 27001 certifications to recognition from Quirk’s, Silicon India, and Forbes, these credentials reflect the standards expected from trusted top market research firms.
+                        <p
+                            className="mt-5 max-w-2xl text-sm leading-7 text-[#4b5563] sm:text-base"
+                            data-aos="soft-fade-up"
+                            data-aos-delay="140"
+                            data-aos-duration="900"
+                        >
+                            Insights Opinion is recognized for its commitment to research quality,
+                            data security, and dependable execution. From ISO 20252 and ISO 27001
+                            certifications to recognition from Quirk’s, Silicon India, and Forbes,
+                            these credentials reflect the standards expected from trusted top market
+                            research firms.
                         </p>
                     </div>
-
                 </div>
 
-                <div className="relative lg:p-0 lg:-mt-[80px]">
-
+                <div
+                    className="relative lg:-mt-[80px] lg:p-0"
+                    data-aos="recognition-image-rise"
+                    data-aos-delay="120"
+                    data-aos-duration="1200"
+                >
                     <div>
-
                         <img
-                            src="../recognitions.gif"
-                            alt="title"
-                            className=" h-[500px] w-full object-cover object-center  transition-transform duration-700 group-hover:scale-105 hidden lg:block"
+                            src="/recognitions.gif"
+                            alt="Accreditations and recognitions"
+                            className="hidden h-[500px] w-full object-cover object-center transition-transform duration-700 lg:block"
                         />
                     </div>
-                    <img
-                        src="../recognitions-mob.gif"
-                        alt="title"
-                        className=" h-[700px] w-full object-cover object-center  transition-transform duration-700 group-hover:scale-105 lg:hidden block"
-                    />
 
+                    <img
+                        src="/recognitions-mob.gif"
+                        alt="Accreditations and recognitions"
+                        className="block h-[700px] w-full object-cover object-center transition-transform duration-700 lg:hidden"
+                    />
                 </div>
             </div>
         </section>
