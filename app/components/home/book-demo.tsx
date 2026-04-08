@@ -112,9 +112,7 @@ export default function BookDemo() {
                                 </h2>
 
                                 <p className="mt-5 max-w-[500px] text-sm leading-7 text-[#555b66] md:text-base">
-                                    Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry. Lorem Ipsum has been the industry&apos;s
-                                    standard dummy text ever since the 1500s.
+                                    Book a demo today and see how Insights Opinion can support your next research project with clarity and control.
                                 </p>
 
                                 <button

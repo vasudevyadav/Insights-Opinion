@@ -28,7 +28,7 @@ export default function TestimonialNews() {
             link: "Read Full Customer Story",
             company: "TAJMG",
             author: "Director, Clifton",
-            logo: "/testimonial-logo.png",
+            logo: "/Testimonial-Icon.png",
         },
         {
             quote:
@@ -36,7 +36,7 @@ export default function TestimonialNews() {
             link: "Read Full Customer Story",
             company: "TAJMG",
             author: "Director, Clifton",
-            logo: "/testimonial-logo.png",
+            logo: "/Testimonial-Icon.png",
         },
         {
             quote:
@@ -44,7 +44,7 @@ export default function TestimonialNews() {
             link: "Read Full Customer Story",
             company: "TAJMG",
             author: "Director, Clifton",
-            logo: "/testimonial-logo.png",
+            logo: "/Testimonial-Icon.png",
         },
         {
             quote:
@@ -52,39 +52,39 @@ export default function TestimonialNews() {
             link: "Read Full Customer Story",
             company: "TAJMG",
             author: "Director, Clifton",
-            logo: "/testimonial-logo.png",
+            logo: "/Testimonial-Icon.png",
         },
     ];
 
     const news = [
         {
-            title: "Why Market Research Is a Must for the Healthcare Industry?",
+            title: "Global vs. Local: How Regional Industry Market Research Shapes Business Expansion",
             shortDesc:
-                "Healthcare moves fast, new therapies, digital health tools, changing...",
+                "Expansion fails when teams copy what worked locally and assume it will work everywhere. The fix is simple. Use global vs. local research to separate what should stay consistent from what must change by region. Global expansion market research helps you validate demand, price tolerance, channel fit, and compliance risk before you spend. It also prevents launches in regions that look attractive on paper but do not convert in reality.",
             fullDesc:
                 "Healthcare moves fast — new therapies, digital health tools, shifting patient demographics, and evolving regulations all demand that companies stay ahead. Market research helps healthcare firms understand patient needs, map competitor landscapes, and make informed product decisions that truly matter.",
-            image: "/news-articles-img-1.png",
+            image: "/global-vs-local-regional-market-researches.jpg",
         },
         {
-            title: "How to Maximize the Value of Telephone Interviews in B2B Research?",
+            title: "Sharing the Secrets of How Professionals Ace Healthcare Market Research",
             shortDesc:
-                "Best practices to extract richer insights from CATI-based fieldwork.",
+                "Professional healthcare market research works when it answers the decision clearly, reaches the right stakeholders, stays compliant, and delivers actions teams can execute. One weak sample or a vague question can push the wrong product, message, or access plan.",
             fullDesc:
-                "Telephone interviews remain one of the most reliable methods for B2B research. Discover how skilled interviewers, targeted screeners, and structured discussion guides combine to deliver high-quality qualitative data at scale — even in the digital age.",
-            image: "/news-articles-img-2.png",
+                "Professional healthcare market research works when it answers the decision clearly, reaches the right stakeholders, stays compliant, and delivers actions teams can execute. One weak sample or a vague question can push the wrong product, message, or access plan.",
+            image: "/how-professionals-ace-healthcare-market-research.jpg",
         },
         {
-            title: "CATI: The Quality Reset for Businesses Tired of Noisy Online Data",
+            title: "Strengthen Decision-Making With Qualitative Research Methods",
             shortDesc:
-                "Why companies are returning to telephone interviewing for cleaner data.",
+                "When a decision is expensive, uncertain, or sensitive, you need more than dashboards. You need to understand what people meant, what they felt, and what stopped them. Qualitative research methods capture those details through direct conversations and observation, so you can design better products, services, and messages.",
             fullDesc:
-                "As online panels face mounting quality concerns, CATI (Computer-Assisted Telephone Interviewing) is making a strong comeback. Learn why businesses prioritizing data integrity are rediscovering telephone research as their go-to method for reliable results.",
-            image: "/news-articles-img-3.png",
+                "When a decision is expensive, uncertain, or sensitive, you need more than dashboards. You need to understand what people meant, what they felt, and what stopped them. Qualitative research methods capture those details through direct conversations and observation, so you can design better products, services, and messages.",
+            image: "/strengthen-decision-making-with-qualitative-research-methods.jpg",
         },
         {
-            title: "Optimizing Product Development Through Qualitative Market Research",
+            title: "From Local To Global: Using Research To Identify High-Growth Regions",
             shortDesc:
-                "Great products fail when teams build on assumptions instead of people...",
+                "Expanding to new countries is exciting and risky. The fastest wins happen when you read local signals correctly and scale only what will travel. Quick answer: Study growth patterns in global regions, build a comparable score for each country or city cluster, and localize the offer before you spend.",
             fullDesc:
                 "Qualitative research reveals the 'why' behind consumer behavior. From focus groups to in-depth interviews, this article explores how product teams can use rich qualitative insights to build features that genuinely solve user problems and delight customers.",
             image: "/news-articles-img-4.png",
@@ -107,8 +107,8 @@ export default function TestimonialNews() {
         return (
             <div
                 className={`group/news overflow-hidden rounded-[16px] border border-[#d7e3ef] bg-white transition-all duration-500 ease-in-out hover:border-[#1a1f52] hover:bg-[#1a1f52] ${isOpen
-                        ? "w-full md:flex-[1.5]"
-                        : "w-full md:flex-1 md:hover:flex-[1.5]"
+                    ? "w-full md:flex-[1.5]"
+                    : "w-full md:flex-1 md:hover:flex-[1.5]"
                     }`}
             >
                 <div className="relative h-[260px] w-full overflow-hidden">
@@ -116,29 +116,29 @@ export default function TestimonialNews() {
                         src={item.image}
                         alt={item.title}
                         fill
-                        className="object-cover object-top transition-transform duration-500 group-hover/news:scale-105"
+                        className="object-fill transition-transform duration-500 group-hover/news:scale-105"
                     />
                 </div>
 
                 <div
                     className={`border-t px-5 py-4 transition-all duration-500 ${isOpen
-                            ? "border-white/10 bg-[#1a1f52]"
-                            : "border-[#d7e3ef] bg-white group-hover/news:border-white/10 group-hover/news:bg-[#1a1f52]"
+                        ? "border-white/10 bg-[#1a1f52]"
+                        : "border-[#d7e3ef] bg-white group-hover/news:border-white/10 group-hover/news:bg-[#1a1f52]"
                         }`}
                 >
                     <h4
                         className={`mb-2 line-clamp-2 text-lg font-semibold transition-colors duration-500 lg:text-xl ${isOpen
-                                ? "text-white"
-                                : "text-[#1f2937] group-hover/news:text-white"
+                            ? "text-white"
+                            : "text-[#1f2937] group-hover/news:text-white"
                             }`}
                     >
                         {item.title}
                     </h4>
 
                     <p
-                        className={`mt-2 line-clamp-2 text-xs leading-5 transition-colors duration-500 lg:text-sm ${isOpen
-                                ? "text-white/75"
-                                : "text-[#667085] group-hover/news:text-white/75"
+                        className={`mt-2 line-clamp-3 text-xs leading-5 transition-colors duration-500 lg:text-sm ${isOpen
+                            ? "text-white/75"
+                            : "text-[#667085] group-hover/news:text-white/75"
                             }`}
                     >
                         {item.shortDesc}
@@ -148,8 +148,8 @@ export default function TestimonialNews() {
                         <button
                             onClick={() => toggleAccordion(index)}
                             className={`inline-flex items-center gap-1 text-sm font-medium transition-colors duration-300 ${isOpen
-                                    ? "text-[#7ddbd1]"
-                                    : "text-[#1b224f] group-hover/news:text-white"
+                                ? "text-[#7ddbd1]"
+                                : "text-[#1b224f] group-hover/news:text-white"
                                 }`}
                         >
                             {isOpen ? "Read Less" : "Read More"}
@@ -162,14 +162,14 @@ export default function TestimonialNews() {
 
                         <ArrowRight
                             className={`transition-colors duration-500 ${isOpen
-                                    ? "text-white"
-                                    : "text-[#1a1f52] group-hover/news:text-white"
+                                ? "text-white"
+                                : "text-[#1a1f52] group-hover/news:text-white"
                                 }`}
                             size={18}
                         />
                     </div>
 
-                    <div
+                    {/* <div
                         style={{
                             display: "grid",
                             gridTemplateRows: isOpen ? "1fr" : "0fr",
@@ -187,7 +187,7 @@ export default function TestimonialNews() {
                                 Read Full Article <ArrowRight size={13} />
                             </a>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );
@@ -333,9 +333,9 @@ export default function TestimonialNews() {
 
                                     <div className="mt-5 flex items-end justify-between gap-3">
                                         <div className="flex items-center gap-3">
-                                            <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-[#1a1f52] transition-all duration-500">
+                                            <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full transition-all duration-500">
                                                 <Image
-                                                    src="/book-demo.png"
+                                                    src="/Testimonial-Icon.png"
                                                     alt="testimonial logo"
                                                     width={1000}
                                                     height={1000}
