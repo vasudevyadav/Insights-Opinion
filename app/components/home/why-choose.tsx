@@ -149,7 +149,7 @@ function AnimatedWhyChooseFigure() {
             <img
                 src="/why-men.png"
                 alt="Animated figure"
-                className="absolute lg:-left-10 left-0 -bottom-32 lg:-bottom-14 w-[22rem] object-cover"
+                className="absolute lg:-left-10 left-5 -bottom-16 lg:-bottom-14 lg:w-[22rem] w-60 object-cover"
             />
         </div>
     );
@@ -173,7 +173,7 @@ export default function WhyChoose() {
             </div>
 
             <div className="relative z-10 mx-auto max-w-6xl px-4 py-2 lg:px-0 lg:py-16">
-                <div className="lg:space-y-20 space-y-44">
+                <div className="lg:space-y-20 space-y-24">
                     {sectionsData.map((section, sectionIndex) => {
                         const isEven = sectionIndex % 2 === 0;
                         const activeIndex = openIndexes[sectionIndex];
@@ -208,10 +208,10 @@ export default function WhyChoose() {
                                 </div>
 
                                 <div
-                                    className={`relative flex min-h-[420px] items-center justify-center lg:min-h-[520px] ${isEven ? "lg:order-2" : "lg:order-1"
+                                    className={`relative flex min-h-[320px] items-center justify-center lg:min-h-[520px] ${isEven ? "lg:order-2" : "lg:order-1"
                                         }`}
                                 >
-                                    <div className="relative flex w-full items-center justify-center overflow-visible bg-transparent">
+                                    <div className="relative flex w-full px-6 lg:px-0 items-center justify-center overflow-visible bg-transparent">
                                         {sectionIndex === 0 ? (
                                             <AnimatedWhyChooseFigure />
                                         ) : (
