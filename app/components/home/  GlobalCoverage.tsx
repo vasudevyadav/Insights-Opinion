@@ -422,12 +422,12 @@ export default function GlobalCoverage() {
                         consistent project management.
                     </p>
 
-                    <button
+                    <button className="lg:text-lg text-sm"
                         style={{
                             borderRadius: "9999px",
                             background: "#17ae8f",
                             padding: "12px 50px",
-                            fontSize: "18px",
+
                             fontWeight: 500,
                             color: "#fff",
                             border: "none",

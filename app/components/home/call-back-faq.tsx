@@ -99,7 +99,7 @@ export default function CallbackFaqSection() {
                                     className="h-[46px] w-full rounded-[4px] border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6] sm:w-[150px]"
                                 />
 
-                                <div className="absolute left-36 flex h-[46px] w-[110px] items-center justify-center rounded-[4px] bg-[#171f4d] text-sm font-medium tracking-wide text-white">
+                                <div className="absolute lg:left-36 right-0 flex h-[46px] w-[110px] items-center justify-center rounded-[4px] bg-[#171f4d] text-sm font-medium tracking-wide text-white">
                                     990940
                                 </div>
                             </div>
@@ -107,7 +107,7 @@ export default function CallbackFaqSection() {
                             <div className="pt-6 text-center">
                                 <button
                                     type="submit"
-                                    className="inline-flex min-w-[170px] items-center justify-center rounded-[6px] bg-gradient-to-r from-[#48b99b] to-[#5bc4a9] px-18 py-3 text-lg font-semibold text-white transition hover:opacity-90 hover:shadow-lg"
+                                    className="inline-flex min-w-[170px] items-center justify-center rounded-[6px] bg-gradient-to-r from-[#48b99b] to-[#5bc4a9] px-18 py-3 lg:text-lg text-sm font-semibold text-white transition hover:opacity-90 hover:shadow-lg"
                                 >
                                     Submit
                                 </button>

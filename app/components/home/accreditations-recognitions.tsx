@@ -126,7 +126,7 @@ export default function AccreditationsRecognitions() {
                 <div className="mx-auto max-w-6xl">
                     <div className="mb-4 justify-between lg:mb-10 lg:flex lg:items-center">
                         <h2
-                            className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-semibold leading-tight text-transparent lg:text-[40px]"
+                            className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[40px]"
                             data-aos="soft-fade-up"
                             data-aos-duration="900"
                         >

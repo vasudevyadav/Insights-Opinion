@@ -144,10 +144,10 @@ export default function CoreTab() {
                     className="flex shrink-0 items-center gap-2 lg:block"
 
                 >
-                    <p className="text-3xl font-normal leading-none text-black lg:text-[45px]">
+                    <p className="text-2xl font-normal leading-none text-black lg:text-[45px]">
                         Core
                     </p>
-                    <h2 className="bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-3xl font-semibold leading-tight text-transparent lg:text-[45px]">
+                    <h2 className="bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[45px]">
                         Solutions
                     </h2>
                 </div>
@@ -219,7 +219,7 @@ export default function CoreTab() {
 
                         <h3
                             key={`title-${activeTab}`}
-                            className="my-5 max-w-[430px] line-clamp-2 text-[26px] font-semibold leading-[1.25] text-[#2e3540] lg:text-[27px]"
+                            className="lg:my-5 my-2 max-w-[430px] line-clamp-2 text-lg font-semibold leading-[1.25] text-[#2e3540] lg:text-[27px]"
 
                         >
                             {activeData.cardsTitle}

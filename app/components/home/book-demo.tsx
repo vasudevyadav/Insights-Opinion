@@ -126,11 +126,11 @@ export default function BookDemo() {
 
                         <div className="flex w-full items-center px-6 pb-8 pt-10 md:w-[52%] md:px-14 md:pb-14 md:pt-0 lg:w-[48%] lg:px-16">
                             <div>
-                                <h2 className="text-3xl font-light leading-[1.15] text-[#202020] lg:text-[45px]">
+                                <h2 className="text-2xl font-light leading-[1.15] text-[#202020] lg:text-[45px]">
                                     Book a Demo &
                                 </h2>
 
-                                <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-semibold leading-tight text-transparent lg:text-[45px]">
+                                <h2 className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[45px]">
                                     See Us In Action
                                 </h2>
 
@@ -139,7 +139,7 @@ export default function BookDemo() {
                                 </p>
 
                                 <button
-                                    className="mt-8 rounded-full px-12 py-3 text-lg font-semibold text-white transition-all duration-300 hover:opacity-90 hover:shadow-lg"
+                                    className="lg:mt-8 mt-4 rounded-full px-12 py-3 lg:text-lg text-sm  font-semibold text-white transition-all duration-300 hover:opacity-90 hover:shadow-lg"
                                     style={{
                                         background:
                                             "linear-gradient(90deg, #41b894 0%, #47a88d 100%)",
