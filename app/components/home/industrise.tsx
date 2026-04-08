@@ -8,63 +8,63 @@ const industries = [
         title: "Chemical",
         description:
             "Studies on industrial demand, product usage, buyer behavior, and sector-specific market opportunities.",
-        image: "/camikal-ind.png",
+        image: "/Chemical.jpg",
     },
     {
         id: 2,
         title: "Education",
         description:
             "Research on student behavior, course demand, learning platforms, and institutional decision-making.",
-        image: "/education-ind.png",
+        image: "/Education.jpg",
     },
     {
         id: 3,
         title: "Telecom",
         description:
             "Insights into customer expectations, network experience, service usage, and digital adoption.",
-        image: "/automotive-ind.png",
+        image: "/Telecom.jpg",
     },
     {
         id: 4,
         title: "IT",
         description:
             "Research for software, SaaS, digital products, and enterprise technology buying decisions.",
-        image: "/camikal-ind.png",
+        image: "/IT.jpg",
     },
     {
         id: 5,
         title: "Agriculture",
         description:
             "Studies on farmer behavior, product adoption, rural demand, and agri-market preferences.",
-        image: "/education-ind.png",
+        image: "/Agriculter.jpg",
     },
     {
         id: 6,
         title: "Automotive",
         description:
             "Research covering buyer preferences, vehicle demand, EV interest, and aftermarket behavior.",
-        image: "/automotive-ind.png",
+        image: "/Automotive.jpg",
     },
     {
         id: 7,
         title: "Construction",
         description:
             "Insights into buyer needs, material demand, project trends, and industry purchasing behavior.",
-        image: "/automotive-ind.png",
+        image: "/Construction-.jpg",
     },
     {
         id: 8,
         title: "Education",
         description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-        image: "/education-ind.png",
+            "Research on student behavior, course demand, learning platforms, and institutional decision-making.",
+        image: "/Education.jpg",
     },
     {
         id: 9,
         title: "Healthcare",
         description:
             "Research across patients, providers, treatment experience, and healthcare market behavior.",
-        image: "/camikal-ind.png",
+        image: "/healthcare.jpg",
     },
 ];
 
@@ -217,8 +217,8 @@ export default function Industries() {
                                     {...ind}
                                     isExpanded={true}
                                     mobileExpanded={true}
-                                    onMouseEnter={() => {}}
-                                    onMouseLeave={() => {}}
+                                    onMouseEnter={() => { }}
+                                    onMouseLeave={() => { }}
                                 />
                             </div>
                         ))}

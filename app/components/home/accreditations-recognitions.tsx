@@ -93,7 +93,7 @@ export default function AccreditationsRecognitions() {
                     <img
                         src="../recognitions-mob.gif"
                         alt="title"
-                        className=" h-[550px] w-full object-cover object-center  transition-transform duration-700 group-hover:scale-105 lg:hidden block"
+                        className=" h-[700px] w-full object-cover object-center  transition-transform duration-700 group-hover:scale-105 lg:hidden block"
                     />
 
                 </div>

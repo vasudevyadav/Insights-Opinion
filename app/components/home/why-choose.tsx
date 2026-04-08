@@ -4,7 +4,21 @@ import { useState } from "react";
 import { ChevronUp, ChevronDown } from "lucide-react";
 import Image from "next/image";
 
-const sectionsData = [
+type AccordionItem = {
+    title: string;
+    content: string;
+    image?: string;
+};
+
+type Section = {
+    headingLight: string;
+    headingBold: string;
+    description: string;
+    image: string;
+    accordionData: AccordionItem[];
+};
+
+const sectionsData: Section[] = [
     {
         headingLight: "Why",
         headingBold: " Choose Us? ",
@@ -32,7 +46,6 @@ const sectionsData = [
                 content:
                     "Keep projects moving with responsive execution and efficient fieldwork delivery.",
             },
-
             {
                 title: "Profound Research Capabilities",
                 content:
@@ -43,7 +56,6 @@ const sectionsData = [
                 content:
                     "Work with a team that values clear communication, accountability, and responsible research practices.",
             },
-
         ],
     },
     {
@@ -57,21 +69,25 @@ const sectionsData = [
                 title: "Live Project Visibility",
                 content:
                     "Clients can now track project milestones, field status, and progress updates with better clarity.",
+                image: "/Live-Project-Visibility.png",
             },
             {
                 title: "Workflow Efficiency",
                 content:
                     "Improved internal coordination helps reduce delays and keep active research stages moving smoothly.",
+                image: "/Workflow-Efficiency.png",
             },
             {
                 title: "Centralized Oversight",
                 content:
                     "Projects are managed through a more connected structure that improves control across teams and tasks.",
+                image: "/Centralized-Oversight.png",
             },
             {
                 title: " Reporting Experience ",
                 content:
                     "Findings are now delivered through clearer outputs that are easier to review and act on.",
+                image: "/_Reporting-Experience-.png",
             },
         ],
     },
@@ -79,11 +95,13 @@ const sectionsData = [
 
 function Accordion({
     accordionData,
+    openIndex,
+    setOpenIndex,
 }: {
-    accordionData: { title: string; content: string }[];
+    accordionData: { title: string; content: string; image?: string }[];
+    openIndex: number;
+    setOpenIndex: (index: number) => void;
 }) {
-    const [openIndex, setOpenIndex] = useState(0);
-
     return (
         <div className="mt-8 w-full">
             {accordionData.map((item, index) => {
@@ -116,10 +134,7 @@ function Accordion({
 
                             <span className="ml-4 shrink-0">
                                 {isOpen ? (
-                                    <ChevronUp
-                                        size={18}
-                                        className={isOpen ? "text-white" : "text-[#4b5563]"}
-                                    />
+                                    <ChevronUp size={18} className="text-white" />
                                 ) : (
                                     <ChevronDown size={18} className="text-[#4b5563]" />
                                 )}
@@ -150,6 +165,16 @@ function AnimatedWhyChooseFigure() {
 }
 
 export default function WhyChoose() {
+    const [openIndexes, setOpenIndexes] = useState([0, 0]);
+
+    const handleSetOpenIndex = (sectionIndex: number, index: number) => {
+        setOpenIndexes((prev) => {
+            const updated = [...prev];
+            updated[sectionIndex] = index;
+            return updated;
+        });
+    };
+
     return (
         <section className="relative">
             <div className="absolute inset-0 z-0">
@@ -160,6 +185,7 @@ export default function WhyChoose() {
                 <div className="lg:space-y-20 space-y-44">
                     {sectionsData.map((section, sectionIndex) => {
                         const isEven = sectionIndex % 2 === 0;
+                        const activeIndex = openIndexes[sectionIndex];
 
                         return (
                             <div
@@ -174,7 +200,6 @@ export default function WhyChoose() {
                                     </p>
 
                                     <h2 className="text-3xl font-medium leading-tight text-transparent bg-clip-text bg-[linear-gradient(130deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">
-
                                         {section.headingBold}
                                     </h2>
 
@@ -182,7 +207,13 @@ export default function WhyChoose() {
                                         {section.description}
                                     </p>
 
-                                    <Accordion accordionData={section.accordionData} />
+                                    <Accordion
+                                        accordionData={section.accordionData}
+                                        openIndex={activeIndex}
+                                        setOpenIndex={(index) =>
+                                            handleSetOpenIndex(sectionIndex, index)
+                                        }
+                                    />
                                 </div>
 
                                 <div
@@ -194,11 +225,14 @@ export default function WhyChoose() {
                                             <AnimatedWhyChooseFigure />
                                         ) : (
                                             <Image
-                                                src={section.image}
+                                                src={
+                                                    section.accordionData[activeIndex]?.image ||
+                                                    section.image
+                                                }
                                                 alt="Section visual"
                                                 width={520}
                                                 height={520}
-                                                className="relative z-10 h-auto w-full max-w-[420px] object-contain"
+                                                className="relative z-10 h-auto w-full p-8 object-contain transition-all duration-300"
                                             />
                                         )}
                                     </div>

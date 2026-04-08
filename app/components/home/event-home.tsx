@@ -10,35 +10,38 @@ import "swiper/css";
 export default function EventHome() {
     const events = [
         {
-            title: "Lorem ipsum Lorem ipsum Lorem ipsum...",
-            image: "/core-slide-1.png",
+            title: "Event 1",
+            image: "/highlight1.webp",
             colored: true,
         },
         {
-            title: "Lorem ipsum Lorem ipsum Lorem ipsum...",
-            image: "/core-slide-1.png",
+            title: "Event 2",
+            image: "/highlight-2.webp",
             colored: false,
         },
         {
-            title: "Lorem ipsum Lorem ipsum Lorem ipsum...",
-            image: "/core-slide-1.png",
+            title: "Event 3",
+            image: "/highlight3.webp",
+            colored: false,
+        },
+
+        {
+            title: "Event 1",
+            image: "/highlight1.webp",
+            colored: true,
+        },
+        {
+            title: "Event 2",
+            image: "/highlight-2.webp",
             colored: false,
         },
         {
-            title: "Lorem ipsum Lorem ipsum Lorem ipsum...",
-            image: "/core-slide-1.png",
+            title: "Event 3",
+            image: "/highlight3.webp",
             colored: false,
         },
-        {
-            title: "Lorem ipsum Lorem ipsum Lorem ipsum...",
-            image: "/core-slide-1.png",
-            colored: false,
-        },
-        {
-            title: "Lorem ipsum Lorem ipsum Lorem ipsum...",
-            image: "/core-slide-1.png",
-            colored: false,
-        },
+
+
     ];
 
     return (
@@ -108,9 +111,8 @@ export default function EventHome() {
                                         src={event.image}
                                         alt={event.title}
                                         fill
-                                        className={`object-cover transition-all duration-500 ${
-                                            event.colored ? "" : "grayscale"
-                                        } group-hover:scale-105 group-hover:grayscale-0`}
+                                        className={`object-cover transition-all duration-500 ${event.colored ? "" : "grayscale"
+                                            } group-hover:scale-105 group-hover:grayscale-0`}
                                     />
                                 </div>
                             </div>

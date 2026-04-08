@@ -27,8 +27,8 @@ const challengeCards: ChallengeCard[] = [
         title: "Need More Reliable Market Data?",
         description:
             "Improve decision-making with structured data collection, validation, and quality control.",
-        image: "/challenges-2.png",
-        hoverImage: "/challenges-1.png",
+        image: "/Need-More-Reliable-Market-Data-.jpg",
+        hoverImage: "/2_Need-More-Reliable-Market-Data-.jpg",
         alt: "Market expansion challenge",
         className: "lg:mt-16",
     },
@@ -36,8 +36,8 @@ const challengeCards: ChallengeCard[] = [
         title: "Struggling to Understand Customers?",
         description:
             "Identify customer needs, buying behavior, and shifting preferences through targeted research.",
-        image: "/challenges-2.png",
-        hoverImage: "/challenges-1.png",
+        image: "/Struggling-to-Understand-Customers.jpg",
+        hoverImage: "/Struggling-to-Understan.jpg",
         alt: "Data challenge",
         className: "",
     },
@@ -45,8 +45,8 @@ const challengeCards: ChallengeCard[] = [
         title: "Managing Research Across Markets?",
         description:
             "Manage multi-country research with consistent fieldwork, local coordination, and centralized oversight.",
-        image: "/challenges-2.png",
-        hoverImage: "/challenges-1.png",
+        image: "/Managing-Research-Across-Markets.jpg",
+        hoverImage: "/managing-Research.jpg",
         alt: "Consumer behavior challenge",
         className: "",
     },
@@ -54,8 +54,8 @@ const challengeCards: ChallengeCard[] = [
         title: "Trying to Reach Niche Audiences?",
         description:
             "Access verified audiences across consumer, B2B, healthcare, and niche research segments.",
-        image: "/challenges-2.png",
-        hoverImage: "/challenges-1.png",
+        image: "/Trying-to-Reach-Niche-Audiences.jpg",
+        hoverImage: "/trying-to-Reach-.jpg",
         alt: "Local research partners challenge",
         className: "lg:-mt-16",
     },
