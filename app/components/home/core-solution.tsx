@@ -5,6 +5,7 @@ import WhyChoose from "./why-choose";
 
 export default function CoreSolution() {
 
+    // Desktop lines (6)
     const vlines = [
         { left: "14%", delay: "0s" },
         { left: "28%", delay: "0.8s" },
@@ -14,9 +15,17 @@ export default function CoreSolution() {
         { left: "84%", delay: "2s" },
     ];
 
+    const mobileVlines = [
+        { left: "20%", delay: "0s" },
+        { left: "40%", delay: "0.8s" },
+        { left: "60%", delay: "1.6s" },
+        { left: "80%", delay: "1.6s" },
+    ];
 
     return (
         <section className="relative overflow-hidden bg-[#eef5fb] lg:py-14 py-6">
+
+            {/* Animation + Line Styles */}
             <style>{`
                 @keyframes moveLineGlow {
                     0% { top: -140px; }
@@ -54,10 +63,11 @@ export default function CoreSolution() {
                 }
             `}</style>
 
-            {vlines.map((line, i) => (
+            {/* ✅ Mobile Lines (Only on small screens) */}
+            {mobileVlines.map((line, i) => (
                 <div
-                    key={i}
-                    className="industry-v-line"
+                    key={`m-${i}`}
+                    className="industry-v-line block lg:hidden"
                     style={
                         {
                             left: line.left,
@@ -67,6 +77,21 @@ export default function CoreSolution() {
                 />
             ))}
 
+            {/* ✅ Desktop Lines (Only on large screens) */}
+            {vlines.map((line, i) => (
+                <div
+                    key={`d-${i}`}
+                    className="industry-v-line hidden lg:block"
+                    style={
+                        {
+                            left: line.left,
+                            "--line-delay": line.delay,
+                        } as React.CSSProperties
+                    }
+                />
+            ))}
+
+            {/* Content */}
             <CoreTab />
             <WhyChoose />
             <Industries />

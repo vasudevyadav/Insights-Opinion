@@ -29,23 +29,14 @@ const sectionsData: Section[] = [
             {
                 title: "Global Expertisee",
                 content:
-                    "Run studies across 100+ countries with local coordination and market-specific execution.",
+                    "Run studies across 100+ countries and in 60+ languages with local coordination and market-specific execution.",
             },
             {
                 title: "Accuracy, Speed, and Security",
                 content:
-                    "Maintain data quality, meet timelines, and protect information throughout every project.",
+                    "Maintain data quality, responsive execution, and protect information throughout every project.",
             },
-            {
-                title: "Multi-Language Capabilities",
-                content:
-                    "Conduct research in 60+ languages with localized fieldwork and respondent engagement.",
-            },
-            {
-                title: "Quick Turnaround Time",
-                content:
-                    "Keep projects moving with responsive execution and efficient fieldwork delivery.",
-            },
+
             {
                 title: "Profound Research Capabilities",
                 content:
@@ -195,15 +186,15 @@ export default function WhyChoose() {
                                 <div
                                     className={`${isEven ? "lg:order-1" : "lg:order-2"} max-w-[500px]`}
                                 >
-                                    <p className="text-3xl font-light leading-[0.95] tracking-[-0.02em] text-[#4a5565] lg:text-[45px]">
+                                    <p className="text-2xl font-light leading-[0.95] tracking-[-0.02em] text-[#4a5565] lg:text-[45px]">
                                         {section.headingLight}
                                     </p>
 
-                                    <h2 className="text-3xl font-medium leading-tight text-transparent bg-clip-text bg-[linear-gradient(130deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">
+                                    <h2 className="text-2xl font-medium lg:leading-tight text-transparent bg-clip-text bg-[linear-gradient(130deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">
                                         {section.headingBold}
                                     </h2>
 
-                                    <p className="mt-5 text-base leading-[1.6] text-[#5a6472] lg:text-lg">
+                                    <p className="lg:mt-5 mt-2 lg:text-base text-sm leading-[1.6] text-[#5a6472] lg:text-lg">
                                         {section.description}
                                     </p>
 

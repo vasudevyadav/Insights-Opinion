@@ -6,19 +6,9 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
     {
-        question: "What does a market research company do?",
-        answer:
-            "A market research company helps businesses collect and analyze information about customers, markets, competitors, and demand trends. Through surveys, interviews, and structured data collection, companies gain insights that support product development, market expansion, and better strategic decisions.",
-    },
-    {
         question: "Why should businesses work with a global market research company?",
         answer:
             "A global market research company allows businesses to run studies across multiple countries with consistent research methods and coordinated fieldwork. This helps organizations compare market behavior across regions, understand cultural differences, and make more informed global business decisions.",
-    },
-    {
-        question: "How is a market research firm different from internal research teams?",
-        answer:
-            "A market research firm provides specialized expertise, research infrastructure, and access to verified respondent panels that internal teams may not have. This allows businesses to run large-scale or multi-market studies more efficiently while maintaining high standards for data accuracy and analysis.",
     },
     {
         question: "What types of market research services do companies usually provide?",
@@ -30,24 +20,12 @@ const faqs = [
         answer:
             "Commercial market research focuses on understanding market demand, competitive positioning, and customer preferences to support business growth. Companies use it to evaluate new products, improve marketing strategies, and make data-backed decisions in competitive industries.",
     },
-
     {
         question: "How can businesses identify the best market research company for their needs?",
         answer:
             "The best market research company is typically one that demonstrates research expertise, strong data quality standards, and the ability to manage studies across industries and markets. Businesses should evaluate experience, methodology, and the reliability of data collection processes.",
     },
 
-
-    {
-        question: " What should companies look for when choosing among top market research firms? ",
-        answer:
-            " When comparing top market research firms, businesses usually consider global coverage, industry expertise, data quality controls, and the ability to manage complex research projects. Strong project coordination and transparent reporting are also key factors. ",
-    },
-    {
-        question: " How does a market research consulting firm support business strategy? ",
-        answer:
-            " A market research consulting firm helps organizations interpret research findings and translate them into actionable business insights. This support helps companies make strategic decisions around product development, market entry, customer experience, and competitive positioning. ",
-    },
 
 ];
 
@@ -121,7 +99,7 @@ export default function CallbackFaqSection() {
                                     className="h-[46px] w-full rounded-[4px] border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6] sm:w-[150px]"
                                 />
 
-                                <div className="absolute left-36 flex h-[46px] w-[110px] items-center justify-center rounded-[4px] bg-[#171f4d] text-sm font-medium tracking-wide text-white">
+                                <div className="absolute lg:left-36 right-0 flex h-[46px] w-[110px] items-center justify-center rounded-[4px] bg-[#171f4d] text-sm font-medium tracking-wide text-white">
                                     990940
                                 </div>
                             </div>
@@ -129,7 +107,7 @@ export default function CallbackFaqSection() {
                             <div className="pt-6 text-center">
                                 <button
                                     type="submit"
-                                    className="inline-flex min-w-[170px] items-center justify-center rounded-[6px] bg-gradient-to-r from-[#48b99b] to-[#5bc4a9] px-18 py-3 text-lg font-semibold text-white transition hover:opacity-90 hover:shadow-lg"
+                                    className="inline-flex min-w-[170px] items-center justify-center rounded-[6px] bg-gradient-to-r from-[#48b99b] to-[#5bc4a9] px-18 py-3 lg:text-lg text-sm font-semibold text-white transition hover:opacity-90 hover:shadow-lg"
                                 >
                                     Submit
                                 </button>
@@ -164,7 +142,7 @@ export default function CallbackFaqSection() {
                                             }`}
                                     >
                                         <span
-                                            className={`text-base font-medium transition ${isOpen ? "text-[#18aea1]" : "text-white"
+                                            className={`lg:text-base text-sm font-medium transition ${isOpen ? "text-[#18aea1]" : "text-white"
                                                 }`}
                                         >
                                             {faq.question}
@@ -186,7 +164,7 @@ export default function CallbackFaqSection() {
                                     >
                                         <div className="overflow-hidden">
                                             <div className="px-5 pb-5">
-                                                <p className="text-sm leading-6 text-[#6b7280]">
+                                                <p className="lg:text-sm text-xs leading-6 text-[#6b7280]">
                                                     {faq.answer}
                                                 </p>
                                             </div>

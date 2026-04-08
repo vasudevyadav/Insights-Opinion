@@ -136,10 +136,10 @@ export default function BusinessChallenge() {
                     className="lg:pt-2 lg:pl-20"
 
                 >
-                    <h2 className="mb-8 max-w-[400px] text-3xl font-light leading-[1.1] text-[#4a5370] lg:mb-0 lg:text-[45px]">
+                    <h2 className="mb-8 max-w-[400px] text-2xl font-light leading-[1.1] text-[#4a5370] lg:mb-0 lg:text-[45px]">
                         Business Challenges
                         <br />
-                        <span className="bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-3xl font-semibold leading-tight text-transparent lg:text-[45px]">
+                        <span className="bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[45px]">
                             we solve
                         </span>
                     </h2>
@@ -151,7 +151,7 @@ export default function BusinessChallenge() {
 
                 >
                     <Swiper
-                        modules={[Pagination, Autoplay]}
+                        modules={[Autoplay]}
                         slidesPerView={1}
                         spaceBetween={20}
                         pagination={{ clickable: true }}

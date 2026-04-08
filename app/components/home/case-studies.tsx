@@ -142,7 +142,7 @@ export default function CaseStudies() {
                         data-aos="fade-up"
                         data-aos-duration="900"
                     >
-                        <h2 className="bg-[linear-gradient(120deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-3xl font-normal text-transparent lg:text-[45px]">
+                        <h2 className="bg-[linear-gradient(120deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-2xl font-normal text-transparent lg:text-[45px]">
                             Case Studies
                         </h2>
                         <p className="mt-2 max-w-md text-sm leading-6 text-white/90 sm:text-base">

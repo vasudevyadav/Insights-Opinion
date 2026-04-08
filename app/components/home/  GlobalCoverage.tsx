@@ -405,7 +405,7 @@ export default function GlobalCoverage() {
                         Global
                     </h2>
 
-                    <h2 className="mb-4 bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-3xl font-semibold leading-tight text-transparent sm:text-4xl lg:text-[45px]">
+                    <h2 className="mb-4 bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent sm:text-4xl lg:text-[45px]">
                         Coverage
                     </h2>
 
@@ -422,12 +422,12 @@ export default function GlobalCoverage() {
                         consistent project management.
                     </p>
 
-                    <button
+                    <button className="lg:text-lg text-sm"
                         style={{
                             borderRadius: "9999px",
                             background: "#17ae8f",
                             padding: "12px 50px",
-                            fontSize: "18px",
+
                             fontWeight: 500,
                             color: "#fff",
                             border: "none",

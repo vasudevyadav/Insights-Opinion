@@ -66,6 +66,7 @@ export default function Footer() {
         <footer className="relative overflow-hidden bg-[#151b4a] text-white">
             <div className="mx-auto max-w-[1400px] px-5 pb-0 pt-10 sm:px-8 lg:px-14 lg:pt-12">
                 <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.15fr_0.8fr_0.95fr_1fr]">
+
                     {/* Left section */}
                     <div className="max-w-full md:max-w-[250px]">
                         <div className="mb-8 sm:mb-10">
@@ -125,8 +126,8 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Service */}
-                    <div>
+                    {/* ✅ Service (HIDDEN ON MOBILE) */}
+                    <div className="hidden md:block">
                         <h4 className="mb-5 text-[24px] font-light text-[#29c7c3] sm:mb-6 sm:text-2xl">
                             Service
                         </h4>
@@ -165,46 +166,15 @@ export default function Footer() {
                         </ul>
 
                         <div className="mt-8 flex flex-wrap items-center gap-3">
-                            <a
-                                href="https://www.facebook.com/MRInsightsopinion/"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#151b4a] transition hover:scale-105"
-                            >
-                                <Facebook size={18} />
-                            </a>
-                            <a
-                                href="https://www.instagram.com/insightsopinion/"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#151b4a] transition hover:scale-105"
-                            >
-                                <Instagram size={18} />
-                            </a>
-                            <a
-                                href="https://www.youtube.com/channel/UCjGQ2nhfxBTAszLnmJCfM0w"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#151b4a] transition hover:scale-105"
-                            >
-                                <Youtube size={18} />
-                            </a>
-                            <a
-                                href="https://x.com/insightsopn"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#151b4a] transition hover:scale-105"
-                            >
-                                <Twitter size={18} />
-                            </a>
-                            <a
-                                href="https://www.linkedin.com/company/insightsopinion"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#151b4a] transition hover:scale-105"
-                            >
-                                <Linkedin size={18} />
-                            </a>
+                            {[Facebook, Instagram, Youtube, Twitter, Linkedin].map((Icon, i) => (
+                                <a
+                                    key={i}
+                                    href="#"
+                                    className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#151b4a] transition hover:scale-105"
+                                >
+                                    <Icon size={18} />
+                                </a>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -213,22 +183,16 @@ export default function Footer() {
             {/* bottom bar */}
             <div className="mt-10 bg-[#60d4d0]">
                 <div className="mx-auto flex flex-col gap-3 px-5 py-4 text-sm font-medium text-white/90 sm:px-8 sm:text-base lg:flex-row lg:items-center lg:justify-between lg:px-14">
-                    <p className="text-left w-full">
+                    <p className="text-left lg:w-6/12 ">
                         Copyright © Insight Opinion. All rights received 2026
                     </p>
 
-                    <div className="flex flex-wrap items-center gap-2 lg:text-left text-center justify-center lg:justify-end">
-                        <a
-                            href="https://insightsopinion.com/cookies-policy/"
-                            className="transition hover:text-[#151b4a]"
-                        >
+                    <div className="flex lg:flex-row lg:w-6/12 flex-wrap items-center gap-2 lg:text-left text-center justify-center lg:justify-end">
+                        <a href="#" className="transition hover:text-[#151b4a]">
                             Cookies Policy
                         </a>
                         <span>|</span>
-                        <a
-                            href="https://insightsopinion.com/privacy-policy/"
-                            className="transition hover:text-[#151b4a]"
-                        >
+                        <a href="#" className="transition hover:text-[#151b4a]">
                             Privacy Policy
                         </a>
                     </div>

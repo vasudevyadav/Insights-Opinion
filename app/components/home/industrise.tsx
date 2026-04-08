@@ -211,13 +211,13 @@ export default function Industries() {
     return (
         <section className="px-4 py-5 sm:px-6">
             <div
-                className="mb-10 text-center"
+                className="lg:mb-10 mb-5 text-center"
                 data-aos="fade-up"
                 data-aos-duration="900"
             >
-                <h2 className="text-3xl font-normal leading-tight text-[#1a2340] lg:text-[45px]">
+                <h2 className="text-2xl font-normal leading-tight text-[#1a2340] lg:text-[45px]">
                     Industries
-                    <span className="ml-2 bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-3xl font-semibold leading-tight text-transparent lg:text-[45px]">
+                    <span className="ml-2 bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[45px]">
                         We Serve
                     </span>
                 </h2>
