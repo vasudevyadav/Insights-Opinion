@@ -1,6 +1,9 @@
 "use client";
 
+import { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
+// @ts-ignore - no type declarations for 'aos'
+import AOS from "aos";
 import GlobalCoverage from "./  GlobalCoverage";
 
 type CaseStudy = {
@@ -17,6 +20,8 @@ type CaseCardProps = {
     image: string;
     accent: string;
     large?: boolean;
+    aos?: string;
+    delay?: number;
 };
 
 const caseStudies: CaseStudy[] = [
@@ -65,11 +70,17 @@ function CaseCard({
     image,
     accent,
     large = false,
+    aos = "fade-up",
+    delay = 0,
 }: CaseCardProps) {
     return (
         <div
+            data-aos={aos}
+            data-aos-delay={delay}
+            data-aos-duration="950"
+            data-aos-anchor-placement="top-bottom"
             className={`group relative overflow-hidden rounded-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/20 hover:shadow-[0_12px_40px_rgba(0,200,255,0.08)]
-            h-[330px] sm:h-[380px] md:h-[420px] lg:${large ? "h-[430px]" : "h-[495px]"}`}
+      h-[330px] sm:h-[380px] md:h-[420px] ${large ? "lg:h-[430px]" : "lg:h-[495px]"}`}
         >
             <img
                 src={image}
@@ -106,6 +117,14 @@ export default function CaseStudies() {
     const leftCards = caseStudies.filter((_, i) => i % 2 === 0);
     const rightCards = caseStudies.filter((_, i) => i % 2 !== 0);
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            AOS.refreshHard();
+        }, 250);
+
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <div>
             <section className="relative overflow-hidden bg-[#07102b] py-12 text-white sm:py-14 lg:py-16">
@@ -118,7 +137,11 @@ export default function CaseStudies() {
                 <div className="absolute inset-y-0 right-0 w-px bg-white/10" />
 
                 <div className="relative mx-auto max-w-5xl px-4 sm:px-5 md:px-6">
-                    <div className="mb-8 lg:-mb-12">
+                    <div
+                        className="mb-8 lg:-mb-12"
+                        data-aos="fade-up"
+                        data-aos-duration="900"
+                    >
                         <h2 className="bg-[linear-gradient(120deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-3xl font-normal text-transparent lg:text-[45px]">
                             Case Studies
                         </h2>
@@ -131,24 +154,41 @@ export default function CaseStudies() {
                     <div className="lg:hidden">
                         <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth scrollbar-hide">
                             {caseStudies.map((item, i) => (
-                                <div key={i} className="min-w-full snap-center">
+                                <div
+                                    key={i}
+                                    className="min-w-full snap-center"
+                                    data-aos="fade-up"
+                                    data-aos-delay={i * 80}
+                                    data-aos-duration="900"
+                                >
                                     <CaseCard {...item} />
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    {/* Desktop - unchanged */}
+                    {/* Desktop */}
                     <div className="hidden grid-cols-1 gap-10 md:grid-cols-2 lg:grid">
                         <div className="flex flex-col gap-10 md:mt-28">
                             {leftCards.map((item, i) => (
-                                <CaseCard key={i} {...item} large={i === 0} />
+                                <CaseCard
+                                    key={i}
+                                    {...item}
+                                    large={i === 0}
+                                    aos="fade-right"
+                                    delay={i * 140}
+                                />
                             ))}
                         </div>
 
                         <div className="flex flex-col gap-10">
                             {rightCards.map((item, i) => (
-                                <CaseCard key={i} {...item} />
+                                <CaseCard
+                                    key={i}
+                                    {...item}
+                                    aos="fade-left"
+                                    delay={i * 140}
+                                />
                             ))}
                         </div>
                     </div>

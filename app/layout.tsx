@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-
+import AosProvider from "./components/AosProvider";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -75,13 +75,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.variable} ${geistMono.variable} antialiased`}
-      >
-        <html lang="en">
-          <Navbar />
-          <body className="lg:mt-20 mt-8 ">{children}</body>
-        </html>
+      <body className={`${poppins.variable} ${geistMono.variable} antialiased`}>
+        <AosProvider />
+        <Navbar />
+        <main className="lg:mt-20 mt-8">
+          {children}
+        </main>
       </body>
     </html>
   );

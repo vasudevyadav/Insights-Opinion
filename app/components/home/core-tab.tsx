@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+// @ts-ignore - no type declarations for 'aos'
+import AOS from "aos";
 
 export default function CoreTab() {
     const tabs = [
@@ -10,7 +12,7 @@ export default function CoreTab() {
             id: "quantitative",
             label: "Quantitative Research",
             heroTitle: "Quantitative Research",
-            heroImage: "_Qualitative-Research.jpg",
+            heroImage: "/_Qualitative-Research.jpg",
             description:
                 "Measure demand, track customer behavior, and evaluate opportunities through structured methods built for reliable, data-backed decisions.",
             cardsTitle: "RESEARCH METHODS",
@@ -37,7 +39,7 @@ export default function CoreTab() {
             id: "qualitative",
             label: "Qualitative Research",
             heroTitle: "Qualitative Research",
-            heroImage: "managing-Research.jpg",
+            heroImage: "/managing-Research.jpg",
             description:
                 "Understand customer motivations, perceptions, and unmet needs through deeper, discussion-led research that reveals the reasons behind decisions and behavior.",
             cardsTitle: "RESEARCH METHODS",
@@ -93,6 +95,12 @@ export default function CoreTab() {
 
     useEffect(() => {
         setCardIndex(0);
+
+        const timer = setTimeout(() => {
+            AOS.refreshHard();
+        }, 250);
+
+        return () => clearTimeout(timer);
     }, [activeTab]);
 
     useEffect(() => {
@@ -105,6 +113,14 @@ export default function CoreTab() {
 
         return () => window.removeEventListener("resize", checkScreen);
     }, []);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            AOS.refreshHard();
+        }, 200);
+
+        return () => clearTimeout(timer);
+    }, [cardIndex, isMobile]);
 
     const cardsPerView = isMobile ? 1 : 2;
     const visibleCards = activeData.services.slice(cardIndex, cardIndex + cardsPerView);
@@ -124,7 +140,11 @@ export default function CoreTab() {
     return (
         <div className="relative z-10 mx-auto max-w-7xl px-4 py-2 sm:px-6 lg:px-16">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-                <div className="flex shrink-0 items-center gap-2 lg:block">
+                <div
+                    className="flex shrink-0 items-center gap-2 lg:block"
+                    data-aos="fade-up"
+                    data-aos-duration="900"
+                >
                     <p className="text-3xl font-normal leading-none text-black lg:text-[45px]">
                         Core
                     </p>
@@ -133,7 +153,12 @@ export default function CoreTab() {
                     </h2>
                 </div>
 
-                <div className="w-full max-w-[750px]">
+                <div
+                    className="w-full max-w-[750px]"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                    data-aos-duration="900"
+                >
                     <div className="overflow-x-auto scrollbar-hide">
                         <div className="flex min-w-max gap-2 sm:grid sm:min-w-0 sm:grid-cols-3 sm:gap-0">
                             {tabs.map((tab, index) => {
@@ -158,7 +183,11 @@ export default function CoreTab() {
             </div>
 
             <div className="mt-8 grid grid-cols-1 lg:grid-cols-[1.05fr_1fr]">
-                <div>
+                <div
+                    key={`hero-${activeTab}`}
+                    data-aos="fade-right"
+                    data-aos-duration="1000"
+                >
                     <div className="relative h-[300px] overflow-hidden sm:h-[380px] lg:h-[440px] lg:w-11/12">
                         <Image
                             src={activeData.heroImage}
@@ -166,6 +195,11 @@ export default function CoreTab() {
                             fill
                             className="object-cover"
                             unoptimized
+                            onLoadingComplete={() => {
+                                setTimeout(() => {
+                                    AOS.refreshHard();
+                                }, 100);
+                            }}
                         />
                         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,25,52,0.12)_0%,rgba(10,20,48,0.72)_100%)]" />
                         <div className="absolute bottom-7 left-5 max-w-[78%]">
@@ -178,11 +212,23 @@ export default function CoreTab() {
 
                 <div className="flex h-full flex-col justify-between bg-transparent px-0 py-5 md:px-7 md:py-6">
                     <div>
-                        <p className="max-w-[460px] text-[13.5px] leading-7 text-gray-700 md:text-[15px]">
+                        <p
+                            key={`desc-${activeTab}`}
+                            className="max-w-[460px] text-[13.5px] leading-7 text-gray-700 md:text-[15px]"
+                            data-aos="fade-up"
+                            data-aos-delay="150"
+                            data-aos-duration="900"
+                        >
                             {activeData.description}
                         </p>
 
-                        <h3 className="my-5 max-w-[430px] line-clamp-2 text-[26px] font-semibold leading-[1.25] text-[#2e3540] lg:text-[27px]">
+                        <h3
+                            key={`title-${activeTab}`}
+                            className="my-5 max-w-[430px] line-clamp-2 text-[26px] font-semibold leading-[1.25] text-[#2e3540] lg:text-[27px]"
+                            data-aos="fade-up"
+                            data-aos-delay="220"
+                            data-aos-duration="900"
+                        >
                             {activeData.cardsTitle}
                         </h3>
                     </div>
@@ -191,7 +237,10 @@ export default function CoreTab() {
                         <div className={`grid gap-4 ${isMobile ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2"}`}>
                             {visibleCards.map((service, idx) => (
                                 <div
-                                    key={`${service.title}-${idx}`}
+                                    key={`${activeTab}-${service.title}-${cardIndex}-${idx}`}
+                                    data-aos="zoom-in-up"
+                                    data-aos-delay={idx * 120}
+                                    data-aos-duration="850"
                                     className="flex min-h-[100px] overflow-hidden rounded-[14px] bg-white shadow-[0_10px_30px_rgba(22,34,56,0.08)]"
                                 >
                                     <div className="relative h-auto w-[42%] min-w-[100px]">
@@ -201,6 +250,11 @@ export default function CoreTab() {
                                             fill
                                             className="object-cover"
                                             unoptimized
+                                            onLoadingComplete={() => {
+                                                setTimeout(() => {
+                                                    AOS.refresh();
+                                                }, 100);
+                                            }}
                                         />
                                     </div>
 
@@ -213,7 +267,12 @@ export default function CoreTab() {
                             ))}
                         </div>
 
-                        <div className="mt-6 flex items-center justify-center lg:justify-start">
+                        <div
+                            className="mt-6 flex items-center justify-center lg:justify-start"
+                            data-aos="fade-up"
+                            data-aos-delay="260"
+                            data-aos-duration="900"
+                        >
                             <button
                                 onClick={handlePrevCard}
                                 className="flex h-10 w-10 items-center justify-center rounded-full text-[#111827] transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-40"

@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+// @ts-ignore - no type declarations for 'aos'
+import AOS from "aos";
 import { ArrowLeft, ArrowRight, ChevronDown } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -91,6 +93,22 @@ export default function TestimonialNews() {
         },
     ];
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            AOS.refreshHard();
+        }, 250);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            AOS.refreshHard();
+        }, 180);
+
+        return () => clearTimeout(timer);
+    }, [openIndex]);
+
     const toggleAccordion = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
     };
@@ -98,17 +116,20 @@ export default function TestimonialNews() {
     const NewsCard = ({
         item,
         index,
+        delay = 0,
     }: {
         item: (typeof news)[0];
         index: number;
+        delay?: number;
     }) => {
         const isOpen = openIndex === index;
 
         return (
             <div
-                className={`group/news overflow-hidden rounded-[16px] border border-[#d7e3ef] bg-white transition-all duration-500 ease-in-out hover:border-[#1a1f52] hover:bg-[#1a1f52] ${isOpen
-                    ? "w-full md:flex-[1.5]"
-                    : "w-full md:flex-1 md:hover:flex-[1.5]"
+                data-aos="fade-up"
+                data-aos-delay={delay}
+                data-aos-duration="900"
+                className={`group/news overflow-hidden rounded-[16px] border border-[#d7e3ef] bg-white transition-all duration-500 ease-in-out hover:border-[#1a1f52] hover:bg-[#1a1f52] ${isOpen ? "w-full md:flex-[1.5]" : "w-full md:flex-1 md:hover:flex-[1.5]"
                     }`}
             >
                 <div className="relative h-[260px] w-full overflow-hidden">
@@ -117,6 +138,11 @@ export default function TestimonialNews() {
                         alt={item.title}
                         fill
                         className="object-fill transition-transform duration-500 group-hover/news:scale-105"
+                        onLoadingComplete={() => {
+                            setTimeout(() => {
+                                AOS.refresh();
+                            }, 100);
+                        }}
                     />
                 </div>
 
@@ -127,18 +153,14 @@ export default function TestimonialNews() {
                         }`}
                 >
                     <h4
-                        className={`mb-2 line-clamp-2 text-lg font-semibold transition-colors duration-500 lg:text-xl ${isOpen
-                            ? "text-white"
-                            : "text-[#1f2937] group-hover/news:text-white"
+                        className={`mb-2 line-clamp-2 text-lg font-semibold transition-colors duration-500 lg:text-xl ${isOpen ? "text-white" : "text-[#1f2937] group-hover/news:text-white"
                             }`}
                     >
                         {item.title}
                     </h4>
 
                     <p
-                        className={`mt-2 line-clamp-3 text-xs leading-5 transition-colors duration-500 lg:text-sm ${isOpen
-                            ? "text-white/75"
-                            : "text-[#667085] group-hover/news:text-white/75"
+                        className={`mt-2 line-clamp-3 text-xs leading-5 transition-colors duration-500 lg:text-sm ${isOpen ? "text-white/75" : "text-[#667085] group-hover/news:text-white/75"
                             }`}
                     >
                         {item.shortDesc}
@@ -147,47 +169,22 @@ export default function TestimonialNews() {
                     <div className="mt-3 flex items-center justify-between">
                         <button
                             onClick={() => toggleAccordion(index)}
-                            className={`inline-flex items-center gap-1 text-sm font-medium transition-colors duration-300 ${isOpen
-                                ? "text-[#7ddbd1]"
-                                : "text-[#1b224f] group-hover/news:text-white"
+                            className={`inline-flex items-center gap-1 text-sm font-medium transition-colors duration-300 ${isOpen ? "text-[#7ddbd1]" : "text-[#1b224f] group-hover/news:text-white"
                                 }`}
                         >
                             {isOpen ? "Read Less" : "Read More"}
                             <ChevronDown
                                 size={14}
-                                className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""
-                                    }`}
+                                className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
                             />
                         </button>
 
                         <ArrowRight
-                            className={`transition-colors duration-500 ${isOpen
-                                ? "text-white"
-                                : "text-[#1a1f52] group-hover/news:text-white"
+                            className={`transition-colors duration-500 ${isOpen ? "text-white" : "text-[#1a1f52] group-hover/news:text-white"
                                 }`}
                             size={18}
                         />
                     </div>
-
-                    {/* <div
-                        style={{
-                            display: "grid",
-                            gridTemplateRows: isOpen ? "1fr" : "0fr",
-                            transition: "grid-template-rows 0.4s ease",
-                        }}
-                    >
-                        <div className="overflow-hidden">
-                            <p className="mt-4 border-t border-white/20 pt-4 text-[13px] leading-6 text-white/80">
-                                {item.fullDesc}
-                            </p>
-                            <a
-                                href="#"
-                                className="mt-3 inline-flex items-center gap-2 text-[12px] font-semibold text-[#7ddbd1] transition hover:text-white"
-                            >
-                                Read Full Article <ArrowRight size={13} />
-                            </a>
-                        </div>
-                    </div> */}
                 </div>
             </div>
         );
@@ -196,50 +193,50 @@ export default function TestimonialNews() {
     return (
         <section className="relative overflow-hidden bg-[#eef5fb] py-8 lg:py-16">
             <style>{`
-                @keyframes moveLineGlow {
-                  0% { top: -140px; }
-                  100% { top: 110%; }
-                }
+        @keyframes moveLineGlow {
+          0% { top: -140px; }
+          100% { top: 110%; }
+        }
 
-                .industry-v-line {
-                  position: absolute;
-                  top: 0;
-                  height: 100%;
-                  width: 1px;
-                  background: #d5e1ec;
-                  pointer-events: none;
-                  z-index: 0;
-                }
+        .industry-v-line {
+          position: absolute;
+          top: 0;
+          height: 100%;
+          width: 1px;
+          background: #d5e1ec;
+          pointer-events: none;
+          z-index: 0;
+        }
 
-                .industry-v-line::after {
-                  content: "";
-                  position: absolute;
-                  top: -140px;
-                  left: 0;
-                  width: 100%;
-                  height: 140px;
-                  background: linear-gradient(
-                    180deg,
-                    transparent 0%,
-                    rgba(72, 214, 168, 0.15) 20%,
-                    rgba(72, 214, 168, 0.9) 50%,
-                    rgba(255,255,255,0.95) 65%,
-                    rgba(72, 214, 168, 0.6) 80%,
-                    transparent 100%
-                  );
-                  animation: moveLineGlow 3.6s linear infinite;
-                  animation-delay: var(--line-delay);
-                }
+        .industry-v-line::after {
+          content: "";
+          position: absolute;
+          top: -140px;
+          left: 0;
+          width: 100%;
+          height: 140px;
+          background: linear-gradient(
+            180deg,
+            transparent 0%,
+            rgba(72, 214, 168, 0.15) 20%,
+            rgba(72, 214, 168, 0.9) 50%,
+            rgba(255,255,255,0.95) 65%,
+            rgba(72, 214, 168, 0.6) 80%,
+            transparent 100%
+          );
+          animation: moveLineGlow 3.6s linear infinite;
+          animation-delay: var(--line-delay);
+        }
 
-                .testimonial-swiper .swiper-button-disabled {
-                  opacity: 0.35;
-                  pointer-events: none;
-                }
+        .testimonial-swiper .swiper-button-disabled {
+          opacity: 0.35;
+          pointer-events: none;
+        }
 
-                .news-swiper .swiper-slide {
-                  height: auto;
-                }
-            `}</style>
+        .news-swiper .swiper-slide {
+          height: auto;
+        }
+      `}</style>
 
             {vlines.map((line, i) => (
                 <div
@@ -257,7 +254,11 @@ export default function TestimonialNews() {
             <div className="relative z-10 mx-auto">
                 {/* TESTIMONIALS */}
                 <div className="relative mb-8 pl-6 pr-6 lg:mb-16 lg:pl-[12.6rem] lg:pr-0">
-                    <div className="mb-6 flex gap-4 pl-4 lg:pl-54">
+                    <div
+                        className="mb-6 flex gap-4 pl-4 lg:pl-54"
+                        data-aos="fade-up"
+                        data-aos-duration="900"
+                    >
                         <div>
                             <h2 className="text-2xl font-light leading-tight text-[#2f3643] sm:text-[45px]">
                                 What Our
@@ -265,8 +266,7 @@ export default function TestimonialNews() {
                             <h3
                                 className="text-[28px] font-semibold leading-tight text-transparent sm:text-[45px]"
                                 style={{
-                                    background:
-                                        "linear-gradient(90deg, #20b7a6 0%, #5da6f6 100%)",
+                                    background: "linear-gradient(90deg, #20b7a6 0%, #5da6f6 100%)",
                                     WebkitBackgroundClip: "text",
                                     WebkitTextFillColor: "transparent",
                                     backgroundClip: "text",
@@ -280,7 +280,12 @@ export default function TestimonialNews() {
                         </div>
 
                         <div className="absolute -bottom-16 right-0">
-                            <div className="mr-10 hidden items-center gap-3 md:flex lg:mr-20">
+                            <div
+                                className="mr-10 hidden items-center gap-3 md:flex lg:mr-20"
+                                data-aos="fade-left"
+                                data-aos-delay="180"
+                                data-aos-duration="900"
+                            >
                                 <button className="testimonial-prev flex h-10 w-10 items-center justify-center rounded-full border border-[#1b224f] text-[#1b224f] transition hover:bg-[#1b224f] hover:text-white">
                                     <ArrowLeft size={18} />
                                 </button>
@@ -291,93 +296,113 @@ export default function TestimonialNews() {
                         </div>
                     </div>
 
-                    <Swiper
-                        modules={[Navigation, Autoplay]}
-                        navigation={{
-                            prevEl: ".testimonial-prev",
-                            nextEl: ".testimonial-next",
-                        }}
-                        autoplay={{ delay: 2800, disableOnInteraction: false }}
-                        speed={900}
-                        loop
-                        spaceBetween={16}
-                        breakpoints={{
-                            0: {
-                                slidesPerView: 1,
-                            },
-                            768: {
-                                slidesPerView: 2,
-                            },
-                            1024: {
-                                slidesPerView: 2.5,
-                            },
-                        }}
-                        className="testimonial-swiper"
-                    >
-                        {testimonials.map((item, index) => (
-                            <SwiperSlide key={index}>
-                                <div className="group rounded-none border border-[#c7d2e2] bg-white p-4 transition-all duration-500 hover:border-[#1a1f52] hover:bg-[#1a1f52]">
-                                    <p className="min-h-[98px] line-clamp-4 text-xs leading-5 text-[#344054] transition-colors duration-500 group-hover:text-white/85 lg:text-sm">
-                                        "{item.quote}"
-                                    </p>
+                    <div data-aos="fade-up" data-aos-delay="120" data-aos-duration="950">
+                        <Swiper
+                            modules={[Navigation, Autoplay]}
+                            navigation={{
+                                prevEl: ".testimonial-prev",
+                                nextEl: ".testimonial-next",
+                            }}
+                            autoplay={{ delay: 2800, disableOnInteraction: false }}
+                            speed={900}
+                            loop
+                            spaceBetween={16}
+                            onInit={() => {
+                                setTimeout(() => {
+                                    AOS.refreshHard();
+                                }, 220);
+                            }}
+                            onSlideChange={() => {
+                                setTimeout(() => {
+                                    AOS.refresh();
+                                }, 100);
+                            }}
+                            breakpoints={{
+                                0: {
+                                    slidesPerView: 1,
+                                },
+                                768: {
+                                    slidesPerView: 2,
+                                },
+                                1024: {
+                                    slidesPerView: 2.5,
+                                },
+                            }}
+                            className="testimonial-swiper"
+                        >
+                            {testimonials.map((item, index) => (
+                                <SwiperSlide key={index}>
+                                    <div
+                                        className="group rounded-none border border-[#c7d2e2] bg-white p-4 transition-all duration-500 hover:border-[#1a1f52] hover:bg-[#1a1f52]"
+                                        data-aos="zoom-in-up"
+                                        data-aos-delay={index * 80}
+                                        data-aos-duration="850"
+                                    >
+                                        <p className="min-h-[98px] line-clamp-4 text-xs leading-5 text-[#344054] transition-colors duration-500 group-hover:text-white/85 lg:text-sm">
+                                            "{item.quote}"
+                                        </p>
 
-                                    <div className="mt-3 flex items-center justify-between gap-3">
-                                        <a
-                                            href="#"
-                                            className="inline-flex items-center gap-2 text-sm font-medium text-[#1a1f52] transition duration-500 hover:text-[#7ddbd1] group-hover:text-white"
-                                        >
-                                            {item.link}
-                                            <ArrowRight size={18} />
-                                        </a>
-                                    </div>
-
-                                    <div className="mt-5 flex items-end justify-between gap-3">
-                                        <div className="flex items-center gap-3">
-                                            <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full transition-all duration-500">
-                                                <Image
-                                                    src="/Testimonial-Icon.png"
-                                                    alt="testimonial logo"
-                                                    width={1000}
-                                                    height={1000}
-                                                    className="w-14 object-contain transition-all duration-500"
-                                                />
-                                            </div>
-
-                                            <div>
-                                                <p className="mb-1 text-xs font-semibold text-[#1a1f52] transition-colors duration-500 group-hover:text-white lg:text-sm">
-                                                    {item.company}
-                                                </p>
-                                                <p className="text-xs text-[#667085] transition-colors duration-500 group-hover:text-white/70">
-                                                    {item.author}
-                                                </p>
-                                            </div>
+                                        <div className="mt-3 flex items-center justify-between gap-3">
+                                            <a
+                                                href="#"
+                                                className="inline-flex items-center gap-2 text-sm font-medium text-[#1a1f52] transition duration-500 hover:text-[#7ddbd1] group-hover:text-white"
+                                            >
+                                                {item.link}
+                                                <ArrowRight size={18} />
+                                            </a>
                                         </div>
 
-                                        <Image
-                                            src="/inshite-sing.png"
-                                            alt="testimonial logo"
-                                            width={1000}
-                                            height={1000}
-                                            className="w-28 object-contain transition-all duration-500 group-hover:invert"
-                                        />
+                                        <div className="mt-5 flex items-end justify-between gap-3">
+                                            <div className="flex items-center gap-3">
+                                                <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full transition-all duration-500">
+                                                    <Image
+                                                        src="/Testimonial-Icon.png"
+                                                        alt="testimonial logo"
+                                                        width={1000}
+                                                        height={1000}
+                                                        className="w-14 object-contain transition-all duration-500"
+                                                    />
+                                                </div>
+
+                                                <div>
+                                                    <p className="mb-1 text-xs font-semibold text-[#1a1f52] transition-colors duration-500 group-hover:text-white lg:text-sm">
+                                                        {item.company}
+                                                    </p>
+                                                    <p className="text-xs text-[#667085] transition-colors duration-500 group-hover:text-white/70">
+                                                        {item.author}
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <Image
+                                                src="/inshite-sing.png"
+                                                alt="testimonial logo"
+                                                width={1000}
+                                                height={1000}
+                                                className="w-28 object-contain transition-all duration-500 group-hover:invert"
+                                            />
+                                        </div>
                                     </div>
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
                 </div>
 
                 {/* NEWS & ARTICLES */}
                 <div className="mx-auto max-w-5xl px-6 lg:px-0">
-                    <div className="mb-8">
+                    <div
+                        className="mb-8"
+                        data-aos="fade-up"
+                        data-aos-duration="900"
+                    >
                         <h2 className="text-[24px] font-light leading-tight text-[#2f3643] lg:text-[42px]">
                             Latest
                         </h2>
                         <h3
                             className="text-[28px] font-semibold leading-tight sm:text-[38px]"
                             style={{
-                                background:
-                                    "linear-gradient(90deg, #20b7a6 0%, #5da6f6 100%)",
+                                background: "linear-gradient(90deg, #20b7a6 0%, #5da6f6 100%)",
                                 WebkitBackgroundClip: "text",
                                 WebkitTextFillColor: "transparent",
                                 backgroundClip: "text",
@@ -388,7 +413,7 @@ export default function TestimonialNews() {
                     </div>
 
                     {/* Mobile slider */}
-                    <div className="md:hidden">
+                    <div className="md:hidden" data-aos="fade-up" data-aos-delay="120" data-aos-duration="950">
                         <Swiper
                             modules={[Autoplay]}
                             autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -396,30 +421,45 @@ export default function TestimonialNews() {
                             loop
                             spaceBetween={16}
                             slidesPerView={1}
+                            onInit={() => {
+                                setTimeout(() => {
+                                    AOS.refreshHard();
+                                }, 220);
+                            }}
+                            onSlideChange={() => {
+                                setTimeout(() => {
+                                    AOS.refresh();
+                                }, 100);
+                            }}
                             className="news-swiper"
                         >
                             {news.map((item, index) => (
                                 <SwiperSlide key={index}>
-                                    <NewsCard item={item} index={index} />
+                                    <NewsCard item={item} index={index} delay={index * 80} />
                                 </SwiperSlide>
                             ))}
                         </Swiper>
                     </div>
 
-                    {/* Desktop unchanged */}
+                    {/* Desktop */}
                     <div className="hidden space-y-5 md:block">
                         <div className="flex flex-col gap-5 md:flex-row">
-                            <NewsCard item={news[0]} index={0} />
-                            <NewsCard item={news[1]} index={1} />
+                            <NewsCard item={news[0]} index={0} delay={80} />
+                            <NewsCard item={news[1]} index={1} delay={160} />
                         </div>
 
                         <div className="flex flex-col gap-5 md:flex-row">
-                            <NewsCard item={news[2]} index={2} />
-                            <NewsCard item={news[3]} index={3} />
+                            <NewsCard item={news[2]} index={2} delay={240} />
+                            <NewsCard item={news[3]} index={3} delay={320} />
                         </div>
                     </div>
 
-                    <div className="mt-10 flex justify-center">
+                    <div
+                        className="mt-10 flex justify-center"
+                        data-aos="fade-up"
+                        data-aos-delay="120"
+                        data-aos-duration="900"
+                    >
                         <a
                             href="#"
                             className="inline-flex items-center gap-2 text-lg font-semibold text-[#1b224f] transition hover:text-[#20b7a6]"

@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+// @ts-ignore - no type declarations for 'aos'
+import AOS from "aos";
 
 const industries = [
     {
@@ -89,6 +91,7 @@ type IndustryCardProps = {
     onMouseEnter: () => void;
     onMouseLeave: () => void;
     mobileExpanded?: boolean;
+    aosDelay?: number;
 };
 
 function IndustryCard({
@@ -99,11 +102,15 @@ function IndustryCard({
     onMouseEnter,
     onMouseLeave,
     mobileExpanded = false,
+    aosDelay = 0,
 }: IndustryCardProps) {
     const showExpanded = mobileExpanded || isExpanded;
 
     return (
         <div
+            data-aos="fade-up"
+            data-aos-delay={aosDelay}
+            data-aos-duration="900"
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
             className="relative h-[250px] min-w-0 cursor-pointer overflow-hidden bg-white md:h-[240px] lg:h-[250px]"
@@ -193,9 +200,21 @@ export default function Industries() {
         industries.slice(6, 9),
     ];
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            AOS.refreshHard();
+        }, 200);
+
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <section className="px-4 py-5 sm:px-6">
-            <div className="mb-10 text-center">
+            <div
+                className="mb-10 text-center"
+                data-aos="fade-up"
+                data-aos-duration="900"
+            >
                 <h2 className="text-3xl font-normal leading-tight text-[#1a2340] lg:text-[45px]">
                     Industries
                     <span className="ml-2 bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-3xl font-semibold leading-tight text-transparent lg:text-[45px]">
@@ -206,19 +225,22 @@ export default function Industries() {
 
             <div className="mx-auto max-w-6xl">
                 {/* Mobile Slider */}
-                <div className="md:hidden">
+                <div
+                    className="md:hidden"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                    data-aos-duration="900"
+                >
                     <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth scrollbar-hide">
-                        {industries.map((ind) => (
-                            <div
-                                key={ind.id}
-                                className="min-w-full snap-center"
-                            >
+                        {industries.map((ind, index) => (
+                            <div key={ind.id} className="min-w-full snap-center">
                                 <IndustryCard
                                     {...ind}
                                     isExpanded={true}
                                     mobileExpanded={true}
                                     onMouseEnter={() => { }}
                                     onMouseLeave={() => { }}
+                                    aosDelay={index * 80}
                                 />
                             </div>
                         ))}
@@ -228,14 +250,21 @@ export default function Industries() {
                 {/* Tablet Layout */}
                 <div className="hidden flex-col gap-[14px] md:flex lg:hidden">
                     {tabletRows.map((row, rowIdx) => (
-                        <div key={rowIdx} className="flex gap-[14px]">
-                            {row.map((ind) => (
+                        <div
+                            key={rowIdx}
+                            className="flex gap-[14px]"
+                            data-aos="fade-up"
+                            data-aos-delay={rowIdx * 120}
+                            data-aos-duration="900"
+                        >
+                            {row.map((ind, colIdx) => (
                                 <IndustryCard
                                     key={ind.id}
                                     {...ind}
                                     isExpanded={hoveredId === ind.id}
                                     onMouseEnter={() => setHoveredId(ind.id)}
                                     onMouseLeave={() => setHoveredId(null)}
+                                    aosDelay={colIdx * 80}
                                 />
                             ))}
                         </div>
@@ -245,14 +274,21 @@ export default function Industries() {
                 {/* Desktop Layout */}
                 <div className="hidden flex-col gap-[14px] lg:flex">
                     {desktopRows.map((row, rowIdx) => (
-                        <div key={rowIdx} className="flex gap-[14px]">
-                            {row.map((ind) => (
+                        <div
+                            key={rowIdx}
+                            className="flex gap-[14px]"
+                            data-aos="fade-up"
+                            data-aos-delay={rowIdx * 120}
+                            data-aos-duration="900"
+                        >
+                            {row.map((ind, colIdx) => (
                                 <IndustryCard
                                     key={ind.id}
                                     {...ind}
                                     isExpanded={hoveredId === ind.id}
                                     onMouseEnter={() => setHoveredId(ind.id)}
                                     onMouseLeave={() => setHoveredId(null)}
+                                    aosDelay={colIdx * 80}
                                 />
                             ))}
                         </div>
