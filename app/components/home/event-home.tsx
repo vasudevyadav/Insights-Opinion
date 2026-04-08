@@ -65,7 +65,6 @@ export default function EventHome() {
                         <SwiperSlide key={index}>
                             <div className="group relative h-[400px] w-full overflow-hidden rounded-[10px] bg-white p-2">
 
-                                {/* ❌ TITLE REMOVED */}
 
                                 <div className="absolute inset-2 overflow-hidden rounded-[8px] transition-all duration-500 group-hover:inset-0">
                                     <Image
