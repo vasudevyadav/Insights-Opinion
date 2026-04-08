@@ -179,6 +179,7 @@ body {
     background: url(../public/home-mob.png) no-repeat;
     background-size: cover;
     width: 100%;
+    background-position: bottom;
   }
 
   .indstrybg {

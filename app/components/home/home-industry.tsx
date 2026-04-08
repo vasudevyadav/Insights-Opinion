@@ -103,7 +103,7 @@ export default function HomeIndustry() {
                         <div className="relative z-10 grid min-h-[420px] grid-cols-1 lg:grid-cols-2">
 
                             <div
-                                className="relative flex items-end justify-center px-4 pt-10 lg:px-6 min-h-[320px] lg:min-h-full"
+                                className="relative flex items-end justify-center px-4 pt-10 lg:px-6 min-h-[0px] lg:min-h-full"
                                 data-aos="fade-right"
                                 data-aos-duration="1000"
                             >
