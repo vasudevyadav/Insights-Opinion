@@ -25,7 +25,6 @@ export default function CoreSolution() {
     return (
         <section className="relative overflow-hidden bg-[#eef5fb] lg:py-14 py-6">
 
-            {/* Animation + Line Styles */}
             <style>{`
                 @keyframes moveLineGlow {
                     0% { top: -140px; }
@@ -63,7 +62,6 @@ export default function CoreSolution() {
                 }
             `}</style>
 
-            {/* ✅ Mobile Lines (Only on small screens) */}
             {mobileVlines.map((line, i) => (
                 <div
                     key={`m-${i}`}
