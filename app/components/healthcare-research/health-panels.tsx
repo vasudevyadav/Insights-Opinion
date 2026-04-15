@@ -1,0 +1,191 @@
+"use client";
+
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "aos/dist/aos.css";
+
+type FeatureCard = {
+    title: string;
+    icon: string;
+    alt: string;
+};
+
+export default function HealthPanel() {
+    const featureCards: FeatureCard[] = [
+        {
+            title: "Physicians",
+            icon: "/market-research/globle-marketing-1.png",
+            alt: "Physicians",
+        },
+        {
+            title: "Specialists",
+            icon: "/market-research/globle-marketing-1.png",
+            alt: "Specialists",
+        },
+        {
+            title: "Nurses",
+            icon: "/market-research/globle-marketing-1.png",
+            alt: "Nurses",
+        },
+        {
+            title: "Pharmacists",
+            icon: "/market-research/globle-marketing-1.png",
+            alt: "Pharmacists",
+        },
+        {
+            title: "Hospital administrators",
+            icon: "/market-research/globle-marketing-1.png",
+            alt: "Hospital administrators",
+        },
+        {
+            title: "Patients with chronic conditions",
+            icon: "/market-research/globle-marketing-1.png",
+            alt: "Patients with chronic conditions",
+        },
+    ];
+
+    return (
+        <section className="relative overflow-hidden bg-[#edf6ff] py-14 lg:py-10 health-bg">
+            <div className="pointer-events-none absolute left-0 top-0 h-full w-[34%] opacity-30">
+                <svg
+                    className="w-full"
+                    viewBox="0 0 420 700"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <defs>
+                        <linearGradient id="hexGradient" x1="0" y1="0" x2="420" y2="0">
+                            <stop offset="0%" stopColor="#9be7ff" />
+                            <stop offset="50%" stopColor="#7fd6f6" />
+                            <stop offset="100%" stopColor="#7bc9ff" />
+                        </linearGradient>
+                    </defs>
+
+                    {Array.from({ length: 45 }).map((_, i) => {
+                        const x = (i % 5) * 70;
+                        const y = Math.floor(i / 5) * 60;
+
+                        return (
+                            <polygon
+                                key={i}
+                                points={`${x + 25},${y} ${x + 50},${y + 14} ${x + 50},${y + 42} ${x + 25},${y + 56} ${x},${y + 42} ${x},${y + 14}`}
+                                stroke="url(#hexGradient)"
+                                strokeWidth="1.2"
+                                fill="none"
+                                opacity="0.6"
+                            />
+                        );
+                    })}
+                </svg>
+            </div>
+
+            <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="relative overflow-hidden rounded-[28px]">
+                    <div className="relative min-h-[330px] w-full">
+                        {/* Optional dark blue overlay to match screenshot better */}
+
+                        <div className="relative z-20 flex min-h-[330px] items-center px-5 py-8 sm:px-8 lg:min-h-[570px] lg:px-14">
+                            <div className="ml-auto lg:mr-14 -mt-20 max-w-[360px] text-white lg:max-w-[600px]">
+                                <p className="text-2xl font-medium leading-none text-[#d8efff]">
+                                    Global
+                                </p>
+
+                                <h3 className="mt-2 text-[28px] font-semibold leading-[1.08] sm:text-[45px]">
+                                    <span className="block text-[#58dff0]">Healthcare Panels</span>
+                                    <span className="block text-[#eef8ff] text-2xl font-medium ">for Research</span>
+                                </h3>
+
+                                <p className="mt-4 inline-flex rounded-md bg-gradient-to-b from-[#2f8ed8] via-[#3fb6ff] to-[#3fb6ff] px-6 py-2 text-base font-medium text-white shadow-md backdrop-blur-sm">
+                                    Explain your access to
+                                </p>
+
+                                <div className="mt-7 flex w-10/12 items-center justify-between gap-6">
+                                    <div>
+                                        <p className="text-4xl font-normal leading-none text-[#6fb0f3]">
+                                            8M+
+                                        </p>
+                                        <p className="mt-3 text-base leading-4 text-[#dcecff]">
+                                            Verified Respondents
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <p className="h-12 w-[1px] bg-[#4fe3f1]" />
+                                    </div>
+
+                                    <div>
+                                        <p className="text-4xl font-normal leading-none text-[#039ba3]">
+                                            40+
+                                        </p>
+                                        <p className="mt-3 text-base leading-4 text-[#dcecff]">
+                                            Countries
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <p className="mt-5 text-base leading-5">
+                                    <span className="text-[#49dce9]">Healthcare specialists</span>
+                                    <span className="ml-1 text-[#dcecff]">
+                                        across major therapeutic areas
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Bottom Slider */}
+                        <div className="absolute inset-x-0 bottom-0 z-30 px-2 sm:px-4 lg:px-6">
+                            <Swiper
+                                modules={[Autoplay]}
+                                spaceBetween={12}
+                                loop={true}
+                                speed={700}
+                                autoplay={{
+                                    delay: 2200,
+                                    disableOnInteraction: false,
+                                    pauseOnMouseEnter: true,
+                                }}
+                                breakpoints={{
+                                    0: { slidesPerView: 2 },
+                                    480: { slidesPerView: 2 },
+                                    768: { slidesPerView: 2.4 },
+                                    1024: { slidesPerView: 4.2 },
+                                    1280: { slidesPerView: 5.2 },
+                                }}
+                                className="industry-feature-slider"
+                            >
+                                {featureCards.map((item, index) => (
+                                    <SwiperSlide key={index}>
+                                        <div className="relative flex min-h-[70px] items-center rounded-2xl bg-white py-4 pl-14 pr-4 shadow-[0_10px_25px_rgba(15,23,42,0.12)] lg:min-h-[86px]">
+                                            <div className="absolute left-0 top-0 h-12 w-12 lg:h-14 lg:w-14">
+                                                <Image
+                                                    src={item.icon}
+                                                    alt={item.alt}
+                                                    fill
+                                                    className="object-contain"
+                                                />
+                                            </div>
+
+                                            <p className="pl-1 text-sm font-semibold leading-5 text-[#2f3850] lg:max-w-[180px] lg:text-base">
+                                                {item.title}
+                                            </p>
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                className="absolute left-0 top-0 h-[110px] w-full"
+                style={{
+                    clipPath: "polygon(0 82%, 100% 0, 100% 100%, 0 100%)",
+                }}
+            />
+        </section>
+    );
+}

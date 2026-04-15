@@ -158,6 +158,13 @@ body {
   height: 580px;
 }
 
+.health-bg {
+  background: url(../public/market-research/healthcare-panel.png) no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 650px;
+}
+
 .globe-spin {
   animation: globeSpin 26s linear infinite;
 }

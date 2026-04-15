@@ -79,6 +79,7 @@ export default function Navbar() {
                                 height={48}
                                 className="h-auto w-44 lg:w-60"
                                 priority
+                                unoptimized
                             />
                         </Link>
 
@@ -179,6 +180,7 @@ export default function Navbar() {
                                 height={40}
                                 className="h-auto w-[140px]"
                                 priority
+                                unoptimized
                             />
                             <button
                                 type="button"
