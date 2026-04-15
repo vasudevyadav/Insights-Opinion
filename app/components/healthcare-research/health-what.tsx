@@ -20,103 +20,103 @@ export default function HealthWhat() {
     ];
 
     return (
-        <section className="relative overflow-hidden bg-[#eef1f4] py-10 lg:py-14">
-            <div className="relative mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-                {/* Hexagon Pattern */}
-                <div className="pointer-events-none absolute right-[-10px] top-[8px] hidden lg:block">
-                    <svg
-                        width="250"
-                        height="180"
-                        viewBox="0 0 250 180"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="opacity-95"
-                    >
-                        {[
-                            [0, 0],
-                            [42, 0],
-                            [84, 0],
-                            [126, 0],
-                            [168, 0],
-                            [210, 0],
+        <section className="relative overflow-x-hidden bg-[#f0f7ff] py-10 lg:py-14">
+            <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+                {/* Desktop */}
+                <div className="relative mx-auto hidden h-[300px] w-full max-w-[1200px] overflow-hidden lg:block">
+                    <div
+                        className="absolute inset-0 bg-[length:100%_100%] bg-center bg-no-repeat"
+                        style={{
+                            backgroundImage: "url('/market-research/health-about.png')",
+                        }}
+                    />
 
-                            [21, 34],
-                            [63, 34],
-                            [105, 34],
-                            [147, 34],
-                            [189, 34],
-                            [231, 34],
-
-                            [0, 68],
-                            [42, 68],
-                            [84, 68],
-                            [126, 68],
-                            [168, 68],
-                            [210, 68],
-
-                            [21, 102],
-                            [63, 102],
-                            [105, 102],
-                            [147, 102],
-                            [189, 102],
-                            [231, 102],
-
-                            [0, 136],
-                            [42, 136],
-                            [84, 136],
-                            [126, 136],
-                            [168, 136],
-                            [210, 136],
-                        ].map(([x, y], i) => (
-                            <polygon
-                                key={i}
-                                points={`${x + 12},${y} ${x + 24},${y + 7} ${x + 24},${y + 21} ${x + 12},${y + 28} ${x},${y + 21} ${x},${y + 7}`}
-                                stroke="#d3edf4"
-                                strokeWidth="1.1"
-                            />
-                        ))}
-                    </svg>
-                </div>
-
-                <div className="relative flex flex-col items-center gap-8 lg:flex-row lg:justify-between lg:gap-0">
-                    {cards.map((card, i) => (
-                        <div
-                            key={i}
-                            className="relative flex w-full max-w-[290px] justify-center lg:max-w-[244px]"
-                        >
-                            {/* connector */}
-                            {i !== cards.length - 1 && (
-                                <>
-                                    <div className="absolute left-[100%] top-1/2 z-0 hidden h-[3px] w-[60px] -translate-y-1/2 bg-[#57c7cb] lg:block" />
-                                    <div className="absolute left-[calc(100%+30px)] top-1/2 z-10 hidden h-[24px] w-[24px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#57c7cb] lg:flex">
-                                        <div className="h-[8px] w-[8px] rounded-full bg-white" />
-                                    </div>
-                                </>
-                            )}
-
-                            {/* blue offset shadow layer */}
-                            <div className="absolute left-[8px] top-[6px] h-full w-full rounded-[14px] bg-[#8dbdff]" />
-
-                            {/* main card */}
-                            <div className="relative z-20 h-[276px] w-full rounded-[14px] border border-[#d8dde4] bg-white px-5 pt-7 shadow-[0_8px_18px_rgba(0,0,0,0.06)] lg:h-[276px] lg:w-[244px]">
-                                {/* border accents */}
-                                <span className="absolute left-[8px] right-[12px] top-0 h-[3px] rounded-t-[14px] bg-[#55cac1]" />
-                                <span className="absolute left-0 top-[74px] bottom-[26px] w-[3px] rounded-l-[14px] bg-[#55cac1]" />
-                                <span className="absolute right-0 top-[7px] bottom-[14px] w-[3px] rounded-r-[14px] bg-[#67a9ff]" />
-
-                                <div className="text-center">
-                                    <h3 className="mx-auto max-w-[165px] text-[13px] font-semibold leading-[1.2] text-[#76849a]">
+                    <div className="relative z-10 grid h-full grid-cols-3 gap-14">
+                        {cards.map((card, i) => (
+                            <div key={i} className="flex items-center justify-center">
+                                <div className="flex w-full flex-col items-center px-7 pt-[34px] text-center">
+                                    <h3 className="max-w-[190px] text-[15px] font-medium leading-[1.2] text-[#66758b]">
                                         {card.title}{" "}
-                                        <span className="text-[#47c0c9]">{card.highlight}</span>
+                                        <span className="font-semibold text-[#37c0c9]">
+                                            {card.highlight}
+                                        </span>
                                     </h3>
 
-                                    <p className="mx-auto mt-4 max-w-[180px] text-[11px] leading-[1.62] text-[#28384c]">
+                                    <p className="mt-4 text-[11px] leading-[1.55] text-[#26384b]">
                                         {card.desc}
                                     </p>
                                 </div>
                             </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Mobile */}
+                <div className="lg:hidden">
+                    <div className="overflow-hidden">
+                        <div className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                            {cards.map((card, i) => (
+                                <div
+                                    key={i}
+                                    className="w-full shrink-0 snap-center"
+                                >
+                                    <div className="rounded-[18px] bg-[#eaf0f5] px-5 py-6 text-center shadow-[0_6px_18px_rgba(0,0,0,0.08)]">
+                                        <h3 className="mx-auto max-w-[210px] text-[15px] font-medium leading-[1.2] text-[#66758b]">
+                                            {card.title}{" "}
+                                            <span className="font-semibold text-[#37c0c9]">
+                                                {card.highlight}
+                                            </span>
+                                        </h3>
+
+                                        <p className="mt-4 text-[11px] leading-[1.6] text-[#26384b]">
+                                            {card.desc}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    </div>
+                </div>
+
+                {/* Decorative hexagon pattern - desktop only */}
+                <div className="pointer-events-none absolute -top-10 right-[-220px] hidden w-[42%] opacity-50 lg:block">
+                    <svg
+                        className="h-full w-full"
+                        viewBox="0 0 320 520"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        preserveAspectRatio="xMidYMid slice"
+                    >
+                        <defs>
+                            <linearGradient
+                                id="hexGradient"
+                                x1="0"
+                                y1="0"
+                                x2="320"
+                                y2="0"
+                                gradientUnits="userSpaceOnUse"
+                            >
+                                <stop stopColor="#CFEAF7" />
+                                <stop offset="1" stopColor="#EAF6FB" />
+                            </linearGradient>
+                        </defs>
+
+                        {Array.from({ length: 9 }).map((_, row) =>
+                            Array.from({ length: 5 }).map((_, col) => {
+                                const x = col * 62 + (row % 2 ? 31 : 0);
+                                const y = row * 54;
+                                return (
+                                    <polygon
+                                        key={`${row}-${col}`}
+                                        points={`${x + 15},${y} ${x + 45},${y} ${x + 60},${y + 26} ${x + 45},${y + 52} ${x + 15},${y + 52} ${x},${y + 26}`}
+                                        stroke="url(#hexGradient)"
+                                        strokeWidth="1.2"
+                                        fill="none"
+                                    />
+                                );
+                            })
+                        )}
+                    </svg>
                 </div>
             </div>
         </section>

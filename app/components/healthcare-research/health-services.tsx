@@ -43,7 +43,7 @@ export default function HealthServices() {
     ];
 
     return (
-        <section className="relative overflow-hidden bg-[#edf6ff] py-14 lg:py-20">
+        <section className="relative overflow-hidden bg-[#edf6ff] py-8 lg:py-12">
             {/* Hexagon Pattern */}
             <div className="pointer-events-none absolute left-0 top-0 h-full w-[34%] opacity-30">
                 <svg
