@@ -43,9 +43,10 @@ export default function HealthServices() {
     ];
 
     return (
-        <section className="relative overflow-hidden bg-[#edf6ff] py-8 lg:py-12">
-
-
+        <section
+            data-aos="fade-up"
+            className="relative overflow-hidden bg-[#edf6ff] py-8 lg:py-12"
+        >
             {/* Added New Hexagon Pattern On Left */}
             <div className="pointer-events-none absolute -top-10 left-[-220px] hidden w-[42%] opacity-80 lg:block z-10">
                 <svg

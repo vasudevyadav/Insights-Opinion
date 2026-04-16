@@ -37,7 +37,10 @@ export default function HealthUsecases() {
     }, []);
 
     return (
-        <section className="relative w-full overflow-hidden">
+        <section
+            data-aos="fade-up"
+            className="relative w-full overflow-hidden"
+        >
             <div className="relative min-h-[150px] w-full px-4 py-6 sm:px-6 md:px-10 md:py-8">
                 <Image
                     src="/market-research/use-casses-image.png"
@@ -59,13 +62,12 @@ export default function HealthUsecases() {
                         Use Cases
                     </p>
 
-                    <p className="mt-1 text-[12px] text-white/90 sm:text-[14px] md:text-[18px] mb-5">
+                    <p className="mb-5 mt-1 text-[12px] text-white/90 sm:text-[14px] md:text-[18px]">
                         Examples:
                     </p>
 
                     <div className="relative mt-6 flex w-full items-start justify-center">
-
-                        <div className="relative z-10 flex w-full max-w-5xl flex-wrap items-start justify-center gap-y-5 md:flex-nowrap md:justify-between mb-5">
+                        <div className="relative z-10 mb-5 flex w-full max-w-5xl flex-wrap items-start justify-center gap-y-5 md:flex-nowrap md:justify-between">
                             {useCases.map((item, index) => {
                                 const isActive = activeCount > index;
 
@@ -75,7 +77,7 @@ export default function HealthUsecases() {
                                         className="flex w-[110px] flex-col items-center text-center sm:w-[120px] md:w-[135px]"
                                     >
                                         <div
-                                            className={`relative flex h-10 w-10 items-center justify-center mb-5 rounded-full border transition-all duration-500 ${isActive
+                                            className={`relative mb-5 flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-500 ${isActive
                                                 ? "border-[#34d7c7] bg-[#34d7c7]/10 shadow-[0_0_14px_rgba(52,215,199,0.35)]"
                                                 : "border-[#3f6d93] bg-[#0b2240]/30"
                                                 }`}
@@ -101,7 +103,6 @@ export default function HealthUsecases() {
                                                 />
                                             </svg>
 
-                                            {/* Pulse ring on active */}
                                             {isActive && (
                                                 <span className="absolute inset-0 rounded-full border border-[#34d7c7]/40 animate-ping" />
                                             )}
@@ -119,8 +120,6 @@ export default function HealthUsecases() {
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </section>
     );
