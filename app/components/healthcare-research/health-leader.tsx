@@ -22,7 +22,7 @@ export default function HealthLeader() {
 
     return (
         <>
-            <section className="relative overflow-hidden bg-[#edf6ff]">
+            <section className="relative overflow-hidden bg-[#edf6ff] pt-12 lg:pt-0 ">
                 <style>{`
                     .logo-row-wrap {
                         width: 100%;
@@ -109,7 +109,7 @@ export default function HealthLeader() {
                         </div>
                     </div>
 
-                    <div className="md:col-span-3 flex flex-col justify-center gap-2 lg:gap-4 lg:mb-4 mb-6">
+                    <div className="md:col-span-3 flex flex-col justify-center gap-2 lg:gap-4 lg:mb-4 mb-0">
                         <div className="logo-row-wrap">
                             <div className="logo-marquee logo-marquee-left">
                                 {repeatedFirstRow.map((brand, index) => (
@@ -149,12 +149,12 @@ export default function HealthLeader() {
                 </div>
             </section>
 
-            <section className="relative overflow-hidden bg-[#edf6ff] py-10 lg:py-14">
+            <section className="relative overflow-hidden bg-[#edf6ff] py-2 lg:py-14">
 
 
                 <div className="relative z-10 mx-auto max-w-6xl px-4">
                     <div className="grid items-center gap-8 md:grid-cols-[1.15fr_1fr]">
-                        <div className="relative mx-auto w-full max-w-[520px] overflow-hidden rounded-[22px]">
+                        <div className="relative mx-auto w-full max-w-[520px] overflow-hidden rounded-lg lg:rounded-[22px]">
                             <Image
                                 src="/market-research/Healthcare-1.jpg"
                                 alt="Healthcare market research"
@@ -170,12 +170,12 @@ export default function HealthLeader() {
                                 Healthcare Market Research
                             </p>
 
-                            <h2 className="text-3xl font-light leading-[1.1] text-[#3d4461] sm:text-4xl lg:text-[52px]">
+                            <h2 className="text-2xl  font-light leading-[1.1] text-[#3d4461] sm:text-4xl lg:text-[52px]">
                                 The Research
                                 <br />
                                 The Industry
                                 <br />
-                                <span className="bg-[linear-gradient(90deg,#1bc39a_0%,#58c5ea_48%,#5a7cf0_100%)] bg-clip-text font-semibold text-transparent">
+                                <span className=" bg-[linear-gradient(90deg,#1bc39a_0%,#58c5ea_48%,#5a7cf0_100%)] bg-clip-text font-semibold text-transparent">
                                     Actually Trusts.
                                 </span>
                             </h2>

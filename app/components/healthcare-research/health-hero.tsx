@@ -17,7 +17,7 @@ export default function HealthHero() {
                     />
 
 
-                    <div className="relative z-10 mx-auto flex min-h-[630px] max-w-7xl items-center px-5 py-14 sm:px-6 lg:min-h-[570px] lg:px-10 lg:py-0">
+                    <div className="relative z-10 mx-auto flex min-h-[500px] max-w-7xl items-center px-5 py-14 sm:px-6 lg:min-h-[570px] lg:px-10 lg:py-0">
                         <div className="grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-2">
 
                             <div className="max-w-[560px]">

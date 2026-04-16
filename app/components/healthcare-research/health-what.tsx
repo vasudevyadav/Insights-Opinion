@@ -20,10 +20,10 @@ export default function HealthWhat() {
     ];
 
     return (
-        <section className="relative overflow-x-hidden bg-[#f0f7ff] py-10 lg:py-14">
+        <section className="relative lg:overflow-hidden bg-[#f0f7ff] py-10 lg:py-14">
             <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
                 {/* Desktop */}
-                <div className="relative mx-auto hidden h-[300px] w-full max-w-[1200px] overflow-hidden lg:block">
+                <div className="relative mx-auto hidden h-[300px] w-full max-w-[1200px] overflow-hidden lg:block z-50">
                     <div
                         className="absolute inset-0 bg-[length:100%_100%] bg-center bg-no-repeat"
                         style={{
@@ -34,15 +34,14 @@ export default function HealthWhat() {
                     <div className="relative z-10 grid h-full grid-cols-3 gap-14">
                         {cards.map((card, i) => (
                             <div key={i} className="flex items-center justify-center">
-                                <div className="flex w-full flex-col items-center px-7 pt-[34px] text-center">
-                                    <h3 className="max-w-[190px] text-[15px] font-medium leading-[1.2] text-[#66758b]">
+                                <div className="flex w-full flex-col items-center px-7 text-center">
+                                    <h3 className="max-w-[95%] text-xl font-medium leading-[1.2] text-[#66758b] line-clamp-3">
                                         {card.title}{" "}
                                         <span className="font-semibold text-[#37c0c9]">
                                             {card.highlight}
                                         </span>
                                     </h3>
-
-                                    <p className="mt-4 text-[11px] leading-[1.55] text-[#26384b]">
+                                    <p className="mt-4 text-sm leading-[1.55] text-[#26384b] line-clamp-6">
                                         {card.desc}
                                     </p>
                                 </div>
@@ -79,7 +78,7 @@ export default function HealthWhat() {
                 </div>
 
                 {/* Decorative hexagon pattern - desktop only */}
-                <div className="pointer-events-none absolute -top-10 right-[-220px] hidden w-[42%] opacity-50 lg:block">
+                <div className="pointer-events-none absolute -top-10 right-[-220px] hidden w-[42%] opacity-50 lg:block z-10">
                     <svg
                         className="h-full w-full"
                         viewBox="0 0 320 520"

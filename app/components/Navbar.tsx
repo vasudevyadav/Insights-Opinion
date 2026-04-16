@@ -54,6 +54,7 @@ export default function Navbar() {
             { type: "link", name: "RESOURCES", href: "/resources" },
             { type: "link", name: "CONTACT US", href: "/contact-us" },
         ],
+
         []
     );
 

@@ -126,7 +126,7 @@ export default function CaseStudies() {
 
     return (
         <div>
-            <section className="relative overflow-hidden bg-[#edf6ff] py-12 text-white sm:py-14 lg:py-16">
+            <section className="relative overflow-hidden bg-[#edf6ff] py-8 text-white lg:py-16">
                 <div className="pointer-events-none absolute inset-0">
                     <div className="absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-cyan-500/[0.08] blur-[130px]" />
                     <div className="absolute -right-40 bottom-0 h-[500px] w-[500px] rounded-full bg-blue-600/[0.08] blur-[130px]" />

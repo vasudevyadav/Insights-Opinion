@@ -13,7 +13,7 @@ export default function WhoUsesHealthcareResearch() {
     ];
 
     return (
-        <section className="relative overflow-hidden bg-[#f4f7fa] py-10 lg:py-14">
+        <section className="relative overflow-hidden bg-[#f6fbff] py-10 lg:py-14">
             <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-10">
                 {/* Hexagon Pattern */}
                 <div className="pointer-events-none absolute -top-11 right-[-250px] hidden w-[46%] lg:block opacity-50">
@@ -61,33 +61,33 @@ export default function WhoUsesHealthcareResearch() {
                 <div className="flex flex-col items-center justify-between gap-10 lg:flex-row lg:items-center lg:gap-14">
                     {/* Left Content */}
                     <div className="w-full max-w-[430px]">
-                        <h2 className="leading-[1.05] tracking-[-0.02em] space-y-1.5">
-                            <span className="block text-[22px] text-[#3a4654] sm:text-[24px] font-normal">
+                        <h2 className="leading-[1.05] tracking-[-0.02em]">
+                            <span className="block text-xl text-[#3a4654] sm:text-xl font-normal">
                                 Who Uses
                             </span>
 
-                            <span className="block py-1 text-2xl sm:text-5xl font-semibold bg-gradient-to-r from-[#35c7c8] via-[#56c4d8] to-[#79a8ff] bg-clip-text text-transparent">
+                            <span className="block py-1 text-2xl sm:text-4xl font-semibold bg-gradient-to-r from-[#35c7c8] via-[#56c4d8] to-[#79a8ff] bg-clip-text text-transparent">
                                 Healthcare
                             </span>
 
-                            <span className="block text-2xl sm:text-5xl font-semibold bg-gradient-to-r from-[#35c7c8] via-[#56c4d8] to-[#79a8ff] bg-clip-text text-transparent mb-1">
+                            <span className="block text-2xl sm:text-4xl font-semibold bg-gradient-to-r from-[#35c7c8] via-[#56c4d8] to-[#79a8ff] bg-clip-text text-transparent mb-1">
                                 Market Research
                             </span>
 
-                            <span className=" mt-3 block text-[22px] text-[#3a4654] sm:text-[24px] font-normal">
+                            <span className=" mt-1 block text-xl text-[#3a4654] sm:text-xl font-normal">
                                 Services?
                             </span>
                         </h2>
 
-                        <ul className="mt-6 space-y-3">
+                        <ul className="mt-4 space-y-4">
                             {items.map((item, idx) => (
-                                <li key={idx} className="flex items-center gap-3">
-                                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#9ed8e6] text-lg font-medium text-[#62c5db]">
+                                <li key={idx} className="flex items-center gap-5">
+                                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#9ed8e6] text-lg font-medium text-[#62c5db]">
                                         ✓
                                     </span>
                                     <a
                                         href="#"
-                                        className={`text-[15px] leading-[1.45] text-[#5f6b78] transition hover:text-[#2b84e0] hover:underline hover:underline-offset-2 ${idx === 0 ? "font-medium text-[#4b95d9]" : ""
+                                        className={`text-lg leading-[1.45] text-[#5f6b78] transition hover:text-[#2b84e0] hover:underline hover:underline-offset-2 ${idx === 0 ? "font-medium text-[#4b95d9]" : ""
                                             }`}
                                     >
                                         {item}
@@ -98,13 +98,13 @@ export default function WhoUsesHealthcareResearch() {
                     </div>
 
                     {/* Right Image */}
-                    <div className="relative w-full max-w-[550px]">
+                    <div className="relative w-full max-w-[600px]">
                         <div className="overflow-hidden rounded-[26px]">
                             <Image
                                 src="/market-research/uses-image.png"
                                 alt="Healthcare market research"
                                 width={540}
-                                height={320}
+                                height={600}
                                 className="h-auto w-full object-cover"
                                 priority
                             />

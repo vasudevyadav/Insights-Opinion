@@ -50,43 +50,12 @@ export default function HealthPanel() {
     return (
         <div className="bg-[#edf6ff]">
             <section className="relative overflow-hidden bg-[#edf6ff] py-14 lg:py-10 health-bg">
-                <div className="pointer-events-none absolute left-0 top-0 h-full w-[34%] opacity-30">
-                    <svg
-                        className="w-full"
-                        viewBox="0 0 420 700"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <defs>
-                            <linearGradient id="hexGradient" x1="0" y1="0" x2="420" y2="0">
-                                <stop offset="0%" stopColor="#9be7ff" />
-                                <stop offset="50%" stopColor="#7fd6f6" />
-                                <stop offset="100%" stopColor="#7bc9ff" />
-                            </linearGradient>
-                        </defs>
 
-                        {Array.from({ length: 45 }).map((_, i) => {
-                            const x = (i % 5) * 70;
-                            const y = Math.floor(i / 5) * 60;
-
-                            return (
-                                <polygon
-                                    key={i}
-                                    points={`${x + 25},${y} ${x + 50},${y + 14} ${x + 50},${y + 42} ${x + 25},${y + 56} ${x},${y + 42} ${x},${y + 14}`}
-                                    stroke="url(#hexGradient)"
-                                    strokeWidth="1.2"
-                                    fill="none"
-                                    opacity="0.6"
-                                />
-                            );
-                        })}
-                    </svg>
-                </div>
 
                 <div className="relative z-10 mx-auto px-2 lg:px-0">
                     <div className="relative rounded-[28px]">
-                        <div className="relative min-h-[430px] w-full lg:min-h-[670px]">
-                            <div className="relative z-20 flex min-h-[330px] items-center px-5 py-8 sm:px-8 lg:min-h-[570px] lg:px-14">
+                        <div className="relative min-h-[660px] w-full lg:min-h-[670px]">
+                            <div className="relative z-20 flex min-h-[600px] items-center px-5 py-8 sm:px-8 lg:min-h-[570px] lg:px-14">
                                 <div className="ml-auto lg:mr-14 -mt-20 max-w-[360px] text-white lg:max-w-[600px]">
                                     <p className="text-2xl font-medium leading-none text-[#d8efff]">
                                         Global
@@ -149,7 +118,7 @@ export default function HealthPanel() {
                                         pauseOnMouseEnter: true,
                                     }}
                                     breakpoints={{
-                                        0: { slidesPerView: 1.2 },
+                                        0: { slidesPerView: 2 },
                                         480: { slidesPerView: 2 },
                                         768: { slidesPerView: 2.8 },
                                         1024: { slidesPerView: 4.2 },
@@ -182,7 +151,7 @@ export default function HealthPanel() {
                 </div>
 
                 <div
-                    className="absolute left-0 top-0 h-[110px] w-full"
+                    className="absolute left-0 top-0 lg:h-[110px] h-0 w-full"
                     style={{
                         clipPath: "polygon(0 82%, 100% 0, 100% 100%, 0 100%)",
                     }}
