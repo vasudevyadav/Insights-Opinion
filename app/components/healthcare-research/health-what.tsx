@@ -1,5 +1,10 @@
 "use client";
 
+import { useEffect } from "react";
+// @ts-ignore - no type declarations for 'aos'
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export default function HealthWhat() {
     const cards = [
         {
@@ -19,8 +24,19 @@ export default function HealthWhat() {
         },
     ];
 
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: "ease-out",
+        });
+    }, []);
+
     return (
-        <section className="relative lg:overflow-hidden bg-[#f0f7ff] py-10 lg:py-14">
+        <section
+            data-aos="fade-up"
+            className="relative lg:overflow-hidden bg-[#f0f7ff] py-10 lg:py-14"
+        >
             <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
                 {/* Desktop */}
                 <div className="relative mx-auto hidden h-[300px] w-full max-w-[1200px] overflow-hidden lg:block z-50">
