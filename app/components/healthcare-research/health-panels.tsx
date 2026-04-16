@@ -49,19 +49,18 @@ export default function HealthPanel() {
 
     return (
         <div className="bg-[#edf6ff]">
-            <section className="relative overflow-hidden bg-[#edf6ff] py-14 lg:py-10 health-bg">
-
+            <section className="relative overflow-hidden bg-[#edf6ff] py-14 pt-1 lg:pt-10 lg:py-10 health-bg">
 
                 <div className="relative z-10 mx-auto px-2 lg:px-0">
                     <div className="relative rounded-[28px]">
-                        <div className="relative min-h-[660px] w-full lg:min-h-[670px]">
-                            <div className="relative z-20 flex min-h-[600px] items-center px-5 py-8 sm:px-8 lg:min-h-[570px] lg:px-14">
+                        <div className="relative min-h-[570px] w-full lg:min-h-[670px]">
+                            <div className="relative z-20 flex min-h-[550px] items-center px-5 py-8 sm:px-8 lg:min-h-[570px] lg:px-14">
                                 <div className="ml-auto lg:mr-14 -mt-20 max-w-[360px] text-white lg:max-w-[600px]">
-                                    <p className="text-2xl font-medium leading-none text-[#d8efff]">
+                                    <p className="text-xl lg:text-2xl font-medium leading-none text-[#d8efff]">
                                         Global
                                     </p>
 
-                                    <h3 className="mt-2 text-[28px] font-semibold leading-[1.08] sm:text-[45px]">
+                                    <h3 className="mt-2 text-xl font-semibold leading-[1.08] sm:text-[45px]">
                                         <span className="block text-[#58dff0]">Healthcare Panels</span>
                                         <span className="block text-2xl font-medium text-[#eef8ff]">
                                             for Research
@@ -138,7 +137,7 @@ export default function HealthPanel() {
                                                     />
                                                 </div>
 
-                                                <p className="pl-1 text-sm font-semibold leading-5 text-[#2f3850] lg:max-w-[180px] lg:text-base">
+                                                <p className="pl-1 text-sm font-semibold leading-5 text-[#2f3850] lg:max-w-[180px] lg:text-base lg:line-clamp-3 line-clamp-2">
                                                     {item.title}
                                                 </p>
                                             </div>

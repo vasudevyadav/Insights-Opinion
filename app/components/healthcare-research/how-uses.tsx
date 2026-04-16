@@ -77,7 +77,7 @@ export default function WhoUsesHealthcareResearch() {
                     <div
                         data-aos="fade-up"
                         data-aos-delay="100"
-                        className="w-full max-w-[430px]"
+                        className="w-full max-w-[430px] order-2 lg:order-1"
                     >
                         <h2 className="leading-[1.05] tracking-[-0.02em]">
                             <span className="block text-xl text-[#3a4654] sm:text-xl font-normal">
@@ -124,7 +124,7 @@ export default function WhoUsesHealthcareResearch() {
                     <div
                         data-aos="fade-up"
                         data-aos-delay="250"
-                        className="relative w-full max-w-[600px]"
+                        className="relative w-full max-w-[600px] order-1 lg:order-2"
                     >
                         <div className="overflow-hidden rounded-[26px]">
                             <Image

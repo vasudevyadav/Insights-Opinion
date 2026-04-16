@@ -206,4 +206,9 @@ body {
     height: 550px;
   }
 
+  .health-bg{
+    height: 500px;
+    background-position: bottom;
+  }
+
 }
