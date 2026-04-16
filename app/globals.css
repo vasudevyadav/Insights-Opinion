@@ -158,9 +158,27 @@ body {
   height: 580px;
 }
 
+.health-bg {
+  background: url(../public/market-research/healthcare-panel.png) no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 650px;
+}
+
 .globe-spin {
   animation: globeSpin 26s linear infinite;
 }
+
+/* Hide scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 
 @keyframes globeSpin {
   from {

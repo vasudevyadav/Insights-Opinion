@@ -13,30 +13,76 @@ type NavLinkItem = {
     href: string;
 };
 
+type NavDropdownKey = "about" | "services" | "research" | "resources";
+
 type NavDropdownItem = {
     type: "dropdown";
     name: string;
-    key: "services";
+    key: NavDropdownKey;
     href?: string;
 };
 
 type NavItem = NavLinkItem | NavDropdownItem;
 
-const mobileServiceItems = [
-    { name: "Market Research", href: "/services/market-research" },
-    { name: "Survey Programming", href: "/services/survey-programming" },
-    { name: "Data Collection", href: "/services/data-collection" },
-    { name: "Healthcare Research", href: "/services/healthcare-research" },
-    { name: "B2B Research", href: "/services/b2b-research" },
-    { name: "Global Panels", href: "/services/global-panels" },
+const mobileDropdownItems: Record<
+    Exclude<NavDropdownKey, "services">,
+    { name: string; href: string }[]
+> = {
+    about: [
+        { name: "Our Company", href: "/about-us" },
+        { name: "Leadership", href: "/about-us/leadership" },
+        { name: "Our Journey", href: "/about-us/our-journey" },
+    ],
+    research: [
+        { name: "Healthcare Research", href: "/healthcare-research" },
+        { name: "Case Studies", href: "/platform/case-studies" },
+        { name: "Insights", href: "/platform/insights" },
+    ],
+    resources: [
+        { name: "Blogs", href: "/resources/blogs" },
+        { name: "Whitepapers", href: "/resources/whitepapers" },
+        { name: "Reports", href: "/resources/reports" },
+    ],
+};
+
+const mobileServiceGroups = [
+    {
+        title: "Quantitative Research",
+        items: [
+            { name: "Global Panel", href: "#" },
+            { name: "CATI", href: "#" },
+            { name: "CAPI", href: "#" },
+            { name: "CLT", href: "#" },
+        ],
+    },
+    {
+        title: "Qualitative Research",
+        items: [
+            { name: "Focus Group Discussions", href: "#" },
+            { name: "In-Depth Reviews", href: "#" },
+            { name: "In-Home Usage Testings", href: "#" },
+            { name: "Mystery Shopping", href: "#" },
+        ],
+    },
+    {
+        title: "Support Services",
+        items: [
+            { name: "Support Services", href: "#" },
+            { name: "Survey Programming", href: "#" },
+            { name: "Translation", href: "#" },
+            { name: "Data Insights", href: "#" },
+        ],
+    },
 ];
 
 export default function Navbar() {
     const pathname = usePathname();
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [servicesOpen, setServicesOpen] = useState(false);
-    const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+    const [openDropdown, setOpenDropdown] = useState<NavDropdownKey | null>(null);
+    const [mobileOpenDropdowns, setMobileOpenDropdowns] = useState<
+        Partial<Record<NavDropdownKey, boolean>>
+    >({});
 
     useEffect(() => {
         document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
@@ -47,28 +93,29 @@ export default function Navbar() {
 
     const navItems: NavItem[] = useMemo(
         () => [
-            { type: "link", name: "ABOUT", href: "/about-us" },
+            { type: "dropdown", name: "ABOUT", key: "about", href: "/about-us" },
             { type: "dropdown", name: "SERVICES", key: "services", href: "/services" },
             { type: "link", name: "INDUSTRIES", href: "/industries" },
-            { type: "link", name: "PLATFORM", href: "/platform" },
-            { type: "link", name: "RESOURCES", href: "/resources" },
+            { type: "dropdown", name: "RESEARCH", key: "research", href: "/platform" },
+            { type: "dropdown", name: "RESOURCES", key: "resources", href: "/resources" },
             { type: "link", name: "CONTACT US", href: "/contact-us" },
         ],
         []
     );
 
-    const mobileNavLinks = useMemo(
-        () =>
-            navItems.filter((item): item is NavLinkItem => item.type === "link"),
-        [navItems]
-    );
-
     const isActive = (path: string) => pathname === path;
-    const isServicesActive = pathname.startsWith("/services");
+    const isPathActive = (path?: string) => !!path && pathname.startsWith(path);
+
+    const toggleMobileDropdown = (key: NavDropdownKey) => {
+        setMobileOpenDropdowns((prev) => ({
+            ...prev,
+            [key]: !prev[key],
+        }));
+    };
 
     return (
         <>
-            <header className="fixed top-0 z-50 w-full">
+            <header className="fixed top-0 z-80 w-full">
                 <div className="header-image">
                     <div className="mx-auto flex h-18 max-w-[1380px] items-center justify-between px-6 lg:h-24 lg:px-8">
                         <Link href="/" className="flex items-center">
@@ -79,6 +126,7 @@ export default function Navbar() {
                                 height={48}
                                 className="h-auto w-44 lg:w-60"
                                 priority
+                                unoptimized
                             />
                         </Link>
 
@@ -112,24 +160,47 @@ export default function Navbar() {
                                     <div
                                         key={item.key}
                                         className="relative"
-                                        onMouseEnter={() => setServicesOpen(true)}
-                                        onMouseLeave={() => setServicesOpen(false)}
+                                        onMouseEnter={() => setOpenDropdown(item.key)}
+                                        onMouseLeave={() => setOpenDropdown(null)}
                                     >
                                         <Link
-                                            href={item.href || "/services"}
-                                            className={`flex items-center gap-1 text-[17px] font-semibold transition-colors ${isServicesActive
+                                            href={item.href || "#"}
+                                            className={`flex items-center gap-1 text-[17px] font-semibold transition-colors ${isPathActive(item.href)
                                                 ? "text-[#14d8d0]"
                                                 : "text-white hover:text-[#14d8d0]"
                                                 }`}
                                         >
                                             {item.name}
                                             <ChevronDown
-                                                className={`h-4 w-4 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""
+                                                className={`h-4 w-4 transition-transform duration-300 ${openDropdown === item.key ? "rotate-180" : ""
                                                     }`}
                                             />
                                         </Link>
 
-                                        <MegaMenu open={servicesOpen} />
+                                        {item.key === "services" ? (
+                                            <MegaMenu open={openDropdown === "services"} />
+                                        ) : (
+                                            <div
+                                                className={`absolute left-0 top-3 z-50 mt-4 w-64 rounded-lg border border-gray-200 bg-white p-2 shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition-all duration-300 ${openDropdown === item.key
+                                                    ? "pointer-events-auto translate-y-0 opacity-100"
+                                                    : "pointer-events-none -translate-y-3 opacity-0"
+                                                    }`}
+                                            >
+                                                <div className="space-y-1">
+                                                    {mobileDropdownItems[item.key as Exclude<NavDropdownKey, "services">].map(
+                                                        (subItem) => (
+                                                            <Link
+                                                                key={subItem.href}
+                                                                href={subItem.href}
+                                                                className="block rounded-xl px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50 hover:text-[#4f46e5]"
+                                                            >
+                                                                {subItem.name}
+                                                            </Link>
+                                                        )
+                                                    )}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 );
                             })}
@@ -179,6 +250,7 @@ export default function Navbar() {
                                 height={40}
                                 className="h-auto w-[140px]"
                                 priority
+                                unoptimized
                             />
                             <button
                                 type="button"
@@ -191,78 +263,101 @@ export default function Navbar() {
                         </div>
 
                         <div className="flex flex-col space-y-2">
-                            {mobileNavLinks.slice(0, 1).map((item) => (
-                                <Link
-                                    key={item.href}
-                                    href={item.href}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className={`rounded-lg px-4 py-3 text-sm font-medium ${isActive(item.href)
-                                        ? "bg-white/10 text-[#14d8d0]"
-                                        : "text-white hover:bg-white/10"
-                                        }`}
-                                >
-                                    {item.name}
-                                </Link>
-                            ))}
-
-                            <div className="rounded-lg">
-                                <div className="flex items-center gap-2">
-                                    <Link
-                                        href="/services"
-                                        onClick={() => setMobileMenuOpen(false)}
-                                        className={`flex-1 rounded-lg px-4 py-3 text-sm font-medium ${isServicesActive
-                                            ? "bg-white/10 text-[#14d8d0]"
-                                            : "text-white hover:bg-white/10"
-                                            }`}
-                                    >
-                                        SERVICES
-                                    </Link>
-
-                                    <button
-                                        type="button"
-                                        onClick={() => setMobileServicesOpen((prev) => !prev)}
-                                        className="rounded-lg p-3 text-white hover:bg-white/10"
-                                        aria-label="Toggle services"
-                                    >
-                                        <ChevronDown
-                                            className={`h-4 w-4 transition-transform duration-300 ${mobileServicesOpen ? "rotate-180" : ""
+                            {navItems.map((item) => {
+                                if (item.type === "link") {
+                                    return (
+                                        <Link
+                                            key={item.href}
+                                            href={item.href}
+                                            onClick={() => setMobileMenuOpen(false)}
+                                            className={`rounded-lg px-4 py-3 text-sm font-medium ${isActive(item.href)
+                                                ? "bg-white/10 text-[#14d8d0]"
+                                                : "text-white hover:bg-white/10"
                                                 }`}
-                                        />
-                                    </button>
-                                </div>
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    );
+                                }
 
-                                {mobileServicesOpen && (
-                                    <div className="ml-3 mt-2 space-y-1">
-                                        {mobileServiceItems.map((service) => (
+                                return (
+                                    <div key={item.key} className="rounded-lg">
+                                        <div className="flex items-center gap-2">
                                             <Link
-                                                key={service.href}
-                                                href={service.href}
+                                                href={item.href || "#"}
                                                 onClick={() => setMobileMenuOpen(false)}
-                                                className={`block rounded-lg px-4 py-2 text-sm ${isActive(service.href)
+                                                className={`flex-1 rounded-lg px-4 py-3 text-sm font-medium ${isPathActive(item.href)
                                                     ? "bg-white/10 text-[#14d8d0]"
-                                                    : "text-white/90 hover:bg-white/10"
+                                                    : "text-white hover:bg-white/10"
                                                     }`}
                                             >
-                                                {service.name}
+                                                {item.name}
                                             </Link>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
 
-                            {mobileNavLinks.slice(1).map((item) => (
-                                <Link
-                                    key={item.href}
-                                    href={item.href}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className={`rounded-lg px-4 py-3 text-sm font-medium ${isActive(item.href)
-                                        ? "bg-white/10 text-[#14d8d0]"
-                                        : "text-white hover:bg-white/10"
-                                        }`}
-                                >
-                                    {item.name}
-                                </Link>
-                            ))}
+                                            <button
+                                                type="button"
+                                                onClick={() => toggleMobileDropdown(item.key)}
+                                                className="rounded-lg p-3 text-white hover:bg-white/10"
+                                                aria-label={`Toggle ${item.name}`}
+                                            >
+                                                <ChevronDown
+                                                    className={`h-4 w-4 transition-transform duration-300 ${mobileOpenDropdowns[item.key] ? "rotate-180" : ""
+                                                        }`}
+                                                />
+                                            </button>
+                                        </div>
+
+                                        {mobileOpenDropdowns[item.key] && (
+                                            <div className="ml-3 mt-2 space-y-2">
+                                                {item.key === "services" ? (
+                                                    mobileServiceGroups.map((group) => (
+                                                        <div
+                                                            key={group.title}
+                                                            className="rounded-lg bg-white/5 p-3"
+                                                        >
+                                                            <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-[#14d8d0]">
+                                                                {group.title}
+                                                            </p>
+
+                                                            <div className="space-y-1">
+                                                                {group.items.map((subItem) => (
+                                                                    <Link
+                                                                        key={`${group.title}-${subItem.name}`}
+                                                                        href={subItem.href}
+                                                                        onClick={() => setMobileMenuOpen(false)}
+                                                                        className={`block rounded-lg px-3 py-2 text-sm ${isActive(subItem.href)
+                                                                            ? "bg-white/10 text-[#14d8d0]"
+                                                                            : "text-white/90 hover:bg-white/10"
+                                                                            }`}
+                                                                    >
+                                                                        {subItem.name}
+                                                                    </Link>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    ))
+                                                ) : (
+                                                    mobileDropdownItems[
+                                                        item.key as Exclude<NavDropdownKey, "services">
+                                                    ].map((subItem) => (
+                                                        <Link
+                                                            key={subItem.href}
+                                                            href={subItem.href}
+                                                            onClick={() => setMobileMenuOpen(false)}
+                                                            className={`block rounded-lg px-4 py-2 text-sm ${isActive(subItem.href)
+                                                                ? "bg-white/10 text-[#14d8d0]"
+                                                                : "text-white/90 hover:bg-white/10"
+                                                                }`}
+                                                        >
+                                                            {subItem.name}
+                                                        </Link>
+                                                    ))
+                                                )}
+                                            </div>
+                                        )}
+                                    </div>
+                                );
+                            })}
 
                             <Link
                                 href="/contact-us"
