@@ -7,11 +7,10 @@ export default function HealthHero() {
 
 
                     <div
-                        className="absolute inset-0 "
+                        className="absolute inset-0 lg:bg-bottom"
                         style={{
                             backgroundImage: "url('/market-research/reacher-bg.png')",
                             backgroundSize: "cover",
-                            backgroundPosition: " bottom ",
                             backgroundRepeat: "no-repeat",
                         }}
                     />
