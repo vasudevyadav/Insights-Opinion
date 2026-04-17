@@ -3,17 +3,23 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-const useCases = [
-    "Product Launch Research",
-    "Treatment Adoption Analysis",
-    "Patient Journey Research",
-    "Brand Perception Studies",
-    "Healthcare Pricing Research",
-];
+type HealthUsecasesData = {
+    heading?: string;
+    subheading?: string;
+    exampleLabel?: string;
+    backgroundImage?: string;
+    backgroundAlt?: string;
+    useCases?: readonly string[];
+};
 
-export default function HealthUsecases() {
+type HealthUsecasesProps = {
+    data?: HealthUsecasesData;
+};
+
+export default function HealthUsecases({ data }: HealthUsecasesProps) {
+    const useCases = data?.useCases || [];
     const [activeCount, setActiveCount] = useState(0);
-    const timerRef = useRef<NodeJS.Timeout[]>([]);
+    const timerRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
     const startAnimation = () => {
         timerRef.current.forEach(clearTimeout);
@@ -24,6 +30,7 @@ export default function HealthUsecases() {
             const timer = setTimeout(() => {
                 setActiveCount(i + 1);
             }, i * 500);
+
             timerRef.current.push(timer);
         });
     };
@@ -34,17 +41,14 @@ export default function HealthUsecases() {
         return () => {
             timerRef.current.forEach(clearTimeout);
         };
-    }, []);
+    }, [useCases.length]);
 
     return (
-        <section
-            data-aos="fade-up"
-            className="relative w-full overflow-hidden"
-        >
+        <section data-aos="fade-up" className="relative w-full overflow-hidden">
             <div className="relative min-h-[150px] w-full px-4 py-6 sm:px-6 md:px-10 md:py-8">
                 <Image
-                    src="/market-research/use-casses-image.png"
-                    alt="Healthcare use cases background"
+                    src={data?.backgroundImage || "/market-research/use-casses-image.png"}
+                    alt={data?.backgroundAlt || "Healthcare use cases background"}
                     fill
                     priority
                     className="object-cover object-center"
@@ -55,15 +59,15 @@ export default function HealthUsecases() {
 
                 <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center text-center">
                     <h2 className="text-[24px] font-semibold leading-tight text-[#35d1c6] sm:text-[30px] md:text-[40px]">
-                        Healthcare Market Research
+                        {data?.heading || "Healthcare Market Research"}
                     </h2>
 
                     <p className="mt-1 text-[20px] font-light leading-none text-white sm:text-[26px] md:text-[38px]">
-                        Use Cases
+                        {data?.subheading || "Use Cases"}
                     </p>
 
                     <p className="mb-5 mt-1 text-[12px] text-white/90 sm:text-[14px] md:text-[18px]">
-                        Examples:
+                        {data?.exampleLabel || "Examples:"}
                     </p>
 
                     <div className="relative mt-6 flex w-full items-start justify-center">
@@ -78,8 +82,8 @@ export default function HealthUsecases() {
                                     >
                                         <div
                                             className={`relative mb-5 flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-500 ${isActive
-                                                ? "border-[#34d7c7] bg-[#34d7c7]/10 shadow-[0_0_14px_rgba(52,215,199,0.35)]"
-                                                : "border-[#3f6d93] bg-[#0b2240]/30"
+                                                    ? "border-[#34d7c7] bg-[#34d7c7]/10 shadow-[0_0_14px_rgba(52,215,199,0.35)]"
+                                                    : "border-[#3f6d93] bg-[#0b2240]/30"
                                                 }`}
                                         >
                                             <svg
