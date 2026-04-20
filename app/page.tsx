@@ -26,7 +26,6 @@ export default function Home() {
       <TestimonialNews />
       <CallbackFaqSection />
       <BookDemo />
-      <Footer />
     </section>
   );
 }

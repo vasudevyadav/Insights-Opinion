@@ -29,14 +29,14 @@ const mobileDropdownItems: Record<
     { name: string; href: string }[]
 > = {
     about: [
-        { name: "Our Company", href: "/about-us" },
+        { name: "Our Story", href: "/about-us" },
         { name: "Leadership", href: "/about-us/leadership" },
         { name: "Our Journey", href: "/about-us/our-journey" },
     ],
     research: [
-        { name: "Healthcare Research", href: "/healthcare-research" },
-        { name: "Case Studies", href: "/platform/case-studies" },
-        { name: "Insights", href: "/platform/insights" },
+        { name: "Healthcare Research", href: "/research/healthcare-research" },
+        { name: "Consumer Research", href: "/research/consumer-research" },
+        { name: "B2B Research", href: "/research/b2b-research" },
     ],
     resources: [
         { name: "Blogs", href: "/resources/blogs" },
