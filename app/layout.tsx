@@ -3,6 +3,7 @@ import { Poppins, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import AosProvider from "./components/AosProvider";
+import Footer from "./components/home/footer";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -21,25 +22,25 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Insights-Opinion Dental Hospitals",
+    default: "Best Market Research Company | Best Market Research Firms",
     template: "%s",
   },
   description:
-    "Insights-Opinion Dental Hospitals offers advanced dental care, painless treatments, expert dentists, and modern technology across Hyderabad.",
-  applicationName: "Insights-Opinion Dental Hospitals",
-  authors: [{ name: "Insights-Opinion Dental Hospitals" }],
-  creator: "Insights-Opinion Dental Hospitals",
-  publisher: "Insights-Opinion Dental Hospitals",
+    "Insights Opinion is a leading market research and consulting company in USA specializing in quantitative and qualitative data analysis, Delivered by experienced experts. Contact us now!",
+  applicationName: "Best Market Research Company ",
+  authors: [{ name: "Best Market Research Company " }],
+  creator: "Best Market Research Company ",
+  publisher: "Best Market Research Company ",
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
-    title: "Insights-Opinion Dental Hospitals",
+    title: "Best Market Research Company ",
     description:
-      "Insights-Opinion Dental Hospitals offers advanced dental care, painless treatments, expert dentists, and modern technology across Hyderabad.",
+      "Insights Opinion is a leading market research and consulting company in USA specializing in quantitative and qualitative data analysis, Delivered by experienced experts. Contact us now!",
     url: siteUrl,
-    siteName: "Insights-Opinion Dental Hospitals",
+    siteName: "Best Market Research Company ",
     type: "website",
     locale: "en_IN",
     images: [
@@ -47,15 +48,15 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Insights-Opinion Dental Hospitals",
+        alt: "Best Market Research Company ",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Insights-Opinion Dental Hospitals",
+    title: "Best Market Research Company ",
     description:
-      "Insights-Opinion Dental Hospitals offers advanced dental care, painless treatments, expert dentists, and modern technology across Hyderabad.",
+      "Best Market Research Company  offers advanced dental care, painless treatments, expert dentists, and modern technology across Hyderabad.",
     images: ["/og-image.jpg"],
   },
   icons: {
@@ -81,6 +82,7 @@ export default function RootLayout({
         <main className="lg:mt-20 mt-8">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );

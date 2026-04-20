@@ -45,7 +45,7 @@ export default async function ResearchSlugPage({
       <TestimonialHealth />
       <CallbackFaqHealth />
       <BookDemoHealth />
-      <Footer />
+     
     </section>
   );
 }

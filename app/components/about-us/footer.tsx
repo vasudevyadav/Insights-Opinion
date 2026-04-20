@@ -65,17 +65,17 @@ export default function Footer() {
     return (
         <footer className="relative overflow-hidden bg-[#151b4a] text-white">
             <div className="mx-auto max-w-[1400px] px-5 pb-0 pt-10 sm:px-8 lg:px-14 lg:pt-12">
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-[1.15fr_0.8fr_0.95fr_1fr]">
+                <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.15fr_0.8fr_0.95fr_1fr]">
 
                     {/* Left section */}
                     <div className="max-w-full md:max-w-[250px]">
-                        <div className="mb-4 sm:mb-10">
+                        <div className="mb-8 sm:mb-10">
                             <Image
                                 src="/logo.png"
                                 alt="Insights Opinion"
                                 width={170}
                                 height={34}
-                                className="h-auto lg:w-auto w-48"
+                                className="h-auto w-auto"
                             />
                         </div>
 
