@@ -22,6 +22,7 @@ export default function AosProvider() {
         offset: 80,
         anchorPlacement: "top-bottom",
         startEvent: "load",
+        disable: "mobile",
       });
       timer = setTimeout(() => AOS.refreshHard(), 400);
     });

@@ -40,7 +40,14 @@ export default function HealthPanel({ data }: HealthPanelProps) {
 
   return (
     <div className="bg-[#edf6ff]">
-      <section className="health-bg relative overflow-hidden bg-[#edf6ff] py-14 pt-1 lg:py-10 lg:pt-10">
+      <section className="relative overflow-hidden bg-[#edf6ff] py-14 pt-1 lg:py-10 lg:pt-10 min-h-[500px] lg:h-[650px]">
+        <Image
+          src="/market-research/healthcare-panel.png"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-bottom lg:object-center"
+        />
         <div className="relative z-10 mx-auto px-2 lg:px-0">
           <div className="relative rounded-[28px]">
             <div className="relative min-h-[570px] w-full lg:min-h-[670px]">
