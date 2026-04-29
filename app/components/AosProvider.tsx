@@ -10,20 +10,26 @@ export default function AosProvider() {
   const pathname = usePathname();
 
   useEffect(() => {
-    AOS.init({
-      duration: 900,
-      easing: "ease-out-cubic",
-      once: true,
-      mirror: false,
-      offset: 80,
-      anchorPlacement: "top-bottom",
+    let rafId: number;
+    let timer: ReturnType<typeof setTimeout>;
+
+    rafId = requestAnimationFrame(() => {
+      AOS.init({
+        duration: 900,
+        easing: "ease-out-cubic",
+        once: true,
+        mirror: false,
+        offset: 80,
+        anchorPlacement: "top-bottom",
+        startEvent: "load",
+      });
+      timer = setTimeout(() => AOS.refreshHard(), 400);
     });
 
-    const timer = setTimeout(() => {
-      AOS.refreshHard();
-    }, 300);
-
-    return () => clearTimeout(timer);
+    return () => {
+      cancelAnimationFrame(rafId);
+      clearTimeout(timer);
+    };
   }, []);
 
   useEffect(() => {

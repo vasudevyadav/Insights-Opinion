@@ -4,7 +4,25 @@ export default function HomeHero() {
     return (
         <section className="bg-[#edf6fe]">
 
-            <div className="relative overflow-hidden homebg text-white lg:mt-20 mt-8  ">
+            <div className="relative overflow-hidden text-white lg:mt-20 mt-8">
+                {/* LCP background — priority gives fetchpriority=high and makes it discoverable */}
+                <Image
+                    src="/home-hero-img-1.png"
+                    alt=""
+                    fill
+                    priority
+                    fetchPriority="high"
+                    className="object-cover object-bottom hidden sm:block"
+                    sizes="100vw"
+                />
+                <Image
+                    src="/home-mob.png"
+                    alt=""
+                    fill
+                    priority
+                    className="object-cover object-bottom sm:hidden"
+                    sizes="100vw"
+                />
                 <div className="relative z-10 mx-auto flex lg:min-h-[540px] min-h-[630px] w-full max-w-7xl lg:pt-0 pt-16 lg:items-center px-5 sm:px-4">
 
                     <div className="max-w-2xl">

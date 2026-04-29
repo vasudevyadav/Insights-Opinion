@@ -16,6 +16,12 @@
     "react-dom": "19.2.3",
     "swiper": "^12.1.2"
   },
+  "browserslist": [
+    "chrome >= 96",
+    "firefox >= 94",
+    "safari >= 15",
+    "edge >= 96"
+  ],
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",

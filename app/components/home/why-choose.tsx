@@ -141,14 +141,18 @@ function Accordion({
 function AnimatedWhyChooseFigure() {
     return (
         <div className="relative inline-flex w-fit items-end justify-center overflow-visible bg-transparent">
-            <img
+            <Image
                 src="/globe-image.png"
                 alt="Animated figure"
+                width={420}
+                height={420}
                 className="globe-spin"
             />
-            <img
+            <Image
                 src="/why-men.png"
                 alt="Animated figure"
+                width={352}
+                height={420}
                 className="absolute lg:-left-10 left-5 -bottom-16 lg:-bottom-14 lg:w-[22rem] w-60 object-cover"
             />
         </div>

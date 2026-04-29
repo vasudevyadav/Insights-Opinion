@@ -8,7 +8,8 @@ import Footer from "./components/home/footer";
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -75,8 +76,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en" style={{ colorScheme: "light" }}>
+      <body className={`${poppins.variable} ${geistMono.variable} antialiased`} style={{ colorScheme: "light" }}>
         <AosProvider />
         <Navbar />
         <main className="lg:mt-20 mt-8">
