@@ -97,21 +97,7 @@ export default function HomeIndustry() {
 
     return (
         <div className="bg-[#edf6ff] lg:-mt-32 -mt-32">
-            <section className="py-10 lg:py-14 bg-[#edf6ff] relative overflow-hidden min-h-[550px] lg:h-[580px]">
-                <Image
-                    src="/about-bg.png"
-                    alt=""
-                    fill
-                    sizes="100vw"
-                    className="object-cover object-center hidden md:block"
-                />
-                <Image
-                    src="/mob-about.png"
-                    alt=""
-                    fill
-                    sizes="100vw"
-                    className="object-cover object-center md:hidden"
-                />
+            <section className="py-10 lg:py-14 bg-[#edf6ff] indstrybg relative overflow-hidden">
                 <div className="mx-auto max-w-7xl px-4 lg:px-4">
                     <div className="relative overflow-hidden rounded-[20px] lg:rounded-[28px]">
                         <div className="relative z-10 grid min-h-[420px] grid-cols-1 lg:grid-cols-2">
