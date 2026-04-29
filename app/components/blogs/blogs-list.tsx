@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import Image from "next/image";
 import { Search, ChevronDown } from "lucide-react";
 
 const blogData = [
@@ -332,10 +333,12 @@ export default function BlogList() {
                                 className="group overflow-hidden rounded-[19px] border border-[#9eafc4] bg-white shadow-none transition hover:-translate-y-1"
                             >
                                 <div className="relative h-[220px] overflow-hidden">
-                                    <img
+                                    <Image
                                         src={blog.image}
                                         alt={blog.title}
-                                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                        fill
+                                        sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                                        className="object-cover transition duration-500 group-hover:scale-105"
                                     />
 
                                     <div className="absolute bottom-0 left-0 flex items-center gap-2 bg-[linear-gradient(90deg,#7fd8df_0%,#48c0cd_50%,#2eacbf_100%)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-white">
