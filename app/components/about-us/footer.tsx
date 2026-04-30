@@ -12,11 +12,11 @@ import {
 } from "lucide-react";
 
 const companyLinks = [
-    { label: "About Us", href: "https://insightsopinion.com/our-story" },
-    { label: "Case Studies", href: "https://insightsopinion.com/case-study" },
-    { label: "Career", href: "https://insightsopinion.com/career" },
-    { label: "Contact Us", href: "https://insightsopinion.com/contact-us" },
-    { label: "Blog", href: "https://insightsopinion.com/blog" },
+    { label: "About Us", href: "/about-us" },
+    { label: "Case Studies", href: "/case-study" },
+    { label: "Career", href: "/career" },
+    { label: "Contact Us", href: "/contact-us" },
+    { label: "Blog", href: "/blogs" },
 ];
 
 const serviceLinks = [

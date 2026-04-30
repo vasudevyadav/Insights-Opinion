@@ -39,7 +39,7 @@ const mobileDropdownItems: Record<
         { name: "B2B Research", href: "/research/b2b-research" },
     ],
     resources: [
-        { name: "Blogs", href: "/resources/blogs" },
+        { name: "Blogs", href: "/blogs" },
         { name: "Whitepapers", href: "/resources/whitepapers" },
         { name: "Reports", href: "/resources/reports" },
     ],

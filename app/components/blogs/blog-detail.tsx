@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -12,7 +12,7 @@ const SOCIAL_ICONS = [
         href: "#",
         bg: "#1877f2",
         svg: (
-            <svg viewBox="0 0 24 24" fill="white" className="h-[15px] w-[15px]">
+            <svg viewBox="0 0 24 24" fill="white" className="h-7 w-7">
                 <path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.988H7.898V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
             </svg>
         ),
@@ -22,7 +22,7 @@ const SOCIAL_ICONS = [
         href: "#",
         bg: "#ff0000",
         svg: (
-            <svg viewBox="0 0 24 24" fill="white" className="h-[15px] w-[15px]">
+            <svg viewBox="0 0 24 24" fill="white" className="h-6 w-6">
                 <path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.896 0-7.605-.476c-.941-.262-1.684-1.037-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.104 4 12 4 12 4s5.896 0 7.605.476c.941.262 1.684 1.037 1.938 2.022zM10 15.5l5.5-3.5L10 8.5v7z" />
             </svg>
         ),
@@ -32,7 +32,7 @@ const SOCIAL_ICONS = [
         href: "#",
         bg: "#000000",
         svg: (
-            <svg viewBox="0 0 24 24" fill="white" className="h-[15px] w-[15px]">
+            <svg viewBox="0 0 24 24" fill="white" className="h-6 w-6">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
             </svg>
         ),
@@ -42,7 +42,7 @@ const SOCIAL_ICONS = [
         href: "#",
         bg: "linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)",
         svg: (
-            <svg viewBox="0 0 24 24" fill="white" className="h-[15px] w-[15px]">
+            <svg viewBox="0 0 24 24" fill="white" className="h-6 w-6">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
             </svg>
         ),
@@ -56,13 +56,24 @@ interface BlogDetailProps {
 export default function BlogDetail({ blog }: BlogDetailProps) {
     const relatedBlogs = getRelatedBlogs(blog.id, 6);
     const [carouselStart, setCarouselStart] = useState(0);
-    const visibleRelated = relatedBlogs.slice(carouselStart, carouselStart + 3);
+    const [itemsPerView, setItemsPerView] = useState(3);
 
     const tocSections = blog.sections?.filter((s) => !s.isImage) ?? [];
 
+    useEffect(() => {
+        const update = () => {
+            if (window.innerWidth < 640) setItemsPerView(1);
+            else if (window.innerWidth < 1024) setItemsPerView(2);
+            else setItemsPerView(3);
+        };
+        update();
+        window.addEventListener("resize", update);
+        return () => window.removeEventListener("resize", update);
+    }, []);
+
+    const maxStart = Math.max(0, relatedBlogs.length - itemsPerView);
     const handlePrev = () => setCarouselStart((prev) => Math.max(0, prev - 1));
-    const handleNext = () =>
-        setCarouselStart((prev) => Math.min(relatedBlogs.length - 3, prev + 1));
+    const handleNext = () => setCarouselStart((prev) => Math.min(maxStart, prev + 1));
 
     return (
         <>
@@ -70,12 +81,12 @@ export default function BlogDetail({ blog }: BlogDetailProps) {
 
             <section className="bg-[#edf6fe]">
                 <div className="relative overflow-hidden bg-[url('/about-us/about-us-hero-bg.webp')] bg-cover bg-bottom bg-no-repeat text-white lg:mt-20 mt-8 w-full">
-                    <div className="relative z-10 mx-auto flex lg:min-h-[500px] min-h-[400px] w-full max-w-7xl lg:pt-0 pt-16 lg:items-center px-5 sm:px-4">
+                    <div className="relative z-10 mx-auto flex lg:min-h-[500px] min-h-[350px] w-full max-w-7xl lg:pt-0 pt-16 items-center px-5 sm:px-4">
                         <div className="max-w-4xl mx-auto mb-10">
-                            <h1 className="text-[28px] text-center font-semibold lg:text-[46px] leading-tight mb-4">
+                            <h1 className="text-[28px] text-center font-semibold lg:text-[46px] leading-tight mb-4 line-clam-3">
                                 {blog.title}
                             </h1>
-                            <p className="mt-3 text-base text-center text-white/70">
+                            <p className="mt-3 text-base text-center text-white/70 line-clamp-2">
                                 Home &gt;{" "}
                                 <Link href="/blogs" className="hover:text-white transition-colors">
                                     Blog
@@ -108,7 +119,7 @@ export default function BlogDetail({ blog }: BlogDetailProps) {
                 <div className="relative z-10 mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
 
                     {/* ── Blog Header Card ── */}
-                    <div className="rounded-[18px] border border-[#c2d3e4] bg-white p-5 sm:p-7 shadow-sm">
+                    <div className="rounded-[18px] border border-[#c2d3e4] bg-white py-5 lg:py-10 px-4 lg:px-16 shadow-sm">
                         <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
 
                             {/* Thumbnail */}
@@ -129,7 +140,8 @@ export default function BlogDetail({ blog }: BlogDetailProps) {
                                 </h2>
 
                                 {/* Date badge */}
-                                <div className="inline-flex w-fit items-center gap-2 rounded-[5px] bg-[linear-gradient(90deg,#7fd8df_0%,#48c0cd_50%,#2eacbf_100%)] px-4 py-[7px] text-[11px] font-semibold uppercase tracking-[0.07em] text-white">
+                                <div className="inline-flex w-fit items-center gap-2 rounded-[5px] bg-[linear-gradient(120deg,#16af9f_0%,#16af9f_50%,#74b9ff_100%)] px-4 py-2.5 text-sm font-semibold uppercase tracking-[0.07em] text-white">
+
                                     <span>{blog.type}</span>
                                     <span className="opacity-60">|</span>
                                     <span>{blog.date}</span>
@@ -138,14 +150,13 @@ export default function BlogDetail({ blog }: BlogDetailProps) {
                                 </div>
 
                                 {/* Social icons — colored filled circles */}
-                                <div className="flex items-center gap-2.5">
+                                <div className="flex items-center gap-2.5 lg:justify-end justify-center">
                                     {SOCIAL_ICONS.map((icon) => (
                                         <a
                                             key={icon.label}
                                             href={icon.href}
                                             aria-label={icon.label}
-                                            style={{ background: icon.bg }}
-                                            className="flex h-[34px] w-[34px] flex-shrink-0 items-center justify-center rounded-full transition hover:opacity-80"
+                                            className="flex h-11 w-11 bg-[linear-gradient(120deg,#16af9f_0%,#16af9f_50%,#74b9ff_100%)] flex-shrink-0 items-center justify-center rounded-full transition hover:opacity-80"
                                         >
                                             {icon.svg}
                                         </a>
@@ -162,7 +173,7 @@ export default function BlogDetail({ blog }: BlogDetailProps) {
                         <article className="flex-1 min-w-0 bg-white px-6 py-7 sm:px-9 rounded-[14px]">
 
                             {blog.intro && (
-                                <p className="mb-7 text-[13px] leading-[1.8] text-[#3a4a5a]">
+                                <p className="mb-7 text-base leading-[1.8] text-[#3a4a5a]">
                                     {blog.intro}
                                 </p>
                             )}
@@ -192,12 +203,12 @@ export default function BlogDetail({ blog }: BlogDetailProps) {
                                     ) : (
                                         /* ── Text section ── */
                                         <>
-                                            <h2 className="mb-2 text-[18px] font-bold text-[#111] sm:text-[21px]">
+                                            <h2 className="mb-2 text-[18px] font-semibold text-[#111] lg:text-2xl">
                                                 {section.heading}
                                             </h2>
 
                                             {section.content && (
-                                                <p className="mb-2 whitespace-pre-line text-[13px] leading-[1.75] text-[#3a4a5a]">
+                                                <p className="mb-2 whitespace-pre-line text-base leading-[1.75] text-[#3a4a5a]">
                                                     {section.content}
                                                 </p>
                                             )}
@@ -207,7 +218,7 @@ export default function BlogDetail({ blog }: BlogDetailProps) {
                                                     {section.bullets.map((b, i) => (
                                                         <li
                                                             key={i}
-                                                            className="flex gap-2 text-[13px] leading-[1.7] text-[#3a4a5a]"
+                                                            className="flex gap-2 text-base leading-[1.7] text-[#3a4a5a]"
                                                         >
                                                             <span className="mt-[7px] h-[5px] w-[5px] flex-shrink-0 rounded-full bg-[#3a4a5a]" />
                                                             {b}
@@ -221,7 +232,7 @@ export default function BlogDetail({ blog }: BlogDetailProps) {
                                                     {section.subItems.map((item, i) => (
                                                         <li
                                                             key={i}
-                                                            className="text-[13px] leading-[1.7] text-[#3a4a5a]"
+                                                            className="text-base leading-[1.7] text-[#3a4a5a]"
                                                         >
                                                             <span className="font-bold text-[#111]">
                                                                 {item.label}
@@ -238,14 +249,14 @@ export default function BlogDetail({ blog }: BlogDetailProps) {
                         </article>
 
                         {/* ── Sticky TOC — teal box with white button items ── */}
-                        <aside className="w-full lg:w-[262px] xl:w-[280px] flex-shrink-0">
+                        <aside className="w-full lg:w-[262px] xl:w-[350px] flex-shrink-0">
                             <div className="sticky top-24 overflow-hidden rounded-[14px] shadow-md"
                                 style={{
-                                    background: "linear-gradient(145deg,#6dd4db 0%,#3cb8c9 40%,#28a8bc 100%)",
+                                    background: "linear-gradient(145deg,#16af9f 0%,#16af9f 40%,#4f9bdd 100%)",
                                 }}>
                                 {/* Header */}
                                 <div className="px-5 py-4">
-                                    <h3 className="text-[15px] font-bold tracking-wide text-white">
+                                    <h3 className="text-xl font-semibold tracking-wide text-white">
                                         Table of Content
                                     </h3>
                                 </div>
@@ -256,7 +267,7 @@ export default function BlogDetail({ blog }: BlogDetailProps) {
                                         <a
                                             key={section.id}
                                             href={`#${section.id}`}
-                                            className="block rounded-[7px] bg-white px-3 py-2.5 text-[11.5px] font-medium leading-[1.4] text-[#1e3a4a] transition hover:bg-[#e8f8fa] hover:text-[#17afa1]"
+                                            className="block rounded-[7px] bg-transparent border border-white px-4 py-3 text-sm font-medium leading-[1.4] text-white transition hover:bg-white hover:text-black hover:font-semibold"
                                         >
                                             {section.heading}
                                         </a>
@@ -268,14 +279,14 @@ export default function BlogDetail({ blog }: BlogDetailProps) {
 
                     {/* ── Load More — centered below content ── */}
                     <div className="mt-8 flex justify-center">
-                        <button className="rounded-[6px] bg-[linear-gradient(90deg,#49c3b0_0%,#43bccb_50%,#5ca8ff_100%)] px-12 py-[10px] text-[13px] font-semibold text-white shadow-sm transition hover:opacity-90">
+                        <button className="rounded-[6px] bg-[linear-gradient(90deg,#49c3b0_0%,#43bccb_50%,#5ca8ff_100%)] px-12 py-[10px] text-base font-semibold text-white shadow-sm transition hover:opacity-90">
                             Load More
                         </button>
                     </div>
 
                     {/* ── Related Blogs Carousel ── */}
                     <div className="mt-10">
-                        <div className="relative px-8">
+                        <div className="relative px-9">
                             {/* Prev */}
                             <button
                                 onClick={handlePrev}
@@ -286,45 +297,58 @@ export default function BlogDetail({ blog }: BlogDetailProps) {
                                 <ChevronLeft className="h-4 w-4" />
                             </button>
 
-                            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
-                                {visibleRelated.map((related) => (
-                                    <Link
-                                        key={related.id}
-                                        href={`/blogs/${related.slug}`}
-                                        className="group block overflow-hidden rounded-[16px] border border-[#b8cce0] bg-white shadow-sm transition hover:-translate-y-1"
-                                    >
-                                        <div className="relative h-[190px] overflow-hidden">
-                                            <Image
-                                                src={related.image}
-                                                alt={related.title}
-                                                fill
-                                                sizes="(max-width:640px) 100vw,(max-width:1280px) 50vw,33vw"
-                                                className="object-cover transition duration-500 group-hover:scale-105"
-                                            />
-                                            <div className="absolute bottom-0 left-0 flex items-center gap-1.5 bg-[linear-gradient(90deg,#7fd8df_0%,#48c0cd_50%,#2eacbf_100%)] px-3 py-[6px] text-[10px] font-semibold uppercase tracking-[0.06em] text-white">
-                                                <span>{related.type}</span>
-                                                <span className="opacity-70">|</span>
-                                                <span>{related.date}</span>
-                                                <span className="opacity-70">|</span>
-                                                <span>{related.time}</span>
-                                            </div>
+                            {/* Sliding track */}
+                            <div className="overflow-hidden">
+                                <div
+                                    className="flex transition-transform duration-300 ease-in-out"
+                                    style={{
+                                        transform: `translateX(-${carouselStart * (100 / itemsPerView)}%)`,
+                                    }}
+                                >
+                                    {relatedBlogs.map((related) => (
+                                        <div
+                                            key={related.id}
+                                            className="flex-shrink-0 px-2.5"
+                                            style={{ width: `${100 / itemsPerView}%` }}
+                                        >
+                                            <Link
+                                                href={`/blogs/${related.slug}`}
+                                                className="group block overflow-hidden rounded-[16px] border border-[#b8cce0] bg-white shadow-sm transition hover:-translate-y-1"
+                                            >
+                                                <div className="relative h-[190px] overflow-hidden">
+                                                    <Image
+                                                        src={related.image}
+                                                        alt={related.title}
+                                                        fill
+                                                        sizes="(max-width:640px) 100vw,(max-width:1280px) 50vw,33vw"
+                                                        className="object-cover transition duration-500 group-hover:scale-105"
+                                                    />
+                                                    <div className="absolute bottom-0 left-0 flex items-center gap-1.5 bg-[linear-gradient(90deg,#7fd8df_0%,#48c0cd_50%,#2eacbf_100%)] px-3 py-[6px] text-[10px] font-semibold uppercase tracking-[0.06em] text-white">
+                                                        <span>{related.type}</span>
+                                                        <span className="opacity-70">|</span>
+                                                        <span>{related.date}</span>
+                                                        <span className="opacity-70">|</span>
+                                                        <span>{related.time}</span>
+                                                    </div>
+                                                </div>
+                                                <div className="px-4 pb-4 pt-3">
+                                                    <h3 className=" text-lg my-1 line-clamp-2 font-semibold leading-[1.35] text-black">
+                                                        {related.title}
+                                                    </h3>
+                                                    <p className="mt-1.5 line-clamp-3 text-sm leading-[1.6] text-[#555]">
+                                                        {related.description}
+                                                    </p>
+                                                </div>
+                                            </Link>
                                         </div>
-                                        <div className="px-4 pb-4 pt-3">
-                                            <h3 className="line-clamp-2 text-[14px] font-semibold leading-[1.35] text-[#111]">
-                                                {related.title}
-                                            </h3>
-                                            <p className="mt-1.5 line-clamp-3 text-[12px] leading-[1.6] text-[#555]">
-                                                {related.description}
-                                            </p>
-                                        </div>
-                                    </Link>
-                                ))}
+                                    ))}
+                                </div>
                             </div>
 
                             {/* Next */}
                             <button
                                 onClick={handleNext}
-                                disabled={carouselStart >= relatedBlogs.length - 3}
+                                disabled={carouselStart >= maxStart}
                                 aria-label="Next"
                                 className="absolute right-0 top-1/2 z-10 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full border border-[#b0c4d8] bg-white shadow-sm transition hover:border-[#48c0cd] hover:text-[#48c0cd] disabled:opacity-30"
                             >
