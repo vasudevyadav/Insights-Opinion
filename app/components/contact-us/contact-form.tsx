@@ -136,7 +136,6 @@ export default function ContactForm() {
                                 />
                             </div>
 
-                            {/* Submit */}
                             <div>
                                 <button
                                     type="submit"
@@ -147,7 +146,6 @@ export default function ContactForm() {
                             </div>
                         </form>
 
-                        {/* ── Newsletter ── */}
                         <div className="mt-7 w-full max-w-full sm:max-w-[420px]">
                             <p className="mb-2.5 text-xs font-medium text-[#4b5563] sm:text-[13px]">
                                 Subscribe to Newsletter

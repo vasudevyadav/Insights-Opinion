@@ -5,7 +5,6 @@ export default function HomeHero() {
         <section className="bg-[#edf6fe]">
 
             <div className="relative overflow-hidden text-white lg:mt-20 mt-8">
-                {/* LCP background — priority gives fetchpriority=high and makes it discoverable */}
                 <Image
                     src="/home-hero-img-1.png"
                     alt=""
