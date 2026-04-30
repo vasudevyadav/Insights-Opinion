@@ -6,7 +6,6 @@ import CallbackFaqSection from "./components/home/call-back-faq";
 import CaseStudies from "./components/home/case-studies";
 import CoreSolution from "./components/home/core-solution";
 import EventHome from "./components/home/event-home";
-import Footer from "./components/home/footer";
 import HomeHero from "./components/home/hero-section";
 import HomeIndustry from "./components/home/home-industry";
 import IndustryLeader from "./components/home/industry-leader";
