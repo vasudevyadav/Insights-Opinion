@@ -52,11 +52,13 @@ function CaseCard({
         large ? "lg:h-[430px]" : "lg:h-[495px]"
       }`}
     >
-      <img
-        src={image}
-        alt={title}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-      />
+      {image && (
+        <img
+          src={image}
+          alt={title || ""}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      )}
 
       <div
         className={`absolute inset-0 bg-gradient-to-br ${accent} opacity-35 mix-blend-screen`}
@@ -65,13 +67,17 @@ function CaseCard({
       <div className="absolute inset-0 bg-gradient-to-t from-[#07102b]/95 via-[#07102b]/45 to-transparent" />
 
       <div className="relative flex h-full flex-col justify-end p-4 sm:p-5">
-        <h3 className="line-clamp-2 whitespace-pre-line text-center text-[18px] font-semibold leading-snug tracking-wide text-[#16af9f] group-hover:text-white sm:text-[20px] lg:text-[22px]">
-          {title}
-        </h3>
+        {title && (
+          <h3 className="line-clamp-2 whitespace-pre-line text-center text-[18px] font-semibold leading-snug tracking-wide text-[#16af9f] group-hover:text-white sm:text-[20px] lg:text-[22px]">
+            {title}
+          </h3>
+        )}
 
-        <p className="mt-2 line-clamp-3 text-center text-sm leading-[1.6] text-white/75 sm:text-[15px]">
-          {desc}
-        </p>
+        {desc && (
+          <p className="mt-2 line-clamp-3 text-center text-sm leading-[1.6] text-white/75 sm:text-[15px]">
+            {desc}
+          </p>
+        )}
 
         <div className="mt-2 flex justify-end">
           <button className="text-white transition-colors duration-300 group-hover:text-cyan-300">
@@ -96,6 +102,8 @@ export default function CaseStudies({ data }: CaseStudiesProps) {
     return () => clearTimeout(timer);
   }, [caseStudies.length]);
 
+  if (!data || caseStudies.length === 0) return null;
+
   return (
     <div>
       <section className="relative overflow-hidden bg-[#edf6ff] py-8 text-white lg:py-16">
@@ -113,13 +121,17 @@ export default function CaseStudies({ data }: CaseStudiesProps) {
             data-aos="fade-up"
             data-aos-duration="900"
           >
-            <h2 className="bg-[linear-gradient(120deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-2xl font-normal text-transparent lg:text-3xl">
-              {data?.headingTop || "Healthcare Market Research"}
-            </h2>
+            {data.headingTop && (
+              <h2 className="bg-[linear-gradient(120deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-2xl font-normal text-transparent lg:text-3xl">
+                {data.headingTop}
+              </h2>
+            )}
 
-            <h2 className="text-2xl font-normal text-black lg:text-[45px]">
-              {data?.headingBottom || "Case Studies"}
-            </h2>
+            {data.headingBottom && (
+              <h2 className="text-2xl font-normal text-black lg:text-[45px]">
+                {data.headingBottom}
+              </h2>
+            )}
           </div>
 
           <div className="lg:hidden">

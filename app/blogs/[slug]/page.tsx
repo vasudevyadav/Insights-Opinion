@@ -1,24 +1,27 @@
 import { notFound } from "next/navigation";
-import { getBlogBySlug } from "@/data/blogData";
+import { getBlogBySlug, getRelatedBlogs } from "@/data/blogData";
 import BlogDetail from "@/app/components/blogs/blog-detail";
 import BlogForm from "@/app/components/blogs/blogs-deta";
 
 export default async function BlogSlugPage({
-    params,
+  params,
 }: {
-    params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-    const { slug } = await params;
-    const blog = getBlogBySlug(slug);
+  const { slug } = await params;
 
-    if (!blog) {
-        notFound();
-    }
+  const blog = await getBlogBySlug(slug);
 
-    return (
-        <section>
-            <BlogDetail blog={blog} />
-            <BlogForm />
-        </section>
-    );
+  if (!blog) {
+    notFound();
+  }
+
+  const relatedBlogs = await getRelatedBlogs(blog.id, 6);
+
+  return (
+    <section>
+      <BlogDetail blog={blog} relatedBlogs={relatedBlogs} />
+      <BlogForm />
+    </section>
+  );
 }
