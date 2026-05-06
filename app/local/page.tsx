@@ -1,6 +1,5 @@
 import CaseStudiesForm from "../components/case-studies/case-studies-form";
-import CaseStudiesHero from "../components/case-studies/case-studies-hero";
-import CaseStudiesList from "../components/case-studies/case-studies-list";
+import { LocalBoostYour } from "../components/local/local-boost-your";
 import LocalHero from "../components/local/local-hero";
 import MarketResearch from "../components/local/market-research";
 
@@ -15,7 +14,7 @@ export default async function Local({
     <section>
       <LocalHero />
       <MarketResearch />
-      <CaseStudiesForm />
+      <LocalBoostYour />
 
     </section>
   );
