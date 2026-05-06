@@ -142,11 +142,6 @@ export default function CaseStudiesList() {
                 }}
             />
 
-            {/* Right Vertical Request Callback Button — desktop only */}
-            <button className="fixed right-0 top-1/2 z-30 hidden -translate-y-1/2 rounded-l-[16px] bg-gradient-to-b from-[#19b5a7] to-[#59aaf7] px-3 py-5 text-[11px] font-semibold uppercase tracking-widest text-white shadow-lg [writing-mode:vertical-rl] lg:block">
-                Request Callback
-            </button>
-
             <div className="relative z-10 mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
 
                 {/* Filter + Search Row */}
