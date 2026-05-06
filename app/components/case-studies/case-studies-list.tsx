@@ -130,7 +130,7 @@ export default function CaseStudiesList() {
     };
 
     return (
-        <section className="relative min-h-screen overflow-hidden bg-[#eef7ff] py-12 md:py-16">
+        <section className="relative overflow-hidden bg-[#eef7ff] py-10 md:py-14 lg:py-16">
             {/* Hexagon Background */}
             <div
                 className="pointer-events-none absolute inset-0 opacity-70"
@@ -142,17 +142,18 @@ export default function CaseStudiesList() {
                 }}
             />
 
-            {/* Right Vertical Request Callback Button */}
-            <button className="fixed right-0 top-1/2 z-30 hidden -translate-y-1/2 rounded-l-[16px] bg-gradient-to-b from-[#19b5a7] to-[#59aaf7] px-3 py-5 text-[12px] font-semibold uppercase tracking-widest text-white shadow-lg [writing-mode:vertical-rl] lg:block">
+            {/* Right Vertical Request Callback Button — desktop only */}
+            <button className="fixed right-0 top-1/2 z-30 hidden -translate-y-1/2 rounded-l-[16px] bg-gradient-to-b from-[#19b5a7] to-[#59aaf7] px-3 py-5 text-[11px] font-semibold uppercase tracking-widest text-white shadow-lg [writing-mode:vertical-rl] lg:block">
                 Request Callback
             </button>
 
             <div className="relative z-10 mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
+
                 {/* Filter + Search Row */}
-                <div className="mb-10 flex flex-col items-center justify-between gap-5 md:flex-row lg:px-2">
-                    {/* Category Filter */}
-                    <div className="flex items-center gap-3">
-                        <label className="text-base font-medium text-[#19b5b4]">
+                <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between md:mb-10">
+                    {/* Category Dropdown */}
+                    <div className="flex flex-col gap-2 xs:flex-row xs:items-center sm:gap-3">
+                        <label className="whitespace-nowrap text-sm font-medium text-[#19b5b4] sm:text-base">
                             Select Category
                         </label>
                         <div className="relative">
@@ -162,11 +163,11 @@ export default function CaseStudiesList() {
                                     setSelectedCategory(e.target.value);
                                     setVisibleCount(INITIAL_COUNT);
                                 }}
-                                className="h-[34px] w-[160px] appearance-none rounded-[5px] border border-[#1e315e] bg-white px-3 pr-8 text-[13px] font-medium text-[#1f2d53] outline-none"
+                                className="h-[36px] w-full appearance-none rounded-[5px] border border-[#1e315e] bg-white px-3 pr-8 text-[13px] font-medium text-[#1f2d53] outline-none sm:w-[160px]"
                             >
-                                {categories.map((category) => (
-                                    <option key={category} value={category}>
-                                        {category}
+                                {categories.map((cat) => (
+                                    <option key={cat} value={cat}>
+                                        {cat}
                                     </option>
                                 ))}
                             </select>
@@ -175,7 +176,7 @@ export default function CaseStudiesList() {
                     </div>
 
                     {/* Search */}
-                    <div className="relative">
+                    <div className="relative w-full sm:w-auto">
                         <input
                             type="text"
                             value={search}
@@ -184,21 +185,21 @@ export default function CaseStudiesList() {
                                 setVisibleCount(INITIAL_COUNT);
                             }}
                             placeholder="Search"
-                            className="h-[34px] w-[200px] rounded-[5px] border border-[#1e315e] bg-white px-3 pr-10 text-[13px] text-[#1f2d53] outline-none placeholder:text-[#9aa4b5]"
+                            className="h-[36px] w-full rounded-[5px] border border-[#1e315e] bg-white px-3 pr-10 text-[13px] text-[#1f2d53] outline-none placeholder:text-[#9aa4b5] sm:w-[200px]"
                         />
                         <Search className="absolute right-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-[#1f2d53]" />
                     </div>
                 </div>
 
                 {/* Cards Grid */}
-                <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-10">
                     {visibleItems.map((item) => (
                         <article
                             key={item.id}
-                            className="group relative overflow-hidden rounded-t-[16px] rounded-bl-[4px] rounded-br-[36px] rounded-tl-[16px] border border-[#1d315d] bg-white shadow-sm transition-shadow hover:shadow-md"
+                            className="group relative overflow-hidden rounded-t-[16px] rounded-bl-[4px] rounded-br-[36px] border border-[#1d315d] bg-white shadow-sm transition-shadow hover:shadow-md"
                         >
                             {/* Card Image */}
-                            <div className="relative h-52 w-full overflow-hidden rounded-t-[16px] rounded-br-[24px]">
+                            <div className="relative h-[180px] w-full overflow-hidden rounded-t-[16px] rounded-br-[24px] sm:h-[190px] lg:h-[200px]">
                                 <Image
                                     src={item.image}
                                     alt={item.title}
@@ -209,21 +210,20 @@ export default function CaseStudiesList() {
                             </div>
 
                             {/* Category Label — overlaps image bottom */}
-                            <div className="absolute left-0 top-40 z-10 max-w-[75%] rounded-r-[5px] bg-gradient-to-r from-[#14b3a1] to-[#66b3ff] px-4 py-[6px]">
+                            <div className="absolute left-0 top-[156px] z-10 max-w-[80%] rounded-r-[5px] bg-gradient-to-r from-[#14b3a1] to-[#66b3ff] px-4 py-[6px] sm:top-[166px] lg:top-[176px]">
                                 <h3 className="truncate text-[13px] font-semibold leading-tight text-white">
                                     {item.title}
                                 </h3>
                             </div>
 
                             {/* Card Body */}
-                            <div className="px-5 py-5">
-                                <p className="min-h-[100px] text-sm leading-[1.5] text-gray-500 line-clamp-6">
+                            <div className="px-4 pb-5 pt-9 sm:px-5">
+                                <p className="min-h-[90px] text-[12px] leading-[1.6] text-[#1e2a4e] line-clamp-6 sm:text-[11px] lg:text-[12px]">
                                     {item.description}
                                 </p>
-
                                 <Link
                                     href={`/case-studies/${item.slug}`}
-                                    className="mt-3 inline-block text-xs lg:text-sm font-semibold uppercase tracking-widest text-[#13b3ad] transition-opacity hover:opacity-70"
+                                    className="mt-3 inline-block text-[10px] font-bold uppercase tracking-widest text-[#13b3ad] transition-opacity hover:opacity-70"
                                 >
                                     Read More &gt;
                                 </Link>
@@ -234,17 +234,17 @@ export default function CaseStudiesList() {
 
                 {/* No results */}
                 {visibleItems.length === 0 && (
-                    <div className="py-20 text-center text-[15px] text-[#1e2a4e]/60">
+                    <div className="py-16 text-center text-sm text-[#1e2a4e]/60">
                         No case studies found.
                     </div>
                 )}
 
                 {/* Load More */}
                 {hasMore && (
-                    <div className="mt-12 flex justify-center">
+                    <div className="mt-10 flex justify-center md:mt-12">
                         <button
                             onClick={handleLoadMore}
-                            className="rounded-[6px] bg-gradient-to-r from-[#18b7a4] to-[#5ba8fb] px-10 py-[10px] text-[16px] font-medium text-white shadow-md transition hover:opacity-90 active:scale-95"
+                            className="w-full rounded-[6px] bg-gradient-to-r from-[#18b7a4] to-[#5ba8fb] px-10 py-3 text-[15px] font-medium text-white shadow-md transition hover:opacity-90 active:scale-95 sm:w-auto sm:text-[16px]"
                         >
                             Load More
                         </button>
