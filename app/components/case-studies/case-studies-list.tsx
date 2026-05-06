@@ -152,7 +152,7 @@ export default function CaseStudiesList() {
                 {/* Filter + Search Row */}
                 <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between md:mb-10">
                     {/* Category Dropdown */}
-                    <div className="flex flex-col gap-2 xs:flex-row xs:items-center sm:gap-3">
+                    <div className="flex  gap-2 items-center sm:gap-3">
                         <label className="whitespace-nowrap text-sm font-medium text-[#19b5b4] sm:text-base">
                             Select Category
                         </label>

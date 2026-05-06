@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function CaseStudiesForm() {
     return (
         <section className="relative overflow-hidden bg-[#edf4fb] py-8 lg:py-12">
-            <div className="relative z-10 mx-auto max-w-[1220px] px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                 <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
 
                     {/* Left Side — Heading + Image */}
@@ -23,13 +23,13 @@ export default function CaseStudiesForm() {
                             </h2>
                         </div>
 
-                        <div className="w-full max-w-[200px] sm:max-w-[220px] lg:max-w-[260px]">
+                        <div className="w-full max-w-[200px] lg:max-w-[260px]">
                             <Image
                                 src="/grow-better.png"
                                 alt="Grow Better"
                                 width={1000}
                                 height={1000}
-                                className="h-[180px] w-full rounded-lg object-cover sm:h-[220px] lg:h-[280px]"
+                                className="h-[200px] w-full rounded-lg object-contain lg:h-[300px]"
                             />
                         </div>
                     </div>
