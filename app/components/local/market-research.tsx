@@ -24,21 +24,27 @@ export default function MarketResearch() {
                 }}
             />
 
-            {/* Right Vertical Request Callback Button */}
             <button className="fixed right-0 top-1/2 z-30 hidden -translate-y-1/2 rounded-l-[16px] bg-gradient-to-b from-[#19b5a7] to-[#59aaf7] px-3 py-5 text-[11px] font-semibold uppercase tracking-widest text-white shadow-lg [writing-mode:vertical-rl] lg:block">
                 Request Callback
             </button>
 
-            <div className="relative z-10 mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-                {/* ── 1. Intro Text ── */}
-                <div className="mx-auto mb-12 max-w-4xl text-center">
-                    <p className="text-[13px] leading-[1.75] text-[#1e2a4e] sm:text-[14px]">
+                <h1 className="mb-6 text-center text-2xl font-semibold leading-tight lg:text-[40px]">
+                    <span className="bg-[linear-gradient(90deg,#17afa1,#43bccb,#74b9ff)] bg-clip-text text-transparent">
+                        Market Research Company
+                    </span>{" "}
+                    <span className="text-[#1e2a4e]">in Chicago</span>
+                </h1>
+
+
+                <div className="mx-auto mb-20 max-w-7xl text-center">
+                    <p className="text-sm leading-[1.75] text-[#1e2a4e] lg:text-base">
                         Chicago businesses often work in categories where decisions need proof, not assumptions.
                         Whether the goal is to understand customers, test pricing, refine messaging, or improve
                         experience, strong research helps teams move with more clarity.
                     </p>
-                    <p className="mt-3 text-[13px] leading-[1.75] text-[#1e2a4e] sm:text-[14px]">
+                    <p className="mt-3 text-sm leading-[1.75] text-[#1e2a4e] lg:text-base">
                         Insights Opinion is a trusted global market research company in Chicago that supports
                         organizations with precise data, structured methodologies, and insights that lead to real
                         business decisions. For teams comparing options, our market research services in
@@ -46,17 +52,16 @@ export default function MarketResearch() {
                     </p>
                 </div>
 
-                {/* ── 2. Services: Text Left + Image Right ── */}
                 <div className="mb-14 grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
                     <div>
-                        <h2 className="mb-5 text-[22px] font-semibold leading-snug sm:text-[24px] lg:text-[28px]">
+                        <h2 className="mb-5 text-[22px] font-semibold leading-snug lg:text-3xl">
                             <span className="bg-[linear-gradient(90deg,#17afa1,#43bccb,#74b9ff)] bg-clip-text text-transparent">
                                 Market Research Services
                             </span>
                             <br />
                             <span className="text-[#1e2a4e]">in Chicago for Data-Driven Decisions</span>
                         </h2>
-                        <p className="text-[13px] leading-[1.85] text-[#1e2a4e]/75 sm:text-[14px]">
+                        <p className="mt-3 text-sm leading-[1.75] text-[#1e2a4e] lg:text-base">
                             If you are looking for market research services in Chicago, the priority should be
                             simple: get evidence you can use. Chicago businesses often serve broad customer
                             groups, multiple regions, and competitive sectors, so research needs to stay focused
@@ -68,7 +73,7 @@ export default function MarketResearch() {
 
                     <div className="overflow-hidden rounded-[18px] shadow-lg">
                         <Image
-                            src="/market-research/methodologies-image.png"
+                            src="/local/local-market.png"
                             alt="Market Research Services"
                             width={680}
                             height={420}
