@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 function generateCaptcha() {
@@ -11,25 +12,16 @@ export function LocalBoostYour() {
     const [captcha] = useState(generateCaptcha);
 
     return (
-        <section className="relative overflow-hidden bg-[#0d1f4e] px-4 py-10 sm:px-8">
-            <svg
-                className="pointer-events-none absolute inset-0 h-full w-full opacity-10"
-                viewBox="0 0 1200 200"
-                preserveAspectRatio="xMidYMid slice"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <circle cx="600" cy="100" r="130" fill="none" stroke="#74b9ff" strokeWidth="2" />
-                <circle cx="600" cy="100" r="80" fill="none" stroke="#74b9ff" strokeWidth="1.5" />
-                <polyline
-                    points="200,160 320,80 440,120 560,40 680,90 800,50 920,110 1040,60"
-                    fill="none"
-                    stroke="#17afa1"
-                    strokeWidth="1.5"
-                />
-                <rect x="900" y="60" width="80" height="110" rx="3" fill="none" stroke="#74b9ff" strokeWidth="1" />
-                <rect x="1000" y="80" width="60" height="90" rx="3" fill="none" stroke="#74b9ff" strokeWidth="1" />
-                <rect x="1080" y="50" width="50" height="120" rx="3" fill="none" stroke="#74b9ff" strokeWidth="1" />
-            </svg>
+        <section className="relative overflow-hidden px-4 py-10 sm:px-8"
+            style={{
+                backgroundImage: "url('/local/boost-bg.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "repeat",
+            }}
+        >
+
+            {/* <Image src="/local/boost-bg.png" alt="Hexagon Background" layout="fill" objectFit="cover" objectPosition="" /> */}
 
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0b1a3e] via-[#0e2257]/80 to-transparent" />
 
@@ -51,6 +43,7 @@ export function LocalBoostYour() {
                         placeholder="Name"
                         className="h-[42px] flex-1 basis-[140px] rounded-md border border-white/25 bg-white/90 px-3.5 text-[13px] text-[#1e2a4e] placeholder-gray-500 outline-none focus:border-[#17afa1] focus:bg-white"
                     />
+
                     <input
                         type="email"
                         placeholder="Email"
@@ -63,7 +56,6 @@ export function LocalBoostYour() {
                         <option>Customer Insights</option>
                     </select>
 
-                    {/* Captcha */}
                     <div className="flex h-[42px] flex-1 basis-[180px] overflow-hidden rounded-md border border-white">
                         <input
                             type="text"
@@ -83,3 +75,4 @@ export function LocalBoostYour() {
         </section>
     );
 }
+
