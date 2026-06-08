@@ -1,0 +1,149 @@
+"use client";
+
+import { useEffect } from "react";
+import Image from "next/image";
+// @ts-ignore - no type declarations for 'aos'
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+type WhoUsesItem = {
+  label: string;
+  href?: string;
+};
+
+type WhoUsesData = {
+  items?: readonly WhoUsesItem[];
+  imageSrc?: string;
+  imageAlt?: string;
+  titleTop?: string;
+  titleMiddleLine1?: string;
+  titleMiddleLine2?: string;
+  titleBottom?: string;
+};
+
+export default function WhoUsesHealthcareResearch({
+  data,
+}: {
+  data?: WhoUsesData;
+}) {
+  const items = data?.items || [];
+  const imageSrc = data?.imageSrc;
+  const imageAlt = data?.imageAlt || "";
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      easing: "ease-out",
+    });
+  }, []);
+
+  if (!data || items.length === 0) return null;
+
+  return (
+    <section
+      data-aos="fade-up"
+      className="relative overflow-hidden bg-[#f6fbff] py-10 lg:py-14"
+    >
+      <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-10">
+        <div className="pointer-events-none absolute -top-11 right-[-250px] hidden w-[46%] opacity-50 lg:block">
+          <svg
+            className="h-full w-full"
+            viewBox="0 0 320 520"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice"
+          >
+            <defs>
+              <linearGradient id="hexGradient" x1="0" y1="0" x2="320" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#35c7c8" />
+                <stop offset="50%" stopColor="#56c4d8" />
+                <stop offset="100%" stopColor="#79a8ff" />
+              </linearGradient>
+            </defs>
+
+            {[
+              [20, 20], [70, 20], [120, 20], [170, 20],
+              [45, 62], [95, 62], [145, 62], [195, 62],
+              [20, 104], [70, 104], [120, 104], [170, 104],
+              [45, 146], [95, 146], [145, 146], [195, 146],
+              [20, 188], [70, 188], [120, 188], [170, 188],
+              [45, 230], [95, 230], [145, 230], [195, 230],
+              [20, 272], [70, 272], [120, 272], [170, 272],
+              [45, 314], [95, 314], [145, 314], [195, 314],
+              [20, 356], [70, 356], [120, 356], [170, 356],
+              [45, 398], [95, 398], [145, 398], [195, 398],
+              [20, 440], [70, 440], [120, 440], [170, 440],
+            ].map(([x, y], i) => (
+              <polygon
+                key={i}
+                points={`${x + 12},${y} ${x + 24},${y + 7} ${x + 24},${y + 21} ${x + 12},${y + 28} ${x},${y + 21} ${x},${y + 7}`}
+                stroke="url(#hexGradient)"
+                strokeWidth="1"
+                fill="none"
+                opacity="0.35"
+              />
+            ))}
+          </svg>
+        </div>
+
+        <div className="flex flex-col items-center justify-between gap-10 lg:flex-row lg:items-center lg:gap-14">
+          <div data-aos="fade-up" data-aos-delay="100" className="order-2 w-full max-w-[430px] lg:order-1">
+            <h2 className="leading-[1.05] tracking-[-0.02em]">
+              <span className="block text-xl font-normal text-[#3a4654] sm:text-xl">
+                {data.titleTop}
+              </span>
+
+              <span className="block bg-gradient-to-r from-[#35c7c8] via-[#56c4d8] to-[#79a8ff] bg-clip-text py-1 text-2xl font-semibold text-transparent sm:text-4xl">
+                {data.titleMiddleLine1}
+              </span>
+
+              <span className="mb-1 block bg-gradient-to-r from-[#35c7c8] via-[#56c4d8] to-[#79a8ff] bg-clip-text text-2xl font-semibold text-transparent sm:text-4xl">
+                {data.titleMiddleLine2}
+              </span>
+
+              <span className="mt-1 block text-xl font-normal text-[#3a4654] sm:text-xl">
+                {data.titleBottom}
+              </span>
+            </h2>
+
+            <ul className="mt-4 space-y-4">
+              {items.map((item, idx) => (
+                <li key={idx} data-aos="fade-up" data-aos-delay={150 + idx * 100} className="flex items-center gap-5">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#9ed8e6] text-lg font-medium text-[#62c5db]">
+                    ✓
+                  </span>
+
+                  <a
+                    href={item.href || "#"}
+                    className={`text-lg leading-[1.45] text-[#5f6b78] transition hover:text-[#2b84e0] hover:underline hover:underline-offset-2 ${
+                      idx === 0 ? "font-medium text-[#4b95d9]" : ""
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {imageSrc && (
+            <div data-aos="fade-up" data-aos-delay="250" className="relative order-1 w-full max-w-[600px] lg:order-2">
+              <div className="overflow-hidden rounded-[26px]">
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt}
+                  width={540}
+                  height={600}
+                  className="h-auto w-full object-cover"
+                  priority
+                  unoptimized
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
