@@ -59,7 +59,7 @@ export default function MarketResearch() {
                     </span>
                     <span className="text-[#1e2a4e] font-normal">in Chicago</span>
                 </h1>
-                <div className="mx-auto mb-16 max-w-7xl text-center">
+                <div className="mx-auto lg:mb-16 mb-4 max-w-7xl lg:text-center">
                     <p className="text-sm leading-[1.75] text-[#1e2a4e] lg:text-base">
                         Chicago businesses often work in categories where decisions need proof, not assumptions.
                         Whether the goal is to understand customers, test pricing, refine messaging, or improve
@@ -72,7 +72,7 @@ export default function MarketResearch() {
                         Chicago are built to be practical, clear, and easy to use across departments.
                     </p>
                 </div>
-                <div className="mb-20 grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+                <div className="lg:mb-20 mb-12 grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
                     <div>
                         <h2 className="mb-5 text-[22px] font-medium leading-snug lg:text-3xl">
                             <span className="bg-[linear-gradient(90deg,#17afa1,#43bccb,#74b9ff)] bg-clip-text font-semibold text-transparent">
@@ -100,8 +100,8 @@ export default function MarketResearch() {
                         />
                     </div>
                 </div>
-                <div className="mb-16 overflow-x-auto pb-2">
-                    <div className="flex min-w-[620px] items-end">
+                <div className="lg:mb-16 mb-10 overflow-x-auto pb-2">
+                    <div className="flex lg:min-w-[620px] min-w-[1000px] items-end">
                         {timelineItems.map((item, index) => (
                             <div key={index} className="flex flex-1 flex-col items-center">
                                 <div className="mb-3 px-1 text-center">
@@ -159,13 +159,13 @@ export default function MarketResearch() {
                                     </h3>
 
                                     <div
-                                        className="rounded-[14px] px-5 py-4 text-xs leading-[1.55] text-white lg:text-sm min-h-[80px] line-clamp-2"
+                                        className="rounded-[14px] px-5 py-4 text-xs leading-[1.55] text-white lg:text-sm lg:min-h-[80px] min-h-[100px] line-clamp-2"
                                         style={{ background: "linear-gradient(135deg, #14b3a1, #5bc4e8)" }}
                                     >
                                         Access to <strong>8M+</strong> global panelists
                                     </div>
                                     <div
-                                        className="rounded-[14px] px-5 py-4 text-xs leading-[1.55] text-white lg:text-sm min-h-[80px] line-clamp-2"
+                                        className="rounded-[14px] px-5 py-4 text-xs leading-[1.55] text-white lg:text-sm lg:min-h-[80px] min-h-[100px] line-clamp-2"
                                         style={{ background: "linear-gradient(135deg, #14b3a1, #5bc4e8)" }}
                                     >
                                         Experience across <strong>healthcare,</strong> B2B, and consumer sectors
@@ -174,19 +174,19 @@ export default function MarketResearch() {
 
                                 <div className="flex flex-col gap-6">
                                     <div
-                                        className="rounded-[14px] px-5 py-4 text-xs leading-[1.55] text-white lg:text-sm min-h-[80px] line-clamp-2"
+                                        className="rounded-[14px] px-5 py-4 text-xs leading-[1.55] text-white lg:text-sm lg:min-h-[80px] min-h-[100px] line-clamp-2"
                                         style={{ background: "linear-gradient(135deg, #1ab0a5, #48b8d8)" }}
                                     >
                                         Coverage across <strong>100+ countries</strong> and <strong>60+</strong> languages
                                     </div>
                                     <div
-                                        className="rounded-[14px] px-5 py-4 text-xs leading-[1.55] text-white lg:text-sm min-h-[80px] line-clamp-2"
+                                        className="rounded-[14px] px-5 py-4 text-xs leading-[1.55] text-white lg:text-sm lg:min-h-[80px] min-h-[100px] line-clamp-2"
                                         style={{ background: "linear-gradient(135deg, #1aaea0, #2d9fba)" }}
                                     >
                                         <strong>Multi-method</strong> capabilities across quant and qual
                                     </div>
                                     <div
-                                        className="rounded-[14px] px-5 py-4 text-xs leading-[1.55] text-white lg:text-sm min-h-[80px] line-clamp-2"
+                                        className="rounded-[14px] px-5 py-4 text-xs leading-[1.55] text-white lg:text-sm lg:min-h-[80px] min-h-[100px] line-clamp-2"
                                         style={{ background: "linear-gradient(135deg, #1aaea0, #2d9fba)" }}
                                     >
                                         <strong>Clear delivery process</strong> from design through reporting

@@ -170,7 +170,7 @@ export default function LocalCore() {
                 <HexCluster />
             </div>
 
-            <div className="relative z-10 mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-16 lg:py-16">
+            <div className="relative z-10 mx-auto max-w-7xl px-4 py-0 sm:px-6 lg:px-2 lg:py-2 lg:pt-16">
 
                 {/* Header: title + tabs */}
                 <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
@@ -295,10 +295,10 @@ export default function LocalCore() {
                     </div>
                 </div>
 
-                <div className="mt-14 grid grid-cols-1 lg:lg:grid-cols-[1.3fr_2fr] items-center gap-10 lg:grid-cols-2">
+                <div className="lg:mt-16 mt-4 grid grid-cols-1 lg:lg:grid-cols-[1.3fr_2fr] items-center gap-10 lg:grid-cols-2">
                     <div className="max-w-[480px]">
-                        <h3 className="mb-4 text-2xl font-semibold leading-tight lg:text-[30px]">
-                            <span className="bg-[linear-gradient(90deg,#17aea0_0%,#36a4c2_100%)] bg-clip-text text-transparent">
+                        <h3 className="mb-4 text-2xl font-semibold leading-tight lg:text-[35px]">
+                            <span className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text font-semibold text-transparent">
                                 Data Quality, Compliance,
                             </span>
                             <br />
@@ -312,7 +312,7 @@ export default function LocalCore() {
                     </div>
 
                     <div className="relative flex items-center justify-center">
-                        <div className="relative h-[500px] w-full max-w-[540px]">
+                        <div className="relative h-[500px] w-full max-w-[650px]">
                             <Image
                                 src="/local/local-core.png"
                                 alt="Data compliance"

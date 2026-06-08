@@ -62,7 +62,7 @@ export function LocalBoostYour() {
                             placeholder="Captcha"
                             className="h-full flex-1 bg-white/90 px-3.5 text-[13px] text-[#1e2a4e] placeholder-gray-500 outline-none focus:bg-white"
                         />
-                        <div className="flex items-center border border-white bg-transparent px-3.5 font-mono text-[13px] font-bold tracking-wider text-white select-none">
+                        <div className="flex items-center border border-white bg-transparent lg:px-3.5 px-[1px] font-mono lg:text-[13px] text-[11px] font-bold tracking-wider text-white select-none">
                             {captcha}
                         </div>
                     </div>

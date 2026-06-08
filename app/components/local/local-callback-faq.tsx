@@ -140,7 +140,7 @@ export default function LocalCallbackFaq() {
                             <div className="pt-2 text-center">
                                 <button
                                     type="submit"
-                                    className="inline-flex min-w-[160px] items-center justify-center rounded-[6px] bg-gradient-to-r from-[#14b3a1] to-[#5ba8fb] px-8 py-3 text-sm font-semibold text-white transition hover:opacity-90 hover:shadow-lg lg:text-base"
+                                    className="inline-flex min-w-[160px] items-center justify-center rounded-[6px] bg-[#17aa8d] px-8 py-3 text-sm font-semibold text-white transition hover:opacity-90 hover:shadow-lg lg:text-base"
                                 >
                                     Submit
                                 </button>
@@ -154,10 +154,11 @@ export default function LocalCallbackFaq() {
                     <div className="mb-8">
                         <h2 className="text-[26px] font-light leading-tight text-[#1e2a4e] md:text-[40px]">
                             Frequently Asked
+                            <span className="ml-2 bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text font-semibold text-transparent">
+                                Questions
+                            </span>
                         </h2>
-                        <h2 className="bg-gradient-to-r from-[#17afa1] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[40px]">
-                            Questions
-                        </h2>
+
                     </div>
 
                     <div className="space-y-0">
@@ -168,14 +169,12 @@ export default function LocalCallbackFaq() {
                                     <button
                                         type="button"
                                         onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                                        className={`flex w-full items-start justify-between rounded-t-[16px] px-5 py-4 text-left transition ${
-                                            isOpen ? "bg-white" : "bg-transparent"
-                                        }`}
+                                        className={`flex w-full items-start justify-between rounded-t-[16px] px-5 py-4 text-left transition ${isOpen ? "bg-white" : "bg-transparent"
+                                            }`}
                                     >
                                         <span
-                                            className={`text-sm font-semibold leading-snug transition lg:text-base ${
-                                                isOpen ? "text-[#18aea1]" : "text-[#1e2a4e]"
-                                            }`}
+                                            className={`text-sm font-semibold leading-snug transition lg:text-base ${isOpen ? "bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text font-semibold text-transparent" : "text-[#1e2a4e]"
+                                                }`}
                                         >
                                             {faq.question}
                                         </span>
@@ -186,11 +185,10 @@ export default function LocalCallbackFaq() {
                                         )}
                                     </button>
                                     <div
-                                        className={`grid transition-all duration-300 ease-in-out ${
-                                            isOpen
-                                                ? "grid-rows-[1fr] rounded-b-[16px] bg-white"
-                                                : "grid-rows-[0fr]"
-                                        }`}
+                                        className={`grid transition-all duration-300 ease-in-out ${isOpen
+                                            ? "grid-rows-[1fr] rounded-b-[16px] bg-white"
+                                            : "grid-rows-[0fr]"
+                                            }`}
                                     >
                                         <div className="overflow-hidden">
                                             <p className="px-5 pb-5 pt-1 text-sm leading-6 text-[#4b5563] lg:text-[15px]">

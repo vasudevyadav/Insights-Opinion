@@ -23,7 +23,7 @@ export default function LocalWorkingWith() {
             </div>
 
             <div className="relative z-10 mx-auto flex max-w-7xl items-center px-4 sm:px-6 lg:px-8">
-                <div className="ml-auto w-full max-w-[520px] py-16 lg:py-24 lg:pt-40">
+                <div className="ml-auto w-full max-w-[520px] py-6 lg:py-24 lg:pt-40 pt-36">
                     <h2 className="mb-5 text-[28px] font-light leading-tight text-white lg:text-[40px]">
                         Working With
                         <br />
