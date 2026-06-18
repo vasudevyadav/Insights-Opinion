@@ -78,57 +78,11 @@ export default function Navbar() {
   const [mobileOpenDropdowns, setMobileOpenDropdowns] = useState<
     Partial<Record<NavDropdownKey, boolean>>
   >({});
-  const [researchItems, setResearchItems] = useState<
-    { name: string; href: string }[]
-  >([]);
-
-  useEffect(() => {
-    async function getResearchMenu() {
-      try {
-        const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-
-        if (!API_BASE_URL) return;
-
-        const slugs = [
-          "healthcare-research",
-        //   "consumer-research",
-        //   "b2b-research",
-        ];
-
-        const responses = await Promise.all(
-          slugs.map(async (slug) => {
-            const res = await fetch(
-              `${API_BASE_URL}/custom/v1/research-expertises/${slug}`,
-              {
-                cache: "no-store",
-              }
-            );
-
-            if (!res.ok) return null;
-
-            return res.json();
-          })
-        );
-
-        const items = responses
-          .filter(Boolean)
-          .map((item) => ({
-            name:
-              item?.hero?.titleLine1 && item?.hero?.titleLine2
-                ? `${item.hero.titleLine1} ${item.hero.titleLine2}`
-                : item.slug,
-            href: `/research/${item.slug}`,
-          }));
-
-        setResearchItems(items);
-      } catch (error) {
-        console.log("Research menu API error:", error);
-        setResearchItems([]);
-      }
-    }
-
-    getResearchMenu();
-  }, []);
+  const researchItems = [
+    { name: "Healthcare Market Research", href: "/research/healthcare-research" },
+    { name: "B2B Research", href: "/research/b2b-research" },
+    { name: "Consumer Research", href: "/research/consumer-research" },
+  ];
 
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "";

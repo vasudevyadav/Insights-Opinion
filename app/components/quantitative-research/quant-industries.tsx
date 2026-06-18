@@ -57,8 +57,8 @@ export default function QuantIndustries() {
               Industries
             </span>
           </h2>
-          <p className="text-[20px] font-semibold text-[#1e2746] sm:text-[24px]">We Serve</p>
-          <p className="mt-3 max-w-[480px] text-[14px] leading-[1.7] text-[#4a5568] sm:text-[15px]">
+          <p className="text-[20px] font-normal text-[#1e2746] sm:text-[24px]">We Serve</p>
+          <p className="mt-1.5 max-w-[480px] text-[14px] leading-[1.7] text-gray-800 sm:text-lg">
             Insights Opinion works with clients across multiple sectors for quantitative research.
           </p>
         </div>

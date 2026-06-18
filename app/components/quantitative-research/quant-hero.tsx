@@ -20,10 +20,11 @@ export default function QuantHero() {
           alt=""
           fill
           priority
-          className="object-cover object-bottom "
+          className="object-cover object-bottom"
         />
-
       </div>
+
+    
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 pt-12 lg:px-1 lg:pt-0">
 
@@ -75,7 +76,6 @@ export default function QuantHero() {
           </div>
 
         </div>
-
 
       </div>
     </section>
