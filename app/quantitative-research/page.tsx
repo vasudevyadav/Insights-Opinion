@@ -26,7 +26,6 @@ export default function QuantitativeResearchPage() {
       <QuantGlobalServices />
       <QuantWhyRadial />
       <QuantWhyChoose />
-      <TestimonialHealth />
       <QuantNews />
       <CallbackFaqHealth />
       <BookDemoHealth />

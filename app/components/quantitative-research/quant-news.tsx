@@ -60,9 +60,9 @@ export default function QuantNews() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:pb-0 lg:grid-cols-3">
           {articles.map((a, i) => (
-            <Link key={i} href={a.href} className="group block">
+            <Link key={i} href={a.href} className="group block min-w-[82vw] snap-center sm:min-w-0">
               <div className="overflow-hidden rounded-[18px] border border-[#e5ecf4] bg-white shadow-[0_4px_16px_rgba(37,99,235,0.06)] transition-all duration-300 group-hover:shadow-[0_8px_28px_rgba(37,99,235,0.14)]">
                 <div className="relative h-[200px] w-full overflow-hidden">
                   <Image
