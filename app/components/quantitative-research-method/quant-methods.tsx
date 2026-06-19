@@ -26,7 +26,7 @@ const methods = [
   },
 ];
 
-export default function QuantMethods() {
+export default function QuantDetailsMethods() {
   return (
     <section className="relative overflow-hidden bg-[#edf6ff] py-1 lg:py-2">
       {/* Hex pattern — full background */}
