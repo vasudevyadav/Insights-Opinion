@@ -11,20 +11,20 @@ const checklistItems = [
 
 export default function QuantDataAnalysis() {
   return (
-    <section className="relative overflow-hidden bg-[#edf6ff] h-[750px]">
+    <section className="relative overflow-hidden bg-[#161b3c] min-h-105 lg:h-187.5">
       <div className="absolute inset-0">
         <Image
           src="/quality/services-analays.png"
           alt="Working With Insights Opinion"
           fill
-          className="object-cover object-center"
+          className="object-cover object-center hidden lg:block"
           unoptimized
         />
       </div>
 
       <div className="relative z-10 mx-auto flex max-w-[1400px] items-center px-4 sm:px-6 lg:px-8">
-        
-        <div className="w-full max-w-[450px] py-6 lg:py-24 lg:pt-64 pt-40">
+
+        <div className="w-full max-w-[450px] py-6 pt-16 sm:pt-24 lg:py-24 lg:pt-64">
           <h2 className="mb-5 text-[28px] font-light leading-tight text-white lg:text-[40px]">
 
             <span className="bg-[linear-gradient(90deg,#17afa1,#43bccb,#74b9ff)] bg-clip-text font-semibold text-transparent">

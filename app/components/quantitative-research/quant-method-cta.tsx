@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function QuantMethodCta() {
   return (
-    <section className="relative overflow-hidden bg-[#edf6ff] pt-10 lg:pt-14">
+    <section className="relative overflow-hidden bg-[#edf6ff] py-8 lg:py-14">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-24 top-1/2 h-[300px] w-[300px] -translate-y-1/2 rounded-full bg-[#35d0c7]/10 blur-3xl" />
         <div className="absolute -right-24 top-1/2 h-[300px] w-[300px] -translate-y-1/2 rounded-full bg-[#5abff8]/10 blur-3xl" />
@@ -22,7 +22,7 @@ export default function QuantMethodCta() {
         <div className="mt-4">
           <Link
             href="#"
-            className="inline-block rounded-full bg-gradient-to-r from-[#35d0c7] to-[#5abff8] px-12 py-3 text-lg font-semibold text-white shadow-[0_8px_24px_rgba(53,208,199,0.3)] transition hover:opacity-90 hover:scale-[1.02] sm:text-base"
+            className="inline-block rounded-full bg-gradient-to-r from-[#35d0c7] to-[#5abff8] px-8 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(53,208,199,0.3)] transition hover:opacity-90 hover:scale-[1.02] sm:px-12 sm:text-base"
           >
             Get in Touch
           </Link>

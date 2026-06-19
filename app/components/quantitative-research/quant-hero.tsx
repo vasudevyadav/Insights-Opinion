@@ -12,7 +12,7 @@ const badges = [
 
 export default function QuantHero() {
   return (
-    <section className="relative h-[700px] bg-[#edf6ff]">
+    <section className="relative h-125 bg-[#edf6ff] sm:h-145 lg:h-175">
 
       <div className="absolute inset-0">
         <Image
@@ -20,11 +20,11 @@ export default function QuantHero() {
           alt=""
           fill
           priority
-          className="object-cover object-bottom"
+          className="object-cover lg:object-bottom object-left"
         />
       </div>
 
-    
+
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 pt-12 lg:px-1 lg:pt-0">
 
@@ -32,7 +32,7 @@ export default function QuantHero() {
 
           {/* LEFT TEXT */}
           <div className="py-8 lg:py-16 lg:pt-32">
-            <h1 className="text-2xl font-extrabold leading-[1.05] lg:text-5xl">
+            <h1 className="text-4xl font-extrabold leading-[1.05] lg:text-5xl">
               <span className="block text-[#1dc3b3]">Quantitative</span>
               <span className="block text-[#1dc3b3]">Market Research</span>
               <span className="mt-1 block text-[28px] font-semibold text-white/90 sm:text-[36px] lg:text-[42px]">

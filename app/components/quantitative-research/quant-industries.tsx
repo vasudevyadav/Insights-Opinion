@@ -53,11 +53,11 @@ export default function QuantIndustries() {
         {/* Left-aligned heading */}
         <div className="mb-8 sm:mb-10">
           <h2 className="text-[42px] font-bold leading-tight sm:text-[52px] lg:text-[60px]">
-            <span className="bg-gradient-to-r from-[#3c8df6] via-[#31b6df] to-[#1dc3b3] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] bg-clip-text text-transparent">
               Industries
             </span>
           </h2>
-          <p className="text-[20px] font-normal text-[#1e2746] sm:text-[24px]">We Serve</p>
+          <p className="text-[20px] font-normal text-[#1e2746] lg:text-3xl">We Serve</p>
           <p className="mt-1.5 max-w-[480px] text-[14px] leading-[1.7] text-gray-800 sm:text-lg">
             Insights Opinion works with clients across multiple sectors for quantitative research.
           </p>
@@ -67,8 +67,8 @@ export default function QuantIndustries() {
         <div className="overflow-hidden rounded-[16px] border border-[#cde4f7] bg-white shadow-[0_4px_20px_rgba(37,99,235,0.07)]">
           {/* Header row */}
           <div className="grid grid-cols-[1fr_1.8fr] border-b border-[#cde4f7] px-6 py-4">
-            <span className="text-[14px] font-bold text-[#35d0c7] sm:text-[15px]">Industry</span>
-            <span className="text-[14px] font-bold text-[#35d0c7] sm:text-[15px]">
+            <span className="text-[14px] font-semibold bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] bg-clip-text text-transparent lg:text-lg ">Industry</span>
+            <span className="text-[14px] font-semibold bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] bg-clip-text text-transparent lg:text-lg ">
               Typical Quantitative Research Use Cases
             </span>
           </div>
@@ -80,16 +80,16 @@ export default function QuantIndustries() {
               className="grid grid-cols-[1fr_1.8fr] items-center border-b border-[#e8f2fb] px-6 py-4 transition-colors last:border-0 hover:bg-[#f4f9ff]"
             >
               <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] bg-gradient-to-br from-[#35d0c7] to-[#3c8df6]">
-                  <ind.Icon size={18} className="text-white" strokeWidth={2} />
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[10px] bg-gradient-to-br from-[#1dc3b3] via-[#31b6df] to-[#3c8df6]">
+                  <ind.Icon size={24} className="text-white" strokeWidth={2} />
                 </span>
-                <span className="text-[13px] font-semibold text-[#1e2746] sm:text-[14px]">
+                <span className="text-sm font-semibold text-[#1e2746] lg:text-base">
                   {ind.name}
                 </span>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-10">
                 <span className="shrink-0 text-[20px] font-bold text-[#35d0c7]">→</span>
-                <span className="text-[13px] leading-[1.6] text-[#4a5568] sm:text-[14px]">
+                <span className="text-sm leading-[1.6] text-[#4a5568] lg:text-base">
                   {ind.useCases}
                 </span>
               </div>
@@ -100,3 +100,7 @@ export default function QuantIndustries() {
     </section>
   );
 }
+
+
+
+

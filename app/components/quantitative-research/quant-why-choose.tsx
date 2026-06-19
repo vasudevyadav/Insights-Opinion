@@ -68,7 +68,7 @@ export default function QuantWhyChoose() {
                           {item.title}
                         </h3>
                         {isOpen && item.content && (
-                          <p className="mt-2 max-w-[320px] text-xs leading-[1.55] text-[#d6dbef] lg:text-sm">
+                          <p className="mt-2 max-w-full text-xs leading-[1.55] text-[#d6dbef] lg:max-w-[320px] lg:text-sm">
                             {item.content}
                           </p>
                         )}
@@ -87,8 +87,8 @@ export default function QuantWhyChoose() {
             </div>
           </div>
 
-          <div className="relative flex min-h-[320px] items-center justify-center overflow-visible lg:min-h-[520px]">
-            <div className="relative inline-flex w-fit items-end justify-center overflow-visible bg-transparent">
+          <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden lg:min-h-130 lg:overflow-visible">
+            <div className="relative inline-flex w-fit items-end justify-center overflow-hidden bg-transparent lg:overflow-visible">
               <Image
                 src="/globe-image.png"
                 alt="Global Research"

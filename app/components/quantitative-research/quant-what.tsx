@@ -87,9 +87,9 @@ return (
       </div>
     </div>
 
-    <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:mt-16 lg:grid-cols-5">
+    <div className="mt-8 flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 sm:grid sm:grid-cols-3 sm:overflow-visible sm:pb-0 lg:mt-16 lg:grid-cols-5">
       {bottomCards.map((card, i) => (
-      <div key={i} className="relative">
+      <div key={i} className="relative min-w-[72vw] snap-center sm:min-w-0">
         {/* Card */}
         <div className="
           relative min-h-[140px]
