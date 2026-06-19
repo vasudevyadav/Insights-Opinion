@@ -13,25 +13,7 @@ import TestimonialHealth from "@/app/components/healthcare-research/testimonial-
 import CallbackFaqHealth from "@/app/components/healthcare-research/call-back-faq";
 import BookDemoHealth from "@/app/components/healthcare-research/book-demo";
 import HealthUsecases from "@/app/components/healthcare-research/health-usecases ";
-
-async function getResearchPage(slug: string) {
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-
-  if (!API_BASE_URL) {
-    throw new Error("NEXT_PUBLIC_API_BASE_URL is missing");
-  }
-
-  const res = await fetch(
-    `${API_BASE_URL}/custom/v1/research-expertises/${slug}`,
-    {
-      cache: "no-store",
-    }
-  );
-
-  if (!res.ok) return null;
-
-  return res.json();
-}
+import { researchPages, ResearchPageSlug } from "@/data/researchPages";
 
 export default async function ResearchSlugPage({
   params,
@@ -39,7 +21,7 @@ export default async function ResearchSlugPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const pageData = await getResearchPage(slug);
+  const pageData = researchPages[slug as ResearchPageSlug] ?? null;
 
   if (!pageData) notFound();
 

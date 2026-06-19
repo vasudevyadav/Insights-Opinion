@@ -1,8 +1,6 @@
 "use client";
-
 import Image from "next/image";
-import { Phone, Mail, MapPin, ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 const offices = [
   {
@@ -28,112 +26,108 @@ const offices = [
   },
 ];
 
-function OfficeCard({ office, expanded, onToggle }: {
-  office: typeof offices[0];
-  expanded: boolean;
-  onToggle: () => void;
-}) {
+function OfficeCard({ office }: { office: (typeof offices)[0] }) {
   return (
-    <div className="overflow-hidden rounded-[18px] border border-white/10 bg-[#0d1b2e]/80 backdrop-blur-sm">
-      <div className="px-6 pt-5 pb-4">
-        <h3 className="bg-gradient-to-r from-[#3c8df6] to-[#1dc3b3] bg-clip-text text-[16px] font-bold leading-[1.3] text-transparent sm:text-[17px]">
+    <div
+      className="overflow-hidden rounded-2xl bg-gradient-to-br from-[#15af9e] via-[#15af9e] to-[#71b8fc]"
+    >
+      {/* Card body */}
+      <div className="px-7 py-8 rounded-b-4xl bg-[#1c2350] border border-[#63b3ed]/12" >
+        <h3
+          className="text-base font-medium leading-snug lg:text-2xl"
+          style={{
+            background: "linear-gradient(90deg, #00f2fe 0%,  #4facfe 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
           {office.title}
         </h3>
-        <p className="mt-2.5 text-[13px] leading-[1.7] text-white/60 sm:text-[14px]">
+        <p className="mt-4 text-sm leading-[1.75] lg:text-base line-clamp-4 lg:line-clamp-5" style={{ color: "rgba(203,213,225,0.7)" }}>
           {office.desc}
         </p>
-        <button
-          type="button"
-          onClick={onToggle}
-          className="mt-3 flex items-center justify-center text-white/40 transition-colors hover:text-white/70"
-        >
-          {expanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-        </button>
+
       </div>
+
       {/* Contact strip */}
-      <div className="flex flex-wrap gap-y-1.5 gap-x-5 border-t border-white/10 bg-[#060e1e] px-6 py-3.5">
-        <div className="flex items-center gap-2 text-[12px] text-white/55">
-          <Phone size={13} className="shrink-0 text-[#35d0c7]" />
-          <span>{office.phone}</span>
-        </div>
-        <div className="flex items-center gap-2 text-[12px] text-white/55">
-          <Mail size={13} className="shrink-0 text-[#35d0c7]" />
-          <span>{office.email}</span>
-        </div>
-        <div className="flex items-center gap-2 text-[12px] text-white/55">
-          <MapPin size={13} className="shrink-0 text-[#35d0c7]" />
-          <span>{office.address}</span>
-        </div>
+      <div
+        className="flex flex-wrap gap-x-5 gap-y-2 px-7 py-4 rounded-b-2xl"
+
+      >
+        {[
+          { icon: Phone, text: office.phone },
+          { icon: Mail, text: office.email },
+          { icon: MapPin, text: office.address },
+        ].map(({ icon: Icon, text }) => (
+          <div key={text} className="flex items-center gap-2 text-sm text-white"  >
+            <Icon size={14} style={{ flexShrink: 0 }} />
+            <span>{text}</span>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
 export default function QuantGlobalServices() {
-  const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
-    <section className="relative overflow-hidden bg-[#0a1225] py-14 lg:py-20">
-      {/* Globe background image */}
+    <section className="relative overflow-hidden py-5 lg:py-12 bg-[#eaf5fc]">
+      {/* Globe background */}
       <div className="pointer-events-none absolute inset-0">
         <Image
-          src="/market-research/globle-marketing-1.png"
+          src="/quality/research-services.png"
           alt=""
           fill
-          className="object-cover object-right opacity-25"
+          className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1225]/98 via-[#0a1225]/80 to-[#0a1225]/20" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
-        {/* Centered heading */}
-        <div className="mb-12 text-center">
-          <h2 className="text-[28px] font-bold leading-tight sm:text-[36px] lg:text-[44px]">
-            <span className="bg-gradient-to-r from-[#3c8df6] via-[#31b6df] to-[#1dc3b3] bg-clip-text text-transparent">
+        {/* Heading block */}
+        <div className="mb-16 text-center">
+          <h2 className="text-[28px] font-semibold leading-tight lg:text-4xl">
+            <span
+              style={{
+                background: "linear-gradient(90deg, #4facfe 0%, #00f2fe 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
               Quantitative Research Services
             </span>
           </h2>
-          <p className="mt-1 text-[20px] font-semibold text-white sm:text-[24px]">
+          <p className="mt-1 text-lg font-normal text-white lg:text-2xl">
             Across Our Global Offices
           </p>
-          <p className="mx-auto mt-4 max-w-[700px] text-[14px] leading-[1.75] text-white/50 sm:text-[15px]">
+          <p
+            className="mx-auto mt-4 max-w-4xl text-sm leading-[1.75] lg:text-base text-white"
+          >
             Insights Opinion is a quantitative market research company US, UK, and India-based businesses can
             work with directly. We have offices in three key markets and fieldwork capability across 100+&nbsp;countries,
             so whether your study is domestic or spans multiple regions, you have a research partner on the ground.
           </p>
         </div>
 
-        {/* Staggered cards layout */}
-        <div className="mx-auto max-w-[820px]">
-          {/* Row 1: USA left */}
-          <div className="mb-5">
-            <div className="max-w-[560px]">
-              <OfficeCard
-                office={offices[0]}
-                expanded={expanded === 0}
-                onToggle={() => setExpanded(expanded === 0 ? null : 0)}
-              />
+        {/* Mobile / tablet — horizontal scroll */}
+        <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide lg:pb-4 pb-20 lg:hidden">
+          {offices.map((office, i) => (
+            <div key={i} className="min-w-[85vw] snap-center">
+              <OfficeCard office={office} />
             </div>
+          ))}
+        </div>
+
+        {/* Desktop — staggered overlap layout */}
+        <div className="relative mx-auto hidden max-w-6xl lg:block">
+          <div style={{ marginLeft: "3%", maxWidth: 520 }}>
+            <OfficeCard office={offices[0]} />
           </div>
-          {/* Row 2: UK right */}
-          <div className="mb-5 flex justify-end">
-            <div className="max-w-[560px] w-full">
-              <OfficeCard
-                office={offices[1]}
-                expanded={expanded === 1}
-                onToggle={() => setExpanded(expanded === 1 ? null : 1)}
-              />
-            </div>
+          <div style={{ marginLeft: "auto", marginRight: 0, maxWidth: 520, marginTop: -180 }}>
+            <OfficeCard office={offices[1]} />
           </div>
-          {/* Row 3: India left */}
-          <div>
-            <div className="max-w-[560px]">
-              <OfficeCard
-                office={offices[2]}
-                expanded={expanded === 2}
-                onToggle={() => setExpanded(expanded === 2 ? null : 2)}
-              />
-            </div>
+          <div style={{ marginLeft: "10%", maxWidth: 520, marginTop: 45 }}>
+            <OfficeCard office={offices[2]} />
           </div>
         </div>
       </div>
