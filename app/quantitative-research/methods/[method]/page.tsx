@@ -5,6 +5,7 @@ import QuantDetailsMethods from "@/app/components/quantitative-research-method/q
 import QuantDetailsWhat from "@/app/components/quantitative-research-method/quant-what";
 import QuantDetailsAbout from "@/app/components/quantitative-research-method/quant-about";
 import QuantWhatOur from "@/app/components/quantitative-research-method/quant-what-our";
+import MarketResearch from "@/app/components/quantitative-research-method/market-research";
 
 export default function MethodDetailPage() {
   return (
@@ -13,6 +14,7 @@ export default function MethodDetailPage() {
       <QuantDetailsAbout />
       <QuantDetailsWhat />
       <QuantWhatOur />
+      <MarketResearch />
       <QuantDetailsMethods />
       <QuantDetailsWhyRadial />
       <QuantDetailsFaq />
