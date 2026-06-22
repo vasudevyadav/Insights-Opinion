@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+import { getMethodData } from "@/app/lib/method-data";
 import QuantDetailsHero from "@/app/components/quantitative-research-method/quant-hero";
 import QuantDetailsFaq from "@/app/components/quantitative-research-method/quant-faq";
 import QuantDetailsWhyRadial from "@/app/components/quantitative-research-method/quant-why-radial";
@@ -7,17 +9,26 @@ import QuantDetailsAbout from "@/app/components/quantitative-research-method/qua
 import QuantWhatOur from "@/app/components/quantitative-research-method/quant-what-our";
 import MarketResearch from "@/app/components/quantitative-research-method/market-research";
 
-export default function MethodDetailPage() {
+export default async function MethodDetailPage({
+  params,
+}: {
+  params: Promise<{ method: string }>;
+}) {
+  const { method } = await params;
+  const data = getMethodData(method);
+
+  if (!data) notFound();
+
   return (
     <main>
-      <QuantDetailsHero />
-      <QuantDetailsAbout />
-      <QuantDetailsWhat />
-      <QuantWhatOur />
-      <MarketResearch />
+      <QuantDetailsHero data={data.hero} />
+      <QuantDetailsAbout data={data.about} />
+      <QuantDetailsWhat data={data.why} />
+      <QuantWhatOur data={data.services} />
+      <MarketResearch data={data} />
       <QuantDetailsMethods />
       <QuantDetailsWhyRadial />
-      <QuantDetailsFaq />
+      <QuantDetailsFaq data={data.faqs} />
     </main>
   );
 }

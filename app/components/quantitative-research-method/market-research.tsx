@@ -1,107 +1,44 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { Plus, ChevronRight, FileText, Users, Phone, Eye, Database, TrendingDown, BookOpen, Wifi, UserCheck, RefreshCw, ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  TrendingDown, BookOpen, Wifi, UserCheck, RefreshCw,
+  MapPin, Home, Users, Package, Star, Lightbulb, BarChart,
+  Globe, Clock, TrendingUp,
+} from "lucide-react";
+import type { MethodData } from "@/app/lib/method-data";
 
-const whenToUseItems = [
-  {
-    Icon: TrendingDown,
-    title: "Low Digital Reach",
-    description: "Your target audience has lower digital engagement or is difficult to reach through online panels",
-  },
-  {
-    Icon: BookOpen,
-    title: "Sensitive Topics",
-    description: "The study covers sensitive topics where a human interviewer improves response quality",
-  },
-  {
-    Icon: Wifi,
-    title: "Deep Probing",
-    description: "You need structured probing to go deeper than a closed question allows",
-  },
-  {
-    Icon: UserCheck,
-    title: "Verified Respondents",
-    description: "You are running a B2B, healthcare, or public opinion study where respondent verification is important",
-  },
-  {
-    Icon: RefreshCw,
-    title: "Consistent Tracking",
-    description: "Longitudinal tracking requires a consistent method across multiple research waves",
-  },
-];
+const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+  TrendingDown, BookOpen, Wifi, UserCheck, RefreshCw,
+  MapPin, Home, Users, Package, Star, Lightbulb, BarChart,
+  Globe, Clock, TrendingUp,
+};
 
-const services = [
-  {
-    id: "01",
-    title: "Questionnaire Design and Scripting",
-    description:
-      "We design and script questionnaires built for telephone delivery — clear routing, controlled length, and language tuned for spoken responses rather than a screen.",
-    image: "/Survey-Programming.jpg",
-    Icon: FileText,
-  },
-  {
-    id: "02",
-    title: "Interviewer Training",
-    description:
-      "Every interviewer is briefed on the specific study and trained for the audience type. B2B research and healthcare research studies receive additional sector briefings.",
-    image: "/quality/cati-telephone.png",
-    Icon: Users,
-  },
-  {
-    id: "03",
-    title: "Automated Dialing and Scheduling",
-    description:
-      "Our dialing system manages call queues, time-zone scheduling, and callback windows so interviewers spend time talking, not waiting.",
-    image: "/quality/cati-computer.png",
-    Icon: Phone,
-  },
-  {
-    id: "04",
-    title: "Live Monitoring and Quality Review",
-    description:
-      "Supervisors monitor live calls throughout fieldwork. Interviews that fall outside quality thresholds are flagged and removed before data delivery.",
-    image: "/Live-Project-Visibility.png",
-    Icon: Eye,
-  },
-  {
-    id: "05",
-    title: "Data Delivery",
-    description:
-      "Clean, coded data delivered in your preferred format — SPSS, Excel, or CSV — with a full fieldwork summary and response rate breakdown.",
-    image: "/Data-Insights.jpg",
-    Icon: Database,
-  },
-];
-
-export default function MarketResearch() {
-  const [active, setActive] = useState(1);
+export default function MarketResearch({ data }: { data: MethodData }) {
+  const { whenToUse, comparison, vsBox, sectors } = data;
+  const [expandedSector, setExpandedSector] = useState<number | null>(null);
 
   return (
     <>
-      {/* When to Use CATI Market Research Section */}
+      {/* When to Use Section */}
       <section className="relative overflow-hidden bg-[#deeef7] py-16">
-
-
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start">
 
             <div>
-              <p className="text-2xl font-light text-[#2b3553] sm:text-3xl">When to Use</p>
+              <p className="text-2xl font-light text-[#2b3553] sm:text-3xl">{whenToUse.heading1}</p>
               <h2 className="mt-1 text-3xl font-bold sm:text-4xl">
-                <span className="text-[#1dc3b3]">CATI</span>{" "}
-                <span className="text-[#4faee8]">Market Research?</span>
+                <span className="text-[#1dc3b3]">{whenToUse.heading2.split(" ")[0]}</span>{" "}
+                <span className="text-[#4faee8]">{whenToUse.heading2.split(" ").slice(1).join(" ")}</span>
               </h2>
               <p className="mt-5 text-base font-semibold leading-relaxed text-[#2b3553] sm:text-[15px]">
-                Outsourcing CATI market research to Insights Opinion gives you fully managed CATI
-                fieldwork services from brief to delivery. For studies needing panel respondents
-                alongside telephone reach, our global panel of 8M+ profiled respondents works
-                alongside CATI fieldwork.
+                {whenToUse.bodyText}
               </p>
               <div className="mt-7 overflow-hidden rounded-2xl">
                 <Image
-                  src="/quality/cati-telephone.png"
-                  alt="CATI Market Research"
+                  src={whenToUse.image}
+                  alt={whenToUse.heading2}
                   width={640}
                   height={380}
                   unoptimized
@@ -110,22 +47,23 @@ export default function MarketResearch() {
               </div>
             </div>
 
-            {/* Right Column — grid of use-case cards */}
             <div className="grid grid-cols-2 gap-6">
-              {whenToUseItems.map((item) => (
-                <div key={item.title}>
-                  <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#1dc3b3] text-[#1dc3b3]">
-                    <item.Icon size={22} />
+              {whenToUse.items.map((item) => {
+                const IconComp = ICON_MAP[item.iconKey] ?? Users;
+                return (
+                  <div key={item.title}>
+                    <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#1dc3b3] text-[#1dc3b3]">
+                      <IconComp size={22} />
+                    </div>
+                    <h3 className="text-base font-bold text-[#2b3553]">{item.title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-[#4a5568]">{item.description}</p>
                   </div>
-                  <h3 className="text-base font-bold text-[#2b3553]">{item.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-[#4a5568]">{item.description}</p>
-                </div>
-              ))}
+                );
+              })}
 
-              {/* CTA card fills the 6th grid cell */}
               <div className="flex flex-col justify-end">
                 <p className="mb-3 text-sm font-semibold text-[#2b3553]">
-                  Not sure if CATI is the right method for your study?
+                  Not sure if this is the right method for your study?
                 </p>
                 <a
                   href="#"
@@ -140,8 +78,8 @@ export default function MarketResearch() {
         </div>
       </section>
 
+      {/* Comparison Table Section */}
       <section className="relative overflow-hidden bg-[#deeef7] py-16">
-
         <div className="pointer-events-none absolute inset-y-0 right-0 w-52 opacity-25">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -155,55 +93,137 @@ export default function MarketResearch() {
         </div>
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
           <h2 className="mb-10 text-3xl font-bold sm:text-4xl">
-            <span className="text-[#1dc3b3]">CATI</span>{" "}
-            <span className="text-[#4faee8]">vs Online Surveys</span>
+            <span className="text-[#1dc3b3]">{comparison.col1}</span>{" "}
+            <span className="text-[#4faee8]">vs {comparison.col2}</span>
           </h2>
-
 
           <div className="grid grid-cols-3 gap-x-6">
             <p className="mb-8 text-center text-2xl font-semibold text-[#1dc3b3]">Factor</p>
-            <p className="mb-8 text-center text-2xl font-semibold text-[#1dc3b3]">CATI</p>
-            <p className="mb-8 text-center text-2xl font-semibold text-[#1dc3b3]">Online Surveys</p>
+            <p className="mb-8 text-center text-2xl font-semibold text-[#1dc3b3]">{comparison.col1}</p>
+            <p className="mb-8 text-center text-2xl font-semibold text-[#1dc3b3]">{comparison.col2}</p>
 
-            {[
-              { factor: "Interviewer involvement", cati: "Trained interviewer throughout", online: "Self-completion only" },
-              { factor: "Response quality control", cati: "High, real-time supervision", online: "Respondent-led" },
-              { factor: "Audience reach", cati: "Broad, including non-digital populations", online: "Primarily digital users" },
-              { factor: "Sensitive topic handling", cati: "Stronger, reduces dropout", online: "Higher abandonment rates" },
-              { factor: "Cost per response", cati: "Higher", online: "Lower for large panels" },
-              { factor: "Best for", cati: "B2B, healthcare, complex studies", online: "Large consumer panels, fast turnaround" },
-            ].map((row) => (
+            {comparison.rows.map((row) => (
               <React.Fragment key={row.factor}>
                 <div className="mb-4 flex items-center rounded-xl bg-white/70 px-6 py-3 text-base font-medium text-[#2b3553]">
                   {row.factor}
                 </div>
                 <div className="mb-4 flex items-center rounded-xl bg-white/70 px-6 py-3 text-base text-[#2b3553]">
-                  {row.cati}
+                  {row.col1}
                 </div>
                 <div className="mb-4 flex items-center rounded-xl bg-white/70 px-6 py-3 text-base text-[#2b3553]">
-                  {row.online}
+                  {row.col2}
                 </div>
               </React.Fragment>
             ))}
           </div>
 
           <div className="mt-6 max-w-lg text-base leading-relaxed text-[#4a5568]">
-            <p>
-              Many clients combine <strong className="text-[#2b3553]">CATI</strong> data collection services
-              with online panel methods to build representative samples.
-            </p>
-            <p className="mt-1 font-semibold text-[#2b3553]">
-              Both sit within Insights Opinion&apos;s quantitative research portfolio.{" "}
-              <a href="#" className="inline-flex items-center gap-1 text-[#1dc3b3] hover:underline">
-                <ArrowRight size={18} />
-              </a>
-            </p>
+            <p>{comparison.footer}</p>
           </div>
         </div>
       </section>
 
+      {/* vs Box Section */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl bg-gradient-to-br from-[#0f2a5e] to-[#1a4a8a] px-8 py-12 sm:px-14 sm:py-16">
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
+
+              <div>
+                <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
+                  <span className="bg-gradient-to-r from-[#1dc3b3] to-[#4faee8] bg-clip-text text-transparent">
+                    {vsBox.title}
+                  </span>
+                </h2>
+                <p className="mt-1 text-xl font-light text-white sm:text-2xl">{vsBox.subtitle}</p>
+                <p className="mt-5 text-base leading-relaxed text-white/75">{vsBox.description}</p>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <div className="flex items-start gap-3 rounded-xl bg-white/10 px-5 py-4">
+                    <div className="mt-0.5 h-3 w-3 shrink-0 rounded-full bg-[#1dc3b3]" />
+                    <div>
+                      <p className="text-sm font-semibold text-white">{vsBox.col1Label}</p>
+                      <p className="mt-0.5 text-xs text-white/60">{vsBox.col1Desc}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3 rounded-xl bg-white/10 px-5 py-4">
+                    <div className="mt-0.5 h-3 w-3 shrink-0 rounded-full bg-[#4faee8]" />
+                    <div>
+                      <p className="text-sm font-semibold text-white">{vsBox.col2Label}</p>
+                      <p className="mt-0.5 text-xs text-white/60">{vsBox.col2Desc}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {vsBox.items.map((row) => (
+                  <div key={row.label} className="rounded-xl bg-white/10 px-5 py-4">
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#1dc3b3]">{row.label}</p>
+                    <div className="flex justify-between gap-2 text-sm">
+                      <div>
+                        <p className="text-[11px] text-white/50">{vsBox.col1Label}</p>
+                        <p className="font-medium text-white">{row.col1}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-[11px] text-white/50">{vsBox.col2Label}</p>
+                        <p className="font-medium text-white/80">{row.col2}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sector-Specific Section */}
+      <section className="bg-[#f4fafd] py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 text-center">
+            <h2 className="text-3xl font-bold sm:text-4xl">
+              <span className="text-[#2b3553]">Sector-Specific </span>
+              <span className="bg-gradient-to-r from-[#1dc3b3] to-[#4faee8] bg-clip-text text-transparent">
+                Research
+              </span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {sectors.map((card, idx) => (
+              <div
+                key={card.title}
+                className="group relative overflow-hidden rounded-2xl shadow-md cursor-pointer"
+                onClick={() => setExpandedSector(expandedSector === idx ? null : idx)}
+              >
+                <div className="relative h-72 w-full">
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    fill
+                    unoptimized
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f2a5e]/80 via-transparent to-transparent" />
+                </div>
+
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-[#1dc3b3] to-[#4faee8] px-5 py-3 flex items-center justify-between">
+                  <p className="text-sm font-bold text-white">{card.title}</p>
+                  <span className="shrink-0 rounded-full bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-wide text-[#1dc3b3]">
+                    Read More
+                  </span>
+                </div>
+
+                <div className={`absolute inset-0 flex items-center justify-center bg-[#0f2a5e]/85 px-6 transition-opacity duration-300 ${expandedSector === idx ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}>
+                  <p className="text-center text-sm leading-relaxed text-white">{card.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }
