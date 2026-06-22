@@ -28,40 +28,7 @@ const methods = [
 
 export default function QuantDetailsMethods() {
   return (
-    <section className="relative overflow-hidden bg-[#edf6ff] py-1 lg:py-2">
-      {/* Hex pattern — full background */}
-      <div className="pointer-events-none absolute inset-0 opacity-40">
-        <svg
-          className="h-full w-full"
-          viewBox="0 0 1280 800"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="xMidYMid slice"
-        >
-          <defs>
-            <linearGradient id="hexGradMethods" x1="0" y1="0" x2="1280" y2="0" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#b8dff5" />
-              <stop offset="0.5" stopColor="#d8eefb" />
-              <stop offset="1" stopColor="#b8dff5" />
-            </linearGradient>
-          </defs>
-          {Array.from({ length: 15 }).map((_, row) =>
-            Array.from({ length: 22 }).map((_, col) => {
-              const x = col * 62 + (row % 2 ? 31 : 0);
-              const y = row * 54;
-              return (
-                <polygon
-                  key={`${row}-${col}`}
-                  points={`${x + 15},${y} ${x + 45},${y} ${x + 60},${y + 26} ${x + 45},${y + 52} ${x + 15},${y + 52} ${x},${y + 26}`}
-                  stroke="url(#hexGradMethods)"
-                  strokeWidth="1.2"
-                  fill="none"
-                />
-              );
-            })
-          )}
-        </svg>
-      </div>
+    <section className="relative overflow-hidden bg-[#edf6ff] py-1 lg:py-10">
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Heading */}
