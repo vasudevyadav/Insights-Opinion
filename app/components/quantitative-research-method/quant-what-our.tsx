@@ -92,12 +92,12 @@ export default function QuantWhatOur({ data }: { data: ServicesData }) {
           })}
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="inline-block border border-[#2b3553] px-8 py-2.5 rounded text-xl text-[#2b3553]">
+        <div className="lg:mt-12 mt-8 text-center">
+          <p className="inline-block border border-[#2b3553] px-8 py-2.5 rounded text-sm lg:text-xl text-[#2b3553]">
             Want to know how this applies to your study?
           </p>
-          <p className="mt-5">
-            <a href="#" className="bg-linear-to-r from-[#1dc3b3] to-[#4faee8] bg-clip-text text-lg font-semibold text-transparent">
+          <p className="mt-4">
+            <a href="#" className="bg-linear-to-r from-[#1dc3b3] to-[#4faee8] bg-clip-text lg:text-lg text-sm font-semibold text-transparent">
               [Talk to Our Research Team]
             </a>
           </p>

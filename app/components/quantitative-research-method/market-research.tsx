@@ -75,7 +75,7 @@ export default function MarketResearch({ data }: { data: MethodData }) {
 
             {/* Mobile horizontal scroll cards */}
             <div className="lg:hidden">
-              <div className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-3 snap-x snap-mandatory">
+              <div className="lg:-mx-4 mx-1 flex gap-4 overflow-x-auto px-4 pb-3 snap-x snap-mandatory">
                 {whenToUse.items.map((item) => {
                   const IconComp = ICON_MAP[item.iconKey] ?? Users;
                   return (
@@ -151,14 +151,14 @@ export default function MarketResearch({ data }: { data: MethodData }) {
           <div className="lg:hidden space-y-3">
             {comparison.rows.map((row) => (
               <div key={row.factor} className="rounded-xl bg-white/80 px-4 py-3">
-                <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[#4faee8]">{row.factor}</p>
-                <div className="grid grid-cols-2 gap-3">
+                <p className="mb-2 text-sm font-bold uppercase tracking-wide text-[#4faee8]">{row.factor}</p>
+                <div className="grid lg:grid-cols-2 grid-cols-1 gap-3">
                   <div>
-                    <p className="text-[10px] font-semibold text-[#1dc3b3]">{comparison.col1}</p>
+                    <p className="lg:text-[11px] text-xs font-semibold text-[#1dc3b3]">{comparison.col1}</p>
                     <p className="text-sm text-[#2b3553]">{row.col1}</p>
                   </div>
                   <div>
-                    <p className="text-[10px] font-semibold text-[#4faee8]">{comparison.col2}</p>
+                    <p className="lg:text-[11px] text-xs font-semibold text-[#4faee8]">{comparison.col2}</p>
                     <p className="text-sm text-[#2b3553]">{row.col2}</p>
                   </div>
                 </div>
