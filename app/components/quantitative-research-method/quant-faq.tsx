@@ -1,82 +1,139 @@
 "use client";
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import Image from "next/image";
+import { ChevronDown } from "lucide-react";
+import type { FaqItem } from "@/app/lib/method-data";
 
-const faqs = [
-  {
-    q: "What is quantitative market research?",
-    a: "Quantitative market research collects structured, numerical data from defined audiences using methods like online surveys, CATI, CAPI, or CLT. It gives you statistically reliable findings you can measure, compare, and act on with confidence.",
-  },
-  {
-    q: "What is the difference between quantitative and qualitative research?",
-    a: "Quantitative research focuses on measurable data — percentages, frequencies, and scores — from large representative samples. Qualitative research explores motivations and attitudes in smaller groups. Many studies combine both to achieve breadth and depth.",
-  },
-  {
-    q: "How long does a quantitative research project take?",
-    a: "Timelines vary by method and study complexity. Online surveys typically complete fieldwork in 2–5 days. CATI and CAPI projects generally take 2–4 weeks. CLT studies average 3–5 weeks from briefing to final report delivery.",
-  },
-  {
-    q: "How large should a quantitative research sample be?",
-    a: "Sample size depends on your target population, the number of subgroups you need to analyse, and the acceptable margin of error. Most consumer studies use 500–1000 respondents per market. B2B studies often use smaller samples of 100–300 due to narrower target audiences.",
-  },
-  {
-    q: "Can Insights Opinion run quantitative research in multiple countries simultaneously?",
-    a: "Yes. We run multi-country quantitative research programmes across 100+ countries in 60+ languages — with simultaneous fieldwork, centralised project management, and consistent protocols across all markets.",
-  },
-  {
-    q: "What data formats does Insights Opinion deliver?",
-    a: "We deliver clean data in SPSS, Excel, CSV, or your preferred BI format — alongside cross-tabulations, significance testing, and executive insight reports designed for confident stakeholder presentation.",
-  },
-];
-
-export default function QuantDetailsFaq() {
-  const [open, setOpen] = useState<number | null>(0);
+export default function QuantDetailsFaq({ data }: { data: FaqItem[] }) {
+  const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="bg-white py-14 lg:py-20">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
+    <section className="relative overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/faq-area-bg.png"
+          alt="Background"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#0a143c]/75" />
+      </div>
 
-          {/* Left */}
-          <div>
-            <h2 className="text-2xl font-bold leading-tight text-[#1e2746] sm:text-3xl lg:text-4xl">
-              Frequently Asked Questions
+      <div className="relative z-10 mx-auto flex max-w-312.5 flex-col items-center gap-10 px-4 py-14 md:px-8 lg:flex-row lg:gap-12 lg:px-10 lg:py-20">
+
+        {/* Left — Request a Callback form */}
+        <div className="w-full md:w-130">
+          <div className="rounded-[20px] bg-white p-6 shadow-xl md:p-8">
+            <div className="mb-6 text-center">
+              <h2 className="text-[28px] font-medium leading-tight text-[#3b3b3b] md:text-[38px]">
+                Request a{" "}
+                <span className="bg-linear-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[42px]">
+                  Callback
+                </span>
+              </h2>
+            </div>
+
+            <form className="space-y-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  className="h-11.5 rounded-sm border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="h-11.5 rounded-sm border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <input
+                  type="tel"
+                  placeholder="Mobile"
+                  className="h-11.5 rounded-sm border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
+                />
+                <select className="h-11.5 rounded-sm border border-[#d7d7d7] bg-white px-4 text-sm text-[#8a8a8a] outline-none focus:border-[#20b7a6]">
+                  <option>Please Select</option>
+                  <option>CATI</option>
+                  <option>CAPI</option>
+                  <option>CLT</option>
+                  <option>Online Surveys</option>
+                </select>
+              </div>
+
+              <textarea
+                placeholder="Message"
+                rows={4}
+                className="w-full rounded-sm border border-[#d7d7d7] px-4 py-3 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6] resize-none"
+              />
+
+              <div className="relative flex flex-col gap-3 sm:flex-row sm:items-center">
+                <input
+                  type="text"
+                  placeholder="Captcha"
+                  className="h-11.5 w-full rounded-sm border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6] sm:w-37.5"
+                />
+                <div className="absolute right-0 lg:left-36 flex h-11.5 w-27.5 items-center justify-center rounded-sm bg-[#171f4d] text-sm font-medium tracking-wide text-white">
+                  990940
+                </div>
+              </div>
+
+              <div className="pt-6 text-center">
+                <button
+                  type="submit"
+                  className="inline-flex min-w-42.5 items-center justify-center rounded-md bg-linear-to-r from-[#48b99b] to-[#5bc4a9] px-18 py-3 text-sm font-semibold text-white transition hover:opacity-90 hover:shadow-lg lg:text-lg"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        {/* Right — FAQ */}
+        <div className="w-full md:flex-1">
+          <div className="mb-8">
+            <h2 className="text-[26px] font-light leading-tight text-white md:text-[42px]">
+              Frequently Asked
             </h2>
-            <p className="mt-4 text-sm leading-relaxed text-[#4a5568] lg:text-base">
-              Can&apos;t find your answer? Speak to our research team directly.
-            </p>
+            <h2 className="bg-linear-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[42px]">
+              Questions
+            </h2>
           </div>
 
-          {/* Right — accordion */}
-          <div className="flex flex-col divide-y divide-[#e5ecf4]">
-            {faqs.map((faq, i) => {
-              const isOpen = open === i;
+          <div className="space-y-3">
+            {data.map((faq, index) => {
+              const isOpen = openIndex === index;
               return (
-                <div key={i}>
+                <div key={index} className="border-b border-white/20">
                   <button
-                    onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex w-full items-start justify-between gap-4 py-5 text-left"
+                    type="button"
+                    onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                    className={`flex w-full items-center justify-between rounded-t-2xl px-5 py-4 text-left transition ${isOpen ? "bg-white" : "bg-transparent"}`}
                   >
-                    <span
-                      className={`text-sm font-semibold leading-snug lg:text-base ${isOpen ? "text-[#1dc3b3]" : "text-[#1e2746]"
-                        }`}
-                    >
+                    <span className={`text-sm font-medium transition lg:text-base ${isOpen ? "text-[#18aea1]" : "text-white"}`}>
                       {faq.q}
                     </span>
-                    <span className="mt-0.5 shrink-0 text-[#1dc3b3]">
-                      {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-                    </span>
+                    <ChevronDown
+                      className={`h-5 w-5 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-[#18aea1]" : "rotate-0 text-white"}`}
+                    />
                   </button>
-                  {isOpen && (
-                    <p className="pb-5 text-sm leading-relaxed text-[#4a5568] lg:text-base">
-                      {faq.a}
-                    </p>
-                  )}
+
+                  <div className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] rounded-b-2xl bg-white" : "grid-rows-[0fr]"}`}>
+                    <div className="overflow-hidden">
+                      <div className="px-5 pb-5">
+                        <p className="text-xs leading-6 text-[#6b7280] lg:text-sm">{faq.a}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               );
             })}
           </div>
         </div>
+
       </div>
     </section>
   );
