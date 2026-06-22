@@ -23,17 +23,17 @@ export default function QuantWhatOur({ data }: { data: ServicesData }) {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="bg-white py-16">
+    <section className="bg-white lg:py-16 py-8">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
-        <div className="mb-10 text-center w-full">
-          <h2 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl bg-linear-to-r from-[#1dc3b3] to-[#4faee8] bg-clip-text text-transparent">
+        <div className="lg:mb-10 mb-6 text-center w-full">
+          <h2 className="text-2xl font-bold leading-tight sm:text-4xl lg:text-5xl bg-linear-to-r from-[#1dc3b3] to-[#4faee8] bg-clip-text text-transparent">
             {data.headingGradient}
           </h2>
-          <h2 className="text-3xl font-light text-[#2b3553] sm:text-4xl py-1">
+          <h2 className="text-2xl font-light text-[#2b3553] sm:text-4xl py-1">
             {data.headingLight}
           </h2>
-          <p className="mx-auto mt-2 max-w-3xl text-lg leading-relaxed text-[#4a5568]">
+          <p className="mx-auto mt-2 max-w-3xl lg:text-lg text-sm leading-relaxed text-[#4a5568]">
             {data.subheading}
           </p>
         </div>
