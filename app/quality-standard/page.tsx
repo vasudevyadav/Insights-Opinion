@@ -7,9 +7,9 @@ import QualityProfessionalDev from "@/app/components/quality-standard/quality-pr
 import QualityGlobalTransfer from "@/app/components/quality-standard/quality-global-transfer";
 import QualityAffiliations from "@/app/components/quality-standard/quality-affiliations";
 import QualityIndustryBanner from "@/app/components/quality-standard/quality-industry-banner";
-import TestimonialNews from "@/app/components/home/testimonial-news";
-import CallbackFaqSection from "@/app/components/home/call-back-faq";
-import BookDemo from "@/app/components/home/book-demo";
+import QualityNewsTestimonials from "@/app/components/quality-standard/quality-news-testimonials";
+import QualityGrowForm from "@/app/components/quality-standard/quality-grow-form";
+import QualityCallbackTab from "@/app/components/quality-standard/quality-callback-tab";
 
 export const metadata = {
     title: "Quality Standard | Insights Opinion",
@@ -20,6 +20,7 @@ export const metadata = {
 export default function QualityStandardPage() {
     return (
         <main>
+            <QualityCallbackTab />
             <QualityHero />
             <QualityMarketExcellence />
             <QualityCompliance />
@@ -29,8 +30,8 @@ export default function QualityStandardPage() {
             <QualityGlobalTransfer />
             <QualityAffiliations />
             <QualityIndustryBanner />
-            <CallbackFaqSection />
-            <BookDemo />
+            <QualityNewsTestimonials />
+            <QualityGrowForm />
         </main>
     );
 }

@@ -3,51 +3,30 @@
 import Image from "next/image";
 
 const industries = [
-    { title: "IT", image: "/IT.jpg" },
-    { title: "Agriculture", image: "/Agriculter.jpg" },
-    { title: "Automotive", image: "/Automotive.jpg" },
-    { title: "Construction", image: "/Construction-.jpg" },
-    { title: "Healthcare", image: "/healthcare.jpg" },
-    { title: "Chemical", image: "/Chemical.jpg" },
-    { title: "Education", image: "/Education.jpg" },
-    { title: "Telecom", image: "/Telecom.jpg" },
+    { title: "IT", image: "/quality-standard/it-icon.png" },
+    { title: "Agriculture", image: "/quality-standard/agriculture-icon.png" },
+    { title: "Automotive", image: "/quality-standard/automotive-icon.png" },
+    { title: "Construction", image: "/quality-standard/construction-icon.png" },
+    { title: "Healthcare", image: "/quality-standard/healthcare-icon.png" },
+    { title: "Chemical", image: "/quality-standard/chemical-icon.png" },
+    { title: "Education", image: "/quality-standard/education-icon.png" },
+    { title: "Telecom", image: "/quality-standard/telecom-icon.png" },
 ];
 
 export default function QualityIndustryBanner() {
     return (
-        <section className="relative overflow-hidden bg-[#0b1435] py-12 lg:py-16">
-            <div className="pointer-events-none absolute inset-0 opacity-[0.06]">
-                <svg viewBox="0 0 300 300" className="h-full w-full" fill="none">
-                    <defs>
-                        <pattern id="hexIndBanner" x="0" y="0" width="51" height="42" patternUnits="userSpaceOnUse">
-                            <path d="M13 1H39L52 22.5L39 44H13L0 22.5L13 1Z" stroke="#9EDFF2" strokeWidth="1.2" />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#hexIndBanner)" />
-                </svg>
-            </div>
+        <section className="relative overflow-hidden bg-[url('/quality-standard/across-globe.png')] bg-cover bg-center py-9 lg:py-12">
+            <div className="absolute inset-0 bg-[#081844]/20" />
 
             <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div
-                    className="text-center mb-10"
-                   
-                   
-                >
-                    <h2 className="text-[22px] font-light text-white lg:text-[34px]">
+                <div className="mb-8 text-center">
+                    <h2 className="text-[22px] font-light text-white/85 lg:text-[28px]">
                         Your Industry Knowledge Partner
                     </h2>
-                    <h3
-                        className="text-[22px] font-bold lg:text-[34px]"
-                        style={{
-                            background: "linear-gradient(90deg, #3dd6c8 0%, #74b9ff 100%)",
-                            WebkitBackgroundClip: "text",
-                            WebkitTextFillColor: "transparent",
-                            backgroundClip: "text",
-                        }}
-                    >
+                    <h3 className="quality-gradient-text text-[23px] font-semibold lg:text-[30px]">
                         Across the Globe
                     </h3>
-                    <p className="mt-2 text-sm text-white/55 lg:text-base">
+                    <p className="mt-2 text-sm text-white lg:text-base">
                         Delivering Specialised Insights Across Diverse Sectors
                     </p>
                 </div>
@@ -56,19 +35,17 @@ export default function QualityIndustryBanner() {
                     {industries.map((ind, i) => (
                         <div
                             key={i}
-                           
-                           
                             className="group flex flex-col items-center gap-3"
                         >
-                            <div className="relative h-14 w-14 overflow-hidden rounded-full border-2 border-white/20 transition-all duration-300 group-hover:border-[#3dd6c8] group-hover:shadow-lg lg:h-[60px] lg:w-[60px]">
+                            <div className="relative h-10 w-10 transition-transform duration-300 group-hover:-translate-y-1 lg:h-12 lg:w-12">
                                 <Image
                                     src={ind.image}
                                     alt={ind.title}
                                     fill
-                                    className="object-cover"
+                                    className="object-contain"
                                 />
                             </div>
-                            <p className="text-center text-[10px] font-medium text-white/70 transition-colors group-hover:text-[#3dd6c8] lg:text-xs">
+                            <p className="text-center text-sm font-medium text-white transition-colors group-hover:text-[#3dd6c8] lg:text-base">
                                 {ind.title}
                             </p>
                         </div>

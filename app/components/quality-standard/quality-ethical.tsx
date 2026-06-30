@@ -29,27 +29,13 @@ export default function QualityEthical() {
     const toggle = (i: number) => setExpanded(expanded === i ? null : i);
 
     return (
-        <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
-            <div className="pointer-events-none absolute right-0 top-0 h-full w-[40%] opacity-20">
-                <svg viewBox="0 0 300 300" className="h-full w-full" fill="none">
-                    <defs>
-                        <pattern id="hexEthical" x="0" y="0" width="51" height="42" patternUnits="userSpaceOnUse">
-                            <path d="M13 1H39L52 22.5L39 44H13L0 22.5L13 1Z" stroke="#9EDFF2" strokeWidth="1.2" />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#hexEthical)" />
-                </svg>
-            </div>
-
+        <section className="quality-hex-bg relative overflow-hidden py-10 lg:py-16">
             <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+                <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
 
-                    {/* Left – accordion items */}
-                    <div>
-                        <p className="text-[18px] font-light text-[#4b5563] lg:text-[24px]">
-                            Ethical Research
-                        </p>
-                        <h2 className="text-[22px] font-bold lg:text-[36px] bg-linear-to-r from-[#1bb0a4] to-[#74b9ff] bg-clip-text text-transparent mb-8">
+                    <div className="lg:pl-10">
+                        <h2 className="mb-8 text-[25px] font-light leading-tight text-[#18213d] lg:text-[32px]">
+                            <span className="quality-gradient-text font-semibold">Ethical Research</span>{" "}
                             Practices
                         </h2>
 
@@ -62,19 +48,19 @@ export default function QualityEthical() {
                                        
                                        
                                     >
-                                        <p className="text-sm font-bold text-[#1a2340] mb-1.5 lg:text-[14px]">
+                                        <p className="mb-1.5 text-sm font-bold text-[#101538] lg:text-[14px]">
                                             {item.title}
                                         </p>
-                                        <div className="relative rounded-xl border border-[#c9dcea] bg-white p-4 shadow-sm">
+                                        <div className="relative max-w-[370px] border border-[#101538]/70 bg-transparent px-3 py-2">
                                             <p
-                                                className={`text-xs leading-5 text-[#6b7280] lg:text-[13px] lg:leading-6 pr-6 transition-all duration-300 ${isOpen ? "" : "line-clamp-2"}`}
+                                                className={`pr-6 text-sm leading-5 text-[#18213d] transition-all duration-300 ${isOpen ? "" : "line-clamp-2"}`}
                                             >
                                                 {item.desc}
                                             </p>
                                             <button
                                                 onClick={() => toggle(i)}
                                                 aria-label={isOpen ? "Collapse" : "Expand"}
-                                                className="absolute bottom-3 right-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#1bb0a4] text-white transition hover:bg-[#0d8a7e]"
+                                                className="absolute -bottom-3 -right-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#27bdb2] text-[#101538] transition hover:bg-[#101538] hover:text-white"
                                             >
                                                 {isOpen ? (
                                                     <ChevronUp size={13} />
@@ -89,15 +75,10 @@ export default function QualityEthical() {
                         </div>
                     </div>
 
-                    {/* Right – image */}
-                    <div
-                       
-                       
-                        className="flex justify-center lg:justify-end"
-                    >
-                        <div className="w-full max-w-135 overflow-hidden rounded-2xl shadow-lg">
+                    <div className="flex justify-center lg:justify-end">
+                        <div className="w-full max-w-[560px] overflow-hidden rounded-[28px] shadow-md">
                             <Image
-                                src="/market-research/methodologies-image.png"
+                                src="/quality-standard/ethical-research.png"
                                 alt="Ethical Research Practices"
                                 width={640}
                                 height={440}

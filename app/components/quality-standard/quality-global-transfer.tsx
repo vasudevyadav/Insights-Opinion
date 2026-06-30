@@ -23,52 +23,24 @@ const transferPoints = [
 
 export default function QualityGlobalTransfer() {
     return (
-        <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
-            <div className="pointer-events-none absolute right-0 top-0 h-full w-[40%] opacity-20">
-                <svg viewBox="0 0 300 300" className="h-full w-full" fill="none">
-                    <defs>
-                        <pattern id="hexGlobal" x="0" y="0" width="51" height="42" patternUnits="userSpaceOnUse">
-                            <path d="M13 1H39L52 22.5L39 44H13L0 22.5L13 1Z" stroke="#9EDFF2" strokeWidth="1.2" />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#hexGlobal)" />
-                </svg>
-            </div>
-
+        <section className="quality-hex-bg relative overflow-hidden py-12 lg:py-18">
             <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
 
-                    {/* Left - Content */}
-                    <div>
-                        <p className="text-[18px] font-light text-[#4b5563] lg:text-[24px]">
-                            Global Data Transfer
-                        </p>
-                        <h2
-                            className="text-[22px] font-bold lg:text-[36px] mb-6"
-                            style={{
-                                background: "linear-gradient(90deg, #1bb0a4 0%, #74b9ff 100%)",
-                                WebkitBackgroundClip: "text",
-                                WebkitTextFillColor: "transparent",
-                                backgroundClip: "text",
-                            }}
-                        >
+                    <div className="lg:pl-16">
+                        <h2 className="mb-6 text-[26px] font-light leading-tight text-[#18213d] lg:text-[31px]">
+                            <span className="quality-gradient-text font-semibold">Global Data Transfer</span><br />
                             and Management
                         </h2>
 
                         <div className="space-y-5">
                             {transferPoints.map((pt, i) => (
-                                <div
-                                    key={i}
-                                   
-                                   
-                                    className="flex gap-3"
-                                >
-                                    <div className="mt-[7px] h-2 w-2 shrink-0 rounded-full bg-[#1bb0a4]" />
+                                <div key={i}>
                                     <div>
-                                        <p className="text-sm font-semibold text-[#1bb0a4] lg:text-[15px]">
-                                            {pt.title}
+                                        <p className="text-sm font-bold text-[#24b8ae] lg:text-[15px]">
+                                            {pt.title}:
                                         </p>
-                                        <p className="mt-1 text-xs leading-5 text-[#6b7280] lg:text-[13px] lg:leading-6">
+                                        <p className="mt-1 max-w-[510px] text-xs font-medium leading-5 text-[#101538] lg:text-[13px] lg:leading-6">
                                             {pt.desc}
                                         </p>
                                     </div>
@@ -77,19 +49,13 @@ export default function QualityGlobalTransfer() {
                         </div>
                     </div>
 
-                    {/* Right - Image */}
-                    <div
-                       
-                       
-                        className="flex justify-center lg:justify-end"
-                    >
-                        <div className="w-full max-w-[540px] overflow-hidden rounded-2xl shadow-md">
+                    <div className="flex justify-center lg:justify-end lg:pr-10">
+                        <div className="relative h-[290px] w-full max-w-[560px] overflow-hidden rounded-[24px] shadow-md lg:h-[370px]">
                             <Image
-                                src="/globe-image.png"
+                                src="/quality-standard/global-deta.png"
                                 alt="Global Data Transfer Management"
-                                width={640}
-                                height={440}
-                                className="h-auto w-full object-cover"
+                                fill
+                                className="object-cover object-right"
                             />
                         </div>
                     </div>
