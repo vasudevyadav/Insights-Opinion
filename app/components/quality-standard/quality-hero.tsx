@@ -7,10 +7,10 @@ export default function QualityHero() {
 
                 <div className="relative z-10 mx-auto flex min-h-[300px] w-full max-w-7xl items-center justify-center px-5 pt-8 sm:px-4 lg:min-h-[420px] lg:pt-0">
                     <div className="mx-auto mb-8 max-w-2xl text-center">
-                        <h1 className="quality-gradient-text text-[30px] font-medium leading-tight lg:text-[48px]">
+                        <h1 className="quality-gradient-text text-[30px] font-medium leading-tight lg:text-5xl">
                             Quality Standard
                         </h1>
-                        <p className="mt-5 text-sm text-white/85">
+                        <p className="mt-5 text-lg text-white/85">
                             Home <span className="mx-1">&gt;</span> Quality Standard
                         </p>
                     </div>

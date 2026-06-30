@@ -29,12 +29,12 @@ export default function QualityEthical() {
     const toggle = (i: number) => setExpanded(expanded === i ? null : i);
 
     return (
-        <section className="quality-hex-bg relative overflow-hidden py-10 lg:py-16">
+        <section className="quality-hex-bg relative overflow-hidden py-10 lg:py-8">
             <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
 
                     <div className="lg:pl-10">
-                        <h2 className="mb-8 text-[25px] font-light leading-tight text-[#18213d] lg:text-[32px]">
+                        <h2 className="mb-8 text-2xl font-light leading-tight text-[#18213d] lg:text-4xl">
                             <span className="quality-gradient-text font-semibold">Ethical Research</span>{" "}
                             Practices
                         </h2>
@@ -45,15 +45,14 @@ export default function QualityEthical() {
                                 return (
                                     <div
                                         key={i}
-                                       
-                                       
+
                                     >
-                                        <p className="mb-1.5 text-sm font-bold text-[#101538] lg:text-[14px]">
+                                        <p className="mb-4 text-sm font-bold text-[#101538] lg:text-base">
                                             {item.title}
                                         </p>
-                                        <div className="relative max-w-[370px] border border-[#101538]/70 bg-transparent px-3 py-2">
+                                        <div className="relative border border-[#101538]/70 bg-transparent px-3 py-2">
                                             <p
-                                                className={`pr-6 text-sm leading-5 text-[#18213d] transition-all duration-300 ${isOpen ? "" : "line-clamp-2"}`}
+                                                className={`pr-6 text-[15px] leading-5 text-[#18213d] transition-all duration-300 ${isOpen ? "" : "line-clamp-2"}`}
                                             >
                                                 {item.desc}
                                             </p>
@@ -76,7 +75,7 @@ export default function QualityEthical() {
                     </div>
 
                     <div className="flex justify-center lg:justify-end">
-                        <div className="w-full max-w-[560px] overflow-hidden rounded-[28px] shadow-md">
+                        <div className="mx-auto w-full overflow-hidden rounded-[20px] shadow-md sm:max-w-[80%] sm:rounded-[28px] lg:max-w-[80%]">
                             <Image
                                 src="/quality-standard/ethical-research.png"
                                 alt="Ethical Research Practices"

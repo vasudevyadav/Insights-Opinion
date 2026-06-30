@@ -15,7 +15,13 @@ export default function QualityGrowForm() {
                         </h2>
                     </div>
                     <div className="relative h-[280px] sm:h-[350px]">
-                        <Image src="/grow-better.png" alt="Grow Better with Insight Opinion" fill className="object-contain object-center" />
+                        <Image
+                            src="/grow-better.png"
+                            alt="Grow Better with Insight Opinion"
+                            fill
+                            sizes="(min-width: 1024px) 280px, 100vw"
+                            className="object-contain object-center"
+                        />
                     </div>
                 </div>
 
@@ -28,7 +34,7 @@ export default function QualityGrowForm() {
                     <div className="hidden lg:block" />
                     <button
                         type="button"
-                        className="h-11 w-full max-w-[190px] rounded-[6px] bg-gradient-to-r from-[#18b9aa] to-[#65adff] text-base text-white transition hover:opacity-90"
+                        className="h-11 w-full rounded-[6px] bg-gradient-to-r from-[#18b9aa] to-[#65adff] text-base text-white transition hover:opacity-90 sm:max-w-[190px]"
                     >
                         Submit Now
                     </button>

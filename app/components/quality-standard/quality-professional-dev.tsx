@@ -40,7 +40,7 @@ export default function QualityProfessionalDev() {
                     </div>
 
                     <div>
-                        <h2 className="mb-6 text-[26px] font-light leading-tight text-[#18213d] lg:text-[31px]">
+                        <h2 className="mb-6 text-2xl font-light leading-tight text-[#18213d] lg:text-4xl">
                             <span className="quality-gradient-text font-semibold">Professional Development</span><br />
                             and Training
                         </h2>
@@ -48,14 +48,12 @@ export default function QualityProfessionalDev() {
                         <div className="space-y-5">
                             {devPoints.map((pt, i) => (
                                 <div key={i}>
-                                    <div>
-                                        <p className="text-sm font-bold text-[#24b8ae] lg:text-[15px]">
-                                            {pt.title}:
-                                        </p>
-                                        <p className="mt-1 max-w-[500px] text-xs font-medium leading-5 text-[#101538] lg:text-[13px] lg:leading-6">
-                                            {pt.desc}
-                                        </p>
-                                    </div>
+                                    <p className="text-sm font-semibold text-[#24b8ae] lg:text-lg">
+                                        {pt.title}:
+                                    </p>
+                                    <p className="mt-1 max-w-[500px] text-xs font-normal leading-5 text-[#101538] lg:text-[15px] lg:leading-6">
+                                        {pt.desc}
+                                    </p>
                                 </div>
                             ))}
                         </div>

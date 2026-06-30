@@ -30,26 +30,26 @@ export default function QualityCompliance() {
     const next = () => setCurrent((c) => (c + 1) % slides.length);
 
     return (
-        <section className="quality-hex-bg relative overflow-hidden py-12 lg:py-18">
+        <section className="quality-hex-bg relative overflow-hidden py-12 lg:py-8">
             <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
+                <div className="grid items-center gap-10 lg:grid-cols-[0.80fr_1.20fr] lg:gap-4">
 
                     <div className="flex flex-col justify-between lg:pl-10">
                         <div>
-                            <h2 className="text-[24px] font-light leading-tight text-[#2f3a52] lg:text-[30px]">
+                            <h2 className="text-2xl font-light leading-tight text-[#2f3a52] lg:text-4xl">
                                 Compliance with
                             </h2>
-                            <h3 className="quality-gradient-text mb-8 text-[25px] font-semibold leading-tight lg:text-[30px]">
+                            <h3 className="quality-gradient-text mb-8 text-2xl font-semibold leading-tight lg:text-4xl">
                                 Global Data Protection Laws
                             </h3>
 
-                            <div className="mb-0 flex max-w-[440px] items-center rounded-r-full border-l-[10px] border-[#27bdb2] bg-white px-6 py-3 shadow-sm">
-                                <p className="text-sm font-semibold text-[#27bdb2] lg:text-[15px]">
+                            <div className="mb-0 flex w-full max-w-[440px] items-center rounded-r-full border-l-[8px] border-[#27bdb2] bg-white px-4 py-4 shadow-sm sm:border-l-[10px] sm:px-6">
+                                <p className="text-sm font-semibold text-[#27bdb2] lg:text-base">
                                     {slides[current].label}
                                 </p>
                             </div>
                             <div
-                                className="ml-8 max-w-[390px] px-7 py-7"
+                                className="max-w-[390px] px-5 py-6 sm:ml-8 sm:px-7 sm:py-7"
                                 style={{
                                     background:
                                         "linear-gradient(135deg, #1bb0a4 0%, #4fa3c7 100%)",
@@ -61,7 +61,7 @@ export default function QualityCompliance() {
                             </div>
                         </div>
 
-                        <div className="mt-5 flex items-center gap-3 pl-8">
+                        <div className="mt-5 flex items-center gap-3 sm:pl-8">
                             <button
                                 onClick={prev}
                                 className="flex h-9 w-9 items-center justify-center rounded-full bg-[#101538] text-white transition hover:bg-[#27bdb2]"
@@ -89,12 +89,13 @@ export default function QualityCompliance() {
                         </div>
                     </div>
 
-                    <div className="relative flex min-h-[430px] justify-center lg:justify-end">
-                        <div className="relative h-[430px] w-full max-w-[680px]">
+                    <div className="relative flex justify-center">
+                        <div className="relative h-[280px] w-full sm:h-[430px] lg:h-[650px]">
                             <Image
                                 src="/quality-standard/global-deta.png"
                                 alt="Data Protection Compliance"
                                 fill
+                                sizes="(min-width: 1024px) 60vw, 100vw"
                                 className="object-contain object-center"
                             />
                         </div>
