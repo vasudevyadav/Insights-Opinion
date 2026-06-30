@@ -3,9 +3,7 @@ import QualityMarketExcellence from "@/app/components/quality-standard/quality-m
 import QualityCompliance from "@/app/components/quality-standard/quality-compliance";
 import QualityEthical from "@/app/components/quality-standard/quality-ethical";
 import QualityTechnicalSecurity from "@/app/components/quality-standard/quality-technical-security";
-import QualityProfessionalDev from "@/app/components/quality-standard/quality-professional-dev";
 import QualityGlobalTransfer from "@/app/components/quality-standard/quality-global-transfer";
-import QualityAffiliations from "@/app/components/quality-standard/quality-affiliations";
 import QualityIndustryBanner from "@/app/components/quality-standard/quality-industry-banner";
 import QualityNewsTestimonials from "@/app/components/quality-standard/quality-news-testimonials";
 import QualityGrowForm from "@/app/components/quality-standard/quality-grow-form";
@@ -26,9 +24,7 @@ export default function QualityStandardPage() {
             <QualityCompliance />
             <QualityEthical />
             <QualityTechnicalSecurity />
-            <QualityProfessionalDev />
             <QualityGlobalTransfer />
-            <QualityAffiliations />
             <QualityIndustryBanner />
             <QualityNewsTestimonials />
             <QualityGrowForm />

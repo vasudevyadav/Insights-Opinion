@@ -25,15 +25,15 @@ export default function QualityAffiliations() {
     return (
         <section className="quality-hex-bg relative overflow-hidden pb-12 pt-4 lg:pb-16 lg:pt-8">
             <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+                <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-8">
 
                     <div className="flex justify-center lg:justify-start lg:pl-16">
                         <div className="relative h-[330px] w-full max-w-[560px] overflow-hidden rounded-[24px] shadow-md lg:h-[420px]">
                             <Image
-                                src="/quality-standard/global-deta.png"
+                                src="/market-research/uses-image.png"
                                 alt="Industry Affiliations and Certifications"
                                 fill
-                                className="object-cover object-left"
+                                className="object-cover object-center"
                             />
                         </div>
                     </div>

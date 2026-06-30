@@ -2,126 +2,152 @@
 
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
 
-const news = [
-    {
-        title: "From Local To Global: Using Research To Identify High-Growth regions",
-        image: "/quality-standard/news-image.png",
-    },
-    {
-        title: "From Local To Global: Using Research To Identify High-Growth regions",
-        image: "/quality-standard/news-image.png",
-    },
-    {
-        title: "From Local To Global: Using Research To Identify High-Growth regions",
-        image: "/quality-standard/news-image.png",
-    },
-];
-
-const testimonials = [
-    {
-        dark: true,
-        quote:
-            "Their detailed surveys gave us a clear understanding of our guests' preferences, leading to more personalized services and higher customer satisfaction. We were able to adjust our ...",
-    },
-    {
-        dark: false,
-        quote:
-            "Their detailed surveys gave us a clear understanding of our guests' preferences, leading to more personalized services and higher customer satisfaction. We were able to adjust our ...",
-    },
-    {
-        dark: false,
-        quote:
-            "Their detailed surveys gave us a clear understanding of our guests' preferences, leading to more personalized services and higher customer satisfaction. We were able to adjust our ...",
-    },
-];
+import "swiper/css";
+import "swiper/css/navigation";
 
 export default function QualityNewsTestimonials() {
+    const testimonials = [
+        {
+            quote:
+                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
+            link: "Read Full Customer Story",
+            company: "TAJMG",
+            author: "Director, Clifton",
+            logo: "/Testimonial-Icon.png",
+        },
+        {
+            quote:
+                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
+            link: "Read Full Customer Story",
+            company: "TAJMG",
+            author: "Director, Clifton",
+            logo: "/Testimonial-Icon.png",
+        },
+        {
+            quote:
+                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
+            link: "Read Full Customer Story",
+            company: "TAJMG",
+            author: "Director, Clifton",
+            logo: "/Testimonial-Icon.png",
+        },
+        {
+            quote:
+                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
+            link: "Read Full Customer Story",
+            company: "TAJMG",
+            author: "Director, Clifton",
+            logo: "/Testimonial-Icon.png",
+        },
+    ];
+
     return (
-        <section className="quality-hex-bg relative overflow-hidden py-12 lg:py-16">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="mb-8 lg:pl-24">
-                    <p className="text-[23px] font-light leading-tight text-[#18213d] lg:text-[28px]">Latest</p>
-                    <h2 className="quality-gradient-text text-[29px] font-semibold leading-tight lg:text-[36px]">
-                        News & Articles
-                    </h2>
-                </div>
-
-                <div className="relative">
-                    <button className="absolute -left-2 top-1/2 z-10 hidden h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-[#28b7b0] text-white lg:flex">
-                        <ArrowLeft size={18} />
-                    </button>
-                    <button className="absolute -right-2 top-1/2 z-10 hidden h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-[#28b7b0] text-white lg:flex">
-                        <ArrowRight size={18} />
-                    </button>
-
-                    <div className="grid gap-8 lg:grid-cols-3 lg:px-16">
-                        {news.map((item, index) => (
-                            <article key={index} className="overflow-hidden rounded-[18px] border-2 border-[#728096] bg-white">
-                                <div className="relative h-[170px]">
-                                    <Image src={item.image} alt={item.title} fill className="object-cover" />
-                                    <div className="absolute bottom-[-14px] left-0 rounded-r-[5px] bg-gradient-to-r from-[#18b9aa] to-[#65adff] px-5 py-2 text-[10px] font-semibold uppercase text-white">
-                                        Admin | March 29, 2026 06:20PM
-                                    </div>
-                                </div>
-                                <div className="px-5 pb-6 pt-8">
-                                    <h3 className="text-[15px] font-bold leading-6 text-[#101538]">{item.title}</h3>
-                                    <p className="mt-3 text-xs leading-5 text-[#18213d]">
-                                        Expanding to new countries is exciting and risky. The fastest wins happen when you read local signals correctly and scale only what will travel.
-                                    </p>
-                                </div>
-                            </article>
-                        ))}
-                    </div>
-                </div>
-
-                <div className="mt-14 lg:pl-24">
-                    <p className="text-[24px] font-light leading-tight text-[#18213d] lg:text-[30px]">
-                        What Healthcare Clients Say
-                    </p>
-                    <h2 className="quality-gradient-text text-[31px] font-semibold leading-tight lg:text-[38px]">
-                        About Us
-                    </h2>
-                    <p className="mt-3 max-w-xl text-sm text-[#18213d] lg:text-base">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                    </p>
-                </div>
-
-                <div className="relative mt-8">
-                    <button className="absolute -left-2 top-1/2 hidden -translate-y-1/2 text-[#050505] lg:block">
-                        <ArrowLeft size={58} strokeWidth={1.8} />
-                    </button>
-                    <div className="grid gap-3 overflow-hidden lg:ml-24 lg:grid-cols-[1fr_1fr_0.36fr]">
-                        {testimonials.map((item, index) => (
-                            <article
-                                key={index}
-                                className={`min-h-[240px] border border-[#101538] p-7 ${item.dark ? "bg-[#101538] text-white" : "bg-transparent text-[#101538]"}`}
+        <section className="relative overflow-hidden bg-[#eef5fb]  lg:py-4 py-4 lg:pt-12 pt-8">
+            <div className="relative z-10 mx-auto">
+                <div className="relative mb-8 px-4 sm:px-6 lg:mb-16 lg:pl-32 lg:pr-0">
+                    <div className="relative mb-6 flex items-end justify-between gap-4">
+                        <div className="max-w-[600px] mt-2">
+                            <h2 className="mb-2 text-2xl font-light leading-tight text-[#2f3643] sm:text-4xl">
+                                What Healthcare Clients Say
+                            </h2>
+                            <h3
+                                className="mb-2 text-[28px] font-medium leading-tight text-transparent sm:text-[41px]"
+                                style={{
+                                    background: "linear-gradient(90deg, #20b7a6 0%, #5da6f6 100%)",
+                                    WebkitBackgroundClip: "text",
+                                    WebkitTextFillColor: "transparent",
+                                    backgroundClip: "text",
+                                }}
                             >
-                                <p className="text-3xl leading-none">“</p>
-                                <p className="mt-1 max-w-[500px] text-sm leading-7">{item.quote}</p>
-                                <div className="mt-7 flex items-center gap-10 text-sm">
-                                    <span>Read Full Customer Story</span>
-                                    <ArrowRight size={28} />
-                                </div>
-                                <div className="mt-6 flex items-center justify-between gap-4">
-                                    <div className="flex items-center gap-4">
-                                        <div className={`h-16 w-16 rounded-full ${item.dark ? "bg-white" : "bg-[#101538]"}`} />
-                                        <div className="text-sm leading-tight">
-                                            <p>THOMAS</p>
-                                            <p>Director, Clifton</p>
-                                        </div>
-                                    </div>
-                                    <Image
-                                        src="/inshite-sing.png"
-                                        alt="Clifton"
-                                        width={112}
-                                        height={48}
-                                        className={item.dark ? "invert" : ""}
-                                    />
-                                </div>
-                            </article>
-                        ))}
+                                About Us
+                            </h3>
+                            <p className="my-2 text-xs leading-6 text-black sm:text-base">
+                                Feedback from clients who partner with Insights Opinion for practical insights and dependable market research services.
+                            </p>
+                        </div>
+
+                        <div className="hidden items-center gap-3 md:flex lg:mr-20 mb-4">
+                            <button className="testimonial-prev flex h-10 w-10 items-center justify-center rounded-full border border-[#1b224f] text-[#1b224f] transition hover:bg-[#1b224f] hover:text-white">
+                                <ArrowLeft size={18} />
+                            </button>
+                            <button className="testimonial-next flex h-10 w-10 items-center justify-center rounded-full border border-[#1b224f] text-[#1b224f] transition hover:bg-[#1b224f] hover:text-white">
+                                <ArrowRight size={18} />
+                            </button>
+                        </div>
                     </div>
+
+                    <Swiper
+                        modules={[Navigation, Autoplay]}
+                        navigation={{
+                            prevEl: ".testimonial-prev",
+                            nextEl: ".testimonial-next",
+                        }}
+                        autoplay={{
+                            delay: 2800,
+                            disableOnInteraction: false,
+                        }}
+                        speed={900}
+                        loop={true}
+                        spaceBetween={16}
+                        breakpoints={{
+                            0: { slidesPerView: 1 },
+                            768: { slidesPerView: 2 },
+                            1024: { slidesPerView: 2.5 },
+                        }}
+                        className="testimonial-swiper"
+                    >
+                        {testimonials.map((item, index) => (
+                            <SwiperSlide key={index}>
+                                <div className="group rounded-none border border-[#c7d2e2] bg-white p-4 transition-all duration-500 hover:border-[#1a1f52] hover:bg-[#1a1f52]">
+                                    <p className="min-h-[98px] line-clamp-4 text-xs leading-5 text-[#344054] transition-colors duration-500 group-hover:text-white/85 lg:text-sm">
+                                        &quot;{item.quote}&quot;
+                                    </p>
+
+                                    <div className="mt-3 flex items-center justify-between gap-3">
+                                        <a
+                                            href="#"
+                                            className="inline-flex items-center gap-2 text-sm font-medium text-[#1a1f52] transition duration-500 hover:text-[#7ddbd1] group-hover:text-white"
+                                        >
+                                            {item.link}
+                                            <ArrowRight size={18} />
+                                        </a>
+                                    </div>
+
+                                    <div className="mt-5 flex flex-wrap items-end justify-between gap-3 sm:flex-nowrap">
+                                        <div className="flex items-center gap-3">
+                                            <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full">
+                                                <Image
+                                                    src={item.logo}
+                                                    alt={item.company}
+                                                    width={56}
+                                                    height={56}
+                                                    className="h-auto w-14 object-contain"
+                                                />
+                                            </div>
+                                            <div>
+                                                <p className="mb-1 text-xs font-semibold text-[#1a1f52] transition-colors duration-500 group-hover:text-white lg:text-sm">
+                                                    {item.company}
+                                                </p>
+                                                <p className="text-xs text-[#667085] transition-colors duration-500 group-hover:text-white/70">
+                                                    {item.author}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <Image
+                                            src="/inshite-sing.png"
+                                            alt="Insights Opinion"
+                                            width={112}
+                                            height={40}
+                                            className="h-auto w-24 object-contain transition-all duration-500 group-hover:invert sm:w-28"
+                                        />
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 </div>
             </div>
         </section>
