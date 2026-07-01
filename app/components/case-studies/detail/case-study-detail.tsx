@@ -14,23 +14,23 @@ function SidebarCard({ item }: { item: CaseStudy }) {
       href={`/case-studies/${item.slug}`}
       className="group block overflow-hidden rounded-t-[18px] rounded-bl-[4px] rounded-br-[38px] border border-[#1d315d] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
     >
-      <div className="relative h-[200px] overflow-hidden rounded-t-[18px] rounded-br-[26px]">
+      <div className="relative h-[160px] overflow-hidden rounded-t-[18px] rounded-br-[26px] sm:h-[185px] lg:h-[200px]">
         <Image
           src={item.image}
           alt={item.title}
           fill
-          sizes="260px"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 260px"
           className="object-cover transition duration-300 group-hover:scale-105"
         />
       </div>
       <div className="relative px-3.5 pb-4 pt-7">
-        <span className="absolute -top-4 left-0 max-w-[90%] rounded-r-[5px] bg-gradient-to-r from-[#111a2f] to-[#101827] px-3 py-1.5 text-[13px] font-semibold leading-none text-white">
+        <span className="absolute -top-4 left-0 max-w-[90%] rounded-r-[5px] bg-gradient-to-r from-[#111a2f] to-[#101827] px-3 py-1.5 text-[11px] font-semibold leading-none text-white sm:text-[12px] lg:text-[13px]">
           {item.title}
         </span>
-        <p className="line-clamp-4 text-[13px] font-medium leading-6 text-[#172446]">
+        <p className="line-clamp-4 text-[12px] font-medium leading-[1.65] text-[#172446] lg:text-[13px] lg:leading-6">
           {item.description}
         </p>
-        <span className="mt-3 inline-block text-xs font-bold uppercase tracking-widest text-[#13b3ad]">
+        <span className="mt-3 inline-block text-[10px] font-bold uppercase tracking-widest text-[#13b3ad] lg:text-xs">
           Readmore &gt;
         </span>
       </div>
@@ -40,11 +40,11 @@ function SidebarCard({ item }: { item: CaseStudy }) {
 
 function CallbackForm() {
   const inputClass =
-    " w-full rounded-[5px] border border-[#1e315e] bg-transparent px-4 py-3 text-sm font-medium text-[#142044] outline-none placeholder:text-[#142044]";
+    "w-full rounded-[5px] border border-[#1e315e] bg-transparent px-4 py-2.5 text-[13px] font-medium text-[#142044] outline-none placeholder:text-[#142044] sm:py-3 sm:text-sm";
 
   return (
-    <form className="rounded-[14px] border border-[#22bbb1] bg-[#eef7ff]/70 px-5 py-5">
-      <h3 className="mb-5 text-2xl font-semibold text-[#19bfb1]">
+    <form className="mx-auto w-full max-w-[420px] rounded-[14px] border border-[#22bbb1] bg-[#eef7ff]/70 px-5 py-5 lg:max-w-none">
+      <h3 className="mb-5 text-xl font-semibold text-[#19bfb1] sm:text-2xl">
         Request a <span className="text-[#59a8fb]">Callback</span>
       </h3>
       <div className="space-y-3">
@@ -60,7 +60,7 @@ function CallbackForm() {
         ))}
         <button
           type="submit"
-          className="mt-1 w-fit px-6 py-3 rounded-[4px] bg-gradient-to-r from-[#18b7a4] to-[#5ba8fb] text-base font-semibold text-white transition hover:opacity-90"
+          className="mt-1 w-full rounded-[4px] bg-gradient-to-r from-[#18b7a4] to-[#5ba8fb] px-6 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 sm:w-fit sm:py-3 sm:text-base"
         >
           Submit Now
         </button>
@@ -79,12 +79,12 @@ export default function CaseStudyDetail({
     <>
       <section className="bg-[#edf6fe]">
         <div className="relative mt-8 w-full overflow-hidden bg-[url('/about-us/about-us-hero-bg.webp')] bg-cover bg-bottom bg-no-repeat text-white lg:mt-20">
-          <div className="relative z-10 mx-auto flex min-h-[220px] w-full max-w-7xl items-center justify-center px-5 py-10 sm:min-h-[300px] lg:min-h-[330px]">
+          <div className="relative z-10 mx-auto flex min-h-[220px] w-full max-w-7xl items-center justify-center px-5 py-10 sm:min-h-[300px] lg:min-h-[420px]">
             <div className="text-center">
               <h1 className="quality-gradient-text text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
                 Case Studies
               </h1>
-              <p className="mt-6 text-sm font-medium text-white/85 sm:text-base">
+              <p className="mx-auto mt-4 max-w-[90vw] text-sm font-medium text-white/85 sm:mt-6 sm:text-base">
                 Case Studies &gt; {caseStudy.title}
               </p>
             </div>
@@ -92,28 +92,28 @@ export default function CaseStudyDetail({
         </div>
       </section>
 
-      <section className="quality-hex-bg relative overflow-hidden py-10 lg:py-16">
+      <section className="quality-hex-bg relative overflow-hidden py-8 sm:py-10 lg:py-16">
         <button className="fixed right-0 top-1/2 z-40 hidden -translate-y-1/2 rounded-l-[18px] bg-gradient-to-b from-[#19beb0] to-[#57aaf4] px-3 py-5 text-[11px] font-semibold uppercase tracking-wide text-white shadow-lg [writing-mode:vertical-rl] lg:block">
           Request Callback
         </button>
 
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[75%_25%] lg:items-start lg:gap-16 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-9 px-4 sm:px-6 lg:grid-cols-[75%_25%] lg:items-start lg:gap-16 lg:px-8">
           <article className="min-w-0 text-[#172446]">
-            <p className="text-base font-normal leading-[1.85]">
+            <p className="text-[13px] font-normal leading-[1.8] sm:text-sm lg:text-base lg:leading-[1.85]">
               {detail.overview}
             </p>
 
-            <h2 className="mt-5 lg:text-2xl text-4xl font-medium leading-tight text-[#182349]">
+            <h2 className="mt-5 text-[22px] font-medium leading-tight text-[#182349] sm:text-2xl lg:text-2xl">
               Insights Opinion&apos;s Survey Audits Help You To:
             </h2>
 
-            <div className="mt-4 space-y-3 text-base font-medium leading-[1.75]">
+            <div className="mt-4 space-y-3 text-[13px] font-medium leading-[1.75] sm:text-sm lg:text-base">
               <div>
-                <h3 className="font-bold lg:text-lg leading-[1.6] text-sm">Client:</h3>
+                <h3 className="text-sm font-bold leading-[1.6] lg:text-lg">Client:</h3>
                 <p>{detail.client}</p>
               </div>
               <div>
-                <h3 className="font-bold lg:text-lg leading-[1.6] text-sm">The Mandate:</h3>
+                <h3 className="text-sm font-bold leading-[1.6] lg:text-lg">The Mandate:</h3>
                 {detail.mandate.map((item) => (
                   <p key={item} className="mt-2">
                     {item}
@@ -122,11 +122,11 @@ export default function CaseStudyDetail({
               </div>
             </div>
 
-            <section className="mt-7 rounded-[18px] bg-[#d9f1fb]/75 px-5 py-6 sm:px-7 lg:px-9">
-              <h2 className="text-[24px] font-medium leading-tight text-[#182349]">
+            <section className="mt-7 rounded-[18px] bg-[#d9f1fb]/75 px-4 py-5 sm:px-7 sm:py-6 lg:px-9">
+              <h2 className="text-[22px] font-medium leading-tight text-[#182349] sm:text-[24px]">
                 Methodology
               </h2>
-              <ul className="mt-4 space-y-3 text-base font-medium leading-[1.7]">
+              <ul className="mt-4 space-y-3 text-[13px] font-medium leading-[1.75] sm:text-sm lg:text-base lg:leading-[1.7]">
                 {detail.methodology.slice(0, 3).map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#172446]" />
@@ -135,7 +135,7 @@ export default function CaseStudyDetail({
                 ))}
               </ul>
 
-              <div className="relative my-6 h-[160px] w-full max-w-[505px] overflow-hidden sm:h-[215px]">
+              <div className="relative my-6 h-[160px] w-full overflow-hidden sm:h-[215px] lg:max-w-[505px]">
                 <Image
                   src={detail.methodologyImage}
                   alt={`${caseStudy.title} methodology`}
@@ -145,7 +145,7 @@ export default function CaseStudyDetail({
                 />
               </div>
 
-              <ul className="space-y-3 text-base font-medium leading-[1.7]">
+              <ul className="space-y-3 text-[13px] font-medium leading-[1.75] sm:text-sm lg:text-base lg:leading-[1.7]">
                 {detail.methodology.slice(3).map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#172446]" />
@@ -156,10 +156,10 @@ export default function CaseStudyDetail({
             </section>
 
             <section className="mt-6">
-              <h2 className="text-[24px] font-medium leading-tight text-[#182349]">
+              <h2 className="text-[22px] font-medium leading-tight text-[#182349] sm:text-[24px]">
                 Basic Inputs/Delivery
               </h2>
-              <ul className="mt-4 space-y-3 text-base font-semibold leading-[1.7]">
+              <ul className="mt-4 space-y-3 text-[13px] font-semibold leading-[1.75] sm:text-sm lg:text-base lg:leading-[1.7]">
                 {detail.delivery.map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#172446]" />
@@ -170,10 +170,10 @@ export default function CaseStudyDetail({
             </section>
 
             <section className="mt-6">
-              <h2 className="text-[24px] font-medium leading-tight text-[#182349]">
+              <h2 className="text-[22px] font-medium leading-tight text-[#182349] sm:text-[24px]">
                 Results
               </h2>
-              <p className="mt-2 text-[14px] font-semibold leading-[1.7]">
+              <p className="mt-2 text-[13px] font-semibold leading-[1.75] sm:text-sm lg:leading-[1.7]">
                 {detail.results}
               </p>
             </section>
@@ -181,7 +181,7 @@ export default function CaseStudyDetail({
 
           <aside className="lg:pt-2">
             <div className="lg:sticky lg:top-28 lg:self-start">
-              <div className="mb-6 flex justify-center">
+              <div className="mb-6 hidden justify-center lg:flex">
                 <button
                   aria-label="Previous case studies"
                   className="flex h-8 w-8 items-center justify-center rounded-full bg-[#22bbb1] text-white shadow-sm"
@@ -190,13 +190,13 @@ export default function CaseStudyDetail({
                 </button>
               </div>
 
-              <div className="space-y-8">
+              <div className="grid gap-6 sm:grid-cols-2 lg:block lg:space-y-8">
                 {relatedCaseStudies.map((item) => (
                   <SidebarCard key={item.slug} item={item} />
                 ))}
               </div>
 
-              <div className="my-6 flex justify-center">
+              <div className="my-6 hidden justify-center lg:flex">
                 <button
                   aria-label="More case studies"
                   className="flex h-8 w-8 items-center justify-center rounded-full bg-[#22bbb1] text-white shadow-sm"

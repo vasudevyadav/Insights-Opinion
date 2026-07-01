@@ -30,7 +30,7 @@ const mobileDropdownItems: Record<
 > = {
   about: [
     { name: "Our Story", href: "/about-us" },
-    { name: "Leadership", href: "/about-us/leadership" },
+    { name: "Our Team", href: "/about-us/leadership" },
     { name: "Our Journey", href: "/about-us/our-journey" },
   ],
   resources: [

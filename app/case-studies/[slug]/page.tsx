@@ -20,7 +20,7 @@ export default async function CaseStudySlugPage({
   return (
     <CaseStudyDetail
       caseStudy={caseStudy}
-      relatedCaseStudies={getRelatedCaseStudies(slug, 3)}
+      relatedCaseStudies={getRelatedCaseStudies(slug, 2)}
     />
   );
 }
