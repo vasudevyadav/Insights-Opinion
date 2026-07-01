@@ -48,10 +48,6 @@ const quickLinks = [
         href: "https://insightsopinion.com/data-protection-gdpr-compliance",
     },
     {
-        label: "Privacy Policy",
-        href: "https://insightsopinion.com/privacy-policy",
-    },
-    {
         label: "Global Panel",
         href: "https://insightsopinion.com/global-panel",
     },
