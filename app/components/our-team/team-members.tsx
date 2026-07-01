@@ -1,53 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Linkedin } from "lucide-react";
-
-const team = [
-  {
-    name: "Shahab S",
-    role: "Director, Research Services",
-    image: "/our-team/shahab.png",
-    imageClass: "h-[235px] w-auto sm:h-[255px] lg:h-[273px]",
-    hasMark: true,
-  },
-  {
-    name: "Sharoz Ghauri",
-    role: "Director, Client Services",
-    image: "/our-team/shahab.png",
-    imageClass: "h-[235px] w-auto sm:h-[255px] lg:h-[273px]",
-    hasMark: true,
-  },
-  {
-    name: "Dan Schmitt",
-    role: "Vice President, North America",
-    image: "/our-team/shahab.png",
-    imageClass: "h-[235px] w-auto sm:h-[255px] lg:h-[273px]",
-    hasMark: true,
-  },
-  {
-    name: "Sankar Dhara",
-    role: "VP- CATI Services",
-    image: "/our-team/shahab.png",
-    imageClass: "h-[235px] w-auto sm:h-[255px] lg:h-[273px]",
-    hasMark: true,
-  },
-  {
-    name: "Priyanka Sarma",
-    role: "VP- APAC, EMEA",
-    image: "/our-team/shahab.png",
-    imageClass: "h-[235px] w-auto sm:h-[255px] lg:h-[273px]",
-    hasMark: true,
-  },
-];
-
-function BrandMark() {
-  return (
-    <div className="pointer-events-none absolute bottom-0 left-1/2 h-[205px] w-[185px] -translate-x-1/2">
-      <span className="absolute right-0 top-0 h-11 w-[142px] rounded-bl-[20px] rounded-tr-md bg-[#18b7a7]" />
-      <span className="absolute bottom-0 left-0 h-[118px] w-[142px] rounded-bl-md rounded-tr-[20px] bg-[#18b7a7]" />
-    </div>
-  );
-}
+import { teamMembers } from "@/app/lib/team-data";
 
 export default function TeamMembers() {
   return (
@@ -76,20 +30,25 @@ export default function TeamMembers() {
         </h3>
 
         <div className="mx-auto mt-7 grid grid-cols-1 justify-items-center gap-x-6 gap-y-10 sm:mt-8 sm:grid-cols-2 sm:gap-y-12 lg:grid-cols-3 lg:gap-x-10">
-          {team.map((member, index) => (
+          {teamMembers.map((member, index) => (
             <article
               key={member.name}
               className="w-full max-w-[310px] text-center"
             >
               <div className="relative flex h-[260px] items-end justify-center sm:h-[280px] lg:h-[300px]">
-                {!member.hasMark && <BrandMark />}
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  width={360}
-                  height={400}
-                  className={`relative z-10 mb-3 object-contain object-bottom ${member.imageClass}`}
-                />
+                <Link
+                  href={`/our-team/${member.slug}`}
+                  aria-label={`View ${member.name}'s profile`}
+                  className="relative z-10 flex h-full items-end justify-center"
+                >
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={360}
+                    height={400}
+                    className="relative z-10 mb-3 h-[235px] w-auto object-contain object-bottom sm:h-[255px] lg:h-[273px]"
+                  />
+                </Link>
                 <a
                   href="#"
                   aria-label={`${member.name} on LinkedIn`}
@@ -99,17 +58,22 @@ export default function TeamMembers() {
                 </a>
               </div>
 
-              <h4
-                className={`mt-1 text-lg font-semibold leading-tight sm:text-xl lg:text-2xl ${index === 1 ? "quality-gradient-text" : "text-[#141b3d]"
+              <Link href={`/our-team/${member.slug}`}>
+                <h4
+                  className={`mt-1 text-lg font-semibold leading-tight sm:text-xl lg:text-2xl ${
+                    index === 1
+                      ? "quality-gradient-text"
+                      : "text-[#141b3d]"
                   }`}
-              >
-                {member.name}
-              </h4>
+                >
+                  {member.name}
+                </h4>
+              </Link>
               <p className="my-1.5 text-sm text-[#303954] sm:text-base">
                 {member.role}
               </p>
               <Link
-                href="#"
+                href={`/our-team/${member.slug}`}
                 className="mt-2 inline-flex items-center gap-2 rounded-sm bg-gradient-to-r from-[#14b8a6] to-[#59a9ee] px-4 py-2 text-xs font-medium uppercase text-white transition hover:brightness-105 sm:mt-3 lg:px-6 lg:text-base"
               >
                 Read More <ArrowRight size={16} />
