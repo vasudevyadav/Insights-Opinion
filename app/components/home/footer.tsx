@@ -36,6 +36,8 @@ const quickLinks = [
     { label: "Client Success Stories", href: "/case-studies" },
     { label: "Blogs", href: "/blogs" },
     { label: "Local Page", href: "/local" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Cookies Policy", href: "/cookies-policy" },
 ];
 
 export default function Footer() {
@@ -237,13 +239,13 @@ export default function Footer() {
                     </p>
 
                     <div className="flex lg:flex-row lg:w-6/12 flex-wrap items-center gap-2 lg:text-left text-center justify-center lg:justify-end">
-                        <a href="#" className="transition hover:text-[#151b4a]">
+                        <Link href="/cookies-policy" className="transition hover:text-[#151b4a]">
                             Cookies Policy
-                        </a>
+                        </Link>
                         <span>|</span>
-                        <a href="#" className="transition hover:text-[#151b4a]">
+                        <Link href="/privacy-policy" className="transition hover:text-[#151b4a]">
                             Privacy Policy
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
