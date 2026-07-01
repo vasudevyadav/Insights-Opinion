@@ -202,7 +202,7 @@ export default function Industries() {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            AOS.refreshHard();
+            AOS.refresh();
         }, 200);
 
         return () => clearTimeout(timer);

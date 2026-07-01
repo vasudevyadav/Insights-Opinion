@@ -1,44 +1,54 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-// @ts-ignore - no type declarations for 'aos'
+// @ts-expect-error - aos does not ship TypeScript declarations
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+let aosInitialized = false;
+
 export default function AosProvider() {
   const pathname = usePathname();
+  const previousPathname = useRef(pathname);
 
   useEffect(() => {
-    let rafId: number;
-    let timer: ReturnType<typeof setTimeout>;
+    if (aosInitialized) return;
 
-    rafId = requestAnimationFrame(() => {
-      AOS.init({
-        duration: 900,
-        easing: "ease-out-cubic",
-        once: true,
-        mirror: false,
-        offset: 80,
-        anchorPlacement: "top-bottom",
-        startEvent: "load",
-        disable: "mobile",
-      });
-      timer = setTimeout(() => AOS.refreshHard(), 400);
+    aosInitialized = true;
+    AOS.init({
+      duration: 700,
+      easing: "ease-out-cubic",
+      once: true,
+      mirror: false,
+      offset: 60,
+      anchorPlacement: "top-bottom",
+      debounceDelay: 120,
+      throttleDelay: 150,
+      disableMutationObserver: true,
+      disable: () =>
+        window.innerWidth < 768 ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     });
 
     return () => {
-      cancelAnimationFrame(rafId);
-      clearTimeout(timer);
+      document.documentElement.classList.remove("aos-animate");
     };
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      AOS.refreshHard();
-    }, 300);
+    if (!aosInitialized) return;
 
-    return () => clearTimeout(timer);
+    const frame = requestAnimationFrame(() => {
+      if (previousPathname.current === pathname) {
+        AOS.refresh();
+      } else {
+        previousPathname.current = pathname;
+        AOS.refreshHard();
+      }
+    });
+
+    return () => cancelAnimationFrame(frame);
   }, [pathname]);
 
   return null;

@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
     Facebook,
     Instagram,
@@ -9,59 +10,42 @@ import {
     Twitter,
     Linkedin,
     ChevronRight,
+    ChevronDown,
 } from "lucide-react";
 
 const companyLinks = [
-    { label: "About Us", href: "https://insightsopinion.com/our-story" },
-    { label: "Case Studies", href: "https://insightsopinion.com/case-study" },
-    { label: "Career", href: "https://insightsopinion.com/career" },
-    { label: "Contact Us", href: "https://insightsopinion.com/contact-us" },
-    { label: "Blog", href: "https://insightsopinion.com/blog" },
+    { label: "About Us", href: "/about-us" },
+    { label: "Our Team", href: "/our-team" },
+    { label: "Testimonials", href: "/testimonials" },
+    { label: "Career", href: "/career" },
+    { label: "Contact Us", href: "/contact-us" },
 ];
 
 const serviceLinks = [
-    {
-        label: "Quantitative Research Services",
-        href: "https://insightsopinion.com/service/quantitative-research",
-    },
-    {
-        label: "Qualitative Market Research",
-        href: "https://insightsopinion.com/service/qualitative-research",
-    },
-    {
-        label: "Consumer Research",
-        href: "https://insightsopinion.com/research-expertise/consumer-research",
-    },
-    {
-        label: "B2B Research",
-        href: "https://insightsopinion.com/research-expertise/b2b-research",
-    },
-    {
-        label: "Healthcare Research",
-        href: "https://insightsopinion.com/research-expertise/healthcare-research",
-    },
+    { label: "Quantitative Research", href: "/quantitative-research" },
+    { label: "CATI Services", href: "/quantitative-research/methods/cati" },
+    { label: "CAPI Services", href: "/quantitative-research/methods/capi" },
+    { label: "CLT Services", href: "/quantitative-research/methods/clt" },
+    { label: "Consumer Research", href: "/research/consumer-research" },
+    { label: "Healthcare Research", href: "/research/healthcare-research" },
 ];
 
 const quickLinks = [
-    {
-        label: "Data Protection / GDPR Compliance",
-        href: "https://insightsopinion.com/data-protection-gdpr-compliance",
-    },
-    {
-        label: "Privacy Policy",
-        href: "https://insightsopinion.com/privacy-policy",
-    },
-    {
-        label: "Global Panel",
-        href: "https://insightsopinion.com/global-panel",
-    },
-    {
-        label: "CATI Services",
-        href: "https://insightsopinion.com/service/cati-market-research",
-    },
+    { label: "Quality Standard", href: "/quality-standard" },
+    { label: "Industries", href: "/industries" },
+    { label: "Client Success Stories", href: "/case-studies" },
+    { label: "Blogs", href: "/blogs" },
+    { label: "Local Page", href: "/local" },
 ];
 
 export default function Footer() {
+    const [openMobileSection, setOpenMobileSection] = React.useState<string | null>("Company");
+    const footerGroups = [
+        { title: "Company", links: companyLinks },
+        { title: "Service", links: serviceLinks },
+        { title: "Quick Links", links: quickLinks },
+    ];
+
     return (
         <footer className="relative overflow-hidden bg-[#151b4a] text-white">
             <div className="mx-auto max-w-[1400px] px-5 pb-0 pt-10 sm:px-8 lg:px-14 lg:pt-12">
@@ -106,8 +90,8 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Company */}
-                    <div>
+                    {/* Desktop Company */}
+                    <div className="hidden md:block">
                         <h4 className="mb-5 text-[24px] font-light text-[#29c7c3] sm:mb-6 sm:text-2xl">
                             Company
                         </h4>
@@ -115,18 +99,18 @@ export default function Footer() {
                         <ul className="space-y-2">
                             {companyLinks.map((item) => (
                                 <li key={item.label}>
-                                    <a
+                                    <Link
                                         href={item.href}
                                         className="text-[15px] leading-6 text-white/75 transition hover:text-white sm:text-base"
                                     >
                                         {item.label}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* ✅ Service (HIDDEN ON MOBILE) */}
+                    {/* Desktop Service */}
                     <div className="hidden md:block">
                         <h4 className="mb-5 text-[24px] font-light text-[#29c7c3] sm:mb-6 sm:text-2xl">
                             Service
@@ -135,19 +119,19 @@ export default function Footer() {
                         <ul className="space-y-3">
                             {serviceLinks.map((item) => (
                                 <li key={item.label}>
-                                    <a
+                                    <Link
                                         href={item.href}
-                                        className="text-[14px] leading-6 text-white/75 transition hover:text-white"
+                                        className="text-[15px] leading-6 text-white/75 transition hover:text-white"
                                     >
                                         {item.label}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* Quick Links */}
-                    <div>
+                    {/* Desktop Quick Links */}
+                    <div className="hidden md:block">
                         <h4 className="mb-5 text-[24px] font-light text-[#29c7c3] sm:mb-6 sm:text-2xl">
                             Quick Links
                         </h4>
@@ -155,12 +139,12 @@ export default function Footer() {
                         <ul className="space-y-3">
                             {quickLinks.map((item) => (
                                 <li key={item.label}>
-                                    <a
+                                    <Link
                                         href={item.href}
-                                        className="text-[14px] leading-6 text-white/75 transition hover:text-white"
+                                        className="text-[15px] leading-6 text-white/75 transition hover:text-white"
                                     >
                                         {item.label}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -173,6 +157,71 @@ export default function Footer() {
                                     className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#151b4a] transition hover:scale-105"
                                 >
                                     <Icon size={18} />
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Mobile accordion */}
+                    <div className="space-y-2 md:hidden">
+                        {footerGroups.map((group) => {
+                            const isOpen = openMobileSection === group.title;
+
+                            return (
+                                <div
+                                    key={group.title}
+                                    className="overflow-hidden border-b border-white/15"
+                                >
+                                    <button
+                                        type="button"
+                                        onClick={() =>
+                                            setOpenMobileSection(isOpen ? null : group.title)
+                                        }
+                                        className="flex w-full items-center justify-between py-4 text-left text-lg font-medium text-[#29c7c3]"
+                                        aria-expanded={isOpen}
+                                    >
+                                        {group.title}
+                                        <ChevronDown
+                                            size={19}
+                                            className={`transition-transform duration-300 ${
+                                                isOpen ? "rotate-180" : ""
+                                            }`}
+                                        />
+                                    </button>
+
+                                    <div
+                                        className={`grid transition-all duration-300 ${
+                                            isOpen ? "grid-rows-[1fr] pb-4" : "grid-rows-[0fr]"
+                                        }`}
+                                    >
+                                        <div className="overflow-hidden">
+                                            <ul className="space-y-2">
+                                                {group.links.map((item) => (
+                                                    <li key={item.label}>
+                                                        <Link
+                                                            href={item.href}
+                                                            className="block py-1 text-sm text-white/75 transition hover:text-white"
+                                                        >
+                                                            {item.label}
+                                                        </Link>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+
+                        <div className="flex flex-wrap items-center gap-3 pt-5">
+                            {[Facebook, Instagram, Youtube, Twitter, Linkedin].map((Icon, i) => (
+                                <a
+                                    key={i}
+                                    href="#"
+                                    aria-label={`Social link ${i + 1}`}
+                                    className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#151b4a] transition hover:scale-105"
+                                >
+                                    <Icon size={16} />
                                 </a>
                             ))}
                         </div>

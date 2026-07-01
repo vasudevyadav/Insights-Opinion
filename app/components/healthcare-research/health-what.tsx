@@ -1,10 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
-// @ts-ignore
-import AOS from "aos";
-import "aos/dist/aos.css";
-
 type HealthCard = {
   title?: string;
   highlight?: string;
@@ -22,14 +17,6 @@ export default function HealthWhat({ data }: HealthWhatProps) {
   const cards = data?.cards || [];
 
   if (!data || cards.length === 0) return null;
-
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      easing: "ease-out",
-    });
-  }, []);
 
   return (
     <section

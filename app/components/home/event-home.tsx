@@ -21,7 +21,7 @@ export default function EventHome() {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            AOS.refreshHard();
+            AOS.refresh();
         }, 250);
         return () => clearTimeout(timer);
     }, []);

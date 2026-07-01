@@ -1,10 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
 import Image from "next/image";
-// @ts-ignore - no type declarations for 'aos'
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 type WhoUsesItem = {
   label: string;
@@ -29,14 +25,6 @@ export default function WhoUsesHealthcareResearch({
   const items = data?.items || [];
   const imageSrc = data?.imageSrc;
   const imageAlt = data?.imageAlt || "";
-
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: false,
-      easing: "ease-out",
-    });
-  }, []);
 
   if (!data || items.length === 0) return null;
 

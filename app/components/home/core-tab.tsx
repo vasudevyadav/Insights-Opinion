@@ -98,7 +98,7 @@ export default function CoreTab() {
         setCardIndex(0);
 
         const timer = setTimeout(() => {
-            AOS.refreshHard();
+            AOS.refresh();
         }, 250);
 
         return () => clearTimeout(timer);
@@ -117,7 +117,7 @@ export default function CoreTab() {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            AOS.refreshHard();
+            AOS.refresh();
         }, 200);
 
         return () => clearTimeout(timer);
@@ -195,7 +195,7 @@ export default function CoreTab() {
                             unoptimized
                             onLoadingComplete={() => {
                                 setTimeout(() => {
-                                    AOS.refreshHard();
+                                    AOS.refresh();
                                 }, 100);
                             }}
                         />

@@ -30,42 +30,43 @@ const mobileDropdownItems: Record<
 > = {
   about: [
     { name: "Our Story", href: "/about-us" },
-    { name: "Leadership", href: "/about-us/leadership" },
-    { name: "Our Journey", href: "/about-us/our-journey" },
+    { name: "Our Team", href: "/our-team" },
+    { name: "Testimonials", href: "/testimonials" },
   ],
   resources: [
+    { name: "Client Success Stories", href: "/case-studies" },
     { name: "Blogs", href: "/blogs" },
-    { name: "Whitepapers", href: "/resources/whitepapers" },
-    { name: "Reports", href: "/resources/reports" },
   ],
 };
 
 const mobileServiceGroups = [
   {
     title: "Quantitative Research",
+    href: "/quantitative-research",
     items: [
-      { name: "Global Panel", href: "#" },
-      { name: "CATI", href: "#" },
-      { name: "CAPI", href: "#" },
-      { name: "CLT", href: "#" },
+      { name: "Global Panel", href: null },
+      { name: "CATI", href: "/quantitative-research/methods/cati" },
+      { name: "CAPI", href: "/quantitative-research/methods/capi" },
+      { name: "CLT", href: "/quantitative-research/methods/clt" },
     ],
   },
   {
     title: "Qualitative Research",
+    href: null,
     items: [
-      { name: "Focus Group Discussions", href: "#" },
-      { name: "In-Depth Reviews", href: "#" },
-      { name: "In-Home Usage Testings", href: "#" },
-      { name: "Mystery Shopping", href: "#" },
+      { name: "Focus Group Discussions", href: null },
+      { name: "In-Depth Reviews", href: null },
+      { name: "In-Home Usage Testings", href: null },
+      { name: "Mystery Shopping", href: null },
     ],
   },
   {
     title: "Support Services",
+    href: null,
     items: [
-      { name: "Support Services", href: "#" },
-      { name: "Survey Programming", href: "#" },
-      { name: "Translation", href: "#" },
-      { name: "Data Insights", href: "#" },
+      { name: "Survey Programming", href: null },
+      { name: "Translation", href: null },
+      { name: "Data Insights", href: null },
     ],
   },
 ];
@@ -78,9 +79,11 @@ export default function Navbar() {
   const [mobileOpenDropdowns, setMobileOpenDropdowns] = useState<
     Partial<Record<NavDropdownKey, boolean>>
   >({});
+  const [mobileServiceGroup, setMobileServiceGroup] = useState<string | null>(
+    null
+  );
   const researchItems = [
     { name: "Healthcare Market Research", href: "/research/healthcare-research" },
-    { name: "B2B Research", href: "/research/b2b-research" },
     { name: "Consumer Research", href: "/research/consumer-research" },
   ];
 
@@ -340,28 +343,64 @@ export default function Navbar() {
                           mobileServiceGroups.map((group) => (
                             <div
                               key={group.title}
-                              className="rounded-lg bg-white/5 p-3"
+                              className="overflow-hidden rounded-lg bg-white/5"
                             >
-                              <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-[#14d8d0]">
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  setMobileServiceGroup((current) =>
+                                    current === group.title ? null : group.title
+                                  )
+                                }
+                                className="flex w-full items-center justify-between p-3 text-left text-xs font-semibold uppercase tracking-wide text-[#14d8d0]"
+                              >
                                 {group.title}
-                              </p>
+                                <ChevronDown
+                                  className={`h-4 w-4 transition-transform ${
+                                    mobileServiceGroup === group.title
+                                      ? "rotate-180"
+                                      : ""
+                                  }`}
+                                />
+                              </button>
 
-                              <div className="space-y-1">
-                                {group.items.map((subItem) => (
-                                  <Link
-                                    key={`${group.title}-${subItem.name}`}
-                                    href={subItem.href}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className={`block rounded-lg px-3 py-2 text-sm ${
-                                      isActive(subItem.href)
-                                        ? "bg-white/10 text-[#14d8d0]"
-                                        : "text-white/90 hover:bg-white/10"
-                                    }`}
-                                  >
-                                    {subItem.name}
-                                  </Link>
-                                ))}
-                              </div>
+                              {mobileServiceGroup === group.title && (
+                                <div className="space-y-1 border-t border-white/10 p-2">
+                                  {group.href && (
+                                    <Link
+                                      href={group.href}
+                                      onClick={() => setMobileMenuOpen(false)}
+                                      className="block rounded-lg px-3 py-2 text-sm font-medium text-white hover:bg-white/10"
+                                    >
+                                      View {group.title}
+                                    </Link>
+                                  )}
+
+                                  {group.items.map((subItem) =>
+                                    subItem.href ? (
+                                      <Link
+                                        key={`${group.title}-${subItem.name}`}
+                                        href={subItem.href}
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        className={`block rounded-lg px-3 py-2 text-sm ${
+                                          isActive(subItem.href)
+                                            ? "bg-white/10 text-[#14d8d0]"
+                                            : "text-white/90 hover:bg-white/10"
+                                        }`}
+                                      >
+                                        {subItem.name}
+                                      </Link>
+                                    ) : (
+                                      <span
+                                        key={`${group.title}-${subItem.name}`}
+                                        className="block cursor-not-allowed rounded-lg px-3 py-2 text-sm text-white/40"
+                                      >
+                                        {subItem.name}
+                                      </span>
+                                    )
+                                  )}
+                                </div>
+                              )}
                             </div>
                           ))
                         ) : (
@@ -385,6 +424,27 @@ export default function Navbar() {
                   </div>
                 );
               })}
+
+              <div className="my-2 border-t border-white/10" />
+
+              {[
+                { name: "QUALITY STANDARD", href: "/quality-standard" },
+                { name: "CAREER", href: "/career" },
+                { name: "LOCAL PAGE", href: "/local" },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`rounded-lg px-4 py-3 text-sm font-medium ${
+                    isActive(item.href)
+                      ? "bg-white/10 text-[#14d8d0]"
+                      : "text-white hover:bg-white/10"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
 
               <Link
                 href="/contact-us"

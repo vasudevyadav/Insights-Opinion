@@ -75,7 +75,7 @@ function CardImageArea({ image, hoverImage, alt }: CardImageAreaProps) {
                         className="object-cover object-bottom transition-delay duration-800 ease-in-out lg:group-hover:opacity-0"
                         onLoadingComplete={() => {
                             setTimeout(() => {
-                                AOS.refreshHard();
+                                AOS.refresh();
                             }, 100);
                         }}
                     />
@@ -156,16 +156,6 @@ export default function BusinessChallenge() {
                         spaceBetween={20}
                         pagination={{ clickable: true }}
                         autoplay={{ delay: 3000, disableOnInteraction: false }}
-                        onInit={() => {
-                            setTimeout(() => {
-                                AOS.refreshHard();
-                            }, 200);
-                        }}
-                        onSlideChange={() => {
-                            setTimeout(() => {
-                                AOS.refresh();
-                            }, 100);
-                        }}
                     >
                         {challengeCards.map((card, index) => (
                             <SwiperSlide key={index}>
