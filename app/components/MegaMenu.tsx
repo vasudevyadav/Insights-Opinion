@@ -8,40 +8,51 @@ import {
     BarChart3,
     Users,
     Briefcase,
-    Target,
-    Globe,
-    Building2,
     HeartPulse,
     Landmark,
     ShoppingBag,
     GraduationCap,
-    Factory,
 } from "lucide-react";
 
 const leftItems = [
-    { title: "Quantitative Research", key: "quantitative-research" },
-    { title: "Qualitative Research", key: "QualitativeResearch" },
-    { title: "Support Services", key: "SupportServices" },
+    {
+        title: "Quantitative Research",
+        key: "quantitative-research",
+        href: "/quantitative-research",
+    },
+    { title: "Qualitative Research", key: "QualitativeResearch", href: null },
+    { title: "Support Services", key: "SupportServices", href: null },
 ] as const;
 
 const menuData = {
     "quantitative-research": [
-        { title: "Global Panel", href: "#", icon: BarChart3 },
-        { title: " CATI ", href: "#", icon: FileText },
-        { title: " CAPI ", href: "#", icon: Users },
-        { title: " CLT ", href: "#", icon: Briefcase },
+        { title: "Global Panel", href: null, icon: BarChart3 },
+        {
+            title: "CATI",
+            href: "/quantitative-research/methods/cati",
+            icon: FileText,
+        },
+        {
+            title: "CAPI",
+            href: "/quantitative-research/methods/capi",
+            icon: Users,
+        },
+        {
+            title: "CLT",
+            href: "/quantitative-research/methods/clt",
+            icon: Briefcase,
+        },
     ],
     QualitativeResearch: [
-        { title: " Focus Group Discussions ", href: "#", icon: HeartPulse },
-        { title: " In-Depth Reviews ", href: "#", icon: Landmark },
-        { title: " In-Home Usage Testings ", href: "#", icon: ShoppingBag },
-        { title: " Mystery Shopping ", href: "#", icon: GraduationCap },
+        { title: "Focus Group Discussions", href: null, icon: HeartPulse },
+        { title: "In-Depth Reviews", href: null, icon: Landmark },
+        { title: "In-Home Usage Testings", href: null, icon: ShoppingBag },
+        { title: "Mystery Shopping", href: null, icon: GraduationCap },
     ],
     SupportServices: [
-        { title: " Support Services ", href: "#", icon: HeartPulse },
-        { title: " Survey Programming ", href: "#", icon: Landmark },
-        { title: " Translation ", href: "#", icon: ShoppingBag },
-        { title: " Data Insights ", href: "#", icon: GraduationCap },
+        { title: "Survey Programming", href: null, icon: Landmark },
+        { title: "Translation", href: null, icon: ShoppingBag },
+        { title: "Data Insights", href: null, icon: GraduationCap },
     ],
 } as const;
 
@@ -67,25 +78,34 @@ export default function MegaMenu({ open }: MegaMenuProps) {
                 <div className="grid grid-cols-[300px_1fr_300px] gap-8">
                     <div className="space-y-3">
                         {leftItems.map((item) => (
-                            <button
-                                key={item.title}
-                                type="button"
-                                onClick={() => setActiveTab(item.key)}
-                                className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-base font-semibold transition ${activeTab === item.key
-                                    ? "bg-[#eef2ff] text-[#4f46e5]"
-                                    : "text-gray-500 hover:bg-gray-50 hover:text-gray-800"
-                                    }`}
-                            >
-                                <span>{item.title}</span>
-                                <ChevronRight className="h-4 w-4" />
-                            </button>
+                            <div key={item.title}>
+                                <button
+                                    type="button"
+                                    onClick={() => setActiveTab(item.key)}
+                                    className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-base font-semibold transition ${activeTab === item.key
+                                        ? "bg-[#eef2ff] text-[#4f46e5]"
+                                        : "text-gray-500 hover:bg-gray-50 hover:text-gray-800"
+                                        }`}
+                                >
+                                    <span>{item.title}</span>
+                                    <ChevronRight className="h-4 w-4" />
+                                </button>
+                                {item.href && activeTab === item.key && (
+                                    <Link
+                                        href={item.href}
+                                        className="mt-1 block px-4 text-xs font-medium text-[#18a99f] hover:text-[#4f46e5]"
+                                    >
+                                        View all {item.title}
+                                    </Link>
+                                )}
+                            </div>
                         ))}
                     </div>
 
-                    <div className="grid grid-cols-2 gap-x-10 gap-y-3 -center">
+                    <div className="grid grid-cols-2 gap-x-10 gap-y-3">
                         {activeMenuItems.map((item) => {
                             const Icon = item.icon;
-                            return (
+                            return item.href ? (
                                 <Link
                                     key={item.title}
                                     href={item.href}
@@ -96,6 +116,16 @@ export default function MegaMenu({ open }: MegaMenuProps) {
                                         <p className="text-sm font-medium text-gray-900 group-hover:text-[#4f46e5]">{item.title}</p>
                                     </div>
                                 </Link>
+                            ) : (
+                                <div
+                                    key={item.title}
+                                    className="flex cursor-not-allowed items-center gap-3 rounded-xl px-2 opacity-45"
+                                >
+                                    <Icon className="mt-0.5 h-7 w-7 text-gray-500" />
+                                    <p className="text-sm font-medium text-gray-700">
+                                        {item.title}
+                                    </p>
+                                </div>
                             );
                         })}
                     </div>

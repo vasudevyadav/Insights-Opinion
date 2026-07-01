@@ -25,7 +25,7 @@ export default function AccreditationsRecognitions() {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            AOS.refreshHard();
+            AOS.refresh();
         }, 250);
 
         return () => clearTimeout(timer);

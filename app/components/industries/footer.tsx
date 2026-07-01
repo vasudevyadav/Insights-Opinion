@@ -137,7 +137,7 @@ export default function Footer() {
                                 <li key={item.label}>
                                     <a
                                         href={item.href}
-                                        className="text-[14px] leading-6 text-white/75 transition hover:text-white"
+                                        className="text-[15px] leading-6 text-white/75 transition hover:text-white"
                                     >
                                         {item.label}
                                     </a>
@@ -165,6 +165,7 @@ export default function Footer() {
                             ))}
                         </ul>
 
+
                         <div className="mt-8 flex flex-wrap items-center gap-3">
                             {[Facebook, Instagram, Youtube, Twitter, Linkedin].map((Icon, i) => (
                                 <a
@@ -176,7 +177,9 @@ export default function Footer() {
                                 </a>
                             ))}
                         </div>
+
                     </div>
+
                 </div>
             </div>
 

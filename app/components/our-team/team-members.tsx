@@ -8,7 +8,7 @@ export default function TeamMembers() {
     <section className="quality-hex-bg relative overflow-hidden px-4 pb-14 pt-9 sm:px-6 sm:pb-16 sm:pt-10 lg:px-5 lg:pb-24 lg:pt-14">
       <div className="mx-auto max-w-[1400px]">
         <div className="mx-auto max-w-6xl text-center">
-          <h2 className="quality-gradient-text text-xl font-semibold sm:text-2xl lg:text-[30px]">
+          <h2 className="site-section-title quality-gradient-text font-semibold">
             At Insight Opinion,
           </h2>
           <p className="mt-3 text-xs leading-6 text-[#18213f] sm:text-sm sm:leading-7 lg:text-base">
@@ -22,9 +22,9 @@ export default function TeamMembers() {
           </p>
         </div>
 
-        <h3 className="mt-7 text-center text-2xl font-light italic text-[#2f3643] sm:mt-8 sm:text-3xl lg:text-[38px]">
+        <h3 className="site-section-title mt-7 text-center font-light italic text-[#2f3643] sm:mt-8">
           Our{" "}
-          <span className="quality-gradient-text text-xl font-semibold italic sm:text-2xl lg:text-[32px]">
+          <span className="quality-gradient-text font-semibold italic">
             Guiding Force
           </span>
         </h3>

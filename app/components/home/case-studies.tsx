@@ -119,7 +119,7 @@ export default function CaseStudies() {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            AOS.refreshHard();
+            AOS.refresh();
         }, 250);
 
         return () => clearTimeout(timer);

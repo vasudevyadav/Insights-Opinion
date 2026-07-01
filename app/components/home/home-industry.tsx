@@ -1,10 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
-// @ts-ignore - no type declarations for 'aos'
-import AOS from 'aos';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -53,48 +49,6 @@ const featureCards = [
 ];
 
 export default function HomeIndustry() {
-    const pathname = usePathname();
-
-    useEffect(() => {
-        AOS.init({
-            duration: 900,
-            easing: "ease-out-cubic",
-            once: false,
-            mirror: false,
-            offset: 80,
-            delay: 0,
-            anchorPlacement: "top-bottom",
-        });
-
-        const timer = setTimeout(() => {
-            AOS.refreshHard();
-        }, 300);
-
-        return () => clearTimeout(timer);
-    }, []);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            AOS.refreshHard();
-        }, 250);
-
-        return () => clearTimeout(timer);
-    }, [pathname]);
-
-    useEffect(() => {
-        const handleLoad = () => {
-            setTimeout(() => {
-                AOS.refreshHard();
-            }, 200);
-        };
-
-        window.addEventListener("load", handleLoad);
-
-        return () => {
-            window.removeEventListener("load", handleLoad);
-        };
-    }, []);
-
     return (
         <div className="bg-[#edf6ff] lg:-mt-32 -mt-32">
             <section className="py-10 lg:py-14 bg-[#edf6ff] indstrybg relative overflow-hidden">
@@ -168,16 +122,6 @@ export default function HomeIndustry() {
                             delay: 2200,
                             disableOnInteraction: false,
                             pauseOnMouseEnter: true,
-                        }}
-                        onInit={() => {
-                            setTimeout(() => {
-                                AOS.refreshHard();
-                            }, 200);
-                        }}
-                        onSlideChange={() => {
-                            setTimeout(() => {
-                                AOS.refresh();
-                            }, 100);
                         }}
                         breakpoints={{
                             0: { slidesPerView: 2 },

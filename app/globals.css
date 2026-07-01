@@ -4,6 +4,14 @@
   --background: #ffffff;
   --foreground: #171717;
   --font-primary: var(--font-poppins);
+  --type-page-title: clamp(2rem, 3.2vw, 2.8125rem);
+  --type-section-title: clamp(1.75rem, 2.8vw, 2.5rem);
+  --type-subsection-title: clamp(1.375rem, 2vw, 2rem);
+  --type-card-title: clamp(1.125rem, 1.4vw, 1.5rem);
+  --type-body: clamp(0.875rem, 0.35vw + 0.78rem, 1rem);
+  --type-body-small: clamp(0.75rem, 0.25vw + 0.7rem, 0.875rem);
+  --leading-heading: 1.2;
+  --leading-body: 1.75;
   color-scheme: light;
 }
 
@@ -98,6 +106,73 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Poppins", sans-serif;
+}
+
+@layer base {
+  h1 {
+    font-size: var(--type-page-title);
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  h2 {
+    font-size: var(--type-section-title);
+    font-weight: 500;
+    line-height: var(--leading-heading);
+  }
+
+  h3 {
+    font-size: var(--type-subsection-title);
+    font-weight: 500;
+    line-height: var(--leading-heading);
+  }
+
+  h4 {
+    font-size: var(--type-card-title);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  p {
+    font-size: var(--type-body);
+    line-height: var(--leading-body);
+  }
+}
+
+@layer components {
+  .site-page-title {
+    font-size: var(--type-page-title);
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  .site-section-title {
+    font-size: var(--type-section-title);
+    font-weight: 500;
+    line-height: var(--leading-heading);
+  }
+
+  .site-subsection-title {
+    font-size: var(--type-subsection-title);
+    font-weight: 500;
+    line-height: var(--leading-heading);
+  }
+
+  .site-card-title {
+    font-size: var(--type-card-title);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .site-body {
+    font-size: var(--type-body);
+    line-height: var(--leading-body);
+  }
+
+  .site-body-small {
+    font-size: var(--type-body-small);
+    line-height: 1.65;
+  }
 }
 
 .quality-hex-bg {

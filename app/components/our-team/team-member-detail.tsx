@@ -37,7 +37,7 @@ export default function TeamMemberDetail({
         </div>
 
         <div className="text-center lg:text-left">
-          <h1 className="quality-gradient-text text-2xl font-semibold sm:text-3xl lg:text-[34px]">
+          <h1 className="site-subsection-title quality-gradient-text font-semibold">
             {member.name}
           </h1>
           <h2 className="mt-1 text-sm font-normal text-[#26314d] sm:text-lg">

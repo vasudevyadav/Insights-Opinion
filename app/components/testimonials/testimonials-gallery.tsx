@@ -26,10 +26,10 @@ export default function TestimonialsGallery() {
     <section className="quality-hex-bg px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
       <div className="mx-auto max-w-[1200px]">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-2xl font-light text-[#2f3643] sm:text-3xl lg:text-[38px]">
+          <h2 className="site-section-title font-light text-[#2f3643]">
             What Our Clients Say
           </h2>
-          <h3 className="quality-gradient-text mt-1 text-2xl font-semibold sm:text-3xl lg:text-[40px]">
+          <h3 className="site-section-title quality-gradient-text mt-1 font-semibold">
             Stories of Partnership and Impact
           </h3>
           <p className="mt-4 text-sm leading-7 text-[#4a5268] sm:text-base">

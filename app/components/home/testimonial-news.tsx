@@ -102,7 +102,7 @@ export default function TestimonialNews() {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            AOS.refreshHard();
+            AOS.refresh();
         }, 250);
 
         return () => clearTimeout(timer);
@@ -110,7 +110,7 @@ export default function TestimonialNews() {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            AOS.refreshHard();
+            AOS.refresh();
         }, 180);
 
         return () => clearTimeout(timer);
@@ -330,16 +330,6 @@ export default function TestimonialNews() {
                             speed={900}
                             loop
                             spaceBetween={16}
-                            onInit={() => {
-                                setTimeout(() => {
-                                    AOS.refreshHard();
-                                }, 220);
-                            }}
-                            onSlideChange={() => {
-                                setTimeout(() => {
-                                    AOS.refresh();
-                                }, 100);
-                            }}
                             breakpoints={{
                                 0: {
                                     slidesPerView: 1,
@@ -444,16 +434,6 @@ export default function TestimonialNews() {
                             loop
                             spaceBetween={16}
                             slidesPerView={1}
-                            onInit={() => {
-                                setTimeout(() => {
-                                    AOS.refreshHard();
-                                }, 220);
-                            }}
-                            onSlideChange={() => {
-                                setTimeout(() => {
-                                    AOS.refresh();
-                                }, 100);
-                            }}
                             className="news-swiper"
                         >
                             {news.map((item, index) => (
