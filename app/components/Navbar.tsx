@@ -35,6 +35,7 @@ const mobileDropdownItems: Record<
   ],
   resources: [
     { name: "Blogs", href: "/blogs" },
+    { name: "Testimonials", href: "/testimonials" },
     { name: "Whitepapers", href: "/resources/whitepapers" },
     { name: "Reports", href: "/resources/reports" },
   ],
