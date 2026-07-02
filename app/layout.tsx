@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import AosProvider from "./components/AosProvider";
 import Footer from "./components/home/footer";
+import ScrollLeadPopup from "./components/shared/scroll-lead-popup";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -84,6 +85,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <ScrollLeadPopup />
       </body>
     </html>
   );
