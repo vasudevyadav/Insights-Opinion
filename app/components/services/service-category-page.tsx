@@ -347,7 +347,7 @@ export default function ServiceCategoryPage({
       <QuantIndustries content={content.industries} />
       <QuantGlobalServices content={content.global} />
       <QuantWhyRadial content={content.whyRadial} />
-      <QuantWhyChoose content={content.whyChoose} />
+      <QuantWhyChoose />
       <QuantFaq items={[...content.faqs]} />
       <QuantNews articles={[...content.articles]} />
       <BookDemoHealth />

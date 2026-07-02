@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 
-const defaultAccordionData = [
+const accordionData = [
   {
     title: "Fast Panel Delivery & Sample Access",
     content:
@@ -27,16 +27,8 @@ const defaultAccordionData = [
   },
 ];
 
-export default function QuantWhyChoose({
-  content,
-}: {
-  content?: {
-    description: string;
-    items: readonly { title: string; content: string }[];
-  };
-}) {
+export default function QuantWhyChoose() {
   const [openIndex, setOpenIndex] = useState(0);
-  const accordionData = content?.items || defaultAccordionData;
 
   return (
     <section className="relative bg-[#edf6ff] py-10 lg:py-16">
@@ -50,8 +42,7 @@ export default function QuantWhyChoose({
               Insight Opinion
             </h2>
             <p className="mt-2 text-sm leading-[1.6] text-[#5a6472] lg:mt-5 lg:text-base">
-              {content?.description ||
-                "Insights Opinion is trusted for research quality, international reach, and dependable project execution. Businesses choose our quantitative market research services for accurate data, multilingual capabilities, and strong operational support."}
+              Insights Opinion is trusted for research quality, international reach, and dependable project execution. Businesses choose our quantitative market research services for accurate data, multilingual capabilities, and strong operational support.
             </p>
 
             <div className="mt-8 w-full">
@@ -62,26 +53,23 @@ export default function QuantWhyChoose({
                     <button
                       type="button"
                       onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                      className={`flex w-full items-center justify-between px-5 py-5 text-left transition-all duration-200 ${
-                        isOpen
+                      className={`flex w-full items-center justify-between px-5 py-5 text-left transition-all duration-200 ${isOpen
                           ? "bg-[#111b54] text-white"
                           : "bg-transparent text-[#374151] hover:bg-[#e8eef5]"
-                      }`}
+                        }`}
                     >
                       <div>
                         <h3
-                          className={`text-sm font-semibold lg:text-[15px] ${
-                            isOpen ? "text-[#16af9f]" : "text-[#384250]"
-                          }`}
+                          className={`text-sm font-semibold lg:text-[15px] ${isOpen ? "text-[#16af9f]" : "text-[#384250]"
+                            }`}
                         >
                           {item.title}
                         </h3>
                         <div
-                          className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${
-                            isOpen
+                          className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${isOpen
                               ? "grid-rows-[1fr] opacity-100"
                               : "grid-rows-[0fr] opacity-0"
-                          }`}
+                            }`}
                         >
                           <div className="overflow-hidden">
                             <p className="mt-2 max-w-full text-xs leading-[1.55] text-[#d6dbef] lg:max-w-[320px] lg:text-sm">
@@ -93,11 +81,10 @@ export default function QuantWhyChoose({
                       <span className="ml-4 shrink-0">
                         <ChevronDown
                           size={18}
-                          className={`transition-transform duration-500 motion-reduce:transition-none ${
-                            isOpen
+                          className={`transition-transform duration-500 motion-reduce:transition-none ${isOpen
                               ? "rotate-180 text-white"
                               : "text-[#4b5563]"
-                          }`}
+                            }`}
                         />
                       </span>
                     </button>
