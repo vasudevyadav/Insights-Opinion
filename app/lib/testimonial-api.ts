@@ -1,16 +1,34 @@
-import type { Testimonial } from "@/app/lib/testimonial-data";
+export type TextTestimonial = {
+  id: number;
+  type: "text";
+  quote: string;
+  name: string;
+  role: string;
+  company: string;
+  personImage: string;
+};
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "http://localhost:3000";
+export type VideoTestimonial = {
+  id: number;
+  type: "video";
+  title: string;
+  name: string;
+  role: string;
+  company: string;
+  poster: string;
+  personImage: string;
+  videoUrl?: string;
+};
 
-const BASE_URL = `${siteUrl}/api/testimonials`;
+export type Testimonial = TextTestimonial | VideoTestimonial;
 
-type TestimonialsListResponse = {
+type TestimonialsResponse = {
   success: boolean;
-  count: number;
   data: Testimonial[];
 };
+
+const BASE_URL =
+  "https://reinventmedia.in/insightOpinion/wp-json/custom/v1/testimonials";
 
 export async function fetchTestimonials(): Promise<Testimonial[]> {
   try {
@@ -21,7 +39,7 @@ export async function fetchTestimonials(): Promise<Testimonial[]> {
       return [];
     }
 
-    const json: TestimonialsListResponse = await res.json();
+    const json: TestimonialsResponse = await res.json();
     return json.success ? json.data : [];
   } catch (error) {
     console.error("Failed to fetch testimonials:", error);
