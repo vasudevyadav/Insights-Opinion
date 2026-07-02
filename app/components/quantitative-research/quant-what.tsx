@@ -55,7 +55,19 @@ text: "Compare results across different regions, demographics, or audience group
 },
 ];
 
-export default function QuantWhat() {
+export default function QuantWhat({
+  content,
+}: {
+  content?: {
+    headingLine1: string;
+    headingLine2: string;
+    suffix: string;
+    description: string;
+    image: string;
+    imageAlt: string;
+    cards: readonly string[];
+  };
+}) {
 return (
 <section className="relative overflow-hidden bg-[#f0f7ff] py-10 lg:py-14">
   <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
@@ -65,23 +77,25 @@ return (
       <div className="w-full max-w-[460px] shrink-0">
         <h2 className="text-2xl font-bold leading-[1.2] lg:text-5xl">
           <span className="bg-gradient-to-r from-[#1dc3b3] to-[#4faee8] bg-clip-text text-transparent">
-            What Quantitative
+            {content?.headingLine1 || "What Quantitative"}
             <br />
-            Market Research
+            {content?.headingLine2 || "Market Research"}
           </span>
           <br />
-          <span className="text-[#1e2746] font-normal text-4xl">does for Your Business?</span>
+          <span className="text-4xl font-normal text-[#1e2746]">
+            {content?.suffix || "does for Your Business?"}
+          </span>
         </h2>
         <p className="mt-5 text-sm leading-[1.8] text-[#4a5568] lg:text-lg">
-          Quantitative market research collects structured, numerical data from defined audiences. It
-          gives you findings you can measure, compare, and act on with confidence.
+          {content?.description ||
+            "Quantitative market research collects structured, numerical data from defined audiences. It gives you findings you can measure, compare, and act on with confidence."}
         </p>
       </div>
 
       {/* Right: quant-about.png */}
       <div className="relative flex w-full flex-1 items-center justify-center">
         <div className="relative w-full">
-          <Image src="/quality/quant-about.png" alt="Quantitative Market Research Analytics" width={1500} height={1000}
+          <Image src={content?.image || "/quality/quant-about.png"} alt={content?.imageAlt || "Quantitative Market Research Analytics"} width={1500} height={1000}
             className="h-auto w-full object-contain" priority />
         </div>
       </div>
@@ -121,7 +135,7 @@ return (
 
           {/* Text */}
           <p className=" pr-4 text-[14px] font-medium leading-[1.7] text-white line-clamp-4">
-            {card.text}
+            {content?.cards[i] || card.text}
           </p>
         </div>
       </div>

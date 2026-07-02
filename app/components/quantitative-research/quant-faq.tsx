@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 
-const faqs = [
+const defaultFaqs = [
   {
     question: "Why should businesses work with a global market research company?",
     answer:
@@ -29,7 +29,11 @@ const faqs = [
 
 ];
 
-export default function QuantFaq() {
+export default function QuantFaq({
+  items = defaultFaqs,
+}: {
+  items?: { question: string; answer: string }[];
+}) {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
@@ -130,7 +134,7 @@ export default function QuantFaq() {
           </div>
 
           <div className="space-y-3">
-            {faqs.map((faq, index) => {
+            {items.map((faq, index) => {
               const isOpen = openIndex === index;
 
               return (

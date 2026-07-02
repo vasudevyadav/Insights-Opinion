@@ -2,7 +2,11 @@
 
 import Link from "next/link";
 
-export default function QuantMethodCta() {
+export default function QuantMethodCta({
+  content,
+}: {
+  content?: { heading: string; description: string };
+}) {
   return (
     <section className="relative overflow-hidden bg-[#edf6ff] py-8 lg:py-14">
       <div className="pointer-events-none absolute inset-0">
@@ -13,11 +17,12 @@ export default function QuantMethodCta() {
       <div className="relative z-10 mx-auto max-w-5xl px-5 text-center sm:px-6">
         <h2 className="text-2xl font-semibold leading-[1.25] lg:text-4xl">
           <span className="bg-gradient-to-r from-[#3c8df6] via-[#31b6df] to-[#1dc3b3] bg-clip-text text-transparent">
-            Not sure which method fits your study?
+            {content?.heading || "Not sure which method fits your study?"}
           </span>
         </h2>
         <p className="mt-2 text-sm leading-[1.7] text-[#4a5568] lg:text-lg">
-          Speak with our team and we will advise on the right approach for your audience and objectives.
+          {content?.description ||
+            "Speak with our team and we will advise on the right approach for your audience and objectives."}
         </p>
         <div className="mt-4">
           <Link
