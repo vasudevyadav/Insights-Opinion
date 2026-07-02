@@ -3,21 +3,22 @@ import { notFound } from "next/navigation";
 import TeamGrowthForm from "@/app/components/our-team/team-growth-form";
 import TeamHero from "@/app/components/our-team/team-hero";
 import TeamMemberDetail from "@/app/components/our-team/team-member-detail";
-import { getTeamMember, teamMembers } from "@/app/lib/team-data";
+import { fetchTeamMember, fetchTeamMembers } from "@/app/lib/team-api";
 
 type TeamDetailPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
-  return teamMembers.map((member) => ({ slug: member.slug }));
+export async function generateStaticParams() {
+  const members = await fetchTeamMembers();
+  return members.map((member) => ({ slug: member.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: TeamDetailPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const member = getTeamMember(slug);
+  const member = await fetchTeamMember(slug);
 
   if (!member) {
     return { title: "Team Member | Insights Opinion" };
@@ -33,16 +34,20 @@ export default async function TeamDetailPage({
   params,
 }: TeamDetailPageProps) {
   const { slug } = await params;
-  const memberIndex = teamMembers.findIndex((item) => item.slug === slug);
+  const [member, members] = await Promise.all([
+    fetchTeamMember(slug),
+    fetchTeamMembers(),
+  ]);
 
-  if (memberIndex === -1) {
+  const memberIndex = members.findIndex((item) => item.slug === slug);
+
+  if (!member || memberIndex === -1) {
     notFound();
   }
 
-  const member = teamMembers[memberIndex];
   const previousMember =
-    teamMembers[(memberIndex - 1 + teamMembers.length) % teamMembers.length];
-  const nextMember = teamMembers[(memberIndex + 1) % teamMembers.length];
+    members[(memberIndex - 1 + members.length) % members.length];
+  const nextMember = members[(memberIndex + 1) % members.length];
 
   return (
     <>
