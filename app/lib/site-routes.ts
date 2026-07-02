@@ -2,7 +2,7 @@ import { getBlogs } from "@/data/blogData";
 import { researchPages } from "@/data/researchPages";
 import { caseStudies } from "@/app/lib/case-studies-data";
 import { getAllMethodSlugs } from "@/app/lib/method-data";
-import { teamMembers } from "@/app/lib/team-data";
+import { fetchTeamMembers } from "@/app/lib/team-api";
 
 export type SiteRoute = {
   path: string;
@@ -179,6 +179,7 @@ export function getSiteUrl() {
 }
 
 export async function getAllSiteRoutes(): Promise<SiteRoute[]> {
+  const teamMembers = await fetchTeamMembers();
   const teamRoutes: SiteRoute[] = teamMembers.map((member) => ({
     path: `/our-team/${member.slug}`,
     title: member.name,

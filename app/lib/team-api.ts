@@ -1,21 +1,46 @@
-import type { TeamMember } from "@/app/lib/team-data";
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "http://localhost:3000";
-
-const BASE_URL = `${siteUrl}/api/team-members`;
-
-type TeamMembersListResponse = {
-  success: boolean;
-  count: number;
-  data: TeamMember[];
+export type TeamMember = {
+  slug: string;
+  name: string;
+  role: string;
+  image: string;
+  detailImage: string;
+  description: string[];
 };
 
-type TeamMemberResponse = {
-  success: boolean;
-  data: TeamMember | null;
+type RawTeamMember = {
+  slug: string;
+  name: string;
+  role: string;
+  image: string;
+  detailImage: string;
+  description: string;
 };
+
+type TeamMembersResponse = {
+  success: boolean;
+  data: RawTeamMember[];
+};
+
+const BASE_URL =
+  "https://reinventmedia.in/insightOpinion/wp-json/custom/v1/our-teams";
+
+function parseDescription(raw: string): string[] {
+  return raw
+    .split(/\r?\n/)
+    .map((line) => line.trim().replace(/,+\s*$/, ""))
+    .filter(Boolean);
+}
+
+function normalizeTeamMember(raw: RawTeamMember): TeamMember {
+  return {
+    slug: raw.slug,
+    name: raw.name,
+    role: raw.role,
+    image: raw.image,
+    detailImage: raw.detailImage,
+    description: parseDescription(raw.description),
+  };
+}
 
 export async function fetchTeamMembers(): Promise<TeamMember[]> {
   try {
@@ -26,8 +51,8 @@ export async function fetchTeamMembers(): Promise<TeamMember[]> {
       return [];
     }
 
-    const json: TeamMembersListResponse = await res.json();
-    return json.success ? json.data : [];
+    const json: TeamMembersResponse = await res.json();
+    return json.success ? json.data.map(normalizeTeamMember) : [];
   } catch (error) {
     console.error("Failed to fetch team members:", error);
     return [];
@@ -35,20 +60,6 @@ export async function fetchTeamMembers(): Promise<TeamMember[]> {
 }
 
 export async function fetchTeamMember(slug: string): Promise<TeamMember | null> {
-  try {
-    const res = await fetch(`${BASE_URL}/${slug}`, { next: { revalidate: 60 } });
-
-    if (!res.ok) {
-      if (res.status !== 404) {
-        console.error(`Failed to fetch team member: ${res.status} ${res.statusText}`);
-      }
-      return null;
-    }
-
-    const json: TeamMemberResponse = await res.json();
-    return json.success ? json.data : null;
-  } catch (error) {
-    console.error("Failed to fetch team member:", error);
-    return null;
-  }
+  const members = await fetchTeamMembers();
+  return members.find((member) => member.slug === slug) ?? null;
 }
