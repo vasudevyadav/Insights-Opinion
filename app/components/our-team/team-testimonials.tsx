@@ -31,7 +31,7 @@ export default function TeamTestimonials() {
           </div>
         </div>
 
-        <Swiper 
+        <Swiper
           modules={[Navigation, Autoplay]}
           navigation={{
             prevEl: ".team-testimonial-prev",

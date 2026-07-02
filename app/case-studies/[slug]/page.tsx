@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
 import CaseStudyDetail from "@/app/components/case-studies/detail/case-study-detail";
 import {
-  getCaseStudyBySlug,
+  fetchCaseStudies,
+  fetchCaseStudy,
   getRelatedCaseStudies,
-} from "@/app/lib/case-studies-data";
+} from "@/app/lib/case-studies-api";
 
 export default async function CaseStudySlugPage({
   params,
@@ -11,7 +12,10 @@ export default async function CaseStudySlugPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const caseStudy = getCaseStudyBySlug(slug);
+  const [caseStudy, caseStudies] = await Promise.all([
+    fetchCaseStudy(slug),
+    fetchCaseStudies(),
+  ]);
 
   if (!caseStudy) {
     notFound();
@@ -20,7 +24,7 @@ export default async function CaseStudySlugPage({
   return (
     <CaseStudyDetail
       caseStudy={caseStudy}
-      relatedCaseStudies={getRelatedCaseStudies(slug, 2)}
+      relatedCaseStudies={getRelatedCaseStudies(caseStudies, slug, 2)}
     />
   );
 }

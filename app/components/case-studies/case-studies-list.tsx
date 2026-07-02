@@ -4,19 +4,23 @@ import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Search } from "lucide-react";
-import { caseStudies } from "@/app/lib/case-studies-data";
+import type { CaseStudy } from "@/app/lib/case-studies-data";
 
 const INITIAL_COUNT = 6;
 const LOAD_MORE_COUNT = 3;
 
-export default function CaseStudiesList() {
+type CaseStudiesListProps = {
+    caseStudies: CaseStudy[];
+};
+
+export default function CaseStudiesList({ caseStudies }: CaseStudiesListProps) {
     const [selectedCategory, setSelectedCategory] = useState("Any");
     const [search, setSearch] = useState("");
     const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
 
     const categories = useMemo(() => {
         return ["Any", ...Array.from(new Set(caseStudies.map((item) => item.category)))];
-    }, []);
+    }, [caseStudies]);
 
     const filteredCaseStudies = useMemo(() => {
         return caseStudies.filter((item) => {
@@ -28,7 +32,7 @@ export default function CaseStudiesList() {
                 item.category.toLowerCase().includes(search.toLowerCase());
             return matchesCategory && matchesSearch;
         });
-    }, [selectedCategory, search]);
+    }, [caseStudies, selectedCategory, search]);
 
     const visibleItems = filteredCaseStudies.slice(0, visibleCount);
     const hasMore = visibleCount < filteredCaseStudies.length;

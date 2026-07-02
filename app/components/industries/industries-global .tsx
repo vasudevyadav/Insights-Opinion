@@ -1,63 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import type { Industry } from "@/app/lib/industries-data";
 
-type Industry = {
-    name: string;
-    description: string;
-    image: string;
+type IndustriesGlobalProps = {
+    industries: Industry[];
 };
 
-const industries: Industry[] = [
-    {
-        name: "Information Technology",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/globle-it.png",
-    },
-    {
-        name: "Agriculture",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/industry-agricultur.png",
-    },
-    {
-        name: "Automotive",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/industry-automotive.png",
-    },
-    {
-        name: "Construction",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/industry-construction.png",
-    },
-    {
-        name: "Healthcare",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/industry-healthcare.png",
-    },
-    {
-        name: "Chemical",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/industry-chemical.png",
-    },
-    {
-        name: "Education",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/industry-education.png",
-    },
-    {
-        name: "Telecom",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/industry-telecom.png",
-    },
-    {
-        name: "Others",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/industry-others.png",
-    },
-];
-
-
-export default function IndustriesGlobal() {
+export default function IndustriesGlobal({ industries }: IndustriesGlobalProps) {
     return (
         <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
             {/* Hex background pattern */}
