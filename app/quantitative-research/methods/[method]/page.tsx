@@ -26,7 +26,7 @@ export default async function MethodDetailPage({
       <QuantDetailsWhat data={data.why} />
       <QuantWhatOur data={data.services} />
       <MarketResearch data={data} />
-      <QuantDetailsMethods />
+      <QuantDetailsMethods currentSlug={method} />
       <QuantDetailsWhyRadial />
       <QuantDetailsFaq data={data.faqs} />
     </main>

@@ -121,7 +121,7 @@ export default function QuantDetailsFaq({ data }: { data: FaqItem[] }) {
                     />
                   </button>
 
-                  <div className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] rounded-b-2xl bg-white" : "grid-rows-[0fr]"}`}>
+                  <div className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${isOpen ? "grid-rows-[1fr] rounded-b-2xl bg-white opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                     <div className="overflow-hidden">
                       <div className="px-5 pb-5">
                         <p className="text-xs leading-6 text-[#6b7280] lg:text-sm">{faq.a}</p>

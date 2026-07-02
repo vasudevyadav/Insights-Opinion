@@ -54,10 +54,10 @@ export default function FooterMobileAccordion({
                         </button>
 
                         <div
-                            className={`grid transition-all duration-300 ${
+                            className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${
                                 isOpen
-                                    ? "grid-rows-[1fr] pb-4"
-                                    : "grid-rows-[0fr]"
+                                    ? "grid-rows-[1fr] pb-4 opacity-100"
+                                    : "grid-rows-[0fr] opacity-0"
                             }`}
                         >
                             <div className="overflow-hidden">

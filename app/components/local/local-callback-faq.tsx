@@ -185,9 +185,9 @@ export default function LocalCallbackFaq() {
                                         )}
                                     </button>
                                     <div
-                                        className={`grid transition-all duration-300 ease-in-out ${isOpen
-                                            ? "grid-rows-[1fr] rounded-b-[16px] bg-white"
-                                            : "grid-rows-[0fr]"
+                                        className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${isOpen
+                                            ? "grid-rows-[1fr] rounded-b-[16px] bg-white opacity-100"
+                                            : "grid-rows-[0fr] opacity-0"
                                             }`}
                                     >
                                         <div className="overflow-hidden">

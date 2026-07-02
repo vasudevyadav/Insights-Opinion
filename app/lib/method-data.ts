@@ -1,3 +1,5 @@
+import { serviceCategories } from "@/app/lib/service-catalog";
+
 export interface ServiceItem {
   id: string;
   title: string;
@@ -567,10 +569,234 @@ const methods: Record<string, MethodData> = {
   },
 };
 
+const categoryImages = {
+  quantitative: "/quality/cati-online.png",
+  qualitative: "/_Qualitative-Research.jpg",
+  support: "/_Support-Services.jpg",
+} as const;
+
+function createDemoMethodData(
+  slug: string,
+  title: string,
+  categoryTitle: string,
+  categoryKey: keyof typeof categoryImages
+): MethodData {
+  const image = categoryImages[categoryKey];
+
+  return {
+    slug,
+    hero: {
+      title: `${title}\nServices`,
+      subtitle: `Managed ${categoryTitle}\nSolutions`,
+      description: `Explore our ${title.toLowerCase()} capabilities, managed by experienced research teams from project planning through final delivery.`,
+    },
+    about: `Insights Opinion provides end-to-end ${title.toLowerCase()} services for research programs across industries and markets. This demo service page uses the shared detail-page design and can be replaced with final service-specific copy when approved.`,
+    why: {
+      heading1: `Why Choose ${title}`,
+      heading2: "for Your Research?",
+      bodyLeft: `${title} helps teams collect the right evidence for clearer, faster decisions. We tailor the approach to your audience, objectives, timeline, and required markets.`,
+      bodyRight1:
+        "Every engagement includes a defined workflow, experienced project management, and practical quality checks.",
+      bodyRight2:
+        "Our team can also combine this service with complementary quantitative, qualitative, and support capabilities.",
+    },
+    services: {
+      headingGradient: `What Our ${title}`,
+      headingLight: "Services Include?",
+      subheading: `A flexible, fully managed ${title.toLowerCase()} workflow from brief to delivery.`,
+      items: [
+        {
+          id: "01",
+          title: "Research Planning",
+          description:
+            "We translate the business question into a practical research plan, audience definition, timeline, and delivery framework.",
+          image,
+          iconKey: "FileText",
+        },
+        {
+          id: "02",
+          title: "Project Setup",
+          description:
+            "Our team prepares the required materials, workflows, technology, and quality controls before launch.",
+          image: "/Survey-Programming.jpg",
+          iconKey: "Code",
+        },
+        {
+          id: "03",
+          title: "Fieldwork Management",
+          description:
+            "Dedicated project managers monitor progress, resolve fieldwork issues, and keep delivery aligned with the agreed plan.",
+          image: "/Live-Project-Visibility.png",
+          iconKey: "Users",
+        },
+        {
+          id: "04",
+          title: "Quality Review",
+          description:
+            "Outputs are checked for completeness, consistency, and research quality before they enter the final dataset.",
+          image: "/Data-Insights.jpg",
+          iconKey: "Eye",
+        },
+        {
+          id: "05",
+          title: "Data and Insight Delivery",
+          description:
+            "We deliver clean, usable outputs with a concise project summary and formats suited to your analysis workflow.",
+          image: "/Data-Insights.jpg",
+          iconKey: "Database",
+        },
+      ],
+    },
+    whenToUse: {
+      heading1: "When to Use",
+      heading2: `${title}?`,
+      bodyText: `${title} is a strong fit when your study needs a managed ${categoryTitle.toLowerCase()} approach with clear quality controls, dependable delivery, and support across multiple project stages.`,
+      image,
+      items: [
+        {
+          iconKey: "Users",
+          title: "Defined Audiences",
+          description:
+            "You need to reach a specific audience with a structured recruitment and validation plan.",
+        },
+        {
+          iconKey: "Globe",
+          title: "Multi-Market Work",
+          description:
+            "Your project spans regions, languages, or markets and needs central coordination.",
+        },
+        {
+          iconKey: "Clock",
+          title: "Managed Timelines",
+          description:
+            "You need clear milestones, proactive updates, and dependable delivery.",
+        },
+        {
+          iconKey: "UserCheck",
+          title: "Quality Controls",
+          description:
+            "Respondent, process, or output quality needs to be verified throughout the study.",
+        },
+        {
+          iconKey: "BarChart",
+          title: "Actionable Outputs",
+          description:
+            "Your stakeholders need clean evidence that can move directly into analysis and decisions.",
+        },
+      ],
+    },
+    comparison: {
+      col1: title,
+      col2: "Standard Research",
+      rows: [
+        {
+          factor: "Project design",
+          col1: "Tailored to the study",
+          col2: "Fixed general approach",
+        },
+        {
+          factor: "Project management",
+          col1: "Dedicated support",
+          col2: "Limited coordination",
+        },
+        {
+          factor: "Quality review",
+          col1: "Multi-stage checks",
+          col2: "Basic final checks",
+        },
+        {
+          factor: "Market coverage",
+          col1: "Single or multi-market",
+          col2: "Usually single market",
+        },
+        {
+          factor: "Delivery",
+          col1: "Flexible output formats",
+          col2: "Standard output",
+        },
+      ],
+      footer: `${title} can be used independently or combined with other services in the Insights Opinion research portfolio.`,
+    },
+    vsBox: {
+      title: `${title} vs Standard Research`,
+      subtitle: "What's the Difference?",
+      description: `${title} provides a more tailored, managed workflow with service-specific planning and quality control.`,
+      col1Label: title,
+      col2Label: "Standard Research",
+      col1Desc: "Tailored, managed, and flexible",
+      col2Desc: "Generalised, fixed, and self-managed",
+      items: [
+        { label: "Planning", col1: "Custom", col2: "Standard" },
+        { label: "Support", col1: "Dedicated", col2: "Limited" },
+        { label: "Quality", col1: "Multi-stage", col2: "Final review" },
+        { label: "Delivery", col1: "Flexible", col2: "Fixed" },
+      ],
+    },
+    sectors: [
+      {
+        title: `${title} for Healthcare`,
+        image: "/market-research/Healthcare-1.jpg",
+        description:
+          "A carefully managed approach for healthcare audiences, sensitive topics, and privacy-conscious research workflows.",
+      },
+      {
+        title: `${title} for Consumer Research`,
+        image,
+        description:
+          "Flexible consumer research support for product, brand, experience, and market decision-making.",
+      },
+      {
+        title: `${title} for B2B Research`,
+        image: "/2_Need-More-Reliable-Market-Data-.jpg",
+        description:
+          "Targeted research support for professional audiences, decision-makers, and specialist business categories.",
+      },
+    ],
+    faqs: [
+      {
+        q: `What is ${title}?`,
+        a: `${title} is part of our ${categoryTitle.toLowerCase()} portfolio. The exact research design is tailored to the audience, business question, markets, and delivery requirements.`,
+      },
+      {
+        q: `When should I use ${title}?`,
+        a: `Use ${title} when you need a managed research workflow, clear quality controls, and outputs designed around a specific business decision.`,
+      },
+      {
+        q: "Can this service be used internationally?",
+        a: "Yes. Insights Opinion can coordinate single-country and multi-country projects with central project management and local market support.",
+      },
+      {
+        q: "Can it be combined with other research services?",
+        a: "Yes. We can combine quantitative, qualitative, and support services within one coordinated research program.",
+      },
+      {
+        q: "How do I get a project estimate?",
+        a: "Share your audience, markets, sample requirements, timing, and expected outputs. Our team will recommend an approach and prepare a tailored estimate.",
+      },
+    ],
+  };
+}
+
+const demoMethods: Record<string, MethodData> = Object.fromEntries(
+  serviceCategories.flatMap((category) =>
+    category.services
+      .filter((service) => !methods[service.slug])
+      .map((service) => [
+        service.slug,
+        createDemoMethodData(
+          service.slug,
+          service.title,
+          category.title,
+          category.key
+        ),
+      ])
+  )
+);
+
 export function getMethodData(slug: string): MethodData | null {
-  return methods[slug] ?? null;
+  return methods[slug] ?? demoMethods[slug] ?? null;
 }
 
 export function getAllMethodSlugs(): string[] {
-  return Object.keys(methods);
+  return [...new Set([...Object.keys(methods), ...Object.keys(demoMethods)])];
 }

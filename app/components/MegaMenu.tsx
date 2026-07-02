@@ -20,13 +20,17 @@ const leftItems = [
         key: "quantitative-research",
         href: "/quantitative-research",
     },
-    { title: "Qualitative Research", key: "QualitativeResearch", href: null },
-    { title: "Support Services", key: "SupportServices", href: null },
+    { title: "Qualitative Research", key: "QualitativeResearch", href: "/qualitative-research" },
+    { title: "Support Services", key: "SupportServices", href: "/support-services" },
 ] as const;
 
 const menuData = {
     "quantitative-research": [
-        { title: "Global Panel", href: null, icon: BarChart3 },
+        {
+            title: "Global Panel",
+            href: "/quantitative-research/methods/global-panel",
+            icon: BarChart3,
+        },
         {
             title: "CATI",
             href: "/quantitative-research/methods/cati",
@@ -44,15 +48,43 @@ const menuData = {
         },
     ],
     QualitativeResearch: [
-        { title: "Focus Group Discussions", href: null, icon: HeartPulse },
-        { title: "In-Depth Reviews", href: null, icon: Landmark },
-        { title: "In-Home Usage Testings", href: null, icon: ShoppingBag },
-        { title: "Mystery Shopping", href: null, icon: GraduationCap },
+        {
+            title: "Focus Group Discussions",
+            href: "/quantitative-research/methods/focus-group-discussions",
+            icon: HeartPulse,
+        },
+        {
+            title: "In-Depth Reviews",
+            href: "/quantitative-research/methods/in-depth-reviews",
+            icon: Landmark,
+        },
+        {
+            title: "In-Home Usage Testings",
+            href: "/quantitative-research/methods/in-home-usage-testings",
+            icon: ShoppingBag,
+        },
+        {
+            title: "Mystery Shopping",
+            href: "/quantitative-research/methods/mystery-shopping",
+            icon: GraduationCap,
+        },
     ],
     SupportServices: [
-        { title: "Survey Programming", href: null, icon: Landmark },
-        { title: "Translation", href: null, icon: ShoppingBag },
-        { title: "Data Insights", href: null, icon: GraduationCap },
+        {
+            title: "Survey Programming",
+            href: "/quantitative-research/methods/survey-programming",
+            icon: Landmark,
+        },
+        {
+            title: "Translation",
+            href: "/quantitative-research/methods/translation",
+            icon: ShoppingBag,
+        },
+        {
+            title: "Data Insights",
+            href: "/quantitative-research/methods/data-insights",
+            icon: GraduationCap,
+        },
     ],
 } as const;
 
@@ -79,9 +111,10 @@ export default function MegaMenu({ open }: MegaMenuProps) {
                     <div className="space-y-3">
                         {leftItems.map((item) => (
                             <div key={item.title}>
-                                <button
-                                    type="button"
-                                    onClick={() => setActiveTab(item.key)}
+                                <Link
+                                    href={item.href}
+                                    onMouseEnter={() => setActiveTab(item.key)}
+                                    onFocus={() => setActiveTab(item.key)}
                                     className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-base font-semibold transition ${activeTab === item.key
                                         ? "bg-[#eef2ff] text-[#4f46e5]"
                                         : "text-gray-500 hover:bg-gray-50 hover:text-gray-800"
@@ -89,15 +122,7 @@ export default function MegaMenu({ open }: MegaMenuProps) {
                                 >
                                     <span>{item.title}</span>
                                     <ChevronRight className="h-4 w-4" />
-                                </button>
-                                {item.href && activeTab === item.key && (
-                                    <Link
-                                        href={item.href}
-                                        className="mt-1 block px-4 text-xs font-medium text-[#18a99f] hover:text-[#4f46e5]"
-                                    >
-                                        View all {item.title}
-                                    </Link>
-                                )}
+                                </Link>
                             </div>
                         ))}
                     </div>
@@ -105,7 +130,7 @@ export default function MegaMenu({ open }: MegaMenuProps) {
                     <div className="grid grid-cols-2 gap-x-10 gap-y-3">
                         {activeMenuItems.map((item) => {
                             const Icon = item.icon;
-                            return item.href ? (
+                            return (
                                 <Link
                                     key={item.title}
                                     href={item.href}
@@ -116,16 +141,6 @@ export default function MegaMenu({ open }: MegaMenuProps) {
                                         <p className="text-sm font-medium text-gray-900 group-hover:text-[#4f46e5]">{item.title}</p>
                                     </div>
                                 </Link>
-                            ) : (
-                                <div
-                                    key={item.title}
-                                    className="flex cursor-not-allowed items-center gap-3 rounded-xl px-2 opacity-45"
-                                >
-                                    <Icon className="mt-0.5 h-7 w-7 text-gray-500" />
-                                    <p className="text-sm font-medium text-gray-700">
-                                        {item.title}
-                                    </p>
-                                </div>
                             );
                         })}
                     </div>

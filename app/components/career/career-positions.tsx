@@ -120,16 +120,24 @@ export default function CareerPositions() {
                                         </div>
                                     </div>
 
-                                    {expandedJob === job.id && (
-                                        <div className="mt-3 rounded bg-white px-4 py-3 text-sm text-[#4b5563]">
-                                            <p>We are looking for a talented <strong>{job.title}</strong> to join our growing team.</p>
-                                            <ul className="mt-2 list-disc pl-5 space-y-1">
-                                                <li>2+ years of relevant experience</li>
-                                                <li>Strong communication and collaboration skills</li>
-                                                <li>Ability to work in a fast-paced environment</li>
-                                            </ul>
+                                    <div
+                                        className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${
+                                            expandedJob === job.id
+                                                ? "grid-rows-[1fr] opacity-100"
+                                                : "grid-rows-[0fr] opacity-0"
+                                        }`}
+                                    >
+                                        <div className="overflow-hidden">
+                                            <div className="mt-3 rounded bg-white px-4 py-3 text-sm text-[#4b5563]">
+                                                <p>We are looking for a talented <strong>{job.title}</strong> to join our growing team.</p>
+                                                <ul className="mt-2 list-disc space-y-1 pl-5">
+                                                    <li>2+ years of relevant experience</li>
+                                                    <li>Strong communication and collaboration skills</li>
+                                                    <li>Ability to work in a fast-paced environment</li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    )}
+                                    </div>
                                 </div>
                             ))}
                         </div>

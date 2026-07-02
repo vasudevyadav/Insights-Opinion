@@ -66,8 +66,10 @@ export default function SiteMapAccordion({
             </button>
 
             <div
-              className={`grid transition-all duration-300 ${
-                isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+              className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${
+                isOpen
+                  ? "grid-rows-[1fr] opacity-100"
+                  : "grid-rows-[0fr] opacity-0"
               }`}
             >
               <div className="overflow-hidden">

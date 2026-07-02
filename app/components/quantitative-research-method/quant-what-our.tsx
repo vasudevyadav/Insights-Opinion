@@ -27,7 +27,7 @@ export default function QuantWhatOur({ data }: { data: ServicesData }) {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
         <div className="lg:mb-10 mb-6 text-center w-full">
-          <h2 className="text-2xl font-bold leading-tight sm:text-4xl lg:text-5xl bg-linear-to-r from-[#1dc3b3] to-[#4faee8] bg-clip-text text-transparent">
+          <h2 className="text-2xl font-bold leading-tight lg:text-[40px] bg-linear-to-r from-[#1dc3b3] to-[#4faee8] bg-clip-text text-transparent">
             {data.headingGradient}
           </h2>
           <h2 className="text-2xl font-light text-[#2b3553] sm:text-4xl py-1">
@@ -45,7 +45,7 @@ export default function QuantWhatOur({ data }: { data: ServicesData }) {
 
             if (isActive) {
               return (
-                <div key={s.id} className="my-2 flex overflow-hidden rounded-2xl bg-[#1b2f5e]">
+                <div key={s.id} className="accordion-content-enter my-2 flex overflow-hidden rounded-2xl bg-[#1b2f5e]">
                   <div className="relative hidden w-60 shrink-0 sm:block">
                     <Image src={s.image} alt={s.title} fill unoptimized className="object-cover" />
                     <div className="absolute inset-0 flex items-center justify-center">
