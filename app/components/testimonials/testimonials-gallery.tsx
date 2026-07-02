@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Play, Quote, X } from "lucide-react";
 import { useState } from "react";
-import type { Testimonial, VideoTestimonial } from "@/app/lib/testimonial-data";
+import type { Testimonial, VideoTestimonial } from "@/app/lib/testimonial-api";
 
 type Filter = "text" | "video";
 

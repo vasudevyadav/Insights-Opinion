@@ -1,10 +1,57 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+import { submitLeadForm } from "@/app/lib/lead-form-api";
+
+const initialFormData = {
+    name: "",
+    email: "",
+    country: "",
+    countryCode: "",
+    enquiryType: "",
+};
 
 export default function CaseStudiesForm() {
+    const [formData, setFormData] = useState(initialFormData);
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState("");
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    ) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
+        setStatus("");
+
+        try {
+            await submitLeadForm({
+                formName: "case_studies_enquiry",
+                name: formData.name,
+                email: formData.email,
+                country: formData.country,
+                countryCode: formData.countryCode,
+                enquiryType: formData.enquiryType,
+            });
+
+            setStatus("Submitted successfully.");
+            setFormData(initialFormData);
+        } catch (error) {
+            setStatus(
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong. Please try again."
+            );
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <section className="relative overflow-hidden bg-[#edf4fb] py-8 lg:py-12">
             <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -36,22 +83,36 @@ export default function CaseStudiesForm() {
 
                     {/* Right Side — Form */}
                     <div className="mx-auto w-full max-w-[560px]">
-                        <form className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
+                        <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
                             <input
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
                                 type="text"
+                                required
                                 placeholder="Name"
                                 className="h-[44px] rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 text-sm text-white outline-none placeholder:text-white/75"
                             />
 
                             <input
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
                                 type="email"
+                                required
                                 placeholder="Email"
                                 className="h-[44px] rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 text-sm text-white outline-none placeholder:text-white/75"
                             />
 
                             <div className="relative">
-                                <select className="h-[44px] w-full appearance-none rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 pr-10 text-sm text-white/75 outline-none">
-                                    <option>Country</option>
+                                <select
+                                    name="country"
+                                    value={formData.country}
+                                    onChange={handleChange}
+                                    required
+                                    className="h-[44px] w-full appearance-none rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 pr-10 text-sm text-white/75 outline-none"
+                                >
+                                    <option value="" disabled>Country</option>
                                     <option>India</option>
                                     <option>USA</option>
                                     <option>UK</option>
@@ -61,8 +122,14 @@ export default function CaseStudiesForm() {
                             </div>
 
                             <div className="relative">
-                                <select className="h-[44px] w-full appearance-none rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 pr-10 text-sm text-white/75 outline-none">
-                                    <option>Mobile</option>
+                                <select
+                                    name="countryCode"
+                                    value={formData.countryCode}
+                                    onChange={handleChange}
+                                    required
+                                    className="h-[44px] w-full appearance-none rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 pr-10 text-sm text-white/75 outline-none"
+                                >
+                                    <option value="" disabled>Mobile</option>
                                     <option>+91</option>
                                     <option>+1</option>
                                     <option>+44</option>
@@ -72,8 +139,14 @@ export default function CaseStudiesForm() {
                             </div>
 
                             <div className="relative sm:col-span-1">
-                                <select className="h-[44px] w-full appearance-none rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 pr-10 text-sm text-white/75 outline-none">
-                                    <option>Please Select</option>
+                                <select
+                                    name="enquiryType"
+                                    value={formData.enquiryType}
+                                    onChange={handleChange}
+                                    required
+                                    className="h-[44px] w-full appearance-none rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 pr-10 text-sm text-white/75 outline-none"
+                                >
+                                    <option value="" disabled>Please Select</option>
                                     <option>General Enquiry</option>
                                     <option>Business Query</option>
                                     <option>Support</option>
@@ -84,10 +157,14 @@ export default function CaseStudiesForm() {
                             <div className="sm:col-span-2">
                                 <button
                                     type="submit"
-                                    className="h-[42px] w-full rounded-[6px] bg-gradient-to-r from-[#49c3b0] to-[#5ca8ff] px-6 text-sm font-semibold text-white shadow-md transition hover:opacity-90 sm:w-auto sm:min-w-[140px]"
+                                    disabled={loading}
+                                    className="h-[42px] w-full rounded-[6px] bg-gradient-to-r from-[#49c3b0] to-[#5ca8ff] px-6 text-sm font-semibold text-white shadow-md transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:min-w-[140px]"
                                 >
-                                    Submit Now
+                                    {loading ? "Submitting..." : "Submit Now"}
                                 </button>
+                                {status && (
+                                    <p className="mt-2 text-sm font-semibold text-[#0f766e]">{status}</p>
+                                )}
                             </div>
                         </form>
                     </div>

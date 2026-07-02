@@ -1,11 +1,66 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import type { FaqItem } from "@/app/lib/method-data";
+import { submitLeadForm } from "@/app/lib/lead-form-api";
+
+const DISPLAYED_CAPTCHA = "990940";
+
+const initialFormData = {
+  name: "",
+  email: "",
+  phone: "",
+  enquiryType: "",
+  message: "",
+  captchaInput: "",
+};
 
 export default function QuantDetailsFaq({ data }: { data: FaqItem[] }) {
   const [openIndex, setOpenIndex] = useState(0);
+  const [formData, setFormData] = useState(initialFormData);
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (formData.captchaInput !== DISPLAYED_CAPTCHA) {
+      setStatus("Invalid captcha. Please try again.");
+      return;
+    }
+
+    setLoading(true);
+    setStatus("");
+
+    try {
+      await submitLeadForm({
+        formName: "quant_method_callback",
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        enquiryType: formData.enquiryType,
+        message: formData.message,
+      });
+
+      setStatus("Submitted successfully.");
+      setFormData(initialFormData);
+    } catch (error) {
+      setStatus(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section className="relative overflow-hidden">
@@ -34,15 +89,23 @@ export default function QuantDetailsFaq({ data }: { data: FaqItem[] }) {
               </h2>
             </div>
 
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <input
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   type="text"
+                  required
                   placeholder="Name"
                   className="h-11.5 rounded-sm border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
                 />
                 <input
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   type="email"
+                  required
                   placeholder="Email"
                   className="h-11.5 rounded-sm border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
                 />
@@ -50,12 +113,22 @@ export default function QuantDetailsFaq({ data }: { data: FaqItem[] }) {
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <input
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   type="tel"
+                  required
                   placeholder="Mobile"
                   className="h-11.5 rounded-sm border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
                 />
-                <select className="h-11.5 rounded-sm border border-[#d7d7d7] bg-white px-4 text-sm text-[#8a8a8a] outline-none focus:border-[#20b7a6]">
-                  <option>Please Select</option>
+                <select
+                  name="enquiryType"
+                  value={formData.enquiryType}
+                  onChange={handleChange}
+                  required
+                  className="h-11.5 rounded-sm border border-[#d7d7d7] bg-white px-4 text-sm text-[#8a8a8a] outline-none focus:border-[#20b7a6]"
+                >
+                  <option value="" disabled>Please Select</option>
                   <option>CATI</option>
                   <option>CAPI</option>
                   <option>CLT</option>
@@ -64,6 +137,9 @@ export default function QuantDetailsFaq({ data }: { data: FaqItem[] }) {
               </div>
 
               <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 placeholder="Message"
                 rows={4}
                 className="w-full rounded-sm border border-[#d7d7d7] px-4 py-3 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6] resize-none"
@@ -71,21 +147,30 @@ export default function QuantDetailsFaq({ data }: { data: FaqItem[] }) {
 
               <div className="relative flex flex-col gap-3 sm:flex-row sm:items-center">
                 <input
+                  name="captchaInput"
+                  value={formData.captchaInput}
+                  onChange={handleChange}
                   type="text"
+                  required
                   placeholder="Captcha"
                   className="h-11.5 w-full rounded-sm border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6] sm:w-37.5"
                 />
                 <div className="absolute right-0 lg:left-36 flex h-11.5 w-27.5 items-center justify-center rounded-sm bg-[#171f4d] text-sm font-medium tracking-wide text-white">
-                  990940
+                  {DISPLAYED_CAPTCHA}
                 </div>
               </div>
+
+              {status && (
+                <p className="text-sm font-semibold text-[#0f766e]">{status}</p>
+              )}
 
               <div className="pt-6 text-center">
                 <button
                   type="submit"
-                  className="inline-flex min-w-42.5 items-center justify-center rounded-md bg-linear-to-r from-[#48b99b] to-[#5bc4a9] px-18 py-3 text-sm font-semibold text-white transition hover:opacity-90 hover:shadow-lg lg:text-lg"
+                  disabled={loading}
+                  className="inline-flex min-w-42.5 items-center justify-center rounded-md bg-linear-to-r from-[#48b99b] to-[#5bc4a9] px-18 py-3 text-sm font-semibold text-white transition hover:opacity-90 hover:shadow-lg lg:text-lg disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  Submit
+                  {loading ? "Submitting..." : "Submit"}
                 </button>
               </div>
             </form>

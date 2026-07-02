@@ -1,6 +1,6 @@
 import { getBlogs } from "@/data/blogData";
 import { researchPages } from "@/data/researchPages";
-import { caseStudies } from "@/app/lib/case-studies-data";
+import { fetchCaseStudies } from "@/app/lib/case-studies-api";
 import { getAllMethodSlugs } from "@/app/lib/method-data";
 import { fetchTeamMembers } from "@/app/lib/team-api";
 
@@ -210,6 +210,7 @@ export async function getAllSiteRoutes(): Promise<SiteRoute[]> {
     changeFrequency: "monthly",
   }));
 
+  const caseStudies = await fetchCaseStudies();
   const caseStudyRoutes: SiteRoute[] = caseStudies.map((study) => ({
     path: `/case-studies/${study.slug}`,
     title: study.title,

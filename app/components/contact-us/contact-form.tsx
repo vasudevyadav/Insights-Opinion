@@ -11,6 +11,7 @@ import {
     Twitter,
     Linkedin,
 } from "lucide-react";
+import { submitLeadForm } from "@/app/lib/lead-form-api";
 
 export default function ContactForm() {
     const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -44,26 +45,14 @@ export default function ContactForm() {
         setStatus("");
 
         try {
-            const res = await fetch(`${API_BASE_URL}/contact/v1/submit`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    firstName: formData.firstName,
-                    lastName: formData.lastName,
-                    email: formData.email,
-                    countryCode: formData.countryCode,
-                    contact: formData.contact,
-                    message: formData.message,
-                }),
+            await submitLeadForm({
+                formName: "contact_us",
+                name: `${formData.firstName} ${formData.lastName}`.trim(),
+                email: formData.email,
+                phone: `${formData.countryCode} ${formData.contact}`.trim(),
+                countryCode: formData.countryCode,
+                message: formData.message,
             });
-
-            const data = await res.json();
-
-            if (!res.ok) {
-                throw new Error(data?.message || "Failed to submit form");
-            }
 
             setStatus("Message sent successfully.");
             setFormData({
