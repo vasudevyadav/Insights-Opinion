@@ -3,6 +3,18 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
+import { submitLeadForm } from "@/app/lib/lead-form-api";
+
+const DISPLAYED_CAPTCHA = "990940";
+
+const initialFormData = {
+    name: "",
+    email: "",
+    phone: "",
+    enquiryType: "",
+    message: "",
+    captchaInput: "",
+};
 
 const faqs = [
     {
@@ -31,6 +43,49 @@ const faqs = [
 
 export default function CallbackFaqSection() {
     const [openIndex, setOpenIndex] = useState(0);
+    const [formData, setFormData] = useState(initialFormData);
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState("");
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    ) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        if (formData.captchaInput !== DISPLAYED_CAPTCHA) {
+            setStatus("Invalid captcha. Please try again.");
+            return;
+        }
+
+        setLoading(true);
+        setStatus("");
+
+        try {
+            await submitLeadForm({
+                formName: "home_callback",
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                enquiryType: formData.enquiryType,
+                message: formData.message,
+            });
+
+            setStatus("Submitted successfully.");
+            setFormData(initialFormData);
+        } catch (error) {
+            setStatus(
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong. Please try again."
+            );
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <section className="relative overflow-hidden">
@@ -57,15 +112,23 @@ export default function CallbackFaqSection() {
                             </h2>
                         </div>
 
-                        <form className="space-y-4">
+                        <form onSubmit={handleSubmit} className="space-y-4">
                             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                 <input
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
                                     type="text"
+                                    required
                                     placeholder="Name"
                                     className="h-[46px] rounded-[4px] border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
                                 />
                                 <input
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     type="email"
+                                    required
                                     placeholder="Email"
                                     className="h-[46px] rounded-[4px] border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
                                 />
@@ -73,13 +136,23 @@ export default function CallbackFaqSection() {
 
                             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                 <input
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handleChange}
                                     type="tel"
+                                    required
                                     placeholder="Mobile"
                                     className="h-[46px] rounded-[4px] border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
                                 />
 
-                                <select className="h-[46px] rounded-[4px] border border-[#d7d7d7] bg-white px-4 text-sm text-[#8a8a8a] outline-none focus:border-[#20b7a6]">
-                                    <option>Please Select</option>
+                                <select
+                                    name="enquiryType"
+                                    value={formData.enquiryType}
+                                    onChange={handleChange}
+                                    required
+                                    className="h-[46px] rounded-[4px] border border-[#d7d7d7] bg-white px-4 text-sm text-[#8a8a8a] outline-none focus:border-[#20b7a6]"
+                                >
+                                    <option value="" disabled>Please Select</option>
                                     <option>Option 1</option>
                                     <option>Option 2</option>
                                     <option>Option 3</option>
@@ -87,6 +160,9 @@ export default function CallbackFaqSection() {
                             </div>
 
                             <textarea
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
                                 placeholder="Message"
                                 rows={4}
                                 className="w-full rounded-[4px] border border-[#d7d7d7] px-4 py-3 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6] resize-none"
@@ -94,22 +170,31 @@ export default function CallbackFaqSection() {
 
                             <div className="flex flex-col gap-3 sm:flex-row sm:items-center relative">
                                 <input
+                                    name="captchaInput"
+                                    value={formData.captchaInput}
+                                    onChange={handleChange}
                                     type="text"
+                                    required
                                     placeholder="Captcha"
                                     className="h-[46px] w-full rounded-[4px] border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6] sm:w-[150px]"
                                 />
 
                                 <div className="absolute lg:left-36 right-0 flex h-[46px] w-[110px] items-center justify-center rounded-[4px] bg-[#171f4d] text-sm font-medium tracking-wide text-white">
-                                    990940
+                                    {DISPLAYED_CAPTCHA}
                                 </div>
                             </div>
+
+                            {status && (
+                                <p className="text-sm font-semibold text-[#0f766e]">{status}</p>
+                            )}
 
                             <div className="pt-6 text-center">
                                 <button
                                     type="submit"
-                                    className="inline-flex min-w-[170px] items-center justify-center rounded-[6px] bg-gradient-to-r from-[#48b99b] to-[#5bc4a9] px-18 py-3 lg:text-lg text-sm font-semibold text-white transition hover:opacity-90 hover:shadow-lg"
+                                    disabled={loading}
+                                    className="inline-flex min-w-[170px] items-center justify-center rounded-[6px] bg-gradient-to-r from-[#48b99b] to-[#5bc4a9] px-18 py-3 lg:text-lg text-sm font-semibold text-white transition hover:opacity-90 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60"
                                 >
-                                    Submit
+                                    {loading ? "Submitting..." : "Submit"}
                                 </button>
                             </div>
                         </form>

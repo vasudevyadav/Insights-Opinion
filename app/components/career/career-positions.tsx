@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown, ArrowUpRight, RefreshCw } from "lucide-react";
+import { submitLeadForm } from "@/app/lib/lead-form-api";
 
 const jobs = [
     { id: 1, title: "Senor Inventory Specialist", type: "Full Time", salary: "$100 - $500", location: "New York" },
@@ -41,11 +42,31 @@ export default function CareerPositions() {
         }
         setLoading(true);
         setStatus("");
-        await new Promise((r) => setTimeout(r, 1000));
-        setStatus("Application submitted successfully!");
-        setLoading(false);
-        setFormData({ name: "", email: "", mobile: "", jobTitle: "", about: "", captchaInput: "" });
-        setResumeName("");
+
+        try {
+            await submitLeadForm({
+                formName: "career_application",
+                name: formData.name,
+                email: formData.email,
+                phone: formData.mobile,
+                enquiryType: formData.jobTitle,
+                message: resumeName
+                    ? `${formData.about}\n\nResume attached: ${resumeName}`
+                    : formData.about,
+            });
+
+            setStatus("Application submitted successfully!");
+            setFormData({ name: "", email: "", mobile: "", jobTitle: "", about: "", captchaInput: "" });
+            setResumeName("");
+        } catch (error) {
+            setStatus(
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong. Please try again."
+            );
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (

@@ -1,7 +1,11 @@
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import type { CaseStudy } from "@/app/lib/case-studies-data";
+import type { CaseStudy } from "@/app/lib/case-studies-api";
+import { submitLeadForm } from "@/app/lib/lead-form-api";
 
 type CaseStudyDetailProps = {
   caseStudy: CaseStudy;
@@ -38,32 +42,120 @@ function SidebarCard({ item }: { item: CaseStudy }) {
   );
 }
 
+const CALLBACK_SELECT_OPTIONS: Record<string, string[]> = {
+  Country: ["India", "USA", "UK", "UAE"],
+  Mobile: ["+91", "+1", "+44", "+971"],
+  "Please Select": ["General Enquiry", "Business Query", "Support"],
+};
+
+const initialCallbackFormData = {
+  name: "",
+  email: "",
+  country: "",
+  countryCode: "",
+  enquiryType: "",
+};
+
 function CallbackForm() {
   const inputClass =
     "w-full rounded-[5px] border border-[#1e315e] bg-transparent px-4 py-2.5 text-[13px] font-medium text-[#142044] outline-none placeholder:text-[#142044] sm:py-3 sm:text-sm";
 
+  const [formData, setFormData] = useState(initialCallbackFormData);
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus("");
+
+    try {
+      await submitLeadForm({
+        formName: "case_study_callback",
+        name: formData.name,
+        email: formData.email,
+        country: formData.country,
+        countryCode: formData.countryCode,
+        enquiryType: formData.enquiryType,
+      });
+
+      setStatus("Submitted successfully.");
+      setFormData(initialCallbackFormData);
+    } catch (error) {
+      setStatus(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <form className="mx-auto w-full max-w-[420px] rounded-[14px] border border-[#22bbb1] bg-[#eef7ff]/70 px-5 py-5 lg:max-w-none">
+    <form
+      onSubmit={handleSubmit}
+      className="mx-auto w-full max-w-[420px] rounded-[14px] border border-[#22bbb1] bg-[#eef7ff]/70 px-5 py-5 lg:max-w-none"
+    >
       <h3 className="mb-5 text-xl font-semibold text-[#19bfb1] sm:text-2xl">
         Request a <span className="text-[#59a8fb]">Callback</span>
       </h3>
       <div className="space-y-3">
-        <input className={inputClass} placeholder="Name" type="text" />
-        <input className={inputClass} placeholder="Email" type="email" />
-        {["Country", "Mobile", "Please Select"].map((label) => (
+        <input
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          className={inputClass}
+          placeholder="Name"
+          type="text"
+          required
+        />
+        <input
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className={inputClass}
+          placeholder="Email"
+          type="email"
+          required
+        />
+        {[
+          { label: "Country", name: "country" },
+          { label: "Mobile", name: "countryCode" },
+          { label: "Please Select", name: "enquiryType" },
+        ].map(({ label, name }) => (
           <label key={label} className="relative block">
-            <select className={`${inputClass} appearance-none pr-10`}>
-              <option>{label}</option>
+            <select
+              name={name}
+              value={formData[name as keyof typeof formData]}
+              onChange={handleChange}
+              required
+              className={`${inputClass} appearance-none pr-10`}
+            >
+              <option value="" disabled>{label}</option>
+              {CALLBACK_SELECT_OPTIONS[label].map((option) => (
+                <option key={option} value={option}>{option}</option>
+              ))}
             </select>
             <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#142044]" />
           </label>
         ))}
         <button
           type="submit"
-          className="mt-1 w-full rounded-[4px] bg-gradient-to-r from-[#18b7a4] to-[#5ba8fb] px-6 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 sm:w-fit sm:py-3 sm:text-base"
+          disabled={loading}
+          className="mt-1 w-full rounded-[4px] bg-gradient-to-r from-[#18b7a4] to-[#5ba8fb] px-6 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-fit sm:py-3 sm:text-base"
         >
-          Submit Now
+          {loading ? "Submitting..." : "Submit Now"}
         </button>
+        {status && (
+          <p className="text-sm font-semibold text-[#0f766e]">{status}</p>
+        )}
       </div>
     </form>
   );
@@ -99,28 +191,15 @@ export default function CaseStudyDetail({
 
         <div className="mx-auto grid max-w-7xl gap-9 px-4 sm:px-6 lg:grid-cols-[75%_25%] lg:items-start lg:gap-16 lg:px-8">
           <article className="min-w-0 text-[#172446]">
-            <p className="text-[13px] font-normal leading-[1.8] sm:text-sm lg:text-base lg:leading-[1.85]">
-              {detail.overview}
-            </p>
+            <div className="space-y-3 text-[13px] font-normal leading-[1.8] sm:text-sm lg:text-base lg:leading-[1.85]">
+              {detail.overview.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
 
             <h2 className="mt-5 text-[22px] font-medium leading-tight text-[#182349] sm:text-2xl lg:text-2xl">
               Insights Opinion&apos;s Survey Audits Help You To:
             </h2>
-
-            <div className="mt-4 space-y-3 text-[13px] font-medium leading-[1.75] sm:text-sm lg:text-base">
-              <div>
-                <h3 className="text-sm font-bold leading-[1.6] lg:text-lg">Client:</h3>
-                <p>{detail.client}</p>
-              </div>
-              <div>
-                <h3 className="text-sm font-bold leading-[1.6] lg:text-lg">The Mandate:</h3>
-                {detail.mandate.map((item) => (
-                  <p key={item} className="mt-2">
-                    {item}
-                  </p>
-                ))}
-              </div>
-            </div>
 
             <section className="mt-7 rounded-[18px] bg-[#d9f1fb]/75 px-4 py-5 sm:px-7 sm:py-6 lg:px-9">
               <h2 className="text-[22px] font-medium leading-tight text-[#182349] sm:text-[24px]">

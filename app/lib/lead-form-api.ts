@@ -8,7 +8,15 @@ export type LeadFormName =
   | "industries_enquiry"
   | "team_growth"
   | "quality_standard"
-  | "scroll_popup";
+  | "scroll_popup"
+  | "home_callback"
+  | "health_callback"
+  | "local_callback"
+  | "quant_callback"
+  | "quant_method_callback"
+  | "blog_enquiry"
+  | "career_application"
+  | "case_study_callback";
 
 export type LeadFormPayload = {
   formName: LeadFormName;

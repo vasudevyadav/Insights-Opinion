@@ -1,12 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { submitLeadForm } from "@/app/lib/lead-form-api";
 
 function generateCaptcha() {
     const chars = "ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
     return Array.from({ length: 6 }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
 }
+
+const initialFormData = {
+    name: "",
+    email: "",
+    phone: "",
+    enquiryType: "",
+    message: "",
+    captchaInput: "",
+};
 
 const faqs = [
     {
@@ -66,6 +76,49 @@ const HexCluster = () => (
 export default function LocalCallbackFaq() {
     const [openIndex, setOpenIndex] = useState(0);
     const [captcha] = useState(generateCaptcha);
+    const [formData, setFormData] = useState(initialFormData);
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState("");
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    ) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        if (formData.captchaInput !== captcha) {
+            setStatus("Invalid captcha. Please try again.");
+            return;
+        }
+
+        setLoading(true);
+        setStatus("");
+
+        try {
+            await submitLeadForm({
+                formName: "local_callback",
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                enquiryType: formData.enquiryType,
+                message: formData.message,
+            });
+
+            setStatus("Submitted successfully.");
+            setFormData(initialFormData);
+        } catch (error) {
+            setStatus(
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong. Please try again."
+            );
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <section className="relative overflow-hidden bg-[#edf6ff] py-14 lg:py-20">
@@ -90,15 +143,23 @@ export default function LocalCallbackFaq() {
                             </h2>
                         </div>
 
-                        <form className="space-y-4">
+                        <form onSubmit={handleSubmit} className="space-y-4">
                             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                 <input
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
                                     type="text"
+                                    required
                                     placeholder="Name"
                                     className="h-[46px] rounded-[4px] border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
                                 />
                                 <input
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     type="email"
+                                    required
                                     placeholder="Email"
                                     className="h-[46px] rounded-[4px] border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
                                 />
@@ -106,12 +167,22 @@ export default function LocalCallbackFaq() {
 
                             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                 <input
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handleChange}
                                     type="tel"
+                                    required
                                     placeholder="Mobile"
                                     className="h-[46px] rounded-[4px] border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
                                 />
-                                <select className="h-[46px] rounded-[4px] border border-[#d7d7d7] bg-white px-4 text-sm text-[#8a8a8a] outline-none focus:border-[#20b7a6]">
-                                    <option value="">Please Select</option>
+                                <select
+                                    name="enquiryType"
+                                    value={formData.enquiryType}
+                                    onChange={handleChange}
+                                    required
+                                    className="h-[46px] rounded-[4px] border border-[#d7d7d7] bg-white px-4 text-sm text-[#8a8a8a] outline-none focus:border-[#20b7a6]"
+                                >
+                                    <option value="" disabled>Please Select</option>
                                     <option>Quantitative Research</option>
                                     <option>Qualitative Research</option>
                                     <option>Brand Research</option>
@@ -121,6 +192,9 @@ export default function LocalCallbackFaq() {
                             </div>
 
                             <textarea
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
                                 placeholder="Message"
                                 rows={4}
                                 className="w-full resize-none rounded-[4px] border border-[#d7d7d7] px-4 py-3 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
@@ -128,7 +202,11 @@ export default function LocalCallbackFaq() {
 
                             <div className="flex items-center gap-3">
                                 <input
+                                    name="captchaInput"
+                                    value={formData.captchaInput}
+                                    onChange={handleChange}
                                     type="text"
+                                    required
                                     placeholder="Captcha"
                                     className="h-[46px] w-[150px] rounded-[4px] border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
                                 />
@@ -137,12 +215,17 @@ export default function LocalCallbackFaq() {
                                 </div>
                             </div>
 
+                            {status && (
+                                <p className="text-sm font-semibold text-[#0f766e]">{status}</p>
+                            )}
+
                             <div className="pt-2 text-center">
                                 <button
                                     type="submit"
-                                    className="inline-flex min-w-[160px] items-center justify-center rounded-[6px] bg-[#17aa8d] px-8 py-3 text-sm font-semibold text-white transition hover:opacity-90 hover:shadow-lg lg:text-base"
+                                    disabled={loading}
+                                    className="inline-flex min-w-[160px] items-center justify-center rounded-[6px] bg-[#17aa8d] px-8 py-3 text-sm font-semibold text-white transition hover:opacity-90 hover:shadow-lg lg:text-base disabled:cursor-not-allowed disabled:opacity-60"
                                 >
-                                    Submit
+                                    {loading ? "Submitting..." : "Submit"}
                                 </button>
                             </div>
                         </form>

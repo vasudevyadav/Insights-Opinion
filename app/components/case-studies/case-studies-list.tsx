@@ -4,7 +4,7 @@ import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Search } from "lucide-react";
-import type { CaseStudy } from "@/app/lib/case-studies-data";
+import type { CaseStudy } from "@/app/lib/case-studies-api";
 
 const INITIAL_COUNT = 6;
 const LOAD_MORE_COUNT = 3;
