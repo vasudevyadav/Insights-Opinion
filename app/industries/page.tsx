@@ -1,6 +1,7 @@
 import IndustriesHero from "../components/industries/industries-hero";
 import IndustriesGlobal from "../components/industries/industries-global ";
 import IndustriesForm from "../components/industries/industries-form";
+import { fetchIndustries } from "@/app/lib/industries-api";
 
 
 export default async function Industries({
@@ -8,11 +9,12 @@ export default async function Industries({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  const industries = await fetchIndustries();
 
   return (
     <section>
       <IndustriesHero />
-      <IndustriesGlobal />
+      <IndustriesGlobal industries={industries} />
       <IndustriesForm />
     </section>
   );

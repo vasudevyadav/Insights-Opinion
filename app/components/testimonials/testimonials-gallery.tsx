@@ -3,18 +3,21 @@
 import Image from "next/image";
 import { Play, Quote, X } from "lucide-react";
 import { useState } from "react";
-import {
-  testimonials,
-  type VideoTestimonial,
-} from "@/app/lib/testimonial-data";
+import type { Testimonial, VideoTestimonial } from "@/app/lib/testimonial-data";
 
 type Filter = "text" | "video";
+
+type TestimonialsGalleryProps = {
+  testimonials: Testimonial[];
+};
 
 function isEmbedUrl(url: string) {
   return url.includes("youtube.com") || url.includes("youtu.be") || url.includes("vimeo.com");
 }
 
-export default function TestimonialsGallery() {
+export default function TestimonialsGallery({
+  testimonials,
+}: TestimonialsGalleryProps) {
   const [filter, setFilter] = useState<Filter>("text");
   const [activeVideo, setActiveVideo] = useState<VideoTestimonial | null>(null);
 

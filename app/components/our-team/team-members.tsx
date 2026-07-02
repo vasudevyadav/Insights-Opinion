@@ -1,9 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Linkedin } from "lucide-react";
-import { teamMembers } from "@/app/lib/team-data";
+import type { TeamMember } from "@/app/lib/team-data";
 
-export default function TeamMembers() {
+type TeamMembersProps = {
+  members: TeamMember[];
+};
+
+export default function TeamMembers({ members }: TeamMembersProps) {
   return (
     <section className="quality-hex-bg relative overflow-hidden px-4 pb-14 pt-9 sm:px-6 sm:pb-16 sm:pt-10 lg:px-5 lg:pb-24 lg:pt-14">
       <div className="mx-auto max-w-[1400px]">
@@ -30,7 +34,7 @@ export default function TeamMembers() {
         </h3>
 
         <div className="mx-auto mt-7 grid grid-cols-1 justify-items-center gap-x-6 gap-y-10 sm:mt-8 sm:grid-cols-2 sm:gap-y-12 lg:grid-cols-3 lg:gap-x-10">
-          {teamMembers.map((member, index) => (
+          {members.map((member, index) => (
             <article
               key={member.name}
               className="w-full max-w-[310px] text-center"

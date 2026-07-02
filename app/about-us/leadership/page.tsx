@@ -3,6 +3,7 @@ import TeamGrowthForm from "@/app/components/our-team/team-growth-form";
 import TeamHero from "@/app/components/our-team/team-hero";
 import TeamMembers from "@/app/components/our-team/team-members";
 import TeamTestimonials from "@/app/components/our-team/team-testimonials";
+import { fetchTeamMembers } from "@/app/lib/team-api";
 
 export const metadata: Metadata = {
   title: "Our Team | Insights Opinion",
@@ -10,11 +11,13 @@ export const metadata: Metadata = {
     "Meet the experienced market research and client services leaders at Insights Opinion.",
 };
 
-export default function LeadershipPage() {
+export default async function LeadershipPage() {
+  const members = await fetchTeamMembers();
+
   return (
     <>
       <TeamHero />
-      <TeamMembers />
+      <TeamMembers members={members} />
       <TeamTestimonials />
       <TeamGrowthForm />
     </>
