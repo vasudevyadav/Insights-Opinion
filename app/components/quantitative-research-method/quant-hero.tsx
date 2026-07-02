@@ -37,7 +37,7 @@ export default function QuantDetailsHero({ data }: { data: HeroData }) {
               ))}
             </h1>
 
-            <p className="mt-5 max-w-[470px] text-sm leading-10 text-white lg:text-3xl">
+            <p className="mt-5 max-w-[490px] text-sm leading-10 text-white lg:text-3xl">
               {subtitleLines.map((line, i) => (
                 <span key={i}>
                   {line}
@@ -46,7 +46,7 @@ export default function QuantDetailsHero({ data }: { data: HeroData }) {
               ))}
             </p>
 
-            <p className="mt-5 max-w-[470px] text-sm leading-8 text-white lg:text-lg">
+            <p className="mt-5 max-w-[500px] text-sm leading-8 text-white lg:text-lg">
               {data.description}
             </p>
 

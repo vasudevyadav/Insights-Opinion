@@ -145,7 +145,6 @@ export default function BusinessChallenge() {
                     </h2>
                 </div>
 
-                {/* Mobile Slider */}
                 <div
                     className="block lg:hidden"
 

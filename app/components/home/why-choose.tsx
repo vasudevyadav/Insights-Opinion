@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronUp, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 type AccordionItem = {
@@ -116,19 +116,30 @@ function Accordion({
                                     {item.title}
                                 </h3>
 
-                                {isOpen && (
-                                    <p className="mt-2 max-w-[300px] text-xs lg:text-sm leading-[1.55] text-[#d6dbef]">
-                                        {item.content}
-                                    </p>
-                                )}
+                                <div
+                                    className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${
+                                        isOpen
+                                            ? "grid-rows-[1fr] opacity-100"
+                                            : "grid-rows-[0fr] opacity-0"
+                                    }`}
+                                >
+                                    <div className="overflow-hidden">
+                                        <p className="mt-2 max-w-[300px] text-xs leading-[1.55] text-[#d6dbef] lg:text-sm">
+                                            {item.content}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
 
                             <span className="ml-4 shrink-0">
-                                {isOpen ? (
-                                    <ChevronUp size={18} className="text-white" />
-                                ) : (
-                                    <ChevronDown size={18} className="text-[#4b5563]" />
-                                )}
+                                <ChevronDown
+                                    size={18}
+                                    className={`transition-transform duration-500 motion-reduce:transition-none ${
+                                        isOpen
+                                            ? "rotate-180 text-white"
+                                            : "text-[#4b5563]"
+                                    }`}
+                                />
                             </span>
                         </button>
                     </div>

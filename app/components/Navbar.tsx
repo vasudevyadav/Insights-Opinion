@@ -42,9 +42,12 @@ const mobileDropdownItems: Record<
 const mobileServiceGroups = [
   {
     title: "Quantitative Research",
-    href: "/quantitative-research",
+    href: "/quantitative-research#research-methods",
     items: [
-      { name: "Global Panel", href: null },
+      {
+        name: "Global Panel",
+        href: "/quantitative-research/methods/global-panel",
+      },
       { name: "CATI", href: "/quantitative-research/methods/cati" },
       { name: "CAPI", href: "/quantitative-research/methods/capi" },
       { name: "CLT", href: "/quantitative-research/methods/clt" },
@@ -52,21 +55,42 @@ const mobileServiceGroups = [
   },
   {
     title: "Qualitative Research",
-    href: null,
+    href: "/qualitative-research",
     items: [
-      { name: "Focus Group Discussions", href: null },
-      { name: "In-Depth Reviews", href: null },
-      { name: "In-Home Usage Testings", href: null },
-      { name: "Mystery Shopping", href: null },
+      {
+        name: "Focus Group Discussions",
+        href: "/quantitative-research/methods/focus-group-discussions",
+      },
+      {
+        name: "In-Depth Reviews",
+        href: "/quantitative-research/methods/in-depth-reviews",
+      },
+      {
+        name: "In-Home Usage Testings",
+        href: "/quantitative-research/methods/in-home-usage-testings",
+      },
+      {
+        name: "Mystery Shopping",
+        href: "/quantitative-research/methods/mystery-shopping",
+      },
     ],
   },
   {
     title: "Support Services",
-    href: null,
+    href: "/support-services",
     items: [
-      { name: "Survey Programming", href: null },
-      { name: "Translation", href: null },
-      { name: "Data Insights", href: null },
+      {
+        name: "Survey Programming",
+        href: "/quantitative-research/methods/survey-programming",
+      },
+      {
+        name: "Translation",
+        href: "/quantitative-research/methods/translation",
+      },
+      {
+        name: "Data Insights",
+        href: "/quantitative-research/methods/data-insights",
+      },
     ],
   },
 ];
@@ -98,8 +122,14 @@ export default function Navbar() {
   const navItems: NavItem[] = useMemo(
     () => [
       { type: "dropdown", name: "ABOUT", key: "about", href: "/about-us" },
-      { type: "dropdown", name: "SERVICES", key: "services", href: "/services" },
+      {
+        type: "dropdown",
+        name: "SERVICES",
+        key: "services",
+        href: "/quantitative-research",
+      },
       { type: "link", name: "INDUSTRIES", href: "/industries" },
+      { type: "link", name: "QUALITY STANDARD", href: "/quality-standard" },
       { type: "dropdown", name: "RESEARCH", key: "research", href: "/research" },
       { type: "dropdown", name: "RESOURCES", key: "resources", href: "/resources" },
       { type: "link", name: "CONTACT US", href: "/contact-us" },
@@ -131,14 +161,14 @@ export default function Navbar() {
     <>
       <header className="fixed top-0 z-80 w-full">
         <div className="header-image">
-          <div className="mx-auto flex h-18 max-w-[1380px] items-center justify-between px-6 lg:h-24 lg:px-8">
+          <div className="mx-auto flex h-18 max-w-[1550px] items-center justify-between px-6 lg:h-24 lg:px-8">
             <Link href="/" className="flex items-center">
               <Image
                 src="/logo.png"
                 alt="Logo"
                 width={180}
                 height={48}
-                className="h-auto w-44 lg:w-60"
+                className="h-auto w-40 lg:w-54"
                 priority
                 unoptimized
               />
@@ -164,11 +194,10 @@ export default function Navbar() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`text-[17px] font-semibold transition-colors ${
-                        isActive(item.href)
-                          ? "text-[#14d8d0]"
-                          : "text-white hover:text-[#14d8d0]"
-                      }`}
+                      className={`text-[17px] font-semibold transition-colors ${isActive(item.href)
+                        ? "text-[#14d8d0]"
+                        : "text-white hover:text-[#14d8d0]"
+                        }`}
                     >
                       {item.name}
                     </Link>
@@ -186,17 +215,15 @@ export default function Navbar() {
                   >
                     <Link
                       href={item.href || "#"}
-                      className={`flex items-center gap-1 text-[17px] font-semibold transition-colors ${
-                        isPathActive(item.href)
-                          ? "text-[#14d8d0]"
-                          : "text-white hover:text-[#14d8d0]"
-                      }`}
+                      className={`flex items-center gap-1 text-[17px] font-semibold transition-colors ${isPathActive(item.href)
+                        ? "text-[#14d8d0]"
+                        : "text-white hover:text-[#14d8d0]"
+                        }`}
                     >
                       {item.name}
                       <ChevronDown
-                        className={`h-4 w-4 transition-transform duration-300 ${
-                          openDropdown === item.key ? "rotate-180" : ""
-                        }`}
+                        className={`h-4 w-4 transition-transform duration-300 ${openDropdown === item.key ? "rotate-180" : ""
+                          }`}
                       />
                     </Link>
 
@@ -205,11 +232,10 @@ export default function Navbar() {
                     ) : (
                       dropdownItems.length > 0 && (
                         <div
-                          className={`absolute left-0 top-3 z-50 mt-4 w-64 rounded-lg border border-gray-200 bg-white p-2 shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition-all duration-300 ${
-                            openDropdown === item.key
-                              ? "pointer-events-auto translate-y-0 opacity-100"
-                              : "pointer-events-none -translate-y-3 opacity-0"
-                          }`}
+                          className={`absolute left-0 top-3 z-50 mt-4 w-64 rounded-lg border border-gray-200 bg-white p-2 shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition-all duration-300 ${openDropdown === item.key
+                            ? "pointer-events-auto translate-y-0 opacity-100"
+                            : "pointer-events-none -translate-y-3 opacity-0"
+                            }`}
                         >
                           <div className="space-y-1">
                             {dropdownItems.map((subItem) => (
@@ -295,11 +321,10 @@ export default function Navbar() {
                       key={item.href}
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`rounded-lg px-4 py-3 text-sm font-medium ${
-                        isActive(item.href)
-                          ? "bg-white/10 text-[#14d8d0]"
-                          : "text-white hover:bg-white/10"
-                      }`}
+                      className={`rounded-lg px-4 py-3 text-sm font-medium ${isActive(item.href)
+                        ? "bg-white/10 text-[#14d8d0]"
+                        : "text-white hover:bg-white/10"
+                        }`}
                     >
                       {item.name}
                     </Link>
@@ -314,11 +339,10 @@ export default function Navbar() {
                       <Link
                         href={item.href || "#"}
                         onClick={() => setMobileMenuOpen(false)}
-                        className={`flex-1 rounded-lg px-4 py-3 text-sm font-medium ${
-                          isPathActive(item.href)
-                            ? "bg-white/10 text-[#14d8d0]"
-                            : "text-white hover:bg-white/10"
-                        }`}
+                        className={`flex-1 rounded-lg px-4 py-3 text-sm font-medium ${isPathActive(item.href)
+                          ? "bg-white/10 text-[#14d8d0]"
+                          : "text-white hover:bg-white/10"
+                          }`}
                       >
                         {item.name}
                       </Link>
@@ -330,9 +354,8 @@ export default function Navbar() {
                         aria-label={`Toggle ${item.name}`}
                       >
                         <ChevronDown
-                          className={`h-4 w-4 transition-transform duration-300 ${
-                            mobileOpenDropdowns[item.key] ? "rotate-180" : ""
-                          }`}
+                          className={`h-4 w-4 transition-transform duration-300 ${mobileOpenDropdowns[item.key] ? "rotate-180" : ""
+                            }`}
                         />
                       </button>
                     </div>
@@ -356,11 +379,10 @@ export default function Navbar() {
                               >
                                 {group.title}
                                 <ChevronDown
-                                  className={`h-4 w-4 transition-transform ${
-                                    mobileServiceGroup === group.title
-                                      ? "rotate-180"
-                                      : ""
-                                  }`}
+                                  className={`h-4 w-4 transition-transform ${mobileServiceGroup === group.title
+                                    ? "rotate-180"
+                                    : ""
+                                    }`}
                                 />
                               </button>
 
@@ -382,11 +404,10 @@ export default function Navbar() {
                                         key={`${group.title}-${subItem.name}`}
                                         href={subItem.href}
                                         onClick={() => setMobileMenuOpen(false)}
-                                        className={`block rounded-lg px-3 py-2 text-sm ${
-                                          isActive(subItem.href)
-                                            ? "bg-white/10 text-[#14d8d0]"
-                                            : "text-white/90 hover:bg-white/10"
-                                        }`}
+                                        className={`block rounded-lg px-3 py-2 text-sm ${isActive(subItem.href)
+                                          ? "bg-white/10 text-[#14d8d0]"
+                                          : "text-white/90 hover:bg-white/10"
+                                          }`}
                                       >
                                         {subItem.name}
                                       </Link>
@@ -409,11 +430,10 @@ export default function Navbar() {
                               key={subItem.href}
                               href={subItem.href}
                               onClick={() => setMobileMenuOpen(false)}
-                              className={`block rounded-lg px-4 py-2 text-sm ${
-                                isActive(subItem.href)
-                                  ? "bg-white/10 text-[#14d8d0]"
-                                  : "text-white/90 hover:bg-white/10"
-                              }`}
+                              className={`block rounded-lg px-4 py-2 text-sm ${isActive(subItem.href)
+                                ? "bg-white/10 text-[#14d8d0]"
+                                : "text-white/90 hover:bg-white/10"
+                                }`}
                             >
                               {subItem.name}
                             </Link>
@@ -436,11 +456,10 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`rounded-lg px-4 py-3 text-sm font-medium ${
-                    isActive(item.href)
-                      ? "bg-white/10 text-[#14d8d0]"
-                      : "text-white hover:bg-white/10"
-                  }`}
+                  className={`rounded-lg px-4 py-3 text-sm font-medium ${isActive(item.href)
+                    ? "bg-white/10 text-[#14d8d0]"
+                    : "text-white hover:bg-white/10"
+                    }`}
                 >
                   {item.name}
                 </Link>

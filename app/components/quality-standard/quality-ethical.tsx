@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 const practices = [
     {
@@ -51,21 +51,26 @@ export default function QualityEthical() {
                                             {item.title}
                                         </p>
                                         <div className="relative border border-[#101538]/70 bg-transparent px-3 py-2">
-                                            <p
-                                                className={`pr-6 text-[15px] leading-5 text-[#18213d] transition-all duration-300 ${isOpen ? "" : "line-clamp-2"}`}
+                                            <div
+                                                className={`overflow-hidden pr-6 transition-[max-height] duration-500 ease-in-out motion-reduce:transition-none ${
+                                                    isOpen ? "max-h-40" : "max-h-10"
+                                                }`}
                                             >
-                                                {item.desc}
-                                            </p>
+                                                <p className="text-[15px] leading-5 text-[#18213d]">
+                                                    {item.desc}
+                                                </p>
+                                            </div>
                                             <button
                                                 onClick={() => toggle(i)}
                                                 aria-label={isOpen ? "Collapse" : "Expand"}
                                                 className="absolute -bottom-3 -right-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#27bdb2] text-[#101538] transition hover:bg-[#101538] hover:text-white"
                                             >
-                                                {isOpen ? (
-                                                    <ChevronUp size={13} />
-                                                ) : (
-                                                    <ChevronDown size={13} />
-                                                )}
+                                                <ChevronDown
+                                                    size={13}
+                                                    className={`transition-transform duration-500 motion-reduce:transition-none ${
+                                                        isOpen ? "rotate-180" : ""
+                                                    }`}
+                                                />
                                             </button>
                                         </div>
                                     </div>

@@ -70,6 +70,22 @@ const staticRoutes: SiteRoute[] = [
     changeFrequency: "monthly",
   },
   {
+    path: "/qualitative-research",
+    title: "Qualitative Research",
+    description: "Qualitative market research services and methodologies.",
+    group: "Services",
+    priority: 0.9,
+    changeFrequency: "monthly",
+  },
+  {
+    path: "/support-services",
+    title: "Research Support Services",
+    description: "Survey programming, translation, and data insight services.",
+    group: "Services",
+    priority: 0.9,
+    changeFrequency: "monthly",
+  },
+  {
     path: "/industries",
     title: "Industries",
     description: "Industries supported by Insights Opinion.",
