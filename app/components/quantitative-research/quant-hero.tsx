@@ -3,20 +3,38 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const badges = [
-  { label: "Online Surveys", posClass: "left-[4%] top-[34%]" },
-  { label: "CAPI", posClass: "right-[4%] top-[18%]" },
-  { label: "CLT", posClass: "right-[2%] top-[54%]" },
-  { label: "CATI", posClass: "left-[8%] bottom-[20%]" },
-];
+type QuantHeroContent = {
+  titleLine1: string;
+  titleLine2: string;
+  label: string;
+  lead: string;
+  description: string;
+  insightText: string;
+  backgroundImage?: string;
+};
 
-export default function QuantHero() {
+const defaultContent: QuantHeroContent = {
+  titleLine1: "Quantitative",
+  titleLine2: "Market Research",
+  label: "Services",
+  lead: "Quantitative market research",
+  description:
+    "is how businesses get reliable numbers behind their decisions. It tells you how many customers prefer a product, how often they buy, what drives their choices, and how your brand compares in the market.",
+  insightText: "Turn Market Uncertainty into Actionable Insights",
+  backgroundImage: "/quality/quant-banner.png",
+};
+
+export default function QuantHero({
+  content = defaultContent,
+}: {
+  content?: QuantHeroContent;
+}) {
   return (
     <section className="relative h-125 bg-[#edf6ff] sm:h-145 lg:h-175">
 
       <div className="absolute inset-0">
         <Image
-          src="/quality/quant-banner.png"
+          src={content.backgroundImage || "/quality/quant-banner.png"}
           alt=""
           fill
           priority
@@ -33,20 +51,22 @@ export default function QuantHero() {
           {/* LEFT TEXT */}
           <div className="py-8 lg:py-16 lg:pt-32">
             <h1 className="text-4xl font-extrabold leading-[1.05] lg:text-5xl">
-              <span className="block text-[#1dc3b3]">Quantitative</span>
-              <span className="block text-[#1dc3b3]">Market Research</span>
+              <span className="block text-[#1dc3b3]">
+                {content.titleLine1}
+              </span>
+              <span className="block text-[#1dc3b3]">
+                {content.titleLine2}
+              </span>
               <span className="mt-1 block text-[28px] font-semibold text-white/90 sm:text-[36px] lg:text-[42px]">
-                Services
+                {content.label}
               </span>
             </h1>
 
             <p className="mt-5 max-w-[470px] text-[14px] leading-[1.85] text-white/70 sm:text-[15px]">
               <strong className="font-semibold text-white">
-                Quantitative market research
+                {content.lead}
               </strong>{" "}
-              is how businesses get reliable numbers behind their decisions. It
-              tells you how many customers prefer a product, how often they buy,
-              what drives their choices, and how your brand compares in the market.
+              {content.description}
             </p>
 
             <div className="mt-5 space-y-2">
@@ -54,7 +74,7 @@ export default function QuantHero() {
                 href="#"
                 className="flex items-center gap-1.5 text-[14px] text-white/75 transition hover:text-[#1dc3b3]"
               >
-                Turn Market Uncertainty into Actionable Insights
+                {content.insightText}
                 <span className="text-[#1dc3b3]">→</span>
               </Link>
               <Link

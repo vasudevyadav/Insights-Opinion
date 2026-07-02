@@ -69,7 +69,22 @@ function OfficeCard({ office }: { office: (typeof offices)[0] }) {
   );
 }
 
-export default function QuantGlobalServices() {
+export default function QuantGlobalServices({
+  content,
+}: {
+  content?: {
+    heading: string;
+    description: string;
+    officeDescriptions: readonly string[];
+  };
+}) {
+  const displayOffices = offices.map((office, index) => ({
+    ...office,
+    title: content
+      ? `${content.heading} in ${["the USA", "the UK", "India"][index]}`
+      : office.title,
+    desc: content?.officeDescriptions[index] || office.desc,
+  }));
 
   return (
     <section className="relative overflow-hidden py-5 lg:py-12 bg-[#eaf5fc]">
@@ -94,7 +109,7 @@ export default function QuantGlobalServices() {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              Quantitative Research Services
+              {content?.heading || "Quantitative Research Services"}
             </span>
           </h2>
           <p className="mt-1 text-lg font-normal text-white lg:text-2xl">
@@ -103,15 +118,21 @@ export default function QuantGlobalServices() {
           <p
             className="mx-auto mt-4 max-w-4xl text-sm leading-[1.75] lg:text-base text-white"
           >
-            Insights Opinion is a quantitative market research company US, UK, and India-based businesses can
-            work with directly. We have offices in three key markets and fieldwork capability across 100+&nbsp;countries,
-            so whether your study is domestic or spans multiple regions, you have a research partner on the ground.
+            {content?.description || (
+              <>
+                Insights Opinion is a quantitative market research company US,
+                UK, and India-based businesses can work with directly. We have
+                offices in three key markets and fieldwork capability across
+                100+&nbsp;countries, so whether your study is domestic or spans
+                multiple regions, you have a research partner on the ground.
+              </>
+            )}
           </p>
         </div>
 
         {/* Mobile / tablet — horizontal scroll */}
         <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide lg:pb-4 pb-20 lg:hidden">
-          {offices.map((office, i) => (
+          {displayOffices.map((office, i) => (
             <div key={i} className="min-w-[85vw] snap-center">
               <OfficeCard office={office} />
             </div>
@@ -121,13 +142,13 @@ export default function QuantGlobalServices() {
         {/* Desktop — staggered overlap layout */}
         <div className="relative mx-auto hidden max-w-6xl lg:block">
           <div style={{ marginLeft: "3%", maxWidth: 520 }}>
-            <OfficeCard office={offices[0]} />
+            <OfficeCard office={displayOffices[0]} />
           </div>
           <div style={{ marginLeft: "auto", marginRight: 0, maxWidth: 520, marginTop: -180 }}>
-            <OfficeCard office={offices[1]} />
+            <OfficeCard office={displayOffices[1]} />
           </div>
           <div style={{ marginLeft: "10%", maxWidth: 520, marginTop: 45 }}>
-            <OfficeCard office={offices[2]} />
+            <OfficeCard office={displayOffices[2]} />
           </div>
         </div>
       </div>

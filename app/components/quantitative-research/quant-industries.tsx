@@ -13,7 +13,15 @@ const industries: { name: string; Icon: LucideIcon; useCases: string }[] = [
   { name: "B2B and Industrial", Icon: Building2, useCases: "Decision-maker surveys, procurement research, B2B panel studies" },
 ];
 
-export default function QuantIndustries() {
+export default function QuantIndustries({
+  content,
+}: {
+  content?: {
+    description: string;
+    useCasesLabel: string;
+    useCases: readonly string[];
+  };
+}) {
   return (
     <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
       {/* Hex pattern right */}
@@ -59,7 +67,8 @@ export default function QuantIndustries() {
           </h2>
           <p className="text-[20px] font-normal text-[#1e2746] lg:text-3xl">We Serve</p>
           <p className="mt-1.5 max-w-[480px] text-[14px] leading-[1.7] text-gray-800 sm:text-lg">
-            Insights Opinion works with clients across multiple sectors for quantitative research.
+            {content?.description ||
+              "Insights Opinion works with clients across multiple sectors for quantitative research."}
           </p>
         </div>
 
@@ -69,7 +78,8 @@ export default function QuantIndustries() {
           <div className="grid grid-cols-[1fr_1.8fr] border-b border-[#cde4f7] px-6 py-4">
             <span className="text-[14px] font-semibold bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] bg-clip-text text-transparent lg:text-lg ">Industry</span>
             <span className="text-[14px] font-semibold bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] bg-clip-text text-transparent lg:text-lg ">
-              Typical Quantitative Research Use Cases
+              {content?.useCasesLabel ||
+                "Typical Quantitative Research Use Cases"}
             </span>
           </div>
 
@@ -90,7 +100,7 @@ export default function QuantIndustries() {
               <div className="flex items-center gap-10">
                 <span className="shrink-0 text-[20px] font-bold text-[#35d0c7]">→</span>
                 <span className="text-sm leading-[1.6] text-[#4a5568] lg:text-base">
-                  {ind.useCases}
+                  {content?.useCases[i] || ind.useCases}
                 </span>
               </div>
             </div>
@@ -100,7 +110,5 @@ export default function QuantIndustries() {
     </section>
   );
 }
-
-
 
 

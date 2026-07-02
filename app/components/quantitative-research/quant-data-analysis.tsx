@@ -2,14 +2,15 @@
 
 import Image from "next/image";
 
-const checklistItems = [
-  "Clearly defined research scopes and timelines",
-  "Methodologies aligned with business objectives",
-  "Transparent communication during fieldwork",
-  "Structured outputs that support internal discussions",
-];
-
-export default function QuantDataAnalysis() {
+export default function QuantDataAnalysis({
+  content,
+}: {
+  content?: {
+    heading: string;
+    paragraph1: string;
+    paragraph2: string;
+  };
+}) {
   return (
     <section className="relative overflow-hidden bg-[#161b3c] min-h-105 lg:h-187.5">
       <div className="absolute inset-0">
@@ -28,23 +29,30 @@ export default function QuantDataAnalysis() {
           <h2 className="mb-5 text-[28px] font-light leading-tight text-white lg:text-[40px]">
 
             <span className="bg-[linear-gradient(90deg,#17afa1,#43bccb,#74b9ff)] bg-clip-text font-semibold text-transparent">
-              Insights Opinion
+              {content ? content.heading.split(" ").slice(0, 2).join(" ") : "Insights Opinion"}
             </span>
-            <br />
-            Analysis Services
+            {content ? (
+              <>
+                {" "}
+                {content.heading.split(" ").slice(2).join(" ")}
+              </>
+            ) : (
+              <>
+                <br />
+                Analysis Services
+              </>
+            )}
 
           </h2>
 
           <p className="mb-12 text-sm leading-7 text-white/80 lg:text-lg">
-            Collecting data is only part of the job. Our quantitative
-            data analysis services turn raw survey and fieldwork
-            output into findings your team can act on.
+            {content?.paragraph1 ||
+              "Collecting data is only part of the job. Our quantitative data analysis services turn raw survey and fieldwork output into findings your team can act on."}
           </p>
 
           <p className=" text-sm leading-7 text-white/80 lg:text-lg">
-            Every analysis is built around your study objectives,
-            not a standard template. Learn more about our
-            Data Insights capabilities.
+            {content?.paragraph2 ||
+              "Every analysis is built around your study objectives, not a standard template. Learn more about our Data Insights capabilities."}
 
           </p>
 

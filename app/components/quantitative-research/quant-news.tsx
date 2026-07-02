@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-const articles = [
+const defaultArticles = [
   {
     image: "/quantitative-research-stops-ai-market-hallucinations.jpg",
     category: "Quantitative Research",
@@ -31,7 +31,18 @@ const articles = [
   },
 ];
 
-export default function QuantNews() {
+export default function QuantNews({
+  articles = defaultArticles,
+}: {
+  articles?: {
+    image: string;
+    category: string;
+    date: string;
+    title: string;
+    desc: string;
+    href: string;
+  }[];
+}) {
   return (
     <section className="relative overflow-hidden bg-white py-10 lg:py-14">
       <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
