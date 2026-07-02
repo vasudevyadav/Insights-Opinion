@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import type { TeamMember } from "@/app/lib/team-data";
+import type { TeamMember } from "@/app/lib/team-api";
 
 type TeamMemberDetailProps = {
   member: TeamMember;
