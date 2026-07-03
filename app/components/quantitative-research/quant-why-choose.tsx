@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 
-const accordionData = [
+const defaultAccordionData = [
   {
     title: "Fast Panel Delivery & Sample Access",
     content:
@@ -27,8 +27,16 @@ const accordionData = [
   },
 ];
 
-export default function QuantWhyChoose() {
+export default function QuantWhyChoose({
+  content,
+}: {
+  content?: {
+    description: string;
+    items: readonly { title: string; content: string }[];
+  };
+}) {
   const [openIndex, setOpenIndex] = useState(0);
+  const accordionData = content?.items || defaultAccordionData;
 
   return (
     <section className="relative bg-[#edf6ff] py-10 lg:py-16">
@@ -42,7 +50,8 @@ export default function QuantWhyChoose() {
               Insight Opinion
             </h2>
             <p className="mt-2 text-sm leading-[1.6] text-[#5a6472] lg:mt-5 lg:text-base">
-              Insights Opinion is trusted for research quality, international reach, and dependable project execution. Businesses choose our quantitative market research services for accurate data, multilingual capabilities, and strong operational support.
+              {content?.description ||
+                "Insights Opinion is trusted for research quality, international reach, and dependable project execution. Businesses choose our quantitative market research services for accurate data, multilingual capabilities, and strong operational support."}
             </p>
 
             <div className="mt-8 w-full">
