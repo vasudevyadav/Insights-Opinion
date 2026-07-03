@@ -39,6 +39,7 @@ export default async function MainServicePage({ params }: PageProps) {
     <ServiceCategoryPage
       category={service.slug as ServicePageKey}
       content={service.content}
+      services={service.children}
     />
   );
 }

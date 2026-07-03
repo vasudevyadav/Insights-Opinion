@@ -10,13 +10,19 @@ import {
 
 export default function QuantMethods({
   initialCategoryKey = "quantitative",
+  services,
 }: {
   initialCategoryKey?: "quantitative" | "qualitative" | "support";
+  services?: readonly ServiceCatalogItem[];
 }) {
-  const activeCategory =
+  const catalogCategory =
     serviceCategories.find(
       (category) => category.key === initialCategoryKey
     ) ?? serviceCategories[0];
+  const activeCategory = {
+    ...catalogCategory,
+    services: services ? [...services] : catalogCategory.services,
+  };
   const titleLead = activeCategory.title.replace(" Research", "");
   const evenServices = activeCategory.services.filter(
     (_, index) => index % 2 === 0

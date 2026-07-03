@@ -15,20 +15,26 @@ import {
   type ServicePageKey,
   type ServicePageContent,
 } from "@/data/service-page-content";
+import type { ServiceChild } from "@/app/lib/service-catalog";
 
 export default function ServiceCategoryPage({
   category,
   content,
+  services,
 }: {
   category: ServicePageKey;
   content: ServicePageContent;
+  services: ServiceChild[];
 }) {
   return (
     <main>
       <QuantHero content={content.hero} />
       <QuantAbout content={content.about} />
       <QuantWhat content={content.what} />
-      <QuantMethods initialCategoryKey={category} />
+      <QuantMethods
+        initialCategoryKey={category}
+        services={services}
+      />
       <QuantMethodCta content={content.methodCta} />
       <QuantDataAnalysis content={content.analysis} />
       <QuantIndustries content={content.industries} />

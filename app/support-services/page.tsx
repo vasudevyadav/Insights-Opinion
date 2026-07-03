@@ -15,6 +15,10 @@ export default async function SupportServicesPage() {
   if (!service) notFound();
 
   return (
-    <ServiceCategoryPage category="support" content={service.content} />
+    <ServiceCategoryPage
+      category="support"
+      content={service.content}
+      services={service.children}
+    />
   );
 }

@@ -11,6 +11,7 @@ export default async function QuantitativeResearchPage() {
     <ServiceCategoryPage
       category="quantitative"
       content={service.content}
+      services={service.children}
     />
   );
 }

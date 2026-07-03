@@ -82,5 +82,24 @@ export async function fetchChildService(
   const service = services[0];
   const child = service?.children[0];
 
-  return service && child ? { service, child } : null;
+  if (!service || !child) return null;
+
+  const fullService = await fetchMainService(service.slug);
+  return { service: fullService ?? service, child };
+}
+
+export async function fetchChildServiceBySlug(
+  childServiceSlug: string
+): Promise<{
+  service: MainServiceWithContent;
+  child: ServiceChildWithContent;
+} | null> {
+  const services = await fetchServicesData({ childServiceSlug });
+  const service = services[0];
+  const child = service?.children[0];
+
+  if (!service || !child) return null;
+
+  const fullService = await fetchMainService(service.slug);
+  return { service: fullService ?? service, child };
 }

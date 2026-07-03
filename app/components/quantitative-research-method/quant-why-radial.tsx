@@ -1,7 +1,30 @@
 "use client";
 import Image from "next/image";
 
-export default function QuantDetailsWhyRadial() {
+export default function QuantDetailsWhyRadial({
+  content,
+}: {
+  content?: {
+    heading: string;
+    items: readonly string[];
+  };
+}) {
+  const items =
+    content?.items ??
+    [
+      "One project manager from brief to delivery",
+      "Custom study design, built around your objectives, no templates",
+      "Online surveys, CATI, CAPI, and CLT under one partner",
+      "8M+ panellists across consumer, B2B, and healthcare",
+      "100+ countries, 60+ languages, verified fieldwork",
+      "Data quality controls through multi-layer validation into every study",
+      "Reporting Quality maintained through clear, actionable & presentation ready outputs",
+      "Timelines agreed upfront and met consistently",
+      "ISO 27001 and ISO 20252 certified",
+      "GDPR and CCPA-aligned across every market",
+      "ESOMAR and Insights Association members",
+    ];
+
   return (
     <section className="overflow-hidden bg-[#eaf5fc] py-6 lg:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -14,7 +37,7 @@ export default function QuantDetailsWhyRadial() {
             <span className="text-[#1e2746]"> for</span>
             <br />
             <span className="font-semibold bg-linear-to-r from-[#3c8df6] via-[#31b6df] to-[#1dc3b3] bg-clip-text text-transparent">
-              Quantitative Research?
+              {content?.heading ?? "Quantitative Research?"}
             </span>
           </h2>
         </div>
@@ -33,29 +56,17 @@ export default function QuantDetailsWhyRadial() {
 
         {/* Mobile / tablet fallback — pill cards */}
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:hidden">
-          {[
-            { text: "One project manager from brief to delivery", green: false },
-            { text: "Custom study design, built around your objectives, no templates", green: false },
-            { text: "Online surveys, CATI, CAPI, and CLT under one partner", green: false },
-            { text: "8M+ panellists across consumer, B2B, and healthcare", green: false },
-            { text: "100+ countries, 60+ languages, verified fieldwork", green: false },
-            { text: "Data quality controls through multi-layer validation into every study", green: false },
-            { text: "Reporting Quality maintained through clear, actionable & presentation ready outputs", green: true },
-            { text: "Timelines agreed upfront and met consistently", green: false },
-            { text: "ISO 27001 and ISO 20252 certified", green: false },
-            { text: "GDPR and CCPA-aligned across every market", green: false },
-            { text: "ESOMAR and Insights Association members", green: false },
-          ].map((item, i) => (
+          {items.map((text, i) => (
             <div
-              key={i}
+              key={text}
               className="rounded-2xl px-4 py-3 text-center text-sm font-medium leading-snug text-white shadow-sm"
               style={{
-                background: item.green
+                background: i === 6
                   ? "linear-gradient(135deg,#2ecc8f 0%,#1aab7a 50%,#0e8f63 100%)"
                   : "linear-gradient(135deg,#5ab3f0 0%,#2f7de0 50%,#1a5fbf 100%)",
               }}
             >
-              {item.text}
+              {text}
             </div>
           ))}
         </div>

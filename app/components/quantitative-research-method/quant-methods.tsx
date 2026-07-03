@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   serviceCategories,
-  serviceDetailPath,
+  type ServiceChild,
 } from "@/app/lib/service-catalog";
 
 const categoryImages = {
@@ -13,17 +13,29 @@ const categoryImages = {
 
 export default function QuantDetailsMethods({
   currentSlug,
+  categoryTitle,
+  relatedServices,
 }: {
   currentSlug: string;
+  categoryTitle?: string;
+  relatedServices?: ServiceChild[];
 }) {
   const currentCategory =
     serviceCategories.find((category) =>
       category.services.some((service) => service.slug === currentSlug)
     ) ?? serviceCategories[0];
 
-  const relatedServices = currentCategory.services.filter(
-    (service) => service.slug !== currentSlug
-  );
+  const displayServices =
+    relatedServices ??
+    currentCategory.services
+      .filter((service) => service.slug !== currentSlug)
+      .map((service, index) => ({
+        ...service,
+        id: `${currentCategory.key}-${service.slug}`,
+        position: index + 1,
+        step: String(index + 1).padStart(2, "0"),
+        href: `/services/${currentCategory.key}/${service.slug}`,
+      }));
 
   return (
     <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
@@ -33,15 +45,15 @@ export default function QuantDetailsMethods({
             Explore More Services
           </h2>
           <p className="mt-2 text-lg font-medium text-[#1e2746] sm:text-2xl">
-            {currentCategory.title}
+            {categoryTitle ?? currentCategory.title}
           </p>
         </div>
 
         <div className="grid gap-5 md:grid-cols-3">
-          {relatedServices.map((service) => (
+          {displayServices.map((service) => (
             <Link
               key={service.slug}
-              href={serviceDetailPath(service.slug)}
+              href={service.href}
               className="group relative h-[230px] overflow-hidden rounded-[20px] shadow-[0_8px_28px_rgba(0,0,0,0.14)]"
             >
               <Image

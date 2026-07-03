@@ -6,14 +6,20 @@ import QuantDetailsWhat from "@/app/components/quantitative-research-method/quan
 import QuantDetailsAbout from "@/app/components/quantitative-research-method/quant-about";
 import QuantWhatOur from "@/app/components/quantitative-research-method/quant-what-our";
 import MarketResearch from "@/app/components/quantitative-research-method/market-research";
+import type { ServiceChild, MainService } from "@/app/lib/service-catalog";
 import type { MethodData } from "@/app/lib/method-data";
+import type { ServicePageContent } from "@/data/service-page-content";
 
 export default function ServiceChildPage({
   slug,
   data,
+  parentService,
+  parentContent,
 }: {
   slug: string;
   data: MethodData;
+  parentService?: MainService;
+  parentContent?: ServicePageContent;
 }) {
   return (
     <main>
@@ -22,8 +28,16 @@ export default function ServiceChildPage({
       <QuantDetailsWhat data={data.why} />
       <QuantWhatOur data={data.services} />
       <MarketResearch data={data} />
-      <QuantDetailsMethods currentSlug={slug} />
-      <QuantDetailsWhyRadial />
+      <QuantDetailsMethods
+        currentSlug={slug}
+        categoryTitle={parentService?.title}
+        relatedServices={
+          parentService?.children.filter(
+            (service: ServiceChild) => service.slug !== slug
+          )
+        }
+      />
+      <QuantDetailsWhyRadial content={parentContent?.whyRadial} />
       <QuantDetailsFaq data={data.faqs} />
     </main>
   );

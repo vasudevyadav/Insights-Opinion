@@ -18,6 +18,7 @@ export default async function QualitativeResearchPage() {
     <ServiceCategoryPage
       category="qualitative"
       content={service.content}
+      services={service.children}
     />
   );
 }
