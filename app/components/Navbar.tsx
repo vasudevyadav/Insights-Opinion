@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X, Search, User } from "lucide-react";
+import type { ResearchNavItem } from "@/lib/getResearchPage";
 import MegaMenu from "./MegaMenu";
 
 type NavLinkItem = {
@@ -95,7 +96,11 @@ const mobileServiceGroups = [
   },
 ];
 
-export default function Navbar() {
+export default function Navbar({
+  researchItems,
+}: {
+  researchItems: ResearchNavItem[];
+}) {
   const pathname = usePathname();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -106,11 +111,6 @@ export default function Navbar() {
   const [mobileServiceGroup, setMobileServiceGroup] = useState<string | null>(
     null
   );
-  const researchItems = [
-    { name: "Healthcare Market Research", href: "/research/healthcare-research" },
-    { name: "Consumer Research", href: "/research/consumer-research" },
-  ];
-
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
 

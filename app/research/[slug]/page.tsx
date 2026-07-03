@@ -13,7 +13,7 @@ import TestimonialHealth from "@/app/components/healthcare-research/testimonial-
 import CallbackFaqHealth from "@/app/components/healthcare-research/call-back-faq";
 import BookDemoHealth from "@/app/components/healthcare-research/book-demo";
 import HealthUsecases from "@/app/components/healthcare-research/health-usecases ";
-import { researchPages, ResearchPageSlug } from "@/data/researchPages";
+import { getResearchPage } from "@/lib/getResearchPage";
 
 export default async function ResearchSlugPage({
   params,
@@ -21,7 +21,7 @@ export default async function ResearchSlugPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const pageData = researchPages[slug as ResearchPageSlug] ?? null;
+  const pageData = await getResearchPage(slug);
 
   if (!pageData) notFound();
 

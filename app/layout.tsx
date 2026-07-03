@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import AosProvider from "./components/AosProvider";
 import Footer from "./components/home/footer";
 import ScrollLeadPopup from "./components/shared/scroll-lead-popup";
+import { getResearchNavItems } from "@/lib/getResearchPage";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -71,16 +72,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const researchItems = await getResearchNavItems();
+
   return (
     <html lang="en" style={{ colorScheme: "light" }}>
       <body className={`${poppins.variable} ${geistMono.variable} antialiased`} style={{ colorScheme: "light" }}>
         <AosProvider />
-        <Navbar />
+        <Navbar researchItems={researchItems} />
         <main className="lg:mt-20 mt-8">
           {children}
         </main>

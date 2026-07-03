@@ -1,16 +1,121 @@
-// lib/getResearchPage.ts
+import type {
+  researchPages,
+  ResearchPageSlug,
+} from "@/data/researchPages";
 
-export async function getResearchPage(slug: string) {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/custom/v1/research-expertises/${slug}`,
-    {
-      cache: "no-store",
-    }
+const DEFAULT_API_BASE_URL =
+  "https://reinventmedia.in/insightOpinion/wp-json";
+
+export const researchPageSlugs = [
+  "healthcare-research",
+  "b2b-research",
+  "consumer-research",
+] as const;
+
+export type ApiResearchPageSlug = (typeof researchPageSlugs)[number];
+export type ResearchPageData = (typeof researchPages)[ResearchPageSlug] & {
+  slug?: string;
+};
+
+export type ResearchNavItem = {
+  name: string;
+  href: string;
+};
+
+function getApiBaseUrl() {
+  return (
+    process.env.RESEARCH_API_BASE_URL?.replace(/\/$/, "") ||
+    DEFAULT_API_BASE_URL
   );
+}
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch research page data");
+function normalizeApiValue<T>(value: T): T {
+  if (typeof value === "string") {
+    return value.replace(/\\n/g, "\n") as T;
   }
 
-  return res.json();
+  if (Array.isArray(value)) {
+    return value.map(normalizeApiValue) as T;
+  }
+
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, childValue]) => [
+        key,
+        normalizeApiValue(childValue),
+      ])
+    ) as T;
+  }
+
+  return value;
+}
+
+function isResearchPageData(value: unknown): value is ResearchPageData {
+  if (!value || typeof value !== "object") return false;
+
+  const page = value as {
+    slug?: unknown;
+    hero?: unknown;
+  };
+
+  return typeof page.slug === "string" && !!page.hero;
+}
+
+function getNavTitle(page: ResearchPageData) {
+  const apiTitle = [page.hero?.titleLine1, page.hero?.titleLine2]
+    .filter(Boolean)
+    .join(" ")
+    .trim();
+
+  if (apiTitle) return apiTitle;
+
+  return (page.slug || "")
+    .split("-")
+    .filter((part) => part !== "research")
+    .map((part) => (part.toLowerCase() === "b2b" ? "B2B" : `${part[0]?.toUpperCase()}${part.slice(1)}`))
+    .join(" ")
+    .concat(" Research");
+}
+
+export async function getResearchPage(
+  slug: string
+): Promise<ResearchPageData | null> {
+  if (!/^[a-z0-9-]+$/.test(slug)) return null;
+
+  const isApiPage = researchPageSlugs.includes(slug as ApiResearchPageSlug);
+
+  if (!isApiPage) return null;
+
+  try {
+    const response = await fetch(
+      `${getApiBaseUrl()}/custom/v1/research-expertises/${slug}`,
+      {
+        next: { revalidate: 300 },
+      }
+    );
+
+    if (!response.ok) return null;
+
+    const page = normalizeApiValue(await response.json());
+    return isResearchPageData(page) ? page : null;
+  } catch {
+    return null;
+  }
+}
+
+export async function getResearchNavItems(): Promise<ResearchNavItem[]> {
+  const pages = await Promise.all(
+    researchPageSlugs.map((slug) => getResearchPage(slug))
+  );
+
+  return pages.flatMap((page, index) => {
+    if (!page) return [];
+
+    return [
+      {
+        name: getNavTitle(page),
+        href: `/research/${page.slug || researchPageSlugs[index]}`,
+      },
+    ];
+  });
 }
