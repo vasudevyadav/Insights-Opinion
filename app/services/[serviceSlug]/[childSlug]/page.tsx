@@ -1,17 +1,21 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ServiceChildPage from "@/app/components/services/service-child-page";
-import { serviceCategories } from "@/app/lib/service-catalog";
-import { fetchChildService } from "@/app/lib/services-api";
+import {
+  fetchChildService,
+  fetchServices,
+} from "@/app/lib/services-api";
 
 type PageProps = {
   params: Promise<{ serviceSlug: string; childSlug: string }>;
 };
 
-export function generateStaticParams() {
-  return serviceCategories.flatMap((service) =>
-    service.services.map((child) => ({
-      serviceSlug: service.key,
+export async function generateStaticParams() {
+  const services = await fetchServices();
+
+  return services.flatMap((service) =>
+    service.children.map((child) => ({
+      serviceSlug: service.slug,
       childSlug: child.slug,
     }))
   );

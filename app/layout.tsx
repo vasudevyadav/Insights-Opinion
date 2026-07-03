@@ -6,6 +6,7 @@ import AosProvider from "./components/AosProvider";
 import Footer from "./components/home/footer";
 import ScrollLeadPopup from "./components/shared/scroll-lead-popup";
 import { getResearchNavItems } from "@/lib/getResearchPage";
+import { fetchServices } from "@/app/lib/services-api";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -77,13 +78,19 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const researchItems = await getResearchNavItems();
+  const [researchItems, serviceItems] = await Promise.all([
+    getResearchNavItems(),
+    fetchServices(),
+  ]);
 
   return (
     <html lang="en" style={{ colorScheme: "light" }}>
       <body className={`${poppins.variable} ${geistMono.variable} antialiased`} style={{ colorScheme: "light" }}>
         <AosProvider />
-        <Navbar researchItems={researchItems} />
+        <Navbar
+          researchItems={researchItems}
+          serviceItems={serviceItems}
+        />
         <main className="lg:mt-20 mt-8">
           {children}
         </main>

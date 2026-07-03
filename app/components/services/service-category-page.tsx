@@ -19,10 +19,12 @@ import type { ServiceChild } from "@/app/lib/service-catalog";
 
 export default function ServiceCategoryPage({
   category,
+  categoryTitle,
   content,
   services,
 }: {
   category: ServicePageKey;
+  categoryTitle?: string;
   content: ServicePageContent;
   services: ServiceChild[];
 }) {
@@ -31,10 +33,13 @@ export default function ServiceCategoryPage({
       <QuantHero content={content.hero} />
       <QuantAbout content={content.about} />
       <QuantWhat content={content.what} />
-      <QuantMethods
-        initialCategoryKey={category}
-        services={services}
-      />
+      {services.length > 0 && (
+        <QuantMethods
+          initialCategoryKey={category}
+          categoryTitle={categoryTitle}
+          services={services}
+        />
+      )}
       <QuantMethodCta content={content.methodCta} />
       <QuantDataAnalysis content={content.analysis} />
       <QuantIndustries content={content.industries} />

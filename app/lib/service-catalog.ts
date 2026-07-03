@@ -144,7 +144,8 @@ export type ServiceChild = ServiceCatalogItem & {
 export type MainService = {
   id: string;
   title: string;
-  slug: ServiceCategory["key"];
+  slug: string;
+  apiSlug?: string;
   href: string;
   children: ServiceChild[];
 };

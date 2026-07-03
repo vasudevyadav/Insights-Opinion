@@ -1,17 +1,27 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ServiceCategoryPage from "@/app/components/services/service-category-page";
-import { serviceCategories } from "@/app/lib/service-catalog";
-import { fetchMainService } from "@/app/lib/services-api";
+import {
+  fetchMainService,
+  fetchServices,
+} from "@/app/lib/services-api";
 import type { ServicePageKey } from "@/data/service-page-content";
 
 type PageProps = {
   params: Promise<{ serviceSlug: string }>;
 };
 
-export function generateStaticParams() {
-  return serviceCategories.map((service) => ({
-    serviceSlug: service.key,
+function getDesignKey(apiSlug?: string): ServicePageKey {
+  if (apiSlug?.includes("qualitative")) return "qualitative";
+  if (apiSlug?.includes("support")) return "support";
+  return "quantitative";
+}
+
+export async function generateStaticParams() {
+  const services = await fetchServices();
+
+  return services.map((service) => ({
+    serviceSlug: service.slug,
   }));
 }
 
@@ -37,7 +47,8 @@ export default async function MainServicePage({ params }: PageProps) {
 
   return (
     <ServiceCategoryPage
-      category={service.slug as ServicePageKey}
+      category={getDesignKey(service.apiSlug)}
+      categoryTitle={service.title}
       content={service.content}
       services={service.children}
     />

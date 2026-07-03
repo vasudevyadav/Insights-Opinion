@@ -470,8 +470,20 @@ export const servicePageContent = {
 } as const;
 
 export type ServicePageKey = keyof typeof servicePageContent;
-export type ServicePageContent =
-  (typeof servicePageContent)[ServicePageKey];
+type WidenServiceContent<T> =
+  T extends string
+    ? string
+    : T extends boolean
+      ? boolean
+      : T extends readonly (infer Item)[]
+        ? readonly WidenServiceContent<Item>[]
+        : T extends object
+          ? { [Key in keyof T]: WidenServiceContent<T[Key]> }
+          : T;
+
+export type ServicePageContent = WidenServiceContent<
+  (typeof servicePageContent)[ServicePageKey]
+>;
 
 export function getServicePageContent(
   slug: string
