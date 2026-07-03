@@ -92,3 +92,30 @@ export const serviceCategories: ServiceCategory[] = [
 
 export const serviceDetailPath = (slug: string) =>
   `/quantitative-research/methods/${slug}`;
+
+export type ServiceChild = ServiceCatalogItem & {
+  id: string;
+  href: string;
+};
+
+export type MainService = {
+  id: string;
+  title: string;
+  slug: ServiceCategory["key"];
+  href: string;
+  children: ServiceChild[];
+};
+
+export function getServices(): MainService[] {
+  return serviceCategories.map((category) => ({
+    id: `service-${category.key}`,
+    title: category.title,
+    slug: category.key,
+    href: category.href,
+    children: category.services.map((service) => ({
+      id: `${category.key}-${service.slug}`,
+      ...service,
+      href: serviceDetailPath(service.slug),
+    })),
+  }));
+}
