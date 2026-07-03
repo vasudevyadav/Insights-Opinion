@@ -1,14 +1,10 @@
 import type { Industry } from "@/app/lib/industries-data";
+import { apiUrl } from "@/lib/api-config";
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "http://localhost:3000";
-
-const BASE_URL = `${siteUrl}/api/industries`;
+const BASE_URL = apiUrl("/custom/v1/industries");
 
 type IndustriesListResponse = {
   success: boolean;
-  count: number;
   data: Industry[];
 };
 
