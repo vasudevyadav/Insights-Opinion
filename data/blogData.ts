@@ -62,7 +62,7 @@ function formatDate(date: string) {
 
 export async function getBlogs(): Promise<Blog[]> {
   const res = await fetch(API_URL, {
-    next: { revalidate: 60 },
+    cache: "no-store",
   });
 
   if (!res.ok) {
