@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { getStaticMetadata } from "@/lib/static-seo";
 import CallbackFaqHealth from "@/app/components/healthcare-research/call-back-faq";
 import BookDemoHealth from "@/app/components/healthcare-research/book-demo";
 import AboutHero from "../components/about-us/about-hero";
@@ -9,6 +11,8 @@ import Award from "../components/about-us/award";
 import OurSocial from "../components/about-us/our-social";
 import PartnershipsAffiliations from "../components/about-us/partnerships-affiliations";
 
+
+export const metadata: Metadata = getStaticMetadata("about-us");
 
 export default async function AboutUs({
   params,

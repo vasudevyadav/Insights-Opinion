@@ -78,8 +78,14 @@ type LocationApiResponse = {
   data: LocationData[];
 };
 
-const BASE_URL =
-  "https://reinventmedia.in/Insights-Opinionhospitals/wp-json/custom/v1/locations";
+const LOCATION_API_BASE_URL =
+  process.env.NEXT_PUBLIC_LOCATION_API_BASE_URL?.replace(/\/$/, "");
+
+if (!LOCATION_API_BASE_URL) {
+  throw new Error("NEXT_PUBLIC_LOCATION_API_BASE_URL is not configured.");
+}
+
+const BASE_URL = `${LOCATION_API_BASE_URL}/custom/v1/locations`;
 
 export async function getLocationBySlug(
   slug: string

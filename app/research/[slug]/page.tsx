@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import HealthHero from "@/app/components/healthcare-research/health-hero";
@@ -13,15 +14,41 @@ import TestimonialHealth from "@/app/components/healthcare-research/testimonial-
 import CallbackFaqHealth from "@/app/components/healthcare-research/call-back-faq";
 import BookDemoHealth from "@/app/components/healthcare-research/book-demo";
 import HealthUsecases from "@/app/components/healthcare-research/health-usecases ";
-import { researchPages, ResearchPageSlug } from "@/data/researchPages";
+import { getResearchPage } from "@/lib/getResearchPage";
+import { buildApiMetadata } from "@/lib/api-metadata";
+
+type ResearchPageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({
+  params,
+}: ResearchPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const page = await getResearchPage(slug);
+
+  if (!page) return {};
+
+  const title = [page.hero?.titleLine1, page.hero?.titleLine2]
+    .filter(Boolean)
+    .join(" ");
+
+  return buildApiMetadata(
+    page.seo,
+    {
+      title: `${title || slug} | Insights Opinion`,
+      description: page.hero?.description,
+      image: page.hero?.backgroundImage,
+    },
+    `/research/${slug}`
+  );
+}
 
 export default async function ResearchSlugPage({
   params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+}: ResearchPageProps) {
   const { slug } = await params;
-  const pageData = researchPages[slug as ResearchPageSlug] ?? null;
+  const pageData = await getResearchPage(slug);
 
   if (!pageData) notFound();
 

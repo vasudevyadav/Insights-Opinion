@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import SiteMapAccordion from "@/app/components/site-map/site-map-accordion";
 import { getAllSiteRoutes } from "@/app/lib/site-routes";
+import { getStaticMetadata } from "@/lib/static-seo";
 
-export const metadata: Metadata = {
-  title: "Sitemap | Insights Opinion",
-  description:
-    "Browse all public Insights Opinion pages, services, research resources, case studies, team profiles, and blog articles.",
-};
+export const metadata: Metadata = getStaticMetadata("site-map");
 
 export const revalidate = 3600;
 

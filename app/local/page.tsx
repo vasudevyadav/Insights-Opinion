@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { getStaticMetadata } from "@/lib/static-seo";
 import { LocalBoostYour } from "../components/local/local-boost-your";
 import LocalCallbackFaq from "../components/local/local-callback-faq";
 import LocalCore from "../components/local/local-core";
@@ -5,6 +7,7 @@ import LocalHero from "../components/local/local-hero";
 import LocalWorkingWith from "../components/local/local-working-with";
 import MarketResearch from "../components/local/market-research";
 
+export const metadata: Metadata = getStaticMetadata("local");
 
 export default async function Local({
   params,

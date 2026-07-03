@@ -8,16 +8,31 @@ import {
   type ServiceCatalogItem,
 } from "@/app/lib/service-catalog";
 
+type MethodService = ServiceCatalogItem & {
+  href?: string;
+};
+
 export default function QuantMethods({
   initialCategoryKey = "quantitative",
+  services,
+  categoryTitle,
 }: {
   initialCategoryKey?: "quantitative" | "qualitative" | "support";
+  services?: readonly MethodService[];
+  categoryTitle?: string;
 }) {
-  const activeCategory =
+  const catalogCategory =
     serviceCategories.find(
       (category) => category.key === initialCategoryKey
     ) ?? serviceCategories[0];
-  const titleLead = activeCategory.title.replace(" Research", "");
+  const activeCategory = {
+    ...catalogCategory,
+    services: services ? [...services] : catalogCategory.services,
+  };
+  const titleLead = (categoryTitle || activeCategory.title).replace(
+    " Research",
+    ""
+  );
   const evenServices = activeCategory.services.filter(
     (_, index) => index % 2 === 0
   );
@@ -72,26 +87,6 @@ export default function QuantMethods({
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 flex flex-wrap justify-center gap-2 sm:gap-3">
-          {serviceCategories.map((category) => {
-            const isActive = activeCategory.key === category.key;
-
-            return (
-              <Link
-                key={category.key}
-                href={`${category.href}#research-methods`}
-                className={`rounded-full border px-4 py-2 text-xs font-semibold transition-all duration-300 sm:px-6 sm:text-sm ${
-                  isActive
-                    ? "border-[#1dc3b3] bg-[#1dc3b3] text-white shadow-[0_8px_20px_rgba(29,195,179,0.22)]"
-                    : "border-[#b9d4e6] bg-white/80 text-[#283453] hover:border-[#1dc3b3] hover:text-[#159f96]"
-                }`}
-              >
-                {category.title}
-              </Link>
-            );
-          })}
-        </div>
-
         <div key={activeCategory.key} className="accordion-content-enter">
           <div className="mb-12 text-center">
             <h2 className="text-[32px] font-semibold leading-tight sm:text-[42px] lg:text-[50px]">
@@ -145,12 +140,12 @@ function MethodCard({
   service,
   mobile = false,
 }: {
-  service: ServiceCatalogItem;
+  service: MethodService;
   mobile?: boolean;
 }) {
   return (
     <Link
-      href={serviceDetailPath(service.slug)}
+      href={service.href || serviceDetailPath(service.slug)}
       className={`group relative block w-full overflow-hidden rounded-[20px] shadow-[0_8px_28px_rgba(0,0,0,0.14)] transition-transform duration-500 hover:-translate-y-1 ${
         mobile ? "h-[240px]" : "h-[350px]"
       }`}

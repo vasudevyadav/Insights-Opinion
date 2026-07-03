@@ -3,47 +3,16 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Plus, ArrowRight } from "lucide-react";
+import type { ServiceChild } from "@/app/lib/service-catalog";
 
-const services = [
-  {
-    step: "01",
-    title: "Online Surveys (CAWI)",
-    image: "/quality/cati-online.png",
-    desc: "Self-administered web surveys across our 8M+ verified panel. Fast turnaround, rich media support, and multi-layer quality controls for nationally representative consumer and B2B data.",
-    slug: "online-surveys",
-  },
-  {
-    step: "02",
-    title: "Computer-Assisted Telephone Interviewing (CATI)",
-    image: "/quality/cati-telephone.png",
-    desc: "Trained interviewers conduct structured phone interviews with real-time supervision. Ideal for B2B, healthcare, and audiences harder to reach through digital panels.",
-    slug: "cati",
-  },
-  {
-    step: "03",
-    title: "Computer-Assisted Personal Interviewing (CAPI)",
-    image: "/quality/cati-computer.png",
-    desc: "Face-to-face field interviews using tablet-based data capture with GPS-verified quality controls. Best for in-home studies, physical product testing, and non-digital populations.",
-    slug: "capi",
-  },
-  {
-    step: "04",
-    title: "Central Location Testing (CLT)",
-    image: "/quality/cati-location.png",
-    desc: "Controlled venue-based testing for products, concepts, and packaging. Enables direct side-by-side comparison under standardised conditions across all respondents.",
-    slug: "clt",
-  },
-  {
-    step: "05",
-    title: "Data Analysis and Reporting",
-    image: "/Data-Insights.jpg",
-    desc: "In-house analysts deliver cross-tabulations, regression, factor analysis, and predictive modelling — with clear reports designed for confident stakeholder presentation.",
-    slug: null,
-  },
-];
-
-export default function QuantServicesAccordion() {
+export default function QuantServicesAccordion({
+  services,
+}: {
+  services: ServiceChild[];
+}) {
   const [active, setActive] = useState(0);
+
+  if (!services.length) return null;
 
   return (
     <section className="bg-white py-14 lg:py-20">
@@ -82,15 +51,13 @@ export default function QuantServicesAccordion() {
                   <div className="flex-1">
                     <p className="text-sm font-semibold text-[#1dc3b3] sm:text-base">{s.title}</p>
                     <p className="mb-2 text-5xl font-black leading-none text-white sm:text-6xl">{s.step}</p>
-                    <p className="text-sm leading-relaxed text-white/60">{s.desc}</p>
-                    {s.slug && (
-                      <Link
-                        href={`/quantitative-research/methods/${s.slug}`}
-                        className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-[#1dc3b3] hover:underline"
-                      >
-                        Learn more <ArrowRight size={11} />
-                      </Link>
-                    )}
+                    <p className="text-sm leading-relaxed text-white/60">{s.description}</p>
+                    <Link
+                      href={s.href}
+                      className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-[#1dc3b3] hover:underline"
+                    >
+                      Learn more <ArrowRight size={11} />
+                    </Link>
                   </div>
                 </div>
               );

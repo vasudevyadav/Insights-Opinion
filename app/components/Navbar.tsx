@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X, Search, User } from "lucide-react";
+import type { ResearchNavItem } from "@/lib/getResearchPage";
+import type { MainService } from "@/app/lib/service-catalog";
 import MegaMenu from "./MegaMenu";
 
 type NavLinkItem = {
@@ -39,63 +41,13 @@ const mobileDropdownItems: Record<
   ],
 };
 
-const mobileServiceGroups = [
-  {
-    title: "Quantitative Research",
-    href: "/quantitative-research#research-methods",
-    items: [
-      {
-        name: "Global Panel",
-        href: "/quantitative-research/methods/global-panel",
-      },
-      { name: "CATI", href: "/quantitative-research/methods/cati" },
-      { name: "CAPI", href: "/quantitative-research/methods/capi" },
-      { name: "CLT", href: "/quantitative-research/methods/clt" },
-    ],
-  },
-  {
-    title: "Qualitative Research",
-    href: "/qualitative-research",
-    items: [
-      {
-        name: "Focus Group Discussions",
-        href: "/quantitative-research/methods/focus-group-discussions",
-      },
-      {
-        name: "In-Depth Reviews",
-        href: "/quantitative-research/methods/in-depth-reviews",
-      },
-      {
-        name: "In-Home Usage Testings",
-        href: "/quantitative-research/methods/in-home-usage-testings",
-      },
-      {
-        name: "Mystery Shopping",
-        href: "/quantitative-research/methods/mystery-shopping",
-      },
-    ],
-  },
-  {
-    title: "Support Services",
-    href: "/support-services",
-    items: [
-      {
-        name: "Survey Programming",
-        href: "/quantitative-research/methods/survey-programming",
-      },
-      {
-        name: "Translation",
-        href: "/quantitative-research/methods/translation",
-      },
-      {
-        name: "Data Insights",
-        href: "/quantitative-research/methods/data-insights",
-      },
-    ],
-  },
-];
-
-export default function Navbar() {
+export default function Navbar({
+  researchItems,
+  serviceItems,
+}: {
+  researchItems: ResearchNavItem[];
+  serviceItems: MainService[];
+}) {
   const pathname = usePathname();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -106,11 +58,6 @@ export default function Navbar() {
   const [mobileServiceGroup, setMobileServiceGroup] = useState<string | null>(
     null
   );
-  const researchItems = [
-    { name: "Healthcare Market Research", href: "/research/healthcare-research" },
-    { name: "Consumer Research", href: "/research/consumer-research" },
-  ];
-
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
 
@@ -126,7 +73,7 @@ export default function Navbar() {
         type: "dropdown",
         name: "SERVICES",
         key: "services",
-        href: "/quantitative-research",
+        href: "/services",
       },
       { type: "link", name: "INDUSTRIES", href: "/industries" },
       { type: "link", name: "QUALITY STANDARD", href: "/quality-standard" },
@@ -228,7 +175,10 @@ export default function Navbar() {
                     </Link>
 
                     {item.key === "services" ? (
-                      <MegaMenu open={openDropdown === "services"} />
+                      <MegaMenu
+                        open={openDropdown === "services"}
+                        services={serviceItems}
+                      />
                     ) : (
                       dropdownItems.length > 0 && (
                         <div
@@ -363,30 +313,30 @@ export default function Navbar() {
                     {mobileOpenDropdowns[item.key] && (
                       <div className="ml-3 mt-2 space-y-2">
                         {item.key === "services" ? (
-                          mobileServiceGroups.map((group) => (
+                          serviceItems.map((group) => (
                             <div
-                              key={group.title}
+                              key={group.id}
                               className="overflow-hidden rounded-lg bg-white/5"
                             >
                               <button
                                 type="button"
                                 onClick={() =>
                                   setMobileServiceGroup((current) =>
-                                    current === group.title ? null : group.title
+                                    current === group.id ? null : group.id
                                   )
                                 }
                                 className="flex w-full items-center justify-between p-3 text-left text-xs font-semibold uppercase tracking-wide text-[#14d8d0]"
                               >
                                 {group.title}
                                 <ChevronDown
-                                  className={`h-4 w-4 transition-transform ${mobileServiceGroup === group.title
+                                  className={`h-4 w-4 transition-transform ${mobileServiceGroup === group.id
                                     ? "rotate-180"
                                     : ""
                                     }`}
                                 />
                               </button>
 
-                              {mobileServiceGroup === group.title && (
+                              {mobileServiceGroup === group.id && (
                                 <div className="space-y-1 border-t border-white/10 p-2">
                                   {group.href && (
                                     <Link
@@ -398,10 +348,10 @@ export default function Navbar() {
                                     </Link>
                                   )}
 
-                                  {group.items.map((subItem) =>
+                                  {group.children.map((subItem) =>
                                     subItem.href ? (
                                       <Link
-                                        key={`${group.title}-${subItem.name}`}
+                                        key={subItem.id}
                                         href={subItem.href}
                                         onClick={() => setMobileMenuOpen(false)}
                                         className={`block rounded-lg px-3 py-2 text-sm ${isActive(subItem.href)
@@ -409,14 +359,14 @@ export default function Navbar() {
                                           : "text-white/90 hover:bg-white/10"
                                           }`}
                                       >
-                                        {subItem.name}
+                                        {subItem.title}
                                       </Link>
                                     ) : (
                                       <span
-                                        key={`${group.title}-${subItem.name}`}
+                                        key={subItem.id}
                                         className="block cursor-not-allowed rounded-lg px-3 py-2 text-sm text-white/40"
                                       >
-                                        {subItem.name}
+                                        {subItem.title}
                                       </span>
                                     )
                                   )}

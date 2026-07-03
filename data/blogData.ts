@@ -23,6 +23,7 @@ export interface Blog {
   intro?: string;
   sections?: BlogSection[];
   htmlContent?: string;
+  seo?: ApiSeo;
 }
 
 interface ApiPost {
@@ -34,10 +35,10 @@ interface ApiPost {
   thumbnail: string;
   date: string;
   author: string;
+  seo?: ApiSeo;
 }
 
-const API_URL =
-  "https://reinventmedia.in/insightOpinion/wp-json/custom/v1/posts/";
+const API_URL = apiUrl("/custom/v1/posts/");
 
 function createSlug(title: string) {
   return title
@@ -61,7 +62,7 @@ function formatDate(date: string) {
 
 export async function getBlogs(): Promise<Blog[]> {
   const res = await fetch(API_URL, {
-    next: { revalidate: 60 },
+    cache: "no-store",
   });
 
   if (!res.ok) {
@@ -83,6 +84,7 @@ export async function getBlogs(): Promise<Blog[]> {
     image: post.thumbnail,
     intro: stripHtml(post.excerpt),
     htmlContent: post.content || post.slug,
+    seo: post.seo,
   }));
 }
 
@@ -98,3 +100,5 @@ export async function getRelatedBlogs(
   const blogs = await getBlogs();
   return blogs.filter((blog) => blog.id !== currentId).slice(0, limit);
 }
+import { apiUrl } from "@/lib/api-config";
+import type { ApiSeo } from "@/lib/api-metadata";
