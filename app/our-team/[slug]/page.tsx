@@ -4,6 +4,7 @@ import TeamGrowthForm from "@/app/components/our-team/team-growth-form";
 import TeamHero from "@/app/components/our-team/team-hero";
 import TeamMemberDetail from "@/app/components/our-team/team-member-detail";
 import { fetchTeamMember, fetchTeamMembers } from "@/app/lib/team-api";
+import { buildApiMetadata } from "@/lib/api-metadata";
 
 type TeamDetailPageProps = {
   params: Promise<{ slug: string }>;
@@ -24,10 +25,15 @@ export async function generateMetadata({
     return { title: "Team Member | Insights Opinion" };
   }
 
-  return {
-    title: `${member.name} | Insights Opinion`,
-    description: `Learn more about ${member.name}, ${member.role} at Insights Opinion.`,
-  };
+  return buildApiMetadata(
+    member.seo,
+    {
+      title: `${member.name} | Insights Opinion`,
+      description: `Learn more about ${member.name}, ${member.role} at Insights Opinion.`,
+      image: member.image,
+    },
+    `/our-team/${slug}`
+  );
 }
 
 export default async function TeamDetailPage({

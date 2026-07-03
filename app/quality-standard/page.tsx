@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { getStaticMetadata } from "@/lib/static-seo";
 import QualityHero from "@/app/components/quality-standard/quality-hero";
 import QualityMarketExcellence from "@/app/components/quality-standard/quality-market-excellence";
 import QualityCompliance from "@/app/components/quality-standard/quality-compliance";
@@ -9,11 +11,7 @@ import QualityNewsTestimonials from "@/app/components/quality-standard/quality-n
 import QualityGrowForm from "@/app/components/quality-standard/quality-grow-form";
 import QualityCallbackTab from "@/app/components/quality-standard/quality-callback-tab";
 
-export const metadata = {
-    title: "Quality Standard | Insights Opinion",
-    description:
-        "Discover how Insights Opinion maintains the highest quality standards across research methodology, data protection, ethical practices, and operational security.",
-};
+export const metadata: Metadata = getStaticMetadata("quality-standard");
 
 export default function QualityStandardPage() {
     return (

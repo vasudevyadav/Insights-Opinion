@@ -9,21 +9,7 @@ export default function QuantDetailsWhyRadial({
     items: readonly string[];
   };
 }) {
-  const items =
-    content?.items ??
-    [
-      "One project manager from brief to delivery",
-      "Custom study design, built around your objectives, no templates",
-      "Online surveys, CATI, CAPI, and CLT under one partner",
-      "8M+ panellists across consumer, B2B, and healthcare",
-      "100+ countries, 60+ languages, verified fieldwork",
-      "Data quality controls through multi-layer validation into every study",
-      "Reporting Quality maintained through clear, actionable & presentation ready outputs",
-      "Timelines agreed upfront and met consistently",
-      "ISO 27001 and ISO 20252 certified",
-      "GDPR and CCPA-aligned across every market",
-      "ESOMAR and Insights Association members",
-    ];
+  if (!content?.heading || !content.items?.length) return null;
 
   return (
     <section className="overflow-hidden bg-[#eaf5fc] py-6 lg:py-16">
@@ -37,11 +23,11 @@ export default function QuantDetailsWhyRadial({
             <span className="text-[#1e2746]"> for</span>
             <br />
             <span className="font-semibold bg-linear-to-r from-[#3c8df6] via-[#31b6df] to-[#1dc3b3] bg-clip-text text-transparent">
-              {content?.heading ?? "Quantitative Research?"}
+              {content.heading}
             </span>
           </h2>
         </div>
-        {/* Desktop — infographic image */}
+
         <div className="relative hidden lg:block">
           <Image
             src="/quality/why-chose.png"
@@ -50,13 +36,12 @@ export default function QuantDetailsWhyRadial({
             height={1000}
             unoptimized
             priority
-            className="w-full h-auto"
+            className="h-auto w-full"
           />
         </div>
 
-        {/* Mobile / tablet fallback — pill cards */}
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:hidden">
-          {items.map((text, i) => (
+          {content.items.map((text, i) => (
             <div
               key={text}
               className="rounded-2xl px-4 py-3 text-center text-sm font-medium leading-snug text-white shadow-sm"

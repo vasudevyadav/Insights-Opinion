@@ -1,3 +1,6 @@
+import { apiUrl } from "@/lib/api-config";
+import type { ApiSeo } from "@/lib/api-metadata";
+
 export type TeamMember = {
   slug: string;
   name: string;
@@ -5,6 +8,7 @@ export type TeamMember = {
   image: string;
   detailImage: string;
   description: string[];
+  seo?: ApiSeo;
 };
 
 type RawTeamMember = {
@@ -14,6 +18,7 @@ type RawTeamMember = {
   image: string;
   detailImage: string;
   description: string;
+  seo?: ApiSeo;
 };
 
 type TeamMembersResponse = {
@@ -21,8 +26,7 @@ type TeamMembersResponse = {
   data: RawTeamMember[];
 };
 
-const BASE_URL =
-  "https://reinventmedia.in/insightOpinion/wp-json/custom/v1/our-teams";
+const BASE_URL = apiUrl("/custom/v1/our-teams");
 
 function parseDescription(raw: string): string[] {
   return raw
@@ -39,6 +43,7 @@ function normalizeTeamMember(raw: RawTeamMember): TeamMember {
     image: raw.image,
     detailImage: raw.detailImage,
     description: parseDescription(raw.description),
+    seo: raw.seo,
   };
 }
 

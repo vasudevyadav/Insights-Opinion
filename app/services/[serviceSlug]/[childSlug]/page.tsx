@@ -5,10 +5,13 @@ import {
   fetchChildService,
   fetchServices,
 } from "@/app/lib/services-api";
+import { buildApiMetadata } from "@/lib/api-metadata";
 
 type PageProps = {
   params: Promise<{ serviceSlug: string; childSlug: string }>;
 };
+
+export const dynamic = "force-dynamic";
 
 export async function generateStaticParams() {
   const services = await fetchServices();
@@ -28,10 +31,15 @@ export async function generateMetadata({
   const result = await fetchChildService(serviceSlug, childSlug);
 
   return result
-    ? {
-        title: `${result.child.title} | Insights Opinion`,
-        description: result.child.content.hero.description,
-      }
+    ? buildApiMetadata(
+        result.child.seo,
+        {
+          title: `${result.child.title} | Insights Opinion`,
+          description: result.child.content.hero?.description,
+          image: result.child.image,
+        },
+        `/services/${serviceSlug}/${childSlug}`
+      )
     : {};
 }
 

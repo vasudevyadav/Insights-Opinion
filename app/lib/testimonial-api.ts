@@ -27,8 +27,7 @@ type TestimonialsResponse = {
   data: Testimonial[];
 };
 
-const BASE_URL =
-  "https://reinventmedia.in/insightOpinion/wp-json/custom/v1/testimonials";
+const BASE_URL = apiUrl("/custom/v1/testimonials");
 
 export async function fetchTestimonials(): Promise<Testimonial[]> {
   try {
@@ -46,3 +45,4 @@ export async function fetchTestimonials(): Promise<Testimonial[]> {
     return [];
   }
 }
+import { apiUrl } from "@/lib/api-config";

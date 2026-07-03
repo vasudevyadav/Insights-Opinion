@@ -21,24 +21,33 @@ export default function ServiceChildPage({
   parentService?: MainService;
   parentContent?: ServicePageContent;
 }) {
+  const whyRadial = parentContent?.whyRadial;
+
   return (
     <main>
-      <QuantDetailsHero data={data.hero} />
-      <QuantDetailsAbout data={data.about} />
-      <QuantDetailsWhat data={data.why} />
-      <QuantWhatOur data={data.services} />
-      <MarketResearch data={data} />
-      <QuantDetailsMethods
-        currentSlug={slug}
-        categoryTitle={parentService?.title}
-        relatedServices={
-          parentService?.children.filter(
+      {data.hero?.title && <QuantDetailsHero data={data.hero} />}
+      {data.about && <QuantDetailsAbout data={data.about} />}
+      {data.why?.heading1 && <QuantDetailsWhat data={data.why} />}
+      {data.services?.items?.length > 0 && (
+        <QuantWhatOur data={data.services} />
+      )}
+      {(data.whenToUse || data.vsBox) && (
+        <MarketResearch data={data} />
+      )}
+      {parentService && (
+        <QuantDetailsMethods
+          currentSlug={slug}
+          categoryTitle={parentService.title}
+          parentHref={parentService.href}
+          relatedServices={parentService.children.filter(
             (service: ServiceChild) => service.slug !== slug
-          )
-        }
-      />
-      <QuantDetailsWhyRadial content={parentContent?.whyRadial} />
-      <QuantDetailsFaq data={data.faqs} />
+          )}
+        />
+      )}
+      {whyRadial?.items && whyRadial.items.length > 0 && (
+        <QuantDetailsWhyRadial content={whyRadial} />
+      )}
+      {data.faqs?.length > 0 && <QuantDetailsFaq data={data.faqs} />}
     </main>
   );
 }

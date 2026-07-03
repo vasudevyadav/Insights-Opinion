@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import LegalPage, {
   type LegalSection,
 } from "@/app/components/legal/legal-page";
+import { getStaticMetadata } from "@/lib/static-seo";
 
-export const metadata: Metadata = {
-  title: "Cookies Policy | Insights Opinion",
-  description:
-    "Learn how Insights Opinion uses cookies and how you can manage your cookie preferences.",
-};
+export const metadata: Metadata = getStaticMetadata("cookies-policy");
 
 const sections: LegalSection[] = [
   {

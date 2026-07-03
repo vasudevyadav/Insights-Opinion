@@ -4,13 +4,14 @@ import type {
 } from "@/app/lib/service-catalog";
 import type { MethodData } from "@/app/lib/method-data";
 import type { ServicePageContent } from "@/data/service-page-content";
+import { apiUrl } from "@/lib/api-config";
+import type { ApiSeo } from "@/lib/api-metadata";
 
-const SERVICES_API_URL =
-  process.env.SERVICES_API_URL?.replace(/\/$/, "") ||
-  "https://reinventmedia.in/insightOpinion/wp-json/custom/v1/services";
+const SERVICES_API_URL = apiUrl("/custom/v1/services");
 
 type ApiServiceChild = ServiceChild & {
   content?: MethodData;
+  seo?: ApiSeo;
 };
 
 type ApiMainService = {
@@ -20,6 +21,7 @@ type ApiMainService = {
   href: string;
   content: ServicePageContent;
   children?: ApiServiceChild[];
+  seo?: ApiSeo;
 };
 
 type ServicesApiResponse = {
@@ -35,6 +37,7 @@ type ServiceDetailApiResponse<T> = {
 export type ApiMainServiceWithContent = Omit<MainService, "children"> & {
   content: ServicePageContent;
   children: ApiServiceChild[];
+  seo?: ApiSeo;
 };
 
 function stripHtml(value: string) {
@@ -71,7 +74,7 @@ function normalizeApiValue<T>(value: T): T {
 
 async function fetchApiData<T>(url: string): Promise<T | null> {
   try {
-    const response = await fetch(url, { next: { revalidate: 300 } });
+    const response = await fetch(url, { cache: "no-store" });
     if (!response.ok) return null;
 
     const json = normalizeApiValue(
@@ -193,9 +196,14 @@ export async function fetchChildService(
 
   if (!service || !childSummary) return null;
 
-  const child = await fetchApiData<ApiServiceChild>(
+  const childData = await fetchApiData<ApiServiceChild | ApiMainService[]>(
     `${SERVICES_API_URL}/${service.apiSlug || service.slug}/${childServiceSlug}`
   );
+  const child = Array.isArray(childData)
+    ? childData
+        .flatMap((parent) => parent.children || [])
+        .find((item) => item.slug === childServiceSlug)
+    : childData;
 
   if (!child?.content) return null;
   return { service, child: child as ApiServiceChild & { content: MethodData } };

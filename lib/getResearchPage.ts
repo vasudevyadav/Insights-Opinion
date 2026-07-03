@@ -2,9 +2,8 @@ import type {
   researchPages,
   ResearchPageSlug,
 } from "@/data/researchPages";
-
-const DEFAULT_API_BASE_URL =
-  "https://reinventmedia.in/insightOpinion/wp-json";
+import { apiUrl } from "@/lib/api-config";
+import type { ApiSeo } from "@/lib/api-metadata";
 
 export const researchPageSlugs = [
   "healthcare-research",
@@ -15,19 +14,13 @@ export const researchPageSlugs = [
 export type ApiResearchPageSlug = (typeof researchPageSlugs)[number];
 export type ResearchPageData = (typeof researchPages)[ResearchPageSlug] & {
   slug?: string;
+  seo?: ApiSeo;
 };
 
 export type ResearchNavItem = {
   name: string;
   href: string;
 };
-
-function getApiBaseUrl() {
-  return (
-    process.env.RESEARCH_API_BASE_URL?.replace(/\/$/, "") ||
-    DEFAULT_API_BASE_URL
-  );
-}
 
 function normalizeApiValue<T>(value: T): T {
   if (typeof value === "string") {
@@ -88,7 +81,7 @@ export async function getResearchPage(
 
   try {
     const response = await fetch(
-      `${getApiBaseUrl()}/custom/v1/research-expertises/${slug}`,
+      apiUrl(`/custom/v1/research-expertises/${slug}`),
       {
         next: { revalidate: 300 },
       }

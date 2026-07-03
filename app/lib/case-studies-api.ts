@@ -15,6 +15,7 @@ export type CaseStudy = {
   description: string;
   slug: string;
   detail: CaseStudyDetail;
+  seo?: ApiSeo;
 };
 
 type RawCaseStudyDetail = {
@@ -34,6 +35,7 @@ type RawCaseStudy = {
   image: string;
   description: string;
   detail: RawCaseStudyDetail;
+  seo?: ApiSeo;
 };
 
 type CaseStudiesResponse = {
@@ -41,8 +43,7 @@ type CaseStudiesResponse = {
   data: RawCaseStudy[];
 };
 
-const BASE_URL =
-  "https://reinventmedia.in/insightOpinion/wp-json/custom/v1/case-studies";
+const BASE_URL = apiUrl("/custom/v1/case-studies");
 
 function dropHeadingLine(lines: string[], heading: string): string[] {
   const [first, ...rest] = lines;
@@ -86,6 +87,7 @@ function normalizeCaseStudy(raw: RawCaseStudy): CaseStudy {
       delivery: cleanList(raw.detail.delivery, "Delivery"),
       results: cleanResults(raw.detail.results, "Results"),
     },
+    seo: raw.seo,
   };
 }
 
@@ -131,3 +133,5 @@ export function getRelatedCaseStudies(
     })
     .slice(0, limit);
 }
+import { apiUrl } from "@/lib/api-config";
+import type { ApiSeo } from "@/lib/api-metadata";

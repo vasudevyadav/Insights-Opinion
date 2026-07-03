@@ -6,6 +6,7 @@ import {
   fetchServices,
 } from "@/app/lib/services-api";
 import type { ServicePageKey } from "@/data/service-page-content";
+import { buildApiMetadata } from "@/lib/api-metadata";
 
 type PageProps = {
   params: Promise<{ serviceSlug: string }>;
@@ -32,10 +33,17 @@ export async function generateMetadata({
   const service = await fetchMainService(serviceSlug);
 
   return service
-    ? {
-        title: `${service.title} Services | Insights Opinion`,
-        description: `Explore ${service.title.toLowerCase()} services, methods, capabilities, and frequently asked questions.`,
-      }
+    ? buildApiMetadata(
+        service.seo,
+        {
+          title: `${service.title} Services | Insights Opinion`,
+          description:
+            service.content.hero?.description ||
+            `Explore ${service.title.toLowerCase()} services at Insights Opinion.`,
+          image: service.content.hero?.backgroundImage,
+        },
+        `/services/${serviceSlug}`
+      )
     : {};
 }
 
