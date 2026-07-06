@@ -1,5 +1,3 @@
-"use client";
-
 export default function QuantDetailsAbout({ data }: { data: string }) {
   return (
     <section className="relative overflow-hidden bg-[#edf6ff] py-8 lg:py-12">

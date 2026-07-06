@@ -1,5 +1,3 @@
-"use client";
-
 import { Heart, ShoppingCart, Car, RefreshCw, Settings, GraduationCap, Building2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 

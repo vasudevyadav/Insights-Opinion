@@ -1,5 +1,3 @@
-"use client";
-
 export default function QualityHero() {
     return (
         <section className="bg-[#edf6fe]">

@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { Eye, Fingerprint, Gem, Users, Trophy } from "lucide-react";
 
