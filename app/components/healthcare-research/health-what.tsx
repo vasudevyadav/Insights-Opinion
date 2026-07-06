@@ -1,5 +1,3 @@
-"use client";
-
 type HealthCard = {
   title?: string;
   highlight?: string;

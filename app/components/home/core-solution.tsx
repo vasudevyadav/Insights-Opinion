@@ -1,4 +1,3 @@
-"use client";
 import CoreTab from "./core-tab";
 import Industries from "./industrise";
 import WhyChoose from "./why-choose";

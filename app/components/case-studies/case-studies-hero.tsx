@@ -1,5 +1,3 @@
-"use client";
-
 export default function CaseStudiesHero() {
     return (
         <section className="bg-[#edf6fe]">

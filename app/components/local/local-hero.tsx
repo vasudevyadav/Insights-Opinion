@@ -1,5 +1,3 @@
-"use client";
-
 export default function LocalHero() {
     return (
         <section className="bg-[#edf6fe]">

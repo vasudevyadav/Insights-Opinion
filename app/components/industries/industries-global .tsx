@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import type { Industry } from "@/app/lib/industries-data";
 
