@@ -36,7 +36,7 @@ export default function HealthHero({
             <div className="grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-2">
               <div className="max-w-[560px]">
                 {(data.titleLine1 || data.titleLine2) && (
-                  <h1 className="text-[34px] font-semibold leading-[1.02] sm:text-[42px] lg:text-[58px]">
+                  <h1 className="text-3xl font-semibold lg:text-4xl">
                     {data.titleLine1 && (
                       <span className="block text-[#35d0c7]">
                         {data.titleLine1}
@@ -57,7 +57,7 @@ export default function HealthHero({
                 )}
 
                 {data.description && (
-                  <p className="mt-4 max-w-[500px] text-[14px] leading-7 text-white/80 sm:text-[17px]">
+                  <p className="mt-4 max-w-[550px] text-sm leading-7 text-white/80 sm:text-base">
                     {data.description}
                   </p>
                 )}
@@ -67,7 +67,7 @@ export default function HealthHero({
                     {data.primaryButtonText && (
                       <Link
                         href={data.primaryButtonUrl || "#"}
-                        className="rounded-full bg-[#52d3b0] px-7 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(82,211,176,0.25)] transition hover:scale-[1.02] sm:px-9 sm:text-base"
+                        className="rounded-full bg-[#52d3b0] px-7 py-3 text-sm font-medium text-white shadow-[0_8px_20px_rgba(82,211,176,0.25)] transition hover:scale-[1.02] sm:px-9 lg:text-sm"
                       >
                         {data.primaryButtonText}
                       </Link>
@@ -76,7 +76,7 @@ export default function HealthHero({
                     {data.secondaryButtonText && (
                       <Link
                         href={data.secondaryButtonUrl || "#"}
-                        className="rounded-full border border-white/45 bg-transparent px-7 py-3 text-sm font-semibold text-white transition hover:bg-white/10 sm:px-9 sm:text-base"
+                        className="rounded-full border border-white/45 bg-transparent px-7 py-3 text-sm font-medium text-white transition hover:bg-white/10 sm:px-9 lg:text-sm"
                       >
                         {data.secondaryButtonText}
                       </Link>
