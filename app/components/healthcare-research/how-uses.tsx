@@ -76,7 +76,7 @@ export default function WhoUsesHealthcareResearch({
         <div className="flex flex-col items-center justify-between gap-10 lg:flex-row lg:items-center lg:gap-14">
           <div data-aos="fade-up" data-aos-delay="100" className="order-2 w-full max-w-[430px] lg:order-1">
             <h2 className="leading-[1.05] tracking-[-0.02em]">
-              <span className="block text-xl font-normal text-[#3a4654] sm:text-xl">
+              <span className="block text-xl font-normal text-[#3a4654] sm:text-3xl">
                 {data.titleTop}
               </span>
 
@@ -88,12 +88,12 @@ export default function WhoUsesHealthcareResearch({
                 {data.titleMiddleLine2}
               </span>
 
-              <span className="mt-1 block text-xl font-normal text-[#3a4654] sm:text-xl">
+              <span className="mt-1 block text-xl font-normal text-[#3a4654] sm:text-3xl">
                 {data.titleBottom}
               </span>
             </h2>
 
-            <ul className="mt-4 space-y-4">
+            <ul className="mt-12 space-y-4">
               {items.map((item, idx) => (
                 <li key={idx} data-aos="fade-up" data-aos-delay={150 + idx * 100} className="flex items-center gap-5">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#9ed8e6] text-lg font-medium text-[#62c5db]">
@@ -102,9 +102,8 @@ export default function WhoUsesHealthcareResearch({
 
                   <a
                     href={item.href || "#"}
-                    className={`text-lg leading-[1.45] text-[#5f6b78] transition hover:text-[#2b84e0] hover:underline hover:underline-offset-2 ${
-                      idx === 0 ? "font-medium text-[#4b95d9]" : ""
-                    }`}
+                    className={`text-lg leading-[1.45] text-[#5f6b78] transition hover:text-[#2b84e0] hover:underline hover:underline-offset-2 ${idx === 0 ? "font-normal text-[#4b95d9]" : ""
+                      }`}
                   >
                     {item.label}
                   </a>
