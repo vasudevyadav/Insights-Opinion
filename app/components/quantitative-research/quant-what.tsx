@@ -10,7 +10,6 @@ icon: (
   <path d="M3 6 L13 2 L20 8 L29 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 </svg>
 ),
-text: "Measure how customers feel about your product or brand across a large sample",
 },
 {
 icon: (
@@ -20,7 +19,6 @@ icon: (
   <circle cx="25" cy="7" r="3" fill="white" />
 </svg>
 ),
-text: "Track changes in satisfaction awareness, or preference over time",
 },
 {
 icon: (
@@ -31,7 +29,6 @@ icon: (
     strokeLinecap="round" />
 </svg>
 ),
-text: "Validate a new product, concept, or pricing decision with real data",
 },
 {
 icon: (
@@ -40,7 +37,6 @@ icon: (
   <rect x="2" y="26" width="28" height="2" rx="1" fill="white" opacity="0.4" />
 </svg>
 ),
-text: "Size a market or estimate demand before entering a new segment",
 },
 {
 icon: (
@@ -49,7 +45,6 @@ icon: (
     strokeLinejoin="round" />
 </svg>
 ),
-text: "Compare results across different regions, demographics, or audience groups",
 },
 ];
 
@@ -66,6 +61,8 @@ export default function QuantWhat({
     cards: readonly string[];
   };
 }) {
+if (!content) return null;
+
 return (
 <section className="relative overflow-hidden bg-[#f0f7ff] py-10 lg:py-14">
   <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
@@ -75,32 +72,34 @@ return (
       <div className="w-full max-w-[460px] shrink-0">
         <h2 className="text-2xl font-bold leading-[1.2] lg:text-5xl">
           <span className="bg-gradient-to-r from-[#1dc3b3] to-[#4faee8] bg-clip-text text-transparent">
-            {content?.headingLine1 || "What Quantitative"}
+            {content.headingLine1}
             <br />
-            {content?.headingLine2 || "Market Research"}
+            {content.headingLine2}
           </span>
           <br />
           <span className="text-4xl font-normal text-[#1e2746]">
-            {content?.suffix || "does for Your Business?"}
+            {content.suffix}
           </span>
         </h2>
         <p className="mt-5 text-sm leading-[1.8] text-[#4a5568] lg:text-lg">
-          {content?.description ||
-            "Quantitative market research collects structured, numerical data from defined audiences. It gives you findings you can measure, compare, and act on with confidence."}
+          {content.description}
         </p>
       </div>
 
       {/* Right: quant-about.png */}
       <div className="relative flex w-full flex-1 items-center justify-center">
         <div className="relative w-full">
-          <Image src={content?.image || "/quality/quant-about.png"} alt={content?.imageAlt || "Quantitative Market Research Analytics"} width={1500} height={1000}
+          <Image src={content.image} alt={content.imageAlt} width={1500} height={1000}
             className="h-auto w-full object-contain" priority />
         </div>
       </div>
     </div>
 
     <div className="mt-8 flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 sm:grid sm:grid-cols-3 sm:overflow-visible sm:pb-0 lg:mt-16 lg:grid-cols-5">
-      {bottomCards.map((card, i) => (
+      {content.cards.map((text, i) => {
+        const card = bottomCards[i % bottomCards.length];
+
+        return (
       <div key={i} className="relative min-w-[72vw] snap-center sm:min-w-0">
         {/* Card */}
         <div className="
@@ -133,11 +132,12 @@ return (
 
           {/* Text */}
           <p className=" pr-4 text-[14px] font-medium leading-[1.7] text-white line-clamp-4">
-            {content?.cards[i] || card.text}
+            {text}
           </p>
         </div>
       </div>
-      ))}
+        );
+      })}
     </div>
   </div>
 </section>

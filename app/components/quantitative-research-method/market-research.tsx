@@ -14,7 +14,7 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: 
 };
 
 export default function MarketResearch({ data }: { data: MethodData }) {
-  const { whenToUse, vsBox } = data;
+  const { whenToUse, comparison, vsBox, sectors } = data;
 
   return (
     <>
@@ -81,6 +81,77 @@ export default function MarketResearch({ data }: { data: MethodData }) {
 
           </div>
         </div>
+        </section>
+      )}
+
+      {/* ── Method Comparison ── */}
+      {comparison?.rows?.length > 0 && (
+        <section className="relative overflow-hidden bg-[#deeef7] py-8 lg:py-14">
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-56 opacity-20">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="hex-comparison" x="0" y="0" width="60" height="69.28" patternUnits="userSpaceOnUse">
+                  <polygon points="30,0 60,17.32 60,51.96 30,69.28 0,51.96 0,17.32" fill="none" stroke="#1dc3b3" strokeWidth="1.5" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#hex-comparison)" />
+            </svg>
+          </div>
+
+          <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-7 text-center">
+              <h2 className="text-2xl font-bold text-[#1dc3b3] sm:text-3xl lg:text-4xl">
+                {comparison.col1} vs {comparison.col2}
+              </h2>
+            </div>
+
+            <div className="hidden grid-cols-3 gap-4 lg:grid">
+              <div className="rounded-md bg-white/75 px-5 py-3 text-center text-sm font-bold text-[#2b3553]" />
+              <div className="rounded-md bg-white/75 px-5 py-3 text-center text-sm font-bold text-[#1dc3b3]">
+                {comparison.col1}
+              </div>
+              <div className="rounded-md bg-white/75 px-5 py-3 text-center text-sm font-bold text-[#4faee8]">
+                {comparison.col2}
+              </div>
+              {comparison.rows.map((row) => (
+                <React.Fragment key={row.factor}>
+                  <div className="rounded-md bg-white/80 px-5 py-3 text-center text-sm font-semibold text-[#2b3553]">
+                    {row.factor}
+                  </div>
+                  <div className="rounded-md bg-white/80 px-5 py-3 text-center text-sm text-[#2b3553]">
+                    {row.col1}
+                  </div>
+                  <div className="rounded-md bg-white/80 px-5 py-3 text-center text-sm text-[#2b3553]">
+                    {row.col2}
+                  </div>
+                </React.Fragment>
+              ))}
+            </div>
+
+            <div className="space-y-3 lg:hidden">
+              {comparison.rows.map((row) => (
+                <div key={row.factor} className="rounded-xl bg-white/85 px-4 py-4">
+                  <p className="text-sm font-bold text-[#2b3553]">{row.factor}</p>
+                  <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                    <div>
+                      <p className="text-xs font-semibold text-[#1dc3b3]">{comparison.col1}</p>
+                      <p className="text-sm text-[#2b3553]">{row.col1}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-[#4faee8]">{comparison.col2}</p>
+                      <p className="text-sm text-[#2b3553]">{row.col2}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {comparison.footer && (
+              <p className="mx-auto mt-6 max-w-3xl text-center text-sm leading-relaxed text-[#2b3553]">
+                {comparison.footer}
+              </p>
+            )}
+          </div>
         </section>
       )}
 
@@ -175,6 +246,39 @@ export default function MarketResearch({ data }: { data: MethodData }) {
                     </div>
                   </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Sector Specific Research ── */}
+      {sectors?.length > 0 && (
+        <section className="relative overflow-hidden bg-[#deeef7] py-8 lg:py-16">
+          <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-5 md:grid-cols-3">
+              {sectors.map((sector) => (
+                <article
+                  key={sector.title}
+                  className="overflow-hidden rounded-2xl bg-white shadow-[0_10px_28px_rgba(20,45,90,0.12)]"
+                >
+                  <div className="relative h-48">
+                    <Image
+                      src={sector.image}
+                      alt={sector.title}
+                      fill
+                      unoptimized
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-[#1dc3b3]/90 to-transparent" />
+                    <h3 className="absolute inset-x-0 bottom-0 p-5 text-lg font-semibold text-white">
+                      {sector.title}
+                    </h3>
+                  </div>
+                  <p className="p-5 text-sm leading-relaxed text-[#4a5568]">
+                    {sector.description}
+                  </p>
+                </article>
               ))}
             </div>
           </div>

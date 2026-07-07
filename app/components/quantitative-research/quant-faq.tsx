@@ -16,33 +16,8 @@ const initialFormData = {
     captchaInput: "",
 };
 
-const defaultFaqs = [
-  {
-    question: "Why should businesses work with a global market research company?",
-    answer:
-      "A global market research company allows businesses to run studies across multiple countries with consistent research methods and coordinated fieldwork. This helps organizations compare market behavior across regions, understand cultural differences, and make more informed global business decisions.",
-  },
-  {
-    question: "What types of market research services do companies usually provide?",
-    answer:
-      "Professional market research services typically include quantitative surveys, qualitative interviews, focus groups, data collection, and analysis. These services help organizations measure customer behavior, test new ideas, evaluate brand perception, and identify opportunities in competitive markets.",
-  },
-  {
-    question: "What is commercial market research and how is it used?",
-    answer:
-      "Commercial market research focuses on understanding market demand, competitive positioning, and customer preferences to support business growth. Companies use it to evaluate new products, improve marketing strategies, and make data-backed decisions in competitive industries.",
-  },
-  {
-    question: "How can businesses identify the best market research company for their needs?",
-    answer:
-      "The best market research company is typically one that demonstrates research expertise, strong data quality standards, and the ability to manage studies across industries and markets. Businesses should evaluate experience, methodology, and the reliability of data collection processes.",
-  },
-
-
-];
-
 export default function QuantFaq({
-  items = defaultFaqs,
+  items,
 }: {
   items?: { question: string; answer: string }[];
 }) {
@@ -50,6 +25,8 @@ export default function QuantFaq({
   const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
+
+  if (!items?.length) return null;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>

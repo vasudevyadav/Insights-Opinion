@@ -11,22 +11,13 @@ type QuantHeroContent = {
   backgroundImage?: string;
 };
 
-const defaultContent: QuantHeroContent = {
-  titleLine1: "Quantitative",
-  titleLine2: "Market Research",
-  label: "Services",
-  lead: "Quantitative market research",
-  description:
-    "is how businesses get reliable numbers behind their decisions. It tells you how many customers prefer a product, how often they buy, what drives their choices, and how your brand compares in the market.",
-  insightText: "Turn Market Uncertainty into Actionable Insights",
-  backgroundImage: "/quality/quant-banner.png",
-};
-
 export default function QuantHero({
-  content = defaultContent,
+  content,
 }: {
   content?: QuantHeroContent;
 }) {
+  if (!content) return null;
+
   return (
     <section className="relative h-125 bg-[#edf6ff] sm:h-145 lg:h-175">
 
@@ -74,21 +65,6 @@ export default function QuantHero({
               >
                 {content.insightText}
                 <span className="text-[#1dc3b3]">→</span>
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center gap-1.5 text-[14px] text-white/75 transition hover:text-[#1dc3b3]"
-              >
-                Talk to a Market Research Expert
-              </Link>
-            </div>
-
-            <div className="mt-8">
-              <Link
-                href="#"
-                className="inline-block rounded-full bg-[#1dc3b3] px-10 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(29,195,179,0.4)] transition hover:scale-[1.02] hover:opacity-90 sm:text-base"
-              >
-                Get Started
               </Link>
             </div>
           </div>

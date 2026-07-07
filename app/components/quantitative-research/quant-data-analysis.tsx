@@ -9,12 +9,14 @@ export default function QuantDataAnalysis({
     paragraph2: string;
   };
 }) {
+  if (!content) return null;
+
   return (
     <section className="relative overflow-hidden bg-[#161b3c] min-h-105 lg:h-187.5">
       <div className="absolute inset-0">
         <Image
           src="/quality/services-analays.png"
-          alt="Working With Insights Opinion"
+          alt=""
           fill
           className="object-cover object-center hidden lg:block"
           unoptimized
@@ -27,30 +29,19 @@ export default function QuantDataAnalysis({
           <h2 className="mb-5 text-[28px] font-light leading-tight text-white lg:text-[40px]">
 
             <span className="bg-[linear-gradient(90deg,#17afa1,#43bccb,#74b9ff)] bg-clip-text font-semibold text-transparent">
-              {content ? content.heading.split(" ").slice(0, 2).join(" ") : "Insights Opinion"}
+              {content.heading.split(" ").slice(0, 2).join(" ")}
             </span>
-            {content ? (
-              <>
-                {" "}
-                {content.heading.split(" ").slice(2).join(" ")}
-              </>
-            ) : (
-              <>
-                <br />
-                Analysis Services
-              </>
-            )}
+            {" "}
+            {content.heading.split(" ").slice(2).join(" ")}
 
           </h2>
 
           <p className="mb-12 text-sm leading-7 text-white/80 lg:text-lg">
-            {content?.paragraph1 ||
-              "Collecting data is only part of the job. Our quantitative data analysis services turn raw survey and fieldwork output into findings your team can act on."}
+            {content.paragraph1}
           </p>
 
           <p className=" text-sm leading-7 text-white/80 lg:text-lg">
-            {content?.paragraph2 ||
-              "Every analysis is built around your study objectives, not a standard template. Learn more about our Data Insights capabilities."}
+            {content.paragraph2}
 
           </p>
 

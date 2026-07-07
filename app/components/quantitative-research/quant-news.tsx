@@ -1,36 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-
-const defaultArticles = [
-  {
-    image: "/quantitative-research-stops-ai-market-hallucinations.jpg",
-    category: "Quantitative Research",
-    date: "June 2026",
-    title: "How Quantitative Research Stops AI Market Hallucinations",
-    desc: "Discover how structured data from quantitative studies provides the grounding that AI models need to produce accurate market insights.",
-    href: "#",
-  },
-  {
-    image: "/strengthen-decision-making-with-qualitative-research-methods.jpg",
-    category: "Research Methods",
-    date: "May 2026",
-    title: "Choosing Between CATI, CAWI and CLT for Your Next Study",
-    desc: "Each quantitative method has strengths and constraints. We compare the three core approaches to help you choose the right one.",
-    href: "#",
-  },
-  {
-    image: "/Need-More-Reliable-Market-Data-.jpg",
-    category: "Market Research",
-    date: "April 2026",
-    title: "Why Sample Size Still Matters in the Age of Big Data",
-    desc: "Big data has changed a lot — but the principles of representative sampling and statistical significance remain as important as ever.",
-    href: "#",
-  },
-];
 
 export default function QuantNews({
-  articles = defaultArticles,
+  articles,
 }: {
   articles?: {
     image: string;
@@ -41,34 +13,11 @@ export default function QuantNews({
     href: string;
   }[];
 }) {
+  if (!articles?.length) return null;
+
   return (
     <section className="relative overflow-hidden bg-white py-10 lg:py-14">
       <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-end justify-between gap-4 sm:mb-10">
-          <div>
-            <h2 className="text-2xl font-light leading-tight text-[#2f3643] sm:text-4xl">
-              Latest News &amp;
-            </h2>
-            <h3
-              className="text-[28px] font-medium leading-tight text-transparent sm:text-[38px]"
-              style={{
-                background: "linear-gradient(90deg, #20b7a6 0%, #5da6f6 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Articles
-            </h3>
-          </div>
-          <Link
-            href="/blogs"
-            className="hidden items-center gap-2 rounded-full border border-[#1b224f] px-5 py-2 text-sm font-medium text-[#1b224f] transition hover:bg-[#1b224f] hover:text-white sm:flex"
-          >
-            View All <ArrowRight size={14} />
-          </Link>
-        </div>
-
         <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:pb-0 lg:grid-cols-3">
           {articles.map((a, i) => (
             <Link key={i} href={a.href} className="group block min-w-[82vw] snap-center sm:min-w-0">
@@ -94,22 +43,10 @@ export default function QuantNews({
                   <p className="mt-2 line-clamp-2 text-[13px] leading-[1.65] text-[#4a5568]">
                     {a.desc}
                   </p>
-                  <div className="mt-4 flex items-center gap-1.5 text-[13px] font-medium text-[#1687c9]">
-                    Read More <ArrowRight size={13} />
-                  </div>
                 </div>
               </div>
             </Link>
           ))}
-        </div>
-
-        <div className="mt-6 text-center sm:hidden">
-          <Link
-            href="/blogs"
-            className="inline-flex items-center gap-2 rounded-full border border-[#1b224f] px-6 py-2.5 text-sm font-medium text-[#1b224f] transition hover:bg-[#1b224f] hover:text-white"
-          >
-            View All Articles <ArrowRight size={14} />
-          </Link>
         </div>
       </div>
     </section>

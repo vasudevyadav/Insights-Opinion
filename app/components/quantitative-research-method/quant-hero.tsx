@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 interface HeroData {
   title: string;
@@ -47,15 +46,6 @@ export default function QuantDetailsHero({ data }: { data: HeroData }) {
             <p className="mt-5 max-w-[500px] text-sm leading-8 text-white lg:text-lg">
               {data.description}
             </p>
-
-            <div className="mt-8">
-              <Link
-                href="#"
-                className="inline-block rounded-full bg-[#1dc3b3] px-10 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(29,195,179,0.4)] transition hover:scale-[1.02] hover:opacity-90 sm:text-base"
-              >
-                Get Started
-              </Link>
-            </div>
           </div>
         </div>
       </div>

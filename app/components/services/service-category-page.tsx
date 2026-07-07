@@ -10,23 +10,25 @@ import QuantWhyRadial from "@/app/components/quantitative-research/quant-why-rad
 import QuantWhyChoose from "@/app/components/quantitative-research/quant-why-choose";
 import QuantFaq from "@/app/components/quantitative-research/quant-faq";
 import QuantNews from "@/app/components/quantitative-research/quant-news";
-import BookDemoHealth from "@/app/components/healthcare-research/book-demo";
 import {
   type ServicePageKey,
   type ServicePageContent,
 } from "@/data/service-page-content";
 import type { ServiceChild } from "@/app/lib/service-catalog";
+import type { Industry } from "@/app/lib/industries-data";
 
 export default function ServiceCategoryPage({
   category,
   categoryTitle,
   content,
   services,
+  industries,
 }: {
   category: ServicePageKey;
   categoryTitle?: string;
   content: ServicePageContent;
   services: ServiceChild[];
+  industries: Industry[];
 }) {
   return (
     <main>
@@ -42,13 +44,12 @@ export default function ServiceCategoryPage({
       )}
       <QuantMethodCta content={content.methodCta} />
       <QuantDataAnalysis content={content.analysis} />
-      <QuantIndustries content={content.industries} />
+      <QuantIndustries content={content.industries} industries={industries} />
       <QuantGlobalServices content={content.global} />
       <QuantWhyRadial content={content.whyRadial} />
       <QuantWhyChoose content={content.whyChoose} />
       <QuantFaq items={[...content.faqs]} />
       <QuantNews articles={[...content.articles]} />
-      <BookDemoHealth />
     </main>
   );
 }

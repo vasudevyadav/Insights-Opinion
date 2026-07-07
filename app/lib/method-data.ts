@@ -56,7 +56,7 @@ export interface MethodData {
     col1Label: string;
     col2Label: string;
     col1Desc: string;
-    col2Desc: string;
+    col2Desc?: string;
     items: { label: string; col1: string; col2: string }[];
   };
   sectors: { title: string; image: string; description: string }[];
