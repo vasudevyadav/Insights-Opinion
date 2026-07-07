@@ -30,6 +30,7 @@ export default async function QuantitativeResearchPage() {
   return (
     <ServiceCategoryPage
       category="quantitative"
+      categoryTitle={service.title}
       content={service.content}
       services={service.children}
     />

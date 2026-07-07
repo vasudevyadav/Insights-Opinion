@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import type { CaseStudy } from "@/app/lib/case-studies-api";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
 
@@ -166,6 +166,11 @@ export default function CaseStudyDetail({
   relatedCaseStudies,
 }: CaseStudyDetailProps) {
   const { detail } = caseStudy;
+  const heading = detail.heading || caseStudy.title;
+  const headingAccent = heading.match(/^Insights Opinion(?:['’]s)?/i)?.[0];
+  const headingRemainder = headingAccent
+    ? heading.slice(headingAccent.length)
+    : heading;
 
   return (
     <>
@@ -189,101 +194,94 @@ export default function CaseStudyDetail({
           Request Callback
         </button>
 
-        <div className="mx-auto grid max-w-7xl gap-9 px-4 sm:px-6 lg:grid-cols-[75%_25%] lg:items-start lg:gap-16 lg:px-8">
-          <article className="min-w-0 text-[#172446]">
-            <div className="space-y-3 text-[13px] font-normal leading-[1.8] sm:text-sm lg:text-base lg:leading-[1.85]">
-              {detail.overview.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </div>
-
-            <h2 className="mt-5 text-[22px] font-medium leading-tight text-[#182349] sm:text-2xl lg:text-2xl">
-              Insights Opinion&apos;s Survey Audits Help You To:
-            </h2>
-
-            <section className="mt-7 rounded-[18px] bg-[#d9f1fb]/75 px-4 py-5 sm:px-7 sm:py-6 lg:px-9">
-              <h2 className="text-[22px] font-medium leading-tight text-[#182349] sm:text-[24px]">
-                Methodology
+        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+          <article className="min-w-0 text-[#151b27]">
+            <header className="px-1 sm:px-4 lg:px-8">
+              <h2 className="text-xl font-bold leading-[1.14] lg:text-4xl">
+                {headingAccent && (
+                  <span className="text-[#19b3a8]">{headingAccent}</span>
+                )}
+                <span className="text-[#171c26]">{headingRemainder}</span>
               </h2>
-              <ul className="mt-4 space-y-3 text-[13px] font-medium leading-[1.75] sm:text-sm lg:text-base lg:leading-[1.7]">
-                {detail.methodology.slice(0, 3).map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#172446]" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
 
-              <div className="relative my-6 h-[160px] w-full overflow-hidden sm:h-[215px] lg:max-w-[505px]">
-                <Image
-                  src={detail.methodologyImage}
-                  alt={`${caseStudy.title} methodology`}
-                  fill
-                  sizes="(max-width: 640px) 100vw, 500px"
-                  className="object-cover"
-                />
+              <div className="mt-8 sm:mt-10">
+                <h3 className="text-sm font-bold text-black lg:text-2xl">
+                  {detail.clientLabel}
+                </h3>
+                <p className="mt-2 text-base leading-relaxed text-black sm:text-xl">
+                  {detail.client}
+                </p>
               </div>
 
-              <ul className="space-y-3 text-[13px] font-medium leading-[1.75] sm:text-sm lg:text-base lg:leading-[1.7]">
-                {detail.methodology.slice(3).map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#172446]" />
+              <div className="mt-7 sm:mt-8">
+                <h3 className="text-sm font-bold text-black lg:text-2xl">
+                  {detail.mandateLabel}
+                </h3>
+                <div className="mt-2 space-y-3 text-base leading-[1.65] text-black sm:text-xl sm:leading-[1.7]">
+                  {(detail.mandate.length
+                    ? detail.mandate
+                    : detail.overview
+                  ).map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+            </header>
+
+            <section className="mt-10 rounded-[12px] bg-[#ddf6fc] px-5 py-8 sm:mt-14 sm:px-10 sm:py-11 lg:px-16 lg:py-14">
+              <h2 className="text-base font-bold leading-tight text-[#171c26] lg:text-2xl">
+                {detail.methodologyHeading}
+              </h2>
+              <ul className="mt-6 space-y-5 text-sm font-medium leading-[1.65] text-[#626870] sm:mt-8 sm:text-lg lg:space-y-6 lg:text-lg">
+                {detail.methodology.map((item) => (
+                  <li key={item} className="flex gap-4 sm:gap-5">
+                    <span className="mt-[10px] h-2.5 w-2.5 shrink-0 rounded-full bg-[#18b4aa] sm:mt-[12px]" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </section>
 
-            <section className="mt-6">
-              <h2 className="text-[22px] font-medium leading-tight text-[#182349] sm:text-[24px]">
-                Basic Inputs/Delivery
+            <section className="mt-10 px-1 sm:mt-14 sm:px-4 lg:px-0">
+              <h2 className="text-base font-bold leading-tight text-[#171c26] lg:text-2xl">
+                Basic Inputs/{detail.deliveryHeading}
               </h2>
-              <ul className="mt-4 space-y-3 text-[13px] font-semibold leading-[1.75] sm:text-sm lg:text-base lg:leading-[1.7]">
+              <ul className="mt-6 space-y-5 text-sm font-medium leading-[1.65] text-[#626870] sm:mt-8 sm:text-lg lg:space-y-6 lg:text-lg">
                 {detail.delivery.map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#172446]" />
+                  <li key={item} className="flex gap-4 sm:gap-5">
+                    <span className="mt-[10px] h-2.5 w-2.5 shrink-0 rounded-full bg-[#18b4aa] sm:mt-[12px]" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </section>
 
-            <section className="mt-6">
-              <h2 className="text-[22px] font-medium leading-tight text-[#182349] sm:text-[24px]">
-                Results
+            <section className="relative mt-12 overflow-hidden rounded-[32px] border border-[#eef1f3] bg-white px-5 py-10 text-center shadow-[0_12px_28px_rgba(23,28,38,0.14)] sm:mt-16 sm:px-14 sm:py-14 lg:px-24">
+              <span className="pointer-events-none absolute -left-32 -top-24 h-80 w-80 rounded-full bg-[#f7f9fa]" />
+              <span className="pointer-events-none absolute -right-40 -top-28 h-96 w-96 rounded-full bg-[#fafbfc]" />
+              <h2 className="relative text-[34px] font-bold leading-tight text-[#18b4aa] sm:text-[46px] lg:text-[52px]">
+                {detail.resultsHeading}
               </h2>
-              <p className="mt-2 text-[13px] font-semibold leading-[1.75] sm:text-sm lg:leading-[1.7]">
+              <p className="relative mx-auto mt-7 max-w-[1080px] text-sm font-medium leading-[1.7] text-black lg:text-lg">
                 {detail.results}
               </p>
-            </section>
+            </section>  
           </article>
 
-          <aside className="lg:pt-2">
-            <div className="lg:sticky lg:top-28 lg:self-start">
-              <div className="mb-6 hidden justify-center lg:flex">
-                <button
-                  aria-label="Previous case studies"
-                  className="flex h-8 w-8 items-center justify-center rounded-full bg-[#22bbb1] text-white shadow-sm"
-                >
-                  <ChevronUp className="h-5 w-5" />
-                </button>
-              </div>
 
-              <div className="grid gap-6 sm:grid-cols-2 lg:block lg:space-y-8">
-                {relatedCaseStudies.map((item) => (
-                  <SidebarCard key={item.slug} item={item} />
-                ))}
-              </div>
 
-              <div className="my-6 hidden justify-center lg:flex">
-                <button
-                  aria-label="More case studies"
-                  className="flex h-8 w-8 items-center justify-center rounded-full bg-[#22bbb1] text-white shadow-sm"
-                >
-                  <ChevronDown className="h-5 w-5" />
-                </button>
+          <aside className="mt-16 border-t border-[#dce9f2] pt-10">
+            <div className="grid gap-8 lg:grid-cols-[1fr_380px] lg:items-start">
+              <div>
+                <h2 className="mb-6 text-2xl font-bold text-[#172446]">
+                  More Case Studies
+                </h2>
+                <div className="grid gap-6 sm:grid-cols-2">
+                  {relatedCaseStudies.map((item) => (
+                    <SidebarCard key={item.slug} item={item} />
+                  ))}
+                </div>
               </div>
-
               <CallbackForm />
             </div>
           </aside>
