@@ -5,7 +5,7 @@ const csrPoints = [
     {
         title: "Education:",
         description:
-            "We support initiatives that enhance educational opportunities, particularly in underserved communities, by providing resources and funding for schools and educational programs.",
+            " We support initiatives that enhance educational opportunities, particularly in underserved communities, by providing resources and funding for schools and educational programs.",
     },
     {
         title: "Environmental Sustainability:",
@@ -51,12 +51,7 @@ export default function OurSocial() {
                         </h2>
 
                         <p className="mt-4 text-xs leading-[1.7] text-[#3f4a5f] lg:text-base">
-                            At Insights Opinion, we believe in the power of business to create
-                            positive change. Our Corporate Social Responsibility (CSR)
-                            initiatives focus on advancing education, promoting environmental
-                            sustainability, and supporting social welfare. We are dedicated to
-                            making a meaningful impact through responsible practices that
-                            benefit both our communities and the environment.
+                            At Insights Opinion, we believe in the power of business to create positive change. Our Corporate Social Responsibility (CSR) initiatives focus on advancing education, promoting environmental sustainability, and supporting social welfare. We are dedicated to making a meaningful impact through responsible practices that benefit both our communities and the environment.
                         </p>
                     </div>
                 </div>

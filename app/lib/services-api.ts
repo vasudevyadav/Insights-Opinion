@@ -88,7 +88,14 @@ async function fetchApiData<T>(url: string): Promise<T | null> {
 }
 
 function getRouteSlug(service: ApiMainService) {
-  return service.slug;
+  const hrefSlug = service.href
+    ?.split("?")[0]
+    .replace(/\/+$/, "")
+    .split("/")
+    .filter(Boolean)
+    .at(-1);
+
+  return hrefSlug || service.slug.replace(/-research$/, "");
 }
 
 function normalizeService(
@@ -173,7 +180,24 @@ export async function fetchMainService(
         service.apiSlug === `${mainServiceSlug}-research`
     ) ?? null;
 
-  if (!summary) return null;
+  if (!summary) {
+    const apiSlugs = [
+      mainServiceSlug,
+      ...(mainServiceSlug.endsWith("-research")
+        ? []
+        : [`${mainServiceSlug}-research`]),
+    ];
+
+    for (const apiSlug of apiSlugs) {
+      const detail = await fetchApiData<ApiMainService>(
+        `${SERVICES_API_URL}/${apiSlug}`
+      );
+
+      if (detail?.content) return normalizeService(detail, 0);
+    }
+
+    return null;
+  }
 
   const detail = await fetchApiData<ApiMainService>(
     `${SERVICES_API_URL}/${summary.apiSlug || summary.slug}`

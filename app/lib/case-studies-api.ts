@@ -1,9 +1,16 @@
 export type CaseStudyDetail = {
+  heading: string;
   overview: string[];
+  clientLabel: string;
   client: string;
+  mandateLabel: string;
+  mandate: string[];
+  methodologyHeading: string;
   methodology: string[];
   methodologyImage: string;
+  deliveryHeading: string;
   delivery: string[];
+  resultsHeading: string;
   results: string;
 };
 
@@ -45,15 +52,15 @@ type CaseStudiesResponse = {
 
 const BASE_URL = apiUrl("/custom/v1/case-studies");
 
-function dropHeadingLine(lines: string[], heading: string): string[] {
-  const [first, ...rest] = lines;
-  return first?.trim().toLowerCase() === heading.toLowerCase() ? rest : lines;
-}
+function parseListSection(items: string[], fallbackHeading: string) {
+  const cleanedItems = items.map((item) => item.trim()).filter(Boolean);
+  const hasApiHeading =
+    cleanedItems[0]?.toLowerCase() === fallbackHeading.toLowerCase();
 
-function cleanList(items: string[], heading: string): string[] {
-  return dropHeadingLine(items, heading)
-    .map((item) => item.trim())
-    .filter(Boolean);
+  return {
+    heading: hasApiHeading ? cleanedItems[0] : fallbackHeading,
+    items: hasApiHeading ? cleanedItems.slice(1) : cleanedItems,
+  };
 }
 
 function cleanOverview(overview: string): string[] {
@@ -63,15 +70,69 @@ function cleanOverview(overview: string): string[] {
     .filter(Boolean);
 }
 
-function cleanResults(results: string, heading: string): string {
-  const withoutHeading = results.replace(
-    new RegExp(`^\\s*${heading}\\s*`, "i"),
-    ""
+function parseOverview(overview: string, fallbackClient: string) {
+  const lines = overview
+    .split(/\r?\n/)
+    .map((line) => line.replace(/&nbsp;/gi, " ").trim())
+    .filter(Boolean);
+  const clientLabelIndex = lines.findIndex((line) =>
+    /^clients?:\s*$/i.test(line)
   );
-  return withoutHeading.replace(/\n+/g, " ").trim();
+  const mandateLabelIndex = lines.findIndex((line) =>
+    /^the mandate:\s*$/i.test(line)
+  );
+
+  const heading =
+    clientLabelIndex > 0 ? lines.slice(0, clientLabelIndex).join(" ") : "";
+  const client =
+    clientLabelIndex >= 0
+      ? lines
+          .slice(
+            clientLabelIndex + 1,
+            mandateLabelIndex > clientLabelIndex
+              ? mandateLabelIndex
+              : clientLabelIndex + 2
+          )
+          .join(" ")
+      : fallbackClient;
+  const mandate =
+    mandateLabelIndex >= 0 ? lines.slice(mandateLabelIndex + 1) : [];
+
+  return {
+    heading,
+    clientLabel:
+      clientLabelIndex >= 0 ? lines[clientLabelIndex] : "Client:",
+    client: client || fallbackClient,
+    mandateLabel:
+      mandateLabelIndex >= 0 ? lines[mandateLabelIndex] : "The Mandate:",
+    mandate,
+    overview: cleanOverview(overview),
+  };
+}
+
+function parseTextSection(value: string, fallbackHeading: string) {
+  const lines = value
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const hasApiHeading =
+    lines[0]?.toLowerCase() === fallbackHeading.toLowerCase();
+
+  return {
+    heading: hasApiHeading ? lines[0] : fallbackHeading,
+    content: (hasApiHeading ? lines.slice(1) : lines).join(" ").trim(),
+  };
 }
 
 function normalizeCaseStudy(raw: RawCaseStudy): CaseStudy {
+  const overview = parseOverview(raw.detail.overview, raw.detail.client);
+  const methodology = parseListSection(
+    raw.detail.methodology,
+    "Methodology"
+  );
+  const delivery = parseListSection(raw.detail.delivery, "Delivery");
+  const results = parseTextSection(raw.detail.results, "Results");
+
   return {
     id: raw.id,
     category: raw.category,
@@ -80,12 +141,19 @@ function normalizeCaseStudy(raw: RawCaseStudy): CaseStudy {
     image: raw.image,
     description: raw.description,
     detail: {
-      overview: cleanOverview(raw.detail.overview),
-      client: raw.detail.client,
-      methodology: cleanList(raw.detail.methodology, "Methodology"),
+      heading: overview.heading,
+      overview: overview.overview,
+      clientLabel: overview.clientLabel,
+      client: overview.client,
+      mandateLabel: overview.mandateLabel,
+      mandate: overview.mandate,
+      methodologyHeading: methodology.heading,
+      methodology: methodology.items,
       methodologyImage: raw.detail.methodologyImage,
-      delivery: cleanList(raw.detail.delivery, "Delivery"),
-      results: cleanResults(raw.detail.results, "Results"),
+      deliveryHeading: delivery.heading,
+      delivery: delivery.items,
+      resultsHeading: results.heading,
+      results: results.content,
     },
     seo: raw.seo,
   };

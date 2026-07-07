@@ -68,15 +68,14 @@ export default function IndustriesGlobal({ industries }: IndustriesGlobalProps) 
                 <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
                     {/* Left: text */}
                     <div>
-                        <p className="text-xl font-normal leading-snug text-[#4b5563] sm:text-[17px] lg:text-[20px]">
+                        <p className="text-xl font-normal leading-snug text-[#4b5563] sm:text-[17px] lg:text-4xl">
                             Comprehensive
                             <br />
                             Industry Coverage by
                         </p>
                         <h2
                             className="mt-1 bg-gradient-to-r from-[#1bb0a4] to-[#74b9ff] bg-clip-text
-                            text-[26px] font-bold leading-tight text-transparent
-                            sm:text-[30px] lg:text-[38px]"
+                            text-[26px] font-bold leading-tight text-transparent lg:text-4xl"
                         >
                             Insights Opinion
                         </h2>
@@ -104,13 +103,12 @@ export default function IndustriesGlobal({ industries }: IndustriesGlobalProps) 
 
                 {/* ── Section Heading ── */}
                 <div className="mt-14 lg:mt-20">
-                    <p className="text-[25px] font-light leading-snug text-[#334155] sm:text-[26px] lg:text-[32px]">
+                    <p className="text-[25px] font-light leading-snug text-[#334155] lg:text-4xl">
                         Your Global Industry
                     </p>
                     <h3
                         className="bg-gradient-to-r from-[#1bb0a4] to-[#74b9ff] bg-clip-text
-                        text-[24px] font-semibold leading-tight text-transparent
-                        sm:text-[28px] lg:text-[36px]"
+                        text-[24px] font-semibold leading-tight text-transparent lg:text-4xl"
                     >
                         Knowledge Partner
                     </h3>
