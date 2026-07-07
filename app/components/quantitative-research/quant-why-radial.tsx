@@ -1,25 +1,9 @@
-import Image from "next/image";
-
-const defaultItems = [
-  "One project manager from brief to delivery",
-  "Custom study design, built around your objectives, no templates",
-  "Online surveys, CATI, CAPI, and CLT under one partner",
-  "8M+ panellists across consumer, B2B, and healthcare",
-  "100+ countries, 60+ languages, verified fieldwork",
-  "Data quality controls through multi-layer validation into every study",
-  "Reporting quality maintained through clear, actionable, presentation-ready outputs",
-  "Timelines agreed upfront and met consistently",
-  "ISO 27001 and ISO 20252 certified",
-  "GDPR and CCPA-aligned across every market",
-  "ESOMAR and Insights Association members",
-];
-
 export default function QuantWhyRadial({
   content,
 }: {
   content?: { heading: string; items: readonly string[] };
 }) {
-  const items = content?.items || defaultItems;
+  if (!content) return null;
 
   return (
     <section className="overflow-hidden bg-[#eaf5fc] py-6 lg:py-16">
@@ -28,35 +12,16 @@ export default function QuantWhyRadial({
         {/* Heading */}
         <div className="mb-8 text-center sm:mb-10">
           <h2 className="text-xl font-medium leading-tight lg:text-4xl">
-            <span className="text-[#1e2746]">Why Choose </span>
-            <span className="font-semibold text-[#1e2746]">Insights Opinion</span>
-            <span className="text-[#1e2746]"> for</span>
-            <br />
             <span className="font-semibold bg-linear-to-r from-[#3c8df6] via-[#31b6df] to-[#1dc3b3] bg-clip-text text-transparent">
-              {content?.heading || "Quantitative Research?"}
+              {content.heading}
             </span>
           </h2>
         </div>
-        {/* Desktop — infographic image */}
-        <div className={`relative ${content ? "hidden" : "hidden lg:block"}`}>
-          <Image
-            src="/quality/why-chose.png"
-            alt="Why Choose Insights Opinion"
-            width={2000}
-            height={1000}
-            unoptimized
-            priority
-            className="w-full h-auto"
-          />
-        </div>
 
-        {/* Mobile / tablet fallback — pill cards */}
         <div
-          className={`grid grid-cols-1 gap-3 sm:grid-cols-2 ${
-            content ? "lg:grid-cols-3" : "lg:hidden"
-          }`}
+          className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {items.map((item, i) => (
+          {content.items.map((item, i) => (
             <div
               key={i}
               className="rounded-2xl px-4 py-3 text-center text-sm font-medium leading-snug text-white shadow-sm"

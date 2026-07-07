@@ -1,25 +1,31 @@
-import { Heart, ShoppingCart, Car, RefreshCw, Settings, GraduationCap, Building2 } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import Image from "next/image";
+import type { Industry } from "@/app/lib/industries-data";
 
-const industries: { name: string; Icon: LucideIcon; useCases: string }[] = [
-  { name: "Healthcare", Icon: Heart, useCases: "Patient behavior studies, HCP surveys, treatment preference tracking" },
-  { name: "Consumer Goods", Icon: ShoppingCart, useCases: "Product testing, brand tracking, purchase decision research" },
-  { name: "Automotive", Icon: Car, useCases: "Purchase intent, feature preference, CLT-based concept testing" },
-  { name: "Financial Services", Icon: RefreshCw, useCases: "NPS measurement, product awareness, customer satisfaction" },
-  { name: "Technology and Telecom", Icon: Settings, useCases: "User experience research, feature prioritization, churn studies" },
-  { name: "Education", Icon: GraduationCap, useCases: "Enrollment research, program awareness, student and parent surveys" },
-  { name: "B2B and Industrial", Icon: Building2, useCases: "Decision-maker surveys, procurement research, B2B panel studies" },
-];
+function cleanIndustryText(value: string) {
+  return value
+    .replace(/\r/g, " ")
+    .replace(/\n/g, " ")
+    .replace(/\t/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 
 export default function QuantIndustries({
   content,
+  industries,
 }: {
   content?: {
+    heading?: string;
+    subheading?: string;
     description: string;
+    industryLabel?: string;
     useCasesLabel: string;
     useCases: readonly string[];
   };
+  industries: Industry[];
 }) {
+  if (!content || industries.length === 0) return null;
+
   return (
     <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
       {/* Hex pattern right */}
@@ -58,55 +64,68 @@ export default function QuantIndustries({
       <div className="relative z-10 mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
         {/* Left-aligned heading */}
         <div className="mb-8 sm:mb-10">
-          <h2 className="text-[42px] font-bold leading-tight sm:text-[52px] lg:text-[60px]">
-            <span className="bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] bg-clip-text text-transparent">
-              Industries
-            </span>
-          </h2>
-          <p className="text-[20px] font-normal text-[#1e2746] lg:text-3xl">We Serve</p>
+          {content.heading && (
+            <h2 className="text-[42px] font-bold leading-tight sm:text-[52px] lg:text-[60px]">
+              <span className="bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] bg-clip-text text-transparent">
+                {content.heading}
+              </span>
+            </h2>
+          )}
+          {content.subheading && (
+            <p className="text-[20px] font-normal text-[#1e2746] lg:text-3xl">
+              {content.subheading}
+            </p>
+          )}
           <p className="mt-1.5 max-w-[480px] text-[14px] leading-[1.7] text-gray-800 sm:text-lg">
-            {content?.description ||
-              "Insights Opinion works with clients across multiple sectors for quantitative research."}
+            {content.description}
           </p>
         </div>
 
-        {/* Table */}
-        <div className="overflow-hidden rounded-[16px] border border-[#cde4f7] bg-white shadow-[0_4px_20px_rgba(37,99,235,0.07)]">
-          {/* Header row */}
-          <div className="grid grid-cols-[1fr_1.8fr] border-b border-[#cde4f7] px-6 py-4">
-            <span className="text-[14px] font-semibold bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] bg-clip-text text-transparent lg:text-lg ">Industry</span>
-            <span className="text-[14px] font-semibold bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] bg-clip-text text-transparent lg:text-lg ">
-              {content?.useCasesLabel ||
-                "Typical Quantitative Research Use Cases"}
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-6 grid grid-cols-[1fr_1.8fr] gap-5 pl-0 sm:pl-[92px]">
+            {content.industryLabel && (
+              <span className="text-[22px] font-semibold bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] bg-clip-text text-transparent lg:text-4xl">
+                {content.industryLabel}
+              </span>
+            )}
+            <span className="text-[22px] font-semibold bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] bg-clip-text text-transparent lg:text-4xl">
+              {content.useCasesLabel}
             </span>
           </div>
 
-          {/* Data rows */}
-          {industries.map((ind, i) => (
-            <div
-              key={i}
-              className="grid grid-cols-[1fr_1.8fr] items-center border-b border-[#e8f2fb] px-6 py-4 transition-colors last:border-0 hover:bg-[#f4f9ff]"
-            >
-              <div className="flex items-center gap-3">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[10px] bg-gradient-to-br from-[#1dc3b3] via-[#31b6df] to-[#3c8df6]">
-                  <ind.Icon size={24} className="text-white" strokeWidth={2} />
-                </span>
-                <span className="text-sm font-semibold text-[#1e2746] lg:text-base">
-                  {ind.name}
-                </span>
+          <div className="space-y-3">
+            {industries.map((industry) => (
+              <div
+                key={`${industry.name}-${industry.image}`}
+                className="grid items-center gap-3 sm:grid-cols-[72px_1fr_42px_1.8fr]"
+              >
+                <div className="flex h-16 w-16 items-center justify-center rounded-[14px] bg-gradient-to-br from-[#68b8f1] via-[#1dc3b3] to-[#16a997] p-3 shadow-[0_8px_16px_rgba(29,195,179,0.24)] sm:h-[72px] sm:w-[72px]">
+                  <Image
+                    src={industry.image}
+                    alt=""
+                    width={48}
+                    height={48}
+                    unoptimized
+                    className="h-full w-full object-contain brightness-0 invert"
+                  />
+                </div>
+
+                <div className="rounded-xl bg-white/90 px-5 py-3 text-lg font-medium text-[#2b3553] shadow-sm lg:text-2xl">
+                  {industry.name.trim()}
+                </div>
+
+                <div className="hidden text-center text-3xl font-bold text-[#4faee8] sm:block">
+                  →
+                </div>
+
+                <div className="rounded-xl bg-white/90 px-5 py-3 text-sm leading-[1.65] text-[#4a5568] shadow-sm lg:text-lg">
+                  {cleanIndustryText(industry.description)}
+                </div>
               </div>
-              <div className="flex items-center gap-10">
-                <span className="shrink-0 text-[20px] font-bold text-[#35d0c7]">→</span>
-                <span className="text-sm leading-[1.6] text-[#4a5568] lg:text-base">
-                  {content?.useCases[i] || ind.useCases}
-                </span>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
-

@@ -89,18 +89,9 @@ export default function QuantMethods({
           <div className="mb-12 text-center">
             <h2 className="text-[32px] font-semibold leading-tight sm:text-[42px] lg:text-[50px]">
               <span className="bg-linear-to-r from-[#3c8df6] via-[#31b6df] to-[#1dc3b3] bg-clip-text text-transparent">
-                Our {titleLead}
+                {titleLead}
               </span>
             </h2>
-            <p className="text-xl font-medium text-[#1e2746] sm:text-3xl">
-              {activeCategory.key === "support"
-                ? "Service Methods"
-                : "Research Methods"}
-            </p>
-            <p className="mx-auto mt-4 max-w-4xl text-sm leading-[1.75] text-[#4a5568] sm:text-base">
-              Select a service to view its detailed capabilities, process, use
-              cases, and frequently asked questions.
-            </p>
           </div>
 
           <div className="hidden gap-5 md:grid md:grid-cols-2">

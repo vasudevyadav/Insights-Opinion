@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ServiceCategoryPage from "@/app/components/services/service-category-page";
 import { fetchMainService } from "@/app/lib/services-api";
+import { fetchIndustries } from "@/app/lib/industries-api";
 import { notFound } from "next/navigation";
 import { buildApiMetadata } from "@/lib/api-metadata";
 
@@ -23,7 +24,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function QuantitativeResearchPage() {
-  const service = await fetchMainService("quantitative");
+  const [service, industries] = await Promise.all([
+    fetchMainService("quantitative"),
+    fetchIndustries(),
+  ]);
 
   if (!service) notFound();
 
@@ -33,6 +37,7 @@ export default async function QuantitativeResearchPage() {
       categoryTitle={service.title}
       content={service.content}
       services={service.children}
+      industries={industries}
     />
   );
 }

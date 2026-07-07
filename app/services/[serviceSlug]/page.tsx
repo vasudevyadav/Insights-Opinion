@@ -5,6 +5,7 @@ import {
   fetchMainService,
   fetchServices,
 } from "@/app/lib/services-api";
+import { fetchIndustries } from "@/app/lib/industries-api";
 import type { ServicePageKey } from "@/data/service-page-content";
 import { buildApiMetadata } from "@/lib/api-metadata";
 
@@ -49,7 +50,10 @@ export async function generateMetadata({
 
 export default async function MainServicePage({ params }: PageProps) {
   const { serviceSlug } = await params;
-  const service = await fetchMainService(serviceSlug);
+  const [service, industries] = await Promise.all([
+    fetchMainService(serviceSlug),
+    fetchIndustries(),
+  ]);
 
   if (!service) notFound();
 
@@ -59,6 +63,7 @@ export default async function MainServicePage({ params }: PageProps) {
       categoryTitle={service.title}
       content={service.content}
       services={service.children}
+      industries={industries}
     />
   );
 }
