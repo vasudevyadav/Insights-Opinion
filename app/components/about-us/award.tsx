@@ -6,19 +6,19 @@ const awards = [
         year: "2021",
         title: "Top\n22 Panel\nCompany",
         description:
-            "Recognized by Quirks Media as one of the leading panel companies globally",
+            "Recognized by Quirks Media as one of the leading panel companies globally.",
     },
     {
         year: "2022",
         title: "Top\n22 Panel\nCompany",
         description:
-            "Recognized by Quirks Media as one of the leading panel companies globally",
+            "Honored by Quirks Media for our outstanding contributions to healthcare research.",
     },
     {
         year: "2023",
         title: "Top\n22 Panel\nCompany",
         description:
-            "Recognized by Quirks Media as one of the leading panel companies globally",
+            "Ranked by Quirks Media among the top companies specializing in telephone interviewing (CATI). ",
     },
 ];
 
@@ -36,9 +36,9 @@ export default function Award() {
                         Awards & Recognitions
                     </h2>
                     <p className="mx-auto mt-2 max-w-[700px] text-[12px] leading-relaxed text-[#4b5563] lg:text-[15px]">
-                        Our commitment to excellence has earned us numerous accolades in the
-                        industry. These awards are a testament to the trust our clients
-                        place in us and our relentless pursuit of quality and innovation.
+                        Our commitment to excellence has earned us numerous accolades in the industry. These
+                        awards are a testament to the trust our clients place in us and our relentless pursuit of
+                        quality and innovation.
                     </p>
                 </div>
 
@@ -48,7 +48,7 @@ export default function Award() {
                             key={index}
                             className="flex flex-col items-center text-center"
                         >
-                            <div className="relative mb-4 h-[135px] w-[135px] lg:h-[160px] lg:w-[160px]">
+                            <div className="relative mb-4 h-[135px] w-[135px] lg:h-[190px] lg:w-[190px]">
                                 <Image
                                     src="/about-us/award.png"
                                     alt={`Award badge ${award.year}`}
@@ -57,11 +57,11 @@ export default function Award() {
                                 />
                             </div>
 
-                            <h3 className="text-[22px] font-semibold leading-none text-[#4fc2cf] lg:text-[28px] bg-gradient-to-r from-[#1bb0a4] to-[#74b9ff] bg-clip-text text-transparent">
+                            <h3 className="text-lg font-semibold leading-none text-[#4fc2cf] lg:text-3xl bg-gradient-to-r from-[#1bb0a4] to-[#74b9ff] bg-clip-text text-transparent">
                                 {award.year}
                             </h3>
 
-                            <p className="mt-2 max-w-[240px] text-[12px] leading-snug text-[#4b5563] lg:text-[14px]">
+                            <p className="mt-4 max-w-[240px] text-xs leading-snug text-[#4b5563] lg:text-base mb-4">
                                 {award.description}
                             </p>
                         </div>

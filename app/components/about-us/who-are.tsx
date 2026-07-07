@@ -42,13 +42,10 @@ export default function WhoWeAre() {
                     </h2>
 
                     <p
-                        className="mx-auto mt-3 max-w-4xl text-[14px] leading-6 text-[#4b5563]
+                        className="mx-auto mt-3 max-w-5xl text-[14px] leading-6 text-[#4b5563]
                         sm:text-[14px] md:text-[15px] lg:mt-2 lg:text-[15px]"
                     >
-                        Welcome to Insights Opinion, where we provide actionable insights through
-                        expert data collection and research solutions. As a global leader in market
-                        research and data services, we empower businesses with the critical
-                        knowledge they need to make well-informed decisions.
+                        Welcome to Insights Opinion, where we provide actionable insights through expert data collection and research solutions. As a global leader in market research and data services, we empower businesses with the critical knowledge they need to make well-informed decisions. Our unwavering commitment to quality, innovation, and client success drives every aspect of our work.
                     </p>
                 </div>
 
@@ -85,15 +82,9 @@ export default function WhoWeAre() {
                         </h3>
 
                         <p className="mt-4 text-[14px] leading-6 text-[#4b5563] sm:text-[15px] lg:mt-5 lg:text-base">
-                            Since our founding in 2018, we have grown from a small, dedicated team
-                            into a global leader in data-driven decision-making. Our journey
-                            reflects our commitment to continuous innovation, strategic expansion,
-                            and a relentless focus on adding value to our clients.
+                            Since our founding in 2018, we have grown from a small, dedicated team into a global leader in data-driven decision-making. Our journey reflects our commitment to continuous innovation, strategic expansion, and a relentless focus on adding value to our clients. Here's how we've evolved:
                         </p>
 
-                        <p className="mt-4 text-[14px] leading-6 text-[#4b5563] sm:text-[15px] lg:mt-5 lg:text-base">
-                            Here’s how we’ve evolved:
-                        </p>
                     </div>
                 </div>
             </div>

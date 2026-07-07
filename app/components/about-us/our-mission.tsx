@@ -47,18 +47,15 @@ export default function OurMission() {
                         </h2>
 
                         <p className="mt-3 text-xs leading-6 text-gray-700 lg:text-base">
-                            At Insights Opinion, our mission is to empower organizations with
-                            accurate and insightful data that fuels impactful decision-making.
-                            We firmly believe in the transformative power of data and are
-                            dedicated to delivering top-quality research services that turn
-                            information into a strategic advantage.
+                            At Insights Opinion, our mission is to empower organizations with accurate and insightful data that fuels impactful decision-making. We firmly believe in the transformative power of data and are dedicated to delivering top-quality research services that turn information into a strategic advantage.
+
                         </p>
 
                     </div>
 
 
                     <div className="flex justify-center lg:justify-end">
-                        <div className="relative z-10 overflow-hidden rounded-[22px]">
+                        <div className="relative z-10 overflow-hidden rounded-[22px] w-full">
                             <Image
                                 src="/about-us/our-mission.png"
                                 alt="Our Mission"

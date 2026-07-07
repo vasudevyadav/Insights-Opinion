@@ -58,12 +58,12 @@ export default function IndustriesForm() {
                 <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr]">
                     <div className="flex flex-col items-center justify-center lg:flex-row lg:items-start lg:justify-start lg:gap-8">
                         <div className="text-center lg:mb-10 lg:text-left">
-                            <p className="text-[20px] leading-tight text-black sm:text-[28px]">
+                            <p className="text-[20px] leading-tight text-black lg:text-[34px]">
                                 Grow Better with
                             </p>
-                            <h2 className="mt-1 text-[34px] font-semibold leading-[1.05] bg-[linear-gradient(90deg,#17afa1_0%,#43bccb_45%,#74b9ff_100%)] bg-clip-text text-transparent bg-clip-text text-transparent sm:text-[52px]">
+                            <h2 className="my-1 text-[34px] font-semibold leading-[1.05] bg-[linear-gradient(90deg,#17afa1_0%,#43bccb_45%,#74b9ff_100%)] bg-clip-text text-transparent bg-clip-text text-transparent sm:text-4xl">
                                 Insight
-                                <br />
+
                                 Opinion
                             </h2>
                         </div>

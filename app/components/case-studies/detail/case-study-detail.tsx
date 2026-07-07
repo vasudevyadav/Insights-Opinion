@@ -265,9 +265,8 @@ export default function CaseStudyDetail({
               <p className="relative mx-auto mt-7 max-w-[1080px] text-sm font-medium leading-[1.7] text-black lg:text-lg">
                 {detail.results}
               </p>
-            </section>  
+            </section>
           </article>
-
 
 
           <aside className="mt-16 border-t border-[#dce9f2] pt-10">
