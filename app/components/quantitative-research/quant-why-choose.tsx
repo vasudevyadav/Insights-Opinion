@@ -20,6 +20,12 @@ export default function QuantWhyChoose({
       <div className="relative z-10 mx-auto max-w-6xl px-4 lg:px-0">
         <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
           <div className="max-w-[500px]">
+            <p className="text-xl font-light leading-[0.95] tracking-[-0.02em] text-[#4a5565] lg:text-[45px]">
+              Why Choose
+            </p>
+            <h2 className="bg-[linear-gradient(130deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-2xl font-medium text-transparent lg:text-[45px] lg:leading-tight">
+              Insight Opinion
+            </h2>
             <p className="mt-2 text-sm leading-[1.6] text-[#5a6472] lg:mt-5 lg:text-base">
               {content.description}
             </p>
@@ -33,8 +39,8 @@ export default function QuantWhyChoose({
                       type="button"
                       onClick={() => setOpenIndex(isOpen ? -1 : index)}
                       className={`flex w-full items-center justify-between px-5 py-5 text-left transition-all duration-200 ${isOpen
-                          ? "bg-[#111b54] text-white"
-                          : "bg-transparent text-[#374151] hover:bg-[#e8eef5]"
+                        ? "bg-[#111b54] text-white"
+                        : "bg-transparent text-[#374151] hover:bg-[#e8eef5]"
                         }`}
                     >
                       <div>
@@ -46,8 +52,8 @@ export default function QuantWhyChoose({
                         </h3>
                         <div
                           className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${isOpen
-                              ? "grid-rows-[1fr] opacity-100"
-                              : "grid-rows-[0fr] opacity-0"
+                            ? "grid-rows-[1fr] opacity-100"
+                            : "grid-rows-[0fr] opacity-0"
                             }`}
                         >
                           <div className="overflow-hidden">
@@ -61,8 +67,8 @@ export default function QuantWhyChoose({
                         <ChevronDown
                           size={18}
                           className={`transition-transform duration-500 motion-reduce:transition-none ${isOpen
-                              ? "rotate-180 text-white"
-                              : "text-[#4b5563]"
+                            ? "rotate-180 text-white"
+                            : "text-[#4b5563]"
                             }`}
                         />
                       </span>

@@ -47,7 +47,7 @@ export default function TestimonialHealth() {
     return (
         <section className="relative overflow-hidden bg-[#eef5fb] py-4">
             <div className="relative z-10 mx-auto">
-                <div className="relative mb-8 pl-6 pr-6 lg:mb-16 lg:pl-32 lg:pr-0">
+                <div className="relative mb-8 pl-6 pr-6 lg:mb-16 lg:pl-48 lg:pr-0">
                     <div className="relative mb-6 flex items-end justify-between gap-4">
                         <div className="max-w-[600px] mt-2">
                             <h2 className="mb-2 text-2xl font-light leading-tight text-[#2f3643] sm:text-4xl">
@@ -103,7 +103,7 @@ export default function TestimonialHealth() {
                             <SwiperSlide key={index}>
                                 <div className="group rounded-none border border-[#c7d2e2] bg-white p-4 transition-all duration-500 hover:border-[#1a1f52] hover:bg-[#1a1f52]">
                                     <p className="min-h-[98px] line-clamp-4 text-xs leading-5 text-[#344054] transition-colors duration-500 group-hover:text-white/85 lg:text-sm">
-                                        "{item.quote}"
+                                        &quot;{item.quote}&quot;
                                     </p>
 
                                     <div className="mt-3 flex items-center justify-between gap-3">

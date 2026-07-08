@@ -10,6 +10,7 @@ import QuantWhyRadial from "@/app/components/quantitative-research/quant-why-rad
 import QuantWhyChoose from "@/app/components/quantitative-research/quant-why-choose";
 import QuantFaq from "@/app/components/quantitative-research/quant-faq";
 import QuantNews from "@/app/components/quantitative-research/quant-news";
+import TestimonialHealth from "@/app/components/healthcare-research/testimonial-health";
 import {
   type ServicePageKey,
   type ServicePageContent,
@@ -48,8 +49,9 @@ export default function ServiceCategoryPage({
       <QuantGlobalServices content={content.global} />
       <QuantWhyRadial content={content.whyRadial} />
       <QuantWhyChoose content={content.whyChoose} />
-      <QuantFaq items={[...content.faqs]} />
+      <TestimonialHealth />
       <QuantNews articles={[...content.articles]} />
+      <QuantFaq items={[...content.faqs]} />
     </main>
   );
 }
