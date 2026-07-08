@@ -1,9 +1,12 @@
+import Image from "next/image";
+
 export default function QuantWhyRadial({
   content,
 }: {
-  content?: { heading: string; items: readonly string[] };
+  content?: { heading: string; image?: string; imageAlt?: string; items: readonly string[] };
 }) {
   if (!content) return null;
+  const image = content.image || "/quality/why-chose.png";
 
   return (
     <section className="overflow-hidden bg-[#eaf5fc] py-6 lg:py-16">
@@ -18,8 +21,20 @@ export default function QuantWhyRadial({
           </h2>
         </div>
 
+        <div className="relative">
+          <Image
+            src={image}
+            alt={content.imageAlt || content.heading}
+            width={2000}
+            height={1000}
+            unoptimized
+            priority
+            className="h-auto w-full"
+          />
+        </div>
+
         <div
-          className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
+          className="hidden grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
         >
           {content.items.map((item, i) => (
             <div

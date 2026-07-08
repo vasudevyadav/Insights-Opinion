@@ -76,22 +76,27 @@ export default function QuantIndustries({
               {content.subheading}
             </p>
           )}
-          <p className="mt-1.5 max-w-[480px] text-[14px] leading-[1.7] text-gray-800 sm:text-lg">
-            {content.description}
-          </p>
+          <div className=" pl-0 sm:pl-[56px] ">
+            <div className="mb-6 grid grid-cols-[1fr_1.8fr] gap-5 ">
+              {content.industryLabel && (
+                <span className="text-[22px] font-semibold bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] bg-clip-text text-transparent lg:text-4xl line-clamp-2">
+                  {content.industryLabel}
+                </span>
+              )}
+              <span className="text-[22px] font-semibold bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] bg-clip-text text-transparent lg:text-4xl line-clamp-2">
+                {content.useCasesLabel}
+              </span>
+
+            </div>
+            <p className="mt-1.5 max-w-[480px] text-[14px] leading-[1.7] text-gray-800 sm:text-lg">
+              {content.description}
+            </p>
+          </div>
+
+
         </div>
 
         <div className="mx-auto max-w-5xl">
-          <div className="mb-6 grid grid-cols-[1fr_1.8fr] gap-5 pl-0 sm:pl-[92px]">
-            {content.industryLabel && (
-              <span className="text-[22px] font-semibold bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] bg-clip-text text-transparent lg:text-4xl">
-                {content.industryLabel}
-              </span>
-            )}
-            <span className="text-[22px] font-semibold bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] bg-clip-text text-transparent lg:text-4xl">
-              {content.useCasesLabel}
-            </span>
-          </div>
 
           <div className="space-y-3">
             {industries.map((industry) => (
@@ -99,7 +104,7 @@ export default function QuantIndustries({
                 key={`${industry.name}-${industry.image}`}
                 className="grid items-center gap-3 sm:grid-cols-[72px_1fr_42px_1.8fr]"
               >
-                <div className="flex h-16 w-16 items-center justify-center rounded-[14px] bg-gradient-to-br from-[#68b8f1] via-[#1dc3b3] to-[#16a997] p-3 shadow-[0_8px_16px_rgba(29,195,179,0.24)] sm:h-[72px] sm:w-[72px]">
+                <div className="flex h-16 w-16 items-center justify-center rounded-[14px] bg-gradient-to-br from-[#68b8f1] via-[#1dc3b3] to-[#16a997] p-4 shadow-[0_8px_16px_rgba(29,195,179,0.24)] sm:h-[72px] sm:w-[72px]">
                   <Image
                     src={industry.image}
                     alt=""
@@ -110,7 +115,7 @@ export default function QuantIndustries({
                   />
                 </div>
 
-                <div className="rounded-xl bg-white/90 px-5 py-3 text-lg font-medium text-[#2b3553] shadow-sm lg:text-2xl">
+                <div className="rounded-xl bg-white/90 px-5 py-3 text-lg font-medium text-[#2b3553] shadow-sm lg:text-lg">
                   {industry.name.trim()}
                 </div>
 
@@ -118,7 +123,7 @@ export default function QuantIndustries({
                   →
                 </div>
 
-                <div className="rounded-xl bg-white/90 px-5 py-3 text-sm leading-[1.65] text-[#4a5568] shadow-sm lg:text-lg">
+                <div className="rounded-xl bg-white/90 px-5 py-2 text-sm leading-[1.65] text-[#4a5568] shadow-sm lg:text-lg line-clamp-2">
                   {cleanIndustryText(industry.description)}
                 </div>
               </div>
