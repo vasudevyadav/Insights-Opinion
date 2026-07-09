@@ -8,7 +8,7 @@ import HealthServices from "@/app/components/healthcare-research/health-services
 import HealthPanel from "@/app/components/healthcare-research/health-panels";
 import HealthcareMethodologies from "@/app/components/healthcare-research/health-method";
 import CaseStudies from "@/app/components/healthcare-research/case-studies";
-import WhyChooseHealth from "@/app/components/healthcare-research/why-choose";
+import WhyChoose from "@/app/components/home/why-choose";
 import HealthLeader from "@/app/components/healthcare-research/health-leader";
 import TestimonialHealth from "@/app/components/healthcare-research/testimonial-health";
 import CallbackFaqHealth from "@/app/components/healthcare-research/call-back-faq";
@@ -16,6 +16,7 @@ import BookDemoHealth from "@/app/components/healthcare-research/book-demo";
 import HealthUsecases from "@/app/components/healthcare-research/health-usecases ";
 import { getResearchPage } from "@/lib/getResearchPage";
 import { buildApiMetadata } from "@/lib/api-metadata";
+import HealthLeaderIndustry from "@/app/components/healthcare-research/health-leader-industry";
 
 type ResearchPageProps = {
   params: Promise<{ slug: string }>;
@@ -75,14 +76,13 @@ export default async function ResearchSlugPage({
       {pageData.usecases?.useCases?.length > 0 && (
         <HealthUsecases data={pageData.usecases} />
       )}
+      <HealthLeaderIndustry />  
 
       {pageData.caseStudies?.caseStudies?.length > 0 && (
         <CaseStudies data={pageData.caseStudies} />
       )}
 
-      {pageData.whyChoose?.sections?.length > 0 && (
-        <WhyChooseHealth data={pageData.whyChoose} />
-      )}
+      <WhyChoose />
 
       <HealthLeader />
       <TestimonialHealth />
