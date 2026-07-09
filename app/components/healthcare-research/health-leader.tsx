@@ -20,7 +20,7 @@ export default function HealthLeader() {
 
     return (
         <>
-            <section className="relative overflow-hidden bg-[#edf6ff] pt-12 lg:pt-0 ">
+            <section className="relative overflow-hidden bg-[#edf6ff] pt-10 ">
                 <style>{`
                     .logo-row-wrap {
                         width: 100%;
@@ -147,51 +147,7 @@ export default function HealthLeader() {
                 </div>
             </section>
 
-            <section className="relative overflow-hidden bg-[#edf6ff] py-2 lg:py-14">
-
-
-                <div className="relative z-10 mx-auto max-w-6xl px-4">
-                    <div className="grid items-center gap-8 md:grid-cols-[1.15fr_1fr]">
-                        <div className="relative mx-auto w-full max-w-[520px] overflow-hidden rounded-lg lg:rounded-[22px]">
-                            <Image
-                                src="/market-research/Healthcare-1.jpg"
-                                alt="Healthcare market research"
-                                width={900}
-                                height={520}
-                                className="h-full w-full object-cover"
-                                priority
-                            />
-                        </div>
-
-                        <div className="max-w-[420px]">
-                            <p className="mb-3 text-sm font-medium text-[#4e5a70] lg:text-base">
-                                Healthcare Market Research
-                            </p>
-
-                            <h2 className="text-2xl  font-light leading-[1.1] text-[#3d4461] sm:text-4xl lg:text-[52px]">
-                                The Research
-                                <br />
-                                The Industry
-                                <br />
-                                <span className=" bg-[linear-gradient(90deg,#1bc39a_0%,#58c5ea_48%,#5a7cf0_100%)] bg-clip-text font-semibold text-transparent">
-                                    Actually Trusts.
-                                </span>
-                            </h2>
-
-                            <div className="mt-6 flex flex-wrap gap-4">
-                                <button className="inline-flex items-center gap-2 bg-[linear-gradient(90deg,#5ed0df_0%,#2a7de1_100%)] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90">
-                                    Get Started
-                                    <span>→</span>
-                                </button>
-
-                                <button className="border border-[#9aa7bf] bg-transparent px-6 py-3 text-sm font-medium text-[#3d4461] transition hover:bg-white/60">
-                                    Watch demo
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+         
         </>
     );
 }
