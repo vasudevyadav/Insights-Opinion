@@ -17,7 +17,7 @@ export default function QuantDetailsWhyRadial({
         {/* Heading */}
         <div className="mb-8 text-center sm:mb-10">
           <h2 className="text-xl font-medium leading-tight lg:text-4xl">
-            <span className="text-[#1e2746]">Why Choose </span>
+            <span className="text-[#1e2746]">Why Chqewfdoose </span>
             <span className="font-semibold text-[#1e2746]">Insights Opinion</span>
             <span className="text-[#1e2746]"> for</span>
             <br />
