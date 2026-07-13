@@ -12,7 +12,7 @@ export default function QuantMethodCta({
         <div className="absolute -right-24 top-1/2 h-[300px] w-[300px] -translate-y-1/2 rounded-full bg-[#5abff8]/10 blur-3xl" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-5xl px-5 text-center sm:px-6">
+      <div className="relative z-10 mx-auto max-w-6xl px-5 text-center sm:px-6">
         <h2 className="text-2xl font-semibold leading-[1.25] lg:text-4xl">
           <span className="bg-gradient-to-r from-[#3c8df6] via-[#31b6df] to-[#1dc3b3] bg-clip-text text-transparent">
             {content.heading}

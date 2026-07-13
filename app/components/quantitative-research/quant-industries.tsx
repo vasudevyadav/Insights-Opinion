@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Industry } from "@/app/lib/industries-data";
 
 function cleanIndustryText(value: string) {
@@ -25,6 +26,9 @@ export default function QuantIndustries({
   industries: Industry[];
 }) {
   if (!content || industries.length === 0) return null;
+
+  const visibleIndustries = industries.slice(0, 6);
+  const hasMoreIndustries = industries.length > visibleIndustries.length;
 
   return (
     <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
@@ -99,7 +103,7 @@ export default function QuantIndustries({
         <div className="mx-auto max-w-5xl">
 
           <div className="space-y-3">
-            {industries.map((industry) => (
+            {visibleIndustries.map((industry) => (
               <div
                 key={`${industry.name}-${industry.image}`}
                 className="grid items-center gap-3 sm:grid-cols-[72px_1fr_42px_1.8fr]"
@@ -129,6 +133,17 @@ export default function QuantIndustries({
               </div>
             ))}
           </div>
+
+          {hasMoreIndustries && (
+            <div className="mt-10 flex justify-center">
+              <Link
+                href="/industries"
+                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] px-10 py-2.5 text-lg uppercase font-semibold text-white shadow-[0_10px_24px_rgba(49,182,223,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_28px_rgba(49,182,223,0.34)] focus:outline-none focus:ring-2 focus:ring-[#31b6df] focus:ring-offset-2"
+              >
+                View all
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -14,7 +14,7 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: 
 };
 
 export default function MarketResearch({ data }: { data: MethodData }) {
-  const { whenToUse, comparison, vsBox, sectors } = data;
+  const { whenToUse, vsBox, sectors } = data;
 
   return (
     <>
@@ -162,7 +162,7 @@ export default function MarketResearch({ data }: { data: MethodData }) {
               ))}
             </div>
 
-            <div className="my-14">
+            {/* <div className="my-14">
 
               {vsBox.subtitle && (
                 <p className=" text-xl font-thin text-black">
@@ -175,7 +175,7 @@ export default function MarketResearch({ data }: { data: MethodData }) {
                   {vsBox.description}
                 </p>
               )}
-            </div>
+            </div> */}
 
 
             {/* Mobile Cards */}
@@ -218,29 +218,51 @@ export default function MarketResearch({ data }: { data: MethodData }) {
       {/* ── Sector Specific Research ── */}
       {sectors?.length > 0 && (
         <section className="relative overflow-hidden bg-[#deeef7] py-8 lg:py-16">
-          <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-5 md:grid-cols-3">
-              {sectors.map((sector) => (
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-10 text-center lg:mb-14">
+              <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
+                <span className="bg-linear-to-r from-[#3c8df6] via-[#31b6df] to-[#1dc3b3] bg-clip-text text-transparent">
+                  Sector-Specific
+                </span>{" "}
+                <span className="text-[#1e2746]">Research</span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-[#4a5568] sm:text-base">
+                Explore how our research approach is adapted to the needs of each audience and industry.
+              </p>
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-2 md:items-start lg:gap-6">
+              {sectors.map((sector, index) => (
                 <article
                   key={sector.title}
-                  className="overflow-hidden rounded-2xl bg-white shadow-[0_10px_28px_rgba(20,45,90,0.12)]"
+                  tabIndex={0}
+                  className={`group relative h-[340px] overflow-hidden rounded-[20px] shadow-[0_8px_28px_rgba(20,45,90,0.16)] outline-none transition duration-500 hover:-translate-y-1 focus-visible:ring-4 focus-visible:ring-[#1dc3b3]/40 sm:h-[380px] lg:h-[400px] ${index % 2 === 1 ? "md:mt-14" : ""
+                    }`}
                 >
-                  <div className="relative h-48">
-                    <Image
-                      src={sector.image}
-                      alt={sector.title}
-                      fill
-                      unoptimized
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-[#1dc3b3]/90 to-transparent" />
-                    <h3 className="absolute inset-x-0 bottom-0 p-5 text-lg font-semibold text-white">
-                      {sector.title}
-                    </h3>
+                  <Image
+                    src={sector.image}
+                    alt={sector.title}
+                    fill
+                    unoptimized
+                    className="object-cover transition-transform duration-700 group-hover:scale-105 group-focus:scale-105"
+                  />
+
+                  <div className="absolute inset-0 bg-linear-to-t from-[#10bdae]/95 via-[#16bfb4]/35 to-black/5 transition-colors duration-500 md:group-hover:from-[#087f79]/95 md:group-hover:via-[#087f79]/60 md:group-focus:from-[#087f79]/95 md:group-focus:via-[#087f79]/60" />
+
+                  <div className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-6">
+                    <div className="flex items-end justify-between gap-4">
+                      <h3 className="text-lg font-semibold leading-snug drop-shadow-sm sm:text-xl">
+                        {sector.title}
+                      </h3>
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/25 text-lg backdrop-blur-sm transition duration-300 group-hover:rotate-90 group-hover:bg-white group-hover:text-[#1dc3b3] group-focus:rotate-90 group-focus:bg-white group-focus:text-[#1dc3b3]">
+                        +
+                      </span>
+                    </div>
+
+                    <p className="mt-3 max-h-48 overflow-y-auto pr-1 text-sm leading-relaxed text-white/95 opacity-100 transition-all duration-500 md:max-h-0 md:translate-y-4 md:overflow-hidden md:opacity-0 md:group-hover:max-h-48 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus:max-h-48 md:group-focus:translate-y-0 md:group-focus:opacity-100 sm:text-[15px]">
+                      {sector.description}
+                    </p>
                   </div>
-                  <p className="p-5 text-sm leading-relaxed text-[#4a5568]">
-                    {sector.description}
-                  </p>
                 </article>
               ))}
             </div>

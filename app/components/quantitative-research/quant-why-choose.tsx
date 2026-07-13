@@ -26,53 +26,22 @@ export default function QuantWhyChoose({
             <h2 className="bg-[linear-gradient(130deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-2xl font-medium text-transparent lg:text-[45px] lg:leading-tight">
               Insight Opinion
             </h2>
-            <p className="mt-2 text-sm leading-[1.6] text-[#5a6472] lg:mt-5 lg:text-base">
+            <p className="my-2 text-base leading-[1.6] text-gray-700 lg:mt-5 lg:text-lg">
               {content.description}
             </p>
 
-            <div className="mt-8 w-full">
+            <div className=" w-full">
               {content.items.map((item, index) => {
                 const isOpen = openIndex === index;
                 return (
-                  <div key={item.title} className="border-b border-black">
-                    <button
-                      type="button"
-                      onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                      className={`flex w-full items-center justify-between px-5 py-5 text-left transition-all duration-200 ${isOpen
-                        ? "bg-[#111b54] text-white"
-                        : "bg-transparent text-[#374151] hover:bg-[#e8eef5]"
-                        }`}
-                    >
-                      <div>
-                        <h3
-                          className={`text-sm font-semibold lg:text-[15px] ${isOpen ? "text-[#16af9f]" : "text-[#384250]"
-                            }`}
-                        >
+                  <div key={item.title}>
+                    <ul className="list-disc pl-4 my-4">
+                      <li className="list-item text-black font-medium hover:text-[#59b0ae] hover:font-semibold">
+                        <div className="flex w-full items-center justify-between">
                           {item.title}
-                        </h3>
-                        <div
-                          className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${isOpen
-                            ? "grid-rows-[1fr] opacity-100"
-                            : "grid-rows-[0fr] opacity-0"
-                            }`}
-                        >
-                          <div className="overflow-hidden">
-                            <p className="mt-2 max-w-full text-xs leading-[1.55] text-[#d6dbef] lg:max-w-[320px] lg:text-sm">
-                              {item.content}
-                            </p>
-                          </div>
                         </div>
-                      </div>
-                      <span className="ml-4 shrink-0">
-                        <ChevronDown
-                          size={18}
-                          className={`transition-transform duration-500 motion-reduce:transition-none ${isOpen
-                            ? "rotate-180 text-white"
-                            : "text-[#4b5563]"
-                            }`}
-                        />
-                      </span>
-                    </button>
+                      </li>
+                    </ul>
                   </div>
                 );
               })}
