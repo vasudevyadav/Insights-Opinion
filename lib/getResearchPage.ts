@@ -12,9 +12,30 @@ export const researchPageSlugs = [
 ] as const;
 
 export type ApiResearchPageSlug = (typeof researchPageSlugs)[number];
+export type ResearchSectionButton = {
+  text: string;
+  link: string;
+};
+
+export type ConsumerResearchContentBlock = {
+  title: string;
+  highlightTitle: string;
+  description: string;
+  image: string;
+  points?: string;
+  primaryButton?: ResearchSectionButton;
+  secondaryButton?: ResearchSectionButton;
+};
+
+export type ConsumerResearchSection = {
+  howResearchWorks?: ConsumerResearchContentBlock;
+  benefits?: ConsumerResearchContentBlock;
+};
+
 export type ResearchPageData = (typeof researchPages)[ResearchPageSlug] & {
   slug?: string;
   seo?: ApiSeo;
+  consumerResearchSection?: ConsumerResearchSection;
 };
 
 export type ResearchNavItem = {

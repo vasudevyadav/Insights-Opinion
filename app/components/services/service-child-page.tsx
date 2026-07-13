@@ -4,18 +4,24 @@ import QuantDetailsWhat from "@/app/components/quantitative-research-method/quan
 import QuantDetailsAbout from "@/app/components/quantitative-research-method/quant-about";
 import QuantWhatOur from "@/app/components/quantitative-research-method/quant-what-our";
 import MarketResearch from "@/app/components/quantitative-research-method/market-research";
+import QuantWhyChoose from "@/app/components/quantitative-research/quant-why-choose";
 import type { MainService } from "@/app/lib/service-catalog";
 import type { MethodData } from "@/app/lib/method-data";
 import type { ServicePageContent } from "@/data/service-page-content";
 
 export default function ServiceChildPage({
   data,
+  parentContent,
 }: {
   slug: string;
   data: MethodData;
   parentService?: MainService;
   parentContent?: ServicePageContent;
 }) {
+  const whyChooseSections = data.whyChooseSections?.length
+    ? data.whyChooseSections
+    : parentContent?.whyChooseSections;
+
   return (
     <main>
       {data.hero?.title && <QuantDetailsHero data={data.hero} />}
@@ -26,6 +32,9 @@ export default function ServiceChildPage({
       )}
       {(data.whenToUse || data.vsBox) && (
         <MarketResearch data={data} />
+      )}
+      {!!whyChooseSections?.length && (
+        <QuantWhyChoose sections={whyChooseSections} />
       )}
 
       {data.faqs?.length > 0 && <QuantDetailsFaq data={data.faqs} />}

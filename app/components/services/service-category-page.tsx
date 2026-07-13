@@ -6,7 +6,6 @@ import QuantMethodCta from "@/app/components/quantitative-research/quant-method-
 import QuantDataAnalysis from "@/app/components/quantitative-research/quant-data-analysis";
 import QuantIndustries from "@/app/components/quantitative-research/quant-industries";
 import QuantGlobalServices from "@/app/components/quantitative-research/quant-global-services";
-import QuantWhyRadial from "@/app/components/quantitative-research/quant-why-radial";
 import QuantWhyChoose from "@/app/components/quantitative-research/quant-why-choose";
 import QuantFaq from "@/app/components/quantitative-research/quant-faq";
 import QuantNews from "@/app/components/quantitative-research/quant-news";
@@ -47,8 +46,10 @@ export default function ServiceCategoryPage({
       <QuantDataAnalysis content={content.analysis} />
       <QuantIndustries content={content.industries} industries={industries} />
       <QuantGlobalServices content={content.global} />
-      <QuantWhyRadial content={content.whyRadial} />
-      <QuantWhyChoose content={content.whyChoose} />
+      <QuantWhyChoose
+        content={content.whyChoose}
+        sections={content.whyChooseSections}
+      />
       <TestimonialHealth />
       <QuantNews articles={[...content.articles]} />
       <QuantFaq items={[...content.faqs]} />

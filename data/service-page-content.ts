@@ -470,6 +470,18 @@ export const servicePageContent = {
 } as const;
 
 export type ServicePageKey = keyof typeof servicePageContent;
+export type WhyChooseSection = {
+  layout: "left" | "right";
+  title: string;
+  highlight: string;
+  description: string;
+  image: string;
+  items: readonly {
+    title: string;
+    content?: string;
+  }[];
+};
+
 type WidenServiceContent<T> =
   T extends string
   ? string
@@ -483,7 +495,9 @@ type WidenServiceContent<T> =
 
 export type ServicePageContent = WidenServiceContent<
   (typeof servicePageContent)[ServicePageKey]
->;
+> & {
+  whyChooseSections?: readonly WhyChooseSection[];
+};
 
 export function getServicePageContent(
   slug: string
