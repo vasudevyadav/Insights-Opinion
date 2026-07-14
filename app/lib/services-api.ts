@@ -176,13 +176,18 @@ export async function fetchMainService(
   mainServiceSlug: string
 ): Promise<ApiMainServiceWithContent | null> {
   const services = await fetchServicesData();
+  const expectedApiSlugs = new Set([
+    mainServiceSlug,
+    ...(mainServiceSlug.endsWith("-research")
+      ? []
+      : [`${mainServiceSlug}-research`]),
+  ]);
   const summary =
     services.find(
-      (service) =>
-        service.slug === mainServiceSlug ||
-        service.apiSlug === mainServiceSlug ||
-        service.apiSlug === `${mainServiceSlug}-research`
-    ) ?? null;
+      (service) => service.apiSlug && expectedApiSlugs.has(service.apiSlug)
+    ) ??
+    services.find((service) => service.slug === mainServiceSlug) ??
+    null;
 
   if (!summary) {
     const apiSlugs = [
@@ -222,7 +227,7 @@ export async function fetchChildService(
     (item) => item.slug === childServiceSlug
   );
 
-  if (!service || !childSummary) return null;
+  if (!service) return null;
 
   const childData = await fetchApiData<ApiServiceChild | ApiMainService[]>(
     `${SERVICES_API_URL}/${service.apiSlug || service.slug}/${childServiceSlug}`
@@ -233,8 +238,13 @@ export async function fetchChildService(
         .find((item) => item.slug === childServiceSlug)
     : childData;
 
-  if (!child?.content) return null;
-  return { service, child: child as ApiServiceChild & { content: MethodData } };
+  const resolvedChild = child?.content ? child : childSummary;
+
+  if (!resolvedChild?.content) return null;
+  return {
+    service,
+    child: resolvedChild as ApiServiceChild & { content: MethodData },
+  };
 }
 
 export async function fetchChildServiceBySlug(
@@ -246,11 +256,12 @@ export async function fetchChildServiceBySlug(
   const services = await fetchServicesData();
 
   for (const serviceSummary of services) {
-    if (
-      serviceSummary.children.some((item) => item.slug === childServiceSlug)
-    ) {
-      return fetchChildService(serviceSummary.slug, childServiceSlug);
-    }
+    const result = await fetchChildService(
+      serviceSummary.slug,
+      childServiceSlug
+    );
+
+    if (result) return result;
   }
 
   return null;
