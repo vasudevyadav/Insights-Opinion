@@ -76,7 +76,9 @@ export default async function ResearchSlugPage({
       {pageData.usecases?.useCases?.length > 0 && (
         <HealthUsecases data={pageData.usecases} />
       )}
-      <HealthLeaderIndustry />  
+      {pageData.consumerResearchSection && (
+        <HealthLeaderIndustry data={pageData.consumerResearchSection} />
+      )}
 
       {pageData.caseStudies?.caseStudies?.length > 0 && (
         <CaseStudies data={pageData.caseStudies} />

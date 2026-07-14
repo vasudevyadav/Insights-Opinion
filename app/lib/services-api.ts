@@ -117,6 +117,10 @@ function normalizeService(
         ...service.content.whyChoose,
         description: stripHtml(service.content.whyChoose?.description || ""),
       },
+      whyChooseSections: service.content.whyChooseSections?.map((section) => ({
+        ...section,
+        description: stripHtml(section.description || ""),
+      })),
     },
     children: (service.children || []).map((child, childIndex) => ({
       ...child,

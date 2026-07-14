@@ -40,7 +40,6 @@ export default async function MethodDetailPage({
       slug={result.child.slug}
       data={result.child.content}
       parentService={result.service}
-      parentContent={result.service.content}
     />
   );
 }
