@@ -53,6 +53,15 @@ export default async function ResearchSlugPage({
 
   if (!pageData) notFound();
 
+  const faqSection = pageData.faqSection
+    ? {
+        ...pageData.faqSection,
+        faqs: (pageData.faqSection.faqs ?? []).filter(
+          (faq) => faq.question?.trim() && faq.answer?.trim()
+        ),
+      }
+    : null;
+
   return (
     <section>
       {pageData.hero && <HealthHero data={pageData.hero} />}
@@ -88,7 +97,7 @@ export default async function ResearchSlugPage({
 
       <HealthLeader />
       <TestimonialHealth />
-      <CallbackFaqHealth />
+      {!!faqSection?.faqs.length && <CallbackFaqHealth data={faqSection} />}
       <BookDemoHealth />
     </section>
   );

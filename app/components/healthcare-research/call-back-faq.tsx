@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
+import type { ResearchFaqSection } from "@/lib/getResearchPage";
 
 const DISPLAYED_CAPTCHA = "990940";
 
@@ -16,32 +17,11 @@ const initialFormData = {
     captchaInput: "",
 };
 
-const faqs = [
-    {
-        question: "Why should businesses work with a global market research company?",
-        answer:
-            "A global market research company allows businesses to run studies across multiple countries with consistent research methods and coordinated fieldwork. This helps organizations compare market behavior across regions, understand cultural differences, and make more informed global business decisions.",
-    },
-    {
-        question: "What types of market research services do companies usually provide?",
-        answer:
-            "Professional market research services typically include quantitative surveys, qualitative interviews, focus groups, data collection, and analysis. These services help organizations measure customer behavior, test new ideas, evaluate brand perception, and identify opportunities in competitive markets.",
-    },
-    {
-        question: "What is commercial market research and how is it used?",
-        answer:
-            "Commercial market research focuses on understanding market demand, competitive positioning, and customer preferences to support business growth. Companies use it to evaluate new products, improve marketing strategies, and make data-backed decisions in competitive industries.",
-    },
-    {
-        question: "How can businesses identify the best market research company for their needs?",
-        answer:
-            "The best market research company is typically one that demonstrates research expertise, strong data quality standards, and the ability to manage studies across industries and markets. Businesses should evaluate experience, methodology, and the reliability of data collection processes.",
-    },
-
-
-];
-
-export default function CallbackFaqHealth() {
+export default function CallbackFaqHealth({
+    data,
+}: {
+    data: ResearchFaqSection;
+}) {
     const [openIndex, setOpenIndex] = useState(0);
     const [formData, setFormData] = useState(initialFormData);
     const [loading, setLoading] = useState(false);
@@ -205,17 +185,17 @@ export default function CallbackFaqHealth() {
                 <div className="w-full md:flex-1">
                     <div className="mb-8">
                         <h2 className="text-[26px] font-light leading-tight text-white md:text-[42px]">
-                            Frequently Asked
+                            {data.heading || "Frequently Asked"}
                         </h2>
                         <h2
                             className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[42px]"
                         >
-                            Questions
+                            {data.subHeading || "Questions"}
                         </h2>
                     </div>
 
                     <div className="space-y-3">
-                        {faqs.map((faq, index) => {
+                        {data.faqs.map((faq, index) => {
                             const isOpen = openIndex === index;
 
                             return (
