@@ -32,10 +32,20 @@ export type ConsumerResearchSection = {
   benefits?: ConsumerResearchContentBlock;
 };
 
+export type ResearchFaqSection = {
+  heading?: string;
+  subHeading?: string;
+  faqs: {
+    question: string;
+    answer: string;
+  }[];
+};
+
 export type ResearchPageData = (typeof researchPages)[ResearchPageSlug] & {
   slug?: string;
   seo?: ApiSeo;
   consumerResearchSection?: ConsumerResearchSection;
+  faqSection?: ResearchFaqSection;
 };
 
 export type ResearchNavItem = {
