@@ -61,6 +61,7 @@ export interface MethodData {
     items: { label: string; col1: string; col2: string }[];
   };
   sectors: { title: string; image: string; description: string }[];
+  whyChooseChild?: readonly WhyChooseSection[];
   whyChooseSections?: readonly WhyChooseSection[];
   faqs: FaqItem[];
 }

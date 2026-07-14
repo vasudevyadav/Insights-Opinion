@@ -54,7 +54,6 @@ export default async function ChildServicePage({ params }: PageProps) {
       slug={result.child.slug}
       data={result.child.content}
       parentService={result.service}
-      parentContent={result.service.content}
     />
   );
 }
