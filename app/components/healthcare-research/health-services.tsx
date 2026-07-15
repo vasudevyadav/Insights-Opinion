@@ -55,9 +55,8 @@ export default function HealthServices({ data }: HealthServicesProps) {
               return (
                 <polygon
                   key={`${row}-${col}`}
-                  points={`${x + 15},${y} ${x + 45},${y} ${x + 60},${
-                    y + 26
-                  } ${x + 45},${y + 52} ${x + 15},${y + 52} ${x},${y + 26}`}
+                  points={`${x + 15},${y} ${x + 45},${y} ${x + 60},${y + 26
+                    } ${x + 45},${y + 52} ${x + 15},${y + 52} ${x},${y + 26}`}
                   stroke="url(#hexGradientExtra)"
                   strokeWidth="1.2"
                   fill="none"
@@ -71,13 +70,13 @@ export default function HealthServices({ data }: HealthServicesProps) {
       <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <div className="mb-8 text-center sm:mb-10 lg:mb-12">
           {data.sectionLabel && (
-            <p className="text-[16px] font-semibold text-[#1f2a44] sm:text-[18px]">
+            <p className="text-sm font-medium text-[#1f2a44] lg:text-2xl">
               {data.sectionLabel}
             </p>
           )}
 
           {data.heading && (
-            <h2 className="mt-1 text-[28px] font-semibold sm:text-[38px] lg:text-[46px]">
+            <h2 className="mt-1 text-2xl font-semibold lg:text-4xl">
               <span className="bg-gradient-to-r from-[#3c8df6] via-[#31b6df] to-[#1dc3b3] bg-clip-text text-transparent">
                 {data.heading}
               </span>
@@ -96,13 +95,12 @@ export default function HealthServices({ data }: HealthServicesProps) {
         </div>
 
         <div
-          className={`hidden gap-8 md:grid ${
-            services.length === 2
-              ? "md:grid-cols-2"
-              : services.length === 4
+          className={`hidden gap-8 md:grid ${services.length === 2
+            ? "md:grid-cols-2"
+            : services.length === 4
               ? "md:grid-cols-2 lg:grid-cols-4"
               : "md:grid-cols-2 lg:grid-cols-3"
-          }`}
+            }`}
         >
           {services.map((service, index) => (
             <ServiceCard key={index} service={service} />
@@ -117,7 +115,7 @@ function ServiceCard({ service }: { service: Service }) {
   return (
     <div className="group mx-auto flex w-full max-w-[330px] flex-col overflow-hidden rounded-[24px] border border-[#2f86d6] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-500 ease-out will-change-transform hover:-translate-y-2 hover:border-transparent hover:bg-gradient-to-b hover:from-[#1687c9] hover:to-[#39c5c7] hover:shadow-[0_16px_36px_rgba(22,135,201,0.22)]">
       {service.image && (
-        <div className="relative h-[140px] w-full overflow-hidden rounded-b-[22px] transition-all duration-500 group-hover:h-[165px]">
+        <div className="relative h-[200px] w-full overflow-hidden rounded-b-[22px] transition-all duration-500 group-hover:h-[220px]">
           <Image
             src={service.image}
             alt={service.title?.replace(/\\n|\n/g, " ") || "Service image"}
@@ -130,13 +128,13 @@ function ServiceCard({ service }: { service: Service }) {
 
       <div className="px-6 pb-6 pt-5 text-center">
         {service.title && (
-          <h3 className="whitespace-pre-line text-[18px] font-semibold text-[#1e2746] transition-colors duration-500 ease-out group-hover:text-white sm:text-[20px]">
+          <h3 className="whitespace-pre-line text-base font-semibold text-[#1e2746] transition-colors duration-500 ease-out group-hover:text-white lg:text-lg">
             {service.title.replace(/\\n/g, "\n")}
           </h3>
         )}
 
         {service.points?.length > 0 && (
-          <ul className="mt-5 space-y-1 text-[13px] text-[#2f3850] transition-colors duration-500 ease-out group-hover:text-white/95 sm:text-[14px]">
+          <ul className="mt-3 space-y-1 text-sm text-[#2f3850] transition-colors duration-500 ease-out group-hover:text-white/95 lg:text-sm">
             {service.points.map((point, idx) => (
               <li key={idx}>{point}</li>
             ))}
