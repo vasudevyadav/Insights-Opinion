@@ -6,20 +6,20 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
     {
-        label: "GDPR, CCPA, and International Data Protection:",
-        desc: "In a world where data is a critical asset, we treat its protection as a top priority. We have stringent policies and protocols in place to ensure full compliance with international data protection laws.",
+        label: "GDPR and CCPA Alignment",
+        desc: "We maintain policies and protocols designed to align our data handling with GDPR, CCPA, and other applicable international data protection frameworks and regulations. ",
     },
     {
-        label: "Regulatory Compliance:",
-        desc: "We stay ahead of evolving regulatory requirements, maintaining full compliance with the latest data protection laws across all jurisdictions in which we operate globally.",
+        label: "Regulatory Oversight",
+        desc: "Dedicated compliance officers oversee our adherence to data protection frameworks, supported by regular legal audits that confirm continuous, verifiable compliance across every project. ",
     },
     {
-        label: "Transparency and Control:",
-        desc: "We provide participants with complete transparency about how their data will be used. Our informed consent processes and data access controls empower individuals with full rights.",
+        label: "Respondent Privacy",
+        desc: "Respondent data is anonymized and access controlled under strict data governance policies, protecting personal information and individual rights at every stage of research. ",
     },
     {
-        label: "Respondent Privacy:",
-        desc: "We rigorously protect the confidentiality of respondents' data through strict anonymisation protocols, access controls, and robust data governance policies.",
+        label: "Transparency and Control",
+        desc: "We provide clear, understandable privacy notices and give respondents meaningful control over their personal data throughout the research process, from consent to closure. ",
     },
 ];
 

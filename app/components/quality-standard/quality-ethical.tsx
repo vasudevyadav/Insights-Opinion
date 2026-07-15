@@ -6,20 +6,20 @@ import { ChevronDown } from "lucide-react";
 
 const practices = [
     {
-        title: "Ethical Standards and Participant Welfare:",
-        desc: "We believe that ethical practice is the foundation of good research. Our approach to participant welfare ensures dignity, respect, and wellbeing are prioritised at every stage of the research process.",
+        title: "Participant Welfare",
+        desc: "Ethical practice is the foundation of our research. Every stage of participant engagement reflects our commitment to dignity, respect, and individual wellbeing. ",
     },
     {
-        title: "Informed Consent:",
-        desc: "Participants are fully informed about the research scope and their rights before agreeing to take part. Consent is always freely given, documented, and never coerced.",
+        title: "Informed Consent",
+        desc: "Participants are fully informed about research scope and their rights before taking part, with consent freely given, clearly documented, and never obtained through pressure.",
     },
     {
-        title: "Confidentiality:",
-        desc: "We rigorously protect the confidentiality of participant data, a commitment enshrined in our standard operating procedures and data governance policies across all projects.",
+        title: "Confidentiality",
+        desc: "We rigorously protect participant confidentiality, a commitment written into our standard operating procedures and data governance policies across every research project we run.",
     },
     {
-        title: "Non-Discrimination:",
-        desc: "Our non-discrimination policy ensures all participants are treated with equal respect, fairness, and dignity regardless of background or demographic.",
+        title: "Non-Discrimination",
+        desc: "Our non-discrimination policy ensures every participant receives equal respect and fairness, regardless of background, demographic profile, or personal characteristics throughout the study.",
     },
 ];
 
@@ -35,7 +35,7 @@ export default function QualityEthical() {
 
                     <div className="lg:pl-10">
                         <h2 className="mb-8 text-2xl font-light leading-tight text-[#18213d] lg:text-4xl">
-                            <span className="quality-gradient-text font-semibold">Ethical Research</span>{" "}
+                            <span className="quality-gradient-text font-semibold">Ethical Research </span>{" "}
                             Practices
                         </h2>
 
@@ -52,9 +52,8 @@ export default function QualityEthical() {
                                         </p>
                                         <div className="relative border border-[#101538]/70 bg-transparent px-3 py-2">
                                             <div
-                                                className={`overflow-hidden pr-6 transition-[max-height] duration-500 ease-in-out motion-reduce:transition-none ${
-                                                    isOpen ? "max-h-40" : "max-h-10"
-                                                }`}
+                                                className={`overflow-hidden pr-6 transition-[max-height] duration-500 ease-in-out motion-reduce:transition-none ${isOpen ? "max-h-40" : "max-h-10"
+                                                    }`}
                                             >
                                                 <p className="text-[15px] leading-5 text-[#18213d]">
                                                     {item.desc}
@@ -67,9 +66,8 @@ export default function QualityEthical() {
                                             >
                                                 <ChevronDown
                                                     size={13}
-                                                    className={`transition-transform duration-500 motion-reduce:transition-none ${
-                                                        isOpen ? "rotate-180" : ""
-                                                    }`}
+                                                    className={`transition-transform duration-500 motion-reduce:transition-none ${isOpen ? "rotate-180" : ""
+                                                        }`}
                                                 />
                                             </button>
                                         </div>

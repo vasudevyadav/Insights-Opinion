@@ -9,70 +9,70 @@ const sections = [
         imageLeft: true,
         points: [
             {
-                title: "Continuous Learning and Improvement",
-                desc: "We foster a culture of learning and excellence, with professional development programs designed to keep our staff at the forefront of market research.",
+                title: "Continuous Learning",
+                desc: "We foster a culture of learning and excellence, running professional development programs that keep our team at the forefront of market research. ",
             },
             {
                 title: "Staff Training",
-                desc: "Our comprehensive training programs cover the latest research methodology, data collection best practices, and ethical standards.",
+                desc: "Our training programs cover current research methodology, data collection best practices, and ethical standards, keeping every researcher aligned with industry expectations and evolving requirements. ",
             },
             {
-                title: "QA Programs",
-                desc: "Our QA programs involve systematic checks at every stage of the research process to maintain excellence and ensure consistency.",
+                title: "Quality Assurance Programs",
+                desc: "Our QA programs involve systematic checks at every stage of the research process, maintaining consistency, accuracy, and service excellence across all projects.",
             },
             {
                 title: "Client Collaboration",
-                desc: "We work closely with clients to ensure our services not only meet but exceed their quality expectations through rigorous review processes.",
+                desc: "We work closely with clients throughout each project, ensuring our research services meet quality expectations through structured review and transparent communication at every stage.",
             },
         ],
     },
     {
-        title: "Global Data Transfer",
-        subtitle: "and Management",
+        title: "Global Data Transfer ",
+        subtitle: "and Management ",
         image: "/quality-standard/news-image.png",
         imageAlt: "Global Data Transfer Management",
         imageLeft: false,
         points: [
             {
                 title: "Cross-Border Data Flow Compliance",
-                desc: "We navigate the complexities of international data transfers and ensure compliance with GDPR Standard Contractual Clauses, Privacy Shield frameworks, and other cross-border data transfer mechanisms.",
+                desc: "We manage international data transfers in line with GDPR-recognized mechanisms and current cross-border compliance requirements across every market and jurisdiction we serve. ",
             },
             {
-                title: "International Standards",
-                desc: "Our data management standards are aligned with top international security and privacy standards, ensuring lawful and secure data transfers across all markets.",
+                title: "International Standards Alignment",
+                desc: "Our data management protocols align with recognized international security and privacy standards, supporting lawful, secure data transfers across every region we operate in. ",
             },
             {
                 title: "Data Localization",
-                desc: "We process data in accordance with the legal requirements of specific jurisdictions, ensuring lawful and secure data transfers remain compliant at all times.",
+                desc: "We process data according to the legal requirements of each jurisdiction we operate in, keeping every transfer lawful, compliant, and properly documented. ",
             },
             {
                 title: "Continuous Monitoring",
-                desc: "Our legal team monitors global data protection legislation to proactively adapt our policies to new laws and regulations as they emerge.",
+                desc: "Our compliance officers monitor evolving global data protection legislation, proactively updating our policies and practices to reflect new laws and regulations as they emerge. ",
             },
         ],
     },
     {
-        title: "Industry Affiliations",
+        title: "Industry Affiliations ",
         subtitle: "and Certifications",
         image: "/market-research/uses-image.png",
         imageAlt: "Industry Affiliations and Certifications",
         imageLeft: true,
         points: [
             {
-                title: "Industry Memberships and Affiliations",
-                desc: "We hold memberships with leading global market research associations, reinforcing our commitment to the highest professional and ethical standards in the industry.",
+                title: "Professional Memberships",
+                desc: "We hold memberships with ESOMAR, MRSI, and the Insights Association, reflecting our commitment to recognized industry codes of conduct and ethics across every research project. ",
             },
             {
-                title: "Quality Assurance Programs",
-                desc: "Our comprehensive QA programs are designed to maintain excellence at every stage of research, ensuring consistent and reliable outputs across all client projects.",
+                title: "ISO Certifications",
+                desc: "We are ISO 27001 certified for information security management and ISO 20252 certified for market, opinion, and social research quality management. ",
             },
             {
-                title: "Third-Party Certifications",
-                desc: "Our certifications from recognised third-party bodies validate our methods and processes, giving clients the confidence that their research meets international benchmarks.",
+                title: "Research Expertise Backed by Standards",
+                desc: "These certifications support every research vertical we serve, including Consumer Research, B2B Research, and Healthcare Research projects. ",
             },
             {
-                title: "Client Partnerships",
-                desc: "We work closely with clients to ensure our services not only meet but exceed their quality expectations through transparent collaboration and rigorous review.",
+                title: "Method-Level Assurance",
+                desc: "Standards apply equally across methods, including CATI fieldwork, panel studies, and every quantitative or qualitative service we deliver. ",
             },
         ],
     },
