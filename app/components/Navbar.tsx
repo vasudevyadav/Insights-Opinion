@@ -108,14 +108,14 @@ export default function Navbar({
     <>
       <header className="fixed top-0 z-80 w-full">
         <div className="header-image">
-          <div className="mx-auto flex h-18 max-w-[1550px] items-center justify-between px-6 lg:h-24 lg:px-8">
+          <div className="mx-auto flex h-18 max-w-[1500px] items-center justify-between px-5 lg:h-24 lg:px-8">
             <Link href="/" className="flex items-center">
               <Image
                 src="/logo.png"
                 alt="Logo"
                 width={180}
                 height={48}
-                className="h-auto w-40 lg:w-54"
+                className="h-auto w-36 lg:w-44"
                 priority
                 unoptimized
               />
@@ -134,14 +134,14 @@ export default function Navbar({
               )}
             </button>
 
-            <nav className="hidden items-center gap-8 lg:flex">
+            <nav className="hidden items-center gap-5 xl:gap-7 lg:flex">
               {navItems.map((item) => {
                 if (item.type === "link") {
                   return (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`text-[17px] font-semibold transition-colors ${isActive(item.href)
+                      className={`text-[12px] font-medium tracking-[0.04em] transition-colors lg:text-base ${isActive(item.href)
                         ? "text-[#14d8d0]"
                         : "text-white hover:text-[#14d8d0]"
                         }`}
@@ -162,7 +162,7 @@ export default function Navbar({
                   >
                     <Link
                       href={item.href || "#"}
-                      className={`flex items-center gap-1 text-[17px] font-semibold transition-colors ${isPathActive(item.href)
+                      className={`flex items-center gap-1 text-[12px] font-medium tracking-[0.04em] transition-colors lg:text-base ${isPathActive(item.href)
                         ? "text-[#14d8d0]"
                         : "text-white hover:text-[#14d8d0]"
                         }`}
@@ -212,7 +212,7 @@ export default function Navbar({
                 aria-label="Search"
                 className="text-white transition hover:text-[#14d8d0]"
               >
-                <Search className="h-7 w-7" />
+                <Search className="h-5 w-5" />
               </button>
 
               <button
@@ -220,7 +220,7 @@ export default function Navbar({
                 aria-label="Account"
                 className="text-white transition hover:text-[#14d8d0]"
               >
-                <User className="h-7 w-7" />
+                <User className="h-5 w-5" />
               </button>
 
               <Link

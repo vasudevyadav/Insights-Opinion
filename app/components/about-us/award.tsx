@@ -42,11 +42,11 @@ export default function Award() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3 lg:gap-x-16">
+                <div className="about-mobile-slider flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 lg:grid lg:grid-cols-3 lg:gap-x-16 lg:overflow-visible lg:pb-0">
                     {awards.map((award, index) => (
                         <div
                             key={index}
-                            className="flex flex-col items-center text-center"
+                            className="flex min-w-[82%] snap-center flex-col items-center rounded-2xl border border-[#d5e6f2] bg-white/75 p-5 text-center shadow-sm sm:min-w-[46%] lg:min-w-0 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none"
                         >
                             <div className="relative mb-4 h-[135px] w-[135px] lg:h-[190px] lg:w-[190px]">
                                 <Image

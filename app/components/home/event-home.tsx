@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import Image from "next/image";
-// @ts-ignore
+// @ts-expect-error - the aos package does not ship TypeScript declarations
 import AOS from "aos";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -54,7 +54,7 @@ export default function EventHome() {
                         disableOnInteraction: false,
                     }}
                     breakpoints={{
-                        0: { slidesPerView: 1 },
+                        0: { slidesPerView: 1.12 },
                         480: { slidesPerView: 1.15 },
                         640: { slidesPerView: 2.2 },
                         768: { slidesPerView: 3.1 },
@@ -63,7 +63,7 @@ export default function EventHome() {
                 >
                     {events.map((event, index) => (
                         <SwiperSlide key={index}>
-                            <div className="group relative h-[400px] w-full overflow-hidden rounded-[10px] bg-white p-2">
+                            <div className="group relative h-[310px] w-full overflow-hidden rounded-[14px] bg-white p-2 sm:h-[360px] lg:h-[400px]">
 
 
                                 <div className="absolute inset-2 overflow-hidden rounded-[8px] transition-all duration-500 group-hover:inset-0">

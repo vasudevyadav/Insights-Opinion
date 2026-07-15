@@ -3,7 +3,7 @@ export default function HomeHero() {
     return (
         <section className="bg-[#edf6fe]">
 
-            <div className="relative overflow-hidden text-white lg:mt-20 mt-8">
+            <div className="relative overflow-hidden text-white">
                 <Image
                     src="/home-hero-img-1.png"
                     alt=""
@@ -21,18 +21,19 @@ export default function HomeHero() {
                     className="object-cover object-bottom sm:hidden"
                     sizes="100vw"
                 />
-                <div className="relative z-10 mx-auto flex lg:min-h-[540px] min-h-[630px] w-full max-w-7xl lg:pt-0 pt-16 lg:items-center px-5 sm:px-4">
+                <div className="relative z-10 mx-auto flex min-h-[520px] w-full max-w-7xl px-5 pt-14 sm:px-6 lg:min-h-[540px] lg:items-center lg:pt-0">
 
                     <div className="max-w-2xl">
 
                         <h1 className="text-xl font-semibold lg:font-medium lg:leading-tight lg:text-[50px]">
 
-                            Global Market Research
-                            <br /> For Better Business Decisions
+                            Insights Behind
+                            <br /> Confident Decisions.
                         </h1>
                         <p className="mt-3 max-w-xl text-sm leading-7 text-white/90 sm:text-xl">
 
-                            Evidence-Based Insights Across 8+ Key Industries
+                            Evidence-led market research that turns complex data into
+                            clear direction.
                         </p>
                         <div className="mt-4 flex flex-wrap items-center gap-4">
 

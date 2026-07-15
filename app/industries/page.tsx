@@ -7,15 +7,11 @@ import { fetchIndustries } from "@/app/lib/industries-api";
 
 export const metadata: Metadata = getStaticMetadata("industries");
 
-export default async function Industries({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function Industries() {
   const industries = await fetchIndustries();
 
   return (
-    <section>
+    <section className="industries-page">
       <IndustriesHero />
       <IndustriesGlobal industries={industries} />
       <IndustriesForm />

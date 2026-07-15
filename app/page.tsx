@@ -16,7 +16,7 @@ export const metadata: Metadata = getStaticMetadata("home");
 
 export default function Home() {
   return (
-    <section>
+    <section className="home-page">
       <HomeHero />
       <IndustryLeader />
       <HomeIndustry />

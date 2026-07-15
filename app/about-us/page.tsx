@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { getStaticMetadata } from "@/lib/static-seo";
-import CallbackFaqHealth from "@/app/components/healthcare-research/call-back-faq";
-import BookDemoHealth from "@/app/components/healthcare-research/book-demo";
 import AboutHero from "../components/about-us/about-hero";
 import WhoWeAre from "../components/about-us/who-are";
 import Milestone from "../components/about-us/milestone";
@@ -14,14 +12,9 @@ import PartnershipsAffiliations from "../components/about-us/partnerships-affili
 
 export const metadata: Metadata = getStaticMetadata("about-us");
 
-export default async function AboutUs({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-
+export default function AboutUs() {
   return (
-    <section>
+    <section className="about-page">
       <AboutHero />
       <WhoWeAre />
       <Milestone />

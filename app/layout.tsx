@@ -91,7 +91,7 @@ export default async function RootLayout({
           researchItems={researchItems}
           serviceItems={serviceItems}
         />
-        <main className="lg:mt-20 mt-8">
+        <main className="pt-18 lg:pt-24">
           {children}
         </main>
         <Footer />
