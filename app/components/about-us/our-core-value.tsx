@@ -87,15 +87,15 @@ export default function OurCoreValues() {
                 </div>
 
                 {/* Value Cards */}
-                <div className="grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-5 lg:gap-x-6">
+                <div className="about-mobile-slider flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 lg:grid lg:grid-cols-5 lg:gap-x-6 lg:overflow-visible lg:pb-0">
                     {coreValues.map((item, i) => {
                         const Icon = item.icon;
 
                         return (
-                            <div key={i} className="flex flex-col items-start">
-                                <div className="relative lg:min-h-[130px] min-h-[40px]  lg:pl-4 pl-28">
-                                    <div className="absolute lg:left-0 left-10 top-[7px] h-[7px] w-[7px] rounded-full bg-[#3fb8c9]" />
-                                    <div className="absolute lg:left-[3px] left-[42px] lg:top-[15px] top-[13px] lg:h-[130px] h-[80px] w-[1.5px] bg-[#56bfd0]" />
+                            <div key={i} className="flex min-w-[82%] snap-center flex-col items-start rounded-2xl border border-[#cfe4f2] bg-white/80 p-5 shadow-sm sm:min-w-[46%] lg:min-w-0 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none">
+                                <div className="relative min-h-[130px] pl-4">
+                                    <div className="absolute left-0 top-[7px] h-[7px] w-[7px] rounded-full bg-[#3fb8c9]" />
+                                    <div className="absolute left-[3px] top-[15px] h-[130px] w-[1.5px] bg-[#56bfd0]" />
 
                                     <h3 className="text-sm font-semibold leading-none text-[#37b9ca] lg:text-lg mb-3">
                                         {item.title}
@@ -106,7 +106,7 @@ export default function OurCoreValues() {
                                     </p>
                                 </div>
 
-                                <div className="-mt-1 lg:ml-[-50px] lg:-mt-1 -mt-8 -ml-3">
+                                <div className="-mt-1 ml-[-50px]">
                                     <ArcCircle Icon={Icon} />
                                 </div>
                             </div>

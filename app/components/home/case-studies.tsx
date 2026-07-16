@@ -2,7 +2,8 @@
 
 import { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
-// @ts-ignore - no type declarations for 'aos'
+import Image from "next/image";
+// @ts-expect-error - the aos package does not ship TypeScript declarations
 import AOS from "aos";
 import GlobalCoverage from "./  GlobalCoverage";
 
@@ -80,11 +81,13 @@ function CaseCard({
             data-aos-duration="950"
             data-aos-anchor-placement="top-bottom"
             className={`group relative overflow-hidden rounded-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/20 hover:shadow-[0_12px_40px_rgba(0,200,255,0.08)]
-      h-[330px] sm:h-[380px] md:h-[420px] ${large ? "lg:h-[430px]" : "lg:h-[495px]"}`}
+      h-[300px] sm:h-[380px] md:h-[420px] ${large ? "lg:h-[430px]" : "lg:h-[495px]"}`}
         >
-            <img
+            <Image
                 src={image}
                 alt={title}
+                fill
+                unoptimized
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
 
@@ -156,7 +159,7 @@ export default function CaseStudies() {
                             {caseStudies.map((item, i) => (
                                 <div
                                     key={i}
-                                    className="min-w-full snap-center"
+                                    className="min-w-[86%] snap-center"
                                     data-aos="fade-up"
                                     data-aos-delay={i * 80}
                                     data-aos-duration="900"

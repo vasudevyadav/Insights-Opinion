@@ -12,6 +12,7 @@ const SERVICES_API_URL = apiUrl("/custom/v1/services");
 type ApiServiceChild = ServiceChild & {
   content?: MethodData;
   seo?: ApiSeo;
+  apiHref?: string;
 };
 
 type ApiMainService = {
@@ -98,6 +99,23 @@ function getRouteSlug(service: ApiMainService) {
   return hrefSlug || service.slug.replace(/-research$/, "");
 }
 
+function getHrefSlug(href?: string) {
+  return href
+    ?.split("?")[0]
+    .replace(/\/+$/, "")
+    .split("/")
+    .filter(Boolean)
+    .at(-1);
+}
+
+function matchesChildRoute(child: ApiServiceChild, requestedSlug: string) {
+  return (
+    child.slug === requestedSlug ||
+    getHrefSlug(child.href) === requestedSlug ||
+    getHrefSlug(child.apiHref) === requestedSlug
+  );
+}
+
 function normalizeService(
   service: ApiMainService,
   index: number
@@ -124,6 +142,7 @@ function normalizeService(
     },
     children: (service.children || []).map((child, childIndex) => ({
       ...child,
+      apiHref: child.apiHref || child.href,
       id: child.id || `${service.slug}-${child.slug}-${childIndex}`,
       position: child.position || childIndex + 1,
       step: child.step || String(childIndex + 1).padStart(2, "0"),
@@ -132,10 +151,12 @@ function normalizeService(
   };
 }
 
-async function fetchServicesData(): Promise<ApiMainServiceWithContent[]> {
+async function fetchServicesData(
+  fresh = false
+): Promise<ApiMainServiceWithContent[]> {
   try {
     const response = await fetch(SERVICES_API_URL, {
-      next: { revalidate: 300 },
+      ...(fresh ? { cache: "no-store" as const } : { next: { revalidate: 300 } }),
     });
 
     if (!response.ok) return [];
@@ -175,7 +196,9 @@ export async function fetchServices(): Promise<MainService[]> {
 export async function fetchMainService(
   mainServiceSlug: string
 ): Promise<ApiMainServiceWithContent | null> {
-  const services = await fetchServicesData();
+  // Detail routes must see newly published services immediately. Navigation can
+  // stay cached, but route resolution always uses a fresh catalog request.
+  const services = await fetchServicesData(true);
   const expectedApiSlugs = new Set([
     mainServiceSlug,
     ...(mainServiceSlug.endsWith("-research")
@@ -199,7 +222,7 @@ export async function fetchMainService(
 
     for (const apiSlug of apiSlugs) {
       const detail = await fetchApiData<ApiMainService>(
-        `${SERVICES_API_URL}/${apiSlug}`
+        `${SERVICES_API_URL}/${encodeURIComponent(apiSlug)}`
       );
 
       if (detail?.content) return normalizeService(detail, 0);
@@ -209,7 +232,7 @@ export async function fetchMainService(
   }
 
   const detail = await fetchApiData<ApiMainService>(
-    `${SERVICES_API_URL}/${summary.apiSlug || summary.slug}`
+    `${SERVICES_API_URL}/${encodeURIComponent(summary.apiSlug || summary.slug)}`
   );
 
   return detail ? normalizeService(detail, 0) : summary;
@@ -222,21 +245,64 @@ export async function fetchChildService(
   service: ApiMainServiceWithContent;
   child: ApiServiceChild & { content: MethodData };
 } | null> {
-  const service = await fetchMainService(mainServiceSlug);
-  const childSummary = service?.children.find(
-    (item) => item.slug === childServiceSlug
+  const services = await fetchServicesData(true);
+  const expectedApiSlugs = new Set([
+    mainServiceSlug,
+    ...(mainServiceSlug.endsWith("-research")
+      ? []
+      : [`${mainServiceSlug}-research`]),
+  ]);
+  const routeCandidates = services.filter(
+    (item) =>
+      item.slug === mainServiceSlug ||
+      (!!item.apiSlug && expectedApiSlugs.has(item.apiSlug))
   );
+  const matchingSummary = routeCandidates.find((item) =>
+    item.children.some((child) => matchesChildRoute(child, childServiceSlug))
+  );
+  const catalogChildSummary = matchingSummary?.children.find((child) =>
+    matchesChildRoute(child, childServiceSlug)
+  );
+  const fallbackSummary = matchingSummary ?? routeCandidates[0];
+
+  let service = fallbackSummary ?? (await fetchMainService(mainServiceSlug));
+  if (matchingSummary) {
+    const detail = await fetchApiData<ApiMainService>(
+      `${SERVICES_API_URL}/${encodeURIComponent(matchingSummary.apiSlug || matchingSummary.slug)}`
+    );
+    if (detail?.content) service = normalizeService(detail, 0);
+  }
+
+  const childSummary = service?.children.find(
+    (item) => matchesChildRoute(item, childServiceSlug)
+  ) ?? service?.children.find((item) => item.slug === catalogChildSummary?.slug);
 
   if (!service) return null;
 
-  const childData = await fetchApiData<ApiServiceChild | ApiMainService[]>(
-    `${SERVICES_API_URL}/${service.apiSlug || service.slug}/${childServiceSlug}`
+  // CMS entries may expose a public href alias that differs from the API slug.
+  // Always try the canonical child slug first, then the requested route alias.
+  const childSlugCandidates = Array.from(
+    new Set([childSummary?.slug, childServiceSlug].filter(Boolean) as string[])
   );
-  const child = Array.isArray(childData)
-    ? childData
-        .flatMap((parent) => parent.children || [])
-        .find((item) => item.slug === childServiceSlug)
-    : childData;
+  let child: ApiServiceChild | undefined;
+
+  for (const childSlugCandidate of childSlugCandidates) {
+    const childData = await fetchApiData<ApiServiceChild | ApiMainService[]>(
+      `${SERVICES_API_URL}/${encodeURIComponent(service.apiSlug || service.slug)}/${encodeURIComponent(childSlugCandidate)}`
+    );
+
+    child = Array.isArray(childData)
+      ? childData
+          .flatMap((parent) => parent.children || [])
+          .find(
+            (item) =>
+              item.slug === childSlugCandidate ||
+              matchesChildRoute(item, childServiceSlug)
+          )
+      : childData || undefined;
+
+    if (child?.content) break;
+  }
 
   const resolvedChild = child?.content ? child : childSummary;
 
@@ -253,9 +319,15 @@ export async function fetchChildServiceBySlug(
   service: ApiMainServiceWithContent;
   child: ApiServiceChild & { content: MethodData };
 } | null> {
-  const services = await fetchServicesData();
+  const services = await fetchServicesData(true);
 
   for (const serviceSummary of services) {
+    const hasMatchingChild = serviceSummary.children.some((child) =>
+      matchesChildRoute(child, childServiceSlug)
+    );
+
+    if (!hasMatchingChild) continue;
+
     const result = await fetchChildService(
       serviceSummary.slug,
       childServiceSlug

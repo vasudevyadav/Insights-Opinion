@@ -188,7 +188,7 @@ export default function WhyChoose() {
             </div>
 
             <div className="relative z-10 mx-auto max-w-6xl px-4 py-2 lg:px-0 lg:py-16">
-                <div className="lg:space-y-20 space-y-24">
+                <div className="space-y-14 lg:space-y-20">
                     {sectionsData.map((section, sectionIndex) => {
                         const isEven = sectionIndex % 2 === 0;
                         const activeIndex = openIndexes[sectionIndex];
@@ -196,7 +196,7 @@ export default function WhyChoose() {
                         return (
                             <div
                                 key={sectionIndex}
-                                className="grid items-center gap-10 lg:grid-cols-[1.02fr_1fr]"
+                                className="grid items-center gap-6 lg:grid-cols-[1.02fr_1fr] lg:gap-10"
                             >
                                 <div
                                     className={`${isEven ? "lg:order-1" : "lg:order-2"} max-w-[500px]`}
@@ -223,7 +223,7 @@ export default function WhyChoose() {
                                 </div>
 
                                 <div
-                                    className={`relative flex min-h-[320px] items-center justify-center lg:min-h-[520px] ${isEven ? "lg:order-2" : "lg:order-1"
+                                    className={`relative flex min-h-[250px] items-center justify-center sm:min-h-[320px] lg:min-h-[520px] ${isEven ? "lg:order-2" : "lg:order-1"
                                         }`}
                                 >
                                     <div className="relative flex w-full px-6 lg:px-0 items-center justify-center overflow-visible bg-transparent">

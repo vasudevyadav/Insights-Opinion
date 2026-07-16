@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useEffect } from "react";
-// @ts-ignore - no type declarations for 'aos'
+import Image from "next/image";
+// @ts-expect-error - the aos package does not ship TypeScript declarations
 import AOS from "aos";
 
 export default function AccreditationsRecognitions() {
@@ -101,8 +102,8 @@ export default function AccreditationsRecognitions() {
                     style={
                         {
                             left: line.left,
-                            ["--line-delay" as any]: line.delay,
-                        } as React.CSSProperties
+                            "--line-delay": line.delay,
+                        } as React.CSSProperties & { "--line-delay": string }
                     }
                 />
             ))}
@@ -115,8 +116,8 @@ export default function AccreditationsRecognitions() {
                     style={
                         {
                             left: line.left,
-                            ["--line-delay" as any]: line.delay,
-                        } as React.CSSProperties
+                            "--line-delay": line.delay,
+                        } as React.CSSProperties & { "--line-delay": string }
                     }
                 />
             ))}
@@ -155,17 +156,23 @@ export default function AccreditationsRecognitions() {
                     data-aos-duration="1200"
                 >
                     <div>
-                        <img
+                        <Image
                             src="/recognitions.gif"
                             alt="Accreditations and recognitions"
+                            width={1600}
+                            height={500}
+                            unoptimized
                             className="hidden h-[500px] w-full object-cover object-center transition-transform duration-700 lg:block"
                         />
                     </div>
 
-                    <img
+                    <Image
                         src="/recognitions-mob.gif"
                         alt="Accreditations and recognitions"
-                        className="block h-[700px] w-full object-cover object-center transition-transform duration-700 lg:hidden"
+                        width={800}
+                        height={700}
+                        unoptimized
+                        className="block h-[430px] w-full object-contain object-center transition-transform duration-700 lg:hidden"
                     />
                 </div>
             </div>

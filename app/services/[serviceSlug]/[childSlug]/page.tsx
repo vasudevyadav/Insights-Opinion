@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import ServiceChildPage from "@/app/components/services/service-child-page";
 import {
   fetchChildService,
-  fetchServices,
+  fetchChildServiceBySlug,
 } from "@/app/lib/services-api";
 import { buildApiMetadata } from "@/lib/api-metadata";
 
@@ -12,15 +12,13 @@ type PageProps = {
 };
 
 export const dynamic = "force-dynamic";
+export const dynamicParams = true;
+export const revalidate = 0;
 
-export async function generateStaticParams() {
-  const services = await fetchServices();
-
-  return services.flatMap((service) =>
-    service.children.map((child) => ({
-      serviceSlug: service.slug,
-      childSlug: child.slug,
-    }))
+async function resolveChildService(serviceSlug: string, childSlug: string) {
+  return (
+    (await fetchChildService(serviceSlug, childSlug)) ??
+    (await fetchChildServiceBySlug(childSlug))
   );
 }
 
@@ -28,7 +26,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { serviceSlug, childSlug } = await params;
-  const result = await fetchChildService(serviceSlug, childSlug);
+  const result = await resolveChildService(serviceSlug, childSlug);
 
   return result
     ? buildApiMetadata(
@@ -45,7 +43,7 @@ export async function generateMetadata({
 
 export default async function ChildServicePage({ params }: PageProps) {
   const { serviceSlug, childSlug } = await params;
-  const result = await fetchChildService(serviceSlug, childSlug);
+  const result = await resolveChildService(serviceSlug, childSlug);
 
   if (!result) notFound();
 

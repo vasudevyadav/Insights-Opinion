@@ -53,7 +53,15 @@ export default function IndustriesForm() {
     };
 
     return (
-        <section className="relative overflow-hidden bg-[#edf4fb] py-6 lg:py-8">
+        <section className="relative overflow-hidden bg-[#edf4fb] py-10 lg:py-14">
+            <Image
+                src="/comman/comman-bg-left-shape.png"
+                alt=""
+                width={394}
+                height={534}
+                aria-hidden="true"
+                className="pointer-events-none absolute -left-24 bottom-0 w-[300px] opacity-15 lg:left-0 lg:w-[394px] lg:opacity-20"
+            />
             <div className="relative z-10 mx-auto max-w-[1220px] px-4 sm:px-6 lg:px-8">
                 <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr]">
                     <div className="flex flex-col items-center justify-center lg:flex-row lg:items-start lg:justify-start lg:gap-8">
@@ -61,10 +69,8 @@ export default function IndustriesForm() {
                             <p className="text-[20px] leading-tight text-black lg:text-[34px]">
                                 Grow Better with
                             </p>
-                            <h2 className="my-1 text-[34px] font-semibold leading-[1.05] bg-[linear-gradient(90deg,#17afa1_0%,#43bccb_45%,#74b9ff_100%)] bg-clip-text text-transparent bg-clip-text text-transparent sm:text-4xl">
-                                Insight
-
-                                Opinion
+                            <h2 className="my-1 text-[34px] font-semibold leading-[1.05] bg-[linear-gradient(90deg,#17afa1_0%,#43bccb_45%,#74b9ff_100%)] bg-clip-text text-transparent sm:text-4xl">
+                                Insight<br />Opinion
                             </h2>
                         </div>
 
@@ -74,7 +80,7 @@ export default function IndustriesForm() {
                                 alt="Blog Image"
                                 width={1000}
                                 height={1000}
-                                className="rounded-lg w-full h-[300px]"
+                                className="h-auto w-full object-contain"
                             />
                         </div>
 

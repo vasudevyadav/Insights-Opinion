@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-// @ts-ignore - no type declarations for 'aos'
+// @ts-expect-error - the aos package does not ship TypeScript declarations
 import AOS from "aos";
 
 const industries = [
@@ -233,7 +233,7 @@ export default function Industries() {
                 >
                     <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth scrollbar-hide">
                         {industries.map((ind, index) => (
-                            <div key={ind.id} className="min-w-full snap-center">
+                            <div key={ind.id} className="min-w-[86%] snap-center">
                                 <IndustryCard
                                     {...ind}
                                     isExpanded={true}

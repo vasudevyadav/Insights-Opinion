@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-// @ts-ignore - no type declarations for 'aos'
+// @ts-expect-error - the aos package does not ship TypeScript declarations
 import AOS from "aos";
 
 export default function CoreTab() {
@@ -186,7 +186,7 @@ export default function CoreTab() {
                     key={`hero-${activeTab}`}
 
                 >
-                    <div className="relative h-[300px] overflow-hidden sm:h-[380px] lg:h-[440px] lg:w-11/12">
+                    <div className="relative h-[260px] overflow-hidden rounded-2xl sm:h-[380px] lg:h-[440px] lg:w-11/12">
                         <Image
                             src={activeData.heroImage}
                             alt={activeData.label}
