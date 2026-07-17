@@ -4,7 +4,7 @@ const sections = [
     {
         title: "Professional Development",
         subtitle: "and Training",
-        image: "/quality-standard/professional-development.png",
+        image: "/market-research-quality-standards/Professional-Development-and-Training.jpg",
         imageAlt: "Professional Development and Training",
         imageLeft: true,
         points: [
@@ -29,7 +29,7 @@ const sections = [
     {
         title: "Global Data Transfer ",
         subtitle: "and Management ",
-        image: "/quality-standard/news-image.png",
+        image: "/market-research-quality-standards/Global-Data-Transfer-and-Management-.jpg",
         imageAlt: "Global Data Transfer Management",
         imageLeft: false,
         points: [
@@ -54,7 +54,7 @@ const sections = [
     {
         title: "Industry Affiliations ",
         subtitle: "and Certifications",
-        image: "/market-research/uses-image.png",
+        image: "/market-research-quality-standards/Industry-Affiliations-and-Certifications.jpg",
         imageAlt: "Industry Affiliations and Certifications",
         imageLeft: true,
         points: [
@@ -89,7 +89,7 @@ export default function QualityGlobalTransfer() {
                             {section.imageLeft ? (
                                 <>
                                     <div className="flex justify-center lg:justify-start lg:pl-12">
-                                        <div className="relative h-[260px] w-full overflow-hidden rounded-[20px] shadow-md sm:h-[350px] sm:rounded-[28px] lg:h-[500px]">
+                                        <div className="relative h-[260px] w-full overflow-hidden rounded-[20px] shadow-md sm:h-[350px] sm:rounded-[28px] lg:h-[410px] lg:max-w-[540px]">
                                             <Image
                                                 src={section.image}
                                                 alt={section.imageAlt}
@@ -139,7 +139,7 @@ export default function QualityGlobalTransfer() {
                                         </div>
                                     </div>
                                     <div className="flex justify-center lg:justify-end lg:pr-10">
-                                        <div className="relative h-[260px] w-full overflow-hidden rounded-[20px] shadow-md sm:h-[350px] sm:rounded-[24px] lg:h-[500px]">
+                                        <div className="relative h-[260px] w-full overflow-hidden rounded-[20px] shadow-md sm:h-[350px] sm:rounded-[24px] lg:h-[410px] lg:max-w-[540px]">
                                             <Image
                                                 src={section.image}
                                                 alt={section.imageAlt}

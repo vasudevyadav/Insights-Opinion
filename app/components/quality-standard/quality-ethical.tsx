@@ -80,7 +80,7 @@ export default function QualityEthical() {
                     <div className="flex justify-center lg:justify-end">
                         <div className="mx-auto w-full overflow-hidden rounded-[20px] shadow-md sm:max-w-[80%] sm:rounded-[28px] lg:max-w-[80%]">
                             <Image
-                                src="/quality-standard/ethical-research.png"
+                                src="/market-research-quality-standards/Ethical-Research-Practices.jpg"
                                 alt="Ethical Research Practices"
                                 width={640}
                                 height={440}
