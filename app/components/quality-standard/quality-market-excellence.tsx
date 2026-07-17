@@ -6,28 +6,28 @@ const cards = [
         title: "Quantitative and Qualitative Standards",
         description:
             "We maintain strict methodological standards across quantitative and qualitative research, delivering validated instruments and structured processes that keep results accurate and reliable. ",
-        image: "/quality-standard/market-research-1.png",
+        image: "/market-research-quality-standards/Quantitative-and-Qualitative-Standards.jpg",
 
     },
     {
         title: "Data Collection and Integrity",
         description:
             "Our data collection uses a multi-layered approach across online panels, CATI, and CAPI systems, keeping every dataset accurate, consistent, and audit ready. ",
-        image: "/quality-standard/market-research-1.png",
+        image: "/market-research-quality-standards/Data-Collection-and-Integrity.jpg",
 
     },
     {
         title: "Participant Selection",
         description:
             "We use representative sampling and thorough screening protocols so respondent pools reflect the target market accurately, supporting research you can act on confidently.",
-        image: "/quality-standard/market-research-1.png",
+        image: "/market-research-quality-standards/Participant-Selection-.jpg",
 
     },
     {
         title: "Researcher Training and Expertise",
         description:
             "Every researcher completes ongoing training and professional development, staying current with research methodologies, ethical standards, and emerging market research trends and tools.",
-        image: "/quality-standard/market-research-1.png",
+        image: "/market-research-quality-standards/Researcher-Training-and-Expertise.jpg",
 
     },
 ];
@@ -35,7 +35,7 @@ const cards = [
 export default function QualityMarketExcellence() {
     return (
         <section className="quality-hex-bg relative overflow-hidden pt-8 lg:pt-14">
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8 lg:pb-14">
                 <div className="mb-10 text-center">
                     <h2 className="text-[26px] font-light text-[#1a2340] lg:text-[36px] mb-3 lg:mb-5">
                         <span className="quality-gradient-text font-semibold"> Market Research  </span>{" "}
@@ -58,7 +58,7 @@ export default function QualityMarketExcellence() {
                                     alt={card.title}
                                     fill
                                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                                 />
                                 <div className="absolute bottom-0 left-0 right-0 bg-white/90 px-4 py-1.5 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-0">
                                     <h3 className="px-2 py-1 text-[14px] font-bold leading-snug text-[#101538] lg:text-[15px]">
