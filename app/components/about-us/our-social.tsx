@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import BackgroundShape from "./background-shape";
 
 const csrPoints = [
     {
@@ -21,7 +22,8 @@ const csrPoints = [
 
 export default function OurSocial() {
     return (
-        <section className="relative overflow-hidden bg-[#edf4fb] py-4 lg:py-8">
+        <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
+            <BackgroundShape variant={5} side="left" className="-left-20 bottom-0 w-[320px] opacity-50 lg:-left-4 lg:w-[470px]" />
 
             <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-10">
                 <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">

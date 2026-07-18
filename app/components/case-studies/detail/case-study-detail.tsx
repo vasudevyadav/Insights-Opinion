@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import type { CaseStudy } from "@/app/lib/case-studies-api";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
+import BackgroundShape from "../../about-us/background-shape";
 
 type CaseStudyDetailProps = {
   caseStudy: CaseStudy;
@@ -16,9 +17,9 @@ function SidebarCard({ item }: { item: CaseStudy }) {
   return (
     <Link
       href={`/case-studies/${item.slug}`}
-      className="group block overflow-hidden rounded-t-[18px] rounded-bl-[4px] rounded-br-[38px] border border-[#1d315d] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+      className="group block overflow-hidden rounded-t-[18px] rounded-bl-[4px] rounded-br-[32px] border border-[#1d315d] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
     >
-      <div className="relative h-[160px] overflow-hidden rounded-t-[18px] rounded-br-[26px] sm:h-[185px] lg:h-[200px]">
+      <div className="relative h-[125px] overflow-hidden rounded-t-[18px] rounded-br-[24px] lg:h-[200px]">
         <Image
           src={item.image}
           alt={item.title}
@@ -27,14 +28,14 @@ function SidebarCard({ item }: { item: CaseStudy }) {
           className="object-cover transition duration-300 group-hover:scale-105"
         />
       </div>
-      <div className="relative px-3.5 pb-4 pt-7">
+      <div className="relative px-3 pb-3 pt-6">
         <span className="absolute -top-4 left-0 max-w-[90%] rounded-r-[5px] bg-gradient-to-r from-[#111a2f] to-[#101827] px-3 py-1.5 text-[11px] font-semibold leading-none text-white sm:text-[12px] lg:text-[13px]">
           {item.title}
         </span>
-        <p className="line-clamp-4 text-[12px] font-medium leading-[1.65] text-[#172446] lg:text-[13px] lg:leading-6">
+        <p className="line-clamp-4 text-sm font-medium text-[#172446] mb-2">
           {item.description}
         </p>
-        <span className="mt-3 inline-block text-[10px] font-bold uppercase tracking-widest text-[#13b3ad] lg:text-xs">
+        <span className="mt-2 inline-block text-xs font-bold uppercase tracking-widest text-[#13b3ad]">
           Readmore &gt;
         </span>
       </div>
@@ -101,9 +102,9 @@ function CallbackForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mx-auto w-full max-w-[420px] rounded-[14px] border border-[#22bbb1] bg-[#eef7ff]/70 px-5 py-5 lg:max-w-none"
+      className="mx-auto w-full max-w-[420px] rounded-[14px] border border-[#22bbb1] bg-[#eef7ff]/70 px-4 py-5 lg:max-w-none"
     >
-      <h3 className="mb-5 text-xl font-semibold text-[#19bfb1] sm:text-2xl">
+      <h3 className="mb-5 text-lg font-semibold text-[#19bfb1]">
         Request a <span className="text-[#59a8fb]">Callback</span>
       </h3>
       <div className="space-y-3">
@@ -175,7 +176,7 @@ export default function CaseStudyDetail({
   return (
     <>
       <section className="bg-[#edf6fe]">
-        <div className="relative mt-8 w-full overflow-hidden bg-[url('/about-us/about-us-hero-bg.webp')] bg-cover bg-bottom bg-no-repeat text-white lg:mt-20">
+        <div className="relative w-full overflow-hidden bg-[url('/about-us/about-us-hero-bg.webp')] bg-cover bg-bottom bg-no-repeat text-white">
           <div className="relative z-10 mx-auto flex min-h-[220px] w-full max-w-7xl items-center justify-center px-5 py-10 sm:min-h-[300px] lg:min-h-[420px]">
             <div className="text-center">
               <h1 className="quality-gradient-text text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
@@ -189,101 +190,98 @@ export default function CaseStudyDetail({
         </div>
       </section>
 
-      <section className="quality-hex-bg relative overflow-hidden py-8 sm:py-10 lg:py-16">
+      <section className="relative overflow-hidden bg-[#eef7ff] py-10 sm:py-12 lg:py-16">
+        <BackgroundShape variant={1} className="-right-28 top-0 w-[350px] opacity-45 sm:w-[440px] lg:-right-2 lg:w-[530px]" />
+        <BackgroundShape variant={3} side="left" className="-left-24 top-[34%] w-[320px] opacity-45 sm:w-[400px] lg:-left-2 lg:w-[480px]" />
+        <BackgroundShape variant={5} className="-right-24 bottom-[8%] w-[330px] opacity-40 sm:w-[410px] lg:-right-2 lg:w-[500px]" />
         <button className="fixed right-0 top-1/2 z-40 hidden -translate-y-1/2 rounded-l-[18px] bg-gradient-to-b from-[#19beb0] to-[#57aaf4] px-3 py-5 text-[11px] font-semibold uppercase tracking-wide text-white shadow-lg [writing-mode:vertical-rl] lg:block">
           Request Callback
         </button>
 
-        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-          <article className="min-w-0 text-[#151b27]">
-            <header className="px-1 sm:px-4 lg:px-8">
-              <h2 className="text-xl font-bold leading-[1.14] lg:text-4xl">
-                {headingAccent && (
-                  <span className="text-[#19b3a8]">{headingAccent}</span>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_350px] lg:items-start xl:gap-14">
+            <article className="min-w-0 text-[#172446]">
+              <header>
+                {detail.results && (
+                  <p className="mb-6 text-sm font-medium leading-6 text-[#172446] lg:text-base">
+                    {detail.results}
+                  </p>
                 )}
-                <span className="text-[#171c26]">{headingRemainder}</span>
-              </h2>
-
-              <div className="mt-8 sm:mt-10">
-                <h3 className="text-sm font-bold text-black lg:text-2xl">
-                  {detail.clientLabel}
-                </h3>
-                <p className="mt-2 text-base leading-relaxed text-black sm:text-xl">
-                  {detail.client}
-                </p>
-              </div>
-
-              <div className="mt-7 sm:mt-8">
-                <h3 className="text-sm font-bold text-black lg:text-2xl">
-                  {detail.mandateLabel}
-                </h3>
-                <div className="mt-2 space-y-3 text-base leading-[1.65] text-black sm:text-xl sm:leading-[1.7]">
-                  {(detail.mandate.length
-                    ? detail.mandate
-                    : detail.overview
-                  ).map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
-                  ))}
-                </div>
-              </div>
-            </header>
-
-            <section className="mt-10 rounded-[12px] bg-[#ddf6fc] px-5 py-8 sm:mt-14 sm:px-10 sm:py-11 lg:px-16 lg:py-14">
-              <h2 className="text-base font-bold leading-tight text-[#171c26] lg:text-2xl">
-                {detail.methodologyHeading}
-              </h2>
-              <ul className="mt-6 space-y-5 text-sm font-medium leading-[1.65] text-[#626870] sm:mt-8 sm:text-lg lg:space-y-6 lg:text-lg">
-                {detail.methodology.map((item) => (
-                  <li key={item} className="flex gap-4 sm:gap-5">
-                    <span className="mt-[10px] h-2.5 w-2.5 shrink-0 rounded-full bg-[#18b4aa] sm:mt-[12px]" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section className="mt-10 px-1 sm:mt-14 sm:px-4 lg:px-0">
-              <h2 className="text-base font-bold leading-tight text-[#171c26] lg:text-2xl">
-                Basic Inputs/{detail.deliveryHeading}
-              </h2>
-              <ul className="mt-6 space-y-5 text-sm font-medium leading-[1.65] text-[#626870] sm:mt-8 sm:text-lg lg:space-y-6 lg:text-lg">
-                {detail.delivery.map((item) => (
-                  <li key={item} className="flex gap-4 sm:gap-5">
-                    <span className="mt-[10px] h-2.5 w-2.5 shrink-0 rounded-full bg-[#18b4aa] sm:mt-[12px]" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section className="relative mt-12 overflow-hidden rounded-[32px] border border-[#eef1f3] bg-white px-5 py-10 text-center shadow-[0_12px_28px_rgba(23,28,38,0.14)] sm:mt-16 sm:px-14 sm:py-14 lg:px-24">
-              <span className="pointer-events-none absolute -left-32 -top-24 h-80 w-80 rounded-full bg-[#f7f9fa]" />
-              <span className="pointer-events-none absolute -right-40 -top-28 h-96 w-96 rounded-full bg-[#fafbfc]" />
-              <h2 className="relative text-[34px] font-bold leading-tight text-[#18b4aa] sm:text-[46px] lg:text-[52px]">
-                {detail.resultsHeading}
-              </h2>
-              <p className="relative mx-auto mt-7 max-w-[1080px] text-sm font-medium leading-[1.7] text-black lg:text-lg">
-                {detail.results}
-              </p>
-            </section>
-          </article>
-
-
-          <aside className="mt-16 border-t border-[#dce9f2] pt-10">
-            <div className="grid gap-8 lg:grid-cols-[1fr_380px] lg:items-start">
-              <div>
-                <h2 className="mb-6 text-2xl font-bold text-[#172446]">
-                  More Case Studies
+                <h2 className="text-[22px] font-medium leading-tight text-[#172446] sm:text-[25px]">
+                  {headingAccent}{headingRemainder}
                 </h2>
-                <div className="grid gap-6 sm:grid-cols-2">
-                  {relatedCaseStudies.map((item) => (
-                    <SidebarCard key={item.slug} item={item} />
-                  ))}
+
+                <div className="mt-4">
+                  <h3 className="text-sm font-semibold text-[#172446]">
+                    {detail.clientLabel}
+                  </h3>
+                  <p className="mt-1 text-sm leading-6 text-[#172446] lg:text-base">
+                    {detail.client}
+                  </p>
                 </div>
+
+                <div className="mt-3">
+                  <h3 className="text-sm font-semibold text-[#172446]">
+                    {detail.mandateLabel}
+                  </h3>
+                  <div className="mt-1 space-y-2 text-sm leading-6 text-[#172446] lg:text-base">
+                    {(detail.mandate.length
+                      ? detail.mandate
+                      : detail.overview
+                    ).map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
+              </header>
+
+              <section className="mt-6 rounded-[22px] bg-[#dceffb]/80 px-4 py-6 sm:px-5 sm:py-7">
+                <h2 className="text-[22px] font-medium leading-tight text-[#172446]">
+                  {detail.methodologyHeading}
+                </h2>
+                <ul className="mt-3 list-disc space-y-2 pl-4 text-sm leading-6 text-[#172446] lg:text-base">
+                  {detail.methodology.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                {detail.methodologyImage && (
+                  <div className="relative mx-auto mt-5 aspect-[2.55/1] w-full max-w-[520px] overflow-hidden">
+                    <Image src={detail.methodologyImage} alt="Methodology" fill className="object-cover" sizes="(max-width: 1024px) 90vw, 520px" />
+                  </div>
+                )}
+              </section>
+
+              <section className="mt-6">
+                <h2 className="text-[22px] font-medium leading-tight text-[#172446]">
+                  Basic Inputs/{detail.deliveryHeading}
+                </h2>
+                <ul className="mt-3 list-disc space-y-2 pl-4 text-sm leading-6 text-[#172446] lg:text-base">
+                  {detail.delivery.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </section>
+
+              <section className="mt-6">
+                <h2 className="text-[22px] font-medium leading-tight text-[#172446]">
+                  {detail.resultsHeading}
+                </h2>
+                <p className="mt-3 text-sm font-medium leading-6 text-[#172446] sm:text-base">
+                  {detail.results}
+                </p>
+              </section>
+            </article>
+
+
+            <aside className="space-y-8 lg:sticky lg:top-28">
+              <div className="space-y-6">
+                {relatedCaseStudies.map((item) => (
+                  <SidebarCard key={item.slug} item={item} />
+                ))}
               </div>
               <CallbackForm />
-            </div>
-          </aside>
+            </aside>
+          </div>
         </div>
       </section>
     </>
