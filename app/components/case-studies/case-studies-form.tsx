@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
+import BackgroundShape from "../about-us/background-shape";
 
 const initialFormData = {
     name: "",
@@ -53,7 +54,8 @@ export default function CaseStudiesForm() {
     };
 
     return (
-        <section className="relative overflow-hidden bg-[#edf4fb] py-8 lg:py-12">
+        <section className="relative overflow-hidden bg-[#eef7ff] py-10 lg:py-14">
+            <BackgroundShape variant={5} className="-right-24 -bottom-48 w-[330px] opacity-40 lg:-right-3 lg:w-[490px]" />
             <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                 <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
 

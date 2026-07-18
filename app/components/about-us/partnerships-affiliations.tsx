@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import BackgroundShape from "./background-shape";
 
 const partnershipPoints = [
     {
@@ -16,35 +17,8 @@ const partnershipPoints = [
 
 export default function PartnershipsAffiliations() {
     return (
-        <section className="relative overflow-hidden bg-[#edf4fb] py-8 lg:py-10">
-            {/* Top Right Hexagon Pattern */}
-            <div className="pointer-events-none absolute right-0 top-0 h-[180px] w-[300px] opacity-100 lg:h-[220px] lg:w-[420px]">
-                <svg
-                    viewBox="0 0 420 220"
-                    className="h-full w-full"
-                    preserveAspectRatio="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <defs>
-                        <pattern
-                            id="hexPatternTopRight"
-                            x="0"
-                            y="0"
-                            width="42"
-                            height="36"
-                            patternUnits="userSpaceOnUse"
-                        >
-                            <polygon
-                                points="10,1 31,1 41,18 31,35 10,35 0,18"
-                                fill="none"
-                                stroke="#c8deed"
-                                strokeWidth="1.2"
-                            />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#hexPatternTopRight)" />
-                </svg>
-            </div>
+        <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
+            <BackgroundShape variant={7} className="-right-16 -top-24 w-[330px] opacity-55 sm:w-[410px] lg:-right-2 lg:-top-20 lg:w-[490px]" />
 
             <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-10">
                 {/* Top Heading */}

@@ -1,5 +1,6 @@
 import React from "react";
 import { Eye, Fingerprint, Gem, Users, Trophy } from "lucide-react";
+import BackgroundShape from "./background-shape";
 
 const coreValues = [
     {
@@ -73,11 +74,12 @@ function ArcCircle({ Icon }: { Icon: React.ElementType }) {
 
 export default function OurCoreValues() {
     return (
-        <section className="relative overflow-hidden bg-[#edf6ff] py-0 lg:py-10">
+        <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
+            <BackgroundShape variant={3} side="left" className="-left-12 top-6 w-[290px] opacity-55 sm:w-[370px] lg:-left-1 lg:top-4 lg:w-[430px]" />
 
             <div className="relative z-10 mx-auto max-w-[1280px] px-6 lg:px-10">
                 {/* Heading */}
-                <div className="mb-12 text-center">
+                <div className="mb-12 text-center lg:mb-14">
                     <h2 className="text-[28px] font-semibold leading-none text-[#34b8c9] lg:text-4xl mb-2">
                         Our Core Values
                     </h2>
@@ -87,7 +89,7 @@ export default function OurCoreValues() {
                 </div>
 
                 {/* Value Cards */}
-                <div className="about-mobile-slider flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 lg:grid lg:grid-cols-5 lg:gap-x-6 lg:overflow-visible lg:pb-0">
+                <div className="about-mobile-slider flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 lg:grid lg:grid-cols-5 lg:gap-x-8 lg:overflow-visible lg:pb-0">
                     {coreValues.map((item, i) => {
                         const Icon = item.icon;
 
@@ -106,7 +108,7 @@ export default function OurCoreValues() {
                                     </p>
                                 </div>
 
-                                <div className="-mt-1 ml-[-50px]">
+                                <div className="-mt-1 ml-[-42px]">
                                     <ArcCircle Icon={Icon} />
                                 </div>
                             </div>
@@ -115,7 +117,7 @@ export default function OurCoreValues() {
                 </div>
 
                 {/* Bottom Banner */}
-                <div className="mx-auto mt-10 w-fit border border-[#8a97a3] bg-[#f7fbff] px-6 py-2.5 text-center text-xs leading-tight text-[#374151] lg:text-[15px]">
+                <div className="mx-auto mt-10 w-fit border border-[#8a97a3] bg-[#f7fbff]/80 px-6 py-2.5 text-center text-xs leading-tight text-[#374151] lg:text-[15px]">
                    At Insights Opinion, we are more than just a service provider, we are your partner in turning data into strategic success.
                 </div>
             </div>

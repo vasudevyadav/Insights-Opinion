@@ -66,7 +66,7 @@ export default function BlogDetail({ blog, relatedBlogs }: BlogDetailProps) {
   return (
     <>
       <section className="bg-[#edf6fe]">
-        <div className="relative mt-8 w-full overflow-hidden bg-[url('/about-us/about-us-hero-bg.webp')] bg-cover bg-bottom bg-no-repeat text-white lg:mt-20">
+        <div className="relative w-full overflow-hidden bg-[url('/about-us/about-us-hero-bg.webp')] bg-cover bg-bottom bg-no-repeat text-white ">
           <div className="relative z-10 mx-auto flex min-h-[350px] w-full max-w-7xl items-center px-5 pt-16 sm:px-4 lg:min-h-[500px] lg:pt-0">
             <div className="mx-auto mb-10 max-w-4xl">
               <h1 className="mb-4 line-clamp-3 text-center text-[28px] font-semibold leading-tight lg:text-[46px]">

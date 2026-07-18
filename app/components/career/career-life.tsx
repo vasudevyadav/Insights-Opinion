@@ -1,25 +1,28 @@
 import Image from "next/image";
+import CareerShape from "./career-shape";
 
 export default function CareerLife() {
     return (
-        <section className="bg-[#edf6ff] relative overflow-hidden pb-8 lg:pb-12">
+        <section className="relative overflow-hidden bg-[#edf6ff] py-12 [font-family:var(--font-poppins)] lg:py-16">
+            <CareerShape variant={3} className="-left-20 -top-8 w-[320px] opacity-25 sm:w-[400px] lg:-left-1 lg:-top-20 lg:w-[480px]" />
+            <CareerShape variant={4} className="-right-20 -top-44 w-[310px] opacity-25 sm:w-[390px] lg:-right-2 lg:-top-56 lg:w-[460px]" />
 
             <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6">
-                <div className="mb-10 text-center">
-                    <h2 className="text-2xl lg:text-[40px] font-medium leading-tight">
-                        <span className="font-serif italic font-normal text-[#1a1a2e]">Life</span>{" "}
-                        <span className="bg-linear-to-r from-[#1dc3b3] via-[#1dc3b3] to-[#3c8df6]  bg-clip-text text-transparent font-semibold">@ Insights Opinion</span>
+                <div className="mb-8 text-center lg:mb-10">
+                    <h2 className="text-[25px] font-medium leading-tight lg:text-[31px]">
+                        <span className="mr-1 inline-block -rotate-6 text-[32px] font-normal italic text-[#101938] [font-family:'Snell_Roundhand','Brush_Script_MT','Segoe_Script',cursive] lg:text-[42px]">Life</span>{" "}
+                        <span className="bg-linear-to-r from-[#1dc3b3] via-[#1dc3b3] to-[#3c8df6] bg-clip-text font-medium text-transparent">@ Insights Opinion</span>
 
                     </h2>
 
                 </div>
 
-                <div className="relative w-full">
+                <div className="relative mx-auto w-full max-w-[1142px]">
                     <Image
                         src="/career/life-img.png"
                         alt="Life at Insights Opinion"
-                        width={1280}
-                        height={600}
+                        width={1142}
+                        height={466}
                         className="w-full h-auto object-contain"
                     />
                 </div>

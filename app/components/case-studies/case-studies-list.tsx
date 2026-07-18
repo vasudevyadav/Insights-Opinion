@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Search } from "lucide-react";
 import type { CaseStudy } from "@/app/lib/case-studies-api";
+import BackgroundShape from "../about-us/background-shape";
 
 const INITIAL_COUNT = 6;
 const LOAD_MORE_COUNT = 3;
@@ -43,6 +44,8 @@ export default function CaseStudiesList({ caseStudies }: CaseStudiesListProps) {
 
     return (
         <section className="relative overflow-hidden bg-[#eef7ff] py-10 md:py-14 lg:py-16">
+            <BackgroundShape variant={1} className="-right-24 top-4 w-[330px] opacity-45 sm:w-[420px] lg:-right-3 lg:w-[520px]" />
+            <BackgroundShape variant={3} side="left" className="-left-24 bottom-0 w-[310px] opacity-45 sm:w-[390px] lg:-left-2 lg:w-[470px]" />
             <div className="relative z-10 mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
 
                 {/* Filter + Search Row */}
@@ -95,7 +98,7 @@ export default function CaseStudiesList({ caseStudies }: CaseStudiesListProps) {
                             className="group relative overflow-hidden rounded-t-[16px] rounded-bl-[4px] rounded-br-[36px] border border-[#1d315d] bg-white shadow-sm transition-shadow hover:shadow-md"
                         >
                             {/* Card Image */}
-                            <div className="relative h-[180px] w-full overflow-hidden rounded-t-[16px] rounded-br-[24px] sm:h-[190px] lg:h-[200px]">
+                            <div className="relative h-[180px] w-full overflow-hidden rounded-t-[16px] rounded-br-[24px] lg:h-[220px]">
                                 <Image
                                     src={item.image}
                                     alt={item.title}
@@ -113,13 +116,13 @@ export default function CaseStudiesList({ caseStudies }: CaseStudiesListProps) {
                             </div>
 
                             {/* Card Body */}
-                            <div className="px-4 pb-5 pt-9 sm:px-5">
-                                <p className="min-h-[90px] text-[12px] leading-[1.6] text-[#1e2a4e] line-clamp-6 sm:text-[11px] lg:text-[12px]">
+                            <div className="px-4 pb-5 pt-6 sm:px-5">
+                                <p className="min-h-[90px] text-xs leading-[1.6] text-[#1e2a4e] line-clamp-6  lg:text-base">
                                     {item.description}
                                 </p>
                                 <Link
                                     href={`/case-studies/${item.slug}`}
-                                    className="mt-3 inline-block text-[10px] font-bold uppercase tracking-widest text-[#13b3ad] transition-opacity hover:opacity-70"
+                                    className="mt-3 inline-block text-xs font-bold uppercase tracking-widest text-[#13b3ad] transition-opacity hover:opacity-70"
                                 >
                                     Read More &gt;
                                 </Link>
