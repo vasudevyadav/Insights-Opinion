@@ -1,4 +1,5 @@
 import Image from "next/image";
+import BackgroundShape from "../about-us/background-shape";
 
 const bottomCards = [
 {
@@ -65,6 +66,8 @@ if (!content) return null;
 
 return (
 <section className="relative overflow-hidden bg-[#f0f7ff] py-10 lg:py-14">
+  <BackgroundShape variant={2} side="left" className="-left-24 bottom-[-180px] w-[320px] opacity-40 sm:w-[410px] lg:-left-2 lg:w-[490px]" />
+  <BackgroundShape variant={4} className="-right-24 top-8 w-[300px] opacity-35 sm:w-[380px] lg:-right-2 lg:w-[450px]" />
   <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
     {/* Top row: heading left + quant-about image right */}
     <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-10">

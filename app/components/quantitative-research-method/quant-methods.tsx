@@ -28,7 +28,7 @@ const methods = [
 
 export default function QuantDetailsMethods() {
   return (
-    <section className="relative overflow-hidden bg-[#edf6ff] py-1 lg:py-10">
+    <section className="quality-hex-bg relative overflow-hidden py-1 lg:py-10">
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Heading */}

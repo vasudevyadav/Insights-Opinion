@@ -20,7 +20,7 @@ export default function MarketResearch({ data }: { data: MethodData }) {
     <>
       {/* ── When to Use ── */}
       {whenToUse?.heading1 && whenToUse.items?.length > 0 && (
-        <section className="relative overflow-hidden bg-[#deeef7] py-7 lg:py-16">
+        <section className="quality-hex-bg relative overflow-hidden py-7 lg:py-16">
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start lg:gap-10">
 
@@ -86,7 +86,7 @@ export default function MarketResearch({ data }: { data: MethodData }) {
 
       {/* ── Method vs Method ── */}
       {vsBox?.title && vsBox.items?.length > 0 && (
-        <section className="relative overflow-hidden bg-[#deeef7] lg:py-0 lg:pb-10">
+        <section className="quality-hex-bg relative overflow-hidden lg:py-0 lg:pb-10">
           {/* Background Pattern */}
           <div className="pointer-events-none absolute inset-y-0 right-0 w-56 opacity-20">
             <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">

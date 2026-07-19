@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Industry } from "@/app/lib/industries-data";
+import BackgroundShape from "../about-us/background-shape";
 
 function cleanIndustryText(value: string) {
   return value
@@ -32,6 +33,7 @@ export default function QuantIndustries({
 
   return (
     <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
+      <BackgroundShape variant={5} className="-right-24 top-0 w-[330px] opacity-35 sm:w-[420px] lg:-right-2 lg:w-[500px]" />
       {/* Hex pattern right */}
       <div className="pointer-events-none absolute -right-20 top-0 hidden h-full w-[38%] opacity-35 lg:block">
         <svg
