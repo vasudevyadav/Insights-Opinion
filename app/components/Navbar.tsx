@@ -77,7 +77,7 @@ export default function Navbar({
       },
       { type: "link", name: "INDUSTRIES", href: "/industries" },
       { type: "link", name: "QUALITY STANDARD", href: "/quality-standard" },
-      { type: "dropdown", name: "RESEARCH", key: "research", href: "/research" },
+      { type: "dropdown", name: "RESEARCH", key: "research", href: "#" },
       { type: "dropdown", name: "RESOURCES", key: "resources", href: "/resources" },
       { type: "link", name: "CONTACT US", href: "/contact-us" },
     ],
@@ -160,19 +160,41 @@ export default function Navbar({
                     onMouseEnter={() => setOpenDropdown(item.key)}
                     onMouseLeave={() => setOpenDropdown(null)}
                   >
-                    <Link
-                      href={item.href || "#"}
-                      className={`flex items-center gap-1 text-[12px] font-medium tracking-[0.04em] transition-colors lg:text-base ${isPathActive(item.href)
-                        ? "text-[#14d8d0]"
-                        : "text-white hover:text-[#14d8d0]"
-                        }`}
-                    >
-                      {item.name}
-                      <ChevronDown
-                        className={`h-4 w-4 transition-transform duration-300 ${openDropdown === item.key ? "rotate-180" : ""
+                    {(["services", "research", "resources"] as NavDropdownKey[]).includes(item.key) ? (
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setOpenDropdown((current) =>
+                            current === item.key ? null : item.key
+                          )
+                        }
+                        className={`flex items-center gap-1 text-[12px] font-medium tracking-[0.04em] transition-colors lg:text-base ${isPathActive(item.href)
+                          ? "text-[#14d8d0]"
+                          : "text-white hover:text-[#14d8d0]"
                           }`}
-                      />
-                    </Link>
+                        aria-expanded={openDropdown === item.key}
+                      >
+                        {item.name}
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform duration-300 ${openDropdown === item.key ? "rotate-180" : ""
+                            }`}
+                        />
+                      </button>
+                    ) : (
+                      <Link
+                        href={item.href || "#"}
+                        className={`flex items-center gap-1 text-[12px] font-medium tracking-[0.04em] transition-colors lg:text-base ${isPathActive(item.href)
+                          ? "text-[#14d8d0]"
+                          : "text-white hover:text-[#14d8d0]"
+                          }`}
+                      >
+                        {item.name}
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform duration-300 ${openDropdown === item.key ? "rotate-180" : ""
+                            }`}
+                        />
+                      </Link>
+                    )}
 
                     {item.key === "services" ? (
                       <MegaMenu
@@ -242,7 +264,7 @@ export default function Navbar({
           />
 
           <div className="fixed right-0 top-0 z-50 h-full w-80 max-w-[85vw] overflow-y-auto bg-[#0b2343] p-5 shadow-2xl lg:hidden">
-            <div className="mb-6 flex items-center justify-between">
+            <div className="mb-6 flex items-center justify-between mt-4">
               <Image
                 src="/logo.png"
                 alt="Logo"
@@ -286,16 +308,30 @@ export default function Navbar({
                 return (
                   <div key={item.key} className="rounded-lg">
                     <div className="flex items-center gap-2">
-                      <Link
-                        href={item.href || "#"}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className={`flex-1 rounded-lg px-4 py-3 text-sm font-medium ${isPathActive(item.href)
-                          ? "bg-white/10 text-[#14d8d0]"
-                          : "text-white hover:bg-white/10"
-                          }`}
-                      >
-                        {item.name}
-                      </Link>
+                      {(["services", "research", "resources"] as NavDropdownKey[]).includes(item.key) ? (
+                        <button
+                          type="button"
+                          onClick={() => toggleMobileDropdown(item.key)}
+                          className={`flex-1 rounded-lg px-4 py-3 text-left text-sm font-medium ${isPathActive(item.href)
+                            ? "bg-white/10 text-[#14d8d0]"
+                            : "text-white hover:bg-white/10"
+                            }`}
+                          aria-expanded={!!mobileOpenDropdowns[item.key]}
+                        >
+                          {item.name}
+                        </button>
+                      ) : (
+                        <Link
+                          href={item.href || "#"}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={`flex-1 rounded-lg px-4 py-3 text-sm font-medium ${isPathActive(item.href)
+                            ? "bg-white/10 text-[#14d8d0]"
+                            : "text-white hover:bg-white/10"
+                            }`}
+                        >
+                          {item.name}
+                        </Link>
+                      )}
 
                       <button
                         type="button"
@@ -318,36 +354,35 @@ export default function Navbar({
                               key={group.id}
                               className="overflow-hidden rounded-lg bg-white/5"
                             >
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  setMobileServiceGroup((current) =>
-                                    current === group.id ? null : group.id
-                                  )
-                                }
-                                className="flex w-full items-center justify-between p-3 text-left text-xs font-semibold uppercase tracking-wide text-[#14d8d0]"
-                              >
-                                {group.title}
-                                <ChevronDown
-                                  className={`h-4 w-4 transition-transform ${mobileServiceGroup === group.id
-                                    ? "rotate-180"
-                                    : ""
-                                    }`}
-                                />
-                              </button>
+                              <div className="flex items-center">
+                                <Link
+                                  href={group.href}
+                                  onClick={() => setMobileMenuOpen(false)}
+                                  className="flex-1 p-3 text-left text-xs font-semibold uppercase leading-5 tracking-wide text-[#14d8d0]"
+                                >
+                                  {group.title}
+                                </Link>
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    setMobileServiceGroup((current) =>
+                                      current === group.id ? null : group.id
+                                    )
+                                  }
+                                  className="p-3 text-[#14d8d0]"
+                                  aria-label={`Toggle ${group.title} child services`}
+                                >
+                                  <ChevronDown
+                                    className={`h-4 w-4 transition-transform ${mobileServiceGroup === group.id
+                                      ? "rotate-180"
+                                      : ""
+                                      }`}
+                                  />
+                                </button>
+                              </div>
 
                               {mobileServiceGroup === group.id && (
                                 <div className="space-y-1 border-t border-white/10 p-2">
-                                  {group.href && (
-                                    <Link
-                                      href={group.href}
-                                      onClick={() => setMobileMenuOpen(false)}
-                                      className="block rounded-lg px-3 py-2 text-sm font-medium text-white hover:bg-white/10"
-                                    >
-                                      View {group.title}
-                                    </Link>
-                                  )}
-
                                   {group.children.map((subItem) =>
                                     subItem.href ? (
                                       <Link
@@ -398,7 +433,6 @@ export default function Navbar({
               <div className="my-2 border-t border-white/10" />
 
               {[
-                { name: "QUALITY STANDARD", href: "/quality-standard" },
                 { name: "CAREER", href: "/career" },
                 { name: "LOCAL PAGE", href: "/local" },
               ].map((item) => (

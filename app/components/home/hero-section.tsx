@@ -21,7 +21,7 @@ export default function HomeHero() {
                     className="object-cover object-bottom sm:hidden"
                     sizes="100vw"
                 />
-                <div className="relative z-10 mx-auto flex min-h-[620px] w-full max-w-7xl items-start px-5 pt-24 sm:min-h-[560px] sm:px-6 sm:pt-20 lg:min-h-[540px] lg:items-center lg:pt-0">
+                <div className="relative z-10 mx-auto flex min-h-[620px] w-full max-w-7xl items-start px-5 pt-6 sm:min-h-[560px] sm:px-6 lg:min-h-[540px] lg:items-center lg:pt-0">
 
                     <div className="max-w-2xl rounded-2xl bg-[#102b52]/35 p-4 backdrop-blur-[2px] sm:bg-transparent sm:p-0 sm:backdrop-blur-none">
 

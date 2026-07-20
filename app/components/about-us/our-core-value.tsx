@@ -74,7 +74,7 @@ function ArcCircle({ Icon }: { Icon: React.ElementType }) {
 
 export default function OurCoreValues() {
     return (
-        <section className="relative overflow-hidden bg-[#edf6ff] py-9 lg:py-16">
+        <section className="relative overflow-hidden bg-[#edf6ff] pt-9 lg:pt-16">
             <BackgroundShape variant={3} side="left" className="-left-12 top-6 w-[290px] opacity-55 sm:w-[370px] lg:-left-1 lg:top-4 lg:w-[430px]" />
 
             <div className="relative z-10 mx-auto max-w-[1280px] px-6 lg:px-10">
@@ -95,9 +95,9 @@ export default function OurCoreValues() {
 
                         return (
                             <div key={i} className="flex min-w-[82%] snap-center flex-col items-start rounded-2xl border border-[#cfe4f2] bg-white/80 p-5 shadow-sm sm:min-w-[46%] lg:min-w-0 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none">
-                                <div className="relative min-h-[130px] pl-4">
-                                    <div className="absolute left-0 top-[7px] h-[7px] w-[7px] rounded-full bg-[#3fb8c9]" />
-                                    <div className="absolute left-[3px] top-[15px] h-[130px] w-[1.5px] bg-[#56bfd0]" />
+                                <div className="relative min-h-[130px] lg:pl-4 pl-12">
+                                    <div className="absolute lg:left-0 lg:top-[7px] left-[25px] top-[8px] h-[7px] w-[7px] rounded-full bg-[#3fb8c9]" />
+                                    <div className="absolute lg:left-[3px] left-7 top-[15px] lg:top-[15px] h-[130px] w-[1.5px] bg-[#56bfd0]" />
 
                                     <h3 className="text-sm font-semibold leading-none text-[#37b9ca] lg:text-lg mb-3">
                                         {item.title}
@@ -108,7 +108,7 @@ export default function OurCoreValues() {
                                     </p>
                                 </div>
 
-                                <div className="-mt-1 ml-[-42px]">
+                                <div className="-mt-1 lg:ml-[-42px] ml-[-22px]">
                                     <ArcCircle Icon={Icon} />
                                 </div>
                             </div>

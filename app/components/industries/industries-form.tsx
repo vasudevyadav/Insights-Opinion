@@ -54,11 +54,12 @@ export default function IndustriesForm() {
     };
 
     return (
-        <section className="relative overflow-hidden bg-[#edf6ff] py-10 lg:py-14">
+        <section className="relative overflow-hidden bg-[#edf6ff] pb-10 lg:pb-14">
             <BackgroundShape variant={7} side="left" className="-left-24 bottom-[-180px] w-[320px] opacity-45 sm:w-[400px] lg:-left-2 lg:bottom-[-120px] lg:w-[470px]" />
             <BackgroundShape variant={1} className="-right-24 bottom-[-250px] w-[330px] opacity-35 lg:-right-2 lg:w-[500px]" />
             <div className="relative z-10 mx-auto max-w-[1220px] px-4 sm:px-6 lg:px-8">
                 <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr]">
+                    
                     <div className="flex flex-col items-center justify-center lg:flex-row lg:items-start lg:justify-start lg:gap-8">
                         <div className="text-center lg:mb-10 lg:text-left">
                             <p className="text-[20px] leading-tight text-black lg:text-[34px]">
@@ -78,7 +79,6 @@ export default function IndustriesForm() {
                                 className="h-auto w-full object-contain"
                             />
                         </div>
-
                     </div>
 
                     {/* Right Side Form */}

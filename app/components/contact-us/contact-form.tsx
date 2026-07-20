@@ -243,7 +243,7 @@ export default function ContactForm() {
                         </form>
 
                         <div className="mt-7 w-full max-w-full sm:max-w-[420px]">
-                            <p className="mb-2.5 text-xs font-medium text-[#4b5563] sm:text-[13px]">
+                            <p className="mb-2.5 text-sm  font-medium text-[#4b5563]">
                                 Subscribe to Newsletter
                             </p>
 
@@ -253,7 +253,7 @@ export default function ContactForm() {
                                     value={newsletterEmail}
                                     onChange={(e) => setNewsletterEmail(e.target.value)}
                                     placeholder="enter your mail ID"
-                                    className="h-10 w-full flex-1 rounded-md border border-[#7ad0e7] bg-transparent px-4 text-sm text-[#334155] outline-none placeholder:text-[#9aa7b6] focus:border-[#43d1c5] sm:h-11"
+                                    className="h-12 py-2 w-full flex-1 rounded-md border border-[#7ad0e7] bg-transparent px-4 text-sm text-[#334155] outline-none placeholder:text-[#9aa7b6] focus:border-[#43d1c5] sm:h-11"
                                 />
 
                                 <button

@@ -15,7 +15,7 @@ export default function HealthcareMethodologies({
   if (!data?.imageSrc) return null;
 
   return (
-    <section className="relative overflow-hidden rounded-[8px] bg-[#eef5fb] px-4 py-6 lg:px-6 lg:py-8">
+    <section className="relative overflow-hidden rounded-[8px] bg-[#eef5fb] px-4 py-10 lg:px-6 lg:py-8">
       <div className="mx-auto max-w-6xl lg:py-12">
         <Image
           src={data.imageSrc}

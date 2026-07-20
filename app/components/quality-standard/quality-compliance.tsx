@@ -31,8 +31,8 @@ export default function QualityCompliance() {
 
     return (
         <section className="quality-hex-bg relative overflow-hidden py-12 lg:py-8">
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="grid items-center gap-10 lg:grid-cols-[0.80fr_1.20fr] lg:gap-4">
+            <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
+                <div className="grid items-center lg:gap-10 gap-10 lg:grid-cols-[0.80fr_1.20fr] lg:gap-4">
 
                     <div className="flex flex-col justify-between lg:pl-10">
                         <div>
@@ -43,21 +43,23 @@ export default function QualityCompliance() {
                                 Global Data Protection Laws
                             </h3>
 
-                            <div className="mb-0 flex w-full max-w-[440px] items-center rounded-r-full border-l-[8px] border-[#27bdb2] bg-white px-4 py-4 shadow-sm sm:border-l-[10px] sm:px-6">
-                                <p className="text-sm font-semibold text-[#27bdb2] lg:text-base">
-                                    {slides[current].label}
-                                </p>
-                            </div>
-                            <div
-                                className="max-w-[390px] px-5 py-6 sm:ml-8 sm:px-7 sm:py-7"
-                                style={{
-                                    background:
-                                        "linear-gradient(135deg, #1bb0a4 0%, #4fa3c7 100%)",
-                                }}
-                            >
-                                <p className="text-sm leading-7 text-white lg:text-base">
-                                    {slides[current].desc}
-                                </p>
+                            <div className="w-full max-w-[440px] overflow-hidden rounded-[24px] border-l-[8px] border-[#27bdb2] shadow-sm sm:border-l-[10px] lg:overflow-visible lg:rounded-none lg:border-l-0 lg:shadow-none">
+                                <div className="flex w-full items-center bg-white px-4 py-4 sm:px-6 lg:rounded-r-full lg:border-l-[10px] lg:border-[#27bdb2] lg:shadow-sm">
+                                    <p className="text-sm font-semibold text-[#27bdb2] lg:text-base">
+                                        {slides[current].label}
+                                    </p>
+                                </div>
+                                <div
+                                    className="w-full px-5 py-6 sm:px-7 sm:py-7 lg:ml-8 lg:max-w-[390px]"
+                                    style={{
+                                        background:
+                                            "linear-gradient(135deg, #1bb0a4 0%, #4fa3c7 100%)",
+                                    }}
+                                >
+                                    <p className="text-sm leading-7 text-white lg:text-base">
+                                        {slides[current].desc}
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
@@ -89,7 +91,7 @@ export default function QualityCompliance() {
                         </div>
                     </div>
 
-                    <div className="relative flex justify-center">
+                    <div className="relative flex justify-center hidden lg:block">
                         <div className="relative h-[280px] w-full sm:h-[430px] lg:h-[650px]">
                             <Image
                                 src="/quality-standard/global-deta.png"

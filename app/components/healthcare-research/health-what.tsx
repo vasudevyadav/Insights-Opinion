@@ -19,7 +19,7 @@ export default function HealthWhat({ data }: HealthWhatProps) {
   return (
     <section
       data-aos="fade-up"
-      className="relative overflow-hidden bg-[#edf6ff] py-10 lg:py-14"
+      className="relative overflow-hidden bg-[#edf6ff] pt-4 lg:pt-8"
     >
       <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
         {data.backgroundImage && (
@@ -73,7 +73,7 @@ export default function HealthWhat({ data }: HealthWhatProps) {
                 <div key={i} className="w-full shrink-0 snap-center">
                   <div className="rounded-[18px] bg-[#eaf0f5] px-5 py-6 text-center shadow-[0_6px_18px_rgba(0,0,0,0.08)]">
                     {(card.title || card.highlight) && (
-                      <h3 className="mx-auto max-w-[210px] text-[15px] font-medium leading-[1.2] text-[#66758b]">
+                      <h3 className="mx-auto max-w-[210px] text-xl lg:text-2xl font-medium leading-[1.2] text-[#66758b]">
                         {card.title}{" "}
                         {card.highlight && (
                           <span className="font-semibold text-[#37c0c9]">
@@ -84,7 +84,7 @@ export default function HealthWhat({ data }: HealthWhatProps) {
                     )}
 
                     {card.desc && (
-                      <p className="mt-4 text-[11px] leading-[1.6] text-[#26384b]">
+                      <p className="mt-4 text-xs lg:text-sm leading-[1.6] text-[#26384b]">
                         {card.desc}
                       </p>
                     )}
