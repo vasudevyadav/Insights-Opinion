@@ -20,6 +20,7 @@ export default function TestimonialsGallery({
 }: TestimonialsGalleryProps) {
   const [filter, setFilter] = useState<Filter>("text");
   const [activeVideo, setActiveVideo] = useState<VideoTestimonial | null>(null);
+  const [showAllMobile, setShowAllMobile] = useState(false);
 
   const visibleTestimonials = testimonials.filter(
     (item) => item.type === filter
@@ -46,7 +47,7 @@ export default function TestimonialsGallery({
             <button
               key={item}
               type="button"
-              onClick={() => setFilter(item)}
+              onClick={() => { setFilter(item); setShowAllMobile(false); }}
               className={`rounded-full px-6 py-2 text-sm font-medium capitalize transition ${
                 filter === item
                   ? "bg-gradient-to-r from-[#14b8a6] to-[#59a9ee] text-white shadow-md"
@@ -59,11 +60,11 @@ export default function TestimonialsGallery({
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {visibleTestimonials.map((item) =>
+          {visibleTestimonials.map((item, index) =>
             item.type === "video" ? (
               <article
                 key={item.id}
-                className="group overflow-hidden rounded-xl border border-[#c9dcec] bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+                className={`${index >= 3 && !showAllMobile ? "hidden md:block" : "block"} group overflow-hidden rounded-xl border border-[#c9dcec] bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl`}
               >
                 <button
                   type="button"
@@ -116,7 +117,7 @@ export default function TestimonialsGallery({
             ) : (
               <article
                 key={item.id}
-                className="group flex min-h-[360px] flex-col rounded-xl border border-[#c9dcec] bg-white/80 p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#151b48] hover:bg-[#151b48] hover:text-white hover:shadow-xl"
+                className={`${index >= 3 && !showAllMobile ? "hidden md:flex" : "flex"} group min-h-[360px] flex-col rounded-xl border border-[#c9dcec] bg-white/80 p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#151b48] hover:bg-[#151b48] hover:text-white hover:shadow-xl`}
               >
                 <Quote
                   size={42}
@@ -147,6 +148,13 @@ export default function TestimonialsGallery({
             )
           )}
         </div>
+        {visibleTestimonials.length > 3 && !showAllMobile && (
+          <div className="mt-8 text-center md:hidden">
+            <button type="button" onClick={() => setShowAllMobile(true)} className="rounded-full bg-gradient-to-r from-[#14b8a6] to-[#59a9ee] px-7 py-2.5 text-sm font-semibold text-white shadow-md">
+              View More
+            </button>
+          </div>
+        )}
       </div>
 
       {activeVideo?.videoUrl && (

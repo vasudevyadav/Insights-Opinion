@@ -17,13 +17,13 @@ export default function CareerLife() {
 
                 </div>
 
-                <div className="relative mx-auto w-full max-w-[1142px]">
+                <div className="no-scrollbar relative mx-auto w-full max-w-[1142px] overflow-x-auto">
                     <Image
                         src="/career/life-img.png"
                         alt="Life at Insights Opinion"
                         width={1142}
                         height={466}
-                        className="w-full h-auto object-contain"
+                        className="h-auto min-w-[720px] object-contain sm:min-w-0 sm:w-full"
                     />
                 </div>
             </div>

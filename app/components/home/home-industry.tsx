@@ -135,11 +135,11 @@ export default function HomeIndustry() {
                         {featureCards.map((item, index) => (
                             <SwiperSlide key={index}>
                                 <div
-                                    className="relative flex min-h-[69px] lg:min-h-[85px] items-center rounded-2xl bg-white pl-14 pr-4 py-4 shadow-[0_10px_25px_rgba(15,23,42,0.12)] transition-transform"
+                                    className="relative flex min-h-[69px] items-center rounded-2xl bg-white py-4 pl-16 pr-3 shadow-[0_10px_25px_rgba(15,23,42,0.12)] transition-transform lg:min-h-[85px] lg:pl-16 lg:pr-4"
                                     data-aos="zoom-in-up"
                                     data-aos-delay={index * 80}
                                 >
-                                    <div className="absolute left-0 top-0 lg:h-14 lg:w-14 h-12 w-12">
+                                    <div className="absolute left-2 top-1/2 h-12 w-12 -translate-y-1/2 lg:h-14 lg:w-14">
                                         <Image
                                             src={item.icon}
                                             alt={item.alt}

@@ -42,15 +42,15 @@ export default function QualityMarketExcellence() {
                         Excellence
                     </h2>
                     <p className="lg:text-base text-sm">
-                        Our market research quality standards start with methodology, since accurate results depend on how data is collected, not just how it's reported.
+                        Our market research quality standards start with methodology, since accurate results depend on how data is collected, not just how it&apos;s reported.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
+                <div className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 sm:grid sm:grid-cols-2 sm:overflow-visible lg:grid-cols-4 lg:px-8">
                     {cards.map((card, i) => (
                         <div
                             key={i}
-                            className="group relative flex min-h-[294px] flex-col overflow-hidden rounded-[5px] bg-white shadow-md transition-all duration-500 hover:-translate-y-1 hover:shadow-xl"
+                            className="group relative flex min-h-[294px] min-w-[86%] snap-center flex-col overflow-hidden rounded-[5px] bg-white shadow-md transition-all duration-500 hover:-translate-y-1 hover:shadow-xl sm:min-w-0"
                         >
                             <div className="relative h-full w-full bg-white">
                                 <Image

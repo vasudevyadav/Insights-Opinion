@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ChevronDown, ArrowUpRight, RefreshCw } from "lucide-react";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
 import CareerShape from "./career-shape";
@@ -17,9 +17,12 @@ const jobTitles = ["Senor Inventory Specialist", "Senor Developer", "Senor Desig
 
 const inputCls = "w-full rounded-md border border-[#d1d5db] bg-white px-3 py-2 text-[12px] text-[#253047] placeholder:text-[#5f6570] outline-none focus:border-[#1dc3b3]";
 
+const createCaptcha = () => Math.random().toString(36).slice(2, 8).toUpperCase();
+
 export default function CareerPositions() {
     const [expandedJob, setExpandedJob] = useState<number | null>(null);
-    const [captcha] = useState("dhd32u");
+    const [captcha, setCaptcha] = useState("IO2026");
+    const formRef = useRef<HTMLDivElement>(null);
     const [resumeName, setResumeName] = useState("");
     const [formData, setFormData] = useState({
         name: "", email: "", mobile: "", jobTitle: "", about: "", captchaInput: "",
@@ -33,6 +36,20 @@ export default function CareerPositions() {
 
     const handleFile = (e: { target: { files: FileList | null } }) => {
         if (e.target.files?.[0]) setResumeName(e.target.files[0].name);
+    };
+
+    const applyForJob = (jobTitle: string) => {
+        setFormData((current) => ({ ...current, jobTitle }));
+        setStatus("");
+        requestAnimationFrame(() => {
+            formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+    };
+
+    const refreshCaptcha = () => {
+        setCaptcha(createCaptcha());
+        setFormData((current) => ({ ...current, captchaInput: "" }));
+        setStatus("");
     };
 
     const handleSubmit = async (e: { preventDefault(): void }) => {
@@ -138,7 +155,7 @@ export default function CareerPositions() {
                                                     className={`text-[#6b7280] transition-transform duration-200 ${expandedJob === job.id ? "rotate-180" : ""}`}
                                                 />
                                             </button>
-                                            <button className="flex items-center gap-1.5 whitespace-nowrap rounded bg-gradient-to-b from-[#64b9ff] to-[#13bbaa] px-3 py-1.5 text-[11px] font-medium text-white transition hover:opacity-90 sm:px-4 sm:text-[12px]">
+                                            <button type="button" onClick={() => applyForJob(job.title)} className="flex items-center gap-1.5 whitespace-nowrap rounded bg-gradient-to-b from-[#64b9ff] to-[#13bbaa] px-3 py-1.5 text-[11px] font-medium text-white transition hover:opacity-90 sm:px-4 sm:text-[12px]">
                                                 Submit Application <ArrowUpRight size={13} />
                                             </button>
                                         </div>
@@ -168,7 +185,7 @@ export default function CareerPositions() {
                     </div>
 
                     {/* RIGHT: Application Form */}
-                    <div className="rounded-[30px] bg-gradient-to-r from-[#9a9a9a] to-[#666] px-4 py-5 text-white shadow-[12px_10px_24px_rgba(40,48,65,0.2)] sm:px-6 sm:py-7 lg:sticky lg:top-24 lg:mt-[112px]">
+                    <div ref={formRef} className="scroll-mt-24 rounded-[30px] bg-gradient-to-r from-[#9a9a9a] to-[#666] px-4 py-5 text-white shadow-[12px_10px_24px_rgba(40,48,65,0.2)] sm:px-6 sm:py-7 lg:sticky lg:top-24 lg:mt-[112px]">
                         <h3 className="mb-6 text-[15px] font-medium text-white sm:text-[16px]">Careers Application Form</h3>
 
                         <form onSubmit={handleSubmit} className="lg:space-y-6 space-y-3">
@@ -222,7 +239,7 @@ export default function CareerPositions() {
                             </div>
 
                             {/* Captcha */}
-                            <div className="flex items-center gap-2">
+                            <div className="flex flex-wrap items-center gap-2 sm:flex-nowrap">
                                 <input
                                     name="captchaInput"
                                     value={formData.captchaInput}
@@ -234,7 +251,7 @@ export default function CareerPositions() {
                                 <div className="flex-shrink-0 rounded bg-white px-3 py-2 text-sm font-mono font-bold tracking-wider text-[#374151] select-none">
                                     {captcha}
                                 </div>
-                                <button type="button" className="text-white/70 hover:text-white transition" title="Refresh">
+                                <button type="button" onClick={refreshCaptcha} className="text-white/70 hover:text-white transition" title="Refresh captcha">
                                     <RefreshCw size={15} />
                                 </button>
                             </div>
