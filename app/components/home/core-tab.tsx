@@ -201,7 +201,7 @@ export default function CoreTab() {
                         />
                         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,25,52,0.12)_0%,rgba(10,20,48,0.72)_100%)]" />
                         <div className="absolute bottom-7 left-5 max-w-[78%]">
-                            <h3 className="whitespace-pre-line text-[24px] font-medium leading-[1.25] text-white md:text-[34px]">
+                            <h3 className="whitespace-pre-line text-[24px] font-medium leading-[1.25] text-white lg:text-2xl">
                                 {activeData.heroTitle}
                             </h3>
                         </div>
@@ -220,7 +220,7 @@ export default function CoreTab() {
 
                         <h3
                             key={`title-${activeTab}`}
-                            className="lg:my-5 my-2 max-w-[430px] line-clamp-2 text-lg font-semibold leading-[1.25] text-[#2e3540] lg:text-[27px]"
+                            className="lg:my-5 my-2 max-w-[430px] line-clamp-2 text-lg font-semibold leading-[1.25] text-[#2e3540] lg:text-xl"
 
                         >
                             {activeData.cardsTitle}

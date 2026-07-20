@@ -65,7 +65,7 @@ export default function QuantWhat({
 if (!content) return null;
 
 return (
-<section className="relative overflow-hidden bg-[#f0f7ff] py-10 lg:py-14">
+<section className="relative overflow-hidden bg-[#f0f7ff] pt-10 lg:pt-14">
   <BackgroundShape variant={2} side="left" className="-left-24 bottom-[-180px] w-[320px] opacity-40 sm:w-[410px] lg:-left-2 lg:w-[490px]" />
   <BackgroundShape variant={4} className="-right-24 top-8 w-[300px] opacity-35 sm:w-[380px] lg:-right-2 lg:w-[450px]" />
   <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
@@ -98,7 +98,7 @@ return (
       </div>
     </div>
 
-    <div className="mt-8 flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 sm:grid sm:grid-cols-3 sm:overflow-visible sm:pb-0 lg:mt-16 lg:grid-cols-5">
+    <div className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 pt-5 scrollbar-hide sm:grid sm:grid-cols-3 sm:overflow-visible sm:pb-0 sm:pt-0 lg:mt-16 lg:grid-cols-5">
       {content.cards.map((text, i) => {
         const card = bottomCards[i % bottomCards.length];
 

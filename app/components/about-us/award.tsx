@@ -43,7 +43,7 @@ export default function Award() {
                     </p>
                 </div>
 
-                <div className="about-mobile-slider flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 lg:grid lg:grid-cols-3 lg:gap-x-16 lg:overflow-visible lg:pb-0">
+                <div className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 lg:grid lg:grid-cols-3 lg:gap-x-16 lg:overflow-visible lg:pb-0">
                     {awards.map((award, index) => (
                         <div
                             key={index}

@@ -34,14 +34,14 @@ export default function IndustriesGlobal({ industries }: IndustriesGlobalProps) 
                 <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
                     {/* Left: text */}
                     <div>
-                        <p className="text-xl font-normal leading-snug text-[#4b5563] sm:text-[22px] lg:text-[28px]">
+                        <p className="text-xl font-normal leading-snug text-[#4b5563] lg:text-[28px]">
                             Comprehensive
                             <br />
                             Industry Coverage by
                         </p>
                         <h2
                             className="mt-1 bg-gradient-to-r from-[#1bb0a4] to-[#74b9ff] bg-clip-text
-                            text-[26px] font-bold leading-tight text-transparent lg:text-[30px]"
+                            text-2xl lg:font-bold font-semibold leading-tight text-transparent lg:text-3xl"
                         >
                             Insights Opinion
                         </h2>
@@ -81,7 +81,7 @@ export default function IndustriesGlobal({ industries }: IndustriesGlobalProps) 
                 </div>
 
                 {/* ── Industry Cards Grid ── */}
-                <div className="industry-mobile-slider mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 lg:grid lg:grid-cols-3 lg:justify-items-center lg:gap-x-16 lg:gap-y-12 lg:overflow-visible lg:pb-0">
+                <div className="industry-mobile-slider no-scrollbar mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 lg:grid lg:grid-cols-3 lg:justify-items-center lg:gap-x-16 lg:gap-y-12 lg:overflow-visible lg:pb-0">
                     {displayedIndustries.map((industry, index) => (
                         <div
                             key={`${industry.name}-${index}`}

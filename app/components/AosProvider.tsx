@@ -15,23 +15,31 @@ export default function AosProvider() {
   useEffect(() => {
     if (aosInitialized) return;
 
-    aosInitialized = true;
-    AOS.init({
-      duration: 700,
-      easing: "ease-out-cubic",
-      once: true,
-      mirror: false,
-      offset: 60,
-      anchorPlacement: "top-bottom",
-      debounceDelay: 120,
-      throttleDelay: 150,
-      disableMutationObserver: true,
-      disable: () =>
-        window.innerWidth < 768 ||
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-    });
+    // Wait until the initial React tree has hydrated before AOS scans and
+    // mutates data attributes. Initializing during streamed hydration causes
+    // server/client attribute mismatch warnings.
+    const timer = window.setTimeout(() => {
+      if (aosInitialized) return;
+
+      aosInitialized = true;
+      AOS.init({
+        duration: 700,
+        easing: "ease-out-cubic",
+        once: true,
+        mirror: false,
+        offset: 60,
+        anchorPlacement: "top-bottom",
+        debounceDelay: 120,
+        throttleDelay: 150,
+        disableMutationObserver: true,
+        disable: () =>
+          window.innerWidth < 768 ||
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      });
+    }, 300);
 
     return () => {
+      window.clearTimeout(timer);
       document.documentElement.classList.remove("aos-animate");
     };
   }, []);

@@ -32,13 +32,13 @@ export default function HealthServices({ data }: HealthServicesProps) {
       <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <div className="mb-8 text-center sm:mb-10 lg:mb-12">
           {data.sectionLabel && (
-            <p className="text-sm font-medium text-[#1f2a44] lg:text-2xl">
+            <p className="text-lg font-medium text-[#1f2a44] lg:text-2xl">
               {data.sectionLabel}
             </p>
           )}
 
           {data.heading && (
-            <h2 className="mt-1 text-2xl font-semibold lg:text-4xl">
+            <h2 className="mt-1 text-[25px] font-semibold lg:text-4xl">
               <span className="bg-gradient-to-r from-[#3c8df6] via-[#31b6df] to-[#1dc3b3] bg-clip-text text-transparent">
                 {data.heading}
               </span>

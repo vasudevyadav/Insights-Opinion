@@ -3,7 +3,7 @@ import BackgroundShape from "./background-shape";
 
 export default function OurMission() {
     return (
-        <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-20">
+        <section className="relative overflow-hidden bg-[#edf6ff] pt-10 lg:pt-12">
             <BackgroundShape variant={2} side="left" className="-left-20 -top-64 hidden w-[420px] opacity-50 lg:block" />
             <BackgroundShape variant={2} className="-right-16 -top-24 w-[330px] opacity-55 sm:w-[420px] lg:-right-3 lg:-top-36 lg:w-[500px]" />
 

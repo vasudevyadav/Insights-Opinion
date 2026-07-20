@@ -60,7 +60,7 @@ export default function QuantDetailsWhat({ data }: { data: WhyData }) {
         </div>
 
         {/* ── Mobile / tablet layout ── */}
-        <div className="lg:hidden px-6 py-10 sm:px-10">
+        <div className="lg:hidden px-6 pb-10 sm:px-10">
 
           <h2>
             <span className="bg-gradient-to-r from-[#16c3b4] to-[#5caee7] bg-clip-text text-3xl font-bold text-transparent sm:text-4xl">
@@ -68,16 +68,15 @@ export default function QuantDetailsWhat({ data }: { data: WhyData }) {
             </span>
           </h2>
           <h2 className="mt-3">
-            <span className="text-3xl font-light text-[#2b3553] sm:text-4xl">
+            <span className="text-2xl font-light text-[#2b3553] sm:text-4xl">
               {data.heading2}
             </span>
           </h2>
 
-          <p className="mt-5 text-base leading-[1.8] text-[#3f4b5f] sm:text-lg">
+          <p className="mt-5 text-base text-[#3f4b5f] sm:text-lg">
             {data.bodyLeft}
           </p>
 
-          {/* Image */}
           <div className="relative mx-auto my-8 h-56 w-full max-w-sm sm:h-72">
             <Image
               src="/quantity-details/right-choice.png"
@@ -91,7 +90,7 @@ export default function QuantDetailsWhat({ data }: { data: WhyData }) {
           <p className="text-base leading-[1.7] text-[#3f4b5f] sm:text-lg">
             {data.bodyRight1}
           </p>
-          <p className="mt-4 text-base font-semibold leading-[1.6] text-[#16c3b4] sm:text-lg">
+          <p className="mt-4 text-sm font-semibold leading-[1.6] text-[#16c3b4] sm:text-lg">
             {data.bodyRight2}
           </p>
 

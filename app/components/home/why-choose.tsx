@@ -196,7 +196,7 @@ export default function WhyChoose() {
                         return (
                             <div
                                 key={sectionIndex}
-                                className="grid items-center gap-6 lg:grid-cols-[1.02fr_1fr] lg:gap-10"
+                                className="grid items-center gap-6 lg:grid-cols-[1.02fr_1fr] lg:gap-10 lg:pt-0 pt-10"
                             >
                                 <div
                                     className={`${isEven ? "lg:order-1" : "lg:order-2"} max-w-[500px]`}

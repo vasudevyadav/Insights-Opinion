@@ -104,11 +104,11 @@ export default function QuantIndustries({
 
         <div className="mx-auto max-w-5xl">
 
-          <div className="space-y-3">
+          <div className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3 md:block md:space-y-3 md:overflow-visible md:pb-0">
             {visibleIndustries.map((industry) => (
               <div
                 key={`${industry.name}-${industry.image}`}
-                className="grid items-center gap-3 sm:grid-cols-[72px_1fr_42px_1.8fr]"
+                className="grid min-w-[86%] snap-center grid-cols-[64px_minmax(0,1fr)] items-center gap-3 md:min-w-0 md:grid-cols-[72px_1fr_42px_1.8fr]"
               >
                 <div className="flex h-16 w-16 items-center justify-center rounded-[14px] bg-gradient-to-br from-[#68b8f1] via-[#1dc3b3] to-[#16a997] p-4 shadow-[0_8px_16px_rgba(29,195,179,0.24)] sm:h-[72px] sm:w-[72px]">
                   <Image
@@ -121,7 +121,7 @@ export default function QuantIndustries({
                   />
                 </div>
 
-                <div className="rounded-xl bg-white/90 px-5 py-3 text-lg font-medium text-[#2b3553] shadow-sm lg:text-lg">
+                <div className="flex min-h-16 items-center rounded-xl bg-white/90 px-4 py-3 text-base font-medium leading-snug text-[#2b3553] shadow-sm sm:px-5 sm:text-lg md:min-h-0 lg:text-lg">
                   {industry.name.trim()}
                 </div>
 
@@ -129,7 +129,7 @@ export default function QuantIndustries({
                   →
                 </div>
 
-                <div className="rounded-xl bg-white/90 px-5 py-2 text-sm leading-[1.65] text-[#4a5568] shadow-sm lg:text-lg line-clamp-2">
+                <div className="col-span-2 rounded-xl bg-white/90 px-5 py-3 text-sm leading-[1.65] text-[#4a5568] shadow-sm line-clamp-8 md:col-span-1 md:py-2 lg:line-clamp-2 lg:text-lg">
                   {cleanIndustryText(industry.description)}
                 </div>
               </div>
@@ -137,10 +137,10 @@ export default function QuantIndustries({
           </div>
 
           {hasMoreIndustries && (
-            <div className="mt-10 flex justify-center">
+            <div className="lg:mt-10 mt-6 flex justify-center">
               <Link
                 href="/industries"
-                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] px-10 py-2.5 text-lg uppercase font-semibold text-white shadow-[0_10px_24px_rgba(49,182,223,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_28px_rgba(49,182,223,0.34)] focus:outline-none focus:ring-2 focus:ring-[#31b6df] focus:ring-offset-2"
+                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] px-10 py-2.5 lg:text-lg text-base uppercase font-semibold text-white shadow-[0_10px_24px_rgba(49,182,223,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_28px_rgba(49,182,223,0.34)] focus:outline-none focus:ring-2 focus:ring-[#31b6df] focus:ring-offset-2"
               >
                 View all
               </Link>

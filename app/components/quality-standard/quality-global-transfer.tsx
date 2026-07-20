@@ -82,7 +82,7 @@ export default function QualityGlobalTransfer() {
     return (
         <>
             {sections.map((section, i) => (
-                <section key={i} className="quality-hex-bg relative overflow-hidden py-12 lg:py-18">
+                <section key={i} className="quality-hex-bg relative overflow-hidden pt-12 lg:pt-4">
                     <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
 

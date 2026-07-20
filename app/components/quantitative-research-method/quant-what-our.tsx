@@ -27,7 +27,7 @@ export default function QuantWhatOur({ data }: { data: ServicesData }) {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
         <div className="lg:mb-10 mb-6 text-center w-full">
-          <h2 className="text-2xl font-bold leading-tight lg:text-[40px] bg-linear-to-r from-[#1dc3b3] to-[#4faee8] bg-clip-text text-transparent">
+          <h2 className="text-2xl font-semibold leading-tight lg:text-[40px] bg-linear-to-r from-[#1dc3b3] to-[#4faee8] bg-clip-text text-transparent">
             {data.headingGradient}
           </h2>
           <h2 className="text-2xl font-light text-[#2b3553] sm:text-4xl py-1">

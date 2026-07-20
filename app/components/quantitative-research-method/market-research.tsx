@@ -26,11 +26,11 @@ export default function MarketResearch({ data }: { data: MethodData }) {
 
               <div>
                 <p className="text-xl font-light text-[#2b3553] sm:text-2xl lg:text-3xl">{whenToUse.heading1}</p>
-                <h2 className="mt-1 text-2xl font-bold sm:text-3xl lg:text-4xl">
+                <h2 className="mt-1 text-2xl lg:font-bold font-semibold sm:text-3xl lg:text-4xl">
                   <span className="text-[#1dc3b3]">{whenToUse.heading2.split(" ")[0]}</span>{" "}
                   <span className="text-[#4faee8]">{whenToUse.heading2.split(" ").slice(1).join(" ")}</span>
                 </h2>
-                <p className="mt-4 text-sm font-semibold leading-relaxed text-[#2b3553] lg:mt-5 lg:text-[15px]">
+                <p className="mt-4 text-sm lg:font-semibold font-normal leading-relaxed text-[#2b3553] lg:mt-5 lg:text-[15px]">
                   {whenToUse.bodyText}
                 </p>
                 <div className="mt-5 overflow-hidden rounded-2xl lg:mt-7">
@@ -63,7 +63,7 @@ export default function MarketResearch({ data }: { data: MethodData }) {
 
               {/* Mobile horizontal scroll cards */}
               <div className="lg:hidden">
-                <div className="lg:-mx-4 mx-1 flex gap-4 overflow-x-auto px-4 pb-3 snap-x snap-mandatory">
+                <div className="no-scrollbar mx-1 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-3 lg:-mx-4">
                   {whenToUse.items.map((item) => {
                     const IconComp = ICON_MAP[item.iconKey] ?? Users;
                     return (
@@ -86,9 +86,9 @@ export default function MarketResearch({ data }: { data: MethodData }) {
 
       {/* ── Method vs Method ── */}
       {vsBox?.title && vsBox.items?.length > 0 && (
-        <section className="quality-hex-bg relative overflow-hidden lg:py-0 lg:pb-10">
+        <section className="quality-hex-bg relative overflow-hidden lg:py-0 lg:pb-10 pb-8">
           {/* Background Pattern */}
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-56 opacity-20">
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-56 opacity-20 hidden lg:block">
             <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <pattern
@@ -113,7 +113,7 @@ export default function MarketResearch({ data }: { data: MethodData }) {
 
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* Heading */}
-            <div className="mb-14">
+            <div className="mb-7 lg:mb-14">
               <h2 className="text-2xl font-semibold text-[#1dc3b3] sm:text-3xl lg:text-4xl">
                 {vsBox.title}
               </h2>
@@ -179,11 +179,11 @@ export default function MarketResearch({ data }: { data: MethodData }) {
 
 
             {/* Mobile Cards */}
-            <div className="space-y-3 lg:hidden">
+            <div className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3 lg:hidden">
               {vsBox.items.map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-xl bg-white/85 px-4 py-4"
+                  className="min-w-[86%] snap-center rounded-xl bg-white/85 px-4 py-4 sm:min-w-[48%]"
                 >
                   <p className="text-sm font-bold text-[#2b3553]">
                     {item.label}
@@ -231,12 +231,12 @@ export default function MarketResearch({ data }: { data: MethodData }) {
               </p>
             </div>
 
-            <div className="grid gap-5 md:grid-cols-2 md:items-start lg:gap-6">
+            <div className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3 md:grid md:grid-cols-2 md:items-start md:gap-5 md:overflow-visible md:pb-0 lg:gap-6">
               {sectors.map((sector, index) => (
                 <article
                   key={sector.title}
                   tabIndex={0}
-                  className={`group relative h-[340px] overflow-hidden rounded-[20px] shadow-[0_8px_28px_rgba(20,45,90,0.16)] outline-none transition duration-500 hover:-translate-y-1 focus-visible:ring-4 focus-visible:ring-[#1dc3b3]/40 sm:h-[380px] lg:h-[400px] ${index % 2 === 1 ? "md:mt-14" : ""
+                  className={`group relative h-[420px] min-w-[86%] snap-center overflow-hidden rounded-[20px] shadow-[0_8px_28px_rgba(20,45,90,0.16)] outline-none transition duration-500 hover:-translate-y-1 focus-visible:ring-4 focus-visible:ring-[#1dc3b3]/40 sm:min-w-[48%] md:h-[380px] md:min-w-0 lg:h-[400px] ${index % 2 === 1 ? "md:mt-14" : ""
                     }`}
                 >
                   <Image
@@ -259,7 +259,7 @@ export default function MarketResearch({ data }: { data: MethodData }) {
                       </span>
                     </div>
 
-                    <p className="mt-3 max-h-48 overflow-y-auto pr-1 text-sm leading-relaxed text-white/95 opacity-100 transition-all duration-500 md:max-h-0 md:translate-y-4 md:overflow-hidden md:opacity-0 md:group-hover:max-h-48 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus:max-h-48 md:group-focus:translate-y-0 md:group-focus:opacity-100 sm:text-[15px]">
+                    <p className="no-scrollbar mt-3 max-h-48 overflow-y-auto pr-1 text-sm leading-relaxed text-white/95 opacity-100 transition-all duration-500 md:max-h-0 md:translate-y-4 md:overflow-hidden md:opacity-0 md:group-hover:max-h-48 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus:max-h-48 md:group-focus:translate-y-0 md:group-focus:opacity-100 sm:text-[15px]">
                       {sector.description}
                     </p>
                   </div>
