@@ -9,6 +9,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 export default function QualityNewsTestimonials() {
+    const articles = [
+        "From Local to Global: Using Research To Identify High-Growth Regions",
+        "How Global Research Reveals New Market Opportunities",
+        "Using Research to Build Confident International Strategies",
+    ];
     const testimonials = [
         {
             quote:
@@ -47,6 +52,23 @@ export default function QualityNewsTestimonials() {
     return (
         <section className="relative overflow-hidden bg-[#eef5fb]  lg:py-4 py-4 lg:pt-12 pt-8">
             <div className="relative z-10 mx-auto">
+                <div className="mx-auto mb-12 max-w-6xl px-4 sm:px-6 lg:mb-16">
+                    <p className="text-lg font-light text-[#2f3643]">Latest</p>
+                    <h2 className="quality-gradient-text text-2xl font-semibold sm:text-3xl">News &amp; Articles</h2>
+                    <div className="scrollbar-hide mt-6 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3 md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
+                        {articles.map((title) => (
+                            <article key={title} className="min-w-[82%] snap-center overflow-hidden rounded-[18px] border border-[#17214b] bg-white sm:min-w-[48%] md:min-w-0">
+                                <div className="relative h-[165px] overflow-hidden">
+                                    <Image src="/quality-standard/news-image.png" alt={title} fill className="object-cover" />
+                                </div>
+                                <div className="p-4">
+                                    <h3 className="line-clamp-2 text-sm font-semibold leading-5 text-[#17214b]">{title}</h3>
+                                    <p className="mt-2 line-clamp-2 text-xs leading-5 text-[#667085]">Explore practical market research insights for stronger decisions and sustainable growth.</p>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                </div>
                 <div className="relative mb-8 px-4 sm:px-6 lg:mb-16 lg:pl-32 lg:pr-0">
                     <div className="relative mb-6 flex items-end justify-between gap-4">
                         <div className="max-w-[600px] mt-2">

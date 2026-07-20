@@ -442,12 +442,12 @@ body {
 
 .industry-shape-layer {
   background-image:
-    url("/comman/comman-bg-shape-2.png"),
-    url("/comman/comman-bg-left-shape.png"),
-    url("/comman/commanbg-shape.png"),
-    url("/comman/comman-bg-left-shape.png"),
-    url("/comman/comman-bg-shape-2.png"),
-    url("/comman/comman-bg-left-shape.png");
+    url("/comman/shape-1.png"),
+    url("/comman/shape-2.png"),
+    url("/comman/shape-3.png"),
+    url("/comman/shape-4.png"),
+    url("/comman/shape-5.png"),
+    url("/comman/shape-7.png");
   background-repeat: no-repeat;
   background-position:
     right -110px top 0,
@@ -463,7 +463,7 @@ body {
     290px auto,
     320px auto,
     290px auto;
-  opacity: 0.13;
+  opacity: 0.22;
 }
 
 .industry-mobile-slider::-webkit-scrollbar {
@@ -495,7 +495,7 @@ body {
       394px 534px,
       526px 534px,
       394px 534px;
-    opacity: 0.16;
+    opacity: 0.3;
   }
 
   .industry-mobile-slider {
@@ -681,7 +681,7 @@ body {
 }
 
 .max-w-7xl {
-  max-width: 1500px;
+  max-width: 1280px;
 }
 
 .blog-content th {

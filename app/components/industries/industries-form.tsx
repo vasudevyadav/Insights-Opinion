@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
+import BackgroundShape from "../about-us/background-shape";
 
 const initialFormData = {
     name: "",
@@ -53,15 +54,9 @@ export default function IndustriesForm() {
     };
 
     return (
-        <section className="relative overflow-hidden bg-[#edf4fb] py-10 lg:py-14">
-            <Image
-                src="/comman/comman-bg-left-shape.png"
-                alt=""
-                width={394}
-                height={534}
-                aria-hidden="true"
-                className="pointer-events-none absolute -left-24 bottom-0 w-[300px] opacity-15 lg:left-0 lg:w-[394px] lg:opacity-20"
-            />
+        <section className="relative overflow-hidden bg-[#edf6ff] py-10 lg:py-14">
+            <BackgroundShape variant={7} side="left" className="-left-24 bottom-[-180px] w-[320px] opacity-45 sm:w-[400px] lg:-left-2 lg:bottom-[-120px] lg:w-[470px]" />
+            <BackgroundShape variant={1} className="-right-24 bottom-[-250px] w-[330px] opacity-35 lg:-right-2 lg:w-[500px]" />
             <div className="relative z-10 mx-auto max-w-[1220px] px-4 sm:px-6 lg:px-8">
                 <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr]">
                     <div className="flex flex-col items-center justify-center lg:flex-row lg:items-start lg:justify-start lg:gap-8">
