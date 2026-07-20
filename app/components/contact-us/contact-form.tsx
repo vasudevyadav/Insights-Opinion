@@ -15,8 +15,6 @@ import { submitLeadForm } from "@/app/lib/lead-form-api";
 import BackgroundShape from "@/app/components/about-us/background-shape";
 
 export default function ContactForm() {
-    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -86,21 +84,11 @@ export default function ContactForm() {
         setNewsletterLoading(true);
 
         try {
-            const res = await fetch(`${API_BASE_URL}/contact/v1/newsletter`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: newsletterEmail,
-                }),
+            await submitLeadForm({
+                formName: "newsletter_subscription",
+                name: "Newsletter Subscriber",
+                email: newsletterEmail,
             });
-
-            const data = await res.json();
-
-            if (!res.ok) {
-                throw new Error(data?.message || "Failed to subscribe");
-            }
 
             setNewsletterStatus("Subscribed successfully.");
             setNewsletterEmail("");

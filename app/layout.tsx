@@ -21,47 +21,71 @@ const geistMono = Geist_Mono({
 });
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://insightsopinion.com";
+
+const defaultTitle = "Best Market Research Company | Big Market Research Firms";
+const defaultDescription =
+  "Insights Opinion is a global market research company delivering quantitative, qualitative, healthcare, B2B, consumer, and data support services across 100+ countries.";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: "Insights Opinion",
+      url: siteUrl,
+      logo: `${siteUrl}/logo.png`,
+      email: "bids@insightsopinion.com",
+      description: defaultDescription,
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "Insights Opinion",
+      publisher: { "@id": `${siteUrl}/#organization` },
+      inLanguage: "en",
+    },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Best Market Research Company | Best Market Research Firms",
+    default: defaultTitle,
     template: "%s",
   },
-  description:
-    "Insights Opinion is a leading market research and consulting company in USA specializing in quantitative and qualitative data analysis, Delivered by experienced experts. Contact us now!",
-  applicationName: "Best Market Research Company ",
-  authors: [{ name: "Best Market Research Company " }],
-  creator: "Best Market Research Company ",
-  publisher: "Best Market Research Company ",
+  description: defaultDescription,
+  applicationName: "Insights Opinion",
+  authors: [{ name: "Insights Opinion" }],
+  creator: "Insights Opinion",
+  publisher: "Insights Opinion",
+  category: "Market Research",
+  alternates: { canonical: "/" },
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
-    title: "Best Market Research Company ",
-    description:
-      "Insights Opinion is a leading market research and consulting company in USA specializing in quantitative and qualitative data analysis, Delivered by experienced experts. Contact us now!",
+    title: defaultTitle,
+    description: defaultDescription,
     url: siteUrl,
-    siteName: "Best Market Research Company ",
+    siteName: "Insights Opinion",
     type: "website",
     locale: "en_IN",
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Best Market Research Company ",
+        url: "/home-banner.png",
+        alt: "Insights Opinion global market research services",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Market Research Company ",
-    description:
-      "Best Market Research Company  offers advanced dental care, painless treatments, expert dentists, and modern technology across Hyderabad.",
-    images: ["/og-image.jpg"],
+    title: defaultTitle,
+    description: defaultDescription,
+    images: ["/home-banner.png"],
   },
   icons: {
     icon: [
@@ -86,6 +110,10 @@ export default async function RootLayout({
   return (
     <html lang="en" style={{ colorScheme: "light" }}>
       <body className={`${poppins.variable} ${geistMono.variable} antialiased`} style={{ colorScheme: "light" }}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         <AosProvider />
         <Navbar
           researchItems={researchItems}

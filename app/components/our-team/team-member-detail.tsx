@@ -71,12 +71,6 @@ export default function TeamMemberDetail({
         </div>
       </div>
 
-      <Link
-        href="/contact-us"
-        className="fixed right-0 top-1/2 z-30 hidden -translate-y-1/2 rounded-l-2xl bg-gradient-to-b from-[#13b9a7] to-[#56a8eb] px-3 py-5 text-[10px] font-semibold uppercase tracking-wide text-white shadow-lg lg:block [writing-mode:vertical-rl]"
-      >
-        Request Callback
-      </Link>
     </section>
   );
 }
