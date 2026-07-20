@@ -10,7 +10,7 @@ type IndustriesListResponse = {
 
 export async function fetchIndustries(): Promise<Industry[]> {
   try {
-    const res = await fetch(BASE_URL, { next: { revalidate: 60 } });
+    const res = await fetch(BASE_URL, { next: { revalidate: 1 } });
 
     if (!res.ok) {
       console.error(`Failed to fetch industries: ${res.status} ${res.statusText}`);

@@ -81,7 +81,7 @@ function normalizeTeamMember(raw: RawTeamMember): TeamMember {
 
 export async function fetchTeamMembers(): Promise<TeamMember[]> {
   try {
-    const res = await fetch(BASE_URL, { next: { revalidate: 60 } });
+    const res = await fetch(BASE_URL, { next: { revalidate: 1 } });
 
     if (!res.ok) {
       console.error(`Failed to fetch team members: ${res.status} ${res.statusText}`);

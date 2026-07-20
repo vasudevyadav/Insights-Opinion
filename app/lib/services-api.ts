@@ -75,7 +75,7 @@ function normalizeApiValue<T>(value: T): T {
 
 async function fetchApiData<T>(url: string): Promise<T | null> {
   try {
-    const response = await fetch(url, { cache: "no-store" });
+    const response = await fetch(url, { next: { revalidate: 1 } });
     if (!response.ok) return null;
 
     const json = normalizeApiValue(
@@ -156,7 +156,7 @@ async function fetchServicesData(
 ): Promise<ApiMainServiceWithContent[]> {
   try {
     const response = await fetch(SERVICES_API_URL, {
-      ...(fresh ? { cache: "no-store" as const } : { next: { revalidate: 300 } }),
+      ...(fresh ? { cache: "no-store" as const } : { next: { revalidate: 1 } }),
     });
 
     if (!response.ok) return [];
@@ -196,9 +196,7 @@ export async function fetchServices(): Promise<MainService[]> {
 export async function fetchMainService(
   mainServiceSlug: string
 ): Promise<ApiMainServiceWithContent | null> {
-  // Detail routes must see newly published services immediately. Navigation can
-  // stay cached, but route resolution always uses a fresh catalog request.
-  const services = await fetchServicesData(true);
+  const services = await fetchServicesData();
   const expectedApiSlugs = new Set([
     mainServiceSlug,
     ...(mainServiceSlug.endsWith("-research")
@@ -245,7 +243,7 @@ export async function fetchChildService(
   service: ApiMainServiceWithContent;
   child: ApiServiceChild & { content: MethodData };
 } | null> {
-  const services = await fetchServicesData(true);
+  const services = await fetchServicesData();
   const expectedApiSlugs = new Set([
     mainServiceSlug,
     ...(mainServiceSlug.endsWith("-research")
@@ -319,7 +317,7 @@ export async function fetchChildServiceBySlug(
   service: ApiMainServiceWithContent;
   child: ApiServiceChild & { content: MethodData };
 } | null> {
-  const services = await fetchServicesData(true);
+  const services = await fetchServicesData();
 
   for (const serviceSummary of services) {
     const hasMatchingChild = serviceSummary.children.some((child) =>
