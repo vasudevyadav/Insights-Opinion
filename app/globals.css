@@ -274,18 +274,35 @@ body {
 }
 
 .quality-hex-bg {
+  position: relative;
   background-color: #eef7ff;
+  isolation: isolate;
+}
+
+.quality-hex-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.34;
   background-image:
-    url("/comman/comman-bg-left-shape.png"),
-    url("/comman/comman-bg-shape-2.png"),
-    url("/comman/commanbg-shape.png");
-  background-position: left 12%, right 48%, left 88%;
+    url("/comman/shape-2.png"),
+    url("/comman/shape-1.png"),
+    url("/comman/shape-3.png");
+  background-position: left 12%, right 48%, left 91%;
   background-repeat: no-repeat;
-  background-size: min(31vw, 394px) auto, min(40vw, 526px) auto, min(31vw, 399px) auto;
+  background-size: min(36vw, 464px) auto, min(41vw, 526px) auto, min(34vw, 408px) auto;
+}
+
+.quality-hex-bg > * {
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 767px) {
-  .quality-hex-bg {
+  .quality-hex-bg::before {
+    opacity: 0.22;
     background-position: -100px 8%, calc(100% + 160px) 48%, -110px 92%;
     background-size: 300px auto, 390px auto, 300px auto;
   }
@@ -425,12 +442,12 @@ body {
 
 .industry-shape-layer {
   background-image:
-    url("/comman/comman-bg-shape-2.png"),
-    url("/comman/comman-bg-left-shape.png"),
-    url("/comman/commanbg-shape.png"),
-    url("/comman/comman-bg-left-shape.png"),
-    url("/comman/comman-bg-shape-2.png"),
-    url("/comman/comman-bg-left-shape.png");
+    url("/comman/shape-1.png"),
+    url("/comman/shape-2.png"),
+    url("/comman/shape-3.png"),
+    url("/comman/shape-4.png"),
+    url("/comman/shape-5.png"),
+    url("/comman/shape-7.png");
   background-repeat: no-repeat;
   background-position:
     right -110px top 0,
@@ -446,7 +463,7 @@ body {
     290px auto,
     320px auto,
     290px auto;
-  opacity: 0.13;
+  opacity: 0.22;
 }
 
 .industry-mobile-slider::-webkit-scrollbar {
@@ -478,7 +495,7 @@ body {
       394px 534px,
       526px 534px,
       394px 534px;
-    opacity: 0.16;
+    opacity: 0.3;
   }
 
   .industry-mobile-slider {
@@ -664,7 +681,7 @@ body {
 }
 
 .max-w-7xl {
-  max-width: 1500px;
+  max-width: 1280px;
 }
 
 .blog-content th {

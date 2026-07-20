@@ -1,3 +1,5 @@
+import BackgroundShape from "../about-us/background-shape";
+
 export default function QuantMethodCta({
   content,
 }: {
@@ -7,6 +9,7 @@ export default function QuantMethodCta({
 
   return (
     <section className="relative overflow-hidden bg-[#edf6ff] py-8 lg:py-14">
+      <BackgroundShape variant={3} side="left" className="-left-24 -top-48 w-[300px] opacity-35 lg:-left-2 lg:w-[430px]" />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-24 top-1/2 h-[300px] w-[300px] -translate-y-1/2 rounded-full bg-[#35d0c7]/10 blur-3xl" />
         <div className="absolute -right-24 top-1/2 h-[300px] w-[300px] -translate-y-1/2 rounded-full bg-[#5abff8]/10 blur-3xl" />

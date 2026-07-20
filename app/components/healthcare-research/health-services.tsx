@@ -1,4 +1,5 @@
 import Image from "next/image";
+import BackgroundShape from "@/app/components/about-us/background-shape";
 
 type Service = {
   title: string;
@@ -26,46 +27,7 @@ export default function HealthServices({ data }: HealthServicesProps) {
       data-aos="fade-up"
       className="relative overflow-hidden bg-[#edf6ff] py-8 lg:py-12"
     >
-      <div className="pointer-events-none absolute -top-10 left-[-220px] z-10 hidden w-[42%] opacity-80 lg:block">
-        <svg
-          className="h-full w-full"
-          viewBox="0 0 320 520"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="xMidYMid slice"
-        >
-          <defs>
-            <linearGradient
-              id="hexGradientExtra"
-              x1="0"
-              y1="0"
-              x2="320"
-              y2="0"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#CFEAF7" />
-              <stop offset="1" stopColor="#EAF6FB" />
-            </linearGradient>
-          </defs>
-
-          {Array.from({ length: 9 }).map((_, row) =>
-            Array.from({ length: 5 }).map((_, col) => {
-              const x = col * 62 + (row % 2 ? 31 : 0);
-              const y = row * 54;
-              return (
-                <polygon
-                  key={`${row}-${col}`}
-                  points={`${x + 15},${y} ${x + 45},${y} ${x + 60},${y + 26
-                    } ${x + 45},${y + 52} ${x + 15},${y + 52} ${x},${y + 26}`}
-                  stroke="url(#hexGradientExtra)"
-                  strokeWidth="1.2"
-                  fill="none"
-                />
-              );
-            })
-          )}
-        </svg>
-      </div>
+      <BackgroundShape side="left" variant={1} className="-left-24 -top-10 w-[320px] opacity-40 sm:w-[450px] lg:w-[520px]" />
 
       <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <div className="mb-8 text-center sm:mb-10 lg:mb-12">

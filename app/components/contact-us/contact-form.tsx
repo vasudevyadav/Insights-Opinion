@@ -12,6 +12,7 @@ import {
     Linkedin,
 } from "lucide-react";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
+import BackgroundShape from "@/app/components/about-us/background-shape";
 
 export default function ContactForm() {
     const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -116,33 +117,8 @@ export default function ContactForm() {
 
     return (
         <section className="relative overflow-hidden bg-[#edf6ff] py-10 lg:py-12">
-            <div className="pointer-events-none absolute inset-0 opacity-40">
-                <svg
-                    viewBox="0 0 1440 700"
-                    className="h-full w-full"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="none"
-                >
-                    <defs>
-                        <pattern
-                            id="hexPattern"
-                            x="0"
-                            y="0"
-                            width="52"
-                            height="45"
-                            patternUnits="userSpaceOnUse"
-                        >
-                            <path
-                                d="M13 1H39L52 22.5L39 44H13L0 22.5L13 1Z"
-                                stroke="#9EDFF2"
-                                strokeWidth="1.1"
-                            />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#hexPattern)" />
-                </svg>
-            </div>
+            <BackgroundShape side="right" variant={2} className="-right-20 -top-14 w-[310px] opacity-45 sm:w-[440px] lg:w-[520px]" />
+            <BackgroundShape side="left" variant={1} className="-left-24 bottom-0 w-[340px] opacity-40 sm:w-[470px]" />
 
             <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                 <div className="text-center">

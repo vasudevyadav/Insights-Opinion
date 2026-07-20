@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import BackgroundShape from "@/app/components/about-us/background-shape";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
@@ -161,7 +162,7 @@ export default function LocalCore() {
     };
 
     return (
-        <section className="relative overflow-hidden bg-white">
+        <section className="relative overflow-hidden bg-[#edf6ff]">
             {/* Hexagon decorations */}
             <div className="pointer-events-none absolute left-0 top-0 hidden opacity-40 lg:block">
                 <HexCluster />
@@ -169,6 +170,8 @@ export default function LocalCore() {
             <div className="pointer-events-none absolute right-0 top-0 hidden opacity-40 lg:block" style={{ transform: "scaleX(-1)" }}>
                 <HexCluster />
             </div>
+            <BackgroundShape side="left" variant={3} className="-left-28 bottom-[8%] w-[390px] opacity-30" />
+            <BackgroundShape side="right" variant={7} className="-right-24 bottom-0 w-[430px] opacity-30" />
 
             <div className="relative z-10 mx-auto max-w-7xl px-4 py-0 sm:px-6 lg:px-2 lg:py-2 lg:pt-16">
 
@@ -312,7 +315,7 @@ export default function LocalCore() {
                     </div>
 
                     <div className="relative flex items-center justify-center">
-                        <div className="relative h-[500px] w-full max-w-[650px]">
+                        <div className="relative h-[330px] w-full max-w-[650px] sm:h-[420px] lg:h-[500px]">
                             <Image
                                 src="/local/local-core.png"
                                 alt="Data compliance"

@@ -133,7 +133,7 @@ export default function ContactLocation() {
                                         clipPath={`url(#flagClip${index})`}
                                     >
                                         <div
-                                            /* @ts-ignore */
+                                            /* @ts-expect-error SVG foreignObject requires the XHTML namespace attribute. */
                                             xmlns="http://www.w3.org/1999/xhtml"
                                             style={{
                                                 width: "52px",

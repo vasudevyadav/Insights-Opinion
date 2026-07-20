@@ -11,13 +11,13 @@ export default function QuantDetailsWhyRadial({
   if (!content?.heading || !content.items?.length) return null;
 
   return (
-    <section className="overflow-hidden bg-[#eaf5fc] py-6 lg:py-16">
+    <section className="quality-hex-bg overflow-hidden py-6 lg:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Heading */}
         <div className="mb-8 text-center sm:mb-10">
           <h2 className="text-xl font-medium leading-tight lg:text-4xl">
-            <span className="text-[#1e2746]">Why Chqewfdoose </span>
+            <span className="text-[#1e2746]">Why Choose </span>
             <span className="font-semibold text-[#1e2746]">Insights Opinion</span>
             <span className="text-[#1e2746]"> for</span>
             <br />

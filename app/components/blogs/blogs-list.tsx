@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Search, ChevronDown } from "lucide-react";
 import { type Blog } from "@/data/blogData";
+import BackgroundShape from "@/app/components/about-us/background-shape";
 
 const filters = ["All Blogs", "Blog"];
 
@@ -63,21 +64,10 @@ export default function BlogList({ blogs }: { blogs: Blog[] }) {
   }, [blogs, activeFilter, activeTag, searchTerm, sortBy]);
 
   return (
-    <section className="relative overflow-hidden bg-[#eef5fb] py-10 sm:py-12 lg:py-14">
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 opacity-70"
-          style={{
-            backgroundImage: `
-              linear-gradient(30deg, rgba(150,185,211,0.18) 1px, transparent 1px),
-              linear-gradient(150deg, rgba(150,185,211,0.18) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(150,185,211,0.12) 1px, transparent 1px)
-            `,
-            backgroundSize: "74px 42px, 74px 42px, 74px 42px",
-            backgroundPosition: "0 0, 0 0, 37px 21px",
-          }}
-        />
-      </div>
+    <section className="relative overflow-hidden bg-[#edf6ff] py-10 sm:py-14 lg:py-16">
+      <BackgroundShape side="right" variant={2} className="-right-20 -top-16 w-[310px] opacity-45 sm:w-[430px] lg:-right-8 lg:w-[520px]" />
+      <BackgroundShape side="left" variant={1} className="-left-24 top-[36%] w-[330px] opacity-40 sm:w-[450px] lg:-left-12 lg:w-[520px]" />
+      <BackgroundShape side="right" variant={7} className="-right-24 bottom-0 w-[340px] opacity-40 sm:w-[460px]" />
 
       <div className="relative z-10 mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-[980px] text-center">

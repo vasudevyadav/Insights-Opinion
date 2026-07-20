@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
+import BackgroundShape from "@/app/components/about-us/background-shape";
 
 const initialFormData = {
     name: "",
@@ -53,7 +54,9 @@ export default function BlogForm() {
     };
 
     return (
-        <section className="relative overflow-hidden bg-[#edf4fb] py-6 lg:py-8">
+        <section className="relative overflow-hidden bg-[#edf6ff] py-10 lg:py-12">
+            <BackgroundShape side="left" variant={1} className="-left-24 bottom-0 w-[320px] opacity-40 sm:w-[450px]" />
+            <BackgroundShape side="right" variant={7} className="-right-24 top-0 hidden w-[420px] opacity-35 md:block" />
             <div className="relative z-10 mx-auto max-w-[1220px] px-4 sm:px-6 lg:px-8">
                 <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr]">
                     <div className="flex flex-col items-center justify-center lg:flex-row lg:items-start lg:justify-start lg:gap-8">
@@ -68,13 +71,13 @@ export default function BlogForm() {
                             </h2>
                         </div>
 
-                        <div className="w-[45%] mx-auto  text-center">
+                        <div className="mx-auto w-[58%] max-w-[280px] text-center sm:w-[45%]">
                             <Image
                                 src="/grow-better.png"
                                 alt="Blog Image"
                                 width={1000}
                                 height={1000}
-                                className="rounded-lg w-full h-[300px]"
+                                className="h-auto w-full rounded-lg object-contain"
                             />
                         </div>
 

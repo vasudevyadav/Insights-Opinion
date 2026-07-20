@@ -10,7 +10,7 @@ type TeamMembersProps = {
 export default function TeamMembers({ members }: TeamMembersProps) {
   return (
     <section className="quality-hex-bg relative overflow-hidden px-4 pb-14 pt-9 sm:px-6 sm:pb-16 sm:pt-10 lg:px-5 lg:pb-24 lg:pt-14">
-      <div className="mx-auto max-w-[1400px]">
+      <div className="mx-auto max-w-[1120px]">
         <div className="mx-auto max-w-6xl text-center">
           <h2 className="site-section-title quality-gradient-text font-semibold">
             At Insight Opinion,
@@ -33,11 +33,11 @@ export default function TeamMembers({ members }: TeamMembersProps) {
           </span>
         </h3>
 
-        <div className="mx-auto mt-7 grid grid-cols-1 justify-items-center gap-x-6 gap-y-10 sm:mt-8 sm:grid-cols-2 sm:gap-y-12 lg:grid-cols-3 lg:gap-x-10">
+        <div className="mx-auto mt-7 flex flex-wrap justify-center gap-x-6 gap-y-10 sm:mt-8 sm:gap-y-12 lg:gap-x-10">
           {members.map((member, index) => (
             <article
               key={member.name}
-              className="w-full max-w-[310px] text-center"
+              className="w-full max-w-[310px] text-center sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-27px)]"
             >
               <div className="relative flex h-[260px] items-end justify-center sm:h-[280px] lg:h-[300px]">
                 <Link
@@ -65,9 +65,7 @@ export default function TeamMembers({ members }: TeamMembersProps) {
               <Link href={`/our-team/${member.slug}`}>
                 <h4
                   className={`mt-1 text-lg font-semibold leading-tight sm:text-xl lg:text-2xl ${
-                    index === 1
-                      ? "quality-gradient-text"
-                      : "text-[#141b3d]"
+                    index === 1 ? "quality-gradient-text" : "text-[#141b3d]"
                   }`}
                 >
                   {member.name}

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { type Blog } from "@/data/blogData";
+import BackgroundShape from "@/app/components/about-us/background-shape";
 
 interface BlogDetailProps {
   blog: Blog;
@@ -69,7 +70,7 @@ export default function BlogDetail({ blog, relatedBlogs }: BlogDetailProps) {
         <div className="relative w-full overflow-hidden bg-[url('/about-us/about-us-hero-bg.webp')] bg-cover bg-bottom bg-no-repeat text-white ">
           <div className="relative z-10 mx-auto flex min-h-[350px] w-full max-w-7xl items-center px-5 pt-16 sm:px-4 lg:min-h-[500px] lg:pt-0">
             <div className="mx-auto mb-10 max-w-4xl">
-              <h1 className="mb-4 line-clamp-3 text-center text-[28px] font-semibold leading-tight lg:text-[46px]">
+              <h1 className="mb-4 line-clamp-3 bg-[linear-gradient(90deg,#18b3a3_0%,#42bdcb_48%,#70b4ff_100%)] bg-clip-text text-center text-[28px] font-semibold leading-tight text-transparent sm:text-[38px] lg:text-[46px]">
                 {blog.title}
               </h1>
 
@@ -85,24 +86,13 @@ export default function BlogDetail({ blog, relatedBlogs }: BlogDetailProps) {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#eef5fb] py-10 sm:py-12 lg:py-14">
-        <div className="pointer-events-none absolute inset-0">
-          <div
-            className="absolute inset-0 opacity-60"
-            style={{
-              backgroundImage: `
-                linear-gradient(30deg,  rgba(150,185,211,.18) 1px, transparent 1px),
-                linear-gradient(150deg, rgba(150,185,211,.18) 1px, transparent 1px),
-                linear-gradient(90deg,  rgba(150,185,211,.12) 1px, transparent 1px)
-              `,
-              backgroundSize: "74px 42px,74px 42px,74px 42px",
-              backgroundPosition: "0 0,0 0,37px 21px",
-            }}
-          />
-        </div>
+      <section className="relative overflow-hidden bg-[#edf6ff] py-10 sm:py-12 lg:py-14">
+        <BackgroundShape side="right" variant={2} className="-right-16 -top-12 w-[300px] opacity-45 sm:w-[430px] lg:w-[520px]" />
+        <BackgroundShape side="left" variant={1} className="-left-24 top-[32%] w-[340px] opacity-40 sm:w-[470px]" />
+        <BackgroundShape side="right" variant={7} className="-right-24 bottom-[4%] w-[360px] opacity-40 sm:w-[480px]" />
 
         <div className="relative z-10 mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="rounded-[18px] border border-[#c2d3e4] bg-white px-4 py-5 shadow-sm lg:px-16 lg:py-10">
+          <div className="rounded-[18px] border border-[#9fb1c6] bg-white/25 px-4 py-5 lg:px-16 lg:py-10">
             <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
               <div className="relative h-[190px] w-full flex-shrink-0 overflow-hidden rounded-[10px] sm:w-[265px]">
                 <Image
@@ -129,7 +119,7 @@ export default function BlogDetail({ blog, relatedBlogs }: BlogDetailProps) {
           </div>
 
           <div className="mt-7 flex flex-col gap-6 lg:flex-row lg:items-start">
-            <article className="min-w-0 flex-1 rounded-[14px] bg-white px-6 py-7 sm:px-9">
+            <article className="min-w-0 flex-1 px-1 py-4 sm:px-3 lg:py-6">
               {blog.htmlContent ? (
                 <div
                   className="blog-content"
