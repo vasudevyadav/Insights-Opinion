@@ -14,9 +14,9 @@ type StaticSeoEntry = {
  */
 export const staticSeo: Record<string, StaticSeoEntry> = {
   home: {
-    title: "Best Market Research Company | Best Market Research Firms",
+    title: "Best Market Research Company | Big Market Research Firms",
     description:
-      "Insights Opinion is a leading market research and consulting company in USA specializing in quantitative and qualitative data analysis, Delivered by experienced experts. Contact us now!",
+      "Insights Opinion is a global market research company delivering quantitative, qualitative, healthcare, B2B, consumer, and data support services across 100+ countries.",
     keywords: [
       "market research company",
       "market research firm",
@@ -129,5 +129,19 @@ export function getStaticMetadata(key: keyof typeof staticSeo): Metadata {
     description: entry.description,
     keywords: entry.keywords,
     alternates: { canonical: path },
+    openGraph: {
+      title: entry.title,
+      description: entry.description,
+      url: path,
+      siteName: "Insights Opinion",
+      type: "website",
+      images: [{ url: "/home-banner.png", alt: entry.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: entry.title,
+      description: entry.description,
+      images: ["/home-banner.png"],
+    },
   };
 }

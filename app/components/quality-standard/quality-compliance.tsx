@@ -92,7 +92,7 @@ export default function QualityCompliance() {
                     </div>
 
                     <div className="relative flex justify-center hidden lg:block">
-                        <div className="relative h-[280px] w-full sm:h-[430px] lg:h-[650px]">
+                        <div className="relative h-[280px] w-full sm:h-[430px] lg:h-[600px]">
                             <Image
                                 src="/quality-standard/global-deta.png"
                                 alt="Data Protection Compliance"

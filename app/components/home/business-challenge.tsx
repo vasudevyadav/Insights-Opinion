@@ -52,7 +52,7 @@ const challengeCards: ChallengeCard[] = [
         title: "Lack of Trusted Local Research Partners",
         description:
             "Without reliable in-market expertise, global research becomes slow, complex, and inefficient.",
-        image: "/challenges-2.png",
+        image: "/Centralized-Oversight.png",
         hoverImage: "/trying-to-Reach-.jpg",
         alt: "Local research partners challenge",
     },
@@ -94,7 +94,7 @@ function ChallengeCardItem({
     return (
         <div
 
-            className="group relative overflow-hidden rounded-[16px] border border-[#5875c7] bg-white shadow-[0_8px_28px_rgba(30,41,59,0.06)] transition duration-300 hover:-translate-y-1 hover:border-[#22bec5] hover:shadow-[0_14px_34px_rgba(30,41,59,0.14)] lg:h-[400px] lg:w-full"
+            className="group relative overflow-hidden rounded-[16px] border border-[#5875c7] bg-white shadow-[0_8px_28px_rgba(30,41,59,0.06)] transition duration-300 hover:-translate-y-1 hover:border-[#22bec5] hover:shadow-[0_14px_34px_rgba(30,41,59,0.14)] lg:h-[450px] lg:w-full"
         >
             <div className="relative z-10 p-5 lg:h-[150px] lg:p-5">
                 <div className="relative pl-5">
@@ -163,7 +163,7 @@ export default function BusinessChallenge() {
                 <div className="mx-auto hidden w-full max-w-4xl grid-cols-2 gap-x-[56px] lg:grid">
                     <div className="flex min-w-0 flex-col">
                         <div className="h-[180px]">
-                            <h2 className="max-w-[260px] !text-2xl font-light !leading-[1.08] text-[#202a4c]">
+                            <h2 className="max-w-[260px] lg:max-w-[260px] !text-2xl lg:!text-[42px] font-light !leading-[1.2] text-[#202a4c]">
                                 The Business
                                 <br />
                                 Challenges

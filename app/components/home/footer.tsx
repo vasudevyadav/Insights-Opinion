@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import FooterMobileAccordion from "./footer-mobile-accordion";
@@ -9,6 +11,8 @@ import {
     Linkedin,
     ChevronRight,
 } from "lucide-react";
+import { useState } from "react";
+import { submitLeadForm } from "@/app/lib/lead-form-api";
 
 const companyLinks = [
     { label: "About Us", href: "/about-us" },
@@ -36,6 +40,28 @@ const quickLinks = [
 ];
 
 export default function Footer() {
+    const [newsletterEmail, setNewsletterEmail] = useState("");
+    const [newsletterLoading, setNewsletterLoading] = useState(false);
+    const [newsletterStatus, setNewsletterStatus] = useState("");
+
+    const handleNewsletterSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setNewsletterLoading(true);
+        setNewsletterStatus("");
+        try {
+            await submitLeadForm({
+                formName: "newsletter_subscription",
+                name: "Newsletter Subscriber",
+                email: newsletterEmail,
+            });
+            setNewsletterStatus("Subscribed successfully.");
+            setNewsletterEmail("");
+        } catch (error) {
+            setNewsletterStatus(error instanceof Error ? error.message : "Something went wrong. Please try again.");
+        } finally {
+            setNewsletterLoading(false);
+        }
+    };
     const footerGroups = [
         { title: "Company", links: companyLinks },
         { title: "Service", links: serviceLinks },
@@ -69,21 +95,26 @@ export default function Footer() {
                             Stay Up-to-date with latest News
                         </p>
 
-                        <div className="mt-5 w-full lg:max-w-[220px] sm:max-w-[180px] md:max-w-[140px]">
+                        <form onSubmit={handleNewsletterSubmit} className="mt-5 w-full lg:max-w-[220px] sm:max-w-[180px] md:max-w-[140px]">
                             <div className="flex items-center justify-between border-b border-white/80 pb-2">
                                 <input
+                                    value={newsletterEmail}
+                                    onChange={(event) => setNewsletterEmail(event.target.value)}
+                                    required
                                     type="email"
                                     placeholder="email address"
                                     className="w-full min-w-0 bg-transparent text-[13px] text-white placeholder:text-white/60 focus:outline-none"
                                 />
                                 <button
-                                    type="button"
+                                    type="submit"
+                                    disabled={newsletterLoading}
                                     className="ml-3 shrink-0 text-white/80"
                                 >
                                     <ChevronRight size={16} strokeWidth={1.75} />
                                 </button>
                             </div>
-                        </div>
+                            {newsletterStatus && <p className="mt-2 text-[11px] text-white/75">{newsletterStatus}</p>}
+                        </form>
                     </div>
 
                     {/* Desktop Company */}

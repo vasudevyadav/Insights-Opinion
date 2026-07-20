@@ -15,7 +15,7 @@ export default function CareerShape({ variant, className }: CareerShapeProps) {
             aria-hidden="true"
             width={widths[variant]}
             height={534}
-            className={`pointer-events-none absolute select-none object-contain ${className}`}
+            className={`pointer-events-none absolute select-none object-contain [filter:brightness(0)_saturate(100%)_invert(65%)_sepia(57%)_saturate(620%)_hue-rotate(132deg)_brightness(93%)_contrast(88%)] ${className}`}
         />
     );
 }

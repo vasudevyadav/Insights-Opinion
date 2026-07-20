@@ -10,7 +10,7 @@ type TeamMembersProps = {
 export default function TeamMembers({ members }: TeamMembersProps) {
   return (
     <section className="quality-hex-bg relative overflow-hidden px-4 pb-14 pt-9 sm:px-6 sm:pb-16 sm:pt-10 lg:px-5 lg:pb-24 lg:pt-14">
-      <div className="mx-auto max-w-[1120px]">
+      <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-6xl text-center">
           <h2 className="site-section-title quality-gradient-text font-semibold">
             At Insight Opinion,
@@ -26,9 +26,11 @@ export default function TeamMembers({ members }: TeamMembersProps) {
           </p>
         </div>
 
-        <h3 className="site-section-title mt-7 text-center font-light italic text-[#2f3643] sm:mt-8">
-          Our{" "}
-          <span className="quality-gradient-text font-semibold italic">
+        <h3 className="mt-7 flex items-center justify-center gap-1 whitespace-nowrap text-center sm:mt-8 sm:gap-2">
+          <span className="inline-block translate-y-0.5 text-[38px] font-semibold leading-none tracking-[-0.06em] text-[#101938] [font-family:'Snell_Roundhand','Brush_Script_MT','Segoe_Script',cursive] sm:text-[46px] lg:text-[52px]">
+            Our
+          </span>
+          <span className=" ml-1.5 quality-gradient-text text-[27px] font-medium leading-none tracking-[-0.035em] sm:text-[36px] lg:text-[44px] ">
             Guiding Force
           </span>
         </h3>
@@ -39,7 +41,7 @@ export default function TeamMembers({ members }: TeamMembersProps) {
               key={member.name}
               className="w-full max-w-[310px] text-center sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-27px)]"
             >
-              <div className="relative flex h-[260px] items-end justify-center sm:h-[280px] lg:h-[300px]">
+              <div className="relative flex w-full h-[260px] items-end justify-center sm:h-[280px] lg:h-[300px]">
                 <Link
                   href={`/our-team/${member.slug}`}
                   aria-label={`View ${member.name}'s profile`}
@@ -86,12 +88,7 @@ export default function TeamMembers({ members }: TeamMembersProps) {
         </div>
       </div>
 
-      <Link
-        href="/contact-us"
-        className="fixed right-0 top-1/2 z-30 hidden -translate-y-1/2 rounded-l-2xl bg-gradient-to-b from-[#13b9a7] to-[#56a8eb] px-3 py-5 text-[10px] font-semibold uppercase tracking-wide text-white shadow-lg lg:block [writing-mode:vertical-rl]"
-      >
-        Request Callback
-      </Link>
+      
     </section>
   );
 }

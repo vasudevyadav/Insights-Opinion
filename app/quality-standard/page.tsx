@@ -11,14 +11,12 @@ import QualityAffiliations from "@/app/components/quality-standard/quality-affil
 import QualityIndustryBanner from "@/app/components/quality-standard/quality-industry-banner";
 import QualityNewsTestimonials from "@/app/components/quality-standard/quality-news-testimonials";
 import QualityGrowForm from "@/app/components/quality-standard/quality-grow-form";
-import QualityCallbackTab from "@/app/components/quality-standard/quality-callback-tab";
 
 export const metadata: Metadata = getStaticMetadata("quality-standard");
 
 export default function QualityStandardPage() {
     return (
         <main>
-            <QualityCallbackTab />
             <QualityHero />
             <QualityMarketExcellence />
             <QualityCompliance />

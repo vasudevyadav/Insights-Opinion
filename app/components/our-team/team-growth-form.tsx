@@ -55,8 +55,8 @@ export default function TeamGrowthForm() {
   };
 
   return (
-    <section className="quality-hex-bg overflow-hidden px-4 pb-14 pt-2 sm:px-6 sm:pb-16 sm:pt-4 lg:px-5 lg:pb-20 lg:pt-8">
-      <div className="mx-auto grid max-w-[1040px] gap-8 sm:gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+    <section className="relative px-4 pb-14 pt-2 sm:px-6 sm:pb-16 sm:pt-4 lg:px-5 lg:pb-24 lg:pt-8">
+      <div className="mx-auto grid max-w-[1280px] gap-8 sm:gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-16">
         <div className="grid grid-cols-1 items-center sm:grid-cols-[0.8fr_1.2fr]">
           <h2 className="text-center text-2xl font-light leading-tight text-[#2f3643] sm:text-left lg:text-[31px]">
             Grow Better with

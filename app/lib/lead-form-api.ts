@@ -16,7 +16,9 @@ export type LeadFormName =
   | "quant_method_callback"
   | "blog_enquiry"
   | "career_application"
-  | "case_study_callback";
+  | "case_study_callback"
+  | "local_boost"
+  | "newsletter_subscription";
 
 export type LeadFormPayload = {
   formName: LeadFormName;

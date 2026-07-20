@@ -285,14 +285,12 @@ body {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.34;
-  background-image:
-    url("/comman/shape-2.png"),
-    url("/comman/shape-1.png"),
-    url("/comman/shape-3.png");
-  background-position: left 12%, right 48%, left 91%;
+  opacity: 0.32;
+  background-image: url("/comman/shape-5.png");
+  background-position: right -70px center;
   background-repeat: no-repeat;
-  background-size: min(36vw, 464px) auto, min(41vw, 526px) auto, min(34vw, 408px) auto;
+  background-size: min(38vw, 526px) auto;
+  filter: brightness(0) saturate(100%) invert(65%) sepia(57%) saturate(620%) hue-rotate(132deg) brightness(93%) contrast(88%);
 }
 
 .quality-hex-bg > * {
@@ -300,11 +298,17 @@ body {
   z-index: 1;
 }
 
+/* Team detail keeps the shared hex artwork in the teal/blue brand palette. */
+.team-detail-bg.quality-hex-bg::before {
+  opacity: 0.28;
+  filter: brightness(0) saturate(100%) invert(65%) sepia(57%) saturate(620%) hue-rotate(132deg) brightness(93%) contrast(88%);
+}
+
 @media (max-width: 767px) {
   .quality-hex-bg::before {
-    opacity: 0.22;
-    background-position: -100px 8%, calc(100% + 160px) 48%, -110px 92%;
-    background-size: 300px auto, 390px auto, 300px auto;
+    opacity: 0.24;
+    background-position: calc(100% + 110px) center;
+    background-size: 330px auto;
   }
 }
 
@@ -464,6 +468,7 @@ body {
     320px auto,
     290px auto;
   opacity: 0.22;
+  filter: brightness(0) saturate(100%) invert(65%) sepia(57%) saturate(620%) hue-rotate(132deg) brightness(93%) contrast(88%);
 }
 
 .industry-mobile-slider::-webkit-scrollbar {

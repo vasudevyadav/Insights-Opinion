@@ -125,9 +125,7 @@ export default function PartnershipsAffiliations() {
                         with clarity and confidence.
                     </p>
 
-                    <button className="mt-6 rounded-lg bg-gradient-to-r from-[#33c1b8] to-[#5db8ff] px-6 py-2 text-base font-semibold uppercase tracking-[0.04em] text-white shadow-sm lg:px-7 lg:py-2.5">
-                        Request Callback
-                    </button>
+                  
                 </div>
             </div>
         </section>

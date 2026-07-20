@@ -1,3 +1,4 @@
+import { Link } from "lucide-react";
 import BackgroundShape from "../about-us/background-shape";
 
 export default function QuantMethodCta({
@@ -21,9 +22,14 @@ export default function QuantMethodCta({
             {content.heading}
           </span>
         </h2>
-        <p className="mt-2 text-sm leading-[1.7] text-[#4a5568] lg:text-lg">
+        <p className="mt-2 mb-8 text-sm leading-[1.7] text-[#4a5568] lg:text-lg">
           {content.description}
         </p>
+
+        <div>
+          <a href="/contact-us" className="py-3 w-fit whitespace-nowrap px-6 text-center text-base font-semibold transition-all md:text-base rounded-full bg-gradient-to-r from-[#37c9c7] to-[#4a8fe8] text-white shadow-[0_8px_24px_rgba(74,143,232,0.22)]"> Quantitative Research </a>
+        </div>
+
       </div>
     </section>
   );

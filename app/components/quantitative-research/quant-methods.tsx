@@ -41,7 +41,7 @@ export default function QuantMethods({
   return (
     <section
       id="research-methods"
-      className="relative overflow-hidden bg-[#edf6ff] py-10 lg:py-16"
+      className="relative overflow-hidden bg-[#edf6ff] pt-10 lg:pt-16"
     >
       <div className="pointer-events-none absolute inset-0 opacity-40">
         <svg

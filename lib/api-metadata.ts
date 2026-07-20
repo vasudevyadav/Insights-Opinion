@@ -51,7 +51,16 @@ export function buildApiMetadata(
     openGraph: {
       title: seo?.ogTitle?.trim() || title,
       description: seo?.ogDescription?.trim() || description,
+      url: path,
+      siteName: "Insights Opinion",
+      type: "website",
       images: image ? [{ url: image }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo?.ogTitle?.trim() || title,
+      description: seo?.ogDescription?.trim() || description,
+      images: image ? [image] : undefined,
     },
   };
 }

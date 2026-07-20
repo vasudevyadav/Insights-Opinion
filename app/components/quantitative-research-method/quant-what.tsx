@@ -1,4 +1,5 @@
 import Image from "next/image";
+import BackgroundShape from "@/app/components/about-us/background-shape";
 
 interface WhyData {
   heading1: string;
@@ -11,6 +12,7 @@ interface WhyData {
 export default function QuantDetailsWhat({ data }: { data: WhyData }) {
   return (
     <section className="relative overflow-hidden bg-[#eef5fb]">
+      <BackgroundShape variant={5} className="-right-14 top-0 z-0 w-[360px] opacity-55 sm:w-[440px] lg:-right-1 lg:top-2 lg:w-[526px] lg:opacity-70" />
       <div className="relative z-10 mx-auto max-w-[1450px]">
 
         {/* ── Desktop layout (unchanged) ── */}

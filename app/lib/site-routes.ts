@@ -3,6 +3,7 @@ import { researchPages } from "@/data/researchPages";
 import { fetchCaseStudies } from "@/app/lib/case-studies-api";
 import { getAllMethodSlugs } from "@/app/lib/method-data";
 import { fetchTeamMembers } from "@/app/lib/team-api";
+import { fetchServices } from "@/app/lib/services-api";
 
 export type SiteRoute = {
   path: string;
@@ -35,6 +36,14 @@ const staticRoutes: SiteRoute[] = [
     description: "Learn about Insights Opinion.",
     group: "Company",
     priority: 0.8,
+    changeFrequency: "monthly",
+  },
+  {
+    path: "/about-us/leadership",
+    title: "Leadership",
+    description: "Meet the leadership team at Insights Opinion.",
+    group: "Company",
+    priority: 0.7,
     changeFrequency: "monthly",
   },
   {
@@ -172,13 +181,33 @@ export function getSiteUrl() {
     process.env.NEXT_PUBLIC_SITE_URL ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "");
 
-  return (configuredUrl || "https://insights-opinion.vercel.app").replace(
+  return (configuredUrl || "https://insightsopinion.com").replace(
     /\/$/,
     ""
   );
 }
 
 export async function getAllSiteRoutes(): Promise<SiteRoute[]> {
+  const services = await fetchServices();
+  const serviceRoutes: SiteRoute[] = services.flatMap((service) => [
+    {
+      path: `/services/${service.slug}`,
+      title: service.title,
+      description: `${service.title} services from Insights Opinion.`,
+      group: "Services" as const,
+      priority: 0.9,
+      changeFrequency: "monthly" as const,
+    },
+    ...service.children.map((child) => ({
+      path: `/services/${service.slug}/${child.slug}`,
+      title: child.title,
+      description: `${child.title} services from Insights Opinion.`,
+      group: "Services" as const,
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+    })),
+  ]);
+
   const teamMembers = await fetchTeamMembers();
   const teamRoutes: SiteRoute[] = teamMembers.map((member) => ({
     path: `/our-team/${member.slug}`,
@@ -239,6 +268,7 @@ export async function getAllSiteRoutes(): Promise<SiteRoute[]> {
 
   const routes = [
     ...staticRoutes,
+    ...serviceRoutes,
     ...teamRoutes,
     ...methodRoutes,
     ...researchRoutes,

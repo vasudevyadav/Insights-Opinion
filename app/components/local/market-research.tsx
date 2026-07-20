@@ -15,9 +15,6 @@ export default function MarketResearch() {
             <BackgroundShape side="right" variant={2} className="-right-20 -top-12 w-[310px] opacity-45 sm:w-[430px] lg:w-[520px]" />
             <BackgroundShape side="left" variant={1} className="-left-24 top-[42%] w-[330px] opacity-40 sm:w-[450px] lg:w-[520px]" />
             <BackgroundShape side="right" variant={7} className="-right-24 bottom-0 w-[340px] opacity-35 sm:w-[460px]" />
-            <button className="fixed right-0 top-1/2 z-30 hidden -translate-y-1/2 rounded-l-[16px] bg-gradient-to-b from-[#19b5a7] to-[#59aaf7] px-3 py-5 text-[11px] font-semibold uppercase tracking-widest text-white shadow-lg [writing-mode:vertical-rl] lg:block">
-                Request Callback
-            </button>
             <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <h1 className="mb-6 text-center text-2xl font-medium leading-tight lg:text-[38px]">
                     <span className="bg-[linear-gradient(90deg,#17afa1,#43bccb,#74b9ff)] bg-clip-text text-transparent">

@@ -61,8 +61,6 @@ export default function ScrollLeadPopup() {
         return () => document.removeEventListener("keydown", handleKeyDown);
     }, [open]);
 
-    if (!open) return null;
-
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {
@@ -99,7 +97,25 @@ export default function ScrollLeadPopup() {
     };
 
     return (
-        <div
+        <>
+            {!open && (
+                <button
+                    type="button"
+                    onClick={() => {
+                        setStatus("");
+                        setOpen(true);
+                    }}
+                    aria-label="Request callback"
+                    className="fixed right-0 top-1/2 z-[190] hidden -translate-y-1/2 items-center rounded-l-[30px] bg-gradient-to-b from-[#16b9a7] to-[#63acf2] px-4 py-8 text-xs font-semibold uppercase tracking-[0.06em] text-white shadow-lg transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#20b7a6] focus-visible:ring-offset-2 lg:flex"
+                >
+                    <span className="rotate-180 [writing-mode:vertical-rl]">
+                        Request Callback
+                    </span>
+                </button>
+            )}
+
+            {open && (
+                <div
             role="dialog"
             aria-modal="true"
             aria-label="Get in touch with Insights Opinion"
@@ -200,6 +216,8 @@ export default function ScrollLeadPopup() {
                     )}
                 </form>
             </div>
-        </div>
+                </div>
+            )}
+        </>
     );
 }
