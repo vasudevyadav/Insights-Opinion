@@ -23,7 +23,7 @@ export default function QuantWhatOur({ data }: { data: ServicesData }) {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="bg-white lg:py-16 py-8">
+    <section className="bg-white py-10 lg:py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
         <div className="lg:mb-10 mb-6 text-center w-full">
@@ -45,7 +45,7 @@ export default function QuantWhatOur({ data }: { data: ServicesData }) {
 
             if (isActive) {
               return (
-                <div key={s.id} className="accordion-content-enter my-2 flex overflow-hidden rounded-2xl bg-[#1b2f5e]">
+                <div key={s.id} className="accordion-content-enter my-2 flex min-w-0 overflow-hidden rounded-2xl bg-[#1b2f5e]">
                   <div className="relative hidden w-60 shrink-0 sm:block">
                     <Image src={s.image} alt={s.title} fill unoptimized className="object-cover" />
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -54,7 +54,7 @@ export default function QuantWhatOur({ data }: { data: ServicesData }) {
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-1 flex-col justify-center px-6 py-8 sm:flex-row sm:items-center">
+                  <div className="flex min-w-0 flex-1 flex-col justify-center px-5 py-6 sm:flex-row sm:items-center sm:px-6 sm:py-8">
                     <div className="flex-1">
                       <p className="text-sm font-semibold text-[#1dc3b3] sm:text-lg">{s.title}</p>
                       <p className="text-5xl font-black leading-none text-white sm:text-6xl">{s.id}</p>
@@ -62,7 +62,7 @@ export default function QuantWhatOur({ data }: { data: ServicesData }) {
                     <div className="my-3 shrink-0 text-[#4faee8] sm:my-0 sm:px-5">
                       <ChevronRight size={22} />
                     </div>
-                    <p className="max-w-xs text-sm leading-loose text-white/60">{s.description}</p>
+                    <p className="max-w-full break-words text-sm leading-6 text-white/60 sm:max-w-xs sm:leading-loose">{s.description}</p>
                   </div>
                 </div>
               );
@@ -72,7 +72,7 @@ export default function QuantWhatOur({ data }: { data: ServicesData }) {
               <button
                 key={s.id}
                 onClick={() => setActive(i)}
-                className="flex items-center gap-4 border-b border-[#e8eff8] py-4 lg:pr-2 text-left last:border-b-0 transition hover:bg-[#f5faff] sm:gap-5"
+                className="flex min-w-0 items-center gap-3 border-b border-[#e8eff8] py-4 text-left last:border-b-0 transition hover:bg-[#f5faff] sm:gap-5 lg:pr-2"
               >
                 <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl sm:h-40 sm:w-48">
                   <Image src={s.image} alt={s.title} fill unoptimized className="object-cover" />
@@ -84,7 +84,7 @@ export default function QuantWhatOur({ data }: { data: ServicesData }) {
                   <p className="text-sm font-semibold text-[#1e2746] sm:text-lg">{s.title}</p>
                   <p className="text-4xl font-black leading-none text-gray-400 sm:text-5xl">{s.id}</p>
                 </div>
-                <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-[#1dc3b3] px-6 py-2.5 text-[11px] font-bold uppercase tracking-wide text-white sm:px-5 lg:text-sm">
+                <span className="flex shrink-0 items-center gap-1 rounded-full bg-[#1dc3b3] px-3 py-2 text-[10px] font-bold uppercase tracking-wide text-white sm:px-5 sm:text-[11px] lg:text-sm">
                   <Plus size={14} strokeWidth={3} /> Read More
                 </span>
               </button>

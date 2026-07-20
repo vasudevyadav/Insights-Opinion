@@ -28,6 +28,19 @@ type TeamMembersResponse = {
 
 const BASE_URL = apiUrl("/custom/v1/our-teams");
 
+const FALLBACK_MEMBERS: TeamMember[] = [
+  {
+    slug: "shahab-ansari",
+    name: "Shahab Ansari",
+    role: "Founder & CEO",
+    image: "/our-team/shahab.png",
+    detailImage: "/our-team/team-member-detailks.png",
+    description: [
+      "Shahab leads Insights Opinion with a focus on reliable research, strong client partnerships, and sustainable global growth.",
+    ],
+  },
+];
+
 function parseDescription(raw: string): string[] {
   return raw
     .split(/\r?\n/)
@@ -53,14 +66,15 @@ export async function fetchTeamMembers(): Promise<TeamMember[]> {
 
     if (!res.ok) {
       console.error(`Failed to fetch team members: ${res.status} ${res.statusText}`);
-      return [];
+      return FALLBACK_MEMBERS;
     }
 
     const json: TeamMembersResponse = await res.json();
-    return json.success ? json.data.map(normalizeTeamMember) : [];
+    const members = json.success ? json.data.map(normalizeTeamMember) : [];
+    return members.length > 0 ? members : FALLBACK_MEMBERS;
   } catch (error) {
     console.error("Failed to fetch team members:", error);
-    return [];
+    return FALLBACK_MEMBERS;
   }
 }
 

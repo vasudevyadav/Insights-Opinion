@@ -50,6 +50,7 @@ export default function TeamMembers({ members }: TeamMembersProps) {
                     alt={member.name}
                     width={360}
                     height={400}
+                    unoptimized={member.image.startsWith("http")}
                     className="relative z-10 mb-3 h-[235px] w-auto object-contain object-bottom sm:h-[255px] lg:h-[273px]"
                   />
                 </Link>

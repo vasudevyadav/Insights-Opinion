@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 // @ts-expect-error - the aos package does not ship TypeScript declarations
 import AOS from "aos";
 
@@ -293,6 +294,12 @@ export default function Industries() {
                             ))}
                         </div>
                     ))}
+                </div>
+
+                <div className="mt-7 flex justify-center">
+                    <Link href="/industries" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#18b9aa] to-[#4faee8] px-6 py-2.5 text-sm font-semibold text-white shadow-md transition duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:text-base">
+                        View All Industries <ArrowIcon color="white" />
+                    </Link>
                 </div>
             </div>
         </section>

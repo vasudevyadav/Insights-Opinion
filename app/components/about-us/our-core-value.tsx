@@ -74,12 +74,12 @@ function ArcCircle({ Icon }: { Icon: React.ElementType }) {
 
 export default function OurCoreValues() {
     return (
-        <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
+        <section className="relative overflow-hidden bg-[#edf6ff] py-9 lg:py-16">
             <BackgroundShape variant={3} side="left" className="-left-12 top-6 w-[290px] opacity-55 sm:w-[370px] lg:-left-1 lg:top-4 lg:w-[430px]" />
 
             <div className="relative z-10 mx-auto max-w-[1280px] px-6 lg:px-10">
                 {/* Heading */}
-                <div className="mb-12 text-center lg:mb-14">
+                <div className="mb-8 text-center lg:mb-14">
                     <h2 className="text-[28px] font-semibold leading-none text-[#34b8c9] lg:text-4xl mb-2">
                         Our Core Values
                     </h2>
@@ -89,7 +89,7 @@ export default function OurCoreValues() {
                 </div>
 
                 {/* Value Cards */}
-                <div className="about-mobile-slider flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 lg:grid lg:grid-cols-5 lg:gap-x-8 lg:overflow-visible lg:pb-0">
+                <div className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto lg:grid lg:grid-cols-5 lg:gap-x-8 lg:overflow-visible">
                     {coreValues.map((item, i) => {
                         const Icon = item.icon;
 

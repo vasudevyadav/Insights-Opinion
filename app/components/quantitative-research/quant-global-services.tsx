@@ -177,7 +177,7 @@ export default function QuantGlobalServices({
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 text-center">
+        <div className="mb-9 text-center lg:mb-16">
           {content.heading && (
             <h2 className="text-[28px] font-semibold leading-tight lg:text-4xl">
               <span
@@ -201,7 +201,7 @@ export default function QuantGlobalServices({
           </p>
         </div>
 
-        <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-20 lg:hidden">
+        <div className="no-scrollbar flex snap-x snap-mandatory items-end gap-5 overflow-x-auto pb-10 lg:hidden">
           {offices.map((office, index) => (
             <div key={`${office.title || "office"}-${index}`} className="min-w-[85vw] snap-center">
               <OfficeCard

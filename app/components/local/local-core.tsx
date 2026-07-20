@@ -173,7 +173,7 @@ export default function LocalCore() {
             <BackgroundShape side="left" variant={3} className="-left-28 bottom-[8%] w-[390px] opacity-30" />
             <BackgroundShape side="right" variant={7} className="-right-24 bottom-0 w-[430px] opacity-30" />
 
-            <div className="relative z-10 mx-auto max-w-7xl px-4 py-0 sm:px-6 lg:px-2 lg:py-2 lg:pt-16">
+            <div className="relative z-10 mx-auto max-w-7xl px-4 pb-0 pt-10 sm:px-6 sm:pt-12 lg:px-2 lg:py-2 lg:pt-16">
 
                 {/* Header: title + tabs */}
                 <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">

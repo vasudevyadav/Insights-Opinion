@@ -28,15 +28,16 @@ export default function QualityTechnicalSecurity() {
                     src="/quality-standard/technical-security.png"
                     alt="Technical and Operational Security"
                     fill
-                    className="object-cover object-left md:object-center"
+                    className="object-cover object-[38%_center] md:object-center"
                     sizes="100vw"
                 />
+                <div className="absolute inset-0 bg-[#071540]/70 md:bg-transparent" />
               
 
-                <div className="relative z-10 mx-auto grid max-w-7xl items-center px-4 py-10 sm:px-6 lg:min-h-[575px] lg:grid-cols-[1.25fr_0.75fr] lg:px-8 lg:py-0 lg:pt-4">
+                <div className="relative z-10 mx-auto grid max-w-7xl items-center px-4 py-9 sm:px-6 lg:min-h-[575px] lg:grid-cols-[1.25fr_0.75fr] lg:px-8 lg:py-0 lg:pt-4">
                     <div />
 
-                    <div className="text-white lg:py-16">
+                    <div className="min-w-0 text-white lg:py-16">
                         <h2 className="mb-7 text-2xl font-semibold leading-tight lg:text-4xl">
                             <span className="quality-gradient-text"> Technical and  </span><br />
                             <span className="quality-gradient-text"> Operational Security </span>

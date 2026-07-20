@@ -11,21 +11,21 @@ export default function QuantDetailsHero({ data }: { data: HeroData }) {
   const subtitleLines = data.subtitle.split("\n");
 
   return (
-    <section className="relative h-125 bg-[#edf6ff] sm:h-145 lg:h-175">
+    <section className="relative min-h-[580px] overflow-hidden bg-[#edf6ff] lg:h-175 lg:min-h-0">
       <div className="absolute inset-0">
         <Image
           src="/quantity-details/quantity-details-hero.png"
           alt=""
           fill
           priority
-          className="object-cover lg:object-bottom object-left"
+          className="object-cover object-[36%_bottom] lg:object-bottom"
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-5 pt-12 lg:px-1 lg:pt-0">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 pt-16 lg:px-1 lg:pt-0">
         <div className="grid min-h-[420px] grid-cols-1 items-center gap-6 lg:grid-cols-2">
           <div className="py-8 lg:py-16 lg:pt-32">
-            <h1 className="text-4xl font-extrabold leading-[1.05] lg:text-5xl bg-linear-to-r from-[#1dc3b3] via-[#1dc3b3] to-[#3c8df6] bg-clip-text text-transparent">
+            <h1 className="text-[32px] font-extrabold leading-[1.08] lg:text-5xl bg-linear-to-r from-[#1dc3b3] via-[#1dc3b3] to-[#3c8df6] bg-clip-text text-transparent">
               {titleLines.map((line, i) => (
                 <span key={i}>
                   {line}
@@ -34,7 +34,7 @@ export default function QuantDetailsHero({ data }: { data: HeroData }) {
               ))}
             </h1>
 
-            <p className="mt-5 max-w-[490px] text-sm leading-10 text-white lg:text-3xl">
+            <p className="mt-5 max-w-[490px] text-sm leading-7 text-white lg:text-3xl lg:leading-10">
               {subtitleLines.map((line, i) => (
                 <span key={i}>
                   {line}

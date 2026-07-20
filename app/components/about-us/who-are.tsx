@@ -32,13 +32,13 @@ export default function WhoWeAre() {
                 >
                     {/* Left Image */}
                     <div className="flex justify-center lg:justify-start">
-                        <div className="w-full max-w-[575px] overflow-hidden rounded-[24px]">
+                        <div className="aspect-[16/10] w-full max-w-[575px] overflow-hidden rounded-[20px] sm:aspect-auto sm:rounded-[24px]">
                             <Image
                                 src="/about-us/evolution-img.webp"
                                 alt="Who We Are"
                                 width={620}
                                 height={360}
-                                className="h-auto w-full object-cover"
+                                className="h-full w-full object-cover object-center sm:h-auto"
                             />
                         </div>
                     </div>
