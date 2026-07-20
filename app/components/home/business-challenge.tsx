@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-// @ts-expect-error - the aos package does not ship TypeScript declarations
-import AOS from 'aos';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 
@@ -68,16 +66,13 @@ function CardImageArea({ image, hoverImage, alt }: CardImageAreaProps) {
                         alt={alt}
                         fill
                         className="object-contain object-bottom transition-all duration-700 ease-out lg:group-hover:scale-[1.035] lg:group-hover:opacity-0"
-                        onLoadingComplete={() => {
-                            setTimeout(() => {
-                                AOS.refresh();
-                            }, 100);
-                        }}
+                        sizes="(max-width: 1023px) calc(100vw - 32px), 420px"
                     />
                     <Image
                         src={hoverImage}
                         alt={`${alt} on hover`}
                         fill
+                        sizes="(max-width: 1023px) calc(100vw - 32px), 420px"
                         className="object-cover object-center opacity-0 transition-all duration-700 ease-out lg:scale-[1.04] lg:group-hover:scale-100 lg:group-hover:opacity-100"
                     />
                 </div>

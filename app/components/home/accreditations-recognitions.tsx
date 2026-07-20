@@ -1,9 +1,4 @@
-"use client";
-
-import React, { useEffect } from "react";
-import Image from "next/image";
-// @ts-expect-error - the aos package does not ship TypeScript declarations
-import AOS from "aos";
+import React from "react";
 
 export default function AccreditationsRecognitions() {
 
@@ -23,14 +18,6 @@ export default function AccreditationsRecognitions() {
         { left: "60%", delay: "1.6s" },
         { left: "80%", delay: "1.6s" },
     ];
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            AOS.refresh();
-        }, 250);
-
-        return () => clearTimeout(timer);
-    }, []);
 
     return (
         <section className="relative overflow-hidden bg-[#eef5fb] py-8 lg:py-12">
@@ -155,25 +142,19 @@ export default function AccreditationsRecognitions() {
                     data-aos-delay="120"
                     data-aos-duration="1200"
                 >
-                    <div>
-                        <Image
-                            src="/recognitions.gif"
+                    <picture>
+                        <source media="(max-width: 1023px)" srcSet="/recognitions-mob.webp" />
+                        <source media="(min-width: 1024px)" srcSet="/recognitions.webp" />
+                        <img
+                            src="/recognitions.webp"
                             alt="Accreditations and recognitions"
-                            width={1600}
-                            height={500}
-                            unoptimized
-                            className="hidden h-[500px] w-full object-cover object-center transition-transform duration-700 lg:block"
+                            width={1920}
+                            height={1044}
+                            loading="lazy"
+                            decoding="async"
+                            className="h-[430px] w-full object-contain object-center transition-transform duration-700 lg:h-[500px] lg:object-cover"
                         />
-                    </div>
-
-                    <Image
-                        src="/recognitions-mob.gif"
-                        alt="Accreditations and recognitions"
-                        width={800}
-                        height={700}
-                        unoptimized
-                        className="block h-[430px] w-full object-contain object-center transition-transform duration-700 lg:hidden"
-                    />
+                    </picture>
                 </div>
             </div>
         </section>

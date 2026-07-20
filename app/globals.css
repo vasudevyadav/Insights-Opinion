@@ -41,7 +41,14 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-primary);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+/* Skip layout and paint work for below-the-fold homepage sections until they
+   approach the viewport. The intrinsic size prevents visible layout shifts. */
+.home-page > section:not(:first-child) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 760px;
 }
 
 .wp-heading-content h1,

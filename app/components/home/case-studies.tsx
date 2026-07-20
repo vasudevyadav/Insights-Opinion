@@ -1,10 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-// @ts-expect-error - the aos package does not ship TypeScript declarations
-import AOS from "aos";
 import GlobalCoverage from "./  GlobalCoverage";
 
 type CaseStudy = {
@@ -119,14 +116,6 @@ function CaseCard({
 export default function CaseStudies() {
     const leftCards = caseStudies.filter((_, i) => i % 2 === 0);
     const rightCards = caseStudies.filter((_, i) => i % 2 !== 0);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            AOS.refresh();
-        }, 250);
-
-        return () => clearTimeout(timer);
-    }, []);
 
     return (
         <div>
