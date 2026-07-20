@@ -1,4 +1,5 @@
 import Image from "next/image";
+import BackgroundShape from "@/app/components/about-us/background-shape";
 
 type WhoUsesItem = {
   label: string;
@@ -29,49 +30,10 @@ export default function WhoUsesHealthcareResearch({
   return (
     <section
       data-aos="fade-up"
-      className="relative overflow-hidden bg-[#f6fbff] py-10 lg:py-14"
+      className="relative overflow-hidden bg-[#edf6ff] py-10 lg:py-14"
     >
       <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-10">
-        <div className="pointer-events-none absolute -top-11 right-[-250px] hidden w-[46%] opacity-50 lg:block">
-          <svg
-            className="h-full w-full"
-            viewBox="0 0 320 520"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid slice"
-          >
-            <defs>
-              <linearGradient id="hexGradient" x1="0" y1="0" x2="320" y2="0" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#35c7c8" />
-                <stop offset="50%" stopColor="#56c4d8" />
-                <stop offset="100%" stopColor="#79a8ff" />
-              </linearGradient>
-            </defs>
-
-            {[
-              [20, 20], [70, 20], [120, 20], [170, 20],
-              [45, 62], [95, 62], [145, 62], [195, 62],
-              [20, 104], [70, 104], [120, 104], [170, 104],
-              [45, 146], [95, 146], [145, 146], [195, 146],
-              [20, 188], [70, 188], [120, 188], [170, 188],
-              [45, 230], [95, 230], [145, 230], [195, 230],
-              [20, 272], [70, 272], [120, 272], [170, 272],
-              [45, 314], [95, 314], [145, 314], [195, 314],
-              [20, 356], [70, 356], [120, 356], [170, 356],
-              [45, 398], [95, 398], [145, 398], [195, 398],
-              [20, 440], [70, 440], [120, 440], [170, 440],
-            ].map(([x, y], i) => (
-              <polygon
-                key={i}
-                points={`${x + 12},${y} ${x + 24},${y + 7} ${x + 24},${y + 21} ${x + 12},${y + 28} ${x},${y + 21} ${x},${y + 7}`}
-                stroke="url(#hexGradient)"
-                strokeWidth="1"
-                fill="none"
-                opacity="0.35"
-              />
-            ))}
-          </svg>
-        </div>
+        <BackgroundShape side="right" variant={2} className="-right-20 -top-12 w-[300px] opacity-40 sm:w-[430px] lg:w-[510px]" />
 
         <div className="flex flex-col items-center justify-between gap-10 lg:flex-row lg:items-center lg:gap-14">
           <div data-aos="fade-up" data-aos-delay="100" className="order-2 w-full max-w-[430px] lg:order-1">

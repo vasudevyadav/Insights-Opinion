@@ -1,4 +1,5 @@
 import Image from "next/image";
+import BackgroundShape from "@/app/components/about-us/background-shape";
 
 const timelineItems = [
     { top: "Market and", bottom: "customer understanding" },
@@ -8,46 +9,12 @@ const timelineItems = [
     { top: "Ongoing tracking", bottom: "and experience studies" },
 ];
 
-const HexSVGBackground = () => (
-    <svg
-        className="pointer-events-none absolute inset-0 h-full w-full"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ opacity: 0.35 }}
-    >
-        <defs>
-            <pattern
-                id="hex-svg-pattern"
-                x="0"
-                y="0"
-                width="90"
-                height="104"
-                patternUnits="userSpaceOnUse"
-            >
-                <path
-                    d="M45 2 L88 25 L88 79 L45 102 L2 79 L2 25Z"
-                    fill="none"
-                    stroke="#80d0e0"
-                    strokeWidth="1.2"
-                />
-            </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#hex-svg-pattern)" />
-    </svg>
-);
-
 export default function MarketResearch() {
     return (
         <section className="relative overflow-hidden bg-[#eef7ff] py-12 md:py-12">
-            {/* Hexagon Background */}
-            <div
-                className="pointer-events-none absolute inset-0 opacity-60"
-                style={{
-                    backgroundImage: "url('/case-studies/hexagon-bg.png')",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "repeat",
-                }}
-            />
+            <BackgroundShape side="right" variant={2} className="-right-20 -top-12 w-[310px] opacity-45 sm:w-[430px] lg:w-[520px]" />
+            <BackgroundShape side="left" variant={1} className="-left-24 top-[42%] w-[330px] opacity-40 sm:w-[450px] lg:w-[520px]" />
+            <BackgroundShape side="right" variant={7} className="-right-24 bottom-0 w-[340px] opacity-35 sm:w-[460px]" />
             <button className="fixed right-0 top-1/2 z-30 hidden -translate-y-1/2 rounded-l-[16px] bg-gradient-to-b from-[#19b5a7] to-[#59aaf7] px-3 py-5 text-[11px] font-semibold uppercase tracking-widest text-white shadow-lg [writing-mode:vertical-rl] lg:block">
                 Request Callback
             </button>
@@ -56,7 +23,7 @@ export default function MarketResearch() {
                     <span className="bg-[linear-gradient(90deg,#17afa1,#43bccb,#74b9ff)] bg-clip-text text-transparent">
                         Market Research Company
                     </span>
-                    <span className="text-[#1e2a4e] font-normal">in Chicago</span>
+                    <span className="font-normal text-[#1e2a4e]"> in Chicago</span>
                 </h1>
                 <div className="mx-auto lg:mb-16 mb-4 max-w-7xl lg:text-center">
                     <p className="text-sm leading-[1.75] text-[#1e2a4e] lg:text-base">
@@ -100,7 +67,7 @@ export default function MarketResearch() {
                     </div>
                 </div>
                 <div className="lg:mb-16 mb-10 overflow-x-auto pb-2">
-                    <div className="flex lg:min-w-[620px] min-w-[1000px] items-end">
+                    <div className="flex min-w-[850px] items-end lg:min-w-[620px]">
                         {timelineItems.map((item, index) => (
                             <div key={index} className="flex flex-1 flex-col items-center">
                                 <div className="mb-3 px-1 text-center">
@@ -147,7 +114,7 @@ export default function MarketResearch() {
 
                         <div className="flex flex-col justify-start pt-1">
 
-                            <div className="grid grid-cols-2 gap-10">
+                            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-8 lg:gap-10">
                                 <div className="flex flex-col gap-6">
                                     <h3 className="text-[22px] font-medium leading-[1.3] lg:text-3xl">
                                         <span className="bg-[linear-gradient(90deg,#17afa1,#43bccb,#74b9ff)] bg-clip-text font-semibold text-transparent">

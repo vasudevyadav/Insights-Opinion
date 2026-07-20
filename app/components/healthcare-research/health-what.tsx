@@ -19,7 +19,7 @@ export default function HealthWhat({ data }: HealthWhatProps) {
   return (
     <section
       data-aos="fade-up"
-      className="relative bg-[#f0f7ff] py-10 lg:overflow-hidden lg:py-14"
+      className="relative overflow-hidden bg-[#edf6ff] py-10 lg:py-14"
     >
       <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
         {data.backgroundImage && (
@@ -95,51 +95,9 @@ export default function HealthWhat({ data }: HealthWhatProps) {
           </div>
         </div>
 
-        <div className="pointer-events-none absolute -top-10 right-[-220px] z-10 hidden w-[42%] opacity-50 lg:block">
-          <svg
-            className="h-full w-full"
-            viewBox="0 0 320 520"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid slice"
-          >
-            <defs>
-              <linearGradient
-                id="hexGradient"
-                x1="0"
-                y1="0"
-                x2="320"
-                y2="0"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#CFEAF7" />
-                <stop offset="1" stopColor="#EAF6FB" />
-              </linearGradient>
-            </defs>
-
-            {Array.from({ length: 9 }).map((_, row) =>
-              Array.from({ length: 5 }).map((_, col) => {
-                const x = col * 62 + (row % 2 ? 31 : 0);
-                const y = row * 54;
-
-                return (
-                  <polygon
-                    key={`${row}-${col}`}
-                    points={`${x + 15},${y} ${x + 45},${y} ${x + 60},${
-                      y + 26
-                    } ${x + 45},${y + 52} ${x + 15},${y + 52} ${x},${
-                      y + 26
-                    }`}
-                    stroke="url(#hexGradient)"
-                    strokeWidth="1.2"
-                    fill="none"
-                  />
-                );
-              })
-            )}
-          </svg>
-        </div>
+        <BackgroundShape side="right" variant={2} className="-right-20 -top-16 w-[300px] opacity-40 sm:w-[430px] lg:w-[500px]" />
       </div>
     </section>
   );
 }
+import BackgroundShape from "@/app/components/about-us/background-shape";
