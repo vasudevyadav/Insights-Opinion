@@ -154,7 +154,7 @@ export default function BookDemo() {
                                     src="/book-demo.png"
                                     alt="Book demo support agent"
                                     fill
-                                    priority
+                                    sizes="(max-width: 767px) 100vw, 52vw"
                                     className="object-contain object-bottom md:object-right-bottom"
                                 />
                             </div>

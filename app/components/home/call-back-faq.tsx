@@ -95,7 +95,7 @@ export default function CallbackFaqSection() {
                     src="/faq-area-bg.png"
                     alt="Background"
                     fill
-                    priority
+                    sizes="100vw"
                     className="object-cover"
                 />
                 <div className="absolute inset-0 bg-[#0a143c]/75" />

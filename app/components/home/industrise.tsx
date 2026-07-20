@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
-// @ts-expect-error - the aos package does not ship TypeScript declarations
-import AOS from "aos";
 
 const industries = [
     {
@@ -200,14 +198,6 @@ export default function Industries() {
         industries.slice(3, 6),
         industries.slice(6, 9),
     ];
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            AOS.refresh();
-        }, 200);
-
-        return () => clearTimeout(timer);
-    }, []);
 
     return (
         <section className="px-4 py-5 sm:px-6">

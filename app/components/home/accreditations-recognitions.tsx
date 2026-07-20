@@ -1,9 +1,5 @@
-"use client";
-
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
-// @ts-expect-error - the aos package does not ship TypeScript declarations
-import AOS from "aos";
 
 export default function AccreditationsRecognitions() {
 
@@ -23,14 +19,6 @@ export default function AccreditationsRecognitions() {
         { left: "60%", delay: "1.6s" },
         { left: "80%", delay: "1.6s" },
     ];
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            AOS.refresh();
-        }, 250);
-
-        return () => clearTimeout(timer);
-    }, []);
 
     return (
         <section className="relative overflow-hidden bg-[#eef5fb] py-8 lg:py-12">
@@ -157,7 +145,7 @@ export default function AccreditationsRecognitions() {
                 >
                     <div>
                         <Image
-                            src="/recognitions.gif"
+                            src="/recognitions.webp"
                             alt="Accreditations and recognitions"
                             width={1600}
                             height={500}
@@ -167,7 +155,7 @@ export default function AccreditationsRecognitions() {
                     </div>
 
                     <Image
-                        src="/recognitions-mob.gif"
+                        src="/recognitions-mob.webp"
                         alt="Accreditations and recognitions"
                         width={800}
                         height={700}

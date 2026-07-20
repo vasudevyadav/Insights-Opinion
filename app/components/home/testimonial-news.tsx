@@ -1,9 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-// @ts-ignore - no type declarations for 'aos'
-import AOS from "aos";
 import { ArrowLeft, ArrowRight, ChevronDown } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -100,22 +98,6 @@ export default function TestimonialNews() {
         },
     ];
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            AOS.refresh();
-        }, 250);
-
-        return () => clearTimeout(timer);
-    }, []);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            AOS.refresh();
-        }, 180);
-
-        return () => clearTimeout(timer);
-    }, [openIndex]);
-
     const toggleAccordion = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
     };
@@ -146,11 +128,7 @@ export default function TestimonialNews() {
                         fill
 
                         className="object-fill transition-transform duration-500 group-hover/news:scale-105"
-                        onLoadingComplete={() => {
-                            setTimeout(() => {
-                                AOS.refresh();
-                            }, 100);
-                        }}
+                        sizes="(max-width: 767px) calc(100vw - 32px), 33vw"
                     />
                 </div>
 

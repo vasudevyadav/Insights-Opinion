@@ -1,26 +1,24 @@
-import Image from "next/image";
 export default function HomeHero() {
     return (
         <section className="bg-[#edf6fe]">
 
             <div className="relative overflow-hidden text-white">
-                <Image
-                    src="/home-hero-img-1.png"
-                    alt=""
-                    fill
-                    priority
-                    fetchPriority="high"
-                    className="object-cover object-bottom hidden sm:block"
-                    sizes="100vw"
-                />
-                <Image
-                    src="/home-mob.png"
-                    alt=""
-                    fill
-                    priority
-                    className="object-cover object-bottom sm:hidden"
-                    sizes="100vw"
-                />
+                <picture>
+                    <source media="(max-width: 639px)" srcSet="/home-mob.webp" />
+                    <source media="(min-width: 640px)" srcSet="/home-hero-img-1.webp" />
+                    {/* A native picture ensures only the matching responsive hero
+                        is requested; rendering and crop remain unchanged. */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                        src="/home-hero-img-1.webp"
+                        alt=""
+                        width={1366}
+                        height={583}
+                        fetchPriority="high"
+                        decoding="async"
+                        className="absolute inset-0 h-full w-full object-cover object-bottom"
+                    />
+                </picture>
                 <div className="relative z-10 mx-auto flex min-h-[620px] w-full max-w-7xl items-start px-5 pt-6 sm:min-h-[560px] sm:px-6 lg:min-h-[540px] lg:items-center lg:pt-0">
 
                     <div className="max-w-2xl rounded-2xl bg-[#102b52]/35 p-4 backdrop-blur-[2px] sm:bg-transparent sm:p-0 sm:backdrop-blur-none">

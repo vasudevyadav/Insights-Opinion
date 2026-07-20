@@ -3,8 +3,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-// @ts-expect-error - the aos package does not ship TypeScript declarations
-import AOS from "aos";
 
 export default function CoreTab() {
     const tabs = [
@@ -96,12 +94,6 @@ export default function CoreTab() {
 
     useEffect(() => {
         setCardIndex(0);
-
-        const timer = setTimeout(() => {
-            AOS.refresh();
-        }, 250);
-
-        return () => clearTimeout(timer);
     }, [activeTab]);
 
     useEffect(() => {
@@ -114,14 +106,6 @@ export default function CoreTab() {
 
         return () => window.removeEventListener("resize", checkScreen);
     }, []);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            AOS.refresh();
-        }, 200);
-
-        return () => clearTimeout(timer);
-    }, [cardIndex, isMobile]);
 
     const cardsPerView = isMobile ? 1 : 2;
     const visibleCards = activeData.services.slice(cardIndex, cardIndex + cardsPerView);
@@ -193,11 +177,6 @@ export default function CoreTab() {
                             fill
                             className="object-cover"
                             unoptimized
-                            onLoadingComplete={() => {
-                                setTimeout(() => {
-                                    AOS.refresh();
-                                }, 100);
-                            }}
                         />
                         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,25,52,0.12)_0%,rgba(10,20,48,0.72)_100%)]" />
                         <div className="absolute bottom-7 left-5 max-w-[78%]">
@@ -242,11 +221,6 @@ export default function CoreTab() {
                                             fill
                                             className="object-cover"
                                             unoptimized
-                                            onLoadingComplete={() => {
-                                                setTimeout(() => {
-                                                    AOS.refresh();
-                                                }, 100);
-                                            }}
                                         />
                                     </div>
 
