@@ -139,7 +139,7 @@ export default function HomeIndustry() {
                                     data-aos="zoom-in-up"
                                     data-aos-delay={index * 80}
                                 >
-                                    <div className="absolute left-2 top-1/2 h-12 w-12 -translate-y-1/2 lg:h-14 lg:w-14">
+                                    <div className="absolute left-0 top-7 h-12 w-12 -translate-y-1/2 lg:h-16 lg:w-16">
                                         <Image
                                             src={item.icon}
                                             alt={item.alt}

@@ -6,6 +6,7 @@ import {
   Globe, Clock, TrendingUp,
 } from "lucide-react";
 import type { MethodData } from "@/app/lib/method-data";
+import BackgroundShape from "@/app/components/about-us/background-shape";
 
 const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   TrendingDown, BookOpen, Wifi, UserCheck, RefreshCw,
@@ -20,7 +21,8 @@ export default function MarketResearch({ data }: { data: MethodData }) {
     <>
       {/* ── When to Use ── */}
       {whenToUse?.heading1 && whenToUse.items?.length > 0 && (
-        <section className="quality-hex-bg relative overflow-hidden py-7 lg:py-16">
+        <section className="relative overflow-hidden bg-[#eef7ff] py-7 lg:py-16">
+          <BackgroundShape variant={5} className="-right-20 top-4 z-0 w-[350px] opacity-35 sm:w-[430px] lg:-right-1 lg:top-8 lg:w-[526px] lg:opacity-50" />
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start lg:gap-10">
 
@@ -86,34 +88,11 @@ export default function MarketResearch({ data }: { data: MethodData }) {
 
       {/* ── Method vs Method ── */}
       {vsBox?.title && vsBox.items?.length > 0 && (
-        <section className="quality-hex-bg relative overflow-hidden lg:py-0 lg:pb-10 pb-8">
-          {/* Background Pattern */}
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-56 opacity-20 hidden lg:block">
-            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern
-                  id="hex-vsbox"
-                  x="0"
-                  y="0"
-                  width="60"
-                  height="69.28"
-                  patternUnits="userSpaceOnUse"
-                >
-                  <polygon
-                    points="30,0 60,17.32 60,51.96 30,69.28 0,51.96 0,17.32"
-                    fill="none"
-                    stroke="#1dc3b3"
-                    strokeWidth="1.5"
-                  />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#hex-vsbox)" />
-            </svg>
-          </div>
-
+        <section className="relative overflow-hidden bg-[#eef7ff] pb-8 lg:py-0 lg:pb-16">
+          <BackgroundShape variant={5} className="-right-20 top-10 z-0 w-[350px] opacity-30 sm:w-[430px] lg:-right-1 lg:top-4 lg:w-[526px] lg:opacity-45" />
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* Heading */}
-            <div className="mb-7 lg:mb-14">
+            <div className="mb-7 lg:mb-4">
               <h2 className="text-2xl font-semibold text-[#1dc3b3] sm:text-3xl lg:text-4xl">
                 {vsBox.title}
               </h2>
@@ -220,13 +199,13 @@ export default function MarketResearch({ data }: { data: MethodData }) {
         <section className="relative overflow-hidden bg-[#deeef7] py-8 lg:py-16">
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-10 text-center lg:mb-14">
-              <h2 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
+              <h2 className="text-3xl font-semibold leading-tight lg:text-[42px]">
                 <span className="bg-linear-to-r from-[#3c8df6] via-[#31b6df] to-[#1dc3b3] bg-clip-text text-transparent">
                   Sector-Specific
                 </span>{" "}
                 <span className="text-[#1e2746]">Research</span>
               </h2>
-              <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-[#4a5568] sm:text-base">
+              <p className="mx-auto mt-4 max-w-5xl text-sm leading-relaxed text-[#4a5568] sm:text-lg">
                 Explore how our research approach is adapted to the needs of each audience and industry.
               </p>
             </div>

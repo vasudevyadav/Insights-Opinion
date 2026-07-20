@@ -35,7 +35,7 @@ const cards = [
 export default function QualityMarketExcellence() {
     return (
         <section className="quality-hex-bg relative overflow-hidden pt-8 lg:pt-14">
-            <div className="relative z-10 mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8 lg:pb-14">
+            <div className="relative z-10 mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8 lg:pb-4">
                 <div className="mb-10 text-center">
                     <h2 className="text-[26px] font-light text-[#1a2340] lg:text-[36px] mb-3 lg:mb-5">
                         <span className="quality-gradient-text font-semibold"> Market Research  </span>{" "}

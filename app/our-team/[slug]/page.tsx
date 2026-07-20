@@ -58,12 +58,14 @@ export default async function TeamDetailPage({
   return (
     <>
       <TeamHero />
-      <TeamMemberDetail
-        member={member}
-        previousMember={previousMember}
-        nextMember={nextMember}
-      />
-      <TeamGrowthForm />
+      <div className="team-detail-bg quality-hex-bg overflow-hidden">
+        <TeamMemberDetail
+          member={member}
+          previousMember={previousMember}
+          nextMember={nextMember}
+        />
+        <TeamGrowthForm />
+      </div>
     </>
   );
 }

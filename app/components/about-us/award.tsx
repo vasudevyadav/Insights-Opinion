@@ -31,7 +31,7 @@ export default function Award() {
             <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-10">
                 {/* Heading */}
                 <div className="mx-auto mb-6 max-w-[760px] text-center">
-                    <h2 className="inline-block bg-[#dcecf8] px-2 lg:-mt-10 text-[24px] font-semibold leading-tight 
+                    <h2 className="inline-block bg-[#dcecf8] px-2 lg:-mt-10 text-[24px] font-medium leading-tight 
                     bg-gradient-to-r from-[#1bb0a4] to-[#74b9ff] bg-clip-text text-transparent 
                      lg:text-[36px]">
                         Awards & Recognitions

@@ -66,9 +66,9 @@ export default function QuantWhyChoose({
         return (
           <section
             key={`${section.highlight}-${sectionIndex}`}
-            className="relative overflow-hidden py-8"
+            className="relative overflow-hidden pb-8"
           >
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:mb-12 ">
+            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:mb-1 ">
               <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
                 <div className={imageOnLeft ? "lg:order-2" : "lg:order-1"}>
                   {!hideHeadingAndDescription && (
@@ -112,7 +112,7 @@ export default function QuantWhyChoose({
                     }`}
                 >
                   <div className="absolute h-64 w-64 rounded-full bg-linear-to-br from-[#70c8f3]/35 to-[#1dc3b3]/30 blur-2xl sm:h-80 sm:w-80" />
-                  <div className="relative h-[220px] w-full lg:h-[500px]">
+                  <div className="relative h-[220px] w-full lg:h-[420px]">
                     <Image
                       src={section.image}
                       alt={`${section.title} ${section.highlight}`}
