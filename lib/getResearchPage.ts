@@ -114,7 +114,7 @@ export async function getResearchPage(
     const response = await fetch(
       apiUrl(`/custom/v1/research-expertises/${slug}`),
       {
-        next: { revalidate: 300 },
+        next: { revalidate: 1 },
       }
     );
 

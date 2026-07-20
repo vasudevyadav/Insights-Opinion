@@ -1,4 +1,4 @@
-import { apiUrl } from "@/lib/api-config";
+import { API_BASE_URL, apiUrl } from "@/lib/api-config";
 import type { ApiSeo } from "@/lib/api-metadata";
 
 export type TeamMember = {
@@ -48,21 +48,40 @@ function parseDescription(raw: string): string[] {
     .filter(Boolean);
 }
 
+function normalizeApiImage(value: string | undefined, fallback: string) {
+  const image = value?.trim();
+  if (!image) return fallback;
+  if (/^https?:\/\//i.test(image)) return image;
+
+  try {
+    return new URL(image, API_BASE_URL).toString();
+  } catch {
+    return fallback;
+  }
+}
+
 function normalizeTeamMember(raw: RawTeamMember): TeamMember {
+  const detailImage = normalizeApiImage(
+    raw.detailImage,
+    "/our-team/team-member-detailks.png"
+  );
+
   return {
     slug: raw.slug,
     name: raw.name,
     role: raw.role,
-    image: raw.image,
-    detailImage: raw.detailImage,
-    description: parseDescription(raw.description),
+    // The API currently returns an empty `image` value while each member's
+    // unique photo is available in `detailImage`.
+    image: normalizeApiImage(raw.image, detailImage),
+    detailImage,
+    description: parseDescription(raw.description || ""),
     seo: raw.seo,
   };
 }
 
 export async function fetchTeamMembers(): Promise<TeamMember[]> {
   try {
-    const res = await fetch(BASE_URL, { next: { revalidate: 60 } });
+    const res = await fetch(BASE_URL, { next: { revalidate: 1 } });
 
     if (!res.ok) {
       console.error(`Failed to fetch team members: ${res.status} ${res.statusText}`);

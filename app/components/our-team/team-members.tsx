@@ -46,7 +46,7 @@ export default function TeamMembers({ members }: TeamMembersProps) {
                   className="relative z-10 flex h-full items-end justify-center"
                 >
                   <Image
-                    src={member.image}
+                    src={member.image || "/our-team/shahab.png"}
                     alt={member.name}
                     width={360}
                     height={400}
