@@ -8,7 +8,6 @@ export default function HomeHero() {
                     <source media="(min-width: 640px)" srcSet="/home-hero-img-1.webp" />
                     {/* A native picture ensures only the matching responsive hero
                         is requested; rendering and crop remain unchanged. */}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                         src="/home-hero-img-1.webp"
                         alt=""

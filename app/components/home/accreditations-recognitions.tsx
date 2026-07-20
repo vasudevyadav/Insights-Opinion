@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 
 export default function AccreditationsRecognitions() {
 
@@ -143,25 +142,19 @@ export default function AccreditationsRecognitions() {
                     data-aos-delay="120"
                     data-aos-duration="1200"
                 >
-                    <div>
-                        <Image
+                    <picture>
+                        <source media="(max-width: 1023px)" srcSet="/recognitions-mob.webp" />
+                        <source media="(min-width: 1024px)" srcSet="/recognitions.webp" />
+                        <img
                             src="/recognitions.webp"
                             alt="Accreditations and recognitions"
-                            width={1600}
-                            height={500}
-                            unoptimized
-                            className="hidden h-[500px] w-full object-cover object-center transition-transform duration-700 lg:block"
+                            width={1920}
+                            height={1044}
+                            loading="lazy"
+                            decoding="async"
+                            className="h-[430px] w-full object-contain object-center transition-transform duration-700 lg:h-[500px] lg:object-cover"
                         />
-                    </div>
-
-                    <Image
-                        src="/recognitions-mob.webp"
-                        alt="Accreditations and recognitions"
-                        width={800}
-                        height={700}
-                        unoptimized
-                        className="block h-[430px] w-full object-contain object-center transition-transform duration-700 lg:hidden"
-                    />
+                    </picture>
                 </div>
             </div>
         </section>
