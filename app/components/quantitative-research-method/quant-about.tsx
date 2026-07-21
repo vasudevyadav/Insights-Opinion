@@ -5,7 +5,7 @@ export default function QuantDetailsAbout({ data }: { data: string }) {
     <section className="relative overflow-hidden bg-[#eef7ff] pt-8 lg:pt-12">
       <BackgroundShape variant={5} className="-right-16 top-0 z-0 w-[360px] opacity-45 sm:w-[440px] lg:-right-1 lg:-top-6 lg:w-[526px] lg:opacity-55" />
       <div className="relative z-10 mx-auto max-w-7xl px-5 text-center sm:px-6">
-        <p className="text-[15px] leading-[1.9] text-[#374151] sm:text-2xl">
+        <p className="text-sm leading-[1.9] text-[#374151] sm:text-lg">
           {data}
         </p>
       </div>
