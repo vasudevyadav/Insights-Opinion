@@ -21,7 +21,7 @@ export default function MegaMenu({ open, services }: MegaMenuProps) {
 
     return (
         <div
-            className={`absolute left-48 top-3 z-50 mt-4 w-[1100px] -translate-x-1/2 transform transition-all duration-300 ease-out ${open
+            className={`absolute left-48 top-[10px] z-50 mt-4 w-[1100px] -translate-x-1/2 transform transition-all duration-300 ease-out ${open
                 ? "pointer-events-auto translate-y-0 opacity-100"
                 : "pointer-events-none -translate-y-3 opacity-0"
                 }`}

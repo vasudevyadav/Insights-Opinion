@@ -115,7 +115,7 @@ export default function Navbar({
                 alt="Logo"
                 width={180}
                 height={48}
-                className="h-auto w-36 lg:w-44"
+                className="h-auto w-36 lg:w-54"
                 priority
                 unoptimized
               />
@@ -204,7 +204,7 @@ export default function Navbar({
                     ) : (
                       dropdownItems.length > 0 && (
                         <div
-                          className={`absolute left-0 top-3 z-50 mt-4 w-64 rounded-lg border border-gray-200 bg-white p-2 shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition-all duration-300 ${openDropdown === item.key
+                          className={`absolute left-0 top-[6px] z-50 mt-4 w-64 rounded-lg border border-gray-200 bg-white p-2 shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition-all duration-300 ${openDropdown === item.key
                             ? "pointer-events-auto translate-y-0 opacity-100"
                             : "pointer-events-none -translate-y-3 opacity-0"
                             }`}
