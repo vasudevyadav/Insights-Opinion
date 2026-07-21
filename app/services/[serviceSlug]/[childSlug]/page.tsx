@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { cache } from "react";
 import ServiceChildPage from "@/app/components/services/service-child-page";
 import {
   fetchChildService,
@@ -11,16 +12,17 @@ type PageProps = {
   params: Promise<{ serviceSlug: string; childSlug: string }>;
 };
 
-export const dynamic = "force-dynamic";
 export const dynamicParams = true;
-export const revalidate = 0;
+export const revalidate = 300;
 
-async function resolveChildService(serviceSlug: string, childSlug: string) {
-  return (
-    (await fetchChildService(serviceSlug, childSlug)) ??
-    (await fetchChildServiceBySlug(childSlug))
-  );
-}
+const resolveChildService = cache(
+  async (serviceSlug: string, childSlug: string) => {
+    return (
+      (await fetchChildService(serviceSlug, childSlug)) ??
+      (await fetchChildServiceBySlug(childSlug))
+    );
+  }
+);
 
 export async function generateMetadata({
   params,

@@ -8,6 +8,7 @@ import { apiUrl } from "@/lib/api-config";
 import type { ApiSeo } from "@/lib/api-metadata";
 
 const SERVICES_API_URL = apiUrl("/custom/v1/services");
+const SERVICES_REVALIDATE_SECONDS = 300;
 
 type ApiServiceChild = ServiceChild & {
   content?: MethodData;
@@ -75,7 +76,9 @@ function normalizeApiValue<T>(value: T): T {
 
 async function fetchApiData<T>(url: string): Promise<T | null> {
   try {
-    const response = await fetch(url, { next: { revalidate: 1 } });
+    const response = await fetch(url, {
+      next: { revalidate: SERVICES_REVALIDATE_SECONDS },
+    });
     if (!response.ok) return null;
 
     const json = normalizeApiValue(
@@ -113,6 +116,20 @@ function matchesChildRoute(child: ApiServiceChild, requestedSlug: string) {
     child.slug === requestedSlug ||
     getHrefSlug(child.href) === requestedSlug ||
     getHrefSlug(child.apiHref) === requestedSlug
+  );
+}
+
+function findMatchingChild(
+  children: ApiServiceChild[],
+  requestedSlug: string
+) {
+  // Prefer the canonical API slug. CMS hrefs are editable and can be duplicated
+  // (CATI and CLT currently share the same href), so an href-only match must be
+  // treated as a fallback rather than winning by array order.
+  return (
+    children.find((child) => child.slug === requestedSlug) ??
+    children.find((child) => getHrefSlug(child.apiHref) === requestedSlug) ??
+    children.find((child) => getHrefSlug(child.href) === requestedSlug)
   );
 }
 
@@ -156,7 +173,9 @@ async function fetchServicesData(
 ): Promise<ApiMainServiceWithContent[]> {
   try {
     const response = await fetch(SERVICES_API_URL, {
-      ...(fresh ? { cache: "no-store" as const } : { next: { revalidate: 1 } }),
+      ...(fresh
+        ? { cache: "no-store" as const }
+        : { next: { revalidate: SERVICES_REVALIDATE_SECONDS } }),
     });
 
     if (!response.ok) return [];
@@ -256,11 +275,11 @@ export async function fetchChildService(
       (!!item.apiSlug && expectedApiSlugs.has(item.apiSlug))
   );
   const matchingSummary = routeCandidates.find((item) =>
-    item.children.some((child) => matchesChildRoute(child, childServiceSlug))
+    findMatchingChild(item.children, childServiceSlug)
   );
-  const catalogChildSummary = matchingSummary?.children.find((child) =>
-    matchesChildRoute(child, childServiceSlug)
-  );
+  const catalogChildSummary = matchingSummary
+    ? findMatchingChild(matchingSummary.children, childServiceSlug)
+    : undefined;
   const fallbackSummary = matchingSummary ?? routeCandidates[0];
 
   let service = fallbackSummary ?? (await fetchMainService(mainServiceSlug));
@@ -271,9 +290,10 @@ export async function fetchChildService(
     if (detail?.content) service = normalizeService(detail, 0);
   }
 
-  const childSummary = service?.children.find(
-    (item) => matchesChildRoute(item, childServiceSlug)
-  ) ?? service?.children.find((item) => item.slug === catalogChildSummary?.slug);
+  const childSummary = service
+    ? findMatchingChild(service.children, childServiceSlug) ??
+      service.children.find((item) => item.slug === catalogChildSummary?.slug)
+    : undefined;
 
   if (!service) return null;
 
