@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight, ChevronDown } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
+import { sliderTestimonials as testimonials } from "@/data/testimonials";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -26,41 +27,6 @@ export default function TestimonialNews() {
         { left: "40%", delay: "0.8s" },
         { left: "60%", delay: "1.6s" },
         { left: "80%", delay: "1.6s" },
-    ];
-
-    const testimonials = [
-        {
-            quote:
-                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
-            link: "Read Full Customer Story",
-            company: "TAJMG",
-            author: "Director, Clifton",
-            logo: "/Testimonial-Icon.png",
-        },
-        {
-            quote:
-                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
-            link: "Read Full Customer Story",
-            company: "TAJMG",
-            author: "Director, Clifton",
-            logo: "/Testimonial-Icon.png",
-        },
-        {
-            quote:
-                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
-            link: "Read Full Customer Story",
-            company: "TAJMG",
-            author: "Director, Clifton",
-            logo: "/Testimonial-Icon.png",
-        },
-        {
-            quote:
-                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
-            link: "Read Full Customer Story",
-            company: "TAJMG",
-            author: "Director, Clifton",
-            logo: "/Testimonial-Icon.png",
-        },
     ];
 
     const news = [
@@ -229,12 +195,10 @@ export default function TestimonialNews() {
                 <div
                     key={`m-${i}`}
                     className="demo-v-line block md:hidden"
-                    style={
-                        {
-                            left: line.left,
-                            ["--line-delay" as any]: line.delay,
-                        } as React.CSSProperties
-                    }
+                    style={{
+                        left: line.left,
+                        "--line-delay": line.delay,
+                    } as React.CSSProperties & Record<"--line-delay", string>}
                 />
             ))}
 
@@ -243,12 +207,10 @@ export default function TestimonialNews() {
                 <div
                     key={`d-${i}`}
                     className="demo-v-line hidden md:block"
-                    style={
-                        {
-                            left: line.left,
-                            ["--line-delay" as any]: line.delay,
-                        } as React.CSSProperties
-                    }
+                    style={{
+                        left: line.left,
+                        "--line-delay": line.delay,
+                    } as React.CSSProperties & Record<"--line-delay", string>}
                 />
             ))}
 
@@ -330,7 +292,7 @@ export default function TestimonialNews() {
                                         data-aos-duration="850"
                                     >
                                         <p className="min-h-[98px] line-clamp-4 text-xs leading-5 text-[#344054] transition-colors duration-500 group-hover:text-white/85 lg:text-sm">
-                                            "{item.quote}"
+                                            &ldquo;{item.quote}&rdquo;
                                         </p>
 
                                         <div className="mt-3 flex items-center justify-between gap-3">
@@ -347,7 +309,7 @@ export default function TestimonialNews() {
                                             <div className="flex items-center gap-3">
                                                 <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full transition-all duration-500">
                                                     <Image
-                                                        src="/Testimonial-Icon.png"
+                                                        src={item.logo || "/Testimonial-Icon.png"}
                                                         alt="testimonial logo"
                                                         width={1000}
                                                         height={1000}

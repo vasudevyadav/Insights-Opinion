@@ -4,14 +4,8 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { sharedTestimonials as testimonials } from "@/data/testimonials";
 import "swiper/css";
-
-const testimonials = Array.from({ length: 4 }, () => ({
-  quote:
-    "Their detailed surveys gave us a clear understanding of our guests' preferences, leading to more personalized services and higher customer satisfaction. We were able to adjust our approach with confidence.",
-  author: "THOMAS",
-  role: "Director, Clifton",
-}));
 
 export default function TeamTestimonials() {
   return (
@@ -49,7 +43,7 @@ export default function TeamTestimonials() {
         >
           {testimonials.map((item, index) => (
             <SwiperSlide key={index}>
-              <article className="group min-h-[260px] border border-[#1a214d] bg-white/40 p-4 text-[#202845] transition duration-300 hover:bg-[#151a45] hover:text-white sm:min-h-[245px] sm:p-6">
+              <article className="group min-h-[260px] border border-[#1a214d] bg-white/40 p-4 text-[#202845] transition duration-300 hover:bg-[#151a45] hover:text-white sm:min-h-[377px] sm:p-6">
                 <p className="text-xs leading-5 sm:text-sm sm:leading-6">
                   <span className="mr-2 text-xl font-semibold">“</span>
                   {item.quote}
@@ -63,9 +57,15 @@ export default function TeamTestimonials() {
                 </a>
                 <div className="mt-5 flex flex-wrap items-center justify-between gap-3 sm:mt-6 sm:flex-nowrap sm:gap-4">
                   <div className="flex items-center gap-3">
-                    <span className="h-12 w-12 shrink-0 rounded-full bg-[#151a45] group-hover:bg-white sm:h-14 sm:w-14" />
+                    <Image
+                      src={item.personImage || "/Testimonial-Icon.png"}
+                      alt={`${item.name} testimonial`}
+                      width={56}
+                      height={56}
+                      className="h-12 w-12 shrink-0 rounded-full bg-white object-contain sm:h-14 sm:w-14"
+                    />
                     <div className="text-xs">
-                      <p>{item.author}</p>
+                      <p>{item.name}</p>
                       <p className="opacity-75">{item.role}</p>
                     </div>
                   </div>
