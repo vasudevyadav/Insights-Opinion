@@ -191,7 +191,7 @@ export default function BlogList({ blogs }: { blogs: Blog[] }) {
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 xl:grid-cols-3">
           {filteredBlogs.length > 0 ? (
             filteredBlogs.slice(0, visibleCount).map((blog) => (
               <Link
@@ -199,13 +199,13 @@ export default function BlogList({ blogs }: { blogs: Blog[] }) {
                 href={`/blogs/${blog.slug}`}
                 className="group block overflow-hidden rounded-[19px] border border-[#9eafc4] bg-white shadow-none transition hover:-translate-y-1"
               >
-                <div className="relative h-[220px] overflow-hidden">
+                <div className="relative aspect-[16/5] w-full overflow-hidden bg-[#eef5fb]">
                   <Image
                     src={blog.image}
                     alt={blog.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                    className="object-cover transition duration-500 group-hover:scale-105"
+                    className="object-contain object-center"
                   />
 
                   <div className="absolute bottom-0 left-0 flex items-center gap-2 bg-[linear-gradient(90deg,#7fd8df_0%,#48c0cd_50%,#2eacbf_100%)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-white">

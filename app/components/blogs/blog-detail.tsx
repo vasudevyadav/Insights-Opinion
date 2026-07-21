@@ -94,13 +94,13 @@ export default function BlogDetail({ blog, relatedBlogs }: BlogDetailProps) {
         <div className="relative z-10 mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
           <div className="rounded-[18px] border border-[#9fb1c6] bg-white/25 px-4 py-5 lg:px-16 lg:py-10">
             <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
-              <div className="relative h-[190px] w-full flex-shrink-0 overflow-hidden rounded-[10px] sm:w-[265px]">
+              <div className="relative aspect-[16/5] w-full flex-shrink-0 overflow-hidden rounded-[10px] bg-[#eef5fb] sm:w-[320px]">
                 <Image
                   src={blog.image}
                   alt={blog.title}
                   fill
                   sizes="(max-width:640px) 100vw, 265px"
-                  className="object-cover"
+                  className="object-contain object-center"
                 />
               </div>
 
@@ -261,13 +261,13 @@ export default function BlogDetail({ blog, relatedBlogs }: BlogDetailProps) {
                           href={`/blogs/${related.slug}`}
                           className="group block overflow-hidden rounded-[16px] border border-[#b8cce0] bg-white shadow-sm transition hover:-translate-y-1"
                         >
-                          <div className="relative h-[190px] overflow-hidden">
+                          <div className="relative aspect-[16/5] w-full overflow-hidden bg-[#eef5fb]">
                             <Image
                               src={related.image}
                               alt={related.title}
                               fill
                               sizes="(max-width:640px) 100vw,(max-width:1280px) 50vw,33vw"
-                              className="object-cover transition duration-500 group-hover:scale-105"
+                              className="object-contain object-center"
                             />
 
                             <div className="absolute bottom-0 left-0 flex items-center gap-1.5 bg-[linear-gradient(90deg,#7fd8df_0%,#48c0cd_50%,#2eacbf_100%)] px-3 py-[6px] text-[10px] font-semibold uppercase tracking-[0.06em] text-white">
