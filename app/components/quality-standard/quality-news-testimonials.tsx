@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
+import { sliderTestimonials as testimonials } from "@/data/testimonials";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -14,41 +15,6 @@ export default function QualityNewsTestimonials() {
         "How Global Research Reveals New Market Opportunities",
         "Using Research to Build Confident International Strategies",
     ];
-    const testimonials = [
-        {
-            quote:
-                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
-            link: "Read Full Customer Story",
-            company: "TAJMG",
-            author: "Director, Clifton",
-            logo: "/Testimonial-Icon.png",
-        },
-        {
-            quote:
-                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
-            link: "Read Full Customer Story",
-            company: "TAJMG",
-            author: "Director, Clifton",
-            logo: "/Testimonial-Icon.png",
-        },
-        {
-            quote:
-                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
-            link: "Read Full Customer Story",
-            company: "TAJMG",
-            author: "Director, Clifton",
-            logo: "/Testimonial-Icon.png",
-        },
-        {
-            quote:
-                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
-            link: "Read Full Customer Story",
-            company: "TAJMG",
-            author: "Director, Clifton",
-            logo: "/Testimonial-Icon.png",
-        },
-    ];
-
     return (
         <section className="relative overflow-hidden bg-[#eef5fb]  lg:py-4 py-4 lg:pt-12 pt-8">
             <div className="relative z-10 mx-auto">
@@ -142,7 +108,7 @@ export default function QualityNewsTestimonials() {
                                         <div className="flex items-center gap-3">
                                             <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full">
                                                 <Image
-                                                    src={item.logo}
+                                                    src={item.logo || "/Testimonial-Icon.png"}
                                                     alt={item.company}
                                                     width={56}
                                                     height={56}

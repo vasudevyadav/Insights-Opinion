@@ -1,7 +1,6 @@
 import { getBlogs } from "@/data/blogData";
 import { researchPages } from "@/data/researchPages";
 import { fetchCaseStudies } from "@/app/lib/case-studies-api";
-import { getAllMethodSlugs } from "@/app/lib/method-data";
 import { fetchTeamMembers } from "@/app/lib/team-api";
 import { fetchServices } from "@/app/lib/services-api";
 
@@ -188,7 +187,13 @@ export function getSiteUrl() {
 }
 
 export async function getAllSiteRoutes(): Promise<SiteRoute[]> {
-  const services = await fetchServices();
+  const [services, teamMembers, caseStudies, blogs] = await Promise.all([
+    fetchServices().catch(() => []),
+    fetchTeamMembers().catch(() => []),
+    fetchCaseStudies().catch(() => []),
+    getBlogs().catch(() => []),
+  ]);
+
   const serviceRoutes: SiteRoute[] = services.flatMap((service) => [
     {
       path: `/services/${service.slug}`,
@@ -208,22 +213,12 @@ export async function getAllSiteRoutes(): Promise<SiteRoute[]> {
     })),
   ]);
 
-  const teamMembers = await fetchTeamMembers();
   const teamRoutes: SiteRoute[] = teamMembers.map((member) => ({
     path: `/our-team/${member.slug}`,
     title: member.name,
     description: `${member.name}, ${member.role} at Insights Opinion.`,
     group: "Company",
     priority: 0.6,
-    changeFrequency: "monthly",
-  }));
-
-  const methodRoutes: SiteRoute[] = getAllMethodSlugs().map((slug) => ({
-    path: `/quantitative-research/methods/${slug}`,
-    title: `${slug.toUpperCase()} Research`,
-    description: `${slug.toUpperCase()} market research services.`,
-    group: "Services",
-    priority: 0.8,
     changeFrequency: "monthly",
   }));
 
@@ -239,7 +234,6 @@ export async function getAllSiteRoutes(): Promise<SiteRoute[]> {
     changeFrequency: "monthly",
   }));
 
-  const caseStudies = await fetchCaseStudies();
   const caseStudyRoutes: SiteRoute[] = caseStudies.map((study) => ({
     path: `/case-studies/${study.slug}`,
     title: study.title,
@@ -249,28 +243,19 @@ export async function getAllSiteRoutes(): Promise<SiteRoute[]> {
     changeFrequency: "monthly",
   }));
 
-  let blogRoutes: SiteRoute[] = [];
-
-  try {
-    const blogs = await getBlogs();
-    blogRoutes = blogs.map((blog) => ({
-      path: `/blogs/${blog.slug}`,
-      title: blog.title,
-      description: blog.description,
-      group: "Resources",
-      priority: 0.7,
-      changeFrequency: "weekly",
-    }));
-  } catch {
-    // Static and local dynamic routes should still be discoverable if the
-    // external blog API is temporarily unavailable.
-  }
+  const blogRoutes: SiteRoute[] = blogs.map((blog) => ({
+    path: `/blogs/${blog.slug}`,
+    title: blog.title,
+    description: blog.description,
+    group: "Resources",
+    priority: 0.7,
+    changeFrequency: "weekly",
+  }));
 
   const routes = [
     ...staticRoutes,
     ...serviceRoutes,
     ...teamRoutes,
-    ...methodRoutes,
     ...researchRoutes,
     ...caseStudyRoutes,
     ...blogRoutes,
@@ -278,5 +263,5 @@ export async function getAllSiteRoutes(): Promise<SiteRoute[]> {
 
   return Array.from(
     new Map(routes.map((route) => [route.path, route])).values()
-  );
+  ).sort((a, b) => a.path.localeCompare(b.path));
 }

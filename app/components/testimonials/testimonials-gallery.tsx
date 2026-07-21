@@ -25,6 +25,9 @@ export default function TestimonialsGallery({
   const visibleTestimonials = testimonials.filter(
     (item) => item.type === filter
   );
+  const availableFilters = (["text", "video"] as Filter[]).filter((type) =>
+    testimonials.some((item) => item.type === type)
+  );
 
   return (
     <section className="quality-hex-bg px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
@@ -42,8 +45,9 @@ export default function TestimonialsGallery({
           </p>
         </div>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          {(["text", "video"] as Filter[]).map((item) => (
+        {availableFilters.length > 1 && (
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          {availableFilters.map((item) => (
             <button
               key={item}
               type="button"
@@ -57,7 +61,8 @@ export default function TestimonialsGallery({
               {`${item} Stories`}
             </button>
           ))}
-        </div>
+          </div>
+        )}
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {visibleTestimonials.map((item, index) =>
@@ -99,7 +104,7 @@ export default function TestimonialsGallery({
                   </h4>
                   <div className="mt-4 flex items-center gap-3 border-t border-[#e2ebf2] pt-4">
                     <Image
-                      src={item.personImage}
+                      src={item.personImage || "/Testimonial-Icon.png"}
                       alt={item.name}
                       width={48}
                       height={48}
@@ -108,7 +113,7 @@ export default function TestimonialsGallery({
                     <div>
                       <p className="font-semibold text-[#151b48]">{item.name}</p>
                       <p className="mt-1 text-xs leading-5 text-[#667085]">
-                        {item.role}, {item.company}
+                        {item.role}{item.company ? `, ${item.company}` : ""}
                       </p>
                     </div>
                   </div>
@@ -129,7 +134,7 @@ export default function TestimonialsGallery({
                 </p>
                 <div className="mt-6 flex items-center gap-3 border-t border-[#dce6ef] pt-5 group-hover:border-white/20">
                   <Image
-                    src={item.personImage}
+                    src={item.personImage || "/Testimonial-Icon.png"}
                     alt={item.name}
                     width={48}
                     height={48}
@@ -140,7 +145,7 @@ export default function TestimonialsGallery({
                       {item.name}
                     </p>
                     <p className="mt-1 text-xs leading-5 text-[#667085] transition group-hover:text-white/70">
-                      {item.role}, {item.company}
+                      {item.role}{item.company ? `, ${item.company}` : ""}
                     </p>
                   </div>
                 </div>

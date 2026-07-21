@@ -1,3 +1,5 @@
+import { sharedTestimonials } from "@/data/testimonials";
+
 export type TextTestimonial = {
   id: number;
   type: "text";
@@ -22,27 +24,14 @@ export type VideoTestimonial = {
 
 export type Testimonial = TextTestimonial | VideoTestimonial;
 
-type TestimonialsResponse = {
-  success: boolean;
-  data: Testimonial[];
-};
-
-const BASE_URL = apiUrl("/custom/v1/testimonials");
-
 export async function fetchTestimonials(): Promise<Testimonial[]> {
-  try {
-    const res = await fetch(BASE_URL, { next: { revalidate: 60 } });
-
-    if (!res.ok) {
-      console.error(`Failed to fetch testimonials: ${res.status} ${res.statusText}`);
-      return [];
-    }
-
-    const json: TestimonialsResponse = await res.json();
-    return json.success ? json.data : [];
-  } catch (error) {
-    console.error("Failed to fetch testimonials:", error);
-    return [];
-  }
+  return sharedTestimonials.map((testimonial) => ({
+    id: testimonial.id,
+    type: "text" as const,
+    quote: testimonial.quote,
+    name: testimonial.name,
+    role: testimonial.role,
+    company: "",
+    personImage: testimonial.personImage,
+  }));
 }
-import { apiUrl } from "@/lib/api-config";
