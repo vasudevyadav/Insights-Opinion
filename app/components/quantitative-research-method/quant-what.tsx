@@ -39,10 +39,10 @@ export default function QuantDetailsWhat({ data }: { data: WhyData }) {
 
             <div className="relative">
               <div className="px-0 absolute -bottom-20 right-14">
-                <p className="max-w-[450px] text-2xl leading-[1.6] text-[#3f4b5f]">
+                <p className="max-w-[450px] text-base lg:text-lg leading-[1.6] text-[#3f4b5f]">
                   {data.bodyRight1}
                 </p>
-                <p className="mt-5 max-w-[450px] text-2xl font-semibold leading-[1.5] text-[#16c3b4]">
+                <p className="mt-5 max-w-[450px] text-base lg:text-lg font-medium text-[#16c3b4]">
                   {data.bodyRight2}
                 </p>
               </div>
