@@ -20,6 +20,7 @@ export default function QuantDetailsFaq({ data }: { data: FaqItem[] }) {
   const [openIndex, setOpenIndex] = useState(0);
   const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
+
   const [status, setStatus] = useState("");
 
   const handleChange = (

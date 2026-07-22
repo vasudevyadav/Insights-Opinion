@@ -5,6 +5,11 @@ export type ServiceCatalogItem = {
   description: string;
 };
 
+import {
+  legacyChildHref,
+  legacyParentHref,
+} from "@/app/lib/legacy-service-routes";
+
 export type ServiceCategory = {
   title: string;
   key: "quantitative" | "qualitative" | "support";
@@ -16,7 +21,7 @@ export const serviceCategories: ServiceCategory[] = [
   {
     title: "Quantitative Research",
     key: "quantitative",
-    href: "/services/quantitative",
+    href: "/service/quantitative-research",
     services: [
       {
         title: "Online Surveys (CAWI)",
@@ -58,7 +63,7 @@ export const serviceCategories: ServiceCategory[] = [
   {
     title: "Qualitative Research",
     key: "qualitative",
-    href: "/services/qualitative",
+    href: "/service/qualitative-research",
     services: [
       {
         title: "Focus Group Discussions",
@@ -93,7 +98,7 @@ export const serviceCategories: ServiceCategory[] = [
   {
     title: "Support Services",
     key: "support",
-    href: "/services/support",
+    href: "/service/support-services",
     services: [
       {
         title: "Survey Programming",
@@ -131,7 +136,8 @@ export const serviceDetailPath = (
     )?.key ??
     "quantitative";
 
-  return `/services/${resolvedCategory}/${slug}`;
+  void resolvedCategory;
+  return legacyChildHref(slug);
 };
 
 export type ServiceChild = ServiceCatalogItem & {
@@ -155,7 +161,7 @@ export function getServices(): MainService[] {
     id: `service-${category.key}`,
     title: category.title,
     slug: category.key,
-    href: category.href,
+    href: legacyParentHref(category.key),
     children: category.services.map((service, index) => ({
       id: `${category.key}-${service.slug}`,
       position: index + 1,

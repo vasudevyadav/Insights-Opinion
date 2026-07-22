@@ -73,7 +73,7 @@ export default function Navbar({
         type: "dropdown",
         name: "SERVICES",
         key: "services",
-        href: "/services",
+        href: "/service",
       },
       { type: "link", name: "INDUSTRIES", href: "/industries" },
       { type: "link", name: "QUALITY STANDARD", href: "/quality-standard" },

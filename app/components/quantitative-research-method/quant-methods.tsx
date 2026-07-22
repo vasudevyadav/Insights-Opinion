@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { legacyChildHref } from "@/app/lib/legacy-service-routes";
 
 const methods = [
   {
@@ -83,7 +84,7 @@ function MethodCard({
 }) {
   return (
     <Link
-      href={`/quantitative-research/methods/${method.slug}`}
+      href={legacyChildHref(method.slug)}
       className={`group relative ${height} block w-full overflow-hidden rounded-[20px] shadow-[0_8px_28px_rgba(0,0,0,0.14)] transition-transform duration-500 hover:-translate-y-1`}
     >
       <Image
