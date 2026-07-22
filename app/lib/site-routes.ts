@@ -62,7 +62,7 @@ const staticRoutes: SiteRoute[] = [
     changeFrequency: "monthly",
   },
   {
-    path: "/services",
+    path: "/service",
     title: "Services",
     description: "Explore market research services.",
     group: "Services",
@@ -70,7 +70,7 @@ const staticRoutes: SiteRoute[] = [
     changeFrequency: "monthly",
   },
   {
-    path: "/quantitative-research",
+    path: "/service/quantitative-research",
     title: "Quantitative Research",
     description: "Quantitative market research services and methodologies.",
     group: "Services",
@@ -78,7 +78,7 @@ const staticRoutes: SiteRoute[] = [
     changeFrequency: "monthly",
   },
   {
-    path: "/qualitative-research",
+    path: "/service/qualitative-research",
     title: "Qualitative Research",
     description: "Qualitative market research services and methodologies.",
     group: "Services",
@@ -86,7 +86,7 @@ const staticRoutes: SiteRoute[] = [
     changeFrequency: "monthly",
   },
   {
-    path: "/support-services",
+    path: "/service/support-services",
     title: "Research Support Services",
     description: "Survey programming, translation, and data insight services.",
     group: "Services",
@@ -196,7 +196,7 @@ export async function getAllSiteRoutes(): Promise<SiteRoute[]> {
 
   const serviceRoutes: SiteRoute[] = services.flatMap((service) => [
     {
-      path: `/services/${service.slug}`,
+      path: service.href,
       title: service.title,
       description: `${service.title} services from Insights Opinion.`,
       group: "Services" as const,
@@ -204,7 +204,7 @@ export async function getAllSiteRoutes(): Promise<SiteRoute[]> {
       changeFrequency: "monthly" as const,
     },
     ...service.children.map((child) => ({
-      path: `/services/${service.slug}/${child.slug}`,
+      path: child.href,
       title: child.title,
       description: `${child.title} services from Insights Opinion.`,
       group: "Services" as const,

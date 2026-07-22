@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
@@ -7,6 +8,7 @@ import Footer from "./components/home/footer";
 import ScrollLeadPopup from "./components/shared/scroll-lead-popup";
 import { getResearchNavItems } from "@/lib/getResearchPage";
 import { fetchServices } from "@/app/lib/services-api";
+import RouteLoadingProvider from "./components/shared/route-loading-provider";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -111,6 +113,9 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
         <AosProvider />
+        <Suspense fallback={null}>
+          <RouteLoadingProvider />
+        </Suspense>
         <Navbar
           researchItems={researchItems}
           serviceItems={serviceItems}

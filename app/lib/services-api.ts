@@ -6,6 +6,11 @@ import type { MethodData } from "@/app/lib/method-data";
 import type { ServicePageContent } from "@/data/service-page-content";
 import { apiUrl } from "@/lib/api-config";
 import type { ApiSeo } from "@/lib/api-metadata";
+import { getServicesData } from "@/app/lib/services-data";
+import {
+  legacyChildHref,
+  legacyParentHref,
+} from "@/app/lib/legacy-service-routes";
 
 const SERVICES_API_URL = apiUrl("/custom/v1/services");
 const SERVICES_REVALIDATE_SECONDS = 300;
@@ -35,6 +40,10 @@ type ServiceDetailApiResponse<T> = {
   success?: boolean;
   data?: T;
 };
+
+function getLocalServices(): ApiMainServiceWithContent[] {
+  return getServicesData() as ApiMainServiceWithContent[];
+}
 
 export type ApiMainServiceWithContent = Omit<MainService, "children"> & {
   content: ServicePageContent;
@@ -144,7 +153,7 @@ function normalizeService(
     id: `${service.id || "service"}-${service.slug || index}`,
     slug: routeSlug,
     apiSlug: service.slug,
-    href: `/services/${routeSlug}`,
+    href: legacyParentHref(service.slug || routeSlug),
     content: {
       ...service.content,
       about: stripHtml(service.content.about || ""),
@@ -163,7 +172,7 @@ function normalizeService(
       id: child.id || `${service.slug}-${child.slug}-${childIndex}`,
       position: child.position || childIndex + 1,
       step: child.step || String(childIndex + 1).padStart(2, "0"),
-      href: `/services/${routeSlug}/${child.slug}`,
+      href: legacyChildHref(child.slug),
     })),
   };
 }
@@ -178,12 +187,12 @@ async function fetchServicesData(
         : { next: { revalidate: SERVICES_REVALIDATE_SECONDS } }),
     });
 
-    if (!response.ok) return [];
+    if (!response.ok) return getLocalServices();
 
     const json = normalizeApiValue(
       (await response.json()) as ServicesApiResponse
     );
-    if (!json.success || !Array.isArray(json.data)) return [];
+    if (!json.success || !Array.isArray(json.data)) return getLocalServices();
 
     return json.data
       .filter(
@@ -195,7 +204,7 @@ async function fetchServicesData(
       )
       .map(normalizeService);
   } catch {
-    return [];
+    return getLocalServices();
   }
 }
 
@@ -245,7 +254,13 @@ export async function fetchMainService(
       if (detail?.content) return normalizeService(detail, 0);
     }
 
-    return null;
+    const localSlug = mainServiceSlug.replace(/-research$/, "").replace(/-services$/, "");
+    return (
+      getLocalServices().find(
+        (service) =>
+          service.slug === localSlug || service.apiSlug === mainServiceSlug
+      ) ?? null
+    );
   }
 
   const detail = await fetchApiData<ApiMainService>(

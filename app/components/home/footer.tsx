@@ -23,10 +23,10 @@ const companyLinks = [
 ];
 
 const serviceLinks = [
-    { label: "Quantitative Research", href: "/quantitative-research" },
-    { label: "CATI Services", href: "/quantitative-research/methods/cati" },
-    { label: "CAPI Services", href: "/quantitative-research/methods/capi" },
-    { label: "CLT Services", href: "/quantitative-research/methods/clt" },
+    { label: "Quantitative Research", href: "/service/quantitative-research" },
+    { label: "CATI Services", href: "/service/cati-market-research" },
+    { label: "CAPI Services", href: "/service/capi-services" },
+    { label: "CLT Services", href: "/service/clt-services" },
     { label: "Consumer Research", href: "/research/consumer-research" },
     { label: "Healthcare Research", href: "/research/healthcare-research" },
 ];

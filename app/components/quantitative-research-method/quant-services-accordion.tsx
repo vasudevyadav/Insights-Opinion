@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Plus, ArrowRight } from "lucide-react";
+import { legacyChildHref } from "@/app/lib/legacy-service-routes";
 
 const services = [
   {
@@ -85,7 +86,7 @@ export default function QuantServicesAccordion() {
                     <p className="text-sm leading-relaxed text-white/60">{s.desc}</p>
                     {s.slug && (
                       <Link
-                        href={`/quantitative-research/methods/${s.slug}`}
+                        href={legacyChildHref(s.slug)}
                         className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-[#1dc3b3] hover:underline"
                       >
                         Learn more <ArrowRight size={11} />

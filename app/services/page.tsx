@@ -1,5 +1,0 @@
-import { redirect } from "next/navigation";
-
-export default function Services() {
-  redirect("/services/quantitative");
-}
