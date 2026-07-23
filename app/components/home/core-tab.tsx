@@ -124,6 +124,28 @@ export default function CoreTab() {
 
     return (
         <div className="relative z-10 mx-auto max-w-7xl px-4 py-2 sm:px-6 lg:px-16" >
+            <style>{`
+                @keyframes researchCardsSlideIn {
+                    from {
+                        opacity: 0.25;
+                        transform: translateX(10px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+
+                .research-cards-slide {
+                    animation: researchCardsSlideIn 700ms cubic-bezier(0.22, 1, 0.36, 1);
+                }
+
+                @media (prefers-reduced-motion: reduce) {
+                    .research-cards-slide {
+                        animation: none;
+                    }
+                }
+            `}</style>
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                 <div
                     className="flex shrink-0 items-center gap-2 lg:block"
@@ -207,11 +229,13 @@ export default function CoreTab() {
                     </div>
 
                     <div className="mt-4">
-                        <div className={`grid gap-4 ${isMobile ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2"}`}>
+                        <div
+                            key={`${activeTab}-${cardIndex}`}
+                            className={`research-cards-slide grid gap-4 ${isMobile ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2"}`}
+                        >
                             {visibleCards.map((service, idx) => (
                                 <div
                                     key={`${activeTab}-${service.title}-${cardIndex}-${idx}`}
-
                                     className="flex min-h-[100px] overflow-hidden rounded-[14px] bg-white shadow-[0_10px_30px_rgba(22,34,56,0.08)]"
                                 >
                                     <div className="relative h-auto w-[42%] min-w-[100px]">

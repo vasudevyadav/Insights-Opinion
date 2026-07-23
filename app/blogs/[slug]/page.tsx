@@ -4,6 +4,7 @@ import { getBlogBySlug, getRelatedBlogs } from "@/data/blogData";
 import BlogDetail from "@/app/components/blogs/blog-detail";
 import BlogForm from "@/app/components/blogs/blogs-deta";
 import { buildApiMetadata } from "@/lib/api-metadata";
+import { getSheetSeo } from "@/lib/sheet-seo";
 
 type BlogPageProps = {
   params: Promise<{ slug: string }>;
@@ -14,16 +15,24 @@ export async function generateMetadata({
 }: BlogPageProps): Promise<Metadata> {
   const { slug } = await params;
   const blog = await getBlogBySlug(slug);
+  const path = `/blogs/${slug}`;
+  const sheetSeo = getSheetSeo(path);
 
   return blog
     ? buildApiMetadata(
-        blog.seo,
+        sheetSeo
+          ? {
+              ...blog.seo,
+              metaTitle: sheetSeo.title,
+              metaDescription: sheetSeo.description,
+            }
+          : blog.seo,
         {
           title: `${blog.title} | Insights Opinion`,
           description: blog.description,
           image: blog.image,
         },
-        `/blogs/${slug}`
+        path
       )
     : {};
 }

@@ -14,6 +14,7 @@ import {
   legacyParentServices,
 } from "@/app/lib/legacy-service-routes";
 import { buildApiMetadata } from "@/lib/api-metadata";
+import { getSheetSeo } from "@/lib/sheet-seo";
 import LocalPage from "@/app/local/page";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -38,43 +39,62 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+  const path = `/service/${slug}`;
+  const sheetSeo = getSheetSeo(path);
 
   if (isLegacyParentSlug(slug)) {
     const service = await fetchMainService(legacyParentServices[slug]);
     return service
       ? buildApiMetadata(
-          service.seo,
+          sheetSeo
+            ? {
+                ...service.seo,
+                metaTitle: sheetSeo.title,
+                metaDescription: sheetSeo.description,
+              }
+            : service.seo,
           {
             title: `${service.title} Services | Insights Opinion`,
             description: service.content.hero?.description,
             image: service.content.hero?.backgroundImage,
           },
-          `/service/${slug}`
+          path
         )
       : {};
   }
 
   if (slug === "market-research-company-in-usa") {
     return buildApiMetadata(
-      undefined,
+      sheetSeo
+        ? {
+            metaTitle: sheetSeo.title,
+            metaDescription: sheetSeo.description,
+          }
+        : undefined,
       {
         title: "Market Research Company in USA | Insights Opinion",
         description: "Local market research capabilities in the USA.",
       },
-      `/service/${slug}`
+      path
     );
   }
 
   const result = await resolveChild(slug);
   return result
     ? buildApiMetadata(
-        result.child.seo,
+        sheetSeo
+          ? {
+              ...result.child.seo,
+              metaTitle: sheetSeo.title,
+              metaDescription: sheetSeo.description,
+            }
+          : result.child.seo,
         {
           title: `${result.child.title} | Insights Opinion`,
           description: result.child.content.hero?.description,
           image: result.child.image,
         },
-        `/service/${slug}`
+        path
       )
     : {};
 }

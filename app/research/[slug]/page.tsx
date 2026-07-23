@@ -16,6 +16,7 @@ import BookDemoHealth from "@/app/components/healthcare-research/book-demo";
 import HealthUsecases from "@/app/components/healthcare-research/health-usecases ";
 import { getResearchPage } from "@/lib/getResearchPage";
 import { buildApiMetadata } from "@/lib/api-metadata";
+import { getSheetSeo } from "@/lib/sheet-seo";
 import HealthLeaderIndustry from "@/app/components/healthcare-research/health-leader-industry";
 
 type ResearchPageProps = {
@@ -33,15 +34,23 @@ export async function generateMetadata({
   const title = [page.hero?.titleLine1, page.hero?.titleLine2]
     .filter(Boolean)
     .join(" ");
+  const path = `/research/${slug}`;
+  const sheetSeo = getSheetSeo(path);
 
   return buildApiMetadata(
-    page.seo,
+    sheetSeo
+      ? {
+          ...page.seo,
+          metaTitle: sheetSeo.title,
+          metaDescription: sheetSeo.description,
+        }
+      : page.seo,
     {
       title: `${title || slug} | Insights Opinion`,
       description: page.hero?.description,
       image: page.hero?.backgroundImage,
     },
-    `/research/${slug}`
+    path
   );
 }
 

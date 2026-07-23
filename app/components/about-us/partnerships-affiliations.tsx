@@ -17,12 +17,12 @@ const partnershipPoints = [
 
 export default function PartnershipsAffiliations() {
     return (
-        <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
+        <section className="relative overflow-hidden bg-[#edf6ff] pb-12 lg:py-16">
             <BackgroundShape variant={7} className="-right-16 -top-24 w-[330px] opacity-55 sm:w-[410px] lg:-right-2 lg:-top-20 lg:w-[490px]" />
 
             <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-10">
                 {/* Top Heading */}
-                <div className="mx-auto max-w-[980px] text-center">
+                <div className="mx-auto max-w-[980px] lg:text-center">
                     <h2
                         className="text-[22px] font-semiboldleading-tight 
             bg-gradient-to-r from-[#1bb0a4] to-[#74b9ff] bg-clip-text text-transparent 
@@ -75,7 +75,7 @@ export default function PartnershipsAffiliations() {
                     </div>
                 </div>
 
-                <div className="mx-auto mt-12 text-center">
+                <div className="mx-auto mt-12 lg:text-center">
                     <h3
                         className="text-[22px] font-semibold leading-tight 
             bg-gradient-to-r from-[#1bb0a4] to-[#74b9ff] bg-clip-text text-transparent 
@@ -84,7 +84,7 @@ export default function PartnershipsAffiliations() {
                         Empower Your Business with Insights Opinion
                     </h3>
 
-                    <p className="mx-auto mt-3 w-11/12 text-[12px] leading-[1.8] text-[#3f4a5f] lg:text-base">
+                    <p className="mx-auto mt-3 w-full lg:w-11/12 text-xs leading-[1.8] text-[#3f4a5f] lg:text-base">
                         At Insights Opinion, we are more than just a data provider, we are your strategic partner in transforming data into actionable insights that drive business success. Our commitment to quality, innovation, and client satisfaction sets us apart, and we are dedicated to helping you achieve your goals with confidence and clarity. Discover how our expertise can empower your organization to achieve its goals with clarity and confidence.
 
                     </p>

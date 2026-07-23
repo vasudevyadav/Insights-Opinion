@@ -87,7 +87,7 @@ export default function TestimonialNews() {
                 className={`group/news overflow-hidden rounded-[16px] border border-[#d7e3ef] bg-white transition-all duration-500 ease-in-out hover:border-[#1a1f52] hover:bg-[#1a1f52] ${isOpen ? "w-full md:flex-[1.5]" : "w-full md:flex-1 md:hover:flex-[1.5]"
                     }`}
             >
-                <div className="relative h-[260px] w-full overflow-hidden">
+                <div className="relative lg:h-[220px] h-[190px] w-full overflow-hidden">
                     <Image
                         src={item.image}
                         alt={item.title}
@@ -327,13 +327,13 @@ export default function TestimonialNews() {
                                                 </div>
                                             </div>
 
-                                            <Image
+                                            {/* <Image
                                                 src="/inshite-sing.png"
                                                 alt="testimonial logo"
                                                 width={1000}
                                                 height={1000}
                                                 className="w-28 object-contain transition-all duration-500 group-hover:invert"
-                                            />
+                                            /> */}
                                         </div>
                                     </div>
                                 </SwiperSlide>

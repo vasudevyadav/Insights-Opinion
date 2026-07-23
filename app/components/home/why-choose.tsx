@@ -117,11 +117,10 @@ function Accordion({
                                 </h3>
 
                                 <div
-                                    className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${
-                                        isOpen
+                                    className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${isOpen
                                             ? "grid-rows-[1fr] opacity-100"
                                             : "grid-rows-[0fr] opacity-0"
-                                    }`}
+                                        }`}
                                 >
                                     <div className="overflow-hidden">
                                         <p className="mt-2 max-w-[300px] text-xs leading-[1.55] text-[#d6dbef] lg:text-sm">
@@ -134,11 +133,10 @@ function Accordion({
                             <span className="ml-4 shrink-0">
                                 <ChevronDown
                                     size={18}
-                                    className={`transition-transform duration-500 motion-reduce:transition-none ${
-                                        isOpen
+                                    className={`transition-transform duration-500 motion-reduce:transition-none ${isOpen
                                             ? "rotate-180 text-white"
                                             : "text-[#4b5563]"
-                                    }`}
+                                        }`}
                                 />
                             </span>
                         </button>
@@ -196,10 +194,10 @@ export default function WhyChoose() {
                         return (
                             <div
                                 key={sectionIndex}
-                                className="grid items-center gap-6 lg:grid-cols-[1.02fr_1fr] lg:gap-10 lg:pt-0 pt-10"
+                                className="grid items-center gap-6 lg:grid-cols-[1.02fr_1fr] lg:gap-10"
                             >
                                 <div
-                                    className={`${isEven ? "lg:order-1" : "lg:order-2"} max-w-[500px]`}
+                                    className={`${isEven ? "lg:order-1" : "lg:order-2 pt-14 lg:pt-0"} max-w-[500px]`}
                                 >
                                     <p className="text-2xl font-light leading-[0.95] tracking-[-0.02em] text-[#4a5565] lg:text-[45px]">
                                         {section.headingLight}
@@ -238,7 +236,7 @@ export default function WhyChoose() {
                                                 alt="Section visual"
                                                 width={520}
                                                 height={520}
-                                                className="relative z-10 h-auto w-full p-8 object-contain transition-all duration-300"
+                                                className="relative z-10 h-auto w-full lg:p-8 p-0 object-contain transition-all duration-300"
                                             />
                                         )}
                                     </div>

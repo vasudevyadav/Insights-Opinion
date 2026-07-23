@@ -5,6 +5,7 @@ import TeamHero from "@/app/components/our-team/team-hero";
 import TeamMemberDetail from "@/app/components/our-team/team-member-detail";
 import { fetchTeamMember, fetchTeamMembers } from "@/app/lib/team-api";
 import { buildApiMetadata } from "@/lib/api-metadata";
+import { getSheetSeo } from "@/lib/sheet-seo";
 
 type TeamDetailPageProps = {
   params: Promise<{ slug: string }>;
@@ -20,19 +21,27 @@ export async function generateMetadata({
 }: TeamDetailPageProps): Promise<Metadata> {
   const { slug } = await params;
   const member = await fetchTeamMember(slug);
+  const path = `/our-team/${slug}`;
+  const sheetSeo = getSheetSeo(path);
 
   if (!member) {
     return { title: "Team Member | Insights Opinion" };
   }
 
   return buildApiMetadata(
-    member.seo,
+    sheetSeo
+      ? {
+          ...member.seo,
+          metaTitle: sheetSeo.title,
+          metaDescription: sheetSeo.description,
+        }
+      : member.seo,
     {
       title: `${member.name} | Insights Opinion`,
       description: `Learn more about ${member.name}, ${member.role} at Insights Opinion.`,
       image: member.image,
     },
-    `/our-team/${slug}`
+    path
   );
 }
 

@@ -124,13 +124,13 @@ export default function QualityNewsTestimonials() {
                                                 </p>
                                             </div>
                                         </div>
-                                        <Image
+                                        {/* <Image
                                             src="/inshite-sing.png"
                                             alt="Insights Opinion"
                                             width={112}
                                             height={40}
                                             className="h-auto w-24 object-contain transition-all duration-500 group-hover:invert sm:w-28"
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                             </SwiperSlide>

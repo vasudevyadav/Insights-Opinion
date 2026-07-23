@@ -531,7 +531,7 @@ body {
 
 @media (max-width: 767px) {
   .home-page h1 {
-    font-size: clamp(2rem, 9vw, 2.65rem);
+    font-size: clamp(2rem, 8vw, 2.65rem);
     line-height: 1.08;
   }
 
