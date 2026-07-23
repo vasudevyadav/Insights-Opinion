@@ -45,11 +45,11 @@ export default function ThankYouPage() {
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6">
 
-        <h1 className="mt-6 bg-gradient-to-r from-[#29c3b1] to-[#5aaeff] bg-clip-text text-3xl font-semibold text-transparent sm:text-4xl lg:text-[44px]">
+        <h1 className="mt-6 bg-gradient-to-r from-[#29c3b1] to-[#5aaeff] bg-clip-text text-2xl font-semibold text-transparent lg:text-[44px]">
           Thank You!
         </h1>
 
-        <p className="mx-auto mt-4 max-w-2xl text-sm text-[#4b5563] sm:text-base">
+        <p className="mx-auto mt-2 max-w-2xl text-sm text-[#4b5563] sm:text-base">
           Your submission has been received successfully. Here&apos;s what
           happens next.
         </p>
