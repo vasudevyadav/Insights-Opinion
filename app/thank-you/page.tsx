@@ -43,16 +43,13 @@ export default function ThankYouPage() {
       <BackgroundShape side="right" variant={2} className="-right-20 -top-14 w-[310px] opacity-45 sm:w-[440px] lg:w-[520px]" />
       <BackgroundShape side="left" variant={1} className="-left-24 bottom-0 w-[340px] opacity-40 sm:w-[470px]" />
 
-      <div className="relative z-10 mx-auto max-w-3xl px-4 text-center sm:px-6">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-[#43d1c5] to-[#58a9ff] sm:h-20 sm:w-20">
-          <CheckCircle2 className="h-9 w-9 text-white sm:h-11 sm:w-11" strokeWidth={1.75} />
-        </div>
+      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6">
 
         <h1 className="mt-6 bg-gradient-to-r from-[#29c3b1] to-[#5aaeff] bg-clip-text text-3xl font-semibold text-transparent sm:text-4xl lg:text-[44px]">
           Thank You!
         </h1>
 
-        <p className="mx-auto mt-4 max-w-xl text-sm text-[#4b5563] sm:text-base">
+        <p className="mx-auto mt-4 max-w-2xl text-sm text-[#4b5563] sm:text-base">
           Your submission has been received successfully. Here&apos;s what
           happens next.
         </p>
