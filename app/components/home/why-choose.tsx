@@ -162,7 +162,7 @@ function AnimatedWhyChooseFigure() {
                 alt="Animated figure"
                 width={352}
                 height={420}
-                className="absolute lg:-left-10 left-5 -bottom-16 lg:-bottom-14 lg:w-[22rem] w-60 object-cover"
+                className="absolute lg:-left-10 left-5 -bottom-10 lg:-bottom-14 lg:w-[22rem] w-60 object-cover"
             />
         </div>
     );
@@ -197,34 +197,38 @@ export default function WhyChoose() {
                                 className="grid items-center gap-6 lg:grid-cols-[1.02fr_1fr] lg:gap-10"
                             >
                                 <div
-                                    className={`${isEven ? "lg:order-1" : "lg:order-2 pt-14 lg:pt-0"} max-w-[500px]`}
+                                    className={`${isEven ? "lg:order-1" : "lg:order-2 lg:pt-0"} contents max-w-[500px] lg:block`}
                                 >
-                                    <p className="text-2xl font-light leading-[0.95] tracking-[-0.02em] text-[#4a5565] lg:text-[45px]">
-                                        {section.headingLight}
-                                    </p>
+                                    <div className={`order-1 max-w-[500px] ${isEven ? "" : ""}`}>
+                                        <p className="text-2xl font-light leading-[0.95] tracking-[-0.02em] text-[#4a5565] lg:text-[45px]">
+                                            {section.headingLight}
+                                        </p>
 
-                                    <h2 className="text-2xl font-medium lg:leading-tight text-transparent bg-clip-text bg-[linear-gradient(130deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">
-                                        {section.headingBold}
-                                    </h2>
+                                        <h2 className="text-2xl font-medium lg:leading-tight text-transparent bg-clip-text bg-[linear-gradient(130deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">
+                                            {section.headingBold}
+                                        </h2>
 
-                                    <p className="lg:mt-5 mt-2 lg:text-base text-sm leading-[1.6] text-[#5a6472] lg:text-lg">
-                                        {section.description}
-                                    </p>
+                                        <p className="lg:mt-5 mt-2 lg:text-base text-sm leading-[1.6] text-[#5a6472] lg:text-lg">
+                                            {section.description}
+                                        </p>
+                                    </div>
 
-                                    <Accordion
-                                        accordionData={section.accordionData}
-                                        openIndex={activeIndex}
-                                        setOpenIndex={(index) =>
-                                            handleSetOpenIndex(sectionIndex, index)
-                                        }
-                                    />
+                                    <div className="order-3 max-w-[500px]">
+                                        <Accordion
+                                            accordionData={section.accordionData}
+                                            openIndex={activeIndex}
+                                            setOpenIndex={(index) =>
+                                                handleSetOpenIndex(sectionIndex, index)
+                                            }
+                                        />
+                                    </div>
                                 </div>
 
                                 <div
-                                    className={`relative flex min-h-[250px] items-center justify-center sm:min-h-[320px] lg:min-h-[520px] ${isEven ? "lg:order-2" : "lg:order-1"
+                                    className={`relative order-2 flex min-h-[250px] items-center justify-center sm:min-h-[320px] lg:min-h-[520px] ${isEven ? "lg:order-2" : "lg:order-1"
                                         }`}
                                 >
-                                    <div className="relative flex w-full px-6 lg:px-0 items-center justify-center overflow-visible bg-transparent">
+                                    <div className="relative flex w-full px-6 lg:px-0 mb-4 lg:mb-0 items-center justify-center overflow-visible bg-transparent">
                                         {sectionIndex === 0 ? (
                                             <AnimatedWhyChooseFigure />
                                         ) : (
