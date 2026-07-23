@@ -32,7 +32,7 @@ export default function QuantIndustries({
   const hasMoreIndustries = industries.length > visibleIndustries.length;
 
   return (
-    <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
+    <section className="relative overflow-hidden bg-[#edf6ff] py-10 lg:py-16">
       <BackgroundShape variant={5} className="-right-24 top-0 w-[330px] opacity-35 sm:w-[420px] lg:-right-2 lg:w-[500px]" />
       {/* Hex pattern right */}
       <div className="pointer-events-none absolute -right-20 top-0 hidden h-full w-[38%] opacity-35 lg:block">
@@ -83,7 +83,7 @@ export default function QuantIndustries({
             </p>
           )}
           <div className=" pl-0 sm:pl-[56px] ">
-            <div className="mb-6 grid grid-cols-[1fr_1.8fr] gap-5 ">
+            <div className="mb-6 grid  grid-cols-1 lg:grid-cols-[1fr_1.8fr] gap-5 ">
               {content.industryLabel && (
                 <span className="text-[22px] font-semibold bg-gradient-to-r from-[#1dc3b3] via-[#31b6df] to-[#3c8df6] bg-clip-text text-transparent lg:text-4xl line-clamp-2">
                   {content.industryLabel}

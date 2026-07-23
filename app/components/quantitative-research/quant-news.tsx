@@ -17,7 +17,7 @@ export default function QuantNews({
   if (!articles?.length) return null;
 
   return (
-    <section className="relative overflow-hidden bg-[#eef5fb] py-10 lg:py-14">
+    <section className="relative overflow-hidden bg-[#eef5fb] lg:pt-0 pt-0 py-10 lg:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h2 className="text-2xl font-light leading-tight text-[#2f3643] sm:text-4xl">
@@ -35,9 +35,13 @@ export default function QuantNews({
             News &amp; Articles
           </h3>
         </div>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="scrollbar-hide flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-3 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0">
           {articles.map((a, i) => (
-            <Link key={i} href={a.href} className="group block">
+            <Link
+              key={i}
+              href={a.href}
+              className="group block min-w-[88%] snap-center sm:min-w-[70%] md:min-w-0"
+            >
               <article className="overflow-hidden rounded-[18px] border border-[#17214b] bg-white transition-all duration-500 hover:border-[#1a1f52] hover:bg-[#1a1f52]">
                 <div className="relative h-[220px] w-full overflow-hidden rounded-t-[18px]">
                   <Image

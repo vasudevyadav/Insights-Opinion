@@ -54,7 +54,7 @@ export default function CaseStudiesForm() {
     };
 
     return (
-        <section className="relative overflow-hidden bg-[#eef7ff] py-10 lg:py-14">
+        <section className="relative overflow-hidden bg-[#eef7ff] pt-4 lg:pt-14 py-10 lg:py-14">
             <BackgroundShape variant={5} className="-right-24 -bottom-48 w-[330px] opacity-40 lg:-right-3 lg:w-[490px]" />
             <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                 <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12">

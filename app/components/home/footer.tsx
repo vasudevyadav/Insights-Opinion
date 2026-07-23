@@ -3,12 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import FooterMobileAccordion from "./footer-mobile-accordion";
+import FooterContact from "./footer-contact";
 import {
-    Facebook,
-    Instagram,
-    Youtube,
-    Twitter,
-    Linkedin,
     ChevronRight,
 } from "lucide-react";
 import { useState } from "react";
@@ -176,17 +172,7 @@ export default function Footer() {
                             ))}
                         </ul>
 
-                        <div className="mt-8 flex flex-wrap items-center gap-3">
-                            {[Facebook, Instagram, Youtube, Twitter, Linkedin].map((Icon, i) => (
-                                <a
-                                    key={i}
-                                    href="#"
-                                    className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#151b4a] transition hover:scale-105"
-                                >
-                                    <Icon size={18} />
-                                </a>
-                            ))}
-                        </div>
+                        <FooterContact />
                     </div>
 
                     <FooterMobileAccordion groups={footerGroups} />

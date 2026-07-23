@@ -147,7 +147,7 @@ function Accordion({
     );
 }
 
-function AnimatedWhyChooseFigure() {
+export function AnimatedWhyChooseFigure() {
     return (
         <div className="relative inline-flex w-fit items-end justify-center overflow-visible bg-transparent">
             <Image

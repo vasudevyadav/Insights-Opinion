@@ -179,7 +179,7 @@ export default function QuantGlobalServices({
       <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <div className="mb-9 text-center lg:mb-16">
           {content.heading && (
-            <h2 className="text-[28px] font-semibold leading-tight lg:text-4xl">
+            <h2 className="text-[28px] lg:mt-0 mt-6 font-semibold leading-tight lg:text-4xl">
               <span
                 style={{
                   background: "linear-gradient(90deg, #4facfe 0%, #00f2fe 100%)",

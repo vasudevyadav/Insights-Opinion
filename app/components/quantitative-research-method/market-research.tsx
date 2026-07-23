@@ -16,6 +16,17 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: 
 
 export default function MarketResearch({ data }: { data: MethodData }) {
   const { whenToUse, vsBox, sectors } = data;
+  const hasValue = (value: string | undefined) =>
+    Boolean(value?.replace(/<[^>]*>/g, "").replace(/&nbsp;/gi, " ").trim());
+  const showVsCol1 = vsBox?.items?.some((item) => hasValue(item.col1)) ?? false;
+  const showVsCol2 = vsBox?.items?.some((item) => hasValue(item.col2)) ?? false;
+  const visibleVsColumnCount = 1 + Number(showVsCol1) + Number(showVsCol2);
+  const desktopVsGridClass =
+    visibleVsColumnCount === 3
+      ? "grid-cols-3"
+      : visibleVsColumnCount === 2
+        ? "grid-cols-2"
+        : "grid-cols-1";
 
   return (
     <>
@@ -111,32 +122,40 @@ export default function MarketResearch({ data }: { data: MethodData }) {
             </div>
 
             {/* Desktop Table */}
-            <div className="hidden lg:grid grid-cols-3 gap-4">
+            <div className={`hidden gap-4 lg:grid ${desktopVsGridClass}`}>
               <div className="rounded-md  px-5 py-3 text-center text-xl font-semibold text-[#2b3553]">
                 Factor
               </div>
 
-              <div className="rounded-md  px-5 py-3 text-center text-xl font-semibold text-[#1dc3b3]">
-                {vsBox.col1Label}
-              </div>
+              {showVsCol1 && (
+                <div className="rounded-md  px-5 py-3 text-center text-xl font-semibold text-[#1dc3b3]">
+                  {vsBox.col1Label}
+                </div>
+              )}
 
-              <div className="rounded-md  px-5 py-3 text-center text-xl font-semibold text-[#4faee8]">
-                {vsBox.col2Label}
-              </div>
+              {showVsCol2 && (
+                <div className="rounded-md  px-5 py-3 text-center text-xl font-semibold text-[#4faee8]">
+                  {vsBox.col2Label}
+                </div>
+              )}
 
               {vsBox.items.map((item) => (
                 <React.Fragment key={item.label}>
-                  <div className="rounded-md bg-white/80 px-6 py-4 text-center text-base  text-black font-medium">
+                  <div className="rounded-md bg-white/80 px-6 py-4 text-center lg:text-sm  text-black font-normal">
                     {item.label}
                   </div>
 
-                  <div className="rounded-md bg-white/80 px-6 py-4 text-center text-base text-black font-medium">
-                    {item.col1}
-                  </div>
+                  {showVsCol1 && (
+                    <div className="rounded-md bg-white/80 px-6 py-4 text-center lg:text-sm text-black font-normal">
+                      {item.col1}
+                    </div>
+                  )}
 
-                  <div className="rounded-md bg-white/80 px-6 py-4 text-center text-base text-black font-medium">
-                    {item.col2}
-                  </div>
+                  {showVsCol2 && (
+                    <div className="rounded-md bg-white/80 px-6 py-4 text-center lg:text-sm text-black font-normal">
+                      {item.col2}
+                    </div>
+                  )}
                 </React.Fragment>
               ))}
             </div>
@@ -169,23 +188,27 @@ export default function MarketResearch({ data }: { data: MethodData }) {
                   </p>
 
                   <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                    <div>
-                      <p className="text-xs font-semibold text-[#1dc3b3]">
-                        {vsBox.col1Label}
-                      </p>
-                      <p className="text-sm text-[#2b3553]">
-                        {item.col1}
-                      </p>
-                    </div>
+                    {showVsCol1 && (
+                      <div>
+                        <p className="text-xs font-semibold text-[#1dc3b3]">
+                          {vsBox.col1Label}
+                        </p>
+                        <p className="text-sm text-[#2b3553]">
+                          {item.col1}
+                        </p>
+                      </div>
+                    )}
 
-                    <div>
-                      <p className="text-xs font-semibold text-[#4faee8]">
-                        {vsBox.col2Label}
-                      </p>
-                      <p className="text-sm text-[#2b3553]">
-                        {item.col2}
-                      </p>
-                    </div>
+                    {showVsCol2 && (
+                      <div>
+                        <p className="text-xs font-semibold text-[#4faee8]">
+                          {vsBox.col2Label}
+                        </p>
+                        <p className="text-sm text-[#2b3553]">
+                          {item.col2}
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -215,7 +238,7 @@ export default function MarketResearch({ data }: { data: MethodData }) {
                 <article
                   key={sector.title}
                   tabIndex={0}
-                  className={`group relative h-[420px] min-w-[86%] snap-center overflow-hidden rounded-[20px] shadow-[0_8px_28px_rgba(20,45,90,0.16)] outline-none transition duration-500 hover:-translate-y-1 focus-visible:ring-4 focus-visible:ring-[#1dc3b3]/40 sm:min-w-[48%] md:h-[380px] md:min-w-0 lg:h-[400px] ${index % 2 === 1 ? "md:mt-14" : ""
+                  className={`group relative h-[350px] min-w-[86%] snap-center overflow-hidden rounded-[20px] shadow-[0_8px_28px_rgba(20,45,90,0.16)] outline-none transition duration-500 hover:-translate-y-1 focus-visible:ring-4 focus-visible:ring-[#1dc3b3]/40 sm:min-w-[48%] md:h-[380px] md:min-w-0 lg:h-[400px] ${index % 2 === 1 ? "md:mt-14" : ""
                     }`}
                 >
                   <Image
@@ -238,7 +261,7 @@ export default function MarketResearch({ data }: { data: MethodData }) {
                       </span>
                     </div>
 
-                    <p className="no-scrollbar mt-3 max-h-48 overflow-y-auto pr-1 text-sm leading-relaxed text-white/95 opacity-100 transition-all duration-500 md:max-h-0 md:translate-y-4 md:overflow-hidden md:opacity-0 md:group-hover:max-h-48 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus:max-h-48 md:group-focus:translate-y-0 md:group-focus:opacity-100 sm:text-[15px]">
+                    <p className="no-scrollbar mt-3 max-h-44 overflow-y-auto pr-1 text-sm leading-relaxed text-white/95 opacity-100 transition-all duration-500 md:max-h-0 md:translate-y-4 md:overflow-hidden md:opacity-0 md:group-hover:max-h-48 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus:max-h-48 md:group-focus:translate-y-0 md:group-focus:opacity-100 sm:text-[15px]">
                       {sector.description}
                     </p>
                   </div>

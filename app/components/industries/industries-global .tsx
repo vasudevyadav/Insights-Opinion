@@ -26,7 +26,7 @@ export default function IndustriesGlobal({ industries }: IndustriesGlobalProps) 
     const displayedIndustries = industries.length > 0 ? industries : fallbackIndustries;
 
     return (
-        <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
+        <section className="relative overflow-hidden bg-[#edf6ff] py-6 lg:py-16">
             <div className="industry-shape-layer pointer-events-none absolute inset-0" aria-hidden="true" />
 
             <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">

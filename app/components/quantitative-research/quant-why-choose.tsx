@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import type { WhyChooseSection } from "@/data/service-page-content";
+import { AnimatedWhyChooseFigure } from "@/app/components/home/why-choose";
 
 function distributeFirstSectionItems(
   sections: readonly WhyChooseSection[]
@@ -62,18 +63,19 @@ export default function QuantWhyChoose({
       {renderedSections.map((section, sectionIndex) => {
         const imageOnLeft = section.layout === "left";
         const hideHeadingAndDescription = sectionIndex === 1;
+        const useHomePageImage = Boolean(content) && sectionIndex === 0;
 
         return (
           <section
             key={`${section.highlight}-${sectionIndex}`}
-            className="relative overflow-hidden pb-8"
+            className="relative overflow-hidden"
           >
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:mb-1 ">
+            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:mb-1 py-10 lg:py-12 ">
               <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
                 <div className={imageOnLeft ? "lg:order-2" : "lg:order-1"}>
                   {!hideHeadingAndDescription && (
                     <>
-                      <p className="text-2xl font-light tracking-[-0.02em] text-[#4a5565] lg:text-4xl">
+                      <p className="text-2xl font-light tracking-[-0.02em] text-[#4a5565] lg:text-4xl mt-8 lg:mt-0">
                         {section.title}
                       </p>
                       <h2 className="bg-[linear-gradient(130deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text lg:text-2xl text-xl font-semibold text-transparent lg:text-4xl lg:leading-tight">
@@ -112,18 +114,22 @@ export default function QuantWhyChoose({
                     }`}
                 >
                   <div className="absolute h-64 w-64 rounded-full bg-linear-to-br from-[#70c8f3]/35 to-[#1dc3b3]/30 blur-2xl sm:h-80 sm:w-80" />
-                  <div className="relative h-[220px] w-full lg:h-[420px]">
-                    <Image
-                      src={section.image}
-                      alt={`${section.title} ${section.highlight}`}
-                      fill
-                      unoptimized
-                      onError={(event) => {
-                        event.currentTarget.onerror = null;
-                        event.currentTarget.src = "/quality/cati-online.png";
-                      }}
-                      className="object-contain drop-shadow-[0_18px_30px_rgba(25,70,105,0.16)] h-full "
-                    />
+                  <div className="relative flex h-[220px] w-full items-center justify-center lg:h-[420px]">
+                    {useHomePageImage ? (
+                      <AnimatedWhyChooseFigure />
+                    ) : (
+                      <Image
+                        src={section.image}
+                        alt={`${section.title} ${section.highlight}`}
+                        fill
+                        unoptimized
+                        onError={(event) => {
+                          event.currentTarget.onerror = null;
+                          event.currentTarget.src = "/quality/cati-online.png";
+                        }}
+                        className="object-contain drop-shadow-[0_18px_30px_rgba(25,70,105,0.16)] h-full "
+                      />
+                    )}
                   </div>
                 </div>
               </div>

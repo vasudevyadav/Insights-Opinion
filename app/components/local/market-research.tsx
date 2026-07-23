@@ -11,7 +11,7 @@ const timelineItems = [
 
 export default function MarketResearch() {
     return (
-        <section className="relative overflow-hidden bg-[#eef7ff] py-12 md:py-12">
+        <section className="relative overflow-hidden bg-[#eef7ff] py-8 md:py-12">
             <BackgroundShape side="right" variant={2} className="-right-20 -top-12 w-[310px] opacity-45 sm:w-[430px] lg:w-[520px]" />
             <BackgroundShape side="left" variant={1} className="-left-24 top-[42%] w-[330px] opacity-40 sm:w-[450px] lg:w-[520px]" />
             <BackgroundShape side="right" variant={7} className="-right-24 bottom-0 w-[340px] opacity-35 sm:w-[460px]" />

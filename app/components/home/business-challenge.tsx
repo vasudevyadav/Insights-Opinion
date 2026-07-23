@@ -60,7 +60,7 @@ function CardImageArea({ image, hoverImage, alt }: CardImageAreaProps) {
     return (
         <div className="relative mt-5 lg:absolute lg:inset-x-0 lg:bottom-0 lg:mt-0">
             <div className="flex items-end justify-center">
-                <div className="relative h-[15rem] w-full overflow-hidden rounded-b-[18px] lg:h-[390px]">
+                <div className="relative h-[20rem] w-full overflow-hidden rounded-b-[18px] lg:h-[390px]">
                     {/* Default Image */}
                     <Image
                         src={image}
