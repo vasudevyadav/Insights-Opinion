@@ -65,15 +65,15 @@ export default function QuantWhat({
   if (!content) return null;
 
   return (
-    <section className="relative overflow-hidden bg-[#f0f7ff] pt-10 lg:pt-14">
+    <section className="relative overflow-hidden bg-[#f0f7ff] pt-4 lg:pt-4">
       <BackgroundShape variant={2} side="left" className="-left-24 bottom-[-180px] w-[320px] opacity-40 sm:w-[410px] lg:-left-2 lg:w-[490px]" />
       <BackgroundShape variant={4} className="-right-24 top-8 w-[300px] opacity-35 sm:w-[380px] lg:-right-2 lg:w-[450px]" />
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         {/* Top row: heading left + quant-about image right */}
         <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-10">
           {/* Left: heading + description */}
-          <div className="w-full max-w-[460px] shrink-0">
-            <h2 className="text-2xl font-semibold leading-[1.1] lg:text-5xl">
+          <div className="w-full max-w-[500px] shrink-0">
+            <h2 className="text-3xl font-semibold leading-[1.1] lg:text-5xl">
               <span className="bg-gradient-to-r from-[#1dc3b3] to-[#4faee8] bg-clip-text text-transparent">
                 {content.headingLine1}
                 <br />
@@ -92,7 +92,7 @@ export default function QuantWhat({
           {/* Right: quant-about.png */}
           <div className="relative flex w-full flex-1 items-center justify-center">
             <div className="relative w-full">
-              <Image src={content.image} alt={content.imageAlt} width={1500} height={1000}
+              <Image src="/quality/quant-about.png" alt={content.imageAlt} width={1500} height={1000}
                 className="h-auto w-full object-contain" priority />
             </div>
           </div>

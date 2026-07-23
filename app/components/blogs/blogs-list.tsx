@@ -75,7 +75,7 @@ export default function BlogList({ blogs }: { blogs: Blog[] }) {
             Explore Our Market Research Industry Guide
           </h2>
 
-          <div className="mx-auto mt-3 flex max-w-5xl flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-[11px] font-medium leading-5 text-[#6f7f93] sm:text-sm">
+          <div className="mx-auto mt-3 flex max-w-5xl flex-wrap items-center justify-center gap-x-1.5 gap-y-1 font-medium leading-5 text-[#6f7f93] sm:text-sm">
             {tags.map((tag, index) => {
               const isActiveTag = activeTag === tag;
 

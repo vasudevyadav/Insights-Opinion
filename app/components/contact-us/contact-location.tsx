@@ -4,7 +4,7 @@ const locations = [
     {
         country: "US",
         flag: "🇺🇸",
-        address: "100 Church Street, Suite 800,\nNew York 10007",
+        address: "100 Church Street, Suite 800,\nNew York, NY, 10007",
         phone: "+1 646 475 7865",
         email: "bids@insightopinion.com",
         pinWidth: "w-[105px] sm:w-[115px] lg:w-[145px]",

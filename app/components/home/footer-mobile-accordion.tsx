@@ -1,15 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import {
-    ChevronDown,
-    Facebook,
-    Instagram,
-    Linkedin,
-    Twitter,
-    Youtube,
-} from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+import FooterContact from "./footer-contact";
 
 type FooterGroup = {
     title: string;
@@ -79,20 +73,7 @@ export default function FooterMobileAccordion({
                 );
             })}
 
-            <div className="flex flex-wrap items-center gap-3 pt-5">
-                {[Facebook, Instagram, Youtube, Twitter, Linkedin].map(
-                    (Icon, index) => (
-                        <a
-                            key={index}
-                            href="#"
-                            aria-label={`Social link ${index + 1}`}
-                            className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#151b4a] transition hover:scale-105"
-                        >
-                            <Icon size={16} />
-                        </a>
-                    )
-                )}
-            </div>
+            <FooterContact mobile />
         </div>
     );
 }

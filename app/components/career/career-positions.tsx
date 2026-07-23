@@ -88,7 +88,7 @@ export default function CareerPositions() {
     };
 
     return (
-        <section className="relative overflow-hidden bg-[#edf6ff] py-12 [font-family:var(--font-poppins)] lg:py-16">
+        <section className="relative overflow-hidden bg-[#edf6ff] py-12 [font-family:var(--font-poppins)] lg:pt-16 pt-0 lg:py-16">
             <CareerShape variant={2} className="-left-24 bottom-[-85px] w-[330px] opacity-25 sm:w-[420px] lg:-left-2 lg:bottom-[-45px] lg:w-[510px]" />
             <CareerShape variant={1} className="-right-24 bottom-[-345px] w-[330px] opacity-25 sm:w-[410px] lg:-right-4 lg:bottom-[-365px] lg:w-[490px]" />
 
@@ -145,7 +145,7 @@ export default function CareerPositions() {
                                                 <span>{job.location}</span>
                                             </div>
                                         </div>
-                                        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+                                        <div className="flex shrink-0 items-center justify-between lg:justify-none gap-2 sm:gap-3">
                                             <button
                                                 onClick={() => setExpandedJob(expandedJob === job.id ? null : job.id)}
                                                 className="flex h-8 w-8 items-center justify-center rounded-full border border-[#c0cdd8] bg-white transition hover:border-[#1dc3b3]"
@@ -162,11 +162,10 @@ export default function CareerPositions() {
                                     </div>
 
                                     <div
-                                        className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${
-                                            expandedJob === job.id
-                                                ? "grid-rows-[1fr] opacity-100"
-                                                : "grid-rows-[0fr] opacity-0"
-                                        }`}
+                                        className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${expandedJob === job.id
+                                            ? "grid-rows-[1fr] opacity-100"
+                                            : "grid-rows-[0fr] opacity-0"
+                                            }`}
                                     >
                                         <div className="overflow-hidden">
                                             <div className="mt-3 rounded bg-white px-4 py-3 text-sm text-[#4b5563]">

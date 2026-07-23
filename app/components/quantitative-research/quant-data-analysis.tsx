@@ -25,7 +25,7 @@ export default function QuantDataAnalysis({
 
       <div className="relative z-10 mx-auto flex max-w-[1400px] items-center px-4 sm:px-6 lg:px-8">
 
-        <div className="w-full max-w-[450px] py-6 pt-16 sm:pt-24 lg:py-24 lg:pt-24">
+        <div className="w-full max-w-[450px] py-6 pt-10 lg:py-24 lg:pt-24">
           <h2 className="mb-5 text-[28px] font-light leading-tight text-white lg:text-[40px]">
 
             <span className="bg-[linear-gradient(90deg,#17afa1,#43bccb,#74b9ff)] bg-clip-text font-semibold text-transparent">
