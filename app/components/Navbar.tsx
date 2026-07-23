@@ -76,7 +76,7 @@ export default function Navbar({
         href: "/service",
       },
       { type: "link", name: "INDUSTRIES", href: "/industries" },
-      { type: "link", name: "QUALITY STANDARD", href: "/quality-standard" },
+      // { type: "link", name: "QUALITY STANDARD", href: "/quality-standard" },
       { type: "dropdown", name: "RESEARCH", key: "research", href: "#" },
       { type: "dropdown", name: "RESOURCES", key: "resources", href: "/resources" },
       { type: "link", name: "CONTACT US", href: "/contact-us" },

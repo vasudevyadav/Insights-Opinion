@@ -200,7 +200,7 @@ export default function Industries() {
     ];
 
     return (
-        <section className="px-4 py-5 sm:px-6">
+        <section className="relative z-10 px-4 py-5 sm:px-6">
             <div
                 className="lg:mb-10 mb-5 text-center"
                 data-aos="fade-up"
@@ -286,8 +286,8 @@ export default function Industries() {
                     ))}
                 </div>
 
-                <div className="mt-7 flex justify-center">
-                    <Link href="/industries" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#18b9aa] to-[#4faee8] px-6 py-2.5 text-sm font-semibold text-white shadow-md transition duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:text-base">
+                <div className="relative z-20 mt-7 flex justify-center">
+                    <Link href="/industries" className="relative z-20 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#18b9aa] to-[#4faee8] px-6 py-2.5 text-sm font-semibold text-white shadow-md transition duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:text-base">
                         View All Industries <ArrowIcon color="white" />
                     </Link>
                 </div>

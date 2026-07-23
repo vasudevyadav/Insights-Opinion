@@ -101,13 +101,13 @@ export default function TestimonialHealth() {
                                                 </p>
                                             </div>
                                         </div>
-                                        <Image
+                                        {/* <Image
                                             src="/inshite-sing.png"
                                             alt="Insights Opinion"
                                             width={112}
                                             height={40}
                                             className="w-28 object-contain transition-all duration-500 group-hover:invert"
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                             </SwiperSlide>

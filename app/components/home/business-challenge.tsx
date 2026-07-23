@@ -60,20 +60,23 @@ function CardImageArea({ image, hoverImage, alt }: CardImageAreaProps) {
     return (
         <div className="relative mt-5 lg:absolute lg:inset-x-0 lg:bottom-0 lg:mt-0">
             <div className="flex items-end justify-center">
-                <div className="relative h-[15rem] w-full overflow-hidden rounded-b-[18px] lg:h-[204px]">
+                <div className="relative h-[15rem] w-full overflow-hidden rounded-b-[18px] lg:h-[390px]">
+                    {/* Default Image */}
                     <Image
                         src={image}
                         alt={alt}
                         fill
-                        className="object-contain object-bottom transition-all duration-700 ease-out lg:group-hover:scale-[1.035] lg:group-hover:opacity-0"
                         sizes="(max-width: 1023px) calc(100vw - 32px), 420px"
+                        className="object-cover object-bottom transition-all duration-700 ease-out lg:group-hover:scale-105 lg:group-hover:opacity-0"
                     />
+
+                    {/* Hover Image */}
                     <Image
                         src={hoverImage}
                         alt={`${alt} on hover`}
                         fill
                         sizes="(max-width: 1023px) calc(100vw - 32px), 420px"
-                        className="object-cover object-center opacity-0 transition-all duration-700 ease-out lg:scale-[1.04] lg:group-hover:scale-100 lg:group-hover:opacity-100"
+                        className="object-cover object-center opacity-0 transition-all duration-700 ease-out lg:scale-105 lg:group-hover:scale-100 lg:group-hover:opacity-100"
                     />
                 </div>
             </div>
@@ -89,7 +92,7 @@ function ChallengeCardItem({
     return (
         <div
 
-            className="group relative overflow-hidden rounded-[16px] border border-[#5875c7] bg-white shadow-[0_8px_28px_rgba(30,41,59,0.06)] transition duration-300 hover:-translate-y-1 hover:border-[#22bec5] hover:shadow-[0_14px_34px_rgba(30,41,59,0.14)] lg:h-[450px] lg:w-full"
+            className="group relative overflow-hidden rounded-[16px] border border-[#5875c7] bg-white shadow-[0_8px_28px_rgba(30,41,59,0.06)] transition duration-300 hover:-translate-y-1 hover:border-[#22bec5] hover:shadow-[0_14px_34px_rgba(30,41,59,0.14)] lg:h-[550px] lg:w-full"
         >
             <div className="relative z-10 p-5 lg:h-[150px] lg:p-5">
                 <div className="relative pl-5">

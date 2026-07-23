@@ -55,14 +55,14 @@ export default function TeamGrowthForm() {
   };
 
   return (
-    <section className="relative px-4 pb-14 pt-2 sm:px-6 sm:pb-16 sm:pt-4 lg:px-5 lg:pb-24 lg:pt-8">
+    <section className="relative px-4 pb-10 pt-8 sm:px-6 sm:pb-16 sm:pt-4 lg:px-5 lg:pb-24 lg:pt-8">
       <div className="mx-auto grid max-w-[1280px] gap-8 sm:gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-16">
         <div className="grid grid-cols-1 items-center sm:grid-cols-[0.8fr_1.2fr]">
-          <h2 className="text-center text-2xl font-light leading-tight text-[#2f3643] sm:text-left lg:text-[31px]">
+          <h2 className="text-center text-xl font-light leading-tight text-[#2f3643] sm:text-left lg:text-[31px]">
             Grow Better with
-            <span className="quality-gradient-text mt-2 block text-4xl font-light lg:leading-[1.05] lg:text-[47px]">
+            <span className="quality-gradient-text mt-2 block text-3xl font-light lg:leading-[1.05] lg:text-[47px] lg:mb-0 mb-8">
               Insight
-              <br />
+              <br className="lg:block hidden" />
               Opinion
             </span>
           </h2>

@@ -9,7 +9,7 @@ type TeamMembersProps = {
 
 export default function TeamMembers({ members }: TeamMembersProps) {
   return (
-    <section className="quality-hex-bg relative overflow-hidden px-4 pb-14 pt-9 sm:px-6 sm:pb-16 sm:pt-10 lg:px-5 lg:pb-24 lg:pt-14">
+    <section className="quality-hex-bg relative overflow-hidden px-4 pb-9 pt-9 sm:px-6 sm:pb-16 sm:pt-10 lg:px-5 lg:pb-24 lg:pt-14">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-6xl text-center">
           <h2 className="site-section-title quality-gradient-text font-semibold">
@@ -67,9 +67,8 @@ export default function TeamMembers({ members }: TeamMembersProps) {
 
               <Link href={`/our-team/${member.slug}`}>
                 <h4
-                  className={`mt-1 text-lg font-semibold leading-tight sm:text-xl lg:text-2xl ${
-                    index === 1 ? "quality-gradient-text" : "text-[#141b3d]"
-                  }`}
+                  className={`mt-1 text-lg font-semibold leading-tight sm:text-xl lg:text-2xl ${index === 1 ? "quality-gradient-text" : "text-[#141b3d]"
+                    }`}
                 >
                   {member.name}
                 </h4>
@@ -88,7 +87,7 @@ export default function TeamMembers({ members }: TeamMembersProps) {
         </div>
       </div>
 
-      
+
     </section>
   );
 }

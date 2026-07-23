@@ -69,13 +69,13 @@ export default function TeamTestimonials() {
                       <p className="opacity-75">{item.role}</p>
                     </div>
                   </div>
-                  <Image
+                  {/* <Image
                     src="/inshite-sing.png"
                     alt="Clifton"
                     width={105}
                     height={38}
                     className="w-20 object-contain group-hover:invert sm:w-24"
-                  />
+                  /> */}
                 </div>
               </article>
             </SwiperSlide>

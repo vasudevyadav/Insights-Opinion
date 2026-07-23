@@ -25,7 +25,7 @@ const awards = [
 
 export default function Award() {
     return (
-        <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
+        <section className="relative overflow-hidden bg-[#edf6ff] py-10 lg:py-16">
             <BackgroundShape variant={4} className="-right-20 top-4 w-[300px] opacity-50 lg:-right-4 lg:w-[430px]" />
 
             <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-10">

@@ -364,7 +364,7 @@ export default function GlobalCoverage() {
                                 contentInnerRef.current.style.transform = "translateY(0)";
                                 contentInnerRef.current.style.opacity = "1";
                             }
-                        }, 650);
+                        }, 1900);
                     }
                 });
             },
@@ -384,7 +384,7 @@ export default function GlobalCoverage() {
             <div className="relative z-10 order-1 flex items-center px-5 pb-0 lg:pb-12 py-12 text-white sm:px-8 md:order-2 md:px-0 md:pr-[52px]">
                 <div
                     ref={contentInnerRef}
-                    className="max-w-[520px] mb-12"
+                    className="max-w-[520px] lg:mb-12 mb-6"
                     style={{
                         transform: "translateY(-60px)",
                         opacity: 0,
@@ -449,7 +449,7 @@ export default function GlobalCoverage() {
                     // 7fr + 5fr = 12fr total, content is 5fr → 5/12 = ~41.67%
                     // Globe col is 7fr → shift = (5/7)*100% ≈ 71.43%
                     transform: "translateX(75.43%)",
-                    transition: "transform 1.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                    transition: "transform 3s cubic-bezier(0.16, 1, 0.3, 1)",
                     willChange: "transform",
                 }}
             >
