@@ -93,8 +93,8 @@ export default function IndustriesGlobal({ industries }: IndustriesGlobalProps) 
                                 <Image
                                     src={industry.image}
                                     alt={industry.name}
-                                    width={400}
-                                    height={400}
+                                    width={800}
+                                    height={800}
                                     className={`h-full w-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-rotate-3 group-hover:brightness-0 group-hover:invert ${index === 1 ? "brightness-0 invert" : ""}`}
                                 />
                             </div>
