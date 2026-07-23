@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
+import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
+import { useRouter } from "next/navigation";
 import BackgroundShape from "../about-us/background-shape";
 
 const initialFormData = {
@@ -18,6 +20,7 @@ export default function IndustriesForm() {
     const [formData, setFormData] = useState(initialFormData);
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState("");
+    const router = useRouter();
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -41,6 +44,8 @@ export default function IndustriesForm() {
             });
 
             setStatus("Submitted successfully.");
+
+            router.push("/thank-you");
             setFormData(initialFormData);
         } catch (error) {
             setStatus(
@@ -147,9 +152,9 @@ export default function IndustriesForm() {
                                     className="h-[44px] w-full appearance-none rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 pr-10 text-sm text-white outline-none"
                                 >
                                     <option value="" disabled>Please Select</option>
-                                    <option>General Enquiry</option>
-                                    <option>Business Query</option>
-                                    <option>Support</option>
+                                    {SERVICE_SELECT_OPTIONS.map((option) => (
+                                        <option key={option}>{option}</option>
+                                    ))}
                                 </select>
                                 <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white" />
                             </div>

@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
+import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
+import { useRouter } from "next/navigation";
 
 const DISPLAYED_CAPTCHA = "990940";
 
@@ -25,6 +27,7 @@ export default function QuantFaq({
   const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
+  const router = useRouter();
 
   if (!items?.length) return null;
 
@@ -56,6 +59,8 @@ export default function QuantFaq({
       });
 
       setStatus("Submitted successfully.");
+
+      router.push("/thank-you");
       setFormData(initialFormData);
     } catch (error) {
       setStatus(
@@ -134,9 +139,9 @@ export default function QuantFaq({
                   className="h-[46px] rounded-[4px] border border-[#d7d7d7] bg-white px-4 text-sm text-[#8a8a8a] outline-none focus:border-[#20b7a6]"
                 >
                   <option value="" disabled>Please Select</option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
+                  {SERVICE_SELECT_OPTIONS.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
                 </select>
               </div>
 

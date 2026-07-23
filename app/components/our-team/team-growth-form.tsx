@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
+import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
+import { useRouter } from "next/navigation";
 
 const fieldClass =
   "h-12 w-full rounded-md border border-transparent bg-[#151a45] px-5 text-sm text-white outline-none placeholder:text-white/90 focus:border-[#4bc4c7]";
@@ -19,6 +21,7 @@ export default function TeamGrowthForm() {
   const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
+  const router = useRouter();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -42,6 +45,8 @@ export default function TeamGrowthForm() {
       });
 
       setStatus("Submitted successfully.");
+
+      router.push("/thank-you");
       setFormData(initialFormData);
     } catch (error) {
       setStatus(
@@ -129,9 +134,9 @@ export default function TeamGrowthForm() {
             <option value="" disabled>
               Please Select
             </option>
-            <option>Market Research</option>
-            <option>Healthcare Research</option>
-            <option>Consumer Research</option>
+            {SERVICE_SELECT_OPTIONS.map((option) => (
+              <option key={option}>{option}</option>
+            ))}
           </select>
           <div className="sm:col-span-2">
             <button

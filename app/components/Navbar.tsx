@@ -32,7 +32,7 @@ const mobileDropdownItems: Record<
 > = {
   about: [
     { name: "Our Story", href: "/about-us" },
-    { name: "Our Team", href: "/our-team" },
+    { name: "Our Team", href: "/our-teams" },
     { name: "Testimonials", href: "/testimonials" },
   ],
   resources: [
@@ -204,7 +204,7 @@ export default function Navbar({
                     ) : (
                       dropdownItems.length > 0 && (
                         <div
-                          className={`absolute left-0 top-[6px] z-50 mt-4 w-64 rounded-lg border border-gray-200 bg-white p-2 shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition-all duration-300 ${openDropdown === item.key
+                          className={`absolute left-0 top-[8px] z-50 mt-4 w-64 rounded-lg border border-gray-200 bg-white p-2 shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition-all duration-300 ${openDropdown === item.key
                             ? "pointer-events-auto translate-y-0 opacity-100"
                             : "pointer-events-none -translate-y-3 opacity-0"
                             }`}

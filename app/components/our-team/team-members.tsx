@@ -7,6 +7,14 @@ type TeamMembersProps = {
   members: TeamMember[];
 };
 
+const LINKEDIN_URLS: Record<string, string> = {
+  "shahab-s": "https://www.linkedin.com/in/shahab-ghauri-5712871a4/",
+  "sharoz-ghauri": "https://www.linkedin.com/in/sharoz-ghauri-72262946/",
+  "dan-schmitt": "https://www.linkedin.com/in/dan-schmitt-69ab29b",
+  "sankar-dhara": "https://www.linkedin.com/in/sankardhara/",
+  "priyanka-sarma": "https://www.linkedin.com/in/priyanka-sarma-a40b8817/",
+};
+
 export default function TeamMembers({ members }: TeamMembersProps) {
   return (
     <section className="quality-hex-bg relative overflow-hidden px-4 pb-9 pt-9 sm:px-6 sm:pb-16 sm:pt-10 lg:px-5 lg:pb-24 lg:pt-14">
@@ -44,7 +52,7 @@ export default function TeamMembers({ members }: TeamMembersProps) {
             >
               <div className="relative flex w-full h-[260px] items-end justify-center sm:h-[280px] lg:h-[300px]">
                 <Link
-                  href={`/our-team/${member.slug}`}
+                  href={`/our-teams/${member.slug}`}
                   aria-label={`View ${member.name}'s profile`}
                   className="relative z-10 flex h-full items-end justify-center"
                 >
@@ -58,7 +66,9 @@ export default function TeamMembers({ members }: TeamMembersProps) {
                   />
                 </Link>
                 <a
-                  href="#"
+                  href={LINKEDIN_URLS[member.slug] || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={`${member.name} on LinkedIn`}
                   className="absolute bottom-0 right-[7%] z-20 flex h-8 w-8 items-center justify-center rounded-[4px] bg-[#087db4] text-white shadow-sm"
                 >
@@ -66,7 +76,7 @@ export default function TeamMembers({ members }: TeamMembersProps) {
                 </a>
               </div>
 
-              <Link href={`/our-team/${member.slug}`}>
+              <Link href={`/our-teams/${member.slug}`}>
                 <h4
                   className={`mt-1 text-lg font-semibold leading-tight sm:text-xl lg:text-2xl ${index === 1 ? "quality-gradient-text" : "text-[#141b3d]"
                     }`}
@@ -78,7 +88,7 @@ export default function TeamMembers({ members }: TeamMembersProps) {
                 {member.role}
               </p>
               <Link
-                href={`/our-team/${member.slug}`}
+                href={`/our-teams/${member.slug}`}
                 className="mt-2 inline-flex items-center gap-2 rounded-sm bg-gradient-to-r from-[#14b8a6] to-[#59a9ee] px-4 py-2 text-xs font-medium uppercase text-white transition hover:brightness-105 sm:mt-3 lg:px-6 lg:text-base"
               >
                 Read More <ArrowRight size={16} />

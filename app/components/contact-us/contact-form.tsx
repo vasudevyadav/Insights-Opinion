@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
     Headphones,
     MessageSquareText,
@@ -29,6 +30,7 @@ export default function ContactForm() {
     const [newsletterLoading, setNewsletterLoading] = useState(false);
     const [status, setStatus] = useState("");
     const [newsletterStatus, setNewsletterStatus] = useState("");
+    const router = useRouter();
 
     const handleChange = (
         e: React.ChangeEvent<
@@ -54,6 +56,7 @@ export default function ContactForm() {
             });
 
             setStatus("Message sent successfully.");
+            router.push("/thank-you");
             setFormData({
                 firstName: "",
                 lastName: "",

@@ -1,13 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
+import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 
 export function LocalBoostYour() {
     const [captcha] = useState("IO2026");
     const [formData, setFormData] = useState({ name: "", email: "", enquiryType: "", captchaInput: "" });
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState("");
+    const router = useRouter();
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setFormData((current) => ({ ...current, [event.target.name]: event.target.value }));
@@ -25,6 +28,7 @@ export function LocalBoostYour() {
             await submitLeadForm({ formName: "local_boost", name: formData.name, email: formData.email, enquiryType: formData.enquiryType });
             setStatus("Submitted successfully.");
             setFormData({ name: "", email: "", enquiryType: "", captchaInput: "" });
+            router.push("/thank-you");
         } catch (error) {
             setStatus(error instanceof Error ? error.message : "Something went wrong. Please try again.");
         } finally {
@@ -81,9 +85,9 @@ export function LocalBoostYour() {
                     />
                     <select name="enquiryType" value={formData.enquiryType} onChange={handleChange} required className="h-[42px] flex-1 basis-[140px] appearance-none rounded-md border border-white/25 bg-white/90 px-3.5 text-[13px] text-gray-500 outline-none focus:border-[#17afa1] focus:bg-white focus:text-[#1e2a4e]">
                         <option value="" disabled>Please Select</option>
-                        <option>Market Research</option>
-                        <option>Brand Research</option>
-                        <option>Customer Insights</option>
+                        {SERVICE_SELECT_OPTIONS.map((option) => (
+                            <option key={option}>{option}</option>
+                        ))}
                     </select>
 
                     <div className="flex h-[42px] flex-1 basis-[180px] overflow-hidden rounded-md border border-white">
