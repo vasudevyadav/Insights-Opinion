@@ -195,8 +195,8 @@ export default function Footer() {
 
             {/* bottom bar */}
             <div className="mt-10 bg-[#60d4d0]">
-                <div className="mx-auto flex flex-col gap-3 px-5 py-4 text-sm font-medium text-white/90 sm:px-8 sm:text-base lg:flex-row lg:items-center lg:justify-between lg:px-14">
-                    <p className="text-left lg:w-6/12 ">
+                <div className="mx-auto flex flex-col gap-3 px-5 py-4 text-[13px] font-medium text-white/90 sm:px-8 lg:text-base lg:flex-row lg:items-center lg:justify-between lg:px-14">
+                    <p className="text-left lg:w-6/12 lg:text-base text-[13px] ">
                         Copyright © Insight Opinion. All rights received 2026
                     </p>
 

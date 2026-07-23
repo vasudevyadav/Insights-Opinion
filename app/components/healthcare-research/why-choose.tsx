@@ -39,7 +39,7 @@ function Accordion({
   if (!accordionData.length) return null;
 
   return (
-    <div className="mt-8 w-full">
+    <div className="lg:mt-8 mt-8 w-full">
       {accordionData.map((item, index) => {
         const isOpen = openIndex === index;
 

@@ -35,6 +35,7 @@ export default function TeamMembers({ members }: TeamMembersProps) {
           </span>
         </h3>
 
+
         <div className="mx-auto mt-7 flex flex-wrap justify-center gap-x-6 gap-y-10 sm:mt-8 sm:gap-y-12 lg:gap-x-10">
           {members.map((member, index) => (
             <article
