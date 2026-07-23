@@ -3,9 +3,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import type { CaseStudy } from "@/app/lib/case-studies-api";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
+import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import BackgroundShape from "../../about-us/background-shape";
 
 type CaseStudyDetailProps = {
@@ -46,7 +48,7 @@ function SidebarCard({ item }: { item: CaseStudy }) {
 const CALLBACK_SELECT_OPTIONS: Record<string, string[]> = {
   Country: ["India", "USA", "UK", "UAE"],
   Mobile: ["+91", "+1", "+44", "+971"],
-  "Please Select": ["General Enquiry", "Business Query", "Support"],
+  "Please Select": SERVICE_SELECT_OPTIONS,
 };
 
 const initialCallbackFormData = {
@@ -64,6 +66,7 @@ function CallbackForm() {
   const [formData, setFormData] = useState(initialCallbackFormData);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
+  const router = useRouter();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -88,6 +91,7 @@ function CallbackForm() {
 
       setStatus("Submitted successfully.");
       setFormData(initialCallbackFormData);
+      router.push("/thank-you");
     } catch (error) {
       setStatus(
         error instanceof Error

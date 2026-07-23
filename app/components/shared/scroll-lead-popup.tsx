@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
+import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 
 const SCROLL_THRESHOLD_PERCENT = 40;
 const SESSION_STORAGE_KEY = "io_scroll_popup_shown";
@@ -23,6 +25,7 @@ export default function ScrollLeadPopup() {
     const [formData, setFormData] = useState(initialFormData);
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState("");
+    const router = useRouter();
 
     useEffect(() => {
         if (sessionStorage.getItem(SESSION_STORAGE_KEY)) {
@@ -82,9 +85,9 @@ export default function ScrollLeadPopup() {
                 enquiryType: formData.enquiryType,
             });
 
-            setStatus("Thank you! We'll get back to you soon.");
             setFormData(initialFormData);
-            setTimeout(() => setOpen(false), 1800);
+            setOpen(false);
+            router.push("/thank-you");
         } catch (error) {
             setStatus(
                 error instanceof Error
@@ -198,9 +201,9 @@ export default function ScrollLeadPopup() {
                         <option value="" disabled>
                             Please Select
                         </option>
-                        <option>Market Research</option>
-                        <option>Healthcare Research</option>
-                        <option>Consumer Research</option>
+                        {SERVICE_SELECT_OPTIONS.map((option) => (
+                            <option key={option}>{option}</option>
+                        ))}
                     </select>
 
                     <button

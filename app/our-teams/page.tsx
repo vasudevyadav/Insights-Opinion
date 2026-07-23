@@ -6,7 +6,7 @@ import TeamTestimonials from "@/app/components/our-team/team-testimonials";
 import { fetchTeamMembers } from "@/app/lib/team-api";
 import { getStaticMetadata } from "@/lib/static-seo";
 
-export const metadata: Metadata = getStaticMetadata("our-team");
+export const metadata: Metadata = getStaticMetadata("our-teams");
 
 export default async function OurTeamPage() {
     const members = await fetchTeamMembers();

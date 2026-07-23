@@ -21,7 +21,7 @@ export async function generateMetadata({
 }: TeamDetailPageProps): Promise<Metadata> {
   const { slug } = await params;
   const member = await fetchTeamMember(slug);
-  const path = `/our-team/${slug}`;
+  const path = `/our-teams/${slug}`;
   const sheetSeo = getSheetSeo(path);
 
   if (!member) {

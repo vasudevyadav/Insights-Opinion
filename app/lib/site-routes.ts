@@ -46,7 +46,7 @@ const staticRoutes: SiteRoute[] = [
     changeFrequency: "monthly",
   },
   {
-    path: "/our-team",
+    path: "/our-teams",
     title: "Our Team",
     description: "Meet the Insights Opinion leadership team.",
     group: "Company",
@@ -214,7 +214,7 @@ export async function getAllSiteRoutes(): Promise<SiteRoute[]> {
   ]);
 
   const teamRoutes: SiteRoute[] = teamMembers.map((member) => ({
-    path: `/our-team/${member.slug}`,
+    path: `/our-teams/${member.slug}`,
     title: member.name,
     description: `${member.name}, ${member.role} at Insights Opinion.`,
     group: "Company",

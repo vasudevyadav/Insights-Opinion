@@ -6,8 +6,7 @@ const nonServiceLegacyRedirects = [
   ["/news-and-updates", "/blogs"],
   ["/global-panel", "/service/global-panel"],
   ["/about-us-2", "/about-us"],
-  ["/thank-you", "/contact-us"],
-  ["/thankyou", "/contact-us"],
+  ["/thankyou", "/thank-you"],
   ["/case-study", "/case-studies"],
   ["/data-protection-gdpr-compliance", "/privacy-policy"],
   ["/market-research-company-in-india", "/local"],
@@ -35,11 +34,23 @@ const nextConfig: NextConfig = {
   compress: true,
 
   async redirects() {
-    return nonServiceLegacyRedirects.map(([source, destination]) => ({
-      source,
-      destination,
-      permanent: true,
-    }));
+    const legacyRedirects = nonServiceLegacyRedirects.map(
+      ([source, destination]) => ({
+        source,
+        destination,
+        permanent: true,
+      })
+    );
+
+    return [
+      ...legacyRedirects,
+      { source: "/our-team", destination: "/our-teams", permanent: true },
+      {
+        source: "/our-team/:slug",
+        destination: "/our-teams/:slug",
+        permanent: true,
+      },
+    ];
   },
 
   turbopack: {

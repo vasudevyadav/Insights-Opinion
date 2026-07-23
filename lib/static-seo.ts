@@ -113,7 +113,7 @@ export const staticSeo: Record<string, StaticSeoEntry> = {
       "Read and watch client testimonials about working with Insights Opinion.",
     keywords: ["insights opinion testimonials", "client reviews"],
   },
-  "our-team": {
+  "our-teams": {
     title: "Our Team | Insights Opinion",
     description:
       "Meet the experienced market research and client services leaders at Insights Opinion.",

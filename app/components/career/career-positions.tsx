@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { ChevronDown, ArrowUpRight, RefreshCw } from "lucide-react";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
 import CareerShape from "./career-shape";
@@ -29,6 +30,7 @@ export default function CareerPositions() {
     });
     const [status, setStatus] = useState("");
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
     const handleChange = (e: { target: { name: string; value: string } }) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -76,6 +78,7 @@ export default function CareerPositions() {
             setStatus("Application submitted successfully!");
             setFormData({ name: "", email: "", mobile: "", jobTitle: "", about: "", captchaInput: "" });
             setResumeName("");
+            router.push("/thank-you");
         } catch (error) {
             setStatus(
                 error instanceof Error

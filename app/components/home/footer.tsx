@@ -12,7 +12,7 @@ import { submitLeadForm } from "@/app/lib/lead-form-api";
 
 const companyLinks = [
     { label: "About Us", href: "/about-us" },
-    { label: "Our Team", href: "/our-team" },
+    { label: "Our Team", href: "/our-teams" },
     { label: "Testimonials", href: "/testimonials" },
     { label: "Career", href: "/career" },
     { label: "Contact Us", href: "/contact-us" },

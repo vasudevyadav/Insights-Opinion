@@ -4,6 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
+import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
+import { useRouter } from "next/navigation";
 
 const selectClass =
     "h-12 w-full appearance-none rounded-[6px] bg-[#101538] px-6 pr-10 text-left text-sm text-white outline-none";
@@ -20,6 +22,7 @@ export default function QualityGrowForm() {
     const [formData, setFormData] = useState(initialFormData);
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState("");
+    const router = useRouter();
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -43,6 +46,8 @@ export default function QualityGrowForm() {
             });
 
             setStatus("Submitted successfully.");
+
+            router.push("/thank-you");
             setFormData(initialFormData);
         } catch (error) {
             setStatus(
@@ -134,9 +139,9 @@ export default function QualityGrowForm() {
                             className={selectClass}
                         >
                             <option value="" disabled>Please Select</option>
-                            <option>Market Research</option>
-                            <option>Healthcare Research</option>
-                            <option>Consumer Research</option>
+                            {SERVICE_SELECT_OPTIONS.map((option) => (
+                                <option key={option}>{option}</option>
+                            ))}
                         </select>
                         <ChevronDown size={17} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white" />
                     </div>
