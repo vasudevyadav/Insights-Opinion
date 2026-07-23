@@ -5,6 +5,7 @@ import ServiceChildPage from "@/app/components/services/service-child-page";
 import { fetchChildServiceBySlug } from "@/app/lib/services-api";
 import { legacyOnlineSurveyAliases } from "@/app/lib/legacy-service-routes";
 import { buildApiMetadata } from "@/lib/api-metadata";
+import { getSheetSeo } from "@/lib/sheet-seo";
 
 type PageProps = { params: Promise<{ childSlug: string }> };
 
@@ -23,16 +24,24 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { childSlug } = await params;
+  const path = `/service/quantitative-research/${childSlug}`;
+  const sheetSeo = getSheetSeo(path);
   const result = await resolveOnlineSurvey(childSlug);
   return result
     ? buildApiMetadata(
-        result.child.seo,
+        sheetSeo
+          ? {
+              ...result.child.seo,
+              metaTitle: sheetSeo.title,
+              metaDescription: sheetSeo.description,
+            }
+          : result.child.seo,
         {
           title: `${result.child.title} | Insights Opinion`,
           description: result.child.content.hero?.description,
           image: result.child.image,
         },
-        `/service/quantitative-research/${childSlug}`
+        path
       )
     : {};
 }
@@ -50,4 +59,3 @@ export default async function OnlineSurveyPage({ params }: PageProps) {
     />
   );
 }
-

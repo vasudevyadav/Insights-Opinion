@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getSheetSeo } from "@/lib/sheet-seo";
 
 type StaticSeoEntry = {
   title: string;
@@ -94,7 +95,7 @@ export const staticSeo: Record<string, StaticSeoEntry> = {
       "Discover how Insights Opinion maintains the highest quality standards across research methodology, data protection, ethical practices, and operational security.",
     keywords: ["market research quality standards", "insights opinion quality"],
   },
-  services: {
+  service: {
     title: "Market Research Services | Insights Opinion",
     description:
       "Explore quantitative research, qualitative research, and research support services from Insights Opinion.",
@@ -123,24 +124,27 @@ export const staticSeo: Record<string, StaticSeoEntry> = {
 export function getStaticMetadata(key: keyof typeof staticSeo): Metadata {
   const entry = staticSeo[key];
   const path = key === "home" ? "/" : `/${key}`;
+  const sheetEntry = getSheetSeo(path);
+  const title = sheetEntry?.title || entry.title;
+  const description = sheetEntry?.description || entry.description;
 
   return {
-    title: entry.title,
-    description: entry.description,
+    title,
+    description,
     keywords: entry.keywords,
     alternates: { canonical: path },
     openGraph: {
-      title: entry.title,
-      description: entry.description,
+      title,
+      description,
       url: path,
       siteName: "Insights Opinion",
       type: "website",
-      images: [{ url: "/home-banner.png", alt: entry.title }],
+      images: [{ url: "/home-banner.png", alt: title }],
     },
     twitter: {
       card: "summary_large_image",
-      title: entry.title,
-      description: entry.description,
+      title,
+      description,
       images: ["/home-banner.png"],
     },
   };

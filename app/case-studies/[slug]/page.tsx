@@ -7,6 +7,7 @@ import {
   getRelatedCaseStudies,
 } from "@/app/lib/case-studies-api";
 import { buildApiMetadata } from "@/lib/api-metadata";
+import { getSheetSeo } from "@/lib/sheet-seo";
 
 type CaseStudyPageProps = {
   params: Promise<{ slug: string }>;
@@ -17,16 +18,24 @@ export async function generateMetadata({
 }: CaseStudyPageProps): Promise<Metadata> {
   const { slug } = await params;
   const caseStudy = await fetchCaseStudy(slug);
+  const path = `/case-studies/${slug}`;
+  const sheetSeo = getSheetSeo(path);
 
   return caseStudy
     ? buildApiMetadata(
-        caseStudy.seo,
+        sheetSeo
+          ? {
+              ...caseStudy.seo,
+              metaTitle: sheetSeo.title,
+              metaDescription: sheetSeo.description,
+            }
+          : caseStudy.seo,
         {
           title: `${caseStudy.title} | Insights Opinion`,
           description: caseStudy.description,
           image: caseStudy.image,
         },
-        `/case-studies/${slug}`
+        path
       )
     : {};
 }
