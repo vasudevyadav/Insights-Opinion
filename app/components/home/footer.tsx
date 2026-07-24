@@ -31,7 +31,10 @@ const quickLinks = [
     { label: "Quality Standard", href: "/quality-standard" },
     { label: "Industries", href: "/industries" },
     { label: "Blogs", href: "/blogs" },
-    { label: "Local Page", href: "/local" },
+    // { label: "Local Page", href: "/local" },
+    { label: "  Client Success Stories ", href: "/client-success-story" },
+
+
 ];
 
 export default function Footer() {
