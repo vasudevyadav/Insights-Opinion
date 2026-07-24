@@ -19,9 +19,9 @@ export default function QuantHero({
   if (!content) return null;
 
   return (
-    <section className="relative h-125 overflow-hidden bg-[linear-gradient(135deg,#151b3c_0%,#162e54_52%,#173c68_100%)] sm:h-145 lg:h-175">
+    <section className="relative h-125 overflow-hidden bg-[linear-gradient(135deg,#151b3c_0%,#162e54_52%,#173c68_100%)] sm:h-145 lg:h-175 lg:bg-[#edf6ff] lg:bg-none">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_28%,rgba(23,60,104,0.7),transparent_38%),radial-gradient(circle_at_12%_85%,rgba(21,27,60,0.55),transparent_42%)] lg:hidden" />
-      <div className="absolute inset-0 hidden lg:block">
+      <div className="pointer-events-none absolute inset-0">
         <Image
           src={content.backgroundImage || "/quality/quant-banner.png"}
           alt=""
@@ -29,13 +29,12 @@ export default function QuantHero({
           priority
           sizes="100vw"
           unoptimized
-          className="object-cover object-left lg:object-bottom"
-        />
+          className="object-cover object-[right_0px_bottom_0px]" />
       </div>
 
 
 
-      <div className="relative z-10 mx-auto max-w-7xl px-5 pt-12 lg:px-1 lg:pt-0">
+      <div className="relative z-10 mx-auto max-w-[1450px] px-5 pt-12 lg:px-1 lg:pt-0">
 
         <div className="grid min-h-[420px] grid-cols-1 items-center gap-6 lg:grid-cols-2">
 
