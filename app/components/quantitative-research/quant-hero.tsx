@@ -27,7 +27,9 @@ export default function QuantHero({
           alt=""
           fill
           priority
-          className="object-cover lg:object-bottom object-left"
+          sizes="100vw"
+          unoptimized
+          className="object-cover object-left lg:object-bottom"
         />
       </div>
 

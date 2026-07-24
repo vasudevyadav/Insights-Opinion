@@ -14,6 +14,7 @@ const initialFormData = {
     email: "",
     country: "",
     countryCode: "+91",
+    phone: "",
     enquiryType: "",
 };
 
@@ -41,6 +42,7 @@ export default function BlogForm() {
                 email: formData.email,
                 country: formData.country,
                 countryCode: formData.countryCode,
+                phone: `${formData.countryCode} ${formData.phone}`,
                 enquiryType: formData.enquiryType,
             });
 
@@ -129,14 +131,15 @@ export default function BlogForm() {
                                 <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white" />
                             </div>
 
-                            <div className="relative">
+                            <div className="relative flex h-[44px] rounded-[6px] border border-[#202c63] bg-[#18235a]">
                                 <CountryCodeSelect
                                     value={formData.countryCode}
                                     onChange={(countryCode) => setFormData((current) => ({ ...current, countryCode }))}
                                     required
-                                    className="h-[44px] w-full rounded-[6px] border border-[#202c63] bg-[#18235a]"
-                                    buttonClassName="px-4 text-sm text-white"
+                                    className="w-[88px] shrink-0 border-r border-white/20"
+                                    buttonClassName="px-3 text-sm text-white"
                                 />
+                                <input name="phone" value={formData.phone} onChange={handleChange} type="tel" inputMode="tel" required placeholder="Mobile number" className="min-w-0 flex-1 bg-transparent px-3 text-sm text-white outline-none placeholder:text-white/85" />
                             </div>
 
                             <div className="relative sm:col-span-1">
