@@ -39,6 +39,7 @@ export default function ServiceCategoryPage({
         <QuantMethods
           initialCategoryKey={category}
           categoryTitle={categoryTitle}
+          content={content.methods}
           services={services}
         />
       )}

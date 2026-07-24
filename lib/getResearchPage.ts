@@ -6,9 +6,9 @@ import { apiUrl } from "@/lib/api-config";
 import type { ApiSeo } from "@/lib/api-metadata";
 
 export const researchPageSlugs = [
-  "healthcare-research",
-  "b2b-research",
   "consumer-research",
+  "b2b-research",
+  "healthcare-research",
 ] as const;
 
 export type ApiResearchPageSlug = (typeof researchPageSlugs)[number];
@@ -86,6 +86,15 @@ function isResearchPageData(value: unknown): value is ResearchPageData {
 }
 
 function getNavTitle(page: ResearchPageData) {
+  const labels: Record<string, string> = {
+    "consumer-research": "Consumer Research",
+    "b2b-research": "B2B Research",
+    "healthcare-research": "Healthcare Research",
+  };
+  const slugLabel = page.slug ? labels[page.slug] : undefined;
+
+  if (slugLabel) return slugLabel;
+
   const apiTitle = [page.hero?.titleLine1, page.hero?.titleLine2]
     .filter(Boolean)
     .join(" ")

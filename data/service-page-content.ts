@@ -28,6 +28,12 @@ export const servicePageContent = {
         "Compare results across regions, demographics, or audience groups",
       ],
     },
+    methods: {
+      headingLine1: "Our Quantitative",
+      headingLine2: "Research Methods",
+      description:
+        "As a full-service quantitative market research agency, Insights Opinion offers four core research methods. Each suits a different study type, audience, and business question.",
+    },
     methodCta: {
       heading: "Not sure which quantitative method fits your study?",
       description:
@@ -184,6 +190,12 @@ export const servicePageContent = {
         "Turn rich conversations into clear themes and practical actions",
       ],
     },
+    methods: {
+      headingLine1: "Our Qualitative",
+      headingLine2: "Research Methods",
+      description:
+        "As a full-service qualitative market research agency, Insights Opinion offers four core research methods. Each suits a different study type, audience, and business question.",
+    },
     methodCta: {
       heading: "Not sure which qualitative method fits your study?",
       description:
@@ -339,6 +351,12 @@ export const servicePageContent = {
         "Reduce delivery risk through documented quality-control checkpoints",
         "Turn complex datasets into clear tables, charts, and insight summaries",
       ],
+    },
+    methods: {
+      headingLine1: "Our Research",
+      headingLine2: "Support Services",
+      description:
+        "As a full-service research support partner, Insights Opinion offers core support services. Each suits a different stage of your research workflow.",
     },
     methodCta: {
       heading: "Not sure which support services your project needs?",

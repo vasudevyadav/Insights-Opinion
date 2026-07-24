@@ -4,6 +4,7 @@ interface HeroData {
   title: string;
   subtitle: string;
   description: string;
+  backgroundImage?: string;
 }
 
 export default function QuantDetailsHero({ data }: { data: HeroData }) {
@@ -14,7 +15,7 @@ export default function QuantDetailsHero({ data }: { data: HeroData }) {
     <section className="relative min-h-[580px] overflow-hidden bg-[#edf6ff] lg:h-175 lg:min-h-0">
       <div className="absolute inset-0">
         <Image
-          src="/quantity-details/quantity-details-hero.png"
+          src={data.backgroundImage || "/quantity-details/quantity-details-hero.png"}
           alt=""
           fill
           priority
