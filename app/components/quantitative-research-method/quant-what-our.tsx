@@ -84,9 +84,9 @@ export default function QuantWhatOur({ data }: { data: ServicesData }) {
                   <p className="text-sm font-semibold text-[#1e2746] sm:text-lg">{s.title}</p>
                   <p className="text-4xl font-black leading-none text-gray-400 sm:text-5xl">{s.id}</p>
                 </div>
-                <span className="flex shrink-0 items-center gap-1 rounded-full bg-[#1dc3b3] px-3 py-2 text-[10px] font-bold uppercase tracking-wide text-white sm:px-5 sm:text-[11px] lg:text-sm">
+                {/* <span className="flex shrink-0 items-center gap-1 rounded-full bg-[#1dc3b3] px-3 py-2 text-[10px] font-bold uppercase tracking-wide text-white sm:px-5 sm:text-[11px] lg:text-sm">
                   <Plus size={14} strokeWidth={3} /> Read More
-                </span>
+                </span> */}
               </button>
             );
           })}
