@@ -124,6 +124,20 @@ function parseTextSection(value: string, fallbackHeading: string) {
   };
 }
 
+function normalizeCategory(raw: RawCaseStudy) {
+  const apiCategory = raw.category?.trim();
+  if (apiCategory) return apiCategory;
+
+  const value = `${raw.title} ${raw.slug}`.toLowerCase();
+  if (value.includes("healthcare")) return "Healthcare Industry";
+  if (value.includes("automotive") || value.includes("automative")) {
+    return "Automotive Industry";
+  }
+  if (value.includes("chemical")) return "Chemical Industry";
+  if (value.includes("telecom")) return "Telecom Industry";
+  return "Other";
+}
+
 function normalizeCaseStudy(raw: RawCaseStudy): CaseStudy {
   const overview = parseOverview(raw.detail.overview, raw.detail.client);
   const methodology = parseListSection(
@@ -135,7 +149,7 @@ function normalizeCaseStudy(raw: RawCaseStudy): CaseStudy {
 
   return {
     id: raw.id,
-    category: raw.category,
+    category: normalizeCategory(raw),
     title: raw.title,
     slug: raw.slug,
     image: raw.image,

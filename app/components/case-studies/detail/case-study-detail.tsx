@@ -131,21 +131,21 @@ function CallbackForm() {
         />
         {[{ label: "Please Select", name: "enquiryType" }].map(
           ({ label, name }) => (
-          <label key={label} className="relative block">
-            <select
-              name={name}
-              value={formData[name as keyof typeof formData]}
-              onChange={handleChange}
-              required
-              className={`${inputClass} appearance-none pr-10`}
-            >
-              <option value="" disabled>{label}</option>
-              {CALLBACK_SELECT_OPTIONS[label].map((option) => (
-                <option key={option} value={option}>{option}</option>
-              ))}
-            </select>
-            <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#142044]" />
-          </label>
+            <label key={label} className="relative block">
+              <select
+                name={name}
+                value={formData[name as keyof typeof formData]}
+                onChange={handleChange}
+                required
+                className={`${inputClass} appearance-none pr-10`}
+              >
+                <option value="" disabled>{label}</option>
+                {CALLBACK_SELECT_OPTIONS[label].map((option) => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
+              </select>
+              <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#142044]" />
+            </label>
           )
         )}
         <div className={`${inputClass} flex p-0`}>
@@ -292,12 +292,14 @@ export default function CaseStudyDetail({
 
 
             <aside className="space-y-8 lg:sticky lg:top-28">
+
+              <CallbackForm />
               <div className="space-y-6">
                 {relatedCaseStudies.map((item) => (
                   <SidebarCard key={item.slug} item={item} />
                 ))}
               </div>
-              <CallbackForm />
+
             </aside>
           </div>
         </div>
