@@ -13,7 +13,7 @@ import { submitLeadForm } from "@/app/lib/lead-form-api";
 const companyLinks = [
     { label: "About Us", href: "/about-us" },
     { label: "Our Team", href: "/our-teams" },
-    { label: "Testimonials", href: "/testimonials" },
+    { label: "Testimonials", href: "/client-success-story" },
     { label: "Career", href: "/career" },
     { label: "Contact Us", href: "/contact-us" },
 ];
@@ -30,7 +30,7 @@ const serviceLinks = [
 const quickLinks = [
     { label: "Quality Standard", href: "/quality-standard" },
     { label: "Industries", href: "/industries" },
-    { label: "Client Success Stories", href: "/case-studies" },
+    { label: "Case Studies", href: "/case-studies" },
     { label: "Blogs", href: "/blogs" },
     { label: "Local Page", href: "/local" },
 ];
