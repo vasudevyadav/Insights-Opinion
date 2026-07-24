@@ -37,10 +37,10 @@ const mobileDropdownItems: Record<
   about: [
     { name: "Our Story", href: "/about-us" },
     { name: "Our Team", href: "/our-teams" },
-    { name: "Testimonials", href: "/testimonials" },
+    { name: "Testimonials", href: "/client-success-story" },
   ],
   resources: [
-    { name: "Client Success Stories", href: "/case-studies" },
+    { name: "Client Success Stories", href: "/client-success-story" },
     { name: "Blogs", href: "/blogs" },
   ],
 };

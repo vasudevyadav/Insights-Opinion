@@ -75,12 +75,12 @@ export default function ContactLocation() {
                             key={index}
                             className={`flex flex-col items-center text-center ${loc.wrapperClass}`}
                         >
-                            <div className={`relative flex items-center justify-center ${loc.pinWrapClass}`}>
+                            <div className={`relative flex items-center justify-center  ${loc.pinWrapClass}`}>
                                 <svg
                                     viewBox="0 0 96 118"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className={`${loc.pinWidth} drop-shadow-[0_10px_18px_rgba(72,140,190,0.25)]`}
+                                    className=" lg:w-7/12 w-3/12 drop-shadow-[0_10px_18px_rgba(72,140,190,0.25)] "
                                 >
                                     <defs>
                                         <linearGradient

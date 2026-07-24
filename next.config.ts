@@ -12,7 +12,6 @@ const nonServiceLegacyRedirects = [
   ["/market-research-company-in-india", "/local"],
   ["/insight", "/blogs"],
   ["/blog", "/blogs"],
-  ["/client-success-story", "/case-studies"],
   ["/our-story", "/about-us"],
   ["/leadership", "/about-us/leadership"],
   ["/research-expertise/consumer-research", "/research/consumer-research"],
