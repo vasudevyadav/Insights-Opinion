@@ -55,6 +55,7 @@ export default async function OnlineSurveyPage({ params }: PageProps) {
     <ServiceChildPage
       slug={result.child.slug}
       data={result.child.content}
+      heroImage={result.child.image}
       parentService={result.service}
     />
   );

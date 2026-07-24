@@ -15,6 +15,12 @@ import {
 const SERVICES_API_URL = apiUrl("/custom/v1/services");
 const SERVICES_REVALIDATE_SECONDS = 300;
 
+const MAIN_SERVICE_API_SLUGS: Record<string, readonly string[]> = {
+  quantitative: ["quantitative-research"],
+  qualitative: ["qualitative-market-research-services"],
+  support: ["market-research-support-services"],
+};
+
 type ApiServiceChild = ServiceChild & {
   content?: MethodData;
   seo?: ApiSeo;
@@ -118,6 +124,24 @@ function getHrefSlug(href?: string) {
     .split("/")
     .filter(Boolean)
     .at(-1);
+}
+
+function getMainServiceApiSlugs(mainServiceSlug: string) {
+  return Array.from(
+    new Set([
+      mainServiceSlug,
+      ...(MAIN_SERVICE_API_SLUGS[mainServiceSlug] ?? []),
+      ...(mainServiceSlug.endsWith("-research")
+        ? []
+        : [`${mainServiceSlug}-research`]),
+    ])
+  );
+}
+
+function unwrapMainService(
+  data: ApiMainService | ApiMainService[] | null
+): ApiMainService | null {
+  return Array.isArray(data) ? data[0] ?? null : data;
 }
 
 function matchesChildRoute(child: ApiServiceChild, requestedSlug: string) {
@@ -225,12 +249,8 @@ export async function fetchMainService(
   mainServiceSlug: string
 ): Promise<ApiMainServiceWithContent | null> {
   const services = await fetchServicesData();
-  const expectedApiSlugs = new Set([
-    mainServiceSlug,
-    ...(mainServiceSlug.endsWith("-research")
-      ? []
-      : [`${mainServiceSlug}-research`]),
-  ]);
+  const apiSlugs = getMainServiceApiSlugs(mainServiceSlug);
+  const expectedApiSlugs = new Set(apiSlugs);
   const summary =
     services.find(
       (service) => service.apiSlug && expectedApiSlugs.has(service.apiSlug)
@@ -239,17 +259,10 @@ export async function fetchMainService(
     null;
 
   if (!summary) {
-    const apiSlugs = [
-      mainServiceSlug,
-      ...(mainServiceSlug.endsWith("-research")
-        ? []
-        : [`${mainServiceSlug}-research`]),
-    ];
-
     for (const apiSlug of apiSlugs) {
-      const detail = await fetchApiData<ApiMainService>(
+      const detail = unwrapMainService(await fetchApiData<ApiMainService | ApiMainService[]>(
         `${SERVICES_API_URL}/${encodeURIComponent(apiSlug)}`
-      );
+      ));
 
       if (detail?.content) return normalizeService(detail, 0);
     }
@@ -263,8 +276,10 @@ export async function fetchMainService(
     );
   }
 
-  const detail = await fetchApiData<ApiMainService>(
-    `${SERVICES_API_URL}/${encodeURIComponent(summary.apiSlug || summary.slug)}`
+  const detail = unwrapMainService(
+    await fetchApiData<ApiMainService | ApiMainService[]>(
+      `${SERVICES_API_URL}/${encodeURIComponent(summary.apiSlug || summary.slug)}`
+    )
   );
 
   return detail ? normalizeService(detail, 0) : summary;
@@ -278,12 +293,7 @@ export async function fetchChildService(
   child: ApiServiceChild & { content: MethodData };
 } | null> {
   const services = await fetchServicesData();
-  const expectedApiSlugs = new Set([
-    mainServiceSlug,
-    ...(mainServiceSlug.endsWith("-research")
-      ? []
-      : [`${mainServiceSlug}-research`]),
-  ]);
+  const expectedApiSlugs = new Set(getMainServiceApiSlugs(mainServiceSlug));
   const routeCandidates = services.filter(
     (item) =>
       item.slug === mainServiceSlug ||

@@ -17,10 +17,12 @@ function hasContent(value: unknown): value is string {
 
 export default function ServiceChildPage({
   data,
+  heroImage,
 }: {
   slug: string;
   data: MethodData;
   parentService?: MainService;
+  heroImage?: string;
 }) {
   const showHero = hasContent(data.hero?.title);
   const showAbout = hasContent(data.about);
@@ -83,6 +85,7 @@ export default function ServiceChildPage({
             title: data.hero.title,
             subtitle: data.hero.subtitle ?? "",
             description: data.hero.description ?? "",
+            backgroundImage: heroImage,
           }}
         />
       )}

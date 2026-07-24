@@ -77,7 +77,7 @@ export default function Footer() {
                                 alt="Insights Opinion"
                                 width={170}
                                 height={34}
-                                className="h-auto lg:w-auto w-48"
+                                className="h-auto lg:w-54 w-48"
                             />
                         </div>
 

@@ -8,6 +8,10 @@ import { ChevronDown, Menu, X, Search, User } from "lucide-react";
 import type { ResearchNavItem } from "@/lib/getResearchPage";
 import type { MainService } from "@/app/lib/service-catalog";
 import MegaMenu from "./MegaMenu";
+import {
+  getServiceCategoryLabel,
+  getServiceChildLabel,
+} from "@/app/lib/service-menu-labels";
 
 type NavLinkItem = {
   type: "link";
@@ -360,7 +364,7 @@ export default function Navbar({
                                   onClick={() => setMobileMenuOpen(false)}
                                   className="flex-1 p-3 text-left text-xs font-semibold uppercase leading-5 tracking-wide text-[#14d8d0]"
                                 >
-                                  {group.title}
+                                  {getServiceCategoryLabel(group)}
                                 </Link>
                                 <button
                                   type="button"
@@ -394,14 +398,14 @@ export default function Navbar({
                                           : "text-white/90 hover:bg-white/10"
                                           }`}
                                       >
-                                        {subItem.title}
+                                        {getServiceChildLabel(subItem)}
                                       </Link>
                                     ) : (
                                       <span
                                         key={subItem.id}
                                         className="block cursor-not-allowed rounded-lg px-3 py-2 text-sm text-white/40"
                                       >
-                                        {subItem.title}
+                                        {getServiceChildLabel(subItem)}
                                       </span>
                                     )
                                   )}
