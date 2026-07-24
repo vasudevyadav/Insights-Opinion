@@ -53,9 +53,9 @@ export default function QuantHero({
             </h1>
 
             <p className="mt-8 max-w-[470px] text-sm leading-[1.85] text-white/70 lg:text-base">
-              <strong className="font-semibold text-white">
+              {/* <strong className="font-semibold text-white">
                 {content.lead}
-              </strong>{" "}
+              </strong>{" "} */}
               {content.description}
             </p>
 

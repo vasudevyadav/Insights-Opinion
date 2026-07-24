@@ -12,7 +12,7 @@ export default function QuantDetailsHero({ data }: { data: HeroData }) {
   const subtitleLines = data.subtitle.split("\n");
 
   return (
-    <section className="relative min-h-[580px] overflow-hidden bg-[linear-gradient(135deg,#151b3c_0%,#162e54_52%,#173c68_100%)] lg:h-175 lg:min-h-0">
+    <section className="relative min-h-[580px] overflow-hidden bg-[linear-gradient(135deg,#151b3c_0%,#162e54_52%,#173c68_100%)] lg:h-175 lg:min-h-0 lg:bg-[#edf6ff] lg:bg-none">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_28%,rgba(23,60,104,0.7),transparent_38%),radial-gradient(circle_at_12%_85%,rgba(21,27,60,0.55),transparent_42%)] lg:hidden" />
       <div className="absolute inset-0 hidden lg:block">
         <Image
@@ -26,7 +26,7 @@ export default function QuantDetailsHero({ data }: { data: HeroData }) {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-5 pt-16 lg:px-1 lg:pt-0">
+      <div className="relative z-10 mx-auto max-w-[1450px] px-5 pt-16 lg:px-1 lg:pt-0">
         <div className="grid min-h-[420px] grid-cols-1 items-center gap-6 lg:grid-cols-2">
           <div className="py-8 lg:py-16 lg:pt-32">
             <h1 className="text-[32px] font-semibold leading-[1.08] lg:text-[50px] bg-linear-to-r from-[#1dc3b3] via-[#1dc3b3] to-[#3c8df6] bg-clip-text text-transparent">
