@@ -16,12 +16,14 @@ type HealthUsecasesProps = {
   data?: HealthUsecasesData;
 };
 
+const EMPTY_USE_CASES: readonly string[] = [];
+
 export default function HealthUsecases({ data }: HealthUsecasesProps) {
-  const useCases = data?.useCases || [];
+  const useCases = data?.useCases ?? EMPTY_USE_CASES;
   const [activeCount, setActiveCount] = useState(0);
   const timerRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
-  const startAnimation = () => {
+  useEffect(() => {
     timerRef.current.forEach(clearTimeout);
     timerRef.current = [];
     setActiveCount(0);
@@ -33,15 +35,11 @@ export default function HealthUsecases({ data }: HealthUsecasesProps) {
 
       timerRef.current.push(timer);
     });
-  };
-
-  useEffect(() => {
-    startAnimation();
 
     return () => {
       timerRef.current.forEach(clearTimeout);
     };
-  }, [useCases.length]);
+  }, [useCases]);
 
   if (!data || useCases.length === 0) return null;
 
@@ -83,15 +81,15 @@ export default function HealthUsecases({ data }: HealthUsecasesProps) {
             </p>
           )}
 
-          <div className="relative mt-6 flex w-full items-start justify-center">
-            <div className="relative z-10 mb-5 flex w-full max-w-7xl flex-wrap items-start justify-center gap-y-5 gap-10 md:flex-nowrap md:justify-between">
+          <div className="no-scrollbar relative mt-6 w-full overflow-x-auto px-1 pb-3 overscroll-x-contain md:flex md:items-start md:justify-center md:overflow-visible md:px-0 md:pb-0">
+            <div className="relative z-10 mb-5 flex w-max snap-x snap-mandatory flex-nowrap items-stretch gap-4 px-1 md:w-full md:max-w-7xl md:items-start md:justify-between md:gap-10 md:px-0">
               {useCases.map((item, index) => {
                 const isActive = activeCount > index;
 
                 return (
                   <div
                     key={item}
-                    className="flex  flex-col items-center text-center"
+                    className="flex min-w-[78vw] max-w-[310px] snap-center flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-5 py-6 text-center md:min-w-0 md:max-w-none md:flex-1 md:justify-start md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-0"
                   >
                     <div
                       className={`relative mb-5 flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-500 ${isActive

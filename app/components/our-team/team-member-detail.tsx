@@ -17,15 +17,15 @@ export default function TeamMemberDetail({
   return (
     <section className="relative px-4 pb-12 pt-10 sm:px-6 sm:pb-16 sm:pt-14 lg:px-8 lg:pb-24 lg:pt-20">
       <div className="mx-auto grid max-w-[1280px] gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-20">
-        <div className="mx-auto w-full max-w-[430px] pb-3 sm:pb-4 lg:pb-0">
+        <div className="mx-auto w-full  pb-3 sm:pb-4 lg:pb-0">
           <div className="relative mx-auto flex w-full max-w-full items-end justify-center lg:block lg:min-h-0 lg:w-full lg:max-w-none">
             <Image
               src={member.detailImage}
               alt={member.name}
-              width={340}
-              height={471}
+              width={2000}
+              height={1200}
               priority
-              className="relative z-10 h-full w-11/12 max-w-full object-contain object-bottom lg:h-full lg:max-h-none lg:max-w-none"
+              className="relative z-10 w-8/12 mx-auto object-contain object-bottom "
             />
             {/* <a
               href="#"

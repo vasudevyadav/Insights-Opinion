@@ -19,9 +19,9 @@ export default function QuantHero({
   if (!content) return null;
 
   return (
-    <section className="relative h-125 bg-[#edf6ff] sm:h-145 lg:h-175">
-
-      <div className="absolute inset-0">
+    <section className="relative h-125 overflow-hidden bg-[linear-gradient(135deg,#151b3c_0%,#162e54_52%,#173c68_100%)] sm:h-145 lg:h-175">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_28%,rgba(23,60,104,0.7),transparent_38%),radial-gradient(circle_at_12%_85%,rgba(21,27,60,0.55),transparent_42%)] lg:hidden" />
+      <div className="absolute inset-0 hidden lg:block">
         <Image
           src={content.backgroundImage || "/quality/quant-banner.png"}
           alt=""
@@ -53,17 +53,17 @@ export default function QuantHero({
               </span>
             </h1>
 
-            <p className="mt-8 max-w-[470px] text-sm leading-[1.85] text-white/70 lg:text-lg">
+            <p className="mt-8 max-w-[470px] text-sm leading-[1.85] text-white/70 lg:text-base">
               <strong className="font-semibold text-white">
                 {content.lead}
               </strong>{" "}
               {content.description}
             </p>
 
-            <div className="my-5 space-y-2">
+            <div className="my-5 space-y-2 hidden lg:block">
               <Link
                 href="#"
-                className="flex items-center gap-1.5 text-sm lg:text-lg text-white/75 transition hover:text-[#1dc3b3]"
+                className="flex items-center gap-1.5 text-sm lg:text-lg text-white/75 transition hover:text-[#1dc3b3] hidden"
               >
                 {content.insightText}
                 <span className="text-white">→</span>
@@ -71,7 +71,7 @@ export default function QuantHero({
             </div>
 
             <div>
-              <Link href="/contact" className="inline-block">
+              <Link href="/contact" className="inline-block mt-5 lg:mt-0">
                 <button className="h-10 whitespace-nowrap px-6 text-center text-sm font-semibold transition-all md:text-base rounded-full bg-gradient-to-r from-[#37c9c7] to-[#4a8fe8] text-white shadow-[0_8px_24px_rgba(74,143,232,0.22)]"> Get In Touch </button>
               </Link>
             </div>

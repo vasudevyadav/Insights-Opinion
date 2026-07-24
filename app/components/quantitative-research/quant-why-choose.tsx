@@ -70,12 +70,12 @@ export default function QuantWhyChoose({
             key={`${section.highlight}-${sectionIndex}`}
             className="relative overflow-hidden"
           >
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:mb-1 py-10 lg:py-12 ">
+            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:mb-1 py-8 lg:py-12 ">
               <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
                 <div className={imageOnLeft ? "lg:order-2" : "lg:order-1"}>
                   {!hideHeadingAndDescription && (
                     <>
-                      <p className="text-2xl font-light tracking-[-0.02em] text-[#4a5565] lg:text-4xl mt-8 lg:mt-0">
+                      <p className="text-2xl font-light tracking-[-0.02em] text-[#4a5565] lg:text-4xl mt-0 lg:mt-0">
                         {section.title}
                       </p>
                       <h2 className="bg-[linear-gradient(130deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text lg:text-2xl text-xl font-semibold text-transparent lg:text-4xl lg:leading-tight">

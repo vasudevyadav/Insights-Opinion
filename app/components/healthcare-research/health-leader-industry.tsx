@@ -98,7 +98,7 @@ function ResearchContentRow({
                     </ul>
                 )}
 
-                <div className="mt-6 flex flex-wrap gap-4">
+                <div className="mt-6 flex flex-wrap gap-4 lg:block hidden">
                     {content.primaryButton?.text && content.primaryButton.link && (
                         <Link
                             href={content.primaryButton.link}
@@ -133,20 +133,20 @@ export default function HealthLeaderIndustry({
         : null;
     const benefits = hasSectionContent(data?.benefits) ? data.benefits : null;
 
-  if (!howResearchWorks && !benefits) return null;
+    if (!howResearchWorks && !benefits) return null;
 
-  const howResearchWorksPoints = parseListItems(howResearchWorks?.points);
-  const benefitPoints = parseListItems(benefits?.points);
+    const howResearchWorksPoints = parseListItems(howResearchWorks?.points);
+    const benefitPoints = parseListItems(benefits?.points);
 
     return (
         <section className="relative overflow-hidden bg-[#edf6ff] py-2 lg:py-8">
             <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {howResearchWorks && (
-          <ResearchContentRow
-            content={howResearchWorks}
-            imagePosition="left"
-            points={howResearchWorksPoints}
-          />
+                    <ResearchContentRow
+                        content={howResearchWorks}
+                        imagePosition="left"
+                        points={howResearchWorksPoints}
+                    />
                 )}
 
                 {benefits && (

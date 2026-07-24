@@ -61,18 +61,17 @@ function normalizeApiImage(value: string | undefined, fallback: string) {
 }
 
 function normalizeTeamMember(raw: RawTeamMember): TeamMember {
+  const image = normalizeApiImage(raw.image, "/our-team/shahab.png");
   const detailImage = normalizeApiImage(
     raw.detailImage,
-    "/our-team/team-member-detailks.png"
+    image
   );
 
   return {
     slug: raw.slug,
     name: raw.name,
     role: raw.role,
-    // The API currently returns an empty `image` value while each member's
-    // unique photo is available in `detailImage`.
-    image: normalizeApiImage(raw.image, detailImage),
+    image,
     detailImage,
     description: parseDescription(raw.description || ""),
     seo: raw.seo,

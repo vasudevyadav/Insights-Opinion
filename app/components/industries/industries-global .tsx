@@ -87,25 +87,26 @@ export default function IndustriesGlobal({ industries }: IndustriesGlobalProps) 
                             key={`${industry.name}-${index}`}
                             className={`group relative flex min-h-[250px] min-w-[82%] snap-center flex-col items-center justify-center overflow-hidden rounded-[14px] border px-5 lg:py-10 py-6 text-center shadow-sm backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] hover:border-transparent hover:bg-gradient-to-br hover:from-[#1bb0a4] hover:to-[#74b9ff] hover:shadow-[0_18px_38px_rgba(28,182,165,0.22)] sm:min-w-[46%] lg:min-w-0 lg:w-full ${index === 1 ? "border-transparent bg-gradient-to-br from-[#64b9ed] to-[#1cb6a5] text-white shadow-lg" : "border-[#55b9df] bg-white/70"}`}
                         >
-                            <div className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 -skew-x-12 bg-white/25 opacity-0 blur-sm transition-all duration-700 group-hover:left-[120%] group-hover:opacity-100" />
+                            <div className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 -skew-x-12 bg-white/25 opacity-0 blur-sm transition-all duration-700  " />
                             {/* Image */}
-                            <div className="mb-6 flex h-16 w-16 items-center justify-center lg:h-28 lg:w-28">
+                            <div className="mb-4 lg:mb-4 flex w-16 items-center justify-center lg:w-16">
                                 <Image
                                     src={industry.image}
                                     alt={industry.name}
-                                    width={800}
-                                    height={800}
-                                    className={`h-full w-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-rotate-3 group-hover:brightness-0 group-hover:invert ${index === 1 ? "brightness-0 invert" : ""}`}
+                                    width={96}
+                                    height={96}
+                                    unoptimized
+                                    className={`w-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-rotate-3 group-hover:brightness-0 group-hover:invert ${index === 1 ? "brightness-0 invert" : ""}`}
                                 />
                             </div>
 
                             {/* Name */}
-                            <h4 className={`text-[17px] font-semibold leading-snug transition-colors duration-300 group-hover:text-white lg:text-xl ${index === 1 ? "text-white" : "text-[#334155]"}`}>
+                            <h4 className={`text-base font-semibold leading-snug transition-colors duration-300 group-hover:text-white lg:text-lg ${index === 1 ? "text-white" : "text-[#334155]"}`}>
                                 {industry.name}
                             </h4>
 
                             {/* Description */}
-                            <p className={`mt-3 line-clamp-3 text-[13px] lg:text-base lg:leading-7 leading-5 transition-colors duration-300 group-hover:text-white/90 ${index === 1 ? "text-white/90" : "text-[#6b7280]"}`}>
+                            <p className={`mt-3 line-clamp-3 text-sm  leading-6 transition-colors duration-300 group-hover:text-white/90 ${index === 1 ? "text-white/90" : "text-[#6b7280]"}`}>
                                 {industry.description}
                             </p>
                         </div>

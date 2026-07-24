@@ -90,13 +90,13 @@ function ServiceCard({ service }: { service: Service }) {
 
       <div className="px-6 pb-6 pt-5 text-center">
         {service.title && (
-          <h3 className="whitespace-pre-line text-base font-semibold text-[#1e2746] transition-colors duration-500 ease-out group-hover:text-white lg:text-lg">
+          <h3 className="whitespace-pre-line text-sm font-semibold text-[#1e2746] transition-colors duration-500 ease-out group-hover:text-white lg:text-lg">
             {service.title.replace(/\\n/g, "\n")}
           </h3>
         )}
 
         {service.points?.length > 0 && (
-          <ul className="mt-3 space-y-1 text-sm text-[#2f3850] transition-colors duration-500 ease-out group-hover:text-white/95 lg:text-sm">
+          <ul className="mt-3 space-y-1 text-sm text-[#2f3850] transition-colors duration-500 ease-out group-hover:text-white/95 lg:text-sm line-clamp-3 lg:line-clamp-16">
             {service.points.map((point, idx) => (
               <li key={idx}>{point}</li>
             ))}

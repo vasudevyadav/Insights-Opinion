@@ -30,12 +30,12 @@ export default function WhoUsesHealthcareResearch({
   return (
     <section
       data-aos="fade-up"
-      className="relative overflow-hidden bg-[#edf6ff] py-10 lg:py-14"
+      className="relative overflow-hidden bg-[#edf6ff] py-8 lg:py-14"
     >
       <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-10">
         <BackgroundShape side="right" variant={2} className="-right-20 -top-12 w-[300px] opacity-40 sm:w-[430px] lg:w-[510px]" />
 
-        <div className="flex flex-col items-center justify-between gap-10 lg:flex-row lg:items-center lg:gap-14">
+        <div className="flex flex-col items-center justify-between gap-6 lg:flex-row lg:items-center lg:gap-14">
           <div data-aos="fade-up" data-aos-delay="100" className="order-2 w-full max-w-[430px] lg:order-1">
             <h2 className="leading-[1.05] tracking-[-0.02em]">
               <span className="block text-xl font-normal text-[#3a4654] sm:text-3xl">
@@ -55,7 +55,7 @@ export default function WhoUsesHealthcareResearch({
               </span>
             </h2>
 
-            <ul className="mt-12 space-y-4">
+            <ul className="lg:mt-12 mt-6 space-y-4">
               {items.map((item, idx) => (
                 <li key={idx} data-aos="fade-up" data-aos-delay={150 + idx * 100} className="flex items-center gap-5">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#9ed8e6] text-lg font-medium text-[#62c5db]">

@@ -12,7 +12,7 @@ const LINKEDIN_URLS: Record<string, string> = {
   "sharoz-ghauri": "https://www.linkedin.com/in/sharoz-ghauri-72262946/",
   "dan-schmitt": "https://www.linkedin.com/in/dan-schmitt-69ab29b",
   "sankar-dhara": "https://www.linkedin.com/in/sankardhara/",
-  "priyanka-sarma": "https://www.linkedin.com/in/priyanka-sarma-a40b8817/",
+  "priyanka-sarma": "https://www.linkedin.com/in/priyanka-sarma-a40b8817",
 };
 
 export default function TeamMembers({ members }: TeamMembersProps) {
