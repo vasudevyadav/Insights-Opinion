@@ -5,6 +5,7 @@ import Image from "next/image";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
 import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import { useRouter } from "next/navigation";
+import CountryCodeSelect from "@/app/components/shared/country-code-select";
 
 const fieldClass =
   "h-12 w-full rounded-md border border-transparent bg-[#151a45] px-5 text-sm text-white outline-none placeholder:text-white/90 focus:border-[#4bc4c7]";
@@ -14,6 +15,7 @@ const initialFormData = {
   email: "",
   country: "",
   phone: "",
+  countryCode: "+91",
   enquiryType: "",
 };
 
@@ -40,7 +42,8 @@ export default function TeamGrowthForm() {
         name: formData.name,
         email: formData.email,
         country: formData.country,
-        phone: formData.phone,
+        phone: `${formData.countryCode} ${formData.phone}`,
+        countryCode: formData.countryCode,
         enquiryType: formData.enquiryType,
       });
 
@@ -115,15 +118,10 @@ export default function TeamGrowthForm() {
             <option>United States</option>
             <option>United Kingdom</option>
           </select>
-          <input
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className={fieldClass}
-            type="tel"
-            required
-            placeholder="Mobile"
-          />
+          <div className="flex h-12 overflow-visible rounded-md bg-[#151a45] focus-within:ring-1 focus-within:ring-[#4bc4c7]">
+            <CountryCodeSelect value={formData.countryCode} onChange={(countryCode) => setFormData((current) => ({ ...current, countryCode }))} className="w-[92px] border-r border-white/20" buttonClassName="px-3 text-sm text-white" />
+            <input name="phone" value={formData.phone} onChange={handleChange} className="min-w-0 flex-1 bg-transparent px-4 text-sm text-white outline-none placeholder:text-white/90" type="tel" required placeholder="Mobile" />
+          </div>
           <select
             name="enquiryType"
             value={formData.enquiryType}

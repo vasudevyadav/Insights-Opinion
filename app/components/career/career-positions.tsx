@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { ChevronDown, ArrowUpRight, RefreshCw } from "lucide-react";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
 import CareerShape from "./career-shape";
+import CountryCodeSelect from "@/app/components/shared/country-code-select";
 
 const jobs = [
     { id: 1, title: "Senor Inventory Specialist", type: "Full Time", salary: "$100 - $500", location: "New York" },
@@ -26,7 +27,7 @@ export default function CareerPositions() {
     const formRef = useRef<HTMLDivElement>(null);
     const [resumeName, setResumeName] = useState("");
     const [formData, setFormData] = useState({
-        name: "", email: "", mobile: "", jobTitle: "", about: "", captchaInput: "",
+        name: "", email: "", mobile: "", countryCode: "+91", jobTitle: "", about: "", captchaInput: "",
     });
     const [status, setStatus] = useState("");
     const [loading, setLoading] = useState(false);
@@ -68,7 +69,8 @@ export default function CareerPositions() {
                 formName: "career_application",
                 name: formData.name,
                 email: formData.email,
-                phone: formData.mobile,
+                phone: `${formData.countryCode} ${formData.mobile}`,
+                countryCode: formData.countryCode,
                 enquiryType: formData.jobTitle,
                 message: resumeName
                     ? `${formData.about}\n\nResume attached: ${resumeName}`
@@ -76,7 +78,7 @@ export default function CareerPositions() {
             });
 
             setStatus("Application submitted successfully!");
-            setFormData({ name: "", email: "", mobile: "", jobTitle: "", about: "", captchaInput: "" });
+            setFormData({ name: "", email: "", mobile: "", countryCode: "+91", jobTitle: "", about: "", captchaInput: "" });
             setResumeName("");
             router.push("/thank-you");
         } catch (error) {
@@ -199,7 +201,10 @@ export default function CareerPositions() {
 
                             {/* Mobile + Job Title */}
                             <div className="grid grid-cols-1 gap-3 lg:gap-6 sm:grid-cols-2">
-                                <input name="mobile" value={formData.mobile} onChange={handleChange} required placeholder="Mobile" className={inputCls} />
+                                <div className="flex overflow-visible rounded-md bg-white">
+                                    <CountryCodeSelect value={formData.countryCode} onChange={(countryCode) => setFormData((current) => ({ ...current, countryCode }))} className="w-[82px] border-r border-[#d1d5db]" buttonClassName="px-2 text-xs text-[#253047]" />
+                                    <input name="mobile" value={formData.mobile} onChange={handleChange} required placeholder="Mobile" className="min-w-0 flex-1 rounded-r-md px-3 py-2 text-xs text-[#253047] outline-none" />
+                                </div>
                                 <div className="relative">
                                     <select
                                         name="jobTitle"

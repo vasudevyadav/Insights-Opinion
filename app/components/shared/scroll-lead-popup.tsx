@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
 import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
+import CountryCodeSelect from "@/app/components/shared/country-code-select";
 
 const SCROLL_THRESHOLD_PERCENT = 40;
 const SESSION_STORAGE_KEY = "io_scroll_popup_shown";
@@ -17,6 +18,7 @@ const initialFormData = {
     email: "",
     country: "",
     phone: "",
+    countryCode: "+91",
     enquiryType: "",
 };
 
@@ -81,7 +83,8 @@ export default function ScrollLeadPopup() {
                 name: formData.name,
                 email: formData.email,
                 country: formData.country,
-                phone: formData.phone,
+                phone: `${formData.countryCode} ${formData.phone}`,
+                countryCode: formData.countryCode,
                 enquiryType: formData.enquiryType,
             });
 
@@ -181,15 +184,10 @@ export default function ScrollLeadPopup() {
                             <option>United Kingdom</option>
                             <option>UAE</option>
                         </select>
-                        <input
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleChange}
-                            type="tel"
-                            required
-                            placeholder="Mobile"
-                            className={fieldClass}
-                        />
+                        <div className="flex h-11 overflow-visible rounded-md bg-[#f4f7fb] focus-within:ring-1 focus-within:ring-[#20b7a6]">
+                            <CountryCodeSelect value={formData.countryCode} onChange={(countryCode) => setFormData((current) => ({ ...current, countryCode }))} className="w-[82px] border-r border-slate-200" buttonClassName="px-2 text-sm text-[#18213f]" />
+                            <input name="phone" value={formData.phone} onChange={handleChange} type="tel" required placeholder="Mobile" className="min-w-0 flex-1 bg-transparent px-3 text-sm text-[#18213f] outline-none placeholder:text-[#8a93a6]" />
+                        </div>
                     </div>
                     <select
                         name="enquiryType"

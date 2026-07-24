@@ -9,6 +9,7 @@ import type { CaseStudy } from "@/app/lib/case-studies-api";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
 import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import BackgroundShape from "../../about-us/background-shape";
+import CountryCodeSelect from "@/app/components/shared/country-code-select";
 
 type CaseStudyDetailProps = {
   caseStudy: CaseStudy;
@@ -47,7 +48,6 @@ function SidebarCard({ item }: { item: CaseStudy }) {
 
 const CALLBACK_SELECT_OPTIONS: Record<string, string[]> = {
   Country: ["India", "USA", "UK", "UAE"],
-  Mobile: ["+91", "+1", "+44", "+971"],
   "Please Select": SERVICE_SELECT_OPTIONS,
 };
 
@@ -55,7 +55,7 @@ const initialCallbackFormData = {
   name: "",
   email: "",
   country: "",
-  countryCode: "",
+  countryCode: "+91",
   enquiryType: "",
 };
 
@@ -132,7 +132,6 @@ function CallbackForm() {
         />
         {[
           { label: "Country", name: "country" },
-          { label: "Mobile", name: "countryCode" },
           { label: "Please Select", name: "enquiryType" },
         ].map(({ label, name }) => (
           <label key={label} className="relative block">
@@ -151,6 +150,15 @@ function CallbackForm() {
             <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#142044]" />
           </label>
         ))}
+        <CountryCodeSelect
+          value={formData.countryCode}
+          onChange={(countryCode) =>
+            setFormData((current) => ({ ...current, countryCode }))
+          }
+          required
+          className={`${inputClass} p-0`}
+          buttonClassName="px-4 py-2.5 sm:py-3"
+        />
         <button
           type="submit"
           disabled={loading}
