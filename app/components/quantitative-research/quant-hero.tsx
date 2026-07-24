@@ -69,7 +69,9 @@ export default function QuantHero({
             </div>
 
             <div>
-              <button className="h-13 whitespace-nowrap px-6 text-center text-sm font-semibold transition-all md:text-base rounded-full bg-gradient-to-r from-[#37c9c7] to-[#4a8fe8] text-white shadow-[0_8px_24px_rgba(74,143,232,0.22)]">Quantitative Research</button>
+              <Link href="/contact" className="inline-block">
+                <button className="h-10 whitespace-nowrap px-6 text-center text-sm font-semibold transition-all md:text-base rounded-full bg-gradient-to-r from-[#37c9c7] to-[#4a8fe8] text-white shadow-[0_8px_24px_rgba(74,143,232,0.22)]"> Get In Touch </button>
+              </Link>
             </div>
 
           </div>

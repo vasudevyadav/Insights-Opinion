@@ -87,7 +87,7 @@ export default function QuantMethods({
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div key={activeCategory.key} className="accordion-content-enter">
           <div className="mb-12 text-center">
-            <h2 className="text-[32px] font-semibold leading-tight sm:text-[42px] lg:text-[50px]">
+            <h2 className="text-[32px] font-semibold leading-tight sm:text-[42px] lg:text-[43px]">
               <span className="bg-linear-to-r from-[#3c8df6] via-[#31b6df] to-[#1dc3b3] bg-clip-text text-transparent">
                 {titleLead}
               </span>

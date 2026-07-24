@@ -27,7 +27,7 @@ export default function QuantMethodCta({
         </p>
 
         <div>
-          <a href="/contact-us" className="py-3 w-fit whitespace-nowrap px-6 text-center text-base font-semibold transition-all md:text-base rounded-full bg-gradient-to-r from-[#37c9c7] to-[#4a8fe8] text-white shadow-[0_8px_24px_rgba(74,143,232,0.22)]"> Quantitative Research </a>
+          <a href="/contact-us" className="py-2.5 w-fit whitespace-nowrap px-6 text-center text-base font-semibold transition-all md:text-base rounded-full bg-gradient-to-r from-[#37c9c7] to-[#4a8fe8] text-white shadow-[0_8px_24px_rgba(74,143,232,0.22)]"> Get In Touch </a>
         </div>
 
       </div>
