@@ -21,7 +21,7 @@ export default function QuantHero({
   return (
     <section className="relative h-125 overflow-hidden bg-[linear-gradient(135deg,#151b3c_0%,#162e54_52%,#173c68_100%)] sm:h-145 lg:h-175 lg:bg-[#edf6ff] lg:bg-none">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_28%,rgba(23,60,104,0.7),transparent_38%),radial-gradient(circle_at_12%_85%,rgba(21,27,60,0.55),transparent_42%)] lg:hidden" />
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none absolute inset-0 hidden lg:block">
         <Image
           src={content.backgroundImage || "/quality/quant-banner.png"}
           alt=""
