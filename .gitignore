@@ -1,6 +1,9 @@
 # dependencies
 /node_modules
 
+# local environment secrets
+.env*.local
+
 # next.js
 /.next
 /out

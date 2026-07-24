@@ -20,18 +20,14 @@ export default function HealthHero({
   return (
     <section className="bg-[#edf6fe]">
       <div className="max-w-full">
-        <div className="relative overflow-hidden bg-[#f1f8ff] text-white">
+        <div className="relative overflow-hidden bg-[linear-gradient(135deg,#151b3c_0%,#162e54_52%,#173c68_100%)] text-white">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_28%,rgba(23,60,104,0.7),transparent_38%),radial-gradient(circle_at_12%_85%,rgba(21,27,60,0.55),transparent_42%)] lg:hidden" />
           {data.backgroundImage && (
             <div
-              className="absolute inset-0 bg-[position:62%_center] sm:bg-center lg:bg-bottom"
-              style={{
-                backgroundImage: `url('${data.backgroundImage}')`,
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-              }}
+              className="absolute inset-0 hidden bg-bottom bg-cover bg-no-repeat lg:block"
+              style={{ backgroundImage: `url('${data.backgroundImage}')` }}
             />
           )}
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,22,56,.88)_0%,rgba(7,29,65,.68)_48%,rgba(7,29,65,.08)_100%)] lg:hidden" />
 
           <div className="relative z-10 mx-auto flex min-h-[520px] max-w-7xl items-center px-5 py-16 sm:px-6 lg:min-h-[570px] lg:px-10 lg:py-0">
             <div className="grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-2">

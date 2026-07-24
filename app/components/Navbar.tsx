@@ -37,7 +37,7 @@ const mobileDropdownItems: Record<
   about: [
     { name: "Our Story", href: "/about-us" },
     { name: "Our Team", href: "/our-teams" },
-    { name: "Testimonials", href: "/testimonials" },
+    // { name: "Testimonials", href: "/testimonials" },
   ],
   resources: [
     { name: "Client Success Stories", href: "/client-success-story" },
@@ -235,7 +235,7 @@ export default function Navbar({
             </nav>
 
             <div className="hidden items-center gap-4 lg:flex">
-              <button
+              {/* <button
                 type="button"
                 aria-label="Search"
                 className="text-white transition hover:text-[#14d8d0]"
@@ -249,7 +249,7 @@ export default function Navbar({
                 className="text-white transition hover:text-[#14d8d0]"
               >
                 <User className="h-5 w-5" />
-              </button>
+              </button> */}
 
               <Link
                 href="/contact-us"

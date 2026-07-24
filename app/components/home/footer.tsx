@@ -31,7 +31,10 @@ const quickLinks = [
     { label: "Quality Standard", href: "/quality-standard" },
     { label: "Industries", href: "/industries" },
     { label: "Blogs", href: "/blogs" },
-    { label: "Local Page", href: "/local" },
+    // { label: "Local Page", href: "/local" },
+    { label: "  Client Success Stories ", href: "/client-success-story" },
+
+
 ];
 
 export default function Footer() {
@@ -182,7 +185,7 @@ export default function Footer() {
             <div className="mt-10 bg-[#60d4d0]">
                 <div className="mx-auto flex flex-col gap-3 px-5 py-4 text-[13px] font-medium text-white/90 sm:px-8 lg:text-base lg:flex-row lg:items-center lg:justify-between lg:px-14">
                     <p className="text-left lg:w-6/12 lg:text-base text-[13px] ">
-                        Copyright © Insight Opinion. All rights received 2026
+                        Copyright © Inshight Opinion. All rights received 2026
                     </p>
 
                     <div className="flex lg:flex-row lg:w-6/12 flex-wrap items-center gap-2 lg:text-left text-center justify-center lg:justify-end">

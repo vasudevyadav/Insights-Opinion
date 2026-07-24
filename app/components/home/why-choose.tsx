@@ -118,8 +118,8 @@ function Accordion({
 
                                 <div
                                     className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${isOpen
-                                            ? "grid-rows-[1fr] opacity-100"
-                                            : "grid-rows-[0fr] opacity-0"
+                                        ? "grid-rows-[1fr] opacity-100"
+                                        : "grid-rows-[0fr] opacity-0"
                                         }`}
                                 >
                                     <div className="overflow-hidden">
@@ -134,8 +134,8 @@ function Accordion({
                                 <ChevronDown
                                     size={18}
                                     className={`transition-transform duration-500 motion-reduce:transition-none ${isOpen
-                                            ? "rotate-180 text-white"
-                                            : "text-[#4b5563]"
+                                        ? "rotate-180 text-white"
+                                        : "text-[#4b5563]"
                                         }`}
                                 />
                             </span>
@@ -185,8 +185,8 @@ export default function WhyChoose() {
                 <div className="h-full w-full" />
             </div>
 
-            <div className="relative z-10 mx-auto max-w-6xl px-4 py-2 lg:px-0 lg:py-16">
-                <div className="space-y-14 lg:space-y-20">
+            <div className="relative z-10 mx-auto max-w-6xl px-4 py-10 lg:px-0 lg:py-16 lg:pt-16 pt-8">
+                <div className="space-y-8 lg:space-y-20">
                     {sectionsData.map((section, sectionIndex) => {
                         const isEven = sectionIndex % 2 === 0;
                         const activeIndex = openIndexes[sectionIndex];

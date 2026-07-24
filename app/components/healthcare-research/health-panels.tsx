@@ -57,13 +57,13 @@ export default function HealthPanel({ data }: HealthPanelProps) {
               <div className="relative z-20 flex min-h-[550px] items-center px-5 py-8 sm:px-8 lg:min-h-[570px] lg:px-14">
                 <div className="ml-auto -mt-20 max-w-[360px] text-white lg:mr-14 lg:max-w-[600px]">
                   {data.topLabel && (
-                    <p className="text-xl font-medium leading-none text-[#d8efff] lg:text-2xl">
+                    <p className=" font-medium leading-none text-[#d8efff] text-2xl">
                       {data.topLabel}
                     </p>
                   )}
 
                   {(data.titleLine1 || data.titleLine2) && (
-                    <h3 className="mt-2 text-xl font-semibold leading-[1.08] sm:text-[45px]">
+                    <h3 className="mt-2 text-2xl font-semibold lg:leading-[1.08] sm:text-[45px]">
                       {data.titleLine1 && (
                         <span className="block text-[#58dff0]">
                           {data.titleLine1}
@@ -85,9 +85,19 @@ export default function HealthPanel({ data }: HealthPanelProps) {
                   )}
 
                   {stats.length > 0 && (
-                    <div className="mt-7 flex w-10/12 items-center justify-between gap-6">
+                    <div className="relative mt-7 grid lg:w-10/12 w-full grid-cols-2 items-center gap-6">
+                      {stats.length === 2 && (
+                        <div className="absolute left-1/2 top-1/2 h-12 w-px -translate-x-1/2 -translate-y-1/2 bg-[#4fe3f1]" />
+                      )}
                       {stats.map((stat, index) => (
-                        <div key={index} className="flex items-center gap-6">
+                        <div
+                          key={index}
+                          className={
+                            index === 0
+                              ? "justify-self-start pr-6"
+                              : "justify-self-end pl-6"
+                          }
+                        >
                           <div>
                             <p
                               className="text-4xl font-normal leading-none"
@@ -100,18 +110,13 @@ export default function HealthPanel({ data }: HealthPanelProps) {
                             </p>
                           </div>
 
-                          {index !== stats.length - 1 && (
-                            <div>
-                              <p className="h-12 w-[1px] bg-[#4fe3f1]" />
-                            </div>
-                          )}
                         </div>
                       ))}
                     </div>
                   )}
 
                   {(data.bottomHighlight || data.bottomText) && (
-                    <p className="mt-5 text-base font-medium leading-5">
+                    <p className="lg:mt-5 mt-8 text-base font-medium leading-5">
                       {data.bottomHighlight && (
                         <span className="text-[#05cdb8]">
                           {data.bottomHighlight}
@@ -129,7 +134,7 @@ export default function HealthPanel({ data }: HealthPanelProps) {
               </div>
 
               {featureCards.length > 0 && (
-                <div className="absolute inset-x-0 bottom-24 z-30 w-full">
+                <div className="absolute inset-x-0 lg:bottom-24 bottom-16 z-30 w-full ">
                   <Swiper
                     modules={[Autoplay]}
                     spaceBetween={12}
