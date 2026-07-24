@@ -5,6 +5,7 @@ import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
 import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
+import CountryCodeSelect from "@/app/components/shared/country-code-select";
 import { useRouter } from "next/navigation";
 import BackgroundShape from "../about-us/background-shape";
 
@@ -12,7 +13,8 @@ const initialFormData = {
     name: "",
     email: "",
     country: "",
-    countryCode: "",
+    countryCode: "+91",
+    phone: "",
     enquiryType: "",
 };
 
@@ -40,6 +42,7 @@ export default function CaseStudiesForm() {
                 email: formData.email,
                 country: formData.country,
                 countryCode: formData.countryCode,
+                phone: `${formData.countryCode} ${formData.phone}`,
                 enquiryType: formData.enquiryType,
             });
 
@@ -128,21 +131,15 @@ export default function CaseStudiesForm() {
                                 <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white" />
                             </div>
 
-                            <div className="relative">
-                                <select
-                                    name="countryCode"
+                            <div className="relative flex h-[44px] rounded-[6px] border border-[#202c63] bg-[#18235a]">
+                                <CountryCodeSelect
                                     value={formData.countryCode}
-                                    onChange={handleChange}
+                                    onChange={(countryCode) => setFormData((current) => ({ ...current, countryCode }))}
                                     required
-                                    className="h-[44px] w-full appearance-none rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 pr-10 text-sm text-white/75 outline-none"
-                                >
-                                    <option value="" disabled>Mobile</option>
-                                    <option>+91</option>
-                                    <option>+1</option>
-                                    <option>+44</option>
-                                    <option>+971</option>
-                                </select>
-                                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white" />
+                                    className="w-[88px] shrink-0 border-r border-white/20"
+                                    buttonClassName="px-3 text-sm text-white/75"
+                                />
+                                <input name="phone" value={formData.phone} onChange={handleChange} type="tel" inputMode="tel" required placeholder="Mobile number" className="min-w-0 flex-1 bg-transparent px-3 text-sm text-white outline-none placeholder:text-white/75" />
                             </div>
 
                             <div className="relative sm:col-span-1">

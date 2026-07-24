@@ -6,6 +6,7 @@ import { ChevronDown } from "lucide-react";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
 import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import { useRouter } from "next/navigation";
+import CountryCodeSelect from "@/app/components/shared/country-code-select";
 
 const selectClass =
     "h-12 w-full appearance-none rounded-[6px] bg-[#101538] px-6 pr-10 text-left text-sm text-white outline-none";
@@ -15,6 +16,7 @@ const initialFormData = {
     email: "",
     country: "",
     phone: "",
+    countryCode: "+91",
     enquiryType: "",
 };
 
@@ -41,7 +43,8 @@ export default function QualityGrowForm() {
                 name: formData.name,
                 email: formData.email,
                 country: formData.country,
-                phone: formData.phone,
+                phone: `${formData.countryCode} ${formData.phone}`,
+                countryCode: formData.countryCode,
                 enquiryType: formData.enquiryType,
             });
 
@@ -118,14 +121,20 @@ export default function QualityGrowForm() {
                         <ChevronDown size={17} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white" />
                     </div>
 
-                    <div className="relative">
+                    <div className="relative flex h-12 overflow-visible rounded-[6px] bg-[#101538]">
+                        <CountryCodeSelect
+                            value={formData.countryCode}
+                            onChange={(countryCode) => setFormData((current) => ({ ...current, countryCode }))}
+                            className="w-[92px] border-r border-white/20"
+                            buttonClassName="px-3 text-sm text-white"
+                        />
                         <input
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
                             type="tel"
                             required
-                            className="h-12 w-full rounded-[6px] bg-[#101538] px-6 text-sm text-white outline-none placeholder:text-white"
+                            className="h-12 min-w-0 flex-1 bg-transparent px-4 text-sm text-white outline-none placeholder:text-white"
                             placeholder="Mobile"
                         />
                     </div>

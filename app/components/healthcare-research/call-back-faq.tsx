@@ -7,6 +7,7 @@ import { submitLeadForm } from "@/app/lib/lead-form-api";
 import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import { useRouter } from "next/navigation";
 import type { ResearchFaqSection } from "@/lib/getResearchPage";
+import CountryCodeSelect from "@/app/components/shared/country-code-select";
 
 const DISPLAYED_CAPTCHA = "990940";
 
@@ -14,6 +15,7 @@ const initialFormData = {
     name: "",
     email: "",
     phone: "",
+    countryCode: "+91",
     enquiryType: "",
     message: "",
     captchaInput: "",
@@ -52,7 +54,8 @@ export default function CallbackFaqHealth({
                 formName: "health_callback",
                 name: formData.name,
                 email: formData.email,
-                phone: formData.phone,
+                phone: `${formData.countryCode} ${formData.phone}`,
+                countryCode: formData.countryCode,
                 enquiryType: formData.enquiryType,
                 message: formData.message,
             });
@@ -120,15 +123,10 @@ export default function CallbackFaqHealth({
                             </div>
 
                             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                <input
-                                    name="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    type="tel"
-                                    required
-                                    placeholder="Mobile"
-                                    className="h-[46px] rounded-[4px] border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
-                                />
+                                <div className="flex h-[46px] overflow-visible rounded-[4px] border border-[#d7d7d7] bg-white focus-within:border-[#20b7a6]">
+                                    <CountryCodeSelect value={formData.countryCode} onChange={(countryCode) => setFormData((current) => ({ ...current, countryCode }))} className="w-[88px] border-r border-[#d7d7d7]" buttonClassName="px-2 text-sm text-[#343954]" />
+                                    <input name="phone" value={formData.phone} onChange={handleChange} type="tel" required placeholder="Mobile" className="min-w-0 flex-1 px-3 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a]" />
+                                </div>
 
                                 <select
                                     name="enquiryType"

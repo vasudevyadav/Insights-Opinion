@@ -89,10 +89,10 @@ export default function QuantWhat({
             </p>
           </div>
 
-          {/* Right: quant-about.png */}
+          {/* Right: API-provided section image */}
           <div className="relative flex w-full flex-1 items-center justify-center">
             <div className="relative w-full">
-              <Image src="/quality/quant-about.png" alt={content.imageAlt} width={1500} height={1000}
+              <Image src={content.image || "/quality/quant-about.png"} alt={content.imageAlt || `${content.headingLine1} ${content.headingLine2}`} width={1500} height={1000}
                 className="h-auto w-full object-contain" priority />
             </div>
           </div>

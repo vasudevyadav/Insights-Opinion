@@ -9,6 +9,7 @@ import type { CaseStudy } from "@/app/lib/case-studies-api";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
 import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import BackgroundShape from "../../about-us/background-shape";
+import CountryCodeSelect from "@/app/components/shared/country-code-select";
 
 type CaseStudyDetailProps = {
   caseStudy: CaseStudy;
@@ -46,16 +47,14 @@ function SidebarCard({ item }: { item: CaseStudy }) {
 }
 
 const CALLBACK_SELECT_OPTIONS: Record<string, string[]> = {
-  Country: ["India", "USA", "UK", "UAE"],
-  Mobile: ["+91", "+1", "+44", "+971"],
   "Please Select": SERVICE_SELECT_OPTIONS,
 };
 
 const initialCallbackFormData = {
   name: "",
   email: "",
-  country: "",
-  countryCode: "",
+  countryCode: "+91",
+  phone: "",
   enquiryType: "",
 };
 
@@ -84,8 +83,8 @@ function CallbackForm() {
         formName: "case_study_callback",
         name: formData.name,
         email: formData.email,
-        country: formData.country,
         countryCode: formData.countryCode,
+        phone: `${formData.countryCode} ${formData.phone}`,
         enquiryType: formData.enquiryType,
       });
 
@@ -130,11 +129,8 @@ function CallbackForm() {
           type="email"
           required
         />
-        {[
-          { label: "Country", name: "country" },
-          { label: "Mobile", name: "countryCode" },
-          { label: "Please Select", name: "enquiryType" },
-        ].map(({ label, name }) => (
+        {[{ label: "Please Select", name: "enquiryType" }].map(
+          ({ label, name }) => (
           <label key={label} className="relative block">
             <select
               name={name}
@@ -150,7 +146,29 @@ function CallbackForm() {
             </select>
             <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#142044]" />
           </label>
-        ))}
+          )
+        )}
+        <div className={`${inputClass} flex p-0`}>
+          <CountryCodeSelect
+            value={formData.countryCode}
+            onChange={(countryCode) =>
+              setFormData((current) => ({ ...current, countryCode }))
+            }
+            required
+            className="w-[92px] shrink-0 border-r border-[#1e315e]"
+            buttonClassName="px-3 py-2.5 sm:py-3"
+          />
+          <input
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            type="tel"
+            inputMode="tel"
+            required
+            placeholder="Mobile number"
+            className="min-w-0 flex-1 bg-transparent px-4 py-2.5 text-[13px] font-medium text-[#142044] outline-none placeholder:text-[#142044] sm:py-3 sm:text-sm"
+          />
+        </div>
         <button
           type="submit"
           disabled={loading}

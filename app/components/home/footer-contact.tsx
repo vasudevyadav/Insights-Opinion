@@ -6,7 +6,7 @@ import {
     Youtube,
 } from "lucide-react";
 
-const socialLinks = [
+export const socialLinks = [
     {
         label: "Facebook",
         href: "https://www.facebook.com/MRInsightsopinion/",
