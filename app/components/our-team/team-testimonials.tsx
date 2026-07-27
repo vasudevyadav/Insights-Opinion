@@ -14,10 +14,10 @@ export default function TeamTestimonials() {
         <div className="mb-6 flex items-end justify-between gap-5 sm:mb-7">
           <div>
             <h2 className="site-subsection-title font-light text-[#222b49]">
-              What Healthcare Clients Say
+              What Our
             </h2>
             <h3 className="site-section-title quality-gradient-text mt-1 font-semibold">
-              About Us
+              Clients Say
             </h3>
             <p className="mt-2 text-xs leading-5 text-[#2f3547] sm:text-sm">
               Feedback from clients who partner with Insights Opinion.

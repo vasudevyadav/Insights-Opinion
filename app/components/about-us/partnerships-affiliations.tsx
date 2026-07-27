@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import BackgroundShape from "./background-shape";
-import Link from "next/link";
+import LeadModalTrigger from "@/app/components/shared/lead-modal-trigger";
 
 const partnershipPoints = [
     {
@@ -90,9 +90,9 @@ export default function PartnershipsAffiliations() {
 
                     </p>
 
-                    <Link href="/contact-us" className="mt-6 inline-flex rounded-lg bg-gradient-to-r from-[#33c1b8] to-[#5db8ff] px-6 py-2 text-base font-semibold uppercase tracking-[0.04em] text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md lg:px-7 lg:py-2.5">
+                    <LeadModalTrigger className="mt-6 inline-flex rounded-lg bg-gradient-to-r from-[#33c1b8] to-[#5db8ff] px-6 py-2 text-base font-semibold uppercase tracking-[0.04em] text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md lg:px-7 lg:py-2.5">
                         Request Callback
-                    </Link>
+                    </LeadModalTrigger>
                 </div>
             </div>
         </section>

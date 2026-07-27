@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LeadModalTrigger from "@/app/components/shared/lead-modal-trigger";
 
 export default function HomeHero() {
     return (
@@ -36,10 +37,10 @@ export default function HomeHero() {
                         </p>
                         <div className="mt-4 flex flex-wrap items-center gap-4">
 
-                            <Link href="/contact-us" className="rounded-full bg-[#17ae8f] px-6 py-2 text-sm font-medium text-white transition hover:scale-[1.02] sm:px-8 sm:py-[11px] sm:text-xl">
+                            <LeadModalTrigger className="rounded-full bg-[#17ae8f] px-6 py-2 text-sm font-medium text-white transition hover:scale-[1.02] sm:px-8 sm:py-[11px] sm:text-xl">
 
                                 Get Started
-                            </Link>
+                            </LeadModalTrigger>
                             <Link href="/about-us" className="rounded-full border border-white/40 px-6 py-2 text-sm font-medium text-white transition hover:bg-white/10 sm:px-8 sm:py-[11px] sm:text-xl">
 
                                 Learn More
