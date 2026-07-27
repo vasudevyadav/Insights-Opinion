@@ -26,8 +26,8 @@ export default function QuantDetailsHero({ data }: { data: HeroData }) {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1450px] px-5 pt-16 lg:px-1 lg:pt-0">
-        <div className="grid min-h-[420px] grid-cols-1 items-center gap-6 lg:grid-cols-2">
+      <div className="relative z-10 mx-auto max-w-[1350px] px-5 pt-16 lg:px-1 lg:pt-0">
+        <div className="grid min-h-[420px] grid-cols-1 items-center gap-6 lg:grid-cols-2 lg:pl-12">
           <div className="py-8 lg:py-16 lg:pt-32">
             <h1 className="text-[32px] font-semibold leading-[1.08] lg:text-[50px] bg-linear-to-r from-[#1dc3b3] via-[#1dc3b3] to-[#3c8df6] bg-clip-text text-transparent">
               {titleLines.map((line, i) => (

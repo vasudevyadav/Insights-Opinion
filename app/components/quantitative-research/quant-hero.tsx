@@ -36,7 +36,7 @@ export default function QuantHero({
 
       <div className="relative z-10 mx-auto max-w-[1450px] px-5 pt-12 lg:px-1 lg:pt-0">
 
-        <div className="grid min-h-[420px] grid-cols-1 items-center gap-6 lg:grid-cols-2">
+        <div className="grid min-h-[420px] grid-cols-1 items-center gap-6 lg:grid-cols-2 lg:pl-12">
 
           {/* LEFT TEXT */}
           <div className="py-8 lg:py-16 lg:pt-20">
