@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import LeadModalTrigger from "@/app/components/shared/lead-modal-trigger";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 type ContinentDot = { lat: number; lng: number };
@@ -422,7 +423,7 @@ export default function GlobalCoverage() {
                         consistent project management.
                     </p>
 
-                    <button className="lg:text-lg text-sm"
+                    <LeadModalTrigger className="lg:text-lg text-sm"
                         style={{
                             borderRadius: "9999px",
                             background: "#17ae8f",
@@ -436,7 +437,7 @@ export default function GlobalCoverage() {
                         }}
                     >
                         Get Started
-                    </button>
+                    </LeadModalTrigger>
                 </div>
             </div>
 

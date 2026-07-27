@@ -39,7 +39,7 @@ export default function QualityNewsTestimonials() {
                     <div className="relative mb-6 flex items-end justify-between gap-4">
                         <div className="max-w-[600px] mt-2">
                             <h2 className="mb-2 text-2xl font-light leading-tight text-[#2f3643] sm:text-4xl">
-                                What Healthcare Clients Say
+                                What Our
                             </h2>
                             <h3
                                 className="mb-2 text-[28px] font-medium leading-tight text-transparent sm:text-[41px]"
@@ -50,7 +50,7 @@ export default function QualityNewsTestimonials() {
                                     backgroundClip: "text",
                                 }}
                             >
-                                About Us
+                                Clients Say
                             </h3>
                             <p className="my-2 text-xs leading-6 text-black sm:text-base">
                                 Feedback from clients who partner with Insights Opinion for practical insights and dependable market research services.

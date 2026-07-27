@@ -6,6 +6,7 @@ import { X } from "lucide-react";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
 import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import CountryCodeSelect from "@/app/components/shared/country-code-select";
+import { OPEN_LEAD_MODAL_EVENT } from "@/app/components/shared/lead-modal-trigger";
 
 const SCROLL_THRESHOLD_PERCENT = 40;
 const SESSION_STORAGE_KEY = "io_scroll_popup_shown";
@@ -53,6 +54,16 @@ export default function ScrollLeadPopup() {
 
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    useEffect(() => {
+        const handleOpenRequest = () => {
+            setStatus("");
+            setOpen(true);
+        };
+
+        window.addEventListener(OPEN_LEAD_MODAL_EVENT, handleOpenRequest);
+        return () => window.removeEventListener(OPEN_LEAD_MODAL_EVENT, handleOpenRequest);
     }, []);
 
     useEffect(() => {

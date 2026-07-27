@@ -14,8 +14,8 @@ type TestimonialHealthProps = {
 };
 
 export default function TestimonialHealth({
-    heading = "What Healthcare Clients Say",
-    accentHeading = "About Us",
+    heading = "What Our",
+    accentHeading = "Clients Say",
 }: TestimonialHealthProps) {
     return (
         <section className="relative overflow-hidden bg-[#eef5fb] py-4">
