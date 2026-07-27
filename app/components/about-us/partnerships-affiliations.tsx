@@ -67,7 +67,7 @@ export default function PartnershipsAffiliations() {
                     <div className="mx-auto w-full max-w-[640px]">
                         <div className="relative aspect-[1.45/0.85] overflow-hidden rounded-[26px]">
                             <Image
-                                src="/about-us/our-social.png"
+                                src="/about-us/partnerships-affiliations.webp"
                                 alt="Partnerships and Affiliations"
                                 fill
                                 className="object-cover"
