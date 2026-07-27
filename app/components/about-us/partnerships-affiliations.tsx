@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import BackgroundShape from "./background-shape";
+import Link from "next/link";
 
 const partnershipPoints = [
     {
@@ -37,7 +38,7 @@ export default function PartnershipsAffiliations() {
                 </div>
 
                 {/* Middle Content */}
-                <div className="mt-8 grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
+                <div className="mt-8 grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12" data-aos="fade-up" data-aos-duration="900">
                     {/* Left Text */}
                     <div className="max-w-[470px]">
                         {partnershipPoints.map((item, index) => (
@@ -75,7 +76,7 @@ export default function PartnershipsAffiliations() {
                     </div>
                 </div>
 
-                <div className="mx-auto mt-12 lg:text-center">
+                <div className="mx-auto mt-12 lg:text-center" data-aos="fade-up" data-aos-duration="900">
                     <h3
                         className="text-[22px] font-semibold leading-tight 
             bg-gradient-to-r from-[#1bb0a4] to-[#74b9ff] bg-clip-text text-transparent 
@@ -89,9 +90,9 @@ export default function PartnershipsAffiliations() {
 
                     </p>
 
-                    <button className="mt-6 rounded-lg bg-gradient-to-r from-[#33c1b8] to-[#5db8ff] px-6 py-2 text-base font-semibold uppercase tracking-[0.04em] text-white shadow-sm lg:px-7 lg:py-2.5">
+                    <Link href="/contact-us" className="mt-6 inline-flex rounded-lg bg-gradient-to-r from-[#33c1b8] to-[#5db8ff] px-6 py-2 text-base font-semibold uppercase tracking-[0.04em] text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md lg:px-7 lg:py-2.5">
                         Request Callback
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>

@@ -96,7 +96,7 @@ function ServiceCard({ service }: { service: Service }) {
         )}
 
         {service.points?.length > 0 && (
-          <ul className="mt-3 space-y-1 text-sm text-[#2f3850] transition-colors duration-500 ease-out group-hover:text-white/95 lg:text-sm line-clamp-3 lg:line-clamp-16">
+          <ul className="mt-3 space-y-1 text-sm text-[#2f3850] transition-colors duration-500 ease-out group-hover:text-white/95 lg:text-sm line-clamp-3 lg:line-clamp-4">
             {service.points.map((point, idx) => (
               <li key={idx}>{point}</li>
             ))}
