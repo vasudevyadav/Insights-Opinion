@@ -33,7 +33,7 @@ export default function WhoWeAre() {
                     <div className="flex justify-center lg:justify-start">
                         <div className="aspect-[16/10] w-full max-w-[575px] overflow-hidden rounded-[20px] sm:aspect-auto sm:rounded-[24px]">
                             <Image
-                                src="/about-us/evolution-img.webp"
+                                src="/about-us/revolution.webp"
                                 alt="Who We Are"
                                 width={620}
                                 height={360}
