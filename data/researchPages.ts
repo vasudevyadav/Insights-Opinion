@@ -103,8 +103,8 @@ export const researchPages = {
           valueColor: "#039ba3",
         },
       ],
-      bottomHighlight: "Healthcare specialists",
-      bottomText: "across major therapeutic areas",
+      bottomHighlight: "Diverse audiences",
+      bottomText: "across urban, suburban, and rural markets",
       featureCards: [
         {
           title: "Physicians",

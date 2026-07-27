@@ -8,7 +8,15 @@ import { sliderTestimonials as testimonials } from "@/data/testimonials";
 import "swiper/css";
 import "swiper/css/navigation";
 
-export default function TestimonialHealth() {
+type TestimonialHealthProps = {
+    heading?: string;
+    accentHeading?: string;
+};
+
+export default function TestimonialHealth({
+    heading = "What Healthcare Clients Say",
+    accentHeading = "About Us",
+}: TestimonialHealthProps) {
     return (
         <section className="relative overflow-hidden bg-[#eef5fb] py-4">
             <div className="relative z-10 mx-auto">
@@ -16,7 +24,7 @@ export default function TestimonialHealth() {
                     <div className="relative mb-6 flex items-end justify-between gap-4">
                         <div className="max-w-[600px] mt-2">
                             <h2 className="mb-2 text-2xl font-light leading-tight text-[#2f3643] sm:text-4xl">
-                                What Healthcare Clients Say
+                                {heading}
                             </h2>
                             <h3
                                 className="mb-2 text-[28px] font-medium leading-tight text-transparent sm:text-[41px]"
@@ -27,7 +35,7 @@ export default function TestimonialHealth() {
                                     backgroundClip: "text",
                                 }}
                             >
-                                About Us
+                                {accentHeading}
                             </h3>
                             <p className="my-2 text-xs leading-6 text-black sm:text-base">
                                 Feedback from clients who partner with Insights Opinion for practical insights and dependable market research services.

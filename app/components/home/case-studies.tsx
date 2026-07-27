@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import GlobalCoverage from "./  GlobalCoverage";
 
 type CaseStudy = {
@@ -72,7 +73,9 @@ function CaseCard({
     delay = 0,
 }: CaseCardProps) {
     return (
-        <div
+        <Link
+            href="/case-studies"
+            aria-label={`View ${title} case study`}
             data-aos={aos}
             data-aos-delay={delay}
             data-aos-duration="950"
@@ -104,12 +107,12 @@ function CaseCard({
                 </p>
 
                 <div className="mt-2 flex justify-end">
-                    <button className="text-white transition-colors duration-300 group-hover:text-cyan-300">
+                    <span className="text-white transition-colors duration-300 group-hover:text-cyan-300">
                         <ArrowRight size={30} />
-                    </button>
+                    </span>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }
 

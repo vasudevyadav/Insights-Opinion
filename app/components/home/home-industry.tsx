@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -91,7 +92,8 @@ export default function HomeIndustry() {
 
                                     </p>
 
-                                    <button
+                                    <Link
+                                        href="/about-us"
                                         className="mt-2 inline-flex items-center gap-2 lg:text-lg text-base font-normal text-white/90 transition hover:text-[#28c7d8]"
                                         data-aos="fade-up"
                                         data-aos-delay="400"
@@ -100,7 +102,7 @@ export default function HomeIndustry() {
                                         <span className="text-xl" aria-hidden="true">
                                             →
                                         </span>
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

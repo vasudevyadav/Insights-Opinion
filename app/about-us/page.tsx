@@ -8,6 +8,7 @@ import OurCoreValue from "../components/about-us/our-core-value";
 import Award from "../components/about-us/award";
 import OurSocial from "../components/about-us/our-social";
 import PartnershipsAffiliations from "../components/about-us/partnerships-affiliations";
+import TestimonialHealth from "../components/healthcare-research/testimonial-health";
 
 
 export const metadata: Metadata = getStaticMetadata("about-us");
@@ -23,6 +24,7 @@ export default function AboutUs() {
       <Award />
       <OurSocial />
       <PartnershipsAffiliations />
+      <TestimonialHealth heading="What Our" accentHeading="Clients Say" />
     </section>
   );
 }
