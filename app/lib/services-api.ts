@@ -25,6 +25,7 @@ type ApiServiceChild = ServiceChild & {
   content?: MethodData;
   seo?: ApiSeo;
   apiHref?: string;
+  bannerImage?: string;
 };
 
 type ApiMainService = {

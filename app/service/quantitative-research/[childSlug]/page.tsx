@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         {
           title: `${result.child.title} | Insights Opinion`,
           description: result.child.content.hero?.description,
-          image: result.child.image,
+          image: result.child.bannerImage || result.child.image,
         },
         path
       )
@@ -55,7 +55,7 @@ export default async function OnlineSurveyPage({ params }: PageProps) {
     <ServiceChildPage
       slug={result.child.slug}
       data={result.child.content}
-      heroImage={result.child.image}
+      heroImage={result.child.bannerImage || result.child.image}
       parentService={result.service}
     />
   );
