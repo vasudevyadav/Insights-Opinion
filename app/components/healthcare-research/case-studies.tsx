@@ -48,15 +48,14 @@ function CaseCard({
       data-aos-delay={delay}
       data-aos-duration="950"
       data-aos-anchor-placement="top-bottom"
-      className={`group relative h-[330px] overflow-hidden rounded-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/20 hover:shadow-[0_12px_40px_rgba(0,200,255,0.08)] sm:h-[380px] md:h-[420px] ${
-        large ? "lg:h-[430px]" : "lg:h-[495px]"
-      }`}
+      className={`group relative h-[330px] overflow-hidden rounded-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/20 hover:shadow-[0_12px_40px_rgba(0,200,255,0.08)] sm:h-[380px] md:h-[420px] ${large ? "lg:h-[390px]" : "lg:h-[390px]"
+        }`}
     >
       {image && (
         <img
           src={image}
           alt={title || ""}
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          className="absolute inset-0 h-full w-full object-cover  object-top transition-transform duration-700 group-hover:scale-105"
         />
       )}
 
@@ -106,7 +105,7 @@ export default function CaseStudies({ data }: CaseStudiesProps) {
 
   return (
     <div>
-      <section className="relative overflow-hidden bg-[#edf6ff] py-8 text-white lg:py-16">
+      <section className="relative overflow-hidden bg-[#edf6ff] py-8 text-white lg:py-12">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-cyan-500/[0.08] blur-[130px]" />
           <div className="absolute -right-40 bottom-0 h-[500px] w-[500px] rounded-full bg-blue-600/[0.08] blur-[130px]" />

@@ -91,10 +91,10 @@ export default function BlogDetail({ blog, relatedBlogs }: BlogDetailProps) {
         <BackgroundShape side="left" variant={1} className="-left-24 top-[32%] w-[340px] opacity-40 sm:w-[470px]" />
         <BackgroundShape side="right" variant={7} className="-right-24 bottom-[4%] w-[360px] opacity-40 sm:w-[480px]" />
 
-        <div className="relative z-10 mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="rounded-[18px] border border-[#9fb1c6] bg-white/25 px-4 py-5 lg:px-16 lg:py-10">
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
-              <div className="relative aspect-[16/5] w-full flex-shrink-0 overflow-hidden rounded-[10px] bg-[#eef5fb] sm:w-[320px]">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-[18px] border border-[#9fb1c6] bg-white/25 ">
+            <div className="flex flex-col gap-5 sm:items-center">
+              <div className="relative lg:h-[376px] h-[113px] w-full flex-shrink-0 overflow-hidden rounded-[10px] bg-[#eef5fb]">
                 <Image
                   src={blog.image}
                   alt={blog.title}
@@ -104,7 +104,7 @@ export default function BlogDetail({ blog, relatedBlogs }: BlogDetailProps) {
                 />
               </div>
 
-              <div className="flex flex-1 flex-col gap-4">
+              <div className="flex flex-1 flex-col gap-4 px-4 pb-5 lg:px-2 lg:pb-10">
                 <h2 className="text-[19px] font-semibold leading-[1.3] text-[#111] sm:text-[23px] lg:text-[27px]">
                   {blog.title}
                 </h2>
@@ -246,9 +246,8 @@ export default function BlogDetail({ blog, relatedBlogs }: BlogDetailProps) {
                   <div
                     className="flex transition-transform duration-300 ease-in-out"
                     style={{
-                      transform: `translateX(-${
-                        carouselStart * (100 / itemsPerView)
-                      }%)`,
+                      transform: `translateX(-${carouselStart * (100 / itemsPerView)
+                        }%)`,
                     }}
                   >
                     {relatedBlogs.map((related) => (
