@@ -26,23 +26,23 @@ const challengeCards: ChallengeCard[] = [
         title: "Market Expansion Comes with Uncertainty",
         description:
             "Limited market intelligence makes it difficult to assess demand, risk, and opportunity in new regions.",
-        image: "/challenges-1.png",
-        hoverImage: "/2_Need-More-Reliable-Market-Data-.jpg",
+        image: "/Market-Expansion-Comes.png",
+        hoverImage: "/Market-Expansion-Comes.png",
         alt: "Market expansion challenge",
     },
     {
         title: "Data Is Fragmented and Unreliable",
         description:
             "Siloed data sources and inconsistent quality result in unclear insights and poor decision-making.",
-        image: "/challenges-2.png",
-        hoverImage: "/Struggling-to-Understan.jpg",
+        image: "/Data-Is-Fragmented.png",
+        hoverImage: "/Data-Is-Fragmented.png",
         alt: "Data challenge",
     },
     {
         title: "Consumer Behavior Varies Across Markets",
         description:
             "Regional, cultural, and economic differences directly impact customer preferences and outcomes.",
-        image: "/challenges-2.png",
+        image: "/Consumer-Behavior.png",
         hoverImage: "/managing-Research.jpg",
         alt: "Consumer behavior challenge",
     },
@@ -50,7 +50,7 @@ const challengeCards: ChallengeCard[] = [
         title: "Lack of Trusted Local Research Partners",
         description:
             "Without reliable in-market expertise, global research becomes slow, complex, and inefficient.",
-        image: "/Centralized-Oversight.png",
+        image: "/Lack-of-Trusted.png",
         hoverImage: "/trying-to-Reach-.jpg",
         alt: "Local research partners challenge",
     },
