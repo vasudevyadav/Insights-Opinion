@@ -27,7 +27,7 @@ const sectionsData: Section[] = [
         image: "/why-choose-img.png",
         accordionData: [
             {
-                title: "Global Expertisee",
+                title: "Global Expertise",
                 content:
                     "Run studies across 100+ countries and in 60+ languages with local coordination and market-specific execution.",
             },
