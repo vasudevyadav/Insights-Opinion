@@ -85,7 +85,9 @@ export default async function ResearchSlugPage({
         <HealthServices data={pageData.services} />
       )}
 
-      {pageData.panel && <HealthPanel data={pageData.panel} />}
+      {pageData.panel && (
+        <HealthPanel data={pageData.panel} researchSlug={slug} />
+      )}
 
       {pageData.methodologies && (
         <HealthcareMethodologies data={pageData.methodologies} />
