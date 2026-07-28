@@ -586,6 +586,45 @@ body {
   width: 100%;
 }
 
+@keyframes heroStatFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate3d(5px, -5px, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+
+  75% {
+    transform: translate3d(-5px, -4px, 0);
+  }
+}
+
+.hero-stat-float {
+  animation: heroStatFloat 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.hero-stat-float--two {
+  animation-duration: 6.5s;
+  animation-delay: -2s;
+}
+
+.hero-stat-float--three {
+  animation-duration: 7s;
+  animation-delay: -4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-stat-float {
+    animation: none;
+  }
+}
+
 .homebg {
   background: url(../public/home-hero-img-1.png) no-repeat;
   background-size: cover;

@@ -1,54 +1,79 @@
+import Image from "next/image";
 import Link from "next/link";
 import LeadModalTrigger from "@/app/components/shared/lead-modal-trigger";
 
 export default function HomeHero() {
-    return (
-        <section className="bg-[#edf6fe]">
+  return (
+    <section className="relative overflow-hidden bg-[#edf6ff] text-white">
+      <div className="absolute inset-0 bg-[#14284d] sm:[clip-path:polygon(0_0,100%_0,100%_92%,55%_100%,0_100%)]">
+        <Image
+          src="/home/hero-bg.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="hidden object-cover object-[64%_bottom] sm:block lg:object-center"
+        />
+        <Image
+          src="/home/hero-banner-mob.png"
+          alt=""
+          fill
+          priority
+          sizes="(max-width: 639px) 100vw, 0px"
+          className="object-cover object-center sm:hidden"
+        />
+      </div>
 
-            <div className="relative overflow-hidden text-white">
-                <picture>
-                    <source media="(max-width: 639px)" srcSet="/home-mob.webp" />
-                    <source media="(min-width: 640px)" srcSet="/home-hero-img-1.webp" />
-                    {/* A native picture ensures only the matching responsive hero
-                        is requested; rendering and crop remain unchanged. */}
-                    <img
-                        src="/home-hero-img-1.webp"
-                        alt=""
-                        width={1366}
-                        height={583}
-                        fetchPriority="high"
-                        decoding="async"
-                        className="absolute inset-0 h-full w-full object-cover object-bottom"
-                    />
-                </picture>
-                <div className="relative z-10 mx-auto flex min-h-[650px] w-full max-w-7xl items-start px-5 pt-6 sm:min-h-[560px] sm:px-6 lg:min-h-[540px] lg:items-center lg:pt-0">
-
-                    <div className="max-w-2xl rounded-2xl bg-[#102b52]/35 p-4 backdrop-blur-[2px] sm:bg-transparent sm:p-0 sm:backdrop-blur-none">
-
-                        <h1 className="text-lg font-semibold lg:font-medium lg:leading-tight lg:text-[50px]">
-
-                            Insights Behind
-                            <br /> Confident Decisions.
-                        </h1>
-                        <p className="mt-3 max-w-xl text-sm leading-7 text-white/90 sm:text-xl">
-
-                            Evidence-led market research that turns complex data into
-                            clear direction.
-                        </p>
-                        <div className="mt-4 flex flex-wrap items-center gap-4">
-
-                            <LeadModalTrigger className="rounded-full bg-[#17ae8f] px-6 py-2 text-sm font-medium text-white transition hover:scale-[1.02] sm:px-8 sm:py-[11px] sm:text-xl">
-
-                                Get Started
-                            </LeadModalTrigger>
-                            <Link href="/about-us" className="rounded-full border border-white/40 px-6 py-2 text-sm font-medium text-white transition hover:bg-white/10 sm:px-8 sm:py-[11px] sm:text-xl">
-
-                                Learn More
-                            </Link>
-                        </div>
-                    </div>
-                </div>
+      <div className="relative mx-auto min-h-[clamp(550px,150vw,850px)] w-full max-w-[1500px] px-5 sm:px-8 lg:min-h-[clamp(584px,42.75vw,642px)] lg:px-[clamp(48px,6.7vw,100px)]">
+        <div className="relative z-20 max-w-[650px] pt-12 sm:pt-16 lg:flex lg:min-h-[clamp(584px,42.75vw,642px)] lg:items-center lg:pb-20 lg:pt-0">
+          <div>
+            <h1 className="text-[34px] font-medium leading-[1.16] tracking-[-0.02em] sm:text-[46px] lg:text-[clamp(42px,3.4vw,58px)]">
+              Insights Behind
+              <br />
+              Confident Decisions.
+            </h1>
+            <p className="mt-5 max-w-[540px] text-base leading-[1.45] text-white/90 sm:text-xl lg:text-[22px]">
+              Evidence-led market research that turns complex data into clear
+              direction.
+            </p>
+            <div className="mt-7 flex flex-wrap items-center gap-4">
+              <LeadModalTrigger className="rounded-full bg-[#17b99c] px-7 py-3 text-base font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#12a98e] sm:px-8 sm:text-lg">
+                Get Started
+              </LeadModalTrigger>
+              <Link
+                href="/about-us"
+                className="rounded-full border border-white px-7 py-3 text-base font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10 sm:px-8 sm:text-lg"
+              >
+                Learn More
+              </Link>
             </div>
-        </section>
-    );
+          </div>
+        </div>
+
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[250px] sm:right-0 sm:left-auto sm:w-[610px] lg:inset-0 lg:h-full lg:w-full">
+          <Image
+            src="/home/12-years.png"
+            alt="12+ years of research expertise"
+            width={186}
+            height={85}
+            className="hero-stat-float hero-stat-float--one absolute top-[24%] left-[3%] h-auto w-[138px] lg:top-[44%] lg:left-[56%] lg:w-[clamp(165px,12.4vw,160px)]"
+          />
+          <Image
+            src="/home/95-client.png"
+            alt="95%+ client retention"
+            width={167}
+            height={85}
+            className="hero-stat-float hero-stat-float--two absolute top-[5%] right-[2%] h-auto w-[128px] lg:top-[28%] lg:right-[10%] lg:w-[clamp(150px,11.15vw,160px)]"
+          />
+          <Image
+            src="/home/8m-globle.png"
+            alt="8 million plus global panellists"
+            width={1000}
+            height={1000}
+            className="hero-stat-float hero-stat-float--three absolute right-[2%] bottom-[11%] h-auto w-[128px] lg:right-[6.5%] lg:bottom-[18%] lg:w-[clamp(150px,11.15vw,160px)]"
+          />
+        </div>
+      </div>
+    </section>
+  );
 }
