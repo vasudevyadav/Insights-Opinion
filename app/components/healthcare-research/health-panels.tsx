@@ -32,11 +32,21 @@ type HealthPanelData = {
 
 type HealthPanelProps = {
   data?: HealthPanelData;
+  researchSlug?: string;
 };
 
-export default function HealthPanel({ data }: HealthPanelProps) {
+const panelBackgrounds: Record<string, string> = {
+  "consumer-research": "/market-research/consumers.png",
+  "b2b-research": "/market-research/b2b-panels.png",
+  "healthcare-research": "/market-research/healthcare-panel.png",
+};
+
+export default function HealthPanel({ data, researchSlug }: HealthPanelProps) {
   const featureCards = data?.featureCards || [];
   const stats = data?.stats || [];
+  const backgroundImage =
+    panelBackgrounds[researchSlug || ""] ||
+    panelBackgrounds["healthcare-research"];
 
   if (!data) return null;
 
@@ -44,18 +54,19 @@ export default function HealthPanel({ data }: HealthPanelProps) {
     <div className="bg-[#edf6ff]">
       <section className="relative overflow-hidden bg-[#edf6ff] py-0 pt-1 lg:py-10 lg:pt-10 min-h-[400px] lg:h-[650px]">
         <Image
-          src="/market-research/healthcare-panel.png"
+          src={backgroundImage}
           alt=""
           fill
           sizes="100vw"
-          className="object-cover object-bottom object-right lg:object-center"
+          unoptimized
+          className="object-cover object-right"
         />
 
         <div className="relative z-10 mx-auto px-2 lg:px-0">
           <div className="relative rounded-[28px]">
             <div className="relative min-h-[570px] w-full lg:min-h-[670px]">
               <div className="relative z-20 flex min-h-[550px] items-center px-5 py-8 sm:px-8 lg:min-h-[570px] lg:px-14">
-                <div className="ml-auto -mt-20 max-w-[360px] text-white lg:mr-14 lg:max-w-[600px]">
+                <div className="ml-auto -mt-20 max-w-[360px] text-white lg:mr-14 lg:max-w-[550px]">
                   {data.topLabel && (
                     <p className=" font-medium leading-none text-[#d8efff] text-2xl">
                       {data.topLabel}
@@ -63,7 +74,7 @@ export default function HealthPanel({ data }: HealthPanelProps) {
                   )}
 
                   {(data.titleLine1 || data.titleLine2) && (
-                    <h3 className="mt-2 text-2xl font-semibold lg:leading-[1.08] sm:text-[45px]">
+                    <h3 className="mt-2.5 text-2xl font-semibold lg:leading-[1.08] sm:text-[42px]">
                       {data.titleLine1 && (
                         <span className="block text-[#58dff0]">
                           {data.titleLine1}
@@ -71,7 +82,7 @@ export default function HealthPanel({ data }: HealthPanelProps) {
                       )}
 
                       {data.titleLine2 && (
-                        <span className="block text-2xl font-medium text-[#eef8ff]">
+                        <span className="block text-2xl font-medium text-[#eef8ff] mt-2.5">
                           {data.titleLine2}
                         </span>
                       )}
