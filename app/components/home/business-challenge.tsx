@@ -34,7 +34,7 @@ const challengeCards: ChallengeCard[] = [
         title: "Data Is Fragmented and Unreliable",
         description:
             "Siloed data sources and inconsistent quality result in unclear insights and poor decision-making.",
-        image: "/Data-Is-Fragmented.png",
+        image: "/Data-Is-Fragmented.webp",
         hoverImage: "/home/Data-Is-Fragmented.jpg",
         alt: "Data challenge",
     },
