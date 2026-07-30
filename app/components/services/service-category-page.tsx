@@ -46,7 +46,7 @@ export default function ServiceCategoryPage({
       <QuantMethodCta content={content.methodCta} />
       <QuantDataAnalysis content={content.analysis} category={category} />
       <QuantIndustries content={content.industries} industries={industries} />
-      <QuantGlobalServices content={content.global} />
+      <QuantGlobalServices content={content.global} category={category} />
       <QuantWhyChoose
         content={content.whyChoose}
         sections={content.whyChooseSections}

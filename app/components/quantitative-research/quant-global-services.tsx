@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronDown, Mail, MapPin, Phone } from "lucide-react";
+import type { ServicePageKey } from "@/data/service-page-content";
 
 type Office = {
   title?: string;
@@ -18,6 +19,63 @@ type GlobalContent = {
   description: string;
   officeDescriptions: readonly string[];
   offices?: readonly Office[];
+};
+
+const staticOfficeContent: Record<
+  ServicePageKey,
+  readonly Pick<Office, "title" | "description">[]
+> = {
+  quantitative: [
+    {
+      title: "Quantitative Research Services in the USA",
+      description:
+        "Our New York office serves US-based clients across consumer research, B2B research, and healthcare research. We are among the quantitative market research companies US businesses can engage directly for domestic and multi-country studies.\n8M+ global panellists, including US consumer and professional respondents via our global panel\nCATI fieldwork with trained interviewers for US-specific study requirements\nEnd-to-end quantitative market research services across the USA and 100+ countries",
+    },
+    {
+      title: "Quantitative Research Services in the UK",
+      description:
+        "Our London office supports UK and European clients across FMCG, financial services, technology, healthcare, and public sector programmes.\nFull-service quantitative market research services for UK domestic and pan-European studies\nCATI and CAPI fieldwork across the UK and continental Europe\n60+ language delivery for European market research\nISO 27001 and ISO 20252 certified with full UK GDPR compliance",
+    },
+    {
+      title: "Quantitative Research Services in India",
+      description:
+        "Our Noida office supports Indian and Asia Pacific clients and serves as a delivery hub for multilingual fieldwork, survey programming, data processing, and CATI operations at scale.\nQuantitative market research services across India, South Asia, and Asia Pacific\nCATI fieldwork in multiple Indian languages and regional dialects\nSurvey programming and data insights delivery from our Noida operations team\nEnd-to-end quantitative data analysis services for global markets",
+    },
+  ],
+  qualitative: [
+    {
+      title: "Healthcare Qualitative Market Research",
+      description:
+        "Healthcare qualitative market research carries higher stakes than any other research vertical. Patient experiences, clinician perceptions, and treatment attitudes demand careful moderation, strict ethics, and deep sector knowledge at every stage.\nIn-Depth Interviews with patients, caregivers, and healthcare professionals\nFocus Group Discussions across therapeutic areas and care settings\nOnline qualitative formats for dispersed healthcare audiences\nMultilingual fieldwork across 60+ languages",
+    },
+    {
+      title: "CPG Qualitative Market Research",
+      description:
+        "US CPG brands use qualitative research to move beyond sales data and understand the real motivations and emotional drivers behind consumer choice.\nFocus Group Discussions for concept, packaging, and messaging evaluation\nIn-Home Use Tests capturing real-world product usage and feedback\nIn-Depth Interviews for deeper category attitude exploration\nMultilingual fieldwork for US multicultural consumer segments",
+    },
+    {
+      title: "Financial Services Qualitative Market Research",
+      description:
+        "In banking, insurance, wealth management, and fintech, buying decisions are driven by trust and risk perception as much as product features. Qualitative research tells you why customers hesitate, switch, or stay loyal.\nIn-Depth Interviews with retail banking customers and financial advisors\nFocus Group Discussions for product messaging and brand perception\nOnline qualitative formats for time-constrained respondents\nB2B qualitative research with corporate and institutional decision-makers",
+    },
+  ],
+  support: [
+    {
+      title: "Support Services in the USA",
+      description:
+        "Our New York office serves US-based clients who need survey programming services, translation, and data processing support for domestic and multi-country studies. We are a survey programming company US research teams can engage directly for fast, compliant, end-to-end support.\nMultilingual survey programming for US consumer, B2B, and healthcare studies\nData insights delivery aligned with US reporting standards and timelines\nEnd-to-end research support services across the USA and 100+ countries",
+    },
+    {
+      title: "Support Services in the UK",
+      description:
+        "Our London office supports UK and European clients across FMCG, financial services, healthcare, and public sector research programs that require technical delivery alongside fieldwork.\nSurvey programming and hosting for UK domestic and pan-European studies\nTranslation and localization services across European languages\nData processing and dashboard delivery with full UK GDPR compliance\nISO 27001 and ISO 20252 certified across all support service delivery",
+    },
+    {
+      title: "Support Services in India",
+      description:
+        "Our Noida office serves as the primary delivery hub for multilingual survey programming, translation, data processing, and analytics operations at scale across India, South Asia, and Asia Pacific.\nSurvey programming and hosting in multiple Indian languages and regional dialects\nTranslation and localization for Asia Pacific multi-country research programs\nQuantitative data analysis services and dashboard delivery for global clients\nEnd-to-end data processing services from our Noida operations team",
+    },
+  ],
 };
 
 function getDescriptionParts(value: string) {
@@ -71,7 +129,10 @@ function OfficeCard({
   }, [office.description]);
 
   return (
-    <div className="overflow-hidden rounded-[28px] bg-gradient-to-br from-[#5abff8] via-[#1dc3b3] to-[#71b8fc] p-px shadow-[0_18px_42px_rgba(4,12,45,0.28)]">
+    <div
+      className="group overflow-hidden rounded-[28px] bg-gradient-to-br from-[#5abff8] via-[#1dc3b3] to-[#71b8fc] p-px shadow-[0_18px_42px_rgba(4,12,45,0.28)] outline-none"
+      tabIndex={0}
+    >
       <div className="relative rounded-[27px] bg-[#172153]/92 px-7 pb-14 pt-8 backdrop-blur-sm">
         {office.title && (
           <h3
@@ -128,7 +189,7 @@ function OfficeCard({
       </div>
 
       {contactItems.length > 0 && (
-        <div className="flex flex-wrap gap-x-5 gap-y-2 px-7 py-4">
+        <div className="flex max-h-40 flex-wrap gap-x-5 gap-y-2 overflow-hidden px-7 py-4 opacity-100 transition-[max-height,opacity,padding] duration-500 ease-out lg:max-h-0 lg:py-0 lg:opacity-0 lg:group-hover:max-h-40 lg:group-hover:py-4 lg:group-hover:opacity-100 lg:group-focus-within:max-h-40 lg:group-focus-within:py-4 lg:group-focus-within:opacity-100">
           {contactItems.map(({ icon: Icon, value }) => (
             <div key={value} className="flex items-center gap-2 text-sm text-white">
               <Icon size={14} className="shrink-0" />
@@ -141,26 +202,31 @@ function OfficeCard({
   );
 }
 
-function getOffices(content: GlobalContent): Office[] {
-  if (content.offices?.length) {
-    return content.offices.filter((office) => office.description);
-  }
+function getOffices(content: GlobalContent, category: ServicePageKey): Office[] {
+  const originalOffices = content.offices?.length
+    ? content.offices
+    : content.officeDescriptions
+        .filter(Boolean)
+        .map((description) => ({ description }));
 
-  return content.officeDescriptions
-    .filter(Boolean)
-    .map((description) => ({ description }));
+  return staticOfficeContent[category].map((staticContent, index) => ({
+    ...originalOffices[index],
+    ...staticContent,
+  }));
 }
 
 export default function QuantGlobalServices({
   content,
+  category,
 }: {
   content?: GlobalContent;
+  category: ServicePageKey;
 }) {
   const [activeOffice, setActiveOffice] = useState<number | null>(null);
 
   if (!content) return null;
 
-  const offices = getOffices(content);
+  const offices = getOffices(content, category);
   if (offices.length === 0) return null;
 
   return (

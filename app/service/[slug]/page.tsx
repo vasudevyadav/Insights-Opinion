@@ -20,8 +20,9 @@ import LocalPage from "@/app/local/page";
 type PageProps = { params: Promise<{ slug: string }> };
 
 const resolveChild = cache(async (oldSlug: string) => {
-  const aliases = legacyChildServices[oldSlug];
-  if (!aliases) return null;
+  // Legacy routes may need one or more API aliases, while newly-created CMS
+  // services should be resolvable directly without requiring a code change.
+  const aliases = legacyChildServices[oldSlug] ?? [oldSlug];
 
   for (const alias of aliases) {
     const result = await fetchChildServiceBySlug(alias);
