@@ -27,7 +27,7 @@ const challengeCards: ChallengeCard[] = [
         description:
             "Limited market intelligence makes it difficult to assess demand, risk, and opportunity in new regions.",
         image: "/Market-Expansion-Comes.png",
-        hoverImage: "/Market-Expansion-Comes.png",
+        hoverImage: "/home/Market-Expansion.jpg",
         alt: "Market expansion challenge",
     },
     {
@@ -35,7 +35,7 @@ const challengeCards: ChallengeCard[] = [
         description:
             "Siloed data sources and inconsistent quality result in unclear insights and poor decision-making.",
         image: "/Data-Is-Fragmented.png",
-        hoverImage: "/Data-Is-Fragmented.png",
+        hoverImage: "/home/Data-Is-Fragmented.jpg",
         alt: "Data challenge",
     },
     {
@@ -43,7 +43,7 @@ const challengeCards: ChallengeCard[] = [
         description:
             "Regional, cultural, and economic differences directly impact customer preferences and outcomes.",
         image: "/Consumer-Behavior.png",
-        hoverImage: "/managing-Research.jpg",
+        hoverImage: "/home/Consumer-Behavior.jpg",
         alt: "Consumer behavior challenge",
     },
     {
@@ -51,7 +51,7 @@ const challengeCards: ChallengeCard[] = [
         description:
             "Without reliable in-market expertise, global research becomes slow, complex, and inefficient.",
         image: "/Lack-of-Trusted.png",
-        hoverImage: "/trying-to-Reach-.jpg",
+        hoverImage: "/home/Lack-of-Trusted-Local.jpg",
         alt: "Local research partners challenge",
     },
 ];
