@@ -17,7 +17,7 @@ export default function QuantDetailsWhat({ data }: { data: WhyData }) {
 
         {/* ── Desktop layout (unchanged) ── */}
         <div className="hidden lg:block">
-          <div className="grid items-center lg:min-h-[500px] lg:grid-cols-[40%_60%]">
+          <div className="grid items-center lg:min-h-[610px] lg:grid-cols-[40%_60%]">
 
             <div>
               <div className="px-8 py-12 lg:pl-16">
