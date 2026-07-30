@@ -46,20 +46,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const service = await fetchMainService(legacyParentServices[slug]);
     return service
       ? buildApiMetadata(
-          sheetSeo
-            ? {
-                ...service.seo,
-                metaTitle: sheetSeo.title,
-                metaDescription: sheetSeo.description,
-              }
-            : service.seo,
-          {
-            title: `${service.title} Services | Insights Opinion`,
-            description: service.content.hero?.description,
-            image: service.content.hero?.backgroundImage,
-          },
-          path
-        )
+        sheetSeo
+          ? {
+            ...service.seo,
+            metaTitle: sheetSeo.title,
+            metaDescription: sheetSeo.description,
+          }
+          : service.seo,
+        {
+          title: `${service.title} Services | Insights Opinion`,
+          description: service.content.hero?.description,
+          image: service.content.hero?.backgroundImage,
+        },
+        path
+      )
       : {};
   }
 
@@ -67,9 +67,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return buildApiMetadata(
       sheetSeo
         ? {
-            metaTitle: sheetSeo.title,
-            metaDescription: sheetSeo.description,
-          }
+          metaTitle: sheetSeo.title,
+          metaDescription: sheetSeo.description,
+        }
         : undefined,
       {
         title: "Market Research Company in USA | Insights Opinion",
@@ -82,20 +82,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const result = await resolveChild(slug);
   return result
     ? buildApiMetadata(
-        sheetSeo
-          ? {
-              ...result.child.seo,
-              metaTitle: sheetSeo.title,
-              metaDescription: sheetSeo.description,
-            }
-          : result.child.seo,
-        {
-          title: `${result.child.title} | Insights Opinion`,
-          description: result.child.content.hero?.description,
-          image: result.child.bannerImage || result.child.image,
-        },
-        path
-      )
+      sheetSeo
+        ? {
+          ...result.child.seo,
+          metaTitle: sheetSeo.title,
+          metaDescription: sheetSeo.description,
+        }
+        : result.child.seo,
+      {
+        title: `${result.child.title} | Insights Opinion`,
+        description: result.child.content.hero?.description,
+        image: result.child.bannerImage || result.child.image,
+      },
+      path
+    )
     : {};
 }
 

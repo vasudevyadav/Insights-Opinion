@@ -17,21 +17,21 @@ export default function QuantDetailsWhat({ data }: { data: WhyData }) {
 
         {/* ── Desktop layout (unchanged) ── */}
         <div className="hidden lg:block">
-          <div className="grid items-center lg:min-h-[600px] lg:grid-cols-[40%_60%]">
+          <div className="grid items-center lg:min-h-[500px] lg:grid-cols-[40%_60%]">
 
             <div>
               <div className="px-8 py-12 lg:pl-16">
                 <h2>
-                  <span className="bg-gradient-to-r from-[#16c3b4] to-[#5caee7] bg-clip-text text-5xl font-bold text-transparent">
+                  <span className="bg-gradient-to-r from-[#16c3b4] to-[#5caee7] bg-clip-text lg:text-[50px] text-2xl font-bold text-transparent">
                     {data.heading1}
                   </span>
                 </h2>
-                <h2 className="mt-5">
-                  <span className="text-5xl font-light text-[#2b3553]">
+                <h2 className="mt-2">
+                  <span className="text-4xl font-light text-[#2b3553]">
                     {data.heading2}
                   </span>
                 </h2>
-                <p className="mt-8 text-[21px] leading-[1.7] text-[#3f4b5f]">
+                <p className="mt-5 text-[21px] leading-[1.7] text-[#3f4b5f]">
                   {data.bodyLeft}
                 </p>
               </div>
@@ -52,11 +52,11 @@ export default function QuantDetailsWhat({ data }: { data: WhyData }) {
 
           <div className="w-full">
             <Image
-              src="/quantity-details/right-choice.png"
+              src="/home/Secoond-Heading-2.webp"
               alt={data.heading1}
               fill
               priority
-              className="object-contain object-bottom !w-[50%] mr-64 mx-auto"
+              className="object-contain object-bottom !w-[42%] mr-64 mx-auto"
             />
           </div>
         </div>
