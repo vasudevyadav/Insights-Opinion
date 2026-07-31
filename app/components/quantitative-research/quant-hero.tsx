@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import LeadModalTrigger from "@/app/components/shared/lead-modal-trigger";
 
 type QuantHeroContent = {
   titleLine1: string;
@@ -61,7 +62,7 @@ export default function QuantHero({
 
             <div className="my-5 space-y-2 hidden lg:block">
               <Link
-                href="#"
+                href="/service"
                 className="flex items-center gap-1.5 text-sm lg:text-lg text-white/75 transition hover:text-[#1dc3b3] hidden"
               >
                 {content.insightText}
@@ -69,11 +70,9 @@ export default function QuantHero({
               </Link>
             </div>
 
-            <div>
-              <Link href="/contact" className="inline-block mt-5 lg:mt-0">
-                <button className="h-10 whitespace-nowrap px-6 text-center text-sm font-semibold transition-all md:text-base rounded-full bg-gradient-to-r from-[#37c9c7] to-[#4a8fe8] text-white shadow-[0_8px_24px_rgba(74,143,232,0.22)]"> Get In Touch </button>
-              </Link>
-            </div>
+            <LeadModalTrigger className="mt-5 h-10 whitespace-nowrap rounded-full bg-gradient-to-r from-[#37c9c7] to-[#4a8fe8] px-6 text-center text-sm font-semibold text-white shadow-[0_8px_24px_rgba(74,143,232,0.22)] transition-all md:text-base lg:mt-0">
+              Get In Touch
+            </LeadModalTrigger>
 
           </div>
 

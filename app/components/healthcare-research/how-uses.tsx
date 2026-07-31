@@ -63,7 +63,7 @@ export default function WhoUsesHealthcareResearch({
                   </span>
 
                   <a
-                    href={item.href || "#"}
+                    href={item.href || "/contact-us"}
                     className={`text-lg leading-[1.45] text-[#5f6b78] transition hover:text-[#2b84e0] hover:underline hover:underline-offset-2 ${idx === 0 ? "font-normal text-[#4b95d9]" : ""
                       }`}
                   >

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import LeadModalTrigger from "@/app/components/shared/lead-modal-trigger";
 
 interface HeroData {
   title: string;
@@ -29,7 +30,7 @@ export default function QuantDetailsHero({ data }: { data: HeroData }) {
       <div className="relative z-10 mx-auto max-w-[1350px] px-5 pt-16 lg:px-1 lg:pt-0">
         <div className="grid min-h-[420px] grid-cols-1 items-center gap-6 lg:grid-cols-2 lg:pl-12">
           <div className="py-8 lg:py-16 lg:pt-32">
-            <h1 className="text-[32px] font-semibold leading-[1.08] lg:text-[50px] bg-linear-to-r from-[#1dc3b3] via-[#1dc3b3] to-[#3c8df6] bg-clip-text text-transparent">
+            <h1 className="text-[32px] font-semibold leading-[1.08] lg:text-[45px] bg-linear-to-r from-[#1dc3b3] via-[#1dc3b3] to-[#3c8df6] bg-clip-text text-transparent">
               {titleLines.map((line, i) => (
                 <span key={i}>
                   {line}
@@ -47,11 +48,13 @@ export default function QuantDetailsHero({ data }: { data: HeroData }) {
               ))}
             </p>
 
-            <p className="mt-5 max-w-[500px] text-sm leading-8 text-white lg:text-lg mb-10">
+            <p className="mt-5 max-w-[500px] text-sm leading-8 text-white lg:text-base mb-10">
               {data.description}
             </p>
 
-            <a href="/contact-us" className="py-3 whitespace-nowrap px-10 text-center text-sm font-semibold transition-all lg:text-lg rounded-full bg-gradient-to-r from-[#37c9c7] to-[#4a8fe8] text-white shadow-[0_8px_24px_rgba(74,143,232,0.22)]"> Get In Touch </a>
+            <LeadModalTrigger className="rounded-full bg-gradient-to-r from-[#37c9c7] to-[#4a8fe8] px-10 py-3 text-center text-sm font-semibold text-white shadow-[0_8px_24px_rgba(74,143,232,0.22)] transition-all lg:text-lg">
+              Get In Touch
+            </LeadModalTrigger>
 
 
           </div>

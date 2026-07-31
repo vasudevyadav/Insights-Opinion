@@ -66,7 +66,7 @@ export default function TeamMembers({ members }: TeamMembersProps) {
                   />
                 </Link>
                 <a
-                  href={LINKEDIN_URLS[member.slug] || "#"}
+                  href={LINKEDIN_URLS[member.slug] || `/our-teams/${member.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${member.name} on LinkedIn`}

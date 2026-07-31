@@ -6,12 +6,7 @@ import ContactLocation from "../components/contact-us/contact-location";
 
 export const metadata: Metadata = getStaticMetadata("contact-us");
 
-export default async function ContactUs({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-
+export default function ContactUs() {
   return (
     <section>
       <ContactHero />

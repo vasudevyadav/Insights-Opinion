@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Plus, ArrowRight } from "lucide-react";
 import { legacyChildHref } from "@/app/lib/legacy-service-routes";
+import LeadModalTrigger from "@/app/components/shared/lead-modal-trigger";
 
 const services = [
   {
@@ -123,12 +124,11 @@ export default function QuantServicesAccordion() {
           <p className="text-sm text-[#4a5568]">
             Want to know which method suits your study?
           </p>
-          <Link
-            href="#contact"
+          <LeadModalTrigger
             className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[#1dc3b3] hover:underline"
           >
             [Talk to Our Research Team] <ArrowRight size={12} />
-          </Link>
+          </LeadModalTrigger>
         </div>
       </div>
     </section>

@@ -6,6 +6,7 @@ import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "aos/dist/aos.css";
+import Link from "next/link";
 
 type FeatureCard = {
   title: string;
@@ -90,9 +91,11 @@ export default function HealthPanel({ data, researchSlug }: HealthPanelProps) {
                   )}
 
                   {data.ctaText && (
+                    <Link href="/about-us" >
                     <p className="mt-4 inline-flex rounded-md bg-gradient-to-b from-[#2f8ed8] via-[#3fb6ff] to-[#3fb6ff] px-6 py-2 text-base font-medium text-white shadow-md backdrop-blur-sm">
                       {data.ctaText}
                     </p>
+                    </Link>
                   )}
 
                   {stats.length > 0 && (

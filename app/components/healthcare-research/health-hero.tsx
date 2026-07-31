@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import LeadModalTrigger from "@/app/components/shared/lead-modal-trigger";
 
 export default function HealthHero({
   data,
@@ -69,17 +70,16 @@ export default function HealthHero({
             {(data.primaryButtonText || data.secondaryButtonText) && (
               <div className="mt-8 flex flex-wrap items-center justify-start gap-4">
                 {data.primaryButtonText && (
-                  <Link
-                    href={data.primaryButtonUrl || "#"}
+                  <LeadModalTrigger
                     className="rounded-full bg-[#52d3b0] px-7 py-3 text-sm font-medium text-white shadow-[0_8px_20px_rgba(82,211,176,0.25)] transition hover:scale-[1.02] sm:px-9 lg:text-sm"
                   >
                     {data.primaryButtonText}
-                  </Link>
+                  </LeadModalTrigger>
                 )}
 
                 {data.secondaryButtonText && (
                   <Link
-                    href={data.secondaryButtonUrl || "#"}
+                    href={data.secondaryButtonUrl || "/case-studies"}
                     className="rounded-full border border-white/45 bg-transparent px-7 py-3 text-sm font-medium text-white transition hover:bg-white/10 sm:px-9 lg:text-sm"
                   >
                     {data.secondaryButtonText}

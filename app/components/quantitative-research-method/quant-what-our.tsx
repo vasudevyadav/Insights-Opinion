@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import {
-  Plus, ChevronRight,
+  ChevronRight,
   FileText, Users, Phone, Eye, Database,
   MapPin, Package, Code,
 } from "lucide-react";

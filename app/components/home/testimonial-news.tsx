@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowLeft, ArrowRight, ChevronDown } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -296,13 +297,13 @@ export default function TestimonialNews() {
                                         </p>
 
                                         <div className="mt-3 flex items-center justify-between gap-3">
-                                            <a
-                                                href="#"
+                                            <Link
+                                                href="/testimonials"
                                                 className="inline-flex items-center gap-2 text-sm font-medium text-[#1a1f52] transition duration-500 hover:text-[#7ddbd1] group-hover:text-white"
                                             >
                                                 {item.link}
                                                 <ArrowRight size={18} />
-                                            </a>
+                                            </Link>
                                         </div>
 
                                         <div className="mt-5 flex items-end justify-between gap-3">
@@ -403,13 +404,13 @@ export default function TestimonialNews() {
                         data-aos-delay="120"
                         data-aos-duration="900"
                     >
-                        <a
-                            href="#"
+                        <Link
+                            href="/blogs"
                             className="inline-flex items-center gap-2 text-lg font-semibold text-[#1b224f] transition hover:text-[#20b7a6]"
                         >
                             See More
                             <ArrowRight size={28} />
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
