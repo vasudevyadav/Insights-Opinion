@@ -24,11 +24,10 @@ export default function MegaMenu({ open, services }: MegaMenuProps) {
 
   return (
     <div
-      className={`absolute left-48 top-[12px] z-50 mt-4 w-[1100px] -translate-x-1/2 transform transition-all duration-300 ease-out ${
-        open
+      className={`absolute left-48 top-[6px] z-50 mt-2 w-[1100px] -translate-x-1/2 transform transition-all duration-300 ease-out ${open
           ? "pointer-events-auto translate-y-0 opacity-100"
           : "pointer-events-none -translate-y-3 opacity-0"
-      }`}
+        }`}
     >
       <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
         <div className="grid grid-cols-[300px_1fr_240px] gap-8">
@@ -39,11 +38,10 @@ export default function MegaMenu({ open, services }: MegaMenuProps) {
                   href={item.href}
                   onMouseEnter={() => setActiveTab(item.id)}
                   onFocus={() => setActiveTab(item.id)}
-                  className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-base font-semibold transition ${
-                    activeService?.id === item.id
+                  className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-base font-semibold transition ${activeService?.id === item.id
                       ? "bg-[#eef2ff] text-[#4f46e5]"
                       : "text-gray-500 hover:bg-gray-50 hover:text-gray-800"
-                  }`}
+                    }`}
                 >
                   <span>{getServiceCategoryLabel(item)}</span>
                   <ChevronRight className="h-4 w-4" />
