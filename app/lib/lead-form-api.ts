@@ -31,72 +31,21 @@ export type LeadFormPayload = {
   country?: string;
   enquiryType?: string;
   message?: string;
-  recaptchaToken: string;
 };
 
 export type LeadFormInput = Omit<
   LeadFormPayload,
-  "pageUrl" | "submittedAt" | "recaptchaToken"
+  "pageUrl" | "submittedAt"
 >;
 
 const LEAD_FORM_ENDPOINT =
   process.env.NEXT_PUBLIC_LEAD_FORM_API_URL || "/api/lead-forms/submit";
 
-const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-const RECAPTCHA_ACTION = "submit_lead";
-
-declare global {
-  interface Window {
-    grecaptcha?: {
-      ready: (callback: () => void) => void;
-      execute: (siteKey: string, options: { action: string }) => Promise<string>;
-    };
-  }
-}
-
-let recaptchaScriptPromise: Promise<void> | null = null;
-
-function loadRecaptchaScript() {
-  if (!RECAPTCHA_SITE_KEY) {
-    return Promise.reject(new Error("reCAPTCHA site key is not configured."));
-  }
-
-  if (window.grecaptcha) return Promise.resolve();
-  if (recaptchaScriptPromise) return recaptchaScriptPromise;
-
-  recaptchaScriptPromise = new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = `https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(RECAPTCHA_SITE_KEY)}`;
-    script.async = true;
-    script.defer = true;
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error("Unable to load reCAPTCHA."));
-    document.head.appendChild(script);
-  });
-
-  return recaptchaScriptPromise;
-}
-
-async function getRecaptchaToken() {
-  await loadRecaptchaScript();
-
-  return new Promise<string>((resolve, reject) => {
-    window.grecaptcha?.ready(() => {
-      window.grecaptcha
-        ?.execute(RECAPTCHA_SITE_KEY!, { action: RECAPTCHA_ACTION })
-        .then(resolve)
-        .catch(reject);
-    });
-  });
-}
-
 export async function submitLeadForm(input: LeadFormInput): Promise<void> {
-  const recaptchaToken = await getRecaptchaToken();
   const payload: LeadFormPayload = {
     ...input,
     pageUrl: typeof window !== "undefined" ? window.location.pathname : "",
     submittedAt: new Date().toISOString(),
-    recaptchaToken,
   };
 
   const res = await fetch(LEAD_FORM_ENDPOINT, {

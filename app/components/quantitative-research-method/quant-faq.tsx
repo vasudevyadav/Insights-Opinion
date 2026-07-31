@@ -8,8 +8,6 @@ import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import { useRouter } from "next/navigation";
 import CountryCodeSelect from "@/app/components/shared/country-code-select";
 
-const DISPLAYED_CAPTCHA = "990940";
-
 const initialFormData = {
   name: "",
   email: "",
@@ -17,7 +15,6 @@ const initialFormData = {
   countryCode: "+91",
   enquiryType: "",
   message: "",
-  captchaInput: "",
 };
 
 export default function QuantDetailsFaq({ data }: { data: FaqItem[] }) {
@@ -37,11 +34,6 @@ export default function QuantDetailsFaq({ data }: { data: FaqItem[] }) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (formData.captchaInput !== DISPLAYED_CAPTCHA) {
-      setStatus("Invalid captcha. Please try again.");
-      return;
-    }
 
     setLoading(true);
     setStatus("");
@@ -148,21 +140,6 @@ export default function QuantDetailsFaq({ data }: { data: FaqItem[] }) {
                 rows={4}
                 className="w-full rounded-sm border border-[#d7d7d7] px-4 py-3 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6] resize-none"
               />
-
-              <div className="relative flex flex-col gap-3 sm:flex-row sm:items-center">
-                <input
-                  name="captchaInput"
-                  value={formData.captchaInput}
-                  onChange={handleChange}
-                  type="text"
-                  required
-                  placeholder="Captcha"
-                  className="h-11.5 w-full rounded-sm border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6] sm:w-37.5"
-                />
-                <div className="absolute right-0 lg:left-36 flex h-11.5 w-27.5 items-center justify-center rounded-sm bg-[#171f4d] text-sm font-medium tracking-wide text-white">
-                  {DISPLAYED_CAPTCHA}
-                </div>
-              </div>
 
               {status && (
                 <p className="text-sm font-semibold text-[#0f766e]">{status}</p>
