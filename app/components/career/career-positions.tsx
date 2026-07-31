@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ChevronDown, ArrowUpRight, RefreshCw } from "lucide-react";
+import { ChevronDown, ArrowUpRight } from "lucide-react";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
 import CareerShape from "./career-shape";
 import CountryCodeSelect from "@/app/components/shared/country-code-select";
@@ -19,15 +19,12 @@ const jobTitles = ["Senor Inventory Specialist", "Senor Developer", "Senor Desig
 
 const inputCls = "w-full rounded-md border border-[#d1d5db] bg-white px-3 py-2 text-[12px] text-[#253047] placeholder:text-[#5f6570] outline-none focus:border-[#1dc3b3]";
 
-const createCaptcha = () => Math.random().toString(36).slice(2, 8).toUpperCase();
-
 export default function CareerPositions() {
     const [expandedJob, setExpandedJob] = useState<number | null>(null);
-    const [captcha, setCaptcha] = useState("IO2026");
     const formRef = useRef<HTMLDivElement>(null);
     const [resumeName, setResumeName] = useState("");
     const [formData, setFormData] = useState({
-        name: "", email: "", mobile: "", countryCode: "+91", jobTitle: "", about: "", captchaInput: "",
+        name: "", email: "", mobile: "", countryCode: "+91", jobTitle: "", about: "",
     });
     const [status, setStatus] = useState("");
     const [loading, setLoading] = useState(false);
@@ -49,18 +46,8 @@ export default function CareerPositions() {
         });
     };
 
-    const refreshCaptcha = () => {
-        setCaptcha(createCaptcha());
-        setFormData((current) => ({ ...current, captchaInput: "" }));
-        setStatus("");
-    };
-
     const handleSubmit = async (e: { preventDefault(): void }) => {
         e.preventDefault();
-        if (formData.captchaInput !== captcha) {
-            setStatus("Invalid captcha. Please try again.");
-            return;
-        }
         setLoading(true);
         setStatus("");
 
@@ -78,7 +65,7 @@ export default function CareerPositions() {
             });
 
             setStatus("Application submitted successfully!");
-            setFormData({ name: "", email: "", mobile: "", countryCode: "+91", jobTitle: "", about: "", captchaInput: "" });
+            setFormData({ name: "", email: "", mobile: "", countryCode: "+91", jobTitle: "", about: "" });
             setResumeName("");
             router.push("/thank-you");
         } catch (error) {
@@ -243,24 +230,6 @@ export default function CareerPositions() {
                                 <p className="mt-3 lg:text-sm text-xs text-white/70">
                                     {resumeName || "Upload your Resume (doc, pdf, docx)"}
                                 </p>
-                            </div>
-
-                            {/* Captcha */}
-                            <div className="flex flex-wrap items-center gap-2 sm:flex-nowrap">
-                                <input
-                                    name="captchaInput"
-                                    value={formData.captchaInput}
-                                    onChange={handleChange}
-                                    placeholder="Captcha"
-                                    required
-                                    className="flex-1 rounded border border-[#d1d5db] bg-[#7a7d8a] px-3 py-2 text-sm text-white placeholder:text-white/60 outline-none focus:border-white/40"
-                                />
-                                <div className="flex-shrink-0 rounded bg-white px-3 py-2 text-sm font-mono font-bold tracking-wider text-[#374151] select-none">
-                                    {captcha}
-                                </div>
-                                <button type="button" onClick={refreshCaptcha} className="text-white/70 hover:text-white transition" title="Refresh captcha">
-                                    <RefreshCw size={15} />
-                                </button>
                             </div>
 
                             {status && (

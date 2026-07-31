@@ -6,8 +6,7 @@ import { submitLeadForm } from "@/app/lib/lead-form-api";
 import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 
 export function LocalBoostYour() {
-    const [captcha] = useState("IO2026");
-    const [formData, setFormData] = useState({ name: "", email: "", enquiryType: "", captchaInput: "" });
+    const [formData, setFormData] = useState({ name: "", email: "", enquiryType: "" });
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState("");
     const router = useRouter();
@@ -18,16 +17,12 @@ export function LocalBoostYour() {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (formData.captchaInput !== captcha) {
-            setStatus("Invalid captcha. Please try again.");
-            return;
-        }
         setLoading(true);
         setStatus("");
         try {
             await submitLeadForm({ formName: "local_boost", name: formData.name, email: formData.email, enquiryType: formData.enquiryType });
             setStatus("Submitted successfully.");
-            setFormData({ name: "", email: "", enquiryType: "", captchaInput: "" });
+            setFormData({ name: "", email: "", enquiryType: "" });
             router.push("/thank-you");
         } catch (error) {
             setStatus(error instanceof Error ? error.message : "Something went wrong. Please try again.");
@@ -90,20 +85,6 @@ export function LocalBoostYour() {
                         ))}
                     </select>
 
-                    <div className="flex h-[42px] flex-1 basis-[180px] overflow-hidden rounded-md border border-white">
-                        <input
-                            name="captchaInput"
-                            value={formData.captchaInput}
-                            onChange={handleChange}
-                            required
-                            type="text"
-                            placeholder="Captcha"
-                            className="h-full flex-1 bg-white/90 px-3.5 text-[13px] text-[#1e2a4e] placeholder-gray-500 outline-none focus:bg-white"
-                        />
-                        <div className="flex items-center border border-white bg-transparent lg:px-3.5 px-[1px] font-mono lg:text-[13px] text-[11px] font-bold tracking-wider text-white select-none">
-                            {captcha}
-                        </div>
-                    </div>
                 </div>
 
                 <button type="submit" disabled={loading} className=" py-2.5 px-10 rounded-md bg-gradient-to-r from-[#14b3a1] to-[#5ba8fb] px-7 text-[14px] font-semibold text-white transition-opacity hover:opacity-85">

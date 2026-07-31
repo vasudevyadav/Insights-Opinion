@@ -7,11 +7,6 @@ import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import { useRouter } from "next/navigation";
 import CountryCodeSelect from "@/app/components/shared/country-code-select";
 
-function generateCaptcha() {
-    const chars = "ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
-    return Array.from({ length: 6 }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
-}
-
 const initialFormData = {
     name: "",
     email: "",
@@ -19,7 +14,6 @@ const initialFormData = {
     countryCode: "+91",
     enquiryType: "",
     message: "",
-    captchaInput: "",
 };
 
 const faqs = [
@@ -79,7 +73,6 @@ const HexCluster = () => (
 
 export default function LocalCallbackFaq() {
     const [openIndex, setOpenIndex] = useState(0);
-    const [captcha] = useState(generateCaptcha);
     const [formData, setFormData] = useState(initialFormData);
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState("");
@@ -93,11 +86,6 @@ export default function LocalCallbackFaq() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        if (formData.captchaInput !== captcha) {
-            setStatus("Invalid captcha. Please try again.");
-            return;
-        }
 
         setLoading(true);
         setStatus("");
@@ -200,21 +188,6 @@ export default function LocalCallbackFaq() {
                                 rows={4}
                                 className="w-full resize-none rounded-[4px] border border-[#d7d7d7] px-4 py-3 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
                             />
-
-                            <div className="flex items-center gap-3">
-                                <input
-                                    name="captchaInput"
-                                    value={formData.captchaInput}
-                                    onChange={handleChange}
-                                    type="text"
-                                    required
-                                    placeholder="Captcha"
-                                    className="h-[46px] w-[150px] rounded-[4px] border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
-                                />
-                                <div className="flex h-[46px] min-w-[110px] items-center justify-center rounded-[4px] bg-[#171f4d] font-mono text-sm font-bold tracking-wider text-white select-none">
-                                    {captcha}
-                                </div>
-                            </div>
 
                             {status && (
                                 <p className="text-sm font-semibold text-[#0f766e]">{status}</p>
