@@ -7,11 +7,7 @@ import { fetchCaseStudies } from "@/app/lib/case-studies-api";
 
 export const metadata: Metadata = getStaticMetadata("case-studies");
 
-export default async function CaseStudies({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function CaseStudies() {
   const caseStudies = await fetchCaseStudies();
 
   return (

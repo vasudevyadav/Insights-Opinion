@@ -104,7 +104,7 @@ export default async function LegacyServicePage({ params }: PageProps) {
   const { slug } = await params;
 
   if (slug === "market-research-company-in-usa") {
-    return <LocalPage params={params} />;
+    return <LocalPage />;
   }
 
   if (isLegacyParentSlug(slug)) {

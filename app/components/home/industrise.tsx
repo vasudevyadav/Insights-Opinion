@@ -112,7 +112,7 @@ function IndustryCard({
             data-aos-duration="900"
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
-            className="relative h-[250px] min-w-0 cursor-pointer overflow-hidden bg-white md:h-[240px] lg:h-[250px]"
+            className="relative h-[200px] min-w-0 cursor-pointer overflow-hidden bg-white lg:h-[210px]"
             style={{
                 flex: mobileExpanded ? 1 : isExpanded ? 2.4 : 1,
                 transition: mobileExpanded
@@ -135,12 +135,7 @@ function IndustryCard({
                 <p className="line-clamp-3 max-w-48 text-base leading-[1.65] text-[#6b7280]">
                     {description}
                 </p>
-                <a
-                    href="/industries"
-                    className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#00b4a6] no-underline"
-                >
-                    Learn More <ArrowIcon />
-                </a>
+
             </div>
 
             <div
@@ -170,12 +165,7 @@ function IndustryCard({
                     <p className="line-clamp-3 max-w-60 text-xs leading-[1.65] text-white/80 lg:text-lg">
                         {description}
                     </p>
-                    <a
-                        href="/industries"
-                        className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-white no-underline"
-                    >
-                        Learn More <ArrowIcon color="white" />
-                    </a>
+
                 </div>
             </div>
         </div>

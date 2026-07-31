@@ -9,12 +9,7 @@ import MarketResearch from "../components/local/market-research";
 
 export const metadata: Metadata = getStaticMetadata("local");
 
-export default async function Local({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-
+export default function Local() {
   return (
     <section>
       <LocalHero />

@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 // @ts-expect-error - no type declarations for 'aos'
 import AOS from "aos";
@@ -54,10 +55,13 @@ function CaseCard({
         }`}
     >
       {image && (
-        <img
+        <Image
           src={image}
           alt={title || ""}
-          className="absolute inset-0 h-full w-full object-cover  object-top transition-transform duration-700 group-hover:scale-105"
+          fill
+          sizes="(max-width: 1023px) 100vw, 500px"
+          unoptimized
+          className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
         />
       )}
 
