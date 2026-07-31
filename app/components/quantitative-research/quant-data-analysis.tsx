@@ -11,6 +11,12 @@ const CATEGORY_CONTENT_IMAGES: Record<ServiceCategory, string> = {
   support: "/home/support-services.png",
 };
 
+const CATEGORY_MOBILE_CONTENT_IMAGES: Record<ServiceCategory, string> = {
+  quantitative: "/home/quantitative-market-mob.webp",
+  qualitative: "/home/Qualitative-service-mob.webp",
+  support: "/home/support-services-mob.webp",
+};
+
 const CATEGORY_ICON_POSITIONS: Record<
   ServiceCategory,
   readonly {
@@ -114,24 +120,33 @@ export default function QuantDataAnalysis({
           </p>
         </div>
 
-        <div className="relative mt-8 h-[200px] w-full overflow-hidden rounded-2xl sm:mt-10 sm:h-[500px] lg:mt-0 lg:h-full lg:w-[70%] lg:overflow-visible lg:rounded-none">
-          <Image
-            src="/home/services-bg.png"
-            alt=""
-            fill
-            sizes="(max-width: 1023px) 100vw, 1px"
-            className="object-cover object-[62%_center] hidden"
-            unoptimized
-          />
-          <div className="absolute inset-0 bg-[#151b3c]/10 lg:hidden" />
+        <div className="no-scrollbar relative mt-8 h-[320px] w-full overflow-x-auto overflow-y-hidden rounded-2xl sm:mt-10 sm:h-[520px] sm:overflow-hidden lg:mt-0 lg:h-full lg:w-[70%] lg:overflow-visible lg:rounded-none">
+          <div className="relative h-full min-w-[500px] sm:min-w-0 sm:w-full">
+            <Image
+              src="/home/services-bg.png"
+              alt=""
+              fill
+              sizes="(max-width: 639px) 680px, (max-width: 1023px) 100vw, 1px"
+              className="hidden object-cover object-[62%_center]"
+              unoptimized
+            />
+            <div className="absolute inset-0 bg-[#151b3c]/10 lg:hidden" />
 
-          <div className="absolute inset-0">
+            <Image
+              src={CATEGORY_MOBILE_CONTENT_IMAGES[category]}
+              alt=""
+              fill
+              sizes="500px"
+              className="object-contain object-center sm:hidden"
+              unoptimized
+            />
+
             <Image
               src={CATEGORY_CONTENT_IMAGES[category]}
               alt=""
               fill
-              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 90vw, 40vw"
-              className="object-contain object-center lg:pl-20"
+              sizes="(max-width: 1023px) 90vw, 40vw"
+              className="hidden object-contain object-center sm:block lg:pl-20"
               unoptimized
             />
 
@@ -143,7 +158,7 @@ export default function QuantDataAnalysis({
                 width={38}
                 height={38}
                 aria-hidden="true"
-                className={`service-done-position absolute h-3 w-3 sm:h-7 sm:w-7 lg:h-8 lg:w-8 xl:h-9 xl:w-9 ${isVisible ? "service-done-icon" : "opacity-0"
+                className={`service-done-position absolute hidden lg:block lg:h-8 lg:w-8 xl:h-9 xl:w-9 ${isVisible ? "service-done-icon" : "opacity-0"
                   }`}
                 style={{
                   "--icon-left": position.left,
