@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -80,13 +81,13 @@ export default function TestimonialHealth({
                                     </p>
 
                                     <div className="mt-3 flex items-center justify-between gap-3">
-                                        <a
-                                            href="#"
+                                        <Link
+                                            href="/testimonials"
                                             className="inline-flex items-center gap-2 text-sm font-medium text-[#1a1f52] transition duration-500 hover:text-[#7ddbd1] group-hover:text-white"
                                         >
                                             {item.link}
                                             <ArrowRight size={18} />
-                                        </a>
+                                        </Link>
                                     </div>
 
                                     <div className="mt-5 flex items-end justify-between gap-3">

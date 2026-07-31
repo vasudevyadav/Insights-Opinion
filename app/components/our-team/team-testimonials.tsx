@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -49,12 +50,12 @@ export default function TeamTestimonials() {
                   {item.quote}
                   <span className="ml-2 text-xl font-semibold">”</span>
                 </p>
-                <a
-                  href="#"
+                <Link
+                  href="/testimonials"
                   className="mt-5 inline-flex items-center gap-3 text-xs sm:mt-6 sm:gap-8 sm:text-sm"
                 >
                   Read Full Customer Story <ArrowRight size={20} />
-                </a>
+                </Link>
                 <div className="mt-5 flex flex-wrap items-center justify-between gap-3 sm:mt-6 sm:flex-nowrap sm:gap-4">
                   <div className="flex items-center gap-3">
                     <Image

@@ -4,10 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X, Search, User } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import type { ResearchNavItem } from "@/lib/getResearchPage";
 import type { MainService } from "@/app/lib/service-catalog";
 import MegaMenu from "./MegaMenu";
+import LeadModalTrigger from "@/app/components/shared/lead-modal-trigger";
 import {
   getServiceCategoryLabel,
   getServiceChildLabel,
@@ -188,7 +189,7 @@ export default function Navbar({
                       </button>
                     ) : (
                       <Link
-                        href={item.href || "#"}
+                        href={item.href || "/"}
                         className={`flex items-center gap-1 text-[12px] font-medium tracking-[0.04em] transition-colors lg:text-base ${isPathActive(item.href)
                           ? "text-[#14d8d0]"
                           : "text-white hover:text-[#14d8d0]"
@@ -251,12 +252,11 @@ export default function Navbar({
                 <User className="h-5 w-5" />
               </button> */}
 
-              <Link
-                href="/contact-us"
+              <LeadModalTrigger
                 className="rounded-full bg-[#15c9a8] px-4 py-1.5 text-sm font-medium text-[#07233f] transition hover:bg-[#0fd2b0]"
               >
                 Contact Sales
-              </Link>
+              </LeadModalTrigger>
             </div>
           </div>
         </div>
@@ -328,7 +328,7 @@ export default function Navbar({
                         </button>
                       ) : (
                         <Link
-                          href={item.href || "#"}
+                          href={item.href || "/"}
                           onClick={() => setMobileMenuOpen(false)}
                           className={`flex-1 rounded-lg px-4 py-3 text-sm font-medium ${isPathActive(item.href)
                             ? "bg-white/10 text-[#14d8d0]"
@@ -455,13 +455,12 @@ export default function Navbar({
                 </Link>
               ))}
 
-              <Link
-                href="/contact-us"
+              <LeadModalTrigger
                 onClick={() => setMobileMenuOpen(false)}
                 className="mt-4 rounded-full bg-[#15c9a8] px-4 py-3 text-center text-sm font-semibold text-[#07233f]"
               >
                 Contact Sales
-              </Link>
+              </LeadModalTrigger>
             </div>
           </div>
         </>

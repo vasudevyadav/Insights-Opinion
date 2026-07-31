@@ -136,7 +136,7 @@ function IndustryCard({
                     {description}
                 </p>
                 <a
-                    href="#"
+                    href="/industries"
                     className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#00b4a6] no-underline"
                 >
                     Learn More <ArrowIcon />
@@ -171,7 +171,7 @@ function IndustryCard({
                         {description}
                     </p>
                     <a
-                        href="#"
+                        href="/industries"
                         className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-white no-underline"
                     >
                         Learn More <ArrowIcon color="white" />

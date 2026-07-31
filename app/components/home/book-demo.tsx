@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import LeadModalTrigger from "@/app/components/shared/lead-modal-trigger";
 
 export default function BookDemo() {
 
@@ -68,7 +69,7 @@ export default function BookDemo() {
                     style={
                         {
                             left: line.left,
-                            ["--line-delay" as any]: line.delay,
+                            "--line-delay": line.delay,
                         } as React.CSSProperties
                     }
                 />
@@ -82,7 +83,7 @@ export default function BookDemo() {
                     style={
                         {
                             left: line.left,
-                            ["--line-delay" as any]: line.delay,
+                            "--line-delay": line.delay,
                         } as React.CSSProperties
                     }
                 />
@@ -136,15 +137,16 @@ export default function BookDemo() {
                                     Book a demo today and see how Insights Opinion can support your next research project with clarity and control.
                                 </p>
 
-                                <button
-                                    className="lg:mt-8 mt-4 rounded-full px-12 py-3 lg:text-lg text-sm  font-semibold text-white transition-all duration-300 hover:opacity-90 hover:shadow-lg"
+
+                                <LeadModalTrigger
+                                    className="lg:mt-8 mt-4 rounded-full px-12 py-3 lg:text-lg text-sm font-semibold text-white transition-all duration-300 hover:opacity-90 hover:shadow-lg"
                                     style={{
                                         background:
                                             "linear-gradient(90deg, #41b894 0%, #47a88d 100%)",
                                     }}
                                 >
                                     Book Demo
-                                </button>
+                                </LeadModalTrigger>
                             </div>
                         </div>
 

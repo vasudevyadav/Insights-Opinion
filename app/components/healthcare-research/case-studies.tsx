@@ -2,7 +2,8 @@
 
 import { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
-// @ts-ignore - no type declarations for 'aos'
+import Link from "next/link";
+// @ts-expect-error - no type declarations for 'aos'
 import AOS from "aos";
 
 type CaseStudy = {
@@ -43,7 +44,8 @@ function CaseCard({
   delay = 0,
 }: CaseCardProps) {
   return (
-    <div
+    <Link
+      href="/case-studies"
       data-aos={aos}
       data-aos-delay={delay}
       data-aos-duration="950"
@@ -79,12 +81,15 @@ function CaseCard({
         )}
 
         <div className="mt-2 flex justify-end">
-          <button className="text-white transition-colors duration-300 group-hover:text-cyan-300">
+          <span
+            aria-hidden="true"
+            className="text-white transition-colors duration-300 group-hover:text-cyan-300"
+          >
             <ArrowRight size={30} />
-          </button>
+          </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

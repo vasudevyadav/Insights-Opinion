@@ -1,5 +1,5 @@
-import { Link } from "lucide-react";
 import BackgroundShape from "../about-us/background-shape";
+import LeadModalTrigger from "@/app/components/shared/lead-modal-trigger";
 
 export default function QuantMethodCta({
   content,
@@ -27,7 +27,9 @@ export default function QuantMethodCta({
         </p>
 
         <div>
-          <a href="/contact-us" className="py-2.5 w-fit whitespace-nowrap px-6 text-center text-base font-semibold transition-all md:text-base rounded-full bg-gradient-to-r from-[#37c9c7] to-[#4a8fe8] text-white shadow-[0_8px_24px_rgba(74,143,232,0.22)]"> Get In Touch </a>
+          <LeadModalTrigger className="w-fit whitespace-nowrap rounded-full bg-gradient-to-r from-[#37c9c7] to-[#4a8fe8] px-6 py-2.5 text-center text-base font-semibold text-white shadow-[0_8px_24px_rgba(74,143,232,0.22)] transition-all">
+            Get In Touch
+          </LeadModalTrigger>
         </div>
 
       </div>
