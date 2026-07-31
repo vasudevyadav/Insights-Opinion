@@ -171,19 +171,28 @@ function MethodCard({
   service: MethodService;
   mobile?: boolean;
 }) {
+  const imageSrc = service.image?.trim();
+
   return (
     <Link
       href={service.href || serviceDetailPath(service.slug)}
       className={`group relative block w-full overflow-hidden rounded-[20px] shadow-[0_8px_28px_rgba(0,0,0,0.14)] transition-transform duration-500 hover:-translate-y-1 ${mobile ? "h-[240px]" : "h-[350px]"
         }`}
     >
-      <Image
-        src={service.image}
-        alt={service.title}
-        fill
-        sizes={mobile ? "85vw" : "(max-width: 1024px) 50vw, 600px"}
-        className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-      />
+      {imageSrc ? (
+        <Image
+          src={imageSrc}
+          alt={service.title}
+          fill
+          sizes={mobile ? "85vw" : "(max-width: 1024px) 50vw, 600px"}
+          className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+        />
+      ) : (
+        <div
+          className="absolute inset-0 bg-linear-to-br from-[#213b64] via-[#247f91] to-[#1dc3b3]"
+          aria-hidden="true"
+        />
+      )}
       <div className="absolute inset-0 bg-linear-to-t from-[#1dc3b3]/90 via-[#1dc3b3]/25 to-transparent transition-colors duration-500 group-hover:from-[#1dc3b3]/95 group-hover:via-[#1dc3b3]/55" />
       <div className="absolute inset-x-0 bottom-0 p-5">
 
