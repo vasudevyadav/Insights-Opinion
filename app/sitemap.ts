@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
-import { getAllSiteRoutes, getSiteUrl } from "@/app/lib/site-routes";
+import { getAllSiteRoutes, getSiteUrl, isProductionEnvironment } from "@/app/lib/site-routes";
 
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  if (!isProductionEnvironment()) return [];
+
   const siteUrl = getSiteUrl();
   const routes = await getAllSiteRoutes();
   const generatedAt = new Date();

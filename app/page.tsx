@@ -9,7 +9,6 @@ import CoreSolution from "./components/home/core-solution";
 import EventHome from "./components/home/event-home";
 import HomeHero from "./components/home/hero-section";
 import HomeIndustry from "./components/home/home-industry";
-import IndustryLeader from "./components/home/industry-leader";
 import TestimonialNews from "./components/home/testimonial-news";
 
 export const metadata: Metadata = getStaticMetadata("home");
@@ -18,7 +17,6 @@ export default function Home() {
   return (
     <section className="home-page">
       <HomeHero />
-      <IndustryLeader />
       <HomeIndustry />
       <BusinessChallenge />
       <CoreSolution />

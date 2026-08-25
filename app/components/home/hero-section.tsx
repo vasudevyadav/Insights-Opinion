@@ -58,20 +58,6 @@ export default function HomeHero() {
             height={85}
             className="hero-stat-float hero-stat-float--one absolute top-[24%] left-[3%] h-auto w-[138px] lg:top-[44%] lg:left-[56%] lg:w-[clamp(165px,12.4vw,160px)]"
           />
-          <Image
-            src="/home/95-client.png"
-            alt="95%+ client retention"
-            width={167}
-            height={85}
-            className="hero-stat-float hero-stat-float--two absolute top-[5%] right-[2%] h-auto w-[128px] lg:top-[28%] lg:right-[10%] lg:w-[clamp(150px,11.15vw,160px)]"
-          />
-          <Image
-            src="/home/8m-globle.png"
-            alt="8 million plus global panellists"
-            width={1000}
-            height={1000}
-            className="hero-stat-float hero-stat-float--three absolute right-[2%] bottom-[11%] h-auto w-[128px] lg:right-[6.5%] lg:bottom-[18%] lg:w-[clamp(150px,11.15vw,160px)]"
-          />
         </div>
       </div>
     </section>

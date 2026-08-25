@@ -147,13 +147,34 @@ function normalizeCaseStudy(raw: RawCaseStudy): CaseStudy {
   const delivery = parseListSection(raw.detail.delivery, "Delivery");
   const results = parseTextSection(raw.detail.results, "Results");
 
+  const canonicalSlug =
+    raw.slug === "healthcare-industry-diabetes-2"
+      ? "healthcare-industry-diabetes"
+      : raw.slug === "automative-industry"
+        ? "automotive-industry"
+        : raw.slug;
+  const repeatedPlaceholder =
+    /unique blend of expertise and entrepreneurial drive[\s\S]*legal landscape/i;
+  const description = repeatedPlaceholder.test(raw.description || "")
+    ? "Case study summary pending client approval."
+    : raw.description;
+  const seo =
+    canonicalSlug === "healthcare-industry-diabetes"
+      ? {
+          ...raw.seo,
+          metaTitle: "Healthcare Industry Diabetes Case Study | Insights Opinion",
+          metaDescription:
+            "A healthcare market research case study focused on diabetes. Full approved case-study summary pending client supply.",
+        }
+      : raw.seo;
+
   return {
     id: raw.id,
     category: normalizeCategory(raw),
     title: raw.title,
-    slug: raw.slug,
+    slug: canonicalSlug,
     image: raw.image,
-    description: raw.description,
+    description,
     detail: {
       heading: overview.heading,
       overview: overview.overview,
@@ -169,7 +190,7 @@ function normalizeCaseStudy(raw: RawCaseStudy): CaseStudy {
       resultsHeading: results.heading,
       results: results.content,
     },
-    seo: raw.seo,
+    seo,
   };
 }
 

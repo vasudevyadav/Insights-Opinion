@@ -173,17 +173,36 @@ const staticRoutes: SiteRoute[] = [
     priority: 0.4,
     changeFrequency: "weekly",
   },
+  {
+    path: "/terms",
+    title: "Terms & Conditions",
+    description: "Terms and conditions placeholder pending approved legal content.",
+    group: "Legal",
+    priority: 0.2,
+    changeFrequency: "yearly",
+  },
+  {
+    path: "/data-quality-fraud-detection",
+    title: "Data Quality & Fraud Detection",
+    description: "Page structure reserved for approved data quality and fraud detection content.",
+    group: "Services",
+    priority: 0.5,
+    changeFrequency: "monthly",
+  },
 ];
 
 export function getSiteUrl() {
-  const configuredUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "");
+  return (process.env.NEXT_PUBLIC_SITE_URL || "https://insightsopinion.com")
+    .replace(/\/$/, "");
+}
 
-  return (configuredUrl || "https://insightsopinion.com").replace(
-    /\/$/,
-    ""
-  );
+export function isProductionEnvironment() {
+  const environment =
+    process.env.NEXT_PUBLIC_SITE_ENV ||
+    process.env.VERCEL_ENV ||
+    process.env.NODE_ENV;
+
+  return environment === "production";
 }
 
 export async function getAllSiteRoutes(): Promise<SiteRoute[]> {
@@ -235,7 +254,7 @@ export async function getAllSiteRoutes(): Promise<SiteRoute[]> {
   }));
 
   const caseStudyRoutes: SiteRoute[] = caseStudies.map((study) => ({
-    path: `/case-studies/${study.slug}`,
+    path: `/case-studies/${study.slug === "healthcare-industry-diabetes-2" ? "healthcare-industry-diabetes" : study.slug}`,
     title: study.title,
     description: study.description,
     group: "Resources",

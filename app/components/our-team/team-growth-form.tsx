@@ -6,6 +6,7 @@ import { submitLeadForm } from "@/app/lib/lead-form-api";
 import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import { useRouter } from "next/navigation";
 import CountryCodeSelect from "@/app/components/shared/country-code-select";
+import PrivacyConsent from "@/app/components/shared/privacy-consent";
 
 const fieldClass =
   "h-12 w-full rounded-md border border-transparent bg-[#151a45] px-5 text-sm text-white outline-none placeholder:text-white/90 focus:border-[#4bc4c7]";
@@ -69,7 +70,7 @@ export default function TeamGrowthForm() {
           <h2 className="text-center text-xl font-light leading-tight text-[#2f3643] sm:text-left lg:text-[31px]">
             Grow Better with
             <span className="quality-gradient-text mt-2 block text-3xl font-light lg:leading-[1.05] lg:text-[47px] lg:mb-0 mb-8">
-              Insight
+              Insights
               <br className="lg:block hidden" />
               Opinion
             </span>
@@ -77,7 +78,7 @@ export default function TeamGrowthForm() {
           <div className="relative mx-auto h-[260px] w-full max-w-[300px] sm:max-w-none lg:h-[370px]">
             <Image
               src="/grow-better.png"
-              alt="Grow better with Insight Opinion"
+              alt="Grow better with Insights Opinion"
               fill
               sizes="(max-width: 1024px) 55vw, 320px"
               className="object-contain object-bottom"
@@ -144,6 +145,7 @@ export default function TeamGrowthForm() {
             >
               {loading ? "Submitting..." : "Submit Now"}
             </button>
+            <PrivacyConsent />
             {status && (
               <p className="mt-2 text-sm font-semibold text-[#0f766e]">{status}</p>
             )}

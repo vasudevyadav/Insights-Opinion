@@ -124,7 +124,7 @@ export default function LocalCore() {
     ];
 
     const complianceBadges = [
-        { label: "ISO 27001 and ISO 20252 certified practices", position: "top-[10%] left-[8%]" },
+        { label: "ISO 27001 certified practices", position: "top-[10%] left-[8%]" },
         { label: "GDPR and CCPA-aligned data handling", position: "top-[10%] right-[4%]" },
         { label: "Review checkpoints across collection and reporting", position: "top-[52%] right-[2%]" },
         { label: "Validation and quality controls for respondent data", position: "bottom-[8%] left-[10%]" },

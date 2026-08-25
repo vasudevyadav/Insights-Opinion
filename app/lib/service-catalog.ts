@@ -28,7 +28,7 @@ export const serviceCategories: ServiceCategory[] = [
         slug: "online-surveys",
         image: "/quality/cati-online.png",
         description:
-          "Self-administered web surveys across our 8M+ verified panel. Fast turnaround, rich media support, and multi-layer quality controls for nationally representative consumer and B2B data.",
+          "Self-administered web surveys across our global verified panel. Fast turnaround, rich media support, and multi-layer quality controls for nationally representative consumer and B2B data.",
       },
       {
         title: "Computer-Assisted Telephone Interviewing (CATI)",

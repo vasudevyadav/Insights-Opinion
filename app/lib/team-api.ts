@@ -30,7 +30,7 @@ const BASE_URL = apiUrl("/custom/v1/our-teams");
 
 const FALLBACK_MEMBERS: TeamMember[] = [
   {
-    slug: "shahab-ansari",
+    slug: "shahab-s",
     name: "Shahab Ansari",
     role: "Founder & CEO",
     image: "/our-team/shahab.png",
@@ -44,7 +44,14 @@ const FALLBACK_MEMBERS: TeamMember[] = [
 function parseDescription(raw: string): string[] {
   return raw
     .split(/\r?\n/)
-    .map((line) => line.trim().replace(/,+\s*$/, ""))
+    .map((line) =>
+      line
+        .trim()
+        .replace(/<\/?[a-z][^>]*>/gi, "")
+        .replace(/&nbsp;/gi, " ")
+        .trim()
+        .replace(/,+\s*$/, "")
+    )
     .filter(Boolean);
 }
 

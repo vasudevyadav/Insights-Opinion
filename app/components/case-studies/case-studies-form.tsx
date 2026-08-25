@@ -8,6 +8,7 @@ import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import CountryCodeSelect from "@/app/components/shared/country-code-select";
 import { useRouter } from "next/navigation";
 import BackgroundShape from "../about-us/background-shape";
+import PrivacyConsent from "@/app/components/shared/privacy-consent";
 
 const initialFormData = {
     name: "",
@@ -74,7 +75,7 @@ export default function CaseStudiesForm() {
                                 Grow Better with
                             </p>
                             <h2 className="mt-1 bg-[linear-gradient(90deg,#17afa1_0%,#43bccb_45%,#74b9ff_100%)] bg-clip-text text-[36px] font-semibold leading-[1.05] text-transparent sm:text-[44px] lg:text-[52px]">
-                                Insight
+                                Insights
                                 <br />
                                 Opinion
                             </h2>
@@ -166,6 +167,7 @@ export default function CaseStudiesForm() {
                                 >
                                     {loading ? "Submitting..." : "Submit Now"}
                                 </button>
+                                <PrivacyConsent />
                                 {status && (
                                     <p className="mt-2 text-sm font-semibold text-[#0f766e]">{status}</p>
                                 )}

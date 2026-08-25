@@ -133,13 +133,6 @@ export default function TestimonialsGallery({
                   “{item.quote}”
                 </p>
                 <div className="mt-6 flex items-center gap-3 border-t border-[#dce6ef] pt-5 group-hover:border-white/20">
-                  <Image
-                    src={item.personImage || "/Testimonial-Icon.png"}
-                    alt={item.name}
-                    width={48}
-                    height={48}
-                    className="h-12 w-12 shrink-0 rounded-full bg-white object-cover"
-                  />
                   <div>
                     <p className="font-semibold text-[#151b48] transition group-hover:text-white">
                       {item.name}

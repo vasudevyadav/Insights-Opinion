@@ -7,6 +7,7 @@ import { submitLeadForm } from "@/app/lib/lead-form-api";
 import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import CountryCodeSelect from "@/app/components/shared/country-code-select";
 import { OPEN_LEAD_MODAL_EVENT } from "@/app/components/shared/lead-modal-trigger";
+import PrivacyConsent from "@/app/components/shared/privacy-consent";
 
 const SCROLL_THRESHOLD_PERCENT = 40;
 const SESSION_STORAGE_KEY = "io_scroll_popup_shown";
@@ -154,7 +155,7 @@ export default function ScrollLeadPopup() {
 
                 <h2 className="pr-8 text-xl font-semibold leading-tight text-[#151b48] sm:text-2xl">
                     Grow Better with{" "}
-                    <span className="quality-gradient-text">Insight Opinion</span>
+                    <span className="quality-gradient-text">Insights Opinion</span>
                 </h2>
                 <p className="mt-2 text-sm text-[#4b5563]">
                     Share your details and our team will reach out with the right research solution for you.
@@ -222,6 +223,7 @@ export default function ScrollLeadPopup() {
                     >
                         {loading ? "Submitting..." : "Submit Now"}
                     </button>
+                    <PrivacyConsent />
 
                     {status && (
                         <p className="text-sm font-semibold text-[#0f766e]">{status}</p>

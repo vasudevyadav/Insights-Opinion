@@ -7,6 +7,7 @@ import { submitLeadForm } from "@/app/lib/lead-form-api";
 import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import { useRouter } from "next/navigation";
 import CountryCodeSelect from "@/app/components/shared/country-code-select";
+import PrivacyConsent from "@/app/components/shared/privacy-consent";
 
 const selectClass =
     "h-12 w-full appearance-none rounded-[6px] bg-[#101538] px-6 pr-10 text-left text-sm text-white outline-none";
@@ -70,13 +71,13 @@ export default function QualityGrowForm() {
                     <div>
                         <p className="text-[25px] font-light leading-tight text-[#18213d] lg:text-[29px]">Grow Better with</p>
                         <h2 className="quality-gradient-text mt-2 text-[39px] font-light leading-tight lg:text-[44px]">
-                            Insight<br />Opinion
+                            Insights<br />Opinion
                         </h2>
                     </div>
                     <div className="relative h-[280px] sm:h-[350px]">
                         <Image
                             src="/grow-better.png"
-                            alt="Grow Better with Insight Opinion"
+                            alt="Grow Better with Insights Opinion"
                             fill
                             sizes="(min-width: 1024px) 280px, 100vw"
                             className="object-contain object-center"
@@ -164,6 +165,7 @@ export default function QualityGrowForm() {
                         >
                             {loading ? "Submitting..." : "Submit Now"}
                         </button>
+                        <PrivacyConsent />
                         {status && (
                             <p className="mt-2 text-sm font-semibold text-[#0f766e]">{status}</p>
                         )}

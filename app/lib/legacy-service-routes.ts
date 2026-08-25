@@ -44,7 +44,7 @@ export const legacyChildServices: Record<string, readonly string[]> = {
   "global-panel": ["global-survey-company", "online-surveys"],
   "clt-services": ["clt-market-research-services", "clt"],
   "mystery-shopping": ["mystery-shopping-services", "mystery-shopping"],
-  "survey-programing": [
+  "survey-programming": [
     "survey-programming-services",
     "survey-programming",
   ],
@@ -61,8 +61,8 @@ const legacyChildSlugByApiSlug: Record<string, string> = {
   "online-surveys": "quantitative-research/online-surveys",
   "survey-audit": "survey-audit",
   "online-community-building": "online-community-building",
-  "survey-programming-services": "survey-programing",
-  "survey-programming": "survey-programing",
+  "survey-programming-services": "survey-programming",
+  "survey-programming": "survey-programming",
   "data-processing-and-analytics": "data-processing-and-analytics",
   "data-analysis-reporting": "data-processing-and-analytics",
   "capi-services": "capi-services",

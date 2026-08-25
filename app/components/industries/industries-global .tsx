@@ -6,20 +6,16 @@ type IndustriesGlobalProps = {
 };
 
 const fallbackIndustries: Industry[] = [
-    { name: "Technology & IT", description: "Digital products, enterprise technology, software, and IT decision-making.", image: "/industris/globle-it.png" },
-    { name: "Agriculture", description: "Farmer behavior, rural demand, product adoption, and agriculture markets.", image: "/industris/industry-agricultur.png" },
-    { name: "Automotive", description: "Vehicle demand, buyer preferences, EV adoption, and aftermarket behavior.", image: "/industris/industry-automotive.png" },
-    { name: "Construction & Building Materials", description: "Project trends, material demand, and purchasing behavior.", image: "/industris/industry-construction.png" },
-    { name: "Healthcare & Life Sciences", description: "Patients, providers, treatment journeys, and healthcare markets.", image: "/industris/industry-healthcare.png" },
-    { name: "Chemical", description: "Industrial demand, product usage, buyers, and sector opportunities.", image: "/industris/industry-chemical.png" },
-    { name: "Education", description: "Student behavior, learning platforms, courses, and institutions.", image: "/industris/industry-education.png" },
-    { name: "Telecom", description: "Network experience, service usage, expectations, and digital adoption.", image: "/industris/industry-telecom.png" },
-    { name: "B2B & Corporate Research", description: "Business buyers, decision-makers, markets, and corporate strategy.", image: "/industris/industry-others.png" },
-    { name: "Manufacturing & Industrial", description: "Industrial customers, operations, products, and market demand.", image: "/industris/industry-construction.png" },
-    { name: "Retail & Consumer", description: "Shopping behavior, product preferences, brands, and consumer demand.", image: "/industris/industry-others.png" },
-    { name: "Supply Chain & Logistics", description: "Operations, procurement, distribution, and logistics performance.", image: "/industris/industry-automotive.png" },
-    { name: "Financial Services & Investment", description: "Financial behavior, products, investors, and market confidence.", image: "/industris/industry-others.png" },
-    { name: "Non-Profit & Social Sector", description: "Communities, programs, social impact, and stakeholder needs.", image: "/industris/industry-others.png" },
+    { name: "Healthcare & Life Sciences", description: "Physicians, nurses, and healthcare professionals, hospitals and healthcare systems, plus medical device and pharmaceutical stakeholders.", image: "/industris/industry-healthcare.png" },
+    { name: "B2B & Corporate Research", description: "C-level executives and senior decision-makers, procurement, operations, and strategy leaders, and cross-functional business insights.", image: "/industris/industry-others.png" },
+    { name: "Technology & IT", description: "IT decision-makers and digital leaders, plus SaaS, enterprise tech, and innovation teams.", image: "/industris/globle-it.png" },
+    { name: "Manufacturing & Industrial", description: "Large manufacturing enterprises and operations, supply chain, and plant management professionals.", image: "/industris/industry-construction.png" },
+    { name: "Automotive", description: "OEMs and suppliers, industry stakeholders, and market trends.", image: "/industris/industry-automotive.png" },
+    { name: "Retail & Consumer", description: "Retail organizations and distribution networks, consumer behavior, and market trends.", image: "/industris/industry-others.png" },
+    { name: "Supply Chain & Logistics", description: "Distribution companies and logistics providers, procurement and supply chain decision-makers.", image: "/industris/industry-automotive.png" },
+    { name: "Construction & Building Materials", description: "Construction firms and infrastructure companies, building materials and specialised sectors like timber.", image: "/industris/industry-construction.png" },
+    { name: "Financial Services & Investment", description: "Pension funds, insurers, and sovereign funds, wealth managers, family offices, and HNWI segments.", image: "/industris/industry-others.png" },
+    { name: "Non-Profit & Social Sector", description: "Non-profits and social services, public and impact-driven initiatives.", image: "/industris/industry-others.png" },
 ];
 
 export default function IndustriesGlobal({ industries }: IndustriesGlobalProps) {

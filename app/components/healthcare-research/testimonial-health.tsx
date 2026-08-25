@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -80,27 +78,8 @@ export default function TestimonialHealth({
                                         &quot;{item.quote}&quot;
                                     </p>
 
-                                    <div className="mt-3 flex items-center justify-between gap-3">
-                                        <Link
-                                            href="/testimonials"
-                                            className="inline-flex items-center gap-2 text-sm font-medium text-[#1a1f52] transition duration-500 hover:text-[#7ddbd1] group-hover:text-white"
-                                        >
-                                            {item.link}
-                                            <ArrowRight size={18} />
-                                        </Link>
-                                    </div>
-
                                     <div className="mt-5 flex items-end justify-between gap-3">
                                         <div className="flex items-center gap-3">
-                                            <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full">
-                                                <Image
-                                                    src={item.logo || "/Testimonial-Icon.png"}
-                                                    alt={item.company}
-                                                    width={56}
-                                                    height={56}
-                                                    className="w-14 object-contain"
-                                                />
-                                            </div>
                                             <div>
                                                 <p className="mb-1 text-xs font-semibold text-[#1a1f52] transition-colors duration-500 group-hover:text-white lg:text-sm">
                                                     {item.company}

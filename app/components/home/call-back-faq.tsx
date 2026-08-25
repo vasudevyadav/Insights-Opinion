@@ -7,6 +7,7 @@ import { submitLeadForm } from "@/app/lib/lead-form-api";
 import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import { useRouter } from "next/navigation";
 import CountryCodeSelect from "@/app/components/shared/country-code-select";
+import PrivacyConsent from "@/app/components/shared/privacy-consent";
 
 const initialFormData = {
     name: "",
@@ -175,6 +176,7 @@ export default function CallbackFaqSection() {
                                 >
                                     {loading ? "Submitting..." : "Submit"}
                                 </button>
+                                <PrivacyConsent />
                             </div>
                         </form>
                     </div>

@@ -22,7 +22,7 @@ const nonServiceLegacyRedirects = [
   ["/case-study/automotive-industry", "/case-studies/automotive-industry"],
   [
     "/case-study/healthcare-industry-diabetes",
-    "/case-studies/healthcare-industry-diabetes-2",
+    "/case-studies/healthcare-industry-diabetes",
   ],
   ["/case-study/chemical-industry", "/case-studies/chemical-industry"],
   ["/case-study/telecom-industry", "/case-studies/telecom-industry"],
@@ -43,6 +43,26 @@ const nextConfig: NextConfig = {
 
     return [
       ...legacyRedirects,
+      {
+        source: "/case-studies/healthcare-industry-diabetes-2",
+        destination: "/case-studies/healthcare-industry-diabetes",
+        permanent: true,
+      },
+      {
+        source: "/case-studies/automative-industry",
+        destination: "/case-studies/automotive-industry",
+        permanent: true,
+      },
+      {
+        source: "/service/survey-programing",
+        destination: "/service/survey-programming",
+        permanent: true,
+      },
+      {
+        source: "/terms-and-conditions",
+        destination: "/terms",
+        permanent: true,
+      },
       { source: "/our-team", destination: "/our-teams", permanent: true },
       {
         source: "/our-team/:slug",
