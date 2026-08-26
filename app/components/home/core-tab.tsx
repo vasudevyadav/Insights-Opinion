@@ -21,11 +21,11 @@ export default function CoreTab() {
                     image: "/core-slide.png",
                 },
                 {
-                    title: "CAPI (Computer-Assisted Personal Interviewing)",
+                    title: "CAWI (Computer-Assisted Web Interviewing)",
                     image: "/core-slide-1.png",
                 },
                 {
-                    title: "CLT (Central Location Testing)",
+                    title: "Hybrid",
                     image: "/CLT-(Central-Location-Testing).jpg",
                 },
                 {

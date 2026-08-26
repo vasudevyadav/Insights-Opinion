@@ -125,7 +125,7 @@ export default function MarketResearch() {
                                         className="rounded-[14px] px-5 py-4 text-xs leading-[1.55] text-white lg:text-sm lg:min-h-[80px] min-h-[100px] line-clamp-2"
                                         style={{ background: "linear-gradient(135deg, #14b3a1, #5bc4e8)" }}
                                     >
-                                        Access to <strong>8M+</strong> global panelists
+                                        Access to a <strong>global panel</strong> of verified respondents
                                     </div>
                                     <div
                                         className="rounded-[14px] px-5 py-4 text-xs leading-[1.55] text-white lg:text-sm lg:min-h-[80px] min-h-[100px] line-clamp-2"

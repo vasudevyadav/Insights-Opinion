@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
+import FormPrivacyNote from "@/app/components/shared/form-privacy-note";
 
 const companyLinks = [
     { label: "About Us", href: "/about-us" },
@@ -111,6 +112,7 @@ export default function Footer() {
                                     <ChevronRight size={16} strokeWidth={1.75} />
                                 </button>
                             </div>
+                            <FormPrivacyNote className="mt-2 text-white/60" />
                             {newsletterStatus && <p className="mt-2 text-[11px] text-white/75">{newsletterStatus}</p>}
                         </form>
                     </div>

@@ -10,6 +10,7 @@ import { submitLeadForm } from "@/app/lib/lead-form-api";
 import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import BackgroundShape from "../../about-us/background-shape";
 import CountryCodeSelect from "@/app/components/shared/country-code-select";
+import FormPrivacyNote from "../../shared/form-privacy-note";
 
 type CaseStudyDetailProps = {
   caseStudy: CaseStudy;
@@ -176,6 +177,7 @@ function CallbackForm() {
         >
           {loading ? "Submitting..." : "Submit Now"}
         </button>
+        <FormPrivacyNote className="mt-2" />
         {status && (
           <p className="text-sm font-semibold text-[#0f766e]">{status}</p>
         )}

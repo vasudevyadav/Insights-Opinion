@@ -8,6 +8,7 @@ import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import CountryCodeSelect from "@/app/components/shared/country-code-select";
 import { useRouter } from "next/navigation";
 import BackgroundShape from "../about-us/background-shape";
+import FormPrivacyNote from "../shared/form-privacy-note";
 
 const initialFormData = {
     name: "",
@@ -164,6 +165,7 @@ export default function IndustriesForm() {
                                 >
                                     {loading ? "Submitting..." : "Submit Now"}
                                 </button>
+                                <FormPrivacyNote className="mt-2" />
                                 {status && (
                                     <p className="mt-2 text-sm font-semibold text-[#0f766e]">{status}</p>
                                 )}

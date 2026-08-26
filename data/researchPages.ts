@@ -93,7 +93,7 @@ export const researchPages = {
       ctaText: "Explain your access to",
       stats: [
         {
-          value: "8M+",
+          value: "Global",
           label: "Verified Respondents",
           valueColor: "#6fb0f3",
         },
@@ -333,7 +333,7 @@ export const researchPages = {
       ctaText: "Access verified audiences in",
       stats: [
         {
-          value: "8M+",
+          value: "Global",
           label: "Verified Respondents",
           valueColor: "#6fb0f3",
         },
@@ -573,7 +573,7 @@ export const researchPages = {
       ctaText: "Access verified audiences in",
       stats: [
         {
-          value: "8M+",
+          value: "Global",
           label: "Verified Respondents",
           valueColor: "#6fb0f3",
         },

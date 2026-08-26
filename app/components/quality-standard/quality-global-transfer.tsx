@@ -64,7 +64,7 @@ const sections = [
             },
             {
                 title: "ISO Certifications",
-                desc: "We are ISO 27001 certified for information security management and ISO 20252 certified for market, opinion, and social research quality management. ",
+                desc: "We are ISO 27001 certified for information security management. ",
             },
             {
                 title: "Research Expertise Backed by Standards",

@@ -22,11 +22,16 @@ const nonServiceLegacyRedirects = [
   ["/case-study/automotive-industry", "/case-studies/automotive-industry"],
   [
     "/case-study/healthcare-industry-diabetes",
+    "/case-studies/healthcare-industry-diabetes",
+  ],
+  [
     "/case-studies/healthcare-industry-diabetes-2",
+    "/case-studies/healthcare-industry-diabetes",
   ],
   ["/case-study/chemical-industry", "/case-studies/chemical-industry"],
   ["/case-study/telecom-industry", "/case-studies/telecom-industry"],
   ["/case-study/healthcare-industry", "/case-studies"],
+  ["/service/survey-programing", "/service/survey-programming"],
 ] as const;
 
 const nextConfig: NextConfig = {

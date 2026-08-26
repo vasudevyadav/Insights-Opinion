@@ -21,7 +21,7 @@ export default function TeamMembers({ members }: TeamMembersProps) {
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-6xl text-center">
           <h2 className="site-section-title quality-gradient-text font-semibold">
-            At Insight Opinion,
+            At Insights Opinion,
           </h2>
           <p className="mt-3 text-xs leading-6 text-[#18213f] sm:text-sm sm:leading-7 lg:text-base">
             our team is composed of experienced professionals who bring a wealth

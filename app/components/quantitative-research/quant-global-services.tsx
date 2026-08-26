@@ -29,12 +29,12 @@ const staticOfficeContent: Record<
     {
       title: "Quantitative Research Services in the USA",
       description:
-        "Our New York office serves US-based clients across consumer research, B2B research, and healthcare research. We are among the quantitative market research companies US businesses can engage directly for domestic and multi-country studies.\n8M+ global panellists, including US consumer and professional respondents via our global panel\nCATI fieldwork with trained interviewers for US-specific study requirements\nEnd-to-end quantitative market research services across the USA and 100+ countries",
+        "Our New York office serves US-based clients across consumer research, B2B research, and healthcare research. We are among the quantitative market research companies US businesses can engage directly for domestic and multi-country studies.\nGlobal panel access, including US consumer and professional respondents\nCATI fieldwork with trained interviewers for US-specific study requirements\nEnd-to-end quantitative market research services across the USA and 100+ countries",
     },
     {
       title: "Quantitative Research Services in the UK",
       description:
-        "Our London office supports UK and European clients across FMCG, financial services, technology, healthcare, and public sector programmes.\nFull-service quantitative market research services for UK domestic and pan-European studies\nCATI and CAPI fieldwork across the UK and continental Europe\n60+ language delivery for European market research\nISO 27001 and ISO 20252 certified with full UK GDPR compliance",
+        "Our London office supports UK and European clients across FMCG, financial services, technology, healthcare, and public sector programmes.\nFull-service quantitative market research services for UK domestic and pan-European studies\nCATI and CAPI fieldwork across the UK and continental Europe\n60+ language delivery for European market research\nISO 27001 certified with full UK GDPR compliance",
     },
     {
       title: "Quantitative Research Services in India",
@@ -68,7 +68,7 @@ const staticOfficeContent: Record<
     {
       title: "Support Services in the UK",
       description:
-        "Our London office supports UK and European clients across FMCG, financial services, healthcare, and public sector research programs that require technical delivery alongside fieldwork.\nSurvey programming and hosting for UK domestic and pan-European studies\nTranslation and localization services across European languages\nData processing and dashboard delivery with full UK GDPR compliance\nISO 27001 and ISO 20252 certified across all support service delivery",
+        "Our London office supports UK and European clients across FMCG, financial services, healthcare, and public sector research programs that require technical delivery alongside fieldwork.\nSurvey programming and hosting for UK domestic and pan-European studies\nTranslation and localization services across European languages\nData processing and dashboard delivery with full UK GDPR compliance\nISO 27001 certified across all support service delivery",
     },
     {
       title: "Support Services in India",
