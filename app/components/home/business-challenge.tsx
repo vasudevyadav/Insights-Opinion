@@ -121,7 +121,7 @@ function ChallengeCardItem({
 
 export default function BusinessChallenge() {
     return (
-        <section className="bg-white py-8 lg:py-16">
+        <section className="bg-white py-8 lg:py-16 lg:pb-40 pb-20">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div
                     className="lg:hidden"

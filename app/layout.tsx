@@ -112,7 +112,7 @@ export default async function RootLayout({
   ]);
 
   return (
-    <html lang="en" style={{ colorScheme: "light" }}>
+    <html lang="en" data-cookie-consent="pending" style={{ colorScheme: "light" }}>
       <body className={`${poppins.variable} antialiased`} style={{ colorScheme: "light" }}>
         <script
           type="application/ld+json"

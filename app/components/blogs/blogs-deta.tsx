@@ -8,6 +8,7 @@ import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import CountryCodeSelect from "@/app/components/shared/country-code-select";
 import { useRouter } from "next/navigation";
 import BackgroundShape from "@/app/components/about-us/background-shape";
+import PrivacyConsent from "@/app/components/shared/privacy-consent";
 
 const initialFormData = {
     name: "",
@@ -166,6 +167,7 @@ export default function BlogForm() {
                                 >
                                     {loading ? "Submitting..." : "Submit Now"}
                                 </button>
+                                <PrivacyConsent />
                                 {status && (
                                     <p className="mt-2 text-sm font-semibold text-[#0f766e]">{status}</p>
                                 )}

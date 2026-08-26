@@ -307,14 +307,6 @@ export default function TestimonialNews() {
                                                     </p>
                                                 </div>
                                             </div>
-
-                                            {/* <Image
-                                                src="/inshite-sing.png"
-                                                alt="testimonial logo"
-                                                width={1000}
-                                                height={1000}
-                                                className="w-28 object-contain transition-all duration-500 group-hover:invert"
-                                            /> */}
                                         </div>
                                     </div>
                                 </SwiperSlide>

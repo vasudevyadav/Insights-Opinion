@@ -74,7 +74,7 @@ function normalizeTeamMember(raw: RawTeamMember): TeamMember {
     image
   );
 
-  return {
+  const member = {
     slug: raw.slug,
     name: raw.name,
     role: raw.role,
@@ -83,6 +83,15 @@ function normalizeTeamMember(raw: RawTeamMember): TeamMember {
     description: parseDescription(raw.description || ""),
     seo: raw.seo,
   };
+
+  // The upstream Shahab record has previously returned another team member's
+  // biography. Keep the verified local profile in place until the API record is
+  // corrected and approved.
+  if (raw.slug === "shahab-s") {
+    return { ...member, ...FALLBACK_MEMBERS[0] };
+  }
+
+  return member;
 }
 
 export async function fetchTeamMembers(): Promise<TeamMember[]> {

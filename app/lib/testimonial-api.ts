@@ -7,7 +7,6 @@ export type TextTestimonial = {
   name: string;
   role: string;
   company: string;
-  personImage: string;
 };
 
 export type VideoTestimonial = {
@@ -18,7 +17,6 @@ export type VideoTestimonial = {
   role: string;
   company: string;
   poster: string;
-  personImage: string;
   videoUrl?: string;
 };
 
@@ -32,6 +30,5 @@ export async function fetchTestimonials(): Promise<Testimonial[]> {
     name: testimonial.name,
     role: testimonial.role,
     company: "",
-    personImage: testimonial.personImage,
   }));
 }

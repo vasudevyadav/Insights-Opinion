@@ -197,12 +197,16 @@ export function getSiteUrl() {
 }
 
 export function isProductionEnvironment() {
-  const environment =
-    process.env.NEXT_PUBLIC_SITE_ENV ||
-    process.env.VERCEL_ENV ||
-    process.env.NODE_ENV;
+  const configuredEnvironment = process.env.NEXT_PUBLIC_SITE_ENV;
+  if (configuredEnvironment) return configuredEnvironment === "production";
 
-  return environment === "production";
+  const vercelEnvironment = process.env.VERCEL_ENV;
+  if (vercelEnvironment) return vercelEnvironment === "production";
+
+  return (
+    process.env.NODE_ENV === "production" &&
+    getSiteUrl() === "https://insightsopinion.com"
+  );
 }
 
 export async function getAllSiteRoutes(): Promise<SiteRoute[]> {

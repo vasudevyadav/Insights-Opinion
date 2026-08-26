@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
+import PrivacyConsent from "@/app/components/shared/privacy-consent";
 
 const companyLinks = [
     { label: "About Us", href: "/about-us" },
@@ -111,6 +112,7 @@ export default function Footer() {
                                     <ChevronRight size={16} strokeWidth={1.75} />
                                 </button>
                             </div>
+                            <PrivacyConsent dark />
                             {newsletterStatus && <p className="mt-2 text-[11px] text-white/75">{newsletterStatus}</p>}
                         </form>
                     </div>
@@ -195,6 +197,10 @@ export default function Footer() {
                         <span>|</span>
                         <Link href="/privacy-policy" className="transition hover:text-[#151b4a]">
                             Privacy Policy
+                        </Link>
+                        <span>|</span>
+                        <Link href="/terms" className="transition hover:text-[#151b4a]">
+                            Terms &amp; Conditions
                         </Link>
                     </div>
                 </div>

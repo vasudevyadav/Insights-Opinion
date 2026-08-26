@@ -4,7 +4,6 @@ export type SharedTestimonial = {
   role: string;
   quote: string;
   rating: 5;
-  personImage: string;
 };
 
 // Approved testimonial content is pending. Keep exactly three neutral slots and
@@ -15,7 +14,6 @@ export const sharedTestimonials: SharedTestimonial[] = [1, 2, 3].map((id) => ({
   role: "Designation / company placeholder",
   quote: "Quote placeholder — approved testimonial text pending client supply.",
   rating: 5,
-  personImage: "",
 }));
 
 export const sliderTestimonials = sharedTestimonials.map((testimonial) => ({
@@ -23,5 +21,4 @@ export const sliderTestimonials = sharedTestimonials.map((testimonial) => ({
   link: "",
   company: testimonial.name,
   author: testimonial.role,
-  logo: "",
 }));

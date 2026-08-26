@@ -103,13 +103,6 @@ export default function TestimonialsGallery({
                     {item.title}
                   </h4>
                   <div className="mt-4 flex items-center gap-3 border-t border-[#e2ebf2] pt-4">
-                    <Image
-                      src={item.personImage || "/Testimonial-Icon.png"}
-                      alt={item.name}
-                      width={48}
-                      height={48}
-                      className="h-12 w-12 shrink-0 rounded-full object-cover"
-                    />
                     <div>
                       <p className="font-semibold text-[#151b48]">{item.name}</p>
                       <p className="mt-1 text-xs leading-5 text-[#667085]">

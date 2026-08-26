@@ -4,7 +4,7 @@ import LeadModalTrigger from "@/app/components/shared/lead-modal-trigger";
 
 export default function HomeHero() {
   return (
-    <section className="relative overflow-hidden bg-[#edf6ff] text-white">
+    <section className="relative overflow-hidden bg-white text-white">
       <div className="absolute inset-0 bg-[#14284d] sm:[clip-path:polygon(0_0,100%_0,100%_92%,55%_100%,0_100%)]">
         <Image
           src="/home/hero-bg.png"

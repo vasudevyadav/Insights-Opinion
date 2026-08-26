@@ -17,8 +17,9 @@ export default function Home() {
   return (
     <section className="home-page">
       <HomeHero />
+       <BusinessChallenge />
       <HomeIndustry />
-      <BusinessChallenge />
+     
       <CoreSolution />
       <CaseStudies />
       <AccreditationsRecognitions />
