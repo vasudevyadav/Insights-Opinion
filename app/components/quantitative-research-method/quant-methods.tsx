@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { legacyChildHref } from "@/app/lib/legacy-service-routes";
 
 const methods = [
   {
@@ -28,12 +29,12 @@ const methods = [
 
 export default function QuantDetailsMethods() {
   return (
-    <section className="relative overflow-hidden bg-[#edf6ff] py-1 lg:py-10">
+    <section className="quality-hex-bg relative overflow-hidden py-1 lg:py-10">
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="mb-12 text-center">
-          <h2 className="text-[32px] font-semibold leading-tight sm:text-[42px] lg:text-[50px]">
+          <h2 className="text-[32px] font-semibold leading-tight sm:text-[42px] lg:text-[42 px]">
             <span className="bg-linear-to-r from-[#3c8df6] via-[#31b6df] to-[#1dc3b3] bg-clip-text text-transparent">
               Our Quantitative
             </span>
@@ -83,7 +84,7 @@ function MethodCard({
 }) {
   return (
     <Link
-      href={`/quantitative-research/methods/${method.slug}`}
+      href={legacyChildHref(method.slug)}
       className={`group relative ${height} block w-full overflow-hidden rounded-[20px] shadow-[0_8px_28px_rgba(0,0,0,0.14)] transition-transform duration-500 hover:-translate-y-1`}
     >
       <Image

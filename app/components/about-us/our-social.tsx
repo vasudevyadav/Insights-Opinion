@@ -1,13 +1,12 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
+import BackgroundShape from "./background-shape";
 
 const csrPoints = [
     {
         title: "Education:",
         description:
-            "We support initiatives that enhance educational opportunities, particularly in underserved communities, by providing resources and funding for schools and educational programs.",
+            " We support initiatives that enhance educational opportunities, particularly in underserved communities, by providing resources and funding for schools and educational programs.",
     },
     {
         title: "Environmental Sustainability:",
@@ -23,7 +22,8 @@ const csrPoints = [
 
 export default function OurSocial() {
     return (
-        <section className="relative overflow-hidden bg-[#edf4fb] py-4 lg:py-8">
+        <section className="relative overflow-hidden bg-[#edf6ff] pb-12 lg:pb-16">
+            <BackgroundShape variant={5} side="left" className="-left-20 bottom-0 w-[320px] opacity-50 lg:-left-4 lg:w-[470px]" />
 
             <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-10">
                 <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
@@ -53,12 +53,7 @@ export default function OurSocial() {
                         </h2>
 
                         <p className="mt-4 text-xs leading-[1.7] text-[#3f4a5f] lg:text-base">
-                            At Insights Opinion, we believe in the power of business to create
-                            positive change. Our Corporate Social Responsibility (CSR)
-                            initiatives focus on advancing education, promoting environmental
-                            sustainability, and supporting social welfare. We are dedicated to
-                            making a meaningful impact through responsible practices that
-                            benefit both our communities and the environment.
+                            At Insights Opinion, we believe in the power of business to create positive change. Our Corporate Social Responsibility (CSR) initiatives focus on advancing education, promoting environmental sustainability, and supporting social welfare. We are dedicated to making a meaningful impact through responsible practices that benefit both our communities and the environment.
                         </p>
                     </div>
                 </div>

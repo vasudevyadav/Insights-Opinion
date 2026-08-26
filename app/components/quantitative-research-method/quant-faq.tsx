@@ -1,11 +1,69 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import type { FaqItem } from "@/app/lib/method-data";
+import { submitLeadForm } from "@/app/lib/lead-form-api";
+import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
+import { useRouter } from "next/navigation";
+import CountryCodeSelect from "@/app/components/shared/country-code-select";
+import FormPrivacyNote from "@/app/components/shared/form-privacy-note";
+
+const initialFormData = {
+  name: "",
+  email: "",
+  phone: "",
+  countryCode: "+91",
+  enquiryType: "",
+  message: "",
+};
 
 export default function QuantDetailsFaq({ data }: { data: FaqItem[] }) {
   const [openIndex, setOpenIndex] = useState(0);
+  const [formData, setFormData] = useState(initialFormData);
+  const [loading, setLoading] = useState(false);
+
+  const [status, setStatus] = useState("");
+
+  const router = useRouter();
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setLoading(true);
+    setStatus("");
+
+    try {
+      await submitLeadForm({
+        formName: "quant_method_callback",
+        name: formData.name,
+        email: formData.email,
+        phone: `${formData.countryCode} ${formData.phone}`,
+        countryCode: formData.countryCode,
+        enquiryType: formData.enquiryType,
+        message: formData.message,
+      });
+
+      setStatus("Submitted successfully.");
+
+      router.push("/thank-you");
+      setFormData(initialFormData);
+    } catch (error) {
+      setStatus(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section className="relative overflow-hidden">
@@ -34,59 +92,69 @@ export default function QuantDetailsFaq({ data }: { data: FaqItem[] }) {
               </h2>
             </div>
 
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <input
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   type="text"
+                  required
                   placeholder="Name"
                   className="h-11.5 rounded-sm border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
                 />
                 <input
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   type="email"
+                  required
                   placeholder="Email"
                   className="h-11.5 rounded-sm border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
                 />
               </div>
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <input
-                  type="tel"
-                  placeholder="Mobile"
-                  className="h-11.5 rounded-sm border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
-                />
-                <select className="h-11.5 rounded-sm border border-[#d7d7d7] bg-white px-4 text-sm text-[#8a8a8a] outline-none focus:border-[#20b7a6]">
-                  <option>Please Select</option>
-                  <option>CATI</option>
-                  <option>CAPI</option>
-                  <option>CLT</option>
-                  <option>Online Surveys</option>
+                <div className="flex h-11.5 overflow-visible rounded-sm border border-[#d7d7d7] bg-white focus-within:border-[#20b7a6]">
+                  <CountryCodeSelect value={formData.countryCode} onChange={(countryCode) => setFormData((current) => ({ ...current, countryCode }))} className="w-[88px] border-r border-[#d7d7d7]" buttonClassName="px-2 text-sm text-[#343954]" />
+                  <input name="phone" value={formData.phone} onChange={handleChange} type="tel" required placeholder="Mobile" className="min-w-0 flex-1 px-3 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a]" />
+                </div>
+                <select
+                  name="enquiryType"
+                  value={formData.enquiryType}
+                  onChange={handleChange}
+                  required
+                  className="h-11.5 rounded-sm border border-[#d7d7d7] bg-white px-4 text-sm text-[#8a8a8a] outline-none focus:border-[#20b7a6]"
+                >
+                  <option value="" disabled>Please Select</option>
+                  {SERVICE_SELECT_OPTIONS.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
                 </select>
               </div>
 
               <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 placeholder="Message"
                 rows={4}
                 className="w-full rounded-sm border border-[#d7d7d7] px-4 py-3 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6] resize-none"
               />
 
-              <div className="relative flex flex-col gap-3 sm:flex-row sm:items-center">
-                <input
-                  type="text"
-                  placeholder="Captcha"
-                  className="h-11.5 w-full rounded-sm border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6] sm:w-37.5"
-                />
-                <div className="absolute right-0 lg:left-36 flex h-11.5 w-27.5 items-center justify-center rounded-sm bg-[#171f4d] text-sm font-medium tracking-wide text-white">
-                  990940
-                </div>
-              </div>
+              {status && (
+                <p className="text-sm font-semibold text-[#0f766e]">{status}</p>
+              )}
 
               <div className="pt-6 text-center">
                 <button
                   type="submit"
-                  className="inline-flex min-w-42.5 items-center justify-center rounded-md bg-linear-to-r from-[#48b99b] to-[#5bc4a9] px-18 py-3 text-sm font-semibold text-white transition hover:opacity-90 hover:shadow-lg lg:text-lg"
+                  disabled={loading}
+                  className="inline-flex min-w-42.5 items-center justify-center rounded-md bg-linear-to-r from-[#48b99b] to-[#5bc4a9] px-18 py-3 text-sm font-semibold text-white transition hover:opacity-90 hover:shadow-lg lg:text-lg disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  Submit
+                  {loading ? "Submitting..." : "Submit"}
                 </button>
+                <FormPrivacyNote className="mt-3" />
               </div>
             </form>
           </div>
@@ -121,7 +189,7 @@ export default function QuantDetailsFaq({ data }: { data: FaqItem[] }) {
                     />
                   </button>
 
-                  <div className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] rounded-b-2xl bg-white" : "grid-rows-[0fr]"}`}>
+                  <div className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${isOpen ? "grid-rows-[1fr] rounded-b-2xl bg-white opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                     <div className="overflow-hidden">
                       <div className="px-5 pb-5">
                         <p className="text-xs leading-6 text-[#6b7280] lg:text-sm">{faq.a}</p>

@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-// @ts-ignore - no type declarations for 'aos'
-import AOS from "aos";
+import Link from "next/link";
 import { ArrowLeft, ArrowRight, ChevronDown } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
+import { sliderTestimonials as testimonials } from "@/data/testimonials";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -28,41 +28,6 @@ export default function TestimonialNews() {
         { left: "40%", delay: "0.8s" },
         { left: "60%", delay: "1.6s" },
         { left: "80%", delay: "1.6s" },
-    ];
-
-    const testimonials = [
-        {
-            quote:
-                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
-            link: "Read Full Customer Story",
-            company: "TAJMG",
-            author: "Director, Clifton",
-            logo: "/Testimonial-Icon.png",
-        },
-        {
-            quote:
-                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
-            link: "Read Full Customer Story",
-            company: "TAJMG",
-            author: "Director, Clifton",
-            logo: "/Testimonial-Icon.png",
-        },
-        {
-            quote:
-                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
-            link: "Read Full Customer Story",
-            company: "TAJMG",
-            author: "Director, Clifton",
-            logo: "/Testimonial-Icon.png",
-        },
-        {
-            quote:
-                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
-            link: "Read Full Customer Story",
-            company: "TAJMG",
-            author: "Director, Clifton",
-            logo: "/Testimonial-Icon.png",
-        },
     ];
 
     const news = [
@@ -100,22 +65,6 @@ export default function TestimonialNews() {
         },
     ];
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            AOS.refreshHard();
-        }, 250);
-
-        return () => clearTimeout(timer);
-    }, []);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            AOS.refreshHard();
-        }, 180);
-
-        return () => clearTimeout(timer);
-    }, [openIndex]);
-
     const toggleAccordion = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
     };
@@ -139,18 +88,14 @@ export default function TestimonialNews() {
                 className={`group/news overflow-hidden rounded-[16px] border border-[#d7e3ef] bg-white transition-all duration-500 ease-in-out hover:border-[#1a1f52] hover:bg-[#1a1f52] ${isOpen ? "w-full md:flex-[1.5]" : "w-full md:flex-1 md:hover:flex-[1.5]"
                     }`}
             >
-                <div className="relative h-[260px] w-full overflow-hidden">
+                <div className="relative lg:h-[220px] h-[190px] w-full overflow-hidden">
                     <Image
                         src={item.image}
                         alt={item.title}
                         fill
 
                         className="object-fill transition-transform duration-500 group-hover/news:scale-105"
-                        onLoadingComplete={() => {
-                            setTimeout(() => {
-                                AOS.refresh();
-                            }, 100);
-                        }}
+                        sizes="(max-width: 767px) calc(100vw - 32px), 33vw"
                     />
                 </div>
 
@@ -251,12 +196,10 @@ export default function TestimonialNews() {
                 <div
                     key={`m-${i}`}
                     className="demo-v-line block md:hidden"
-                    style={
-                        {
-                            left: line.left,
-                            ["--line-delay" as any]: line.delay,
-                        } as React.CSSProperties
-                    }
+                    style={{
+                        left: line.left,
+                        "--line-delay": line.delay,
+                    } as React.CSSProperties & Record<"--line-delay", string>}
                 />
             ))}
 
@@ -265,12 +208,10 @@ export default function TestimonialNews() {
                 <div
                     key={`d-${i}`}
                     className="demo-v-line hidden md:block"
-                    style={
-                        {
-                            left: line.left,
-                            ["--line-delay" as any]: line.delay,
-                        } as React.CSSProperties
-                    }
+                    style={{
+                        left: line.left,
+                        "--line-delay": line.delay,
+                    } as React.CSSProperties & Record<"--line-delay", string>}
                 />
             ))}
 
@@ -330,16 +271,6 @@ export default function TestimonialNews() {
                             speed={900}
                             loop
                             spaceBetween={16}
-                            onInit={() => {
-                                setTimeout(() => {
-                                    AOS.refreshHard();
-                                }, 220);
-                            }}
-                            onSlideChange={() => {
-                                setTimeout(() => {
-                                    AOS.refresh();
-                                }, 100);
-                            }}
                             breakpoints={{
                                 0: {
                                     slidesPerView: 1,
@@ -362,48 +293,18 @@ export default function TestimonialNews() {
                                         data-aos-duration="850"
                                     >
                                         <p className="min-h-[98px] line-clamp-4 text-xs leading-5 text-[#344054] transition-colors duration-500 group-hover:text-white/85 lg:text-sm">
-                                            "{item.quote}"
+                                            &ldquo;{item.quote}&rdquo;
                                         </p>
 
-                                        <div className="mt-3 flex items-center justify-between gap-3">
-                                            <a
-                                                href="#"
-                                                className="inline-flex items-center gap-2 text-sm font-medium text-[#1a1f52] transition duration-500 hover:text-[#7ddbd1] group-hover:text-white"
-                                            >
-                                                {item.link}
-                                                <ArrowRight size={18} />
-                                            </a>
-                                        </div>
-
                                         <div className="mt-5 flex items-end justify-between gap-3">
-                                            <div className="flex items-center gap-3">
-                                                <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full transition-all duration-500">
-                                                    <Image
-                                                        src="/Testimonial-Icon.png"
-                                                        alt="testimonial logo"
-                                                        width={1000}
-                                                        height={1000}
-                                                        className="w-14 object-contain transition-all duration-500"
-                                                    />
-                                                </div>
-
-                                                <div>
-                                                    <p className="mb-1 text-xs font-semibold text-[#1a1f52] transition-colors duration-500 group-hover:text-white lg:text-sm">
-                                                        {item.company}
-                                                    </p>
-                                                    <p className="text-xs text-[#667085] transition-colors duration-500 group-hover:text-white/70">
-                                                        {item.author}
-                                                    </p>
-                                                </div>
+                                            <div>
+                                                <p className="mb-1 text-xs font-semibold text-[#1a1f52] transition-colors duration-500 group-hover:text-white lg:text-sm">
+                                                    {item.company}
+                                                </p>
+                                                <p className="text-xs text-[#667085] transition-colors duration-500 group-hover:text-white/70">
+                                                    {item.author}
+                                                </p>
                                             </div>
-
-                                            <Image
-                                                src="/inshite-sing.png"
-                                                alt="testimonial logo"
-                                                width={1000}
-                                                height={1000}
-                                                className="w-28 object-contain transition-all duration-500 group-hover:invert"
-                                            />
                                         </div>
                                     </div>
                                 </SwiperSlide>
@@ -413,7 +314,7 @@ export default function TestimonialNews() {
                 </div>
 
                 {/* NEWS & ARTICLES */}
-                <div className="mx-auto max-w-[1150px] px-6 lg:px-0">
+                <div className="mx-auto max-w-6xl px-6 lg:px-0">
                     <div
                         className="mb-8"
                         data-aos="fade-up"
@@ -444,16 +345,6 @@ export default function TestimonialNews() {
                             loop
                             spaceBetween={16}
                             slidesPerView={1}
-                            onInit={() => {
-                                setTimeout(() => {
-                                    AOS.refreshHard();
-                                }, 220);
-                            }}
-                            onSlideChange={() => {
-                                setTimeout(() => {
-                                    AOS.refresh();
-                                }, 100);
-                            }}
                             className="news-swiper"
                         >
                             {news.map((item, index) => (
@@ -483,13 +374,13 @@ export default function TestimonialNews() {
                         data-aos-delay="120"
                         data-aos-duration="900"
                     >
-                        <a
-                            href="#"
+                        <Link
+                            href="/blogs"
                             className="inline-flex items-center gap-2 text-lg font-semibold text-[#1b224f] transition hover:text-[#20b7a6]"
                         >
                             See More
                             <ArrowRight size={28} />
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

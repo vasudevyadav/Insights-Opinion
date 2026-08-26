@@ -1,5 +1,5 @@
-import CallbackFaqHealth from "@/app/components/healthcare-research/call-back-faq";
-import BookDemoHealth from "@/app/components/healthcare-research/book-demo";
+import type { Metadata } from "next";
+import { getStaticMetadata } from "@/lib/static-seo";
 import AboutHero from "../components/about-us/about-hero";
 import WhoWeAre from "../components/about-us/who-are";
 import Milestone from "../components/about-us/milestone";
@@ -8,16 +8,14 @@ import OurCoreValue from "../components/about-us/our-core-value";
 import Award from "../components/about-us/award";
 import OurSocial from "../components/about-us/our-social";
 import PartnershipsAffiliations from "../components/about-us/partnerships-affiliations";
+import TestimonialHealth from "../components/healthcare-research/testimonial-health";
 
 
-export default async function AboutUs({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export const metadata: Metadata = getStaticMetadata("about-us");
 
+export default function AboutUs() {
   return (
-    <section>
+    <section className="about-page">
       <AboutHero />
       <WhoWeAre />
       <Milestone />
@@ -26,6 +24,7 @@ export default async function AboutUs({
       <Award />
       <OurSocial />
       <PartnershipsAffiliations />
+      <TestimonialHealth heading="What Our" accentHeading="Clients Say" />
     </section>
   );
 }

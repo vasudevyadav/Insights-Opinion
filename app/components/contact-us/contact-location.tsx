@@ -1,13 +1,12 @@
-"use client";
 import React from "react";
 
 const locations = [
     {
         country: "US",
         flag: "🇺🇸",
-        address: "100 Church Street, Suite 800,\nNew York 10007",
-        phone: "+1 646 475 7865",
-        email: "bids@insightopinion.com",
+        address: "100 Church Street, Suite 800,\nNew York, NY, 10007",
+        phone: "+1 478 606 3786",
+        email: "bids@insightsopinion.com",
         pinWidth: "w-[105px] sm:w-[115px] lg:w-[145px]",
         wrapperClass: "mt-0 ml-0 lg:-ml-10 lg:mt-0",
         pinWrapClass: "mb-3 sm:mb-4 lg:mb-10 lg:-translate-y-1",
@@ -19,7 +18,7 @@ const locations = [
         flag: "🇬🇧",
         address: "71-75, Shelton Street, Covent Garden,\nLondon WC2H 9JQ, United Kingdom",
         phone: "+44 20 3239 5786",
-        email: "bids@insightopinion.com",
+        email: "bids@insightsopinion.com",
         pinWidth: "w-[105px] sm:w-[115px] lg:w-[142px]",
         wrapperClass: "mt-0 ml-0",
         pinWrapClass: "mb-3 sm:mb-4 lg:mb-10",
@@ -29,9 +28,9 @@ const locations = [
     {
         country: "India",
         flag: "🇮🇳",
-        address: "E-144, Sector-63, Noida-201301",
-        phone: "+91 120 359 4799",
-        email: "bids@insightopinion.com",
+        address: "8th Floor, Unit - 802, Majestic Signia, A27-A,\nBlock A, Industrial Area, Sector 62, Noida,\nUttar Pradesh 201309",
+        phone: "+91 0120 359 4799",
+        email: "bids@insightsopinion.com",
         pinWidth: "w-[105px] sm:w-[115px] lg:w-[145px]",
         wrapperClass: "mt-0 ml-0 lg:ml-7 lg:mt-0",
         pinWrapClass: "mb-3 sm:mb-4 lg:mb-10 lg:translate-y-1 lg:ml-2",
@@ -76,12 +75,12 @@ export default function ContactLocation() {
                             key={index}
                             className={`flex flex-col items-center text-center ${loc.wrapperClass}`}
                         >
-                            <div className={`relative flex items-center justify-center ${loc.pinWrapClass}`}>
+                            <div className={`relative flex items-center justify-center  ${loc.pinWrapClass}`}>
                                 <svg
                                     viewBox="0 0 96 118"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className={`${loc.pinWidth} drop-shadow-[0_10px_18px_rgba(72,140,190,0.25)]`}
+                                    className=" lg:w-7/12 w-3/12 drop-shadow-[0_10px_18px_rgba(72,140,190,0.25)] "
                                 >
                                     <defs>
                                         <linearGradient
@@ -134,7 +133,7 @@ export default function ContactLocation() {
                                         clipPath={`url(#flagClip${index})`}
                                     >
                                         <div
-                                            /* @ts-ignore */
+                                            /* @ts-expect-error SVG foreignObject requires the XHTML namespace attribute. */
                                             xmlns="http://www.w3.org/1999/xhtml"
                                             style={{
                                                 width: "52px",

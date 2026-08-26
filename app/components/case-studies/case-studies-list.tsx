@@ -4,111 +4,24 @@ import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Search } from "lucide-react";
-
-type CaseStudy = {
-    id: number;
-    category: string;
-    title: string;
-    image: string;
-    description: string;
-    slug: string;
-};
-
-const caseStudies: CaseStudy[] = [
-    {
-        id: 1,
-        category: "Automotive Industry",
-        title: "Automative Industry",
-        image: "/case-studies/case-1.png",
-        slug: "automotive-industry-1",
-        description:
-            "With our help the client was able to understand the change in the services required by their brand and the experiences of the target audience with respect to the car industry. The client was also able to understand the purchase pattern of the target audience for their future car purchase.",
-    },
-    {
-        id: 2,
-        category: "Healthcare Industry Diabetes",
-        title: "Healthcare Industry Diabetes",
-        image: "/case-studies/case-2.png",
-        slug: "healthcare-industry-diabetes",
-        description:
-            "Our assistance enabled the client to successfully anayze the kind of treatment and care provided in hospitals to HIV infected persons as well as the ways to reduce the risk of future infections thereby capturing the disease in a wholesome manner.",
-    },
-    {
-        id: 3,
-        category: "Healthcare Industry- HIV",
-        title: "Healthcare Industry- HIV",
-        image: "/case-studies/case-3.png",
-        slug: "healthcare-industry-hiv",
-        description:
-            "Our assistance enabled the client to successfully analyze the kind of treatment and care provided in hospitals to HIV infected persons as well as the ways to reduce the risk of future infections thereby capturing the disease in a wholesome manner. Along with these findings, satisfaction result enabled the client to identify the gap in the current",
-    },
-    {
-        id: 4,
-        category: "Chemical Industry",
-        title: "Chemical Industry",
-        image: "/case-studies/case-4.png",
-        slug: "chemical-industry",
-        description:
-            "With our help the client was able to understand the change in the services required by their brand and the experiences of the target audience with respect to the car industry. The client was also able to understand the purchase pattern of the target audience for their future car purchase.",
-    },
-    {
-        id: 5,
-        category: "Telecom Industry",
-        title: "Telecom Industry",
-        image: "/case-studies/case-5.png",
-        slug: "telecom-industry",
-        description:
-            "Our assistance enabled the client to successfully anayze the kind of treatment and care provided in hospitals to HIV infected persons as well as the ways to reduce the risk of future infections thereby capturing the disease in a wholesome manner.",
-    },
-    {
-        id: 6,
-        category: "Automotive Industry",
-        title: "Automotive Industry",
-        image: "/case-studies/case-1.png",
-        slug: "automotive-industry-2",
-        description:
-            "Our assistance enabled the client to successfully analyze the kind of treatment and care provided in hospitals to HIV infected persons as well as the ways to reduce the risk of future infections thereby capturing the disease in a wholesome manner. Along with these findings, satisfaction result enabled the client to identify the gap in the current",
-    },
-    {
-        id: 7,
-        category: "Automotive Industry",
-        title: "Automative Industry",
-        image: "/case-studies/case-2.png",
-        slug: "automotive-industry-3",
-        description:
-            "With our help the client was able to understand the change in the services required by their brand and the experiences of the target audience with respect to the car industry. The client was also able to understand the purchase pattern of the target audience for their future car purchase.",
-    },
-    {
-        id: 8,
-        category: "Healthcare Industry Diabetes",
-        title: "Healthcare Industry Diabetes",
-        image: "/case-studies/case-3.png",
-        slug: "healthcare-industry-diabetes-2",
-        description:
-            "Our assistance enabled the client to successfully anayze the kind of treatment and care provided in hospitals to HIV infected persons as well as the ways to reduce the risk of future infections thereby capturing the disease in a wholesome manner.",
-    },
-    {
-        id: 9,
-        category: "Healthcare Industry- HIV",
-        title: "Healthcare Industry- HIV",
-        image: "/case-studies/case-4.png",
-        slug: "healthcare-industry-hiv-2",
-        description:
-            "Our assistance enabled the client to successfully analyze the kind of treatment and care provided in hospitals to HIV infected persons as well as the ways to reduce the risk of future infections thereby capturing the disease in a wholesome manner.",
-    },
-];
+import type { CaseStudy } from "@/app/lib/case-studies-api";
+import BackgroundShape from "../about-us/background-shape";
 
 const INITIAL_COUNT = 6;
 const LOAD_MORE_COUNT = 3;
 
-export default function CaseStudiesList() {
+type CaseStudiesListProps = {
+    caseStudies: CaseStudy[];
+};
+
+export default function CaseStudiesList({ caseStudies }: CaseStudiesListProps) {
     const [selectedCategory, setSelectedCategory] = useState("Any");
     const [search, setSearch] = useState("");
     const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
 
     const categories = useMemo(() => {
         return ["Any", ...Array.from(new Set(caseStudies.map((item) => item.category)))];
-    }, []);
+    }, [caseStudies]);
 
     const filteredCaseStudies = useMemo(() => {
         return caseStudies.filter((item) => {
@@ -120,7 +33,7 @@ export default function CaseStudiesList() {
                 item.category.toLowerCase().includes(search.toLowerCase());
             return matchesCategory && matchesSearch;
         });
-    }, [selectedCategory, search]);
+    }, [caseStudies, selectedCategory, search]);
 
     const visibleItems = filteredCaseStudies.slice(0, visibleCount);
     const hasMore = visibleCount < filteredCaseStudies.length;
@@ -131,17 +44,8 @@ export default function CaseStudiesList() {
 
     return (
         <section className="relative overflow-hidden bg-[#eef7ff] py-10 md:py-14 lg:py-16">
-            {/* Hexagon Background */}
-            <div
-                className="pointer-events-none absolute inset-0 opacity-70"
-                style={{
-                    backgroundImage: "url('/case-studies/hexagon-bg.png')",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "repeat",
-                }}
-            />
-
+            <BackgroundShape variant={1} className="-right-24 top-4 w-[330px] opacity-45 sm:w-[420px] lg:-right-3 lg:w-[520px]" />
+            <BackgroundShape variant={3} side="left" className="-left-24 bottom-0 w-[310px] opacity-45 sm:w-[390px] lg:-left-2 lg:w-[470px]" />
             <div className="relative z-10 mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8">
 
                 {/* Filter + Search Row */}
@@ -194,11 +98,12 @@ export default function CaseStudiesList() {
                             className="group relative overflow-hidden rounded-t-[16px] rounded-bl-[4px] rounded-br-[36px] border border-[#1d315d] bg-white shadow-sm transition-shadow hover:shadow-md"
                         >
                             {/* Card Image */}
-                            <div className="relative h-[180px] w-full overflow-hidden rounded-t-[16px] rounded-br-[24px] sm:h-[190px] lg:h-[200px]">
+                            <div className="relative h-[180px] w-full overflow-hidden rounded-t-[16px] rounded-br-[24px] lg:h-[220px]">
                                 <Image
                                     src={item.image}
                                     alt={item.title}
                                     fill
+                                    unoptimized
                                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 />
@@ -212,13 +117,13 @@ export default function CaseStudiesList() {
                             </div>
 
                             {/* Card Body */}
-                            <div className="px-4 pb-5 pt-9 sm:px-5">
-                                <p className="min-h-[90px] text-[12px] leading-[1.6] text-[#1e2a4e] line-clamp-6 sm:text-[11px] lg:text-[12px]">
+                            <div className="px-4 pb-5 pt-6 sm:px-5">
+                                <p className="min-h-[90px] text-xs leading-[1.6] text-[#1e2a4e] line-clamp-6  lg:text-base">
                                     {item.description}
                                 </p>
                                 <Link
                                     href={`/case-studies/${item.slug}`}
-                                    className="mt-3 inline-block text-[10px] font-bold uppercase tracking-widest text-[#13b3ad] transition-opacity hover:opacity-70"
+                                    className="mt-3 inline-block text-xs font-bold uppercase tracking-widest text-[#13b3ad] transition-opacity hover:opacity-70"
                                 >
                                     Read More &gt;
                                 </Link>

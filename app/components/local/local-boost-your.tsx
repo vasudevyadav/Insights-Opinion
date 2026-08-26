@@ -1,15 +1,36 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
-
-function generateCaptcha() {
-    const chars = "ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
-    return Array.from({ length: 6 }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
-}
+import { useRouter } from "next/navigation";
+import { submitLeadForm } from "@/app/lib/lead-form-api";
+import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
+import FormPrivacyNote from "@/app/components/shared/form-privacy-note";
 
 export function LocalBoostYour() {
-    const [captcha] = useState(generateCaptcha);
+    const [formData, setFormData] = useState({ name: "", email: "", enquiryType: "" });
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState("");
+    const router = useRouter();
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        setFormData((current) => ({ ...current, [event.target.name]: event.target.value }));
+    };
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setLoading(true);
+        setStatus("");
+        try {
+            await submitLeadForm({ formName: "local_boost", name: formData.name, email: formData.email, enquiryType: formData.enquiryType });
+            setStatus("Submitted successfully.");
+            setFormData({ name: "", email: "", enquiryType: "" });
+            router.push("/thank-you");
+        } catch (error) {
+            setStatus(error instanceof Error ? error.message : "Something went wrong. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <section className="relative overflow-hidden px-4 py-10 sm:px-8"
@@ -37,42 +58,43 @@ export function LocalBoostYour() {
                     </p>
                 </div>
 
+                <form onSubmit={handleSubmit}>
                 <div className="mb-4 flex flex-wrap items-center gap-2.5">
                     <input
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
                         type="text"
                         placeholder="Name"
                         className="h-[42px] flex-1 basis-[140px] rounded-md border border-white/25 bg-white/90 px-3.5 text-[13px] text-[#1e2a4e] placeholder-gray-500 outline-none focus:border-[#17afa1] focus:bg-white"
                     />
 
                     <input
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
                         type="email"
                         placeholder="Email"
                         className="h-[42px] flex-1 basis-[140px] rounded-md border border-white/25 bg-white/90 px-3.5 text-[13px] text-[#1e2a4e] placeholder-gray-500 outline-none focus:border-[#17afa1] focus:bg-white"
                     />
-                    <select className="h-[42px] flex-1 basis-[140px] appearance-none rounded-md border border-white/25 bg-white/90 px-3.5 text-[13px] text-gray-500 outline-none focus:border-[#17afa1] focus:bg-white focus:text-[#1e2a4e]">
-                        <option value="" disabled selected>Please Select</option>
-                        <option>Market Research</option>
-                        <option>Brand Research</option>
-                        <option>Customer Insights</option>
+                    <select name="enquiryType" value={formData.enquiryType} onChange={handleChange} required className="h-[42px] flex-1 basis-[140px] appearance-none rounded-md border border-white/25 bg-white/90 px-3.5 text-[13px] text-gray-500 outline-none focus:border-[#17afa1] focus:bg-white focus:text-[#1e2a4e]">
+                        <option value="" disabled>Please Select</option>
+                        {SERVICE_SELECT_OPTIONS.map((option) => (
+                            <option key={option}>{option}</option>
+                        ))}
                     </select>
 
-                    <div className="flex h-[42px] flex-1 basis-[180px] overflow-hidden rounded-md border border-white">
-                        <input
-                            type="text"
-                            placeholder="Captcha"
-                            className="h-full flex-1 bg-white/90 px-3.5 text-[13px] text-[#1e2a4e] placeholder-gray-500 outline-none focus:bg-white"
-                        />
-                        <div className="flex items-center border border-white bg-transparent lg:px-3.5 px-[1px] font-mono lg:text-[13px] text-[11px] font-bold tracking-wider text-white select-none">
-                            {captcha}
-                        </div>
-                    </div>
                 </div>
 
-                <button className=" py-2.5 px-10 rounded-md bg-gradient-to-r from-[#14b3a1] to-[#5ba8fb] px-7 text-[14px] font-semibold text-white transition-opacity hover:opacity-85">
-                    Submit
+                <button type="submit" disabled={loading} className=" py-2.5 px-10 rounded-md bg-gradient-to-r from-[#14b3a1] to-[#5ba8fb] px-7 text-[14px] font-semibold text-white transition-opacity hover:opacity-85">
+                    {loading ? "Submitting..." : "Submit"}
                 </button>
+                <FormPrivacyNote className="mt-2 text-white/70" />
+                {status && <p className="mt-2 text-xs font-medium text-white">{status}</p>}
+                </form>
             </div>
         </section>
     );
 }
-

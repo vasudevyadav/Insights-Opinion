@@ -1,67 +1,72 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import FooterMobileAccordion from "./footer-mobile-accordion";
+import FooterContact from "./footer-contact";
 import {
-    Facebook,
-    Instagram,
-    Youtube,
-    Twitter,
-    Linkedin,
     ChevronRight,
 } from "lucide-react";
+import { useState } from "react";
+import { submitLeadForm } from "@/app/lib/lead-form-api";
+import FormPrivacyNote from "@/app/components/shared/form-privacy-note";
 
 const companyLinks = [
-    { label: "About Us", href: "https://insightsopinion.com/our-story" },
-    { label: "Case Studies", href: "https://insightsopinion.com/case-study" },
-    { label: "Career", href: "https://insightsopinion.com/career" },
-    { label: "Contact Us", href: "https://insightsopinion.com/contact-us" },
-    { label: "Blog", href: "https://insightsopinion.com/blog" },
+    { label: "About Us", href: "/about-us" },
+    { label: "Our Team", href: "/our-teams" },
+    { label: "Case Studies", href: "/case-studies" },
+    { label: "Career", href: "/career" },
+    { label: "Contact Us", href: "/contact-us" },
 ];
 
 const serviceLinks = [
-    {
-        label: "Quantitative Research Services",
-        href: "https://insightsopinion.com/service/quantitative-research",
-    },
-    {
-        label: "Qualitative Market Research",
-        href: "https://insightsopinion.com/service/qualitative-research",
-    },
-    {
-        label: "Consumer Research",
-        href: "https://insightsopinion.com/research-expertise/consumer-research",
-    },
-    {
-        label: "B2B Research",
-        href: "https://insightsopinion.com/research-expertise/b2b-research",
-    },
-    {
-        label: "Healthcare Research",
-        href: "https://insightsopinion.com/research-expertise/healthcare-research",
-    },
+    { label: "Quantitative Research", href: "/service/quantitative-research" },
+    { label: "CATI Services", href: "/service/cati-market-research" },
+    { label: "CAPI Services", href: "/service/capi-services" },
+    { label: "CLT Services", href: "/service/clt-services" },
+    { label: "Consumer Research", href: "/research/consumer-research" },
+    { label: "Healthcare Research", href: "/research/healthcare-research" },
 ];
 
 const quickLinks = [
-    {
-        label: "Data Protection / GDPR Compliance",
-        href: "https://insightsopinion.com/data-protection-gdpr-compliance",
-    },
-    {
-        label: "Privacy Policy",
-        href: "https://insightsopinion.com/privacy-policy",
-    },
-    {
-        label: "Global Panel",
-        href: "https://insightsopinion.com/global-panel",
-    },
-    {
-        label: "CATI Services",
-        href: "https://insightsopinion.com/service/cati-market-research",
-    },
+    { label: "Quality Standard", href: "/quality-standard" },
+    { label: "Industries", href: "/industries" },
+    { label: "Blogs", href: "/blogs" },
+    // { label: "Local Page", href: "/local" },
+    { label: "  Client Success Stories ", href: "/client-success-story" },
+
+
 ];
 
 export default function Footer() {
+    const [newsletterEmail, setNewsletterEmail] = useState("");
+    const [newsletterLoading, setNewsletterLoading] = useState(false);
+    const [newsletterStatus, setNewsletterStatus] = useState("");
+
+    const handleNewsletterSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setNewsletterLoading(true);
+        setNewsletterStatus("");
+        try {
+            await submitLeadForm({
+                formName: "newsletter_subscription",
+                name: "Newsletter Subscriber",
+                email: newsletterEmail,
+            });
+            setNewsletterStatus("Subscribed successfully.");
+            setNewsletterEmail("");
+        } catch (error) {
+            setNewsletterStatus(error instanceof Error ? error.message : "Something went wrong. Please try again.");
+        } finally {
+            setNewsletterLoading(false);
+        }
+    };
+    const footerGroups = [
+        { title: "Company", links: companyLinks },
+        { title: "Service", links: serviceLinks },
+        { title: "Quick Links", links: quickLinks },
+    ];
+
     return (
         <footer className="relative overflow-hidden bg-[#151b4a] text-white">
             <div className="mx-auto max-w-[1400px] px-5 pb-0 pt-10 sm:px-8 lg:px-14 lg:pt-12">
@@ -75,7 +80,7 @@ export default function Footer() {
                                 alt="Insights Opinion"
                                 width={170}
                                 height={34}
-                                className="h-auto lg:w-auto w-48"
+                                className="h-auto lg:w-54 w-48"
                             />
                         </div>
 
@@ -89,25 +94,31 @@ export default function Footer() {
                             Stay Up-to-date with latest News
                         </p>
 
-                        <div className="mt-5 w-full lg:max-w-[220px] sm:max-w-[180px] md:max-w-[140px]">
+                        <form onSubmit={handleNewsletterSubmit} className="mt-5 w-full lg:max-w-[220px] sm:max-w-[180px] md:max-w-[140px]">
                             <div className="flex items-center justify-between border-b border-white/80 pb-2">
                                 <input
+                                    value={newsletterEmail}
+                                    onChange={(event) => setNewsletterEmail(event.target.value)}
+                                    required
                                     type="email"
                                     placeholder="email address"
                                     className="w-full min-w-0 bg-transparent text-[13px] text-white placeholder:text-white/60 focus:outline-none"
                                 />
                                 <button
-                                    type="button"
+                                    type="submit"
+                                    disabled={newsletterLoading}
                                     className="ml-3 shrink-0 text-white/80"
                                 >
                                     <ChevronRight size={16} strokeWidth={1.75} />
                                 </button>
                             </div>
-                        </div>
+                            <FormPrivacyNote className="mt-2 text-white/60" />
+                            {newsletterStatus && <p className="mt-2 text-[11px] text-white/75">{newsletterStatus}</p>}
+                        </form>
                     </div>
 
-                    {/* Company */}
-                    <div>
+                    {/* Desktop Company */}
+                    <div className="hidden md:block">
                         <h4 className="mb-5 text-[24px] font-light text-[#29c7c3] sm:mb-6 sm:text-2xl">
                             Company
                         </h4>
@@ -115,18 +126,18 @@ export default function Footer() {
                         <ul className="space-y-2">
                             {companyLinks.map((item) => (
                                 <li key={item.label}>
-                                    <a
+                                    <Link
                                         href={item.href}
                                         className="text-[15px] leading-6 text-white/75 transition hover:text-white sm:text-base"
                                     >
                                         {item.label}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* ✅ Service (HIDDEN ON MOBILE) */}
+                    {/* Desktop Service */}
                     <div className="hidden md:block">
                         <h4 className="mb-5 text-[24px] font-light text-[#29c7c3] sm:mb-6 sm:text-2xl">
                             Service
@@ -135,19 +146,19 @@ export default function Footer() {
                         <ul className="space-y-3">
                             {serviceLinks.map((item) => (
                                 <li key={item.label}>
-                                    <a
+                                    <Link
                                         href={item.href}
-                                        className="text-[14px] leading-6 text-white/75 transition hover:text-white"
+                                        className="text-[15px] leading-6 text-white/75 transition hover:text-white"
                                     >
                                         {item.label}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* Quick Links */}
-                    <div>
+                    {/* Desktop Quick Links */}
+                    <div className="hidden md:block">
                         <h4 className="mb-5 text-[24px] font-light text-[#29c7c3] sm:mb-6 sm:text-2xl">
                             Quick Links
                         </h4>
@@ -155,46 +166,38 @@ export default function Footer() {
                         <ul className="space-y-3">
                             {quickLinks.map((item) => (
                                 <li key={item.label}>
-                                    <a
+                                    <Link
                                         href={item.href}
-                                        className="text-[14px] leading-6 text-white/75 transition hover:text-white"
+                                        className="text-[15px] leading-6 text-white/75 transition hover:text-white"
                                     >
                                         {item.label}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
 
-                        <div className="mt-8 flex flex-wrap items-center gap-3">
-                            {[Facebook, Instagram, Youtube, Twitter, Linkedin].map((Icon, i) => (
-                                <a
-                                    key={i}
-                                    href="#"
-                                    className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#151b4a] transition hover:scale-105"
-                                >
-                                    <Icon size={18} />
-                                </a>
-                            ))}
-                        </div>
+                        <FooterContact />
                     </div>
+
+                    <FooterMobileAccordion groups={footerGroups} />
                 </div>
             </div>
 
             {/* bottom bar */}
             <div className="mt-10 bg-[#60d4d0]">
-                <div className="mx-auto flex flex-col gap-3 px-5 py-4 text-sm font-medium text-white/90 sm:px-8 sm:text-base lg:flex-row lg:items-center lg:justify-between lg:px-14">
-                    <p className="text-left lg:w-6/12 ">
-                        Copyright © Insight Opinion. All rights received 2026
+                <div className="mx-auto flex flex-col gap-3 px-5 py-4 text-[13px] font-medium text-white/90 sm:px-8 lg:text-base lg:flex-row lg:items-center lg:justify-between lg:px-14">
+                    <p className="text-left lg:w-6/12 lg:text-base text-[13px] ">
+                        Copyright © Insights Opinion. All rights reserved 2026.
                     </p>
 
                     <div className="flex lg:flex-row lg:w-6/12 flex-wrap items-center gap-2 lg:text-left text-center justify-center lg:justify-end">
-                        <a href="#" className="transition hover:text-[#151b4a]">
+                        <Link href="/cookies-policy" className="transition hover:text-[#151b4a]">
                             Cookies Policy
-                        </a>
+                        </Link>
                         <span>|</span>
-                        <a href="#" className="transition hover:text-[#151b4a]">
+                        <Link href="/privacy-policy" className="transition hover:text-[#151b4a]">
                             Privacy Policy
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

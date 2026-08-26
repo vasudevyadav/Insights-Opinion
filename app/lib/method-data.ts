@@ -1,3 +1,6 @@
+import { serviceCategories } from "@/app/lib/service-catalog";
+import type { WhyChooseSection } from "@/data/service-page-content";
+
 export interface ServiceItem {
   id: string;
   title: string;
@@ -54,10 +57,12 @@ export interface MethodData {
     col1Label: string;
     col2Label: string;
     col1Desc: string;
-    col2Desc: string;
+    col2Desc?: string;
     items: { label: string; col1: string; col2: string }[];
   };
   sectors: { title: string; image: string; description: string }[];
+  whyChooseChild?: readonly WhyChooseSection[];
+  whyChooseSections?: readonly WhyChooseSection[];
   faqs: FaqItem[];
 }
 
@@ -71,7 +76,7 @@ const methods: Record<string, MethodData> = {
         "Conduct smarter phone surveys with real-time, reliable insights powered by expert interviewers and advanced CATI technology.",
     },
     about:
-      "At Insights Opinion, we are a full-service CATI market research company delivering reliable data across 100+ countries and 60+ languages. All CATI services are backed by ISO 27001 and ISO 20252 certified processes and live quality supervision throughout fieldwork.",
+      "At Insights Opinion, we are a full-service CATI market research company delivering reliable data across 100+ countries and 60+ languages. All CATI services are backed by ISO 27001 certified processes and live quality supervision throughout fieldwork.",
     why: {
       heading1: "Why is CATI",
       heading2: "the Right Choice?",
@@ -134,7 +139,7 @@ const methods: Record<string, MethodData> = {
       heading1: "When to Use",
       heading2: "CATI Market Research?",
       bodyText:
-        "Outsourcing CATI market research to Insights Opinion gives you fully managed CATI fieldwork services from brief to delivery. For studies needing panel respondents alongside telephone reach, our global panel of 8M+ profiled respondents works alongside CATI fieldwork.",
+        "Outsourcing CATI market research to Insights Opinion gives you fully managed CATI fieldwork services from brief to delivery. For studies needing panel respondents alongside telephone reach, our global panel of profiled respondents works alongside CATI fieldwork.",
       image: "/quality/cati-telephone.png",
       items: [
         { iconKey: "TrendingDown", title: "Low Digital Reach", description: "Your target audience has lower digital engagement or is difficult to reach through online panels" },
@@ -197,7 +202,7 @@ const methods: Record<string, MethodData> = {
         "Conduct smarter in-person surveys with real-time, reliable insights powered by field interviewers and advanced CAPI technology.",
     },
     about:
-      "At Insights Opinion, we are a full-service CAPI market research company delivering reliable data across 100+ countries and 60+ languages. All CAPI services are backed by ISO 27001 and ISO 20252 certified processes and field quality supervision throughout every project.",
+      "At Insights Opinion, we are a full-service CAPI market research company delivering reliable data across 100+ countries and 60+ languages. All CAPI services are backed by ISO 27001 certified processes and field quality supervision throughout every project.",
     why: {
       heading1: "Why is CAPI",
       heading2: "the Right Choice?",
@@ -260,7 +265,7 @@ const methods: Record<string, MethodData> = {
       heading1: "When to Use",
       heading2: "CAPI Research?",
       bodyText:
-        "Outsourcing CAPI research to Insights Opinion gives you fully managed face-to-face fieldwork from brief to delivery. For studies combining in-person reach with panel respondents, our global panel of 8M+ profiled respondents can complement CAPI fieldwork.",
+        "Outsourcing CAPI research to Insights Opinion gives you fully managed face-to-face fieldwork from brief to delivery. For studies combining in-person reach with panel respondents, our global panel of profiled respondents can complement CAPI fieldwork.",
       image: "/quality/cati-computer.png",
       items: [
         { iconKey: "MapPin", title: "Product Placement Studies", description: "Physical product or stimulus needs to be placed in front of respondents during the interview" },
@@ -446,10 +451,10 @@ const methods: Record<string, MethodData> = {
       title: "Online Survey\nResearch Services",
       subtitle: "Scalable Digital\nData Collection",
       description:
-        "Reach large, verified audiences fast with professionally designed online surveys backed by our global panel of 8M+ respondents.",
+        "Reach large, verified audiences fast with professionally designed online surveys backed by our global panel of respondents.",
     },
     about:
-      "At Insights Opinion, we are a full-service online survey research company with access to 8M+ verified panellists across consumer, B2B, and healthcare audiences in 100+ countries and 60+ languages. All projects are backed by ISO 27001 and ISO 20252 certified quality processes and end-to-end project management.",
+      "At Insights Opinion, we are a full-service online survey research company with access to verified panellists across consumer, B2B, and healthcare audiences in 100+ countries and 60+ languages. All projects are backed by ISO 27001 certified quality processes and end-to-end project management.",
     why: {
       heading1: "Why Are Online Surveys",
       heading2: "the Right Choice?",
@@ -478,7 +483,7 @@ const methods: Record<string, MethodData> = {
           id: "02",
           title: "Panel Access and Quota Management",
           description:
-            "We access our 8M+ verified panellists across consumer, B2B, and healthcare audiences — applying quota controls to ensure representative samples across all required subgroups.",
+            "We access our verified panellists across consumer, B2B, and healthcare audiences — applying quota controls to ensure representative samples across all required subgroups.",
           image: "/quality/cati-online.png",
           iconKey: "Users",
         },
@@ -553,7 +558,7 @@ const methods: Record<string, MethodData> = {
       ],
     },
     sectors: [
-      { title: "Online Surveys for Consumer Research", image: "/quality/cati-online.png", description: "Consumer online surveys give you fast, scalable access to representative audience samples across demographics, geographies, and categories. Our panel of 8M+ verified respondents enables precise quota controls and rapid fieldwork completion for brand, product, and market studies." },
+      { title: "Online Surveys for Consumer Research", image: "/quality/cati-online.png", description: "Consumer online surveys give you fast, scalable access to representative audience samples across demographics, geographies, and categories. Our panel of verified respondents enables precise quota controls and rapid fieldwork completion for brand, product, and market studies." },
       { title: "Online Surveys for B2B Research", image: "/2_Need-More-Reliable-Market-Data-.jpg", description: "B2B online surveys reach decision-makers, buyers, and professionals across sectors with verified job titles, industries, and seniority levels. We apply rigorous respondent validation to ensure your B2B sample matches the exact audience your study requires." },
       { title: "Online Surveys for Healthcare Research", image: "/market-research/Healthcare-1.jpg", description: "Healthcare online surveys recruit verified patients, caregivers, and healthcare professionals through our specialist panels. All healthcare studies apply GDPR and CCPA-aligned protocols, informed consent processes, and sector-appropriate data handling from collection through delivery." },
     ],
@@ -561,16 +566,240 @@ const methods: Record<string, MethodData> = {
       { q: "What is online survey research?", a: "Online survey research collects structured, quantitative data from defined audiences using web-based questionnaires. Respondents self-complete surveys on desktop or mobile, typically recruited through online panels. It is widely used for brand tracking, segmentation, product testing, and consumer and B2B research." },
       { q: "How do you ensure the quality of online survey data?", a: "Every completed survey passes through straight-lining detection, speeder removal, attention check validation, IP duplication checks, and open-text quality review. Respondents who fail quality checks are removed before the data is processed and delivered." },
       { q: "How quickly can online surveys be fielded?", a: "Most consumer online surveys complete fieldwork within 2–5 days. B2B and specialist healthcare studies may take longer depending on incidence rates and quota complexity. Multi-country studies run simultaneously across all markets to minimise total fieldwork duration." },
-      { q: "What panel does Insights Opinion use for online surveys?", a: "Insights Opinion uses its proprietary panel of 8M+ verified respondents across consumer, B2B, and healthcare audiences in 100+ countries. All panellists are double-opt-in verified with regular re-validation to maintain data quality." },
+      { q: "What panel does Insights Opinion use for online surveys?", a: "Insights Opinion uses its proprietary panel of verified respondents across consumer, B2B, and healthcare audiences in 100+ countries. All panellists are double-opt-in verified with regular re-validation to maintain data quality." },
       { q: "Can Insights Opinion run online surveys in multiple languages?", a: "Yes. We run online survey projects in 60+ languages with localised questionnaire translation, back-translation quality checks, and culturally adapted question wording to ensure cross-market comparability." },
     ],
   },
 };
 
+const categoryImages = {
+  quantitative: "/quality/cati-online.png",
+  qualitative: "/_Qualitative-Research.jpg",
+  support: "/_Support-Services.jpg",
+} as const;
+
+function createDemoMethodData(
+  slug: string,
+  title: string,
+  categoryTitle: string,
+  categoryKey: keyof typeof categoryImages
+): MethodData {
+  const image = categoryImages[categoryKey];
+
+  return {
+    slug,
+    hero: {
+      title: `${title}\nServices`,
+      subtitle: `Managed ${categoryTitle}\nSolutions`,
+      description: `Explore our ${title.toLowerCase()} capabilities, managed by experienced research teams from project planning through final delivery.`,
+    },
+    about: `Insights Opinion provides end-to-end ${title.toLowerCase()} services for research programs across industries and markets. This demo service page uses the shared detail-page design and can be replaced with final service-specific copy when approved.`,
+    why: {
+      heading1: `Why Choose ${title}`,
+      heading2: "for Your Research?",
+      bodyLeft: `${title} helps teams collect the right evidence for clearer, faster decisions. We tailor the approach to your audience, objectives, timeline, and required markets.`,
+      bodyRight1:
+        "Every engagement includes a defined workflow, experienced project management, and practical quality checks.",
+      bodyRight2:
+        "Our team can also combine this service with complementary quantitative, qualitative, and support capabilities.",
+    },
+    services: {
+      headingGradient: `What Our ${title}`,
+      headingLight: "Services Include?",
+      subheading: `A flexible, fully managed ${title.toLowerCase()} workflow from brief to delivery.`,
+      items: [
+        {
+          id: "01",
+          title: "Research Planning",
+          description:
+            "We translate the business question into a practical research plan, audience definition, timeline, and delivery framework.",
+          image,
+          iconKey: "FileText",
+        },
+        {
+          id: "02",
+          title: "Project Setup",
+          description:
+            "Our team prepares the required materials, workflows, technology, and quality controls before launch.",
+          image: "/Survey-Programming.jpg",
+          iconKey: "Code",
+        },
+        {
+          id: "03",
+          title: "Fieldwork Management",
+          description:
+            "Dedicated project managers monitor progress, resolve fieldwork issues, and keep delivery aligned with the agreed plan.",
+          image: "/Live-Project-Visibility.png",
+          iconKey: "Users",
+        },
+        {
+          id: "04",
+          title: "Quality Review",
+          description:
+            "Outputs are checked for completeness, consistency, and research quality before they enter the final dataset.",
+          image: "/Data-Insights.jpg",
+          iconKey: "Eye",
+        },
+        {
+          id: "05",
+          title: "Data and Insight Delivery",
+          description:
+            "We deliver clean, usable outputs with a concise project summary and formats suited to your analysis workflow.",
+          image: "/Data-Insights.jpg",
+          iconKey: "Database",
+        },
+      ],
+    },
+    whenToUse: {
+      heading1: "When to Use",
+      heading2: `${title}?`,
+      bodyText: `${title} is a strong fit when your study needs a managed ${categoryTitle.toLowerCase()} approach with clear quality controls, dependable delivery, and support across multiple project stages.`,
+      image,
+      items: [
+        {
+          iconKey: "Users",
+          title: "Defined Audiences",
+          description:
+            "You need to reach a specific audience with a structured recruitment and validation plan.",
+        },
+        {
+          iconKey: "Globe",
+          title: "Multi-Market Work",
+          description:
+            "Your project spans regions, languages, or markets and needs central coordination.",
+        },
+        {
+          iconKey: "Clock",
+          title: "Managed Timelines",
+          description:
+            "You need clear milestones, proactive updates, and dependable delivery.",
+        },
+        {
+          iconKey: "UserCheck",
+          title: "Quality Controls",
+          description:
+            "Respondent, process, or output quality needs to be verified throughout the study.",
+        },
+        {
+          iconKey: "BarChart",
+          title: "Actionable Outputs",
+          description:
+            "Your stakeholders need clean evidence that can move directly into analysis and decisions.",
+        },
+      ],
+    },
+    comparison: {
+      col1: title,
+      col2: "Standard Research",
+      rows: [
+        {
+          factor: "Project design",
+          col1: "Tailored to the study",
+          col2: "Fixed general approach",
+        },
+        {
+          factor: "Project management",
+          col1: "Dedicated support",
+          col2: "Limited coordination",
+        },
+        {
+          factor: "Quality review",
+          col1: "Multi-stage checks",
+          col2: "Basic final checks",
+        },
+        {
+          factor: "Market coverage",
+          col1: "Single or multi-market",
+          col2: "Usually single market",
+        },
+        {
+          factor: "Delivery",
+          col1: "Flexible output formats",
+          col2: "Standard output",
+        },
+      ],
+      footer: `${title} can be used independently or combined with other services in the Insights Opinion research portfolio.`,
+    },
+    vsBox: {
+      title: `${title} vs Standard Research`,
+      subtitle: "What's the Difference?",
+      description: `${title} provides a more tailored, managed workflow with service-specific planning and quality control.`,
+      col1Label: title,
+      col2Label: "Standard Research",
+      col1Desc: "Tailored, managed, and flexible",
+      col2Desc: "Generalised, fixed, and self-managed",
+      items: [
+        { label: "Planning", col1: "Custom", col2: "Standard" },
+        { label: "Support", col1: "Dedicated", col2: "Limited" },
+        { label: "Quality", col1: "Multi-stage", col2: "Final review" },
+        { label: "Delivery", col1: "Flexible", col2: "Fixed" },
+      ],
+    },
+    sectors: [
+      {
+        title: `${title} for Healthcare`,
+        image: "/market-research/Healthcare-1.jpg",
+        description:
+          "A carefully managed approach for healthcare audiences, sensitive topics, and privacy-conscious research workflows.",
+      },
+      {
+        title: `${title} for Consumer Research`,
+        image,
+        description:
+          "Flexible consumer research support for product, brand, experience, and market decision-making.",
+      },
+      {
+        title: `${title} for B2B Research`,
+        image: "/2_Need-More-Reliable-Market-Data-.jpg",
+        description:
+          "Targeted research support for professional audiences, decision-makers, and specialist business categories.",
+      },
+    ],
+    faqs: [
+      {
+        q: `What is ${title}?`,
+        a: `${title} is part of our ${categoryTitle.toLowerCase()} portfolio. The exact research design is tailored to the audience, business question, markets, and delivery requirements.`,
+      },
+      {
+        q: `When should I use ${title}?`,
+        a: `Use ${title} when you need a managed research workflow, clear quality controls, and outputs designed around a specific business decision.`,
+      },
+      {
+        q: "Can this service be used internationally?",
+        a: "Yes. Insights Opinion can coordinate single-country and multi-country projects with central project management and local market support.",
+      },
+      {
+        q: "Can it be combined with other research services?",
+        a: "Yes. We can combine quantitative, qualitative, and support services within one coordinated research program.",
+      },
+      {
+        q: "How do I get a project estimate?",
+        a: "Share your audience, markets, sample requirements, timing, and expected outputs. Our team will recommend an approach and prepare a tailored estimate.",
+      },
+    ],
+  };
+}
+
+const demoMethods: Record<string, MethodData> = Object.fromEntries(
+  serviceCategories.flatMap((category) =>
+    category.services
+      .filter((service) => !methods[service.slug])
+      .map((service) => [
+        service.slug,
+        createDemoMethodData(
+          service.slug,
+          service.title,
+          category.title,
+          category.key
+        ),
+      ])
+  )
+);
+
 export function getMethodData(slug: string): MethodData | null {
-  return methods[slug] ?? null;
+  return methods[slug] ?? demoMethods[slug] ?? null;
 }
 
 export function getAllMethodSlugs(): string[] {
-  return Object.keys(methods);
+  return [...new Set([...Object.keys(methods), ...Object.keys(demoMethods)])];
 }

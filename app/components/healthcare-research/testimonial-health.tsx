@@ -4,54 +4,27 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
-
+import { sliderTestimonials as testimonials } from "@/data/testimonials";
 import "swiper/css";
 import "swiper/css/navigation";
 
-export default function TestimonialHealth() {
-    const testimonials = [
-        {
-            quote:
-                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
-            link: "Read Full Customer Story",
-            company: "TAJMG",
-            author: "Director, Clifton",
-            logo: "/Testimonial-Icon.png",
-        },
-        {
-            quote:
-                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
-            link: "Read Full Customer Story",
-            company: "TAJMG",
-            author: "Director, Clifton",
-            logo: "/Testimonial-Icon.png",
-        },
-        {
-            quote:
-                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
-            link: "Read Full Customer Story",
-            company: "TAJMG",
-            author: "Director, Clifton",
-            logo: "/Testimonial-Icon.png",
-        },
-        {
-            quote:
-                "Their detailed surveys gave us clearer understanding of our guest preferences, leading to more personalised service and higher customer satisfaction. We saw a clear shift in guest feedback after implementation.",
-            link: "Read Full Customer Story",
-            company: "TAJMG",
-            author: "Director, Clifton",
-            logo: "/Testimonial-Icon.png",
-        },
-    ];
+type TestimonialHealthProps = {
+    heading?: string;
+    accentHeading?: string;
+};
 
+export default function TestimonialHealth({
+    heading = "What Our",
+    accentHeading = "Clients Say",
+}: TestimonialHealthProps) {
     return (
         <section className="relative overflow-hidden bg-[#eef5fb] py-4">
             <div className="relative z-10 mx-auto">
-                <div className="relative mb-8 pl-6 pr-6 lg:mb-16 lg:pl-32 lg:pr-0">
+                <div className="relative mb-8 pl-6 pr-6 lg:mb-16 lg:pl-48 lg:pr-0">
                     <div className="relative mb-6 flex items-end justify-between gap-4">
                         <div className="max-w-[600px] mt-2">
                             <h2 className="mb-2 text-2xl font-light leading-tight text-[#2f3643] sm:text-4xl">
-                                What Healthcare Clients Say
+                                {heading}
                             </h2>
                             <h3
                                 className="mb-2 text-[28px] font-medium leading-tight text-transparent sm:text-[41px]"
@@ -62,7 +35,7 @@ export default function TestimonialHealth() {
                                     backgroundClip: "text",
                                 }}
                             >
-                                About Us
+                                {accentHeading}
                             </h3>
                             <p className="my-2 text-xs leading-6 text-black sm:text-base">
                                 Feedback from clients who partner with Insights Opinion for practical insights and dependable market research services.
@@ -103,46 +76,25 @@ export default function TestimonialHealth() {
                             <SwiperSlide key={index}>
                                 <div className="group rounded-none border border-[#c7d2e2] bg-white p-4 transition-all duration-500 hover:border-[#1a1f52] hover:bg-[#1a1f52]">
                                     <p className="min-h-[98px] line-clamp-4 text-xs leading-5 text-[#344054] transition-colors duration-500 group-hover:text-white/85 lg:text-sm">
-                                        "{item.quote}"
+                                        &quot;{item.quote}&quot;
                                     </p>
 
-                                    <div className="mt-3 flex items-center justify-between gap-3">
-                                        <a
-                                            href="#"
-                                            className="inline-flex items-center gap-2 text-sm font-medium text-[#1a1f52] transition duration-500 hover:text-[#7ddbd1] group-hover:text-white"
-                                        >
-                                            {item.link}
-                                            <ArrowRight size={18} />
-                                        </a>
-                                    </div>
-
                                     <div className="mt-5 flex items-end justify-between gap-3">
-                                        <div className="flex items-center gap-3">
-                                            <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full">
-                                                <Image
-                                                    src={item.logo}
-                                                    alt={item.company}
-                                                    width={56}
-                                                    height={56}
-                                                    className="w-14 object-contain"
-                                                />
-                                            </div>
-                                            <div>
-                                                <p className="mb-1 text-xs font-semibold text-[#1a1f52] transition-colors duration-500 group-hover:text-white lg:text-sm">
-                                                    {item.company}
-                                                </p>
-                                                <p className="text-xs text-[#667085] transition-colors duration-500 group-hover:text-white/70">
-                                                    {item.author}
-                                                </p>
-                                            </div>
+                                        <div>
+                                            <p className="mb-1 text-xs font-semibold text-[#1a1f52] transition-colors duration-500 group-hover:text-white lg:text-sm">
+                                                {item.company}
+                                            </p>
+                                            <p className="text-xs text-[#667085] transition-colors duration-500 group-hover:text-white/70">
+                                                {item.author}
+                                            </p>
                                         </div>
-                                        <Image
+                                        {/* <Image
                                             src="/inshite-sing.png"
                                             alt="Insights Opinion"
                                             width={112}
                                             height={40}
                                             className="w-28 object-contain transition-all duration-500 group-hover:invert"
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                             </SwiperSlide>

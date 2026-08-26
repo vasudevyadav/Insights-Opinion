@@ -1,20 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
     Headphones,
-    MessageSquareText,
     Mail,
-    Facebook,
-    Instagram,
-    Youtube,
-    Twitter,
-    Linkedin,
 } from "lucide-react";
+import { submitLeadForm } from "@/app/lib/lead-form-api";
+import BackgroundShape from "@/app/components/about-us/background-shape";
+import { socialLinks } from "@/app/components/home/footer-contact";
+import CountryCodeSelect from "@/app/components/shared/country-code-select";
+import FormPrivacyNote from "@/app/components/shared/form-privacy-note";
 
 export default function ContactForm() {
-    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -29,6 +27,7 @@ export default function ContactForm() {
     const [newsletterLoading, setNewsletterLoading] = useState(false);
     const [status, setStatus] = useState("");
     const [newsletterStatus, setNewsletterStatus] = useState("");
+    const router = useRouter();
 
     const handleChange = (
         e: React.ChangeEvent<
@@ -44,28 +43,17 @@ export default function ContactForm() {
         setStatus("");
 
         try {
-            const res = await fetch(`${API_BASE_URL}/contact/v1/submit`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    firstName: formData.firstName,
-                    lastName: formData.lastName,
-                    email: formData.email,
-                    countryCode: formData.countryCode,
-                    contact: formData.contact,
-                    message: formData.message,
-                }),
+            await submitLeadForm({
+                formName: "contact_us",
+                name: `${formData.firstName} ${formData.lastName}`.trim(),
+                email: formData.email,
+                phone: `${formData.countryCode} ${formData.contact}`.trim(),
+                countryCode: formData.countryCode,
+                message: formData.message,
             });
 
-            const data = await res.json();
-
-            if (!res.ok) {
-                throw new Error(data?.message || "Failed to submit form");
-            }
-
             setStatus("Message sent successfully.");
+            router.push("/thank-you");
             setFormData({
                 firstName: "",
                 lastName: "",
@@ -96,21 +84,11 @@ export default function ContactForm() {
         setNewsletterLoading(true);
 
         try {
-            const res = await fetch(`${API_BASE_URL}/contact/v1/newsletter`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: newsletterEmail,
-                }),
+            await submitLeadForm({
+                formName: "newsletter_subscription",
+                name: "Newsletter Subscriber",
+                email: newsletterEmail,
             });
-
-            const data = await res.json();
-
-            if (!res.ok) {
-                throw new Error(data?.message || "Failed to subscribe");
-            }
 
             setNewsletterStatus("Subscribed successfully.");
             setNewsletterEmail("");
@@ -127,39 +105,14 @@ export default function ContactForm() {
 
     return (
         <section className="relative overflow-hidden bg-[#edf6ff] py-10 lg:py-12">
-            <div className="pointer-events-none absolute inset-0 opacity-40">
-                <svg
-                    viewBox="0 0 1440 700"
-                    className="h-full w-full"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="none"
-                >
-                    <defs>
-                        <pattern
-                            id="hexPattern"
-                            x="0"
-                            y="0"
-                            width="52"
-                            height="45"
-                            patternUnits="userSpaceOnUse"
-                        >
-                            <path
-                                d="M13 1H39L52 22.5L39 44H13L0 22.5L13 1Z"
-                                stroke="#9EDFF2"
-                                strokeWidth="1.1"
-                            />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#hexPattern)" />
-                </svg>
-            </div>
+            <BackgroundShape side="right" variant={2} className="-right-20 -top-14 w-[310px] opacity-45 sm:w-[440px] lg:w-[520px]" />
+            <BackgroundShape side="left" variant={1} className="-left-24 bottom-0 w-[340px] opacity-40 sm:w-[470px]" />
 
             <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
-                    <h2 className="bg-gradient-to-r from-[#29c3b1] to-[#5aaeff] bg-clip-text text-2xl font-semibold text-transparent sm:text-3xl lg:text-[40px]">
+                    {/* <h2 className="bg-gradient-to-r from-[#29c3b1] to-[#5aaeff] bg-clip-text text-2xl font-semibold text-transparent sm:text-3xl lg:text-[40px]">
                         Contact Us
-                    </h2>
+                    </h2> */}
                 </div>
 
                 <div className="mt-6 grid grid-cols-1 gap-8 lg:mt-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start lg:gap-12">
@@ -222,19 +175,13 @@ export default function ContactForm() {
                                     <label className="mb-1.5 block text-xs font-medium text-[#4b5563] sm:text-sm">
                                         Contact
                                     </label>
-                                    <div className="flex overflow-hidden rounded-md border border-transparent bg-white focus-within:border-[#67c7df]">
-                                        <select
-                                            name="countryCode"
+                                    <div className="flex overflow-visible rounded-md border border-transparent bg-white focus-within:border-[#67c7df]">
+                                        <CountryCodeSelect
                                             value={formData.countryCode}
-                                            onChange={handleChange}
-                                            className="h-10 min-w-[68px] cursor-pointer border-r border-[#d9e4ee] bg-white px-2 text-sm text-[#334155] outline-none sm:h-11 sm:min-w-[74px]"
-                                        >
-                                            <option>+91</option>
-                                            <option>+1</option>
-                                            <option>+44</option>
-                                            <option>+61</option>
-                                            <option>+971</option>
-                                        </select>
+                                            onChange={(countryCode) => setFormData((current) => ({ ...current, countryCode }))}
+                                            className="h-10 min-w-[78px] border-r border-[#d9e4ee] bg-white sm:h-11"
+                                            buttonClassName="px-2 text-sm text-[#334155]"
+                                        />
 
                                         <input
                                             name="contact"
@@ -272,13 +219,14 @@ export default function ContactForm() {
                                 >
                                     {loading ? "Sending..." : "Send a message"}
                                 </button>
+                                <FormPrivacyNote className="mt-2" />
                             </div>
 
                             {status && <p className="text-base text-green-700 font-semibold">{status}</p>}
                         </form>
 
                         <div className="mt-7 w-full max-w-full sm:max-w-[420px]">
-                            <p className="mb-2.5 text-xs font-medium text-[#4b5563] sm:text-[13px]">
+                            <p className="mb-2.5 text-sm  font-medium text-[#4b5563]">
                                 Subscribe to Newsletter
                             </p>
 
@@ -288,7 +236,7 @@ export default function ContactForm() {
                                     value={newsletterEmail}
                                     onChange={(e) => setNewsletterEmail(e.target.value)}
                                     placeholder="enter your mail ID"
-                                    className="h-10 w-full flex-1 rounded-md border border-[#7ad0e7] bg-transparent px-4 text-sm text-[#334155] outline-none placeholder:text-[#9aa7b6] focus:border-[#43d1c5] sm:h-11"
+                                    className="h-12 py-2 w-full flex-1 rounded-md border border-[#7ad0e7] bg-transparent px-4 text-sm text-[#334155] outline-none placeholder:text-[#9aa7b6] focus:border-[#43d1c5] sm:h-11"
                                 />
 
                                 <button
@@ -321,22 +269,10 @@ export default function ContactForm() {
                                         <Headphones className="h-4 w-4 sm:h-5 sm:w-5" />
                                     </div>
                                     <div>
-                                        <p className="text-sm font-semibold">Hotline:</p>
-                                        <p className="text-xs text-white/90 sm:text-sm">
-                                            +91 0987654321
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-center gap-3 rounded-2xl bg-[rgba(59,122,168,0.28)] px-4 py-3.5 backdrop-blur-sm sm:gap-4 sm:py-4">
-                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 sm:h-11 sm:w-11">
-                                        <MessageSquareText className="h-4 w-4 sm:h-5 sm:w-5" />
-                                    </div>
-                                    <div>
-                                        <p className="text-sm font-semibold">SMS / Whatsapp:</p>
-                                        <p className="text-xs text-white/90 sm:text-sm">
-                                            +91 0987654321
-                                        </p>
+                                        <p className="text-sm font-semibold">Phone:</p>
+                                        <a href="tel:+14786063786" className="text-xs text-white/90 hover:underline sm:text-sm">
+                                            +1 478 606 3786
+                                        </a>
                                     </div>
                                 </div>
 
@@ -346,9 +282,9 @@ export default function ContactForm() {
                                     </div>
                                     <div>
                                         <p className="text-sm font-semibold">Email:</p>
-                                        <p className="text-xs text-white/90 sm:text-sm">
-                                            abc@gmail.com
-                                        </p>
+                                        <a href="mailto:bids@insightsopinion.com" className="break-all text-xs text-white/90 hover:underline sm:text-sm">
+                                            bids@insightsopinion.com
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -359,16 +295,12 @@ export default function ContactForm() {
                                 </p>
 
                                 <div className="mt-3 flex flex-wrap items-center gap-2.5 sm:mt-4 sm:gap-3">
-                                    {[
-                                        { icon: Facebook, label: "Facebook" },
-                                        { icon: Instagram, label: "Instagram" },
-                                        { icon: Youtube, label: "YouTube" },
-                                        { icon: Twitter, label: "Twitter" },
-                                        { icon: Linkedin, label: "LinkedIn" },
-                                    ].map(({ icon: Icon, label }) => (
+                                    {socialLinks.map(({ icon: Icon, label, href }) => (
                                         <a
                                             key={label}
-                                            href="#"
+                                            href={href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                             aria-label={label}
                                             className="flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-black transition hover:bg-white/25 hover:text-white sm:h-11 sm:w-11"
                                         >

@@ -1,8 +1,4 @@
-"use client";
-
-import React, { useEffect } from "react";
-// @ts-ignore - no type declarations for 'aos'
-import AOS from "aos";
+import React from "react";
 
 export default function AccreditationsRecognitions() {
 
@@ -22,14 +18,6 @@ export default function AccreditationsRecognitions() {
         { left: "60%", delay: "1.6s" },
         { left: "80%", delay: "1.6s" },
     ];
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            AOS.refreshHard();
-        }, 250);
-
-        return () => clearTimeout(timer);
-    }, []);
 
     return (
         <section className="relative overflow-hidden bg-[#eef5fb] py-8 lg:py-12">
@@ -101,8 +89,8 @@ export default function AccreditationsRecognitions() {
                     style={
                         {
                             left: line.left,
-                            ["--line-delay" as any]: line.delay,
-                        } as React.CSSProperties
+                            "--line-delay": line.delay,
+                        } as React.CSSProperties & { "--line-delay": string }
                     }
                 />
             ))}
@@ -115,8 +103,8 @@ export default function AccreditationsRecognitions() {
                     style={
                         {
                             left: line.left,
-                            ["--line-delay" as any]: line.delay,
-                        } as React.CSSProperties
+                            "--line-delay": line.delay,
+                        } as React.CSSProperties & { "--line-delay": string }
                     }
                 />
             ))}
@@ -140,8 +128,8 @@ export default function AccreditationsRecognitions() {
                             data-aos-duration="900"
                         >
                             Insights Opinion is recognized for its commitment to research quality,
-                            data security, and dependable execution. From ISO 20252 and ISO 27001
-                            certifications to recognition from Quirk’s, Silicon India, and Forbes,
+                            data security, and dependable execution. From ISO 27001
+                            certification to recognition from Quirk’s, Silicon India, and Forbes,
                             these credentials reflect the standards expected from trusted top market
                             research firms.
                         </p>
@@ -154,19 +142,19 @@ export default function AccreditationsRecognitions() {
                     data-aos-delay="120"
                     data-aos-duration="1200"
                 >
-                    <div>
+                    <picture>
+                        <source media="(max-width: 1023px)" srcSet="/recognitions-mob.webp" />
+                        <source media="(min-width: 1024px)" srcSet="/recognitions.webp" />
                         <img
-                            src="/recognitions.gif"
+                            src="/recognitions.webp"
                             alt="Accreditations and recognitions"
-                            className="hidden h-[500px] w-full object-cover object-center transition-transform duration-700 lg:block"
+                            width={1920}
+                            height={1044}
+                            loading="lazy"
+                            decoding="async"
+                            className="h-[430px] w-full object-contain object-center transition-transform duration-700 lg:h-[500px] lg:object-cover"
                         />
-                    </div>
-
-                    <img
-                        src="/recognitions-mob.gif"
-                        alt="Accreditations and recognitions"
-                        className="block h-[700px] w-full object-cover object-center transition-transform duration-700 lg:hidden"
-                    />
+                    </picture>
                 </div>
             </div>
         </section>

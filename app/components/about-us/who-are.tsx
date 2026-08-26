@@ -1,38 +1,12 @@
-"use client";
-
 import Image from "next/image";
+import BackgroundShape from "./background-shape";
 
 export default function WhoWeAre() {
     return (
-        <section className="relative overflow-hidden bg-[#edf6ff] py-8 lg:mt-0 lg:py-8">
-            <div className="pointer-events-none absolute right-0 top-0 h-full w-[42%] opacity-30">
-                <svg
-                    viewBox="0 0 300 300"
-                    className="h-full w-full"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <defs>
-                        <pattern
-                            id="hexPattern"
-                            x="0"
-                            y="0"
-                            width="51"
-                            height="42"
-                            patternUnits="userSpaceOnUse"
-                        >
-                            <path
-                                d="M13 1H39L52 22.5L39 44H13L0 22.5L13 1Z"
-                                stroke="#9EDFF2"
-                                strokeWidth="1.2"
-                            />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#hexPattern)" />
-                </svg>
-            </div>
+        <section className="relative overflow-hidden bg-[#edf6ff] py-8 lg:py-12">
+            <BackgroundShape variant={1} className="-right-16 top-0 w-[330px] opacity-55 sm:w-[430px] lg:-right-8 lg:w-[570px]" />
 
-            <div className="relative z-10 mx-auto lg:mb-10 max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
                 {/* Top Content */}
                 <div className="mx-auto max-w-5xl text-center">
                     <h2
@@ -44,30 +18,26 @@ export default function WhoWeAre() {
                     </h2>
 
                     <p
-                        className="mx-auto mt-3 max-w-4xl text-[14px] leading-6 text-[#4b5563]
-                        sm:text-[14px] md:text-[15px] lg:mt-2 lg:text-[15px]"
+                        className="mx-auto mt-3 max-w-5xl text-[13px] leading-6 text-[#4b5563] md:text-[15px] lg:mt-2 lg:text-[15px]"
                     >
-                        Welcome to Insights Opinion, where we provide actionable insights through
-                        expert data collection and research solutions. As a global leader in market
-                        research and data services, we empower businesses with the critical
-                        knowledge they need to make well-informed decisions.
+                        Welcome to Insights Opinion, where we provide actionable insights through expert data collection and research solutions. As a global leader in market research and data services, we empower businesses with the critical knowledge they need to make well-informed decisions. Our unwavering commitment to quality, innovation, and client success drives every aspect of our work.
                     </p>
                 </div>
 
                 <div
                     className="mt-8 grid items-center gap-8
                     md:mt-10 md:gap-10
-                    lg:mt-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10"
+                    lg:mt-16 lg:grid-cols-[1.18fr_0.82fr] lg:gap-16"
                 >
                     {/* Left Image */}
                     <div className="flex justify-center lg:justify-start">
-                        <div className="w-full max-w-[560px] overflow-hidden rounded-[18px] shadow-md sm:rounded-[22px]">
+                        <div className="aspect-[16/10] w-full max-w-[575px] overflow-hidden rounded-[20px] sm:aspect-auto sm:rounded-[24px]">
                             <Image
-                                src="/about-us/evolution-img.webp"
+                                src="/about-us/revolution.webp"
                                 alt="Who We Are"
                                 width={620}
                                 height={360}
-                                className="h-auto w-full object-cover"
+                                className="h-full w-full object-cover object-center sm:h-auto"
                             />
                         </div>
                     </div>
@@ -87,15 +57,9 @@ export default function WhoWeAre() {
                         </h3>
 
                         <p className="mt-4 text-[14px] leading-6 text-[#4b5563] sm:text-[15px] lg:mt-5 lg:text-base">
-                            Since our founding in 2018, we have grown from a small, dedicated team
-                            into a global leader in data-driven decision-making. Our journey
-                            reflects our commitment to continuous innovation, strategic expansion,
-                            and a relentless focus on adding value to our clients.
+                            Since our founding in 2018, we have grown from a small, dedicated team into a global leader in data-driven decision-making. Our journey reflects our commitment to continuous innovation, strategic expansion, and a relentless focus on adding value to our clients. Here&apos;s how we&apos;ve evolved:
                         </p>
 
-                        <p className="mt-4 text-[14px] leading-6 text-[#4b5563] sm:text-[15px] lg:mt-5 lg:text-base">
-                            Here’s how we’ve evolved:
-                        </p>
                     </div>
                 </div>
             </div>

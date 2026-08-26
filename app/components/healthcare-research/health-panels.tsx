@@ -6,6 +6,7 @@ import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "aos/dist/aos.css";
+import Link from "next/link";
 
 type FeatureCard = {
   title: string;
@@ -32,38 +33,49 @@ type HealthPanelData = {
 
 type HealthPanelProps = {
   data?: HealthPanelData;
+  researchSlug?: string;
 };
 
-export default function HealthPanel({ data }: HealthPanelProps) {
+const panelBackgrounds: Record<string, string> = {
+  "consumer-research": "/market-research/consumers.png",
+  "b2b-research": "/market-research/b2b-panels.png",
+  "healthcare-research": "/market-research/healthcare-panel.png",
+};
+
+export default function HealthPanel({ data, researchSlug }: HealthPanelProps) {
   const featureCards = data?.featureCards || [];
   const stats = data?.stats || [];
+  const backgroundImage =
+    panelBackgrounds[researchSlug || ""] ||
+    panelBackgrounds["healthcare-research"];
 
   if (!data) return null;
 
   return (
     <div className="bg-[#edf6ff]">
-      <section className="relative overflow-hidden bg-[#edf6ff] py-14 pt-1 lg:py-10 lg:pt-10 min-h-[500px] lg:h-[650px]">
+      <section className="relative overflow-hidden bg-[#edf6ff] py-0 pt-1 lg:py-10 lg:pt-10 min-h-[400px] lg:h-[650px]">
         <Image
-          src="/market-research/healthcare-panel.png"
+          src={backgroundImage}
           alt=""
           fill
           sizes="100vw"
-          className="object-cover object-bottom lg:object-center"
+          unoptimized
+          className="object-cover object-right"
         />
 
         <div className="relative z-10 mx-auto px-2 lg:px-0">
           <div className="relative rounded-[28px]">
             <div className="relative min-h-[570px] w-full lg:min-h-[670px]">
               <div className="relative z-20 flex min-h-[550px] items-center px-5 py-8 sm:px-8 lg:min-h-[570px] lg:px-14">
-                <div className="ml-auto -mt-20 max-w-[360px] text-white lg:mr-14 lg:max-w-[600px]">
+                <div className="ml-auto -mt-20 max-w-[360px] text-white lg:mr-14 lg:max-w-[550px]">
                   {data.topLabel && (
-                    <p className="text-xl font-medium leading-none text-[#d8efff] lg:text-2xl">
+                    <p className=" font-medium leading-none text-[#d8efff] text-2xl">
                       {data.topLabel}
                     </p>
                   )}
 
                   {(data.titleLine1 || data.titleLine2) && (
-                    <h3 className="mt-2 text-xl font-semibold leading-[1.08] sm:text-[45px]">
+                    <h3 className="mt-2.5 text-2xl font-semibold lg:leading-[1.08] sm:text-[42px]">
                       {data.titleLine1 && (
                         <span className="block text-[#58dff0]">
                           {data.titleLine1}
@@ -71,7 +83,7 @@ export default function HealthPanel({ data }: HealthPanelProps) {
                       )}
 
                       {data.titleLine2 && (
-                        <span className="block text-2xl font-medium text-[#eef8ff]">
+                        <span className="block text-2xl font-medium text-[#eef8ff] mt-2.5">
                           {data.titleLine2}
                         </span>
                       )}
@@ -79,15 +91,27 @@ export default function HealthPanel({ data }: HealthPanelProps) {
                   )}
 
                   {data.ctaText && (
+                    <Link href="/about-us" >
                     <p className="mt-4 inline-flex rounded-md bg-gradient-to-b from-[#2f8ed8] via-[#3fb6ff] to-[#3fb6ff] px-6 py-2 text-base font-medium text-white shadow-md backdrop-blur-sm">
                       {data.ctaText}
                     </p>
+                    </Link>
                   )}
 
                   {stats.length > 0 && (
-                    <div className="mt-7 flex w-10/12 items-center justify-between gap-6">
+                    <div className="relative mt-7 grid lg:w-10/12 w-full grid-cols-2 items-center gap-6">
+                      {stats.length === 2 && (
+                        <div className="absolute left-1/2 top-1/2 h-12 w-px -translate-x-1/2 -translate-y-1/2 bg-[#4fe3f1]" />
+                      )}
                       {stats.map((stat, index) => (
-                        <div key={index} className="flex items-center gap-6">
+                        <div
+                          key={index}
+                          className={
+                            index === 0
+                              ? "justify-self-start pr-6"
+                              : "justify-self-end pl-6"
+                          }
+                        >
                           <div>
                             <p
                               className="text-4xl font-normal leading-none"
@@ -100,18 +124,13 @@ export default function HealthPanel({ data }: HealthPanelProps) {
                             </p>
                           </div>
 
-                          {index !== stats.length - 1 && (
-                            <div>
-                              <p className="h-12 w-[1px] bg-[#4fe3f1]" />
-                            </div>
-                          )}
                         </div>
                       ))}
                     </div>
                   )}
 
                   {(data.bottomHighlight || data.bottomText) && (
-                    <p className="mt-5 text-base font-medium leading-5">
+                    <p className="lg:mt-5 mt-8 text-base font-medium leading-5">
                       {data.bottomHighlight && (
                         <span className="text-[#05cdb8]">
                           {data.bottomHighlight}
@@ -129,7 +148,7 @@ export default function HealthPanel({ data }: HealthPanelProps) {
               </div>
 
               {featureCards.length > 0 && (
-                <div className="absolute inset-x-0 bottom-24 z-30 w-full">
+                <div className="absolute inset-x-0 lg:bottom-24 bottom-16 z-30 w-full ">
                   <Swiper
                     modules={[Autoplay]}
                     spaceBetween={12}

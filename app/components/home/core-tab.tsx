@@ -3,8 +3,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-// @ts-ignore - no type declarations for 'aos'
-import AOS from "aos";
 
 export default function CoreTab() {
     const tabs = [
@@ -23,11 +21,11 @@ export default function CoreTab() {
                     image: "/core-slide.png",
                 },
                 {
-                    title: "CAPI (Computer-Assisted Personal Interviewing)",
+                    title: "CAWI (Computer-Assisted Web Interviewing)",
                     image: "/core-slide-1.png",
                 },
                 {
-                    title: "CLT (Central Location Testing)",
+                    title: "Hybrid",
                     image: "/CLT-(Central-Location-Testing).jpg",
                 },
                 {
@@ -96,12 +94,6 @@ export default function CoreTab() {
 
     useEffect(() => {
         setCardIndex(0);
-
-        const timer = setTimeout(() => {
-            AOS.refreshHard();
-        }, 250);
-
-        return () => clearTimeout(timer);
     }, [activeTab]);
 
     useEffect(() => {
@@ -114,14 +106,6 @@ export default function CoreTab() {
 
         return () => window.removeEventListener("resize", checkScreen);
     }, []);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            AOS.refreshHard();
-        }, 200);
-
-        return () => clearTimeout(timer);
-    }, [cardIndex, isMobile]);
 
     const cardsPerView = isMobile ? 1 : 2;
     const visibleCards = activeData.services.slice(cardIndex, cardIndex + cardsPerView);
@@ -140,6 +124,28 @@ export default function CoreTab() {
 
     return (
         <div className="relative z-10 mx-auto max-w-7xl px-4 py-2 sm:px-6 lg:px-16" >
+            <style>{`
+                @keyframes researchCardsSlideIn {
+                    from {
+                        opacity: 0.25;
+                        transform: translateX(10px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+
+                .research-cards-slide {
+                    animation: researchCardsSlideIn 700ms cubic-bezier(0.22, 1, 0.36, 1);
+                }
+
+                @media (prefers-reduced-motion: reduce) {
+                    .research-cards-slide {
+                        animation: none;
+                    }
+                }
+            `}</style>
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                 <div
                     className="flex shrink-0 items-center gap-2 lg:block"
@@ -186,22 +192,17 @@ export default function CoreTab() {
                     key={`hero-${activeTab}`}
 
                 >
-                    <div className="relative h-[300px] overflow-hidden sm:h-[380px] lg:h-[440px] lg:w-11/12">
+                    <div className="relative h-[260px] overflow-hidden rounded-2xl sm:h-[380px] lg:h-[440px] lg:w-11/12">
                         <Image
                             src={activeData.heroImage}
                             alt={activeData.label}
                             fill
                             className="object-cover"
                             unoptimized
-                            onLoadingComplete={() => {
-                                setTimeout(() => {
-                                    AOS.refreshHard();
-                                }, 100);
-                            }}
                         />
                         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,25,52,0.12)_0%,rgba(10,20,48,0.72)_100%)]" />
                         <div className="absolute bottom-7 left-5 max-w-[78%]">
-                            <h3 className="whitespace-pre-line text-[24px] font-medium leading-[1.25] text-white md:text-[34px]">
+                            <h3 className="whitespace-pre-line text-[24px] font-medium leading-[1.25] text-white lg:text-3xl">
                                 {activeData.heroTitle}
                             </h3>
                         </div>
@@ -220,7 +221,7 @@ export default function CoreTab() {
 
                         <h3
                             key={`title-${activeTab}`}
-                            className="lg:my-5 my-2 max-w-[430px] line-clamp-2 text-lg font-semibold leading-[1.25] text-[#2e3540] lg:text-[27px]"
+                            className="lg:my-5 my-2 max-w-[430px] line-clamp-2 text-lg font-semibold leading-[1.25] text-[#2e3540] lg:text-xl"
 
                         >
                             {activeData.cardsTitle}
@@ -228,11 +229,13 @@ export default function CoreTab() {
                     </div>
 
                     <div className="mt-4">
-                        <div className={`grid gap-4 ${isMobile ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2"}`}>
+                        <div
+                            key={`${activeTab}-${cardIndex}`}
+                            className={`research-cards-slide grid gap-4 ${isMobile ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2"}`}
+                        >
                             {visibleCards.map((service, idx) => (
                                 <div
                                     key={`${activeTab}-${service.title}-${cardIndex}-${idx}`}
-
                                     className="flex min-h-[100px] overflow-hidden rounded-[14px] bg-white shadow-[0_10px_30px_rgba(22,34,56,0.08)]"
                                 >
                                     <div className="relative h-auto w-[42%] min-w-[100px]">
@@ -242,11 +245,6 @@ export default function CoreTab() {
                                             fill
                                             className="object-cover"
                                             unoptimized
-                                            onLoadingComplete={() => {
-                                                setTimeout(() => {
-                                                    AOS.refresh();
-                                                }, 100);
-                                            }}
                                         />
                                     </div>
 

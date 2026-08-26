@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-// @ts-ignore - no type declarations for 'aos'
-import AOS from "aos";
+import { useState } from "react";
+import Link from "next/link";
 
 const industries = [
     {
@@ -113,7 +112,7 @@ function IndustryCard({
             data-aos-duration="900"
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
-            className="relative h-[250px] min-w-0 cursor-pointer overflow-hidden bg-white md:h-[240px] lg:h-[250px]"
+            className="relative h-[200px] min-w-0 cursor-pointer overflow-hidden bg-white lg:h-[210px]"
             style={{
                 flex: mobileExpanded ? 1 : isExpanded ? 2.4 : 1,
                 transition: mobileExpanded
@@ -136,12 +135,7 @@ function IndustryCard({
                 <p className="line-clamp-3 max-w-48 text-base leading-[1.65] text-[#6b7280]">
                     {description}
                 </p>
-                <a
-                    href="#"
-                    className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#00b4a6] no-underline"
-                >
-                    Learn More <ArrowIcon />
-                </a>
+
             </div>
 
             <div
@@ -171,12 +165,7 @@ function IndustryCard({
                     <p className="line-clamp-3 max-w-60 text-xs leading-[1.65] text-white/80 lg:text-lg">
                         {description}
                     </p>
-                    <a
-                        href="#"
-                        className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-white no-underline"
-                    >
-                        Learn More <ArrowIcon color="white" />
-                    </a>
+
                 </div>
             </div>
         </div>
@@ -200,16 +189,8 @@ export default function Industries() {
         industries.slice(6, 9),
     ];
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            AOS.refreshHard();
-        }, 200);
-
-        return () => clearTimeout(timer);
-    }, []);
-
     return (
-        <section className="px-4 py-5 sm:px-6">
+        <section className="relative z-10 px-4 py-5 sm:px-6">
             <div
                 className="lg:mb-10 mb-5 text-center"
                 data-aos="fade-up"
@@ -233,7 +214,7 @@ export default function Industries() {
                 >
                     <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth scrollbar-hide">
                         {industries.map((ind, index) => (
-                            <div key={ind.id} className="min-w-full snap-center">
+                            <div key={ind.id} className="min-w-[86%] snap-center">
                                 <IndustryCard
                                     {...ind}
                                     isExpanded={true}
@@ -293,6 +274,12 @@ export default function Industries() {
                             ))}
                         </div>
                     ))}
+                </div>
+
+                <div className="relative z-20 mt-7 flex justify-center">
+                    <Link href="/industries" className="relative z-20 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#18b9aa] to-[#4faee8] px-6 py-2.5 text-sm font-semibold text-white shadow-md transition duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:text-base">
+                        View All Industries <ArrowIcon color="white" />
+                    </Link>
                 </div>
             </div>
         </section>

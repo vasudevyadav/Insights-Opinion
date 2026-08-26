@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronUp, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 type AccordionItem = {
@@ -27,7 +27,7 @@ const sectionsData: Section[] = [
         image: "/why-choose-img.png",
         accordionData: [
             {
-                title: "Global Expertisee",
+                title: "Global Expertise",
                 content:
                     "Run studies across 100+ countries and in 60+ languages with local coordination and market-specific execution.",
             },
@@ -116,19 +116,28 @@ function Accordion({
                                     {item.title}
                                 </h3>
 
-                                {isOpen && (
-                                    <p className="mt-2 max-w-[300px] text-xs lg:text-sm leading-[1.55] text-[#d6dbef]">
-                                        {item.content}
-                                    </p>
-                                )}
+                                <div
+                                    className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${isOpen
+                                        ? "grid-rows-[1fr] opacity-100"
+                                        : "grid-rows-[0fr] opacity-0"
+                                        }`}
+                                >
+                                    <div className="overflow-hidden">
+                                        <p className="mt-2 max-w-[300px] text-xs leading-[1.55] text-[#d6dbef] lg:text-sm">
+                                            {item.content}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
 
                             <span className="ml-4 shrink-0">
-                                {isOpen ? (
-                                    <ChevronUp size={18} className="text-white" />
-                                ) : (
-                                    <ChevronDown size={18} className="text-[#4b5563]" />
-                                )}
+                                <ChevronDown
+                                    size={18}
+                                    className={`transition-transform duration-500 motion-reduce:transition-none ${isOpen
+                                        ? "rotate-180 text-white"
+                                        : "text-[#4b5563]"
+                                        }`}
+                                />
                             </span>
                         </button>
                     </div>
@@ -138,7 +147,7 @@ function Accordion({
     );
 }
 
-function AnimatedWhyChooseFigure() {
+export function AnimatedWhyChooseFigure() {
     return (
         <div className="relative inline-flex w-fit items-end justify-center overflow-visible bg-transparent">
             <Image
@@ -153,7 +162,7 @@ function AnimatedWhyChooseFigure() {
                 alt="Animated figure"
                 width={352}
                 height={420}
-                className="absolute lg:-left-10 left-5 -bottom-16 lg:-bottom-14 lg:w-[22rem] w-60 object-cover"
+                className="absolute lg:-left-10 left-5 -bottom-10 lg:-bottom-14 lg:w-[22rem] w-60 object-cover"
             />
         </div>
     );
@@ -176,8 +185,8 @@ export default function WhyChoose() {
                 <div className="h-full w-full" />
             </div>
 
-            <div className="relative z-10 mx-auto max-w-6xl px-4 py-2 lg:px-0 lg:py-16">
-                <div className="lg:space-y-20 space-y-24">
+            <div className="relative z-10 mx-auto max-w-6xl px-4 py-10 lg:px-0 lg:py-16 lg:pt-16 pt-8">
+                <div className="space-y-8 lg:space-y-20">
                     {sectionsData.map((section, sectionIndex) => {
                         const isEven = sectionIndex % 2 === 0;
                         const activeIndex = openIndexes[sectionIndex];
@@ -185,37 +194,41 @@ export default function WhyChoose() {
                         return (
                             <div
                                 key={sectionIndex}
-                                className="grid items-center gap-10 lg:grid-cols-[1.02fr_1fr]"
+                                className="grid items-center gap-6 lg:grid-cols-[1.02fr_1fr] lg:gap-10"
                             >
                                 <div
-                                    className={`${isEven ? "lg:order-1" : "lg:order-2"} max-w-[500px]`}
+                                    className={`${isEven ? "lg:order-1" : "lg:order-2 lg:pt-0"} contents max-w-[500px] lg:block`}
                                 >
-                                    <p className="text-2xl font-light leading-[0.95] tracking-[-0.02em] text-[#4a5565] lg:text-[45px]">
-                                        {section.headingLight}
-                                    </p>
+                                    <div className={`order-1 max-w-[500px] ${isEven ? "" : ""}`}>
+                                        <p className="text-2xl font-light leading-[0.95] tracking-[-0.02em] text-[#4a5565] lg:text-[45px]">
+                                            {section.headingLight}
+                                        </p>
 
-                                    <h2 className="text-2xl font-medium lg:leading-tight text-transparent bg-clip-text bg-[linear-gradient(130deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">
-                                        {section.headingBold}
-                                    </h2>
+                                        <h2 className="text-2xl font-medium lg:leading-tight text-transparent bg-clip-text bg-[linear-gradient(130deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] lg:text-[45px]">
+                                            {section.headingBold}
+                                        </h2>
 
-                                    <p className="lg:mt-5 mt-2 lg:text-base text-sm leading-[1.6] text-[#5a6472] lg:text-lg">
-                                        {section.description}
-                                    </p>
+                                        <p className="lg:mt-5 mt-2 lg:text-base text-sm leading-[1.6] text-[#5a6472] lg:text-lg">
+                                            {section.description}
+                                        </p>
+                                    </div>
 
-                                    <Accordion
-                                        accordionData={section.accordionData}
-                                        openIndex={activeIndex}
-                                        setOpenIndex={(index) =>
-                                            handleSetOpenIndex(sectionIndex, index)
-                                        }
-                                    />
+                                    <div className="order-3 max-w-[500px]">
+                                        <Accordion
+                                            accordionData={section.accordionData}
+                                            openIndex={activeIndex}
+                                            setOpenIndex={(index) =>
+                                                handleSetOpenIndex(sectionIndex, index)
+                                            }
+                                        />
+                                    </div>
                                 </div>
 
                                 <div
-                                    className={`relative flex min-h-[320px] items-center justify-center lg:min-h-[520px] ${isEven ? "lg:order-2" : "lg:order-1"
+                                    className={`relative order-2 flex min-h-[250px] items-center justify-center sm:min-h-[320px] lg:min-h-[520px] ${isEven ? "lg:order-2" : "lg:order-1"
                                         }`}
                                 >
-                                    <div className="relative flex w-full px-6 lg:px-0 items-center justify-center overflow-visible bg-transparent">
+                                    <div className="relative flex w-full px-6 lg:px-0 mb-4 lg:mb-0 items-center justify-center overflow-visible bg-transparent">
                                         {sectionIndex === 0 ? (
                                             <AnimatedWhyChooseFigure />
                                         ) : (
@@ -227,7 +240,7 @@ export default function WhyChoose() {
                                                 alt="Section visual"
                                                 width={520}
                                                 height={520}
-                                                className="relative z-10 h-auto w-full p-8 object-contain transition-all duration-300"
+                                                className="relative z-10 h-auto w-full lg:p-8 p-0 object-contain transition-all duration-300"
                                             />
                                         )}
                                     </div>

@@ -3,13 +3,15 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Plus, ArrowRight } from "lucide-react";
+import { legacyChildHref } from "@/app/lib/legacy-service-routes";
+import LeadModalTrigger from "@/app/components/shared/lead-modal-trigger";
 
 const services = [
   {
     step: "01",
     title: "Online Surveys (CAWI)",
     image: "/quality/cati-online.png",
-    desc: "Self-administered web surveys across our 8M+ verified panel. Fast turnaround, rich media support, and multi-layer quality controls for nationally representative consumer and B2B data.",
+    desc: "Self-administered web surveys across our verified panel. Fast turnaround, rich media support, and multi-layer quality controls for nationally representative consumer and B2B data.",
     slug: "online-surveys",
   },
   {
@@ -85,7 +87,7 @@ export default function QuantServicesAccordion() {
                     <p className="text-sm leading-relaxed text-white/60">{s.desc}</p>
                     {s.slug && (
                       <Link
-                        href={`/quantitative-research/methods/${s.slug}`}
+                        href={legacyChildHref(s.slug)}
                         className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-[#1dc3b3] hover:underline"
                       >
                         Learn more <ArrowRight size={11} />
@@ -122,12 +124,11 @@ export default function QuantServicesAccordion() {
           <p className="text-sm text-[#4a5568]">
             Want to know which method suits your study?
           </p>
-          <Link
-            href="#contact"
+          <LeadModalTrigger
             className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[#1dc3b3] hover:underline"
           >
             [Talk to Our Research Team] <ArrowRight size={12} />
-          </Link>
+          </LeadModalTrigger>
         </div>
       </div>
     </section>

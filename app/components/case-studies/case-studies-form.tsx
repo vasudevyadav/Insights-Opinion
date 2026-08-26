@@ -1,12 +1,70 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+import { submitLeadForm } from "@/app/lib/lead-form-api";
+import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
+import CountryCodeSelect from "@/app/components/shared/country-code-select";
+import { useRouter } from "next/navigation";
+import BackgroundShape from "../about-us/background-shape";
+import FormPrivacyNote from "../shared/form-privacy-note";
+
+const initialFormData = {
+    name: "",
+    email: "",
+    country: "",
+    countryCode: "+91",
+    phone: "",
+    enquiryType: "",
+};
 
 export default function CaseStudiesForm() {
+    const [formData, setFormData] = useState(initialFormData);
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState("");
+    const router = useRouter();
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    ) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
+        setStatus("");
+
+        try {
+            await submitLeadForm({
+                formName: "case_studies_enquiry",
+                name: formData.name,
+                email: formData.email,
+                country: formData.country,
+                countryCode: formData.countryCode,
+                phone: `${formData.countryCode} ${formData.phone}`,
+                enquiryType: formData.enquiryType,
+            });
+
+            setStatus("Submitted successfully.");
+
+            router.push("/thank-you");
+            setFormData(initialFormData);
+        } catch (error) {
+            setStatus(
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong. Please try again."
+            );
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
-        <section className="relative overflow-hidden bg-[#edf4fb] py-8 lg:py-12">
+        <section className="relative overflow-hidden bg-[#eef7ff] pt-4 lg:pt-14 py-10 lg:py-14">
+            <BackgroundShape variant={5} className="-right-24 -bottom-48 w-[330px] opacity-40 lg:-right-3 lg:w-[490px]" />
             <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                 <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
 
@@ -36,22 +94,36 @@ export default function CaseStudiesForm() {
 
                     {/* Right Side — Form */}
                     <div className="mx-auto w-full max-w-[560px]">
-                        <form className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
+                        <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
                             <input
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
                                 type="text"
+                                required
                                 placeholder="Name"
                                 className="h-[44px] rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 text-sm text-white outline-none placeholder:text-white/75"
                             />
 
                             <input
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
                                 type="email"
+                                required
                                 placeholder="Email"
                                 className="h-[44px] rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 text-sm text-white outline-none placeholder:text-white/75"
                             />
 
                             <div className="relative">
-                                <select className="h-[44px] w-full appearance-none rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 pr-10 text-sm text-white/75 outline-none">
-                                    <option>Country</option>
+                                <select
+                                    name="country"
+                                    value={formData.country}
+                                    onChange={handleChange}
+                                    required
+                                    className="h-[44px] w-full appearance-none rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 pr-10 text-sm text-white/75 outline-none"
+                                >
+                                    <option value="" disabled>Country</option>
                                     <option>India</option>
                                     <option>USA</option>
                                     <option>UK</option>
@@ -60,23 +132,29 @@ export default function CaseStudiesForm() {
                                 <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white" />
                             </div>
 
-                            <div className="relative">
-                                <select className="h-[44px] w-full appearance-none rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 pr-10 text-sm text-white/75 outline-none">
-                                    <option>Mobile</option>
-                                    <option>+91</option>
-                                    <option>+1</option>
-                                    <option>+44</option>
-                                    <option>+971</option>
-                                </select>
-                                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white" />
+                            <div className="relative flex h-[44px] rounded-[6px] border border-[#202c63] bg-[#18235a]">
+                                <CountryCodeSelect
+                                    value={formData.countryCode}
+                                    onChange={(countryCode) => setFormData((current) => ({ ...current, countryCode }))}
+                                    required
+                                    className="w-[88px] shrink-0 border-r border-white/20"
+                                    buttonClassName="px-3 text-sm text-white/75"
+                                />
+                                <input name="phone" value={formData.phone} onChange={handleChange} type="tel" inputMode="tel" required placeholder="Mobile number" className="min-w-0 flex-1 bg-transparent px-3 text-sm text-white outline-none placeholder:text-white/75" />
                             </div>
 
                             <div className="relative sm:col-span-1">
-                                <select className="h-[44px] w-full appearance-none rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 pr-10 text-sm text-white/75 outline-none">
-                                    <option>Please Select</option>
-                                    <option>General Enquiry</option>
-                                    <option>Business Query</option>
-                                    <option>Support</option>
+                                <select
+                                    name="enquiryType"
+                                    value={formData.enquiryType}
+                                    onChange={handleChange}
+                                    required
+                                    className="h-[44px] w-full appearance-none rounded-[6px] border border-[#202c63] bg-[#18235a] px-4 pr-10 text-sm text-white/75 outline-none"
+                                >
+                                    <option value="" disabled>Please Select</option>
+                                    {SERVICE_SELECT_OPTIONS.map((option) => (
+                                        <option key={option}>{option}</option>
+                                    ))}
                                 </select>
                                 <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white" />
                             </div>
@@ -84,10 +162,15 @@ export default function CaseStudiesForm() {
                             <div className="sm:col-span-2">
                                 <button
                                     type="submit"
-                                    className="h-[42px] w-full rounded-[6px] bg-gradient-to-r from-[#49c3b0] to-[#5ca8ff] px-6 text-sm font-semibold text-white shadow-md transition hover:opacity-90 sm:w-auto sm:min-w-[140px]"
+                                    disabled={loading}
+                                    className="h-[42px] w-full rounded-[6px] bg-gradient-to-r from-[#49c3b0] to-[#5ca8ff] px-6 text-sm font-semibold text-white shadow-md transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:min-w-[140px]"
                                 >
-                                    Submit Now
+                                    {loading ? "Submitting..." : "Submit Now"}
                                 </button>
+                                <FormPrivacyNote className="mt-2" />
+                                {status && (
+                                    <p className="mt-2 text-sm font-semibold text-[#0f766e]">{status}</p>
+                                )}
                             </div>
                         </form>
                     </div>

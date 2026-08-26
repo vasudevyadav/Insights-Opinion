@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Search, ChevronDown } from "lucide-react";
 import { type Blog } from "@/data/blogData";
+import BackgroundShape from "@/app/components/about-us/background-shape";
 
 const filters = ["All Blogs", "Blog"];
 
@@ -63,21 +64,10 @@ export default function BlogList({ blogs }: { blogs: Blog[] }) {
   }, [blogs, activeFilter, activeTag, searchTerm, sortBy]);
 
   return (
-    <section className="relative overflow-hidden bg-[#eef5fb] py-10 sm:py-12 lg:py-14">
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 opacity-70"
-          style={{
-            backgroundImage: `
-              linear-gradient(30deg, rgba(150,185,211,0.18) 1px, transparent 1px),
-              linear-gradient(150deg, rgba(150,185,211,0.18) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(150,185,211,0.12) 1px, transparent 1px)
-            `,
-            backgroundSize: "74px 42px, 74px 42px, 74px 42px",
-            backgroundPosition: "0 0, 0 0, 37px 21px",
-          }}
-        />
-      </div>
+    <section className="relative overflow-hidden bg-[#edf6ff] py-10 sm:py-14 lg:py-16">
+      <BackgroundShape side="right" variant={2} className="-right-20 -top-16 w-[310px] opacity-45 sm:w-[430px] lg:-right-8 lg:w-[520px]" />
+      <BackgroundShape side="left" variant={1} className="-left-24 top-[36%] w-[330px] opacity-40 sm:w-[450px] lg:-left-12 lg:w-[520px]" />
+      <BackgroundShape side="right" variant={7} className="-right-24 bottom-0 w-[340px] opacity-40 sm:w-[460px]" />
 
       <div className="relative z-10 mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-[980px] text-center">
@@ -85,7 +75,7 @@ export default function BlogList({ blogs }: { blogs: Blog[] }) {
             Explore Our Market Research Industry Guide
           </h2>
 
-          <div className="mx-auto mt-3 flex max-w-5xl flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-[11px] font-medium leading-5 text-[#6f7f93] sm:text-sm">
+          <div className="mx-auto mt-3 flex max-w-5xl flex-wrap items-center justify-center gap-x-1.5 gap-y-1 font-medium leading-5 text-[#6f7f93] sm:text-sm">
             {tags.map((tag, index) => {
               const isActiveTag = activeTag === tag;
 
@@ -201,7 +191,7 @@ export default function BlogList({ blogs }: { blogs: Blog[] }) {
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 xl:grid-cols-3">
           {filteredBlogs.length > 0 ? (
             filteredBlogs.slice(0, visibleCount).map((blog) => (
               <Link
@@ -209,13 +199,13 @@ export default function BlogList({ blogs }: { blogs: Blog[] }) {
                 href={`/blogs/${blog.slug}`}
                 className="group block overflow-hidden rounded-[19px] border border-[#9eafc4] bg-white shadow-none transition hover:-translate-y-1"
               >
-                <div className="relative h-[220px] overflow-hidden">
+                <div className="relative aspect-[16/5] w-full overflow-hidden bg-[#eef5fb]">
                   <Image
                     src={blog.image}
                     alt={blog.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                    className="object-cover transition duration-500 group-hover:scale-105"
+                    className="object-contain object-center"
                   />
 
                   <div className="absolute bottom-0 left-0 flex items-center gap-2 bg-[linear-gradient(90deg,#7fd8df_0%,#48c0cd_50%,#2eacbf_100%)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-white">

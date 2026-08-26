@@ -1,12 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { submitLeadForm } from "@/app/lib/lead-form-api";
+import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
+import { useRouter } from "next/navigation";
+import CountryCodeSelect from "@/app/components/shared/country-code-select";
+import FormPrivacyNote from "@/app/components/shared/form-privacy-note";
 
-function generateCaptcha() {
-    const chars = "ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
-    return Array.from({ length: 6 }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
-}
+const initialFormData = {
+    name: "",
+    email: "",
+    phone: "",
+    countryCode: "+91",
+    enquiryType: "",
+    message: "",
+};
 
 const faqs = [
     {
@@ -65,7 +74,48 @@ const HexCluster = () => (
 
 export default function LocalCallbackFaq() {
     const [openIndex, setOpenIndex] = useState(0);
-    const [captcha] = useState(generateCaptcha);
+    const [formData, setFormData] = useState(initialFormData);
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState("");
+    const router = useRouter();
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    ) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        setLoading(true);
+        setStatus("");
+
+        try {
+            await submitLeadForm({
+                formName: "local_callback",
+                name: formData.name,
+                email: formData.email,
+                phone: `${formData.countryCode} ${formData.phone}`,
+                countryCode: formData.countryCode,
+                enquiryType: formData.enquiryType,
+                message: formData.message,
+            });
+
+            setStatus("Submitted successfully.");
+
+            router.push("/thank-you");
+            setFormData(initialFormData);
+        } catch (error) {
+            setStatus(
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong. Please try again."
+            );
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <section className="relative overflow-hidden bg-[#edf6ff] py-14 lg:py-20">
@@ -90,60 +140,69 @@ export default function LocalCallbackFaq() {
                             </h2>
                         </div>
 
-                        <form className="space-y-4">
+                        <form onSubmit={handleSubmit} className="space-y-4">
                             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                 <input
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
                                     type="text"
+                                    required
                                     placeholder="Name"
                                     className="h-[46px] rounded-[4px] border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
                                 />
                                 <input
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     type="email"
+                                    required
                                     placeholder="Email"
                                     className="h-[46px] rounded-[4px] border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
                                 />
                             </div>
 
                             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                <input
-                                    type="tel"
-                                    placeholder="Mobile"
-                                    className="h-[46px] rounded-[4px] border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
-                                />
-                                <select className="h-[46px] rounded-[4px] border border-[#d7d7d7] bg-white px-4 text-sm text-[#8a8a8a] outline-none focus:border-[#20b7a6]">
-                                    <option value="">Please Select</option>
-                                    <option>Quantitative Research</option>
-                                    <option>Qualitative Research</option>
-                                    <option>Brand Research</option>
-                                    <option>Healthcare Research</option>
-                                    <option>B2B Research</option>
+                                <div className="flex h-[46px] overflow-visible rounded-[4px] border border-[#d7d7d7] bg-white focus-within:border-[#20b7a6]">
+                                    <CountryCodeSelect value={formData.countryCode} onChange={(countryCode) => setFormData((current) => ({ ...current, countryCode }))} className="w-[88px] border-r border-[#d7d7d7]" buttonClassName="px-2 text-sm text-[#343954]" />
+                                    <input name="phone" value={formData.phone} onChange={handleChange} type="tel" required placeholder="Mobile" className="min-w-0 flex-1 px-3 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a]" />
+                                </div>
+                                <select
+                                    name="enquiryType"
+                                    value={formData.enquiryType}
+                                    onChange={handleChange}
+                                    required
+                                    className="h-[46px] rounded-[4px] border border-[#d7d7d7] bg-white px-4 text-sm text-[#8a8a8a] outline-none focus:border-[#20b7a6]"
+                                >
+                                    <option value="" disabled>Please Select</option>
+                                    {SERVICE_SELECT_OPTIONS.map((option) => (
+                                        <option key={option}>{option}</option>
+                                    ))}
                                 </select>
                             </div>
 
                             <textarea
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
                                 placeholder="Message"
                                 rows={4}
                                 className="w-full resize-none rounded-[4px] border border-[#d7d7d7] px-4 py-3 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
                             />
 
-                            <div className="flex items-center gap-3">
-                                <input
-                                    type="text"
-                                    placeholder="Captcha"
-                                    className="h-[46px] w-[150px] rounded-[4px] border border-[#d7d7d7] px-4 text-sm text-[#343954] outline-none placeholder:text-[#8a8a8a] focus:border-[#20b7a6]"
-                                />
-                                <div className="flex h-[46px] min-w-[110px] items-center justify-center rounded-[4px] bg-[#171f4d] font-mono text-sm font-bold tracking-wider text-white select-none">
-                                    {captcha}
-                                </div>
-                            </div>
+                            {status && (
+                                <p className="text-sm font-semibold text-[#0f766e]">{status}</p>
+                            )}
 
                             <div className="pt-2 text-center">
                                 <button
                                     type="submit"
-                                    className="inline-flex min-w-[160px] items-center justify-center rounded-[6px] bg-[#17aa8d] px-8 py-3 text-sm font-semibold text-white transition hover:opacity-90 hover:shadow-lg lg:text-base"
+                                    disabled={loading}
+                                    className="inline-flex min-w-[160px] items-center justify-center rounded-[6px] bg-[#17aa8d] px-8 py-3 text-sm font-semibold text-white transition hover:opacity-90 hover:shadow-lg lg:text-base disabled:cursor-not-allowed disabled:opacity-60"
                                 >
-                                    Submit
+                                    {loading ? "Submitting..." : "Submit"}
                                 </button>
+                                <FormPrivacyNote className="mt-3" />
                             </div>
                         </form>
                     </div>
@@ -185,9 +244,9 @@ export default function LocalCallbackFaq() {
                                         )}
                                     </button>
                                     <div
-                                        className={`grid transition-all duration-300 ease-in-out ${isOpen
-                                            ? "grid-rows-[1fr] rounded-b-[16px] bg-white"
-                                            : "grid-rows-[0fr]"
+                                        className={`grid transition-all duration-500 ease-in-out motion-reduce:transition-none ${isOpen
+                                            ? "grid-rows-[1fr] rounded-b-[16px] bg-white opacity-100"
+                                            : "grid-rows-[0fr] opacity-0"
                                             }`}
                                     >
                                         <div className="overflow-hidden">

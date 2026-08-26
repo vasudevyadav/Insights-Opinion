@@ -1,9 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
-// @ts-ignore
-import AOS from "aos";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
@@ -18,13 +16,6 @@ export default function EventHome() {
         { title: "Event 2", image: "/highlight-2.webp", colored: false },
         { title: "Event 3", image: "/highlight3.webp", colored: false },
     ];
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            AOS.refreshHard();
-        }, 250);
-        return () => clearTimeout(timer);
-    }, []);
 
     return (
         <section className="overflow-hidden bg-[#151b4a] py-8 lg:py-12">
@@ -54,7 +45,7 @@ export default function EventHome() {
                         disableOnInteraction: false,
                     }}
                     breakpoints={{
-                        0: { slidesPerView: 1 },
+                        0: { slidesPerView: 1.12 },
                         480: { slidesPerView: 1.15 },
                         640: { slidesPerView: 2.2 },
                         768: { slidesPerView: 3.1 },
@@ -63,7 +54,7 @@ export default function EventHome() {
                 >
                     {events.map((event, index) => (
                         <SwiperSlide key={index}>
-                            <div className="group relative h-[400px] w-full overflow-hidden rounded-[10px] bg-white p-2">
+                            <div className="group relative h-[310px] w-full overflow-hidden rounded-[14px] bg-white p-2 sm:h-[360px] lg:h-[400px]">
 
 
                                 <div className="absolute inset-2 overflow-hidden rounded-[8px] transition-all duration-500 group-hover:inset-0">
@@ -82,11 +73,7 @@ export default function EventHome() {
                                             md:group-hover:grayscale-0
                                             md:group-hover:scale-105
                                         `}
-                                        onLoadingComplete={() => {
-                                            setTimeout(() => {
-                                                AOS.refresh();
-                                            }, 100);
-                                        }}
+                                        sizes="(max-width: 639px) 90vw, (max-width: 1023px) 42vw, 22vw"
                                     />
                                 </div>
 

@@ -1,112 +1,144 @@
 "use client";
 
-import { useState } from "react";
-import { ChevronUp, ChevronDown } from "lucide-react";
 import Image from "next/image";
+import type { WhyChooseSection } from "@/data/service-page-content";
+import { AnimatedWhyChooseFigure } from "@/app/components/home/why-choose";
 
-const accordionData = [
-  {
-    title: "Fast Panel Delivery & Sample Access",
-    content:
-      "Tap into 8M+ verified respondents across 100+ countries. We deliver qualified samples fast — whether for online CAWI, telephone CATI, or in-person CLT studies.",
-  },
-  {
-    title: "Custom Quantitative Research Design",
-    content:
-      "Every study is designed from scratch. We develop questionnaires tailored to your research objectives, screening criteria, and market — with skip logic, quota management, and pilot testing built in.",
-  },
-  {
-    title: "Experienced Quantitative Analysts",
-    content:
-      "Our in-house analysts are trained in advanced statistical methods — regression, factor analysis, conjoint, and predictive modelling — delivering findings you can present to stakeholders with confidence.",
-  },
-  {
-    title: "HIPAA & GDPR Compliant Research Practices",
-    content:
-      "Data privacy is non-negotiable. We operate to HIPAA and GDPR standards across all quantitative research projects — with secure data transfer, anonymisation protocols, and transparent audit trails.",
-  },
-];
+function distributeFirstSectionItems(
+  sections: readonly WhyChooseSection[]
+): readonly WhyChooseSection[] {
+  const firstSection = sections[0];
+  if (!firstSection) return [];
 
-export default function QuantWhyChoose() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const items = firstSection.items;
+  const firstSectionCount =
+    items.length > 12 ? Math.ceil(items.length / 2) : Math.min(4, items.length);
+  const firstItems = items.slice(0, firstSectionCount);
+  const remainingItems = items.slice(firstSectionCount);
+
+  if (!remainingItems.length) {
+    return [{ ...firstSection, items: firstItems }];
+  }
+
+  const secondSection = sections[1] ?? {
+    ...firstSection,
+    layout: firstSection.layout === "left" ? "right" : "left",
+  };
+
+  return [
+    { ...firstSection, items: firstItems },
+    { ...secondSection, items: remainingItems },
+  ];
+}
+
+export default function QuantWhyChoose({
+  content,
+  sections,
+}: {
+  content?: {
+    description: string;
+    items: readonly { title: string; content: string }[];
+  };
+  sections?: readonly WhyChooseSection[];
+}) {
+  const renderedSections: readonly WhyChooseSection[] = sections?.length
+    ? distributeFirstSectionItems(sections)
+    : content
+      ? [
+        {
+          layout: "right",
+          title: "Why Choose",
+          highlight: "Insights Opinion",
+          description: content.description,
+          image: "/why-men.png",
+          items: content.items,
+        },
+      ]
+      : [];
+
+  if (!renderedSections.length) return null;
 
   return (
-    <section className="relative bg-[#edf6ff] py-10 lg:py-16">
-      <div className="relative z-10 mx-auto max-w-6xl px-4 lg:px-0">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
-          <div className="max-w-[500px]">
-            <p className="text-xl font-light leading-[0.95] tracking-[-0.02em] text-[#4a5565] lg:text-[45px]">
-              Why Choose
-            </p>
-            <h2 className="bg-[linear-gradient(130deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text text-2xl font-medium text-transparent lg:text-[45px] lg:leading-tight">
-              Insight Opinion
-            </h2>
-            <p className="mt-2 text-sm leading-[1.6] text-[#5a6472] lg:mt-5 lg:text-base">
-              Insights Opinion is trusted for research quality, international reach, and dependable project execution. Businesses choose our quantitative market research services for accurate data, multilingual capabilities, and strong operational support.
-            </p>
+    <div className="bg-[#edf6ff]">
+      {renderedSections.map((section, sectionIndex) => {
+        const imageOnLeft = section.layout === "left";
+        const hideHeadingAndDescription = sectionIndex === 1;
+        const useHomePageImage = Boolean(content) && sectionIndex === 0;
 
-            <div className="mt-8 w-full">
-              {accordionData.map((item, index) => {
-                const isOpen = openIndex === index;
-                return (
-                  <div key={item.title} className="border-b border-black">
-                    <button
-                      type="button"
-                      onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                      className={`flex w-full items-center justify-between px-5 py-5 text-left transition-all duration-200 ${
-                        isOpen
-                          ? "bg-[#111b54] text-white"
-                          : "bg-transparent text-[#374151] hover:bg-[#e8eef5]"
-                      }`}
-                    >
-                      <div>
-                        <h3
-                          className={`text-sm font-semibold lg:text-[15px] ${
-                            isOpen ? "text-[#16af9f]" : "text-[#384250]"
-                          }`}
-                        >
+        return (
+          <section
+            key={`${section.highlight}-${sectionIndex}`}
+            className="relative overflow-hidden"
+          >
+            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:mb-1 py-8 lg:py-12 ">
+              <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+                <div className={imageOnLeft ? "lg:order-2" : "lg:order-1"}>
+                  {!hideHeadingAndDescription && (
+                    <>
+                      <p className="text-2xl font-light tracking-[-0.02em] text-[#4a5565] lg:text-4xl mt-0 lg:mt-0">
+                        {section.title}
+                      </p>
+                      <h2 className="bg-[linear-gradient(130deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text lg:text-2xl text-xl font-semibold text-transparent lg:text-4xl lg:leading-tight">
+                        {section.highlight}
+                      </h2>
+                      <p className="mt-4 text-base font-medium leading-relaxed text-gray-700 lg:text-lg">
+                        {section.description}
+                      </p>
+                    </>
+                  )}
+
+                  <ul
+                    className={hideHeadingAndDescription ? "space-y-3" : "mt-5 space-y-3"}
+                  >
+                    {section.items.map((item) => (
+                      <li
+                        key={item.title}
+                        className="group flex gap-3 rounded-xl bg-white/55 px-4 py-3 font-medium text-[#1e2746] transition duration-300 hover:translate-x-1 hover:bg-white hover:text-[#159f95] hover:shadow-sm"
+                      >
+                        <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#1dc3b3] transition-transform group-hover:scale-125" />
+                        <span>
                           {item.title}
-                        </h3>
-                        {isOpen && item.content && (
-                          <p className="mt-2 max-w-full text-xs leading-[1.55] text-[#d6dbef] lg:max-w-[320px] lg:text-sm">
-                            {item.content}
-                          </p>
-                        )}
-                      </div>
-                      <span className="ml-4 shrink-0">
-                        {isOpen ? (
-                          <ChevronUp size={18} className="text-white" />
-                        ) : (
-                          <ChevronDown size={18} className="text-[#4b5563]" />
-                        )}
-                      </span>
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+                          {item.content && (
+                            <span className="mt-1 block lg:text-sm text-xs font-normal leading-relaxed text-[#566176]">
+                              {item.content}
+                            </span>
+                          )}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-          <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden lg:min-h-130 lg:overflow-visible">
-            <div className="relative inline-flex w-fit items-end justify-center overflow-hidden bg-transparent lg:overflow-visible">
-              <Image
-                src="/globe-image.png"
-                alt="Global Research"
-                width={420}
-                height={420}
-                className="globe-spin"
-              />
-              <Image
-                src="/why-men.png"
-                alt="Research Professional"
-                width={352}
-                height={420}
-                className="absolute -bottom-16 left-5 w-60 object-cover lg:-left-10 lg:-bottom-14 lg:w-[22rem]"
-              />
+                <div
+                  className={`relative flex lg:min-h-[420px] min-h-[220px] ${imageOnLeft ? "lg:order-1" : "lg:order-2"
+                    }`}
+                >
+                  <div className="absolute h-64 w-64 rounded-full bg-linear-to-br from-[#70c8f3]/35 to-[#1dc3b3]/30 blur-2xl sm:h-80 sm:w-80" />
+                  <div className="relative flex h-[220px] w-full items-center justify-center lg:h-[420px]">
+                    {useHomePageImage ? (
+                      <AnimatedWhyChooseFigure />
+                    ) : (
+                      <Image
+                        src={section.image}
+                        alt={`${section.title} ${section.highlight}`}
+                        fill
+                        unoptimized
+                        onError={(event) => {
+                          event.currentTarget.onerror = null;
+                          event.currentTarget.src = "/quality/cati-online.png";
+                        }}
+                        className="object-contain drop-shadow-[0_18px_30px_rgba(25,70,105,0.16)] h-full "
+                      />
+                    )}
+                  </div>
+                </div>
+              </div>
+
+
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+          </section>
+        );
+      })}
+    </div>
   );
 }

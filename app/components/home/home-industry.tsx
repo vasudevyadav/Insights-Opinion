@@ -1,10 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
-// @ts-ignore - no type declarations for 'aos'
-import AOS from 'aos';
+import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -53,48 +50,6 @@ const featureCards = [
 ];
 
 export default function HomeIndustry() {
-    const pathname = usePathname();
-
-    useEffect(() => {
-        AOS.init({
-            duration: 900,
-            easing: "ease-out-cubic",
-            once: false,
-            mirror: false,
-            offset: 80,
-            delay: 0,
-            anchorPlacement: "top-bottom",
-        });
-
-        const timer = setTimeout(() => {
-            AOS.refreshHard();
-        }, 300);
-
-        return () => clearTimeout(timer);
-    }, []);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            AOS.refreshHard();
-        }, 250);
-
-        return () => clearTimeout(timer);
-    }, [pathname]);
-
-    useEffect(() => {
-        const handleLoad = () => {
-            setTimeout(() => {
-                AOS.refreshHard();
-            }, 200);
-        };
-
-        window.addEventListener("load", handleLoad);
-
-        return () => {
-            window.removeEventListener("load", handleLoad);
-        };
-    }, []);
-
     return (
         <div className="bg-[#edf6ff] lg:-mt-32 -mt-32">
             <section className="py-10 lg:py-14 bg-[#edf6ff] indstrybg relative overflow-hidden">
@@ -137,7 +92,8 @@ export default function HomeIndustry() {
 
                                     </p>
 
-                                    <button
+                                    <Link
+                                        href="/about-us"
                                         className="mt-2 inline-flex items-center gap-2 lg:text-lg text-base font-normal text-white/90 transition hover:text-[#28c7d8]"
                                         data-aos="fade-up"
                                         data-aos-delay="400"
@@ -146,7 +102,7 @@ export default function HomeIndustry() {
                                         <span className="text-xl" aria-hidden="true">
                                             →
                                         </span>
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -169,16 +125,6 @@ export default function HomeIndustry() {
                             disableOnInteraction: false,
                             pauseOnMouseEnter: true,
                         }}
-                        onInit={() => {
-                            setTimeout(() => {
-                                AOS.refreshHard();
-                            }, 200);
-                        }}
-                        onSlideChange={() => {
-                            setTimeout(() => {
-                                AOS.refresh();
-                            }, 100);
-                        }}
                         breakpoints={{
                             0: { slidesPerView: 2 },
                             480: { slidesPerView: 2 },
@@ -191,11 +137,11 @@ export default function HomeIndustry() {
                         {featureCards.map((item, index) => (
                             <SwiperSlide key={index}>
                                 <div
-                                    className="relative flex min-h-[69px] lg:min-h-[85px] items-center rounded-2xl bg-white pl-14 pr-4 py-4 shadow-[0_10px_25px_rgba(15,23,42,0.12)] transition-transform"
+                                    className="relative flex min-h-[69px] items-center rounded-2xl bg-white py-4 pl-16 pr-3 shadow-[0_10px_25px_rgba(15,23,42,0.12)] transition-transform lg:min-h-[85px] lg:pl-16 lg:pr-4"
                                     data-aos="zoom-in-up"
                                     data-aos-delay={index * 80}
                                 >
-                                    <div className="absolute left-0 top-0 lg:h-14 lg:w-14 h-12 w-12">
+                                    <div className="absolute left-0 top-7 h-12 w-12 -translate-y-1/2 lg:h-16 lg:w-16">
                                         <Image
                                             src={item.icon}
                                             alt={item.alt}

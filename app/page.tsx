@@ -1,4 +1,5 @@
-
+import type { Metadata } from "next";
+import { getStaticMetadata } from "@/lib/static-seo";
 import AccreditationsRecognitions from "./components/home/accreditations-recognitions";
 import BookDemo from "./components/home/book-demo";
 import BusinessChallenge from "./components/home/business-challenge";
@@ -11,13 +12,14 @@ import HomeIndustry from "./components/home/home-industry";
 import IndustryLeader from "./components/home/industry-leader";
 import TestimonialNews from "./components/home/testimonial-news";
 
+export const metadata: Metadata = getStaticMetadata("home");
+
 export default function Home() {
   return (
-    <section>
+    <section className="home-page">
       <HomeHero />
-      <IndustryLeader />
+       <BusinessChallenge />
       <HomeIndustry />
-      <BusinessChallenge />
       <CoreSolution />
       <CaseStudies />
       <AccreditationsRecognitions />

@@ -1,44 +1,70 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-// @ts-ignore - no type declarations for 'aos'
-import AOS from "aos";
 import "aos/dist/aos.css";
+
+let aosInitialized = false;
+type AosApi = {
+  init: (options: Record<string, unknown>) => void;
+  refresh: () => void;
+  refreshHard: () => void;
+};
+let aosApi: AosApi | null = null;
 
 export default function AosProvider() {
   const pathname = usePathname();
+  const previousPathname = useRef(pathname);
 
   useEffect(() => {
-    let rafId: number;
-    let timer: ReturnType<typeof setTimeout>;
+    if (aosInitialized) return;
 
-    rafId = requestAnimationFrame(() => {
-      AOS.init({
-        duration: 900,
+    const initializeAos = async () => {
+      if (aosInitialized) return;
+
+      // @ts-expect-error - aos does not ship TypeScript declarations
+      const aosLibrary = await import("aos");
+      aosApi = aosLibrary.default as AosApi;
+      aosInitialized = true;
+      aosApi.init({
+        duration: 700,
         easing: "ease-out-cubic",
         once: true,
         mirror: false,
-        offset: 80,
+        offset: 60,
         anchorPlacement: "top-bottom",
-        startEvent: "load",
-        disable: "mobile",
+        debounceDelay: 120,
+        throttleDelay: 150,
+        disableMutationObserver: true,
+        disable: () =>
+          window.innerWidth < 768 ||
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches,
       });
-      timer = setTimeout(() => AOS.refreshHard(), 400);
-    });
+    };
+
+    // Animations are decorative, so load their JavaScript after critical
+    // content has painted instead of competing with hydration and LCP.
+    const timer = window.setTimeout(initializeAos, 900);
 
     return () => {
-      cancelAnimationFrame(rafId);
-      clearTimeout(timer);
+      window.clearTimeout(timer);
+      document.documentElement.classList.remove("aos-animate");
     };
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      AOS.refreshHard();
-    }, 300);
+    if (!aosInitialized || !aosApi) return;
 
-    return () => clearTimeout(timer);
+    const frame = requestAnimationFrame(() => {
+      if (previousPathname.current === pathname) {
+        aosApi?.refresh();
+      } else {
+        previousPathname.current = pathname;
+        aosApi?.refreshHard();
+      }
+    });
+
+    return () => cancelAnimationFrame(frame);
   }, [pathname]);
 
   return null;

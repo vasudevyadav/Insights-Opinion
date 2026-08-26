@@ -1,138 +1,51 @@
-"use client";
-
 import Image from "next/image";
+import type { Industry } from "@/app/lib/industries-data";
 
-type Industry = {
-    name: string;
-    description: string;
-    image: string;
+type IndustriesGlobalProps = {
+    industries: Industry[];
 };
 
-const industries: Industry[] = [
-    {
-        name: "Information Technology",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/globle-it.png",
-    },
-    {
-        name: "Agriculture",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/industry-agricultur.png",
-    },
-    {
-        name: "Automotive",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/industry-automotive.png",
-    },
-    {
-        name: "Construction",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/industry-construction.png",
-    },
-    {
-        name: "Healthcare",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/industry-healthcare.png",
-    },
-    {
-        name: "Chemical",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/industry-chemical.png",
-    },
-    {
-        name: "Education",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/industry-education.png",
-    },
-    {
-        name: "Telecom",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/industry-telecom.png",
-    },
-    {
-        name: "Others",
-        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        image: "/industris/industry-others.png",
-    },
+const fallbackIndustries: Industry[] = [
+    { name: "Technology & IT", description: "Digital products, enterprise technology, software, and IT decision-making.", image: "/industris/globle-it.png" },
+    { name: "Agriculture", description: "Farmer behavior, rural demand, product adoption, and agriculture markets.", image: "/industris/industry-agricultur.png" },
+    { name: "Automotive", description: "Vehicle demand, buyer preferences, EV adoption, and aftermarket behavior.", image: "/industris/industry-automotive.png" },
+    { name: "Construction & Building Materials", description: "Project trends, material demand, and purchasing behavior.", image: "/industris/industry-construction.png" },
+    { name: "Healthcare & Life Sciences", description: "Patients, providers, treatment journeys, and healthcare markets.", image: "/industris/industry-healthcare.png" },
+    { name: "Chemical", description: "Industrial demand, product usage, buyers, and sector opportunities.", image: "/industris/industry-chemical.png" },
+    { name: "Education", description: "Student behavior, learning platforms, courses, and institutions.", image: "/industris/industry-education.png" },
+    { name: "Telecom", description: "Network experience, service usage, expectations, and digital adoption.", image: "/industris/industry-telecom.png" },
+    { name: "B2B & Corporate Research", description: "Business buyers, decision-makers, markets, and corporate strategy.", image: "/industris/industry-others.png" },
+    { name: "Manufacturing & Industrial", description: "Industrial customers, operations, products, and market demand.", image: "/industris/industry-construction.png" },
+    { name: "Retail & Consumer", description: "Shopping behavior, product preferences, brands, and consumer demand.", image: "/industris/industry-others.png" },
+    { name: "Supply Chain & Logistics", description: "Operations, procurement, distribution, and logistics performance.", image: "/industris/industry-automotive.png" },
+    { name: "Financial Services & Investment", description: "Financial behavior, products, investors, and market confidence.", image: "/industris/industry-others.png" },
+    { name: "Non-Profit & Social Sector", description: "Communities, programs, social impact, and stakeholder needs.", image: "/industris/industry-others.png" },
 ];
 
+export default function IndustriesGlobal({ industries }: IndustriesGlobalProps) {
+    const displayedIndustries = industries.length > 0 ? industries : fallbackIndustries;
 
-export default function IndustriesGlobal() {
     return (
-        <section className="relative overflow-hidden bg-[#edf6ff] py-12 lg:py-16">
-            {/* Hex background pattern */}
-            <div className="pointer-events-none absolute right-0 top-0 h-full w-[42%] opacity-30">
-                <svg
-                    viewBox="0 0 300 300"
-                    className="h-full w-full"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <defs>
-                        <pattern
-                            id="hexPatternGlobal"
-                            x="0"
-                            y="0"
-                            width="51"
-                            height="42"
-                            patternUnits="userSpaceOnUse"
-                        >
-                            <path
-                                d="M13 1H39L52 22.5L39 44H13L0 22.5L13 1Z"
-                                stroke="#9EDFF2"
-                                strokeWidth="1.2"
-                            />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#hexPatternGlobal)" />
-                </svg>
-            </div>
-            {/* Hex background pattern left */}
-            <div className="pointer-events-none absolute left-0 top-0 h-full w-[20%] opacity-20">
-                <svg
-                    viewBox="0 0 300 300"
-                    className="h-full w-full"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <defs>
-                        <pattern
-                            id="hexPatternLeft"
-                            x="0"
-                            y="0"
-                            width="51"
-                            height="42"
-                            patternUnits="userSpaceOnUse"
-                        >
-                            <path
-                                d="M13 1H39L52 22.5L39 44H13L0 22.5L13 1Z"
-                                stroke="#9EDFF2"
-                                strokeWidth="1.2"
-                            />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#hexPatternLeft)" />
-                </svg>
-            </div>
+        <section className="relative overflow-hidden bg-[#edf6ff] py-6 lg:py-16">
+            <div className="industry-shape-layer pointer-events-none absolute inset-0" aria-hidden="true" />
 
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                 {/* ── Top: Text + Image ── */}
                 <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
                     {/* Left: text */}
                     <div>
-                        <p className="text-xl font-normal leading-snug text-[#4b5563] sm:text-[17px] lg:text-[20px]">
+                        <p className="text-xl font-normal leading-snug text-[#4b5563] lg:text-3xl">
                             Comprehensive
                             <br />
                             Industry Coverage by
                         </p>
                         <h2
                             className="mt-1 bg-gradient-to-r from-[#1bb0a4] to-[#74b9ff] bg-clip-text
-                            text-[26px] font-bold leading-tight text-transparent
-                            sm:text-[30px] lg:text-[38px]"
+                            text-2xl font-medium leading-tight text-transparent lg:text-4xl"
                         >
                             Insights Opinion
                         </h2>
-                        <p className="mt-4 text-[13px] leading-6 text-[#4b5563] sm:text-[14px] lg:text-[15px]">
+                        <p className="mt-4 text-sm leading-7 text-[#4b5563] sm:text-[14px] lg:text-base">
                             With a broad spectrum of industry expertise, Insights Opinion empowers
                             organizations across diverse sectors by providing the insights needed to
                             innovate and lead. Our dedicated teams combine technical knowledge with
@@ -155,44 +68,45 @@ export default function IndustriesGlobal() {
                 </div>
 
                 {/* ── Section Heading ── */}
-                <div className="mt-14 lg:mt-20">
-                    <p className="text-[25px] font-light leading-snug text-[#334155] sm:text-[26px] lg:text-[32px]">
+                <div className="mt-12 lg:mt-16">
+                    <p className="text-[25px] font-light leading-snug text-[#334155] lg:text-4xl">
                         Your Global Industry
                     </p>
                     <h3
                         className="bg-gradient-to-r from-[#1bb0a4] to-[#74b9ff] bg-clip-text
-                        text-[24px] font-semibold leading-tight text-transparent
-                        sm:text-[28px] lg:text-[36px]"
+                        text-[24px] font-semibold leading-tight text-transparent lg:text-4xl"
                     >
                         Knowledge Partner
                     </h3>
                 </div>
 
                 {/* ── Industry Cards Grid ── */}
-                <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-                    {industries.map((industry) => (
+                <div className="industry-mobile-slider no-scrollbar mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 lg:grid lg:grid-cols-3 lg:justify-items-center lg:gap-x-16 lg:gap-y-12 lg:overflow-visible lg:pb-0">
+                    {displayedIndustries.map((industry, index) => (
                         <div
-                            key={industry.name}
-                            className="group flex flex-col items-center rounded-2xl border border-[#b8dff0] bg-white/60 px-6 py-8 text-center shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-transparent hover:bg-gradient-to-br hover:from-[#1bb0a4] hover:to-[#74b9ff] hover:shadow-lg"
+                            key={`${industry.name}-${index}`}
+                            className={`group relative flex min-h-[250px] min-w-[82%] snap-center flex-col items-center justify-center overflow-hidden rounded-[14px] border px-5 lg:py-10 py-6 text-center shadow-sm backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] hover:border-transparent hover:bg-gradient-to-br hover:from-[#1bb0a4] hover:to-[#74b9ff] hover:shadow-[0_18px_38px_rgba(28,182,165,0.22)] sm:min-w-[46%] lg:min-w-0 lg:w-full ${index === 1 ? "border-transparent bg-gradient-to-br from-[#64b9ed] to-[#1cb6a5] text-white shadow-lg" : "border-[#55b9df] bg-white/70"}`}
                         >
+                            <div className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 -skew-x-12 bg-white/25 opacity-0 blur-sm transition-all duration-700  " />
                             {/* Image */}
-                            <div className="mb-4 flex h-16 w-16 items-center justify-center sm:h-20 sm:w-20">
+                            <div className="mb-4 lg:mb-4 flex w-16 items-center justify-center lg:w-16">
                                 <Image
                                     src={industry.image}
                                     alt={industry.name}
-                                    width={400}
-                                    height={400}
-                                    className="h-full w-full object-contain transition-all duration-300 group-hover:brightness-0 group-hover:invert"
+                                    width={96}
+                                    height={96}
+                                    unoptimized
+                                    className={`w-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-rotate-3 group-hover:brightness-0 group-hover:invert ${index === 1 ? "brightness-0 invert" : ""}`}
                                 />
                             </div>
 
                             {/* Name */}
-                            <h4 className="text-[17px] font-semibold leading-snug text-[#334155] transition-colors duration-300 group-hover:text-white sm:text-[18px]">
+                            <h4 className={`text-base font-semibold leading-snug transition-colors duration-300 group-hover:text-white lg:text-lg ${index === 1 ? "text-white" : "text-[#334155]"}`}>
                                 {industry.name}
                             </h4>
 
                             {/* Description */}
-                            <p className="mt-3 text-[13px] leading-5 text-[#6b7280] transition-colors duration-300 group-hover:text-white/90 sm:text-[14px]">
+                            <p className={`mt-3 line-clamp-3 text-sm  leading-6 transition-colors duration-300 group-hover:text-white/90 ${index === 1 ? "text-white/90" : "text-[#6b7280]"}`}>
                                 {industry.description}
                             </p>
                         </div>

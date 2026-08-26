@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import type { CSSProperties } from "react";
 
@@ -152,54 +150,7 @@ export default function IndustryLeader() {
                 className="mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-5 z-50 lg:pb-12 pb-4"
                 style={{ position: "relative", zIndex: 1 }}
             >
-                <div className="flex items-center justify-center px-2 lg:pb-10 pb-6 md:col-span-2">
-                    <div className="w-full max-w-[400px]">
-                        <p className="text-2xl font-light leading-tight text-[#5d6778] lg:text-5xl mb-1 text-center md:text-left">
-                            Trusted by
-                        </p>
-                        <h2 className="text-2xl font-semibold leading-tight text-transparent bg-clip-text bg-[linear-gradient(90deg,#17ae8f_0%,#539ae2_50%,#5a8fc8_100%)] lg:text-[45px] text-center md:text-left">
-                            Industry Leaders
-                        </h2>
-                    </div>
-                </div>
-
-                <div className="md:col-span-3 flex flex-col justify-center gap-2 lg:gap-4. lg:mb-16 mb-10">
-                    <div className="logo-row-wrap">
-                        <div className="logo-marquee logo-marquee-left">
-                            {repeatedFirstRow.map((brand, index) => (
-                                <div key={`row1-${brand.name}-${index}`} className="logo-item">
-                                    <div className="logo-box">
-                                        <Image
-                                            src={brand.src}
-                                            alt={brand.name}
-                                            fill
-                                            className="object-contain"
-                                            unoptimized
-                                        />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="logo-row-wrap">
-                        <div className="logo-marquee logo-marquee-right">
-                            {repeatedSecondRow.map((brand, index) => (
-                                <div key={`row2-${brand.name}-${index}`} className="logo-item">
-                                    <div className="logo-box">
-                                        <Image
-                                            src={brand.src}
-                                            alt={brand.name}
-                                            fill
-                                            className="object-contain"
-                                            unoptimized
-                                        />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </section>
     );

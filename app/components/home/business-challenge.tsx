@@ -1,10 +1,8 @@
 "use client";
 
 import Image from "next/image";
-// @ts-ignore - no type declarations for 'aos'
-import AOS from 'aos';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -15,7 +13,6 @@ interface ChallengeCard {
     image: string;
     hoverImage: string;
     alt: string;
-    className: string;
 }
 
 interface CardImageAreaProps {
@@ -26,64 +23,60 @@ interface CardImageAreaProps {
 
 const challengeCards: ChallengeCard[] = [
     {
-        title: "Need More Reliable Market Data?",
+        title: "Market Expansion Comes with Uncertainty",
         description:
-            "Improve decision-making with structured data collection, validation, and quality control.",
-        image: "/Need-More-Reliable-Market-Data-.jpg",
-        hoverImage: "/2_Need-More-Reliable-Market-Data-.jpg",
+            "Limited market intelligence makes it difficult to assess demand, risk, and opportunity in new regions.",
+        image: "/Market-Expansion-Comes.png",
+        hoverImage: "/home/Market-Expansion.jpg",
         alt: "Market expansion challenge",
-        className: "lg:mt-16",
     },
     {
-        title: "Struggling to Understand Customers?",
+        title: "Data Is Fragmented and Unreliable",
         description:
-            "Identify customer needs, buying behavior, and shifting preferences through targeted research.",
-        image: "/Struggling-to-Understand-Customers.jpg",
-        hoverImage: "/Struggling-to-Understan.jpg",
+            "Siloed data sources and inconsistent quality result in unclear insights and poor decision-making.",
+        image: "/Data-Is-Fragmented.webp",
+        hoverImage: "/home/Data-Is-Fragmented.jpg",
         alt: "Data challenge",
-        className: "",
     },
     {
-        title: "Managing Research Across Markets?",
+        title: "Consumer Behavior Varies Across Markets",
         description:
-            "Manage multi-country research with consistent fieldwork, local coordination, and centralized oversight.",
-        image: "/Managing-Research-Across-Markets.jpg",
-        hoverImage: "/managing-Research.jpg",
+            "Regional, cultural, and economic differences directly impact customer preferences and outcomes.",
+        image: "/Consumer-Behavior.png",
+        hoverImage: "/home/Consumer-Behavior.jpg",
         alt: "Consumer behavior challenge",
-        className: "",
     },
     {
-        title: "Trying to Reach Niche Audiences?",
+        title: "Lack of Trusted Local Research Partners",
         description:
-            "Access verified audiences across consumer, B2B, healthcare, and niche research segments.",
-        image: "/Trying-to-Reach-Niche-Audiences.jpg",
-        hoverImage: "/trying-to-Reach-.jpg",
+            "Without reliable in-market expertise, global research becomes slow, complex, and inefficient.",
+        image: "/Lack-of-Trusted.png",
+        hoverImage: "/home/Lack-of-Trusted-Local.jpg",
         alt: "Local research partners challenge",
-        className: "lg:-mt-16",
     },
 ];
 
 function CardImageArea({ image, hoverImage, alt }: CardImageAreaProps) {
     return (
-        <div className="relative mt-5">
+        <div className="relative mt-5 lg:absolute lg:inset-x-0 lg:bottom-0 lg:mt-0">
             <div className="flex items-end justify-center">
-                <div className="relative h-[18rem] w-full overflow-hidden rounded-b-[18px]">
+                <div className="relative h-[20rem] w-full overflow-hidden rounded-b-[18px] lg:h-[390px]">
+                    {/* Default Image */}
                     <Image
                         src={image}
                         alt={alt}
                         fill
-                        className="object-cover object-bottom transition-delay duration-800 ease-in-out lg:group-hover:opacity-0"
-                        onLoadingComplete={() => {
-                            setTimeout(() => {
-                                AOS.refreshHard();
-                            }, 100);
-                        }}
+                        sizes="(max-width: 1023px) calc(100vw - 32px), 420px"
+                        className="object-cover object-bottom transition-all duration-700 ease-out lg:group-hover:scale-105 lg:group-hover:opacity-0"
                     />
+
+                    {/* Hover Image */}
                     <Image
                         src={hoverImage}
-                        alt={alt}
+                        alt={`${alt} on hover`}
                         fill
-                        className="object-cover object-bottom opacity-0 transition-delay duration-800 ease-in-out lg:group-hover:opacity-100"
+                        sizes="(max-width: 1023px) calc(100vw - 32px), 420px"
+                        className="object-cover object-center opacity-0 transition-all duration-700 ease-out lg:scale-105 lg:group-hover:scale-100 lg:group-hover:opacity-100"
                     />
                 </div>
             </div>
@@ -93,25 +86,23 @@ function CardImageArea({ image, hoverImage, alt }: CardImageAreaProps) {
 
 function ChallengeCardItem({
     card,
-    delay = 0,
 }: {
     card: ChallengeCard;
-    delay?: number;
 }) {
     return (
         <div
 
-            className={`group overflow-hidden rounded-[18px] border border-[#97a8d8] bg-white hover:shadow-[0_8px_24px_rgba(30,41,59,0.25)] ${card.className}`}
+            className="group relative overflow-hidden rounded-[16px] border border-[#5875c7] bg-white shadow-[0_8px_28px_rgba(30,41,59,0.06)] transition duration-300 hover:-translate-y-1 hover:border-[#22bec5] hover:shadow-[0_14px_34px_rgba(30,41,59,0.14)] lg:h-[550px] lg:w-full"
         >
-            <div className="p-5">
+            <div className="relative z-10 p-5 lg:h-[150px] lg:p-5">
                 <div className="relative pl-5">
-                    <div className="absolute left-1 top-1 h-10 w-[2px] bg-[#35c6cf]" />
+                    <div className="absolute left-1 top-1 h-9 w-[2px] bg-[#22bec5]" />
 
-                    <h3 className="max-w-[260px] text-lg font-semibold leading-[1.35] text-[#2f3850]">
+                    <h3 className="max-w-[300px] text-lg font-semibold leading-[1.3] text-[#2f3850] lg:h-[50px] lg:!text-xl lg:!leading-[1.3]">
                         {card.title}
                     </h3>
 
-                    <p className="mt-2 max-w-[350px] text-base leading-5 text-black/90">
+                    <p className="mt-2 max-w-[350px] text-sm leading-5 text-[#303030] lg:line-clamp-3 lg:!text-base lg:!leading-[1.5]">
                         {card.description}
                     </p>
                 </div>
@@ -130,10 +121,10 @@ function ChallengeCardItem({
 
 export default function BusinessChallenge() {
     return (
-        <section className="bg-white py-8 lg:py-18">
-            <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <section className="bg-white py-8 lg:py-16 lg:pb-48">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div
-                    className="lg:pt-2 lg:pl-20"
+                    className="lg:hidden"
 
                 >
                     <h2 className="mb-8 max-w-[400px] text-2xl font-light leading-[1.1] text-[#4a5370] lg:mb-0 lg:text-[45px]">
@@ -145,33 +136,21 @@ export default function BusinessChallenge() {
                     </h2>
                 </div>
 
-                {/* Mobile Slider */}
                 <div
                     className="block lg:hidden"
 
                 >
                     <Swiper
-                        modules={[Autoplay]}
+                        modules={[Autoplay, Pagination]}
                         slidesPerView={1}
                         spaceBetween={20}
                         pagination={{ clickable: true }}
                         autoplay={{ delay: 3000, disableOnInteraction: false }}
-                        onInit={() => {
-                            setTimeout(() => {
-                                AOS.refreshHard();
-                            }, 200);
-                        }}
-                        onSlideChange={() => {
-                            setTimeout(() => {
-                                AOS.refresh();
-                            }, 100);
-                        }}
                     >
                         {challengeCards.map((card, index) => (
                             <SwiperSlide key={index}>
                                 <ChallengeCardItem
-                                    card={{ ...card, className: "" }}
-                                    delay={index * 100}
+                                    card={card}
                                 />
                             </SwiperSlide>
                         ))}
@@ -179,21 +158,37 @@ export default function BusinessChallenge() {
                 </div>
 
                 {/* Desktop Grid */}
-                <div className="hidden grid-cols-1 gap-6 lg:-mt-8 lg:grid">
-                    <div className="lg:col-start-2">
-                        <ChallengeCardItem card={challengeCards[0]} delay={100} />
+                <div className="mx-auto hidden w-full max-w-4xl grid-cols-2 gap-x-[56px] lg:grid">
+                    <div className="flex min-w-0 flex-col">
+                        <div className="h-[180px]">
+                            <h2 className="max-w-[260px] lg:max-w-[260px] !text-2xl lg:!text-[42px] font-light !leading-[1.2] text-[#202a4c]">
+                                The Business
+                                <br />
+                                Challenges
+                                <br />
+                                <span className="bg-[linear-gradient(90deg,#5fb9aa_0%,#4fa7b4_50%,#5a8fc8_100%)] bg-clip-text font-semibold text-transparent">
+                                    we solve
+                                </span>
+                            </h2>
+                        </div>
+
+                        <div className="w-full">
+                            <ChallengeCardItem card={challengeCards[0]} />
+                        </div>
+
+                        <div className="mt-[26px] w-full">
+                            <ChallengeCardItem card={challengeCards[2]} />
+                        </div>
                     </div>
 
-                    <div className="lg:col-start-3">
-                        <ChallengeCardItem card={challengeCards[1]} delay={200} />
-                    </div>
+                    <div className="flex min-w-0 flex-col pt-[55px]">
+                        <div className="w-full">
+                            <ChallengeCardItem card={challengeCards[1]} />
+                        </div>
 
-                    <div className="lg:col-start-2">
-                        <ChallengeCardItem card={challengeCards[2]} delay={300} />
-                    </div>
-
-                    <div className="lg:col-start-3">
-                        <ChallengeCardItem card={challengeCards[3]} delay={400} />
+                        <div className="mt-[26px] w-full">
+                            <ChallengeCardItem card={challengeCards[3]} />
+                        </div>
                     </div>
                 </div>
             </div>
