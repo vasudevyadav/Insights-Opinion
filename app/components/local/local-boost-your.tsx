@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
 import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
+import FormPrivacyNote from "@/app/components/shared/form-privacy-note";
 
 export function LocalBoostYour() {
     const [formData, setFormData] = useState({ name: "", email: "", enquiryType: "" });
@@ -90,6 +91,7 @@ export function LocalBoostYour() {
                 <button type="submit" disabled={loading} className=" py-2.5 px-10 rounded-md bg-gradient-to-r from-[#14b3a1] to-[#5ba8fb] px-7 text-[14px] font-semibold text-white transition-opacity hover:opacity-85">
                     {loading ? "Submitting..." : "Submit"}
                 </button>
+                <FormPrivacyNote className="mt-2 text-white/70" />
                 {status && <p className="mt-2 text-xs font-medium text-white">{status}</p>}
                 </form>
             </div>

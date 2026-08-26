@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import AosProvider from "./components/AosProvider";
 import Footer from "./components/home/footer";
 import ScrollLeadPopup from "./components/shared/scroll-lead-popup";
+import CookieConsentBanner from "./components/shared/cookie-consent-banner";
 import { getResearchNavItems } from "@/lib/getResearchPage";
 import { fetchServices } from "@/app/lib/services-api";
 import RouteLoadingProvider from "./components/shared/route-loading-provider";
@@ -20,6 +21,7 @@ const poppins = Poppins({
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://insightsopinion.com";
+const isProductionEnv = process.env.VERCEL_ENV === "production";
 
 const defaultTitle = "Best Market Research Company | Big Market Research Firms";
 const defaultDescription =
@@ -62,8 +64,8 @@ export const metadata: Metadata = {
   category: "Market Research",
   alternates: { canonical: "/" },
   robots: {
-    index: true,
-    follow: true,
+    index: isProductionEnv,
+    follow: isProductionEnv,
   },
   verification: {
     google: "sQ4EsejcS4FpOwjxRUFBrFpgCKB2QWKTqGwzXrPb_Ug",
@@ -128,6 +130,7 @@ export default async function RootLayout({
         </main>
         <Footer />
         <ScrollLeadPopup />
+        <CookieConsentBanner />
       </body>
     </html>
   );

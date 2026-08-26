@@ -76,12 +76,11 @@ export const servicePageContent = {
         "One project manager from brief to delivery",
         "Custom study design built around your objectives",
         "Online surveys, CATI, CAPI, and CLT under one partner",
-        "8M+ panellists across consumer, B2B, and healthcare",
         "100+ countries and 60+ languages",
         "Multi-layer data quality controls",
         "Clear, actionable, presentation-ready outputs",
         "Timelines agreed upfront and monitored consistently",
-        "ISO 27001 and ISO 20252 certified",
+        "ISO 27001 certified",
         "GDPR and CCPA-aligned processes",
         "ESOMAR and Insights Association members",
       ],
@@ -93,7 +92,7 @@ export const servicePageContent = {
         {
           title: "Fast Panel Delivery & Sample Access",
           content:
-            "Access 8M+ verified respondents across 100+ countries for online, telephone, and in-person studies.",
+            "Access verified respondents across 100+ countries for online, telephone, and in-person studies.",
         },
         {
           title: "Custom Quantitative Research Design",

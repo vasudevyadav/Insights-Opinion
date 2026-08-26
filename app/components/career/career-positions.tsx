@@ -6,16 +6,17 @@ import { ChevronDown, ArrowUpRight } from "lucide-react";
 import { submitLeadForm } from "@/app/lib/lead-form-api";
 import CareerShape from "./career-shape";
 import CountryCodeSelect from "@/app/components/shared/country-code-select";
+import FormPrivacyNote from "@/app/components/shared/form-privacy-note";
 
 const jobs = [
-    { id: 1, title: "Senor Inventory Specialist", type: "Full Time", salary: "$100 - $500", location: "New York" },
-    { id: 2, title: "Senor Developer", type: "Full Time", salary: "$100 - $500", location: "New York" },
-    { id: 3, title: "Senor Designer", type: "Full Time", salary: "$100 - $500", location: "New York" },
+    { id: 1, title: "Senior Inventory Specialist", type: "Full Time", salary: "$100 - $500", location: "New York" },
+    { id: 2, title: "Senior Developer", type: "Full Time", salary: "$100 - $500", location: "New York" },
+    { id: 3, title: "Senior Designer", type: "Full Time", salary: "$100 - $500", location: "New York" },
     { id: 4, title: "Quality Analyst", type: "Full Time", salary: "$100 - $500", location: "New York" },
     { id: 5, title: "QC Manager", type: "Full Time", salary: "$100 - $500", location: "New York" },
 ];
 
-const jobTitles = ["Senor Inventory Specialist", "Senor Developer", "Senor Designer", "Quality Analyst", "QC Manager"];
+const jobTitles = ["Senior Inventory Specialist", "Senior Developer", "Senior Designer", "Quality Analyst", "QC Manager"];
 
 const inputCls = "w-full rounded-md border border-[#d1d5db] bg-white px-3 py-2 text-[12px] text-[#253047] placeholder:text-[#5f6570] outline-none focus:border-[#1dc3b3]";
 
@@ -246,6 +247,7 @@ export default function CareerPositions() {
                             >
                                 {loading ? "Submitting..." : "Submit"}
                             </button>
+                            <FormPrivacyNote className="mt-2" />
                         </form>
                     </div>
                 </div>

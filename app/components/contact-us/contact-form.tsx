@@ -10,6 +10,7 @@ import { submitLeadForm } from "@/app/lib/lead-form-api";
 import BackgroundShape from "@/app/components/about-us/background-shape";
 import { socialLinks } from "@/app/components/home/footer-contact";
 import CountryCodeSelect from "@/app/components/shared/country-code-select";
+import FormPrivacyNote from "@/app/components/shared/form-privacy-note";
 
 export default function ContactForm() {
     const [formData, setFormData] = useState({
@@ -218,6 +219,7 @@ export default function ContactForm() {
                                 >
                                     {loading ? "Sending..." : "Send a message"}
                                 </button>
+                                <FormPrivacyNote className="mt-2" />
                             </div>
 
                             {status && <p className="text-base text-green-700 font-semibold">{status}</p>}

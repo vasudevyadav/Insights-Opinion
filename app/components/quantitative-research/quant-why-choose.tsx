@@ -48,7 +48,7 @@ export default function QuantWhyChoose({
         {
           layout: "right",
           title: "Why Choose",
-          highlight: "Insight Opinion",
+          highlight: "Insights Opinion",
           description: content.description,
           image: "/why-men.png",
           items: content.items,

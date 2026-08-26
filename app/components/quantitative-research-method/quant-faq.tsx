@@ -7,6 +7,7 @@ import { submitLeadForm } from "@/app/lib/lead-form-api";
 import { SERVICE_SELECT_OPTIONS } from "@/app/lib/service-options";
 import { useRouter } from "next/navigation";
 import CountryCodeSelect from "@/app/components/shared/country-code-select";
+import FormPrivacyNote from "@/app/components/shared/form-privacy-note";
 
 const initialFormData = {
   name: "",
@@ -153,6 +154,7 @@ export default function QuantDetailsFaq({ data }: { data: FaqItem[] }) {
                 >
                   {loading ? "Submitting..." : "Submit"}
                 </button>
+                <FormPrivacyNote className="mt-3" />
               </div>
             </form>
           </div>

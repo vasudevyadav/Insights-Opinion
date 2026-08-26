@@ -76,7 +76,7 @@ const methods: Record<string, MethodData> = {
         "Conduct smarter phone surveys with real-time, reliable insights powered by expert interviewers and advanced CATI technology.",
     },
     about:
-      "At Insights Opinion, we are a full-service CATI market research company delivering reliable data across 100+ countries and 60+ languages. All CATI services are backed by ISO 27001 and ISO 20252 certified processes and live quality supervision throughout fieldwork.",
+      "At Insights Opinion, we are a full-service CATI market research company delivering reliable data across 100+ countries and 60+ languages. All CATI services are backed by ISO 27001 certified processes and live quality supervision throughout fieldwork.",
     why: {
       heading1: "Why is CATI",
       heading2: "the Right Choice?",
@@ -139,7 +139,7 @@ const methods: Record<string, MethodData> = {
       heading1: "When to Use",
       heading2: "CATI Market Research?",
       bodyText:
-        "Outsourcing CATI market research to Insights Opinion gives you fully managed CATI fieldwork services from brief to delivery. For studies needing panel respondents alongside telephone reach, our global panel of 8M+ profiled respondents works alongside CATI fieldwork.",
+        "Outsourcing CATI market research to Insights Opinion gives you fully managed CATI fieldwork services from brief to delivery. For studies needing panel respondents alongside telephone reach, our global panel of profiled respondents works alongside CATI fieldwork.",
       image: "/quality/cati-telephone.png",
       items: [
         { iconKey: "TrendingDown", title: "Low Digital Reach", description: "Your target audience has lower digital engagement or is difficult to reach through online panels" },
@@ -202,7 +202,7 @@ const methods: Record<string, MethodData> = {
         "Conduct smarter in-person surveys with real-time, reliable insights powered by field interviewers and advanced CAPI technology.",
     },
     about:
-      "At Insights Opinion, we are a full-service CAPI market research company delivering reliable data across 100+ countries and 60+ languages. All CAPI services are backed by ISO 27001 and ISO 20252 certified processes and field quality supervision throughout every project.",
+      "At Insights Opinion, we are a full-service CAPI market research company delivering reliable data across 100+ countries and 60+ languages. All CAPI services are backed by ISO 27001 certified processes and field quality supervision throughout every project.",
     why: {
       heading1: "Why is CAPI",
       heading2: "the Right Choice?",
@@ -265,7 +265,7 @@ const methods: Record<string, MethodData> = {
       heading1: "When to Use",
       heading2: "CAPI Research?",
       bodyText:
-        "Outsourcing CAPI research to Insights Opinion gives you fully managed face-to-face fieldwork from brief to delivery. For studies combining in-person reach with panel respondents, our global panel of 8M+ profiled respondents can complement CAPI fieldwork.",
+        "Outsourcing CAPI research to Insights Opinion gives you fully managed face-to-face fieldwork from brief to delivery. For studies combining in-person reach with panel respondents, our global panel of profiled respondents can complement CAPI fieldwork.",
       image: "/quality/cati-computer.png",
       items: [
         { iconKey: "MapPin", title: "Product Placement Studies", description: "Physical product or stimulus needs to be placed in front of respondents during the interview" },
@@ -451,10 +451,10 @@ const methods: Record<string, MethodData> = {
       title: "Online Survey\nResearch Services",
       subtitle: "Scalable Digital\nData Collection",
       description:
-        "Reach large, verified audiences fast with professionally designed online surveys backed by our global panel of 8M+ respondents.",
+        "Reach large, verified audiences fast with professionally designed online surveys backed by our global panel of respondents.",
     },
     about:
-      "At Insights Opinion, we are a full-service online survey research company with access to 8M+ verified panellists across consumer, B2B, and healthcare audiences in 100+ countries and 60+ languages. All projects are backed by ISO 27001 and ISO 20252 certified quality processes and end-to-end project management.",
+      "At Insights Opinion, we are a full-service online survey research company with access to verified panellists across consumer, B2B, and healthcare audiences in 100+ countries and 60+ languages. All projects are backed by ISO 27001 certified quality processes and end-to-end project management.",
     why: {
       heading1: "Why Are Online Surveys",
       heading2: "the Right Choice?",
@@ -483,7 +483,7 @@ const methods: Record<string, MethodData> = {
           id: "02",
           title: "Panel Access and Quota Management",
           description:
-            "We access our 8M+ verified panellists across consumer, B2B, and healthcare audiences — applying quota controls to ensure representative samples across all required subgroups.",
+            "We access our verified panellists across consumer, B2B, and healthcare audiences — applying quota controls to ensure representative samples across all required subgroups.",
           image: "/quality/cati-online.png",
           iconKey: "Users",
         },
@@ -558,7 +558,7 @@ const methods: Record<string, MethodData> = {
       ],
     },
     sectors: [
-      { title: "Online Surveys for Consumer Research", image: "/quality/cati-online.png", description: "Consumer online surveys give you fast, scalable access to representative audience samples across demographics, geographies, and categories. Our panel of 8M+ verified respondents enables precise quota controls and rapid fieldwork completion for brand, product, and market studies." },
+      { title: "Online Surveys for Consumer Research", image: "/quality/cati-online.png", description: "Consumer online surveys give you fast, scalable access to representative audience samples across demographics, geographies, and categories. Our panel of verified respondents enables precise quota controls and rapid fieldwork completion for brand, product, and market studies." },
       { title: "Online Surveys for B2B Research", image: "/2_Need-More-Reliable-Market-Data-.jpg", description: "B2B online surveys reach decision-makers, buyers, and professionals across sectors with verified job titles, industries, and seniority levels. We apply rigorous respondent validation to ensure your B2B sample matches the exact audience your study requires." },
       { title: "Online Surveys for Healthcare Research", image: "/market-research/Healthcare-1.jpg", description: "Healthcare online surveys recruit verified patients, caregivers, and healthcare professionals through our specialist panels. All healthcare studies apply GDPR and CCPA-aligned protocols, informed consent processes, and sector-appropriate data handling from collection through delivery." },
     ],
@@ -566,7 +566,7 @@ const methods: Record<string, MethodData> = {
       { q: "What is online survey research?", a: "Online survey research collects structured, quantitative data from defined audiences using web-based questionnaires. Respondents self-complete surveys on desktop or mobile, typically recruited through online panels. It is widely used for brand tracking, segmentation, product testing, and consumer and B2B research." },
       { q: "How do you ensure the quality of online survey data?", a: "Every completed survey passes through straight-lining detection, speeder removal, attention check validation, IP duplication checks, and open-text quality review. Respondents who fail quality checks are removed before the data is processed and delivered." },
       { q: "How quickly can online surveys be fielded?", a: "Most consumer online surveys complete fieldwork within 2–5 days. B2B and specialist healthcare studies may take longer depending on incidence rates and quota complexity. Multi-country studies run simultaneously across all markets to minimise total fieldwork duration." },
-      { q: "What panel does Insights Opinion use for online surveys?", a: "Insights Opinion uses its proprietary panel of 8M+ verified respondents across consumer, B2B, and healthcare audiences in 100+ countries. All panellists are double-opt-in verified with regular re-validation to maintain data quality." },
+      { q: "What panel does Insights Opinion use for online surveys?", a: "Insights Opinion uses its proprietary panel of verified respondents across consumer, B2B, and healthcare audiences in 100+ countries. All panellists are double-opt-in verified with regular re-validation to maintain data quality." },
       { q: "Can Insights Opinion run online surveys in multiple languages?", a: "Yes. We run online survey projects in 60+ languages with localised questionnaire translation, back-translation quality checks, and culturally adapted question wording to ensure cross-market comparability." },
     ],
   },

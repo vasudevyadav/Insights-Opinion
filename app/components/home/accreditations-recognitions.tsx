@@ -128,8 +128,8 @@ export default function AccreditationsRecognitions() {
                             data-aos-duration="900"
                         >
                             Insights Opinion is recognized for its commitment to research quality,
-                            data security, and dependable execution. From ISO 20252 and ISO 27001
-                            certifications to recognition from Quirk’s, Silicon India, and Forbes,
+                            data security, and dependable execution. From ISO 27001
+                            certification to recognition from Quirk’s, Silicon India, and Forbes,
                             these credentials reflect the standards expected from trusted top market
                             research firms.
                         </p>
