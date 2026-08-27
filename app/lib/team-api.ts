@@ -41,10 +41,22 @@ const FALLBACK_MEMBERS: TeamMember[] = [
   },
 ];
 
+function stripHtml(value: string): string {
+  return value
+    .replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#0?39;/g, "'")
+    .trim();
+}
+
 function parseDescription(raw: string): string[] {
   return raw
     .split(/\r?\n/)
-    .map((line) => line.trim().replace(/,+\s*$/, ""))
+    .map((line) => stripHtml(line).replace(/,+\s*$/, ""))
     .filter(Boolean);
 }
 
