@@ -74,6 +74,27 @@ function normalizeApiValue<T>(value: T): T {
   return value;
 }
 
+function normalizeB2BBranding<T>(value: T): T {
+  if (typeof value === "string") {
+    return value.replace(/\bb2b\b/gi, "B2B") as T;
+  }
+
+  if (Array.isArray(value)) {
+    return value.map(normalizeB2BBranding) as T;
+  }
+
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, childValue]) => [
+        key,
+        normalizeB2BBranding(childValue),
+      ])
+    ) as T;
+  }
+
+  return value;
+}
+
 function isResearchPageData(value: unknown): value is ResearchPageData {
   if (!value || typeof value !== "object") return false;
 
@@ -129,7 +150,11 @@ export async function getResearchPage(
 
     if (!response.ok) return null;
 
-    const page = normalizeApiValue(await response.json());
+    const normalizedPage = normalizeApiValue(await response.json());
+    const page =
+      slug === "b2b-research"
+        ? normalizeB2BBranding(normalizedPage)
+        : normalizedPage;
     return isResearchPageData(page) ? page : null;
   } catch {
     return null;
