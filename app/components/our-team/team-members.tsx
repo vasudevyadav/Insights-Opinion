@@ -34,11 +34,11 @@ export default function TeamMembers({ members }: TeamMembersProps) {
           </p>
         </div>
 
-        <h3 className="mt-7 flex items-center justify-center gap-1 whitespace-nowrap text-center sm:mt-8 sm:gap-2">
-          <span className="inline-block translate-y-0.5 text-[38px] font-semibold leading-none tracking-[-0.06em] text-[#101938] [font-family:'Snell_Roundhand','Brush_Script_MT','Segoe_Script',cursive] sm:text-[46px] lg:text-[52px]">
+        <h3 className="mt-7 flex items-baseline justify-center gap-2 whitespace-nowrap text-center sm:mt-8 sm:gap-3">
+          <span className="inline-block text-[36px] font-medium italic leading-none tracking-normal text-[#101938] [font-family:Georgia,'Times_New_Roman',serif] sm:text-[44px] lg:text-[50px]">
             Our
           </span>
-          <span className=" ml-1.5 quality-gradient-text text-[27px] font-medium leading-none tracking-[-0.035em] sm:text-[36px] lg:text-[44px] ">
+          <span className="quality-gradient-text text-[27px] font-medium leading-none tracking-[-0.025em] sm:text-[36px] lg:text-[44px]">
             Guiding Force
           </span>
         </h3>

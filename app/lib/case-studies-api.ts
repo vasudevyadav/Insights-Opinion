@@ -39,11 +39,13 @@ type RawCaseStudy = {
   category: string;
   title: string;
   slug: string;
-  image: string;
+  image: string | false;
   description: string;
   detail: RawCaseStudyDetail;
   seo?: ApiSeo;
 };
+
+const FALLBACK_CASE_STUDY_IMAGE = "/healcare.png";
 
 type CaseStudiesResponse = {
   success: boolean;
@@ -152,7 +154,7 @@ function normalizeCaseStudy(raw: RawCaseStudy): CaseStudy {
     category: normalizeCategory(raw),
     title: raw.title,
     slug: raw.slug,
-    image: raw.image,
+    image: raw.image || FALLBACK_CASE_STUDY_IMAGE,
     description: raw.description,
     detail: {
       heading: overview.heading,

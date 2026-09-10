@@ -11,7 +11,7 @@ const affiliationPoints = [
     },
     {
         title: "Third-Party Certifications",
-        desc: "Our certifications from recognised third-party bodies validate our methods and processes, giving clients the confidence that their research meets international benchmarks.",
+        desc: "Our ISO 9001, ISO 20252, and ISO 27001 certifications validate our quality management, market research, and information security processes against international benchmarks.",
     },
     {
         title: "Client Partnerships",
