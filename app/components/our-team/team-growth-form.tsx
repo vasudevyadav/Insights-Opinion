@@ -70,7 +70,7 @@ export default function TeamGrowthForm() {
           <h2 className="text-center text-xl font-light leading-tight text-[#2f3643] sm:text-left lg:text-[31px]">
             Grow Better with
             <span className="quality-gradient-text mt-2 block text-3xl font-light lg:leading-[1.05] lg:text-[47px] lg:mb-0 mb-8">
-              Insight
+              Insights
               <br className="lg:block hidden" />
               Opinion
             </span>

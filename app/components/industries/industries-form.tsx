@@ -75,7 +75,7 @@ export default function IndustriesForm() {
                                 Grow Better with
                             </p>
                             <h2 className="my-1 text-[34px] font-semibold leading-[1.05] bg-[linear-gradient(90deg,#17afa1_0%,#43bccb_45%,#74b9ff_100%)] bg-clip-text text-transparent sm:text-4xl">
-                                Insight<br />Opinion
+                                Insights<br />Opinion
                             </h2>
                         </div>
 

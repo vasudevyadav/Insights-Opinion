@@ -75,7 +75,7 @@ export default function CaseStudiesForm() {
                                 Grow Better with
                             </p>
                             <h2 className="mt-1 bg-[linear-gradient(90deg,#17afa1_0%,#43bccb_45%,#74b9ff_100%)] bg-clip-text text-[36px] font-semibold leading-[1.05] text-transparent sm:text-[44px] lg:text-[52px]">
-                                Insight
+                                Insights
                                 <br />
                                 Opinion
                             </h2>

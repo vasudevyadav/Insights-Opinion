@@ -32,6 +32,7 @@ const nonServiceLegacyRedirects = [
   ["/case-study/telecom-industry", "/case-studies/telecom-industry"],
   ["/case-study/healthcare-industry", "/case-studies"],
   ["/service/survey-programing", "/service/survey-programming"],
+  ["/terms", "/terms-and-conditions"],
 ] as const;
 
 const nextConfig: NextConfig = {
