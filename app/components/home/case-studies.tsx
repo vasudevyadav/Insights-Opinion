@@ -1,66 +1,27 @@
-"use client";
-
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import GlobalCoverage from "./  GlobalCoverage";
-
-type CaseStudy = {
-    title: string;
-    desc: string;
-    image: string;
-    accent: string;
-    large?: boolean;
-};
+import { fetchCaseStudies } from "@/app/lib/case-studies-api";
 
 type CaseCardProps = {
     title: string;
     desc: string;
     image: string;
     accent: string;
+    href: string;
     large?: boolean;
     aos?: string;
     delay?: number;
 };
 
-const caseStudies: CaseStudy[] = [
-    {
-        title: "Automotive Industry",
-        desc: "With your unique blend of expertise and entrepreneurial drive, you are now equipped to navigate the complexities of the legal landscape with confidence.",
-        image: "/automative.png",
-        accent: "from-cyan-400/50 to-emerald-400/40",
-        large: true,
-    },
-    {
-        title: "Healthcare Industry\nDiabetes",
-        desc: "With your unique blend of expertise and entrepreneurial drive, you are now equipped to navigate the complexities of the legal landscape with confidence.",
-        image: "/healcare.png",
-        accent: "from-blue-500/40 to-fuchsia-500/30",
-    },
-    {
-        title: "Chemical Industry",
-        desc: "With your unique blend of expertise and entrepreneurial drive, you are now equipped to navigate the complexities of the legal landscape with confidence.",
-        image: "/chemical.png",
-        accent: "from-sky-400/30 to-indigo-500/30",
-    },
-    {
-        title: "Healthcare Industry\nHIV",
-        desc: "With your unique blend of expertise and entrepreneurial drive, you are now equipped to navigate the complexities of the legal landscape with confidence.",
-        image: "/healcare.png",
-        accent: "from-violet-500/30 to-cyan-400/20",
-    },
-    {
-        title: "Automotive Industry",
-        desc: "With your unique blend of expertise and entrepreneurial drive, you are now equipped to navigate the complexities of the legal landscape with confidence.",
-        image: "/automotive.png",
-        accent: "from-blue-500/30 to-purple-500/30",
-    },
-    {
-        title: "Telecom Industry",
-        desc: "With your unique blend of expertise and entrepreneurial drive, you are now equipped to navigate the complexities of the legal landscape with confidence.",
-        image: "/telecom.png",
-        accent: "from-sky-500/30 to-blue-700/40",
-    },
+const ACCENTS = [
+    "from-cyan-400/50 to-emerald-400/40",
+    "from-blue-500/40 to-fuchsia-500/30",
+    "from-sky-400/30 to-indigo-500/30",
+    "from-violet-500/30 to-cyan-400/20",
+    "from-blue-500/30 to-purple-500/30",
+    "from-sky-500/30 to-blue-700/40",
 ];
 
 function CaseCard({
@@ -68,13 +29,14 @@ function CaseCard({
     desc,
     image,
     accent,
+    href,
     large = false,
     aos = "fade-up",
     delay = 0,
 }: CaseCardProps) {
     return (
         <Link
-            href="/case-studies"
+            href={href}
             aria-label={`View ${title} case study`}
             data-aos={aos}
             data-aos-delay={delay}
@@ -116,7 +78,17 @@ function CaseCard({
     );
 }
 
-export default function CaseStudies() {
+export default async function CaseStudies() {
+    const allCaseStudies = await fetchCaseStudies();
+    const caseStudies: CaseCardProps[] = allCaseStudies.slice(0, 6).map((study, i) => ({
+        title: study.title,
+        desc: study.description,
+        image: study.image,
+        href: `/case-studies/${study.slug}`,
+        accent: ACCENTS[i % ACCENTS.length],
+        large: i === 0,
+    }));
+
     const leftCards = caseStudies.filter((_, i) => i % 2 === 0);
     const rightCards = caseStudies.filter((_, i) => i % 2 !== 0);
 
