@@ -47,6 +47,11 @@ const sectionsData: Section[] = [
                 content:
                     "Work with a team that values clear communication, accountability, and responsible research practices.",
             },
+            {
+                title: "Certified Quality Standards",
+                content:
+                    "Our ISO 9001, ISO 20252, and ISO 27001 certifications validate our quality management, market research, and information security processes against international benchmarks.",
+            },
         ],
     },
     {

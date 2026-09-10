@@ -166,6 +166,14 @@ const staticRoutes: SiteRoute[] = [
     changeFrequency: "yearly",
   },
   {
+    path: "/terms-and-conditions",
+    title: "Terms & Conditions",
+    description: "Insights Opinion website terms and conditions.",
+    group: "Legal",
+    priority: 0.3,
+    changeFrequency: "yearly",
+  },
+  {
     path: "/site-map",
     title: "Sitemap",
     description: "Browse all public Insights Opinion pages.",

@@ -89,6 +89,12 @@ export const staticSeo: Record<string, StaticSeoEntry> = {
       "Learn how Insights Opinion collects, uses, and protects personal information.",
     keywords: ["insights opinion privacy policy"],
   },
+  "terms-and-conditions": {
+    title: "Terms & Conditions | Insights Opinion",
+    description:
+      "Read the Terms & Conditions governing use of the Insights Opinion website.",
+    keywords: ["insights opinion terms and conditions"],
+  },
   "quality-standard": {
     title: "Quality Standard | Insights Opinion",
     description:

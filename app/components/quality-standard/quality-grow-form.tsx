@@ -71,7 +71,7 @@ export default function QualityGrowForm() {
                     <div>
                         <p className="text-[25px] font-light leading-tight text-[#18213d] lg:text-[29px]">Grow Better with</p>
                         <h2 className="quality-gradient-text mt-2 text-[39px] font-light leading-tight lg:text-[44px]">
-                            Insight<br />Opinion
+                            Insights<br />Opinion
                         </h2>
                     </div>
                     <div className="relative h-[280px] sm:h-[350px]">

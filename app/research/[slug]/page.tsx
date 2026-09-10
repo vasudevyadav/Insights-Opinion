@@ -9,7 +9,7 @@ import HealthPanel from "@/app/components/healthcare-research/health-panels";
 import HealthcareMethodologies from "@/app/components/healthcare-research/health-method";
 import CaseStudies from "@/app/components/healthcare-research/case-studies";
 import WhyChoose from "@/app/components/home/why-choose";
-import HealthLeader from "@/app/components/healthcare-research/health-leader";
+import AccreditationsRecognitions from "@/app/components/home/accreditations-recognitions";
 import TestimonialHealth from "@/app/components/healthcare-research/testimonial-health";
 import CallbackFaqHealth from "@/app/components/healthcare-research/call-back-faq";
 import BookDemoHealth from "@/app/components/healthcare-research/book-demo";
@@ -106,7 +106,7 @@ export default async function ResearchSlugPage({
 
       <WhyChoose />
 
-      <HealthLeader />
+      <AccreditationsRecognitions />
       <TestimonialHealth />
       {!!faqSection?.faqs.length && <CallbackFaqHealth data={faqSection} />}
       <BookDemoHealth />
