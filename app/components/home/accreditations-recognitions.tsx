@@ -143,8 +143,8 @@ export default function AccreditationsRecognitions() {
                     data-aos-duration="1200"
                 >
                     <picture>
-                        <source media="(max-width: 1023px)" srcSet="/recognitions-mob.webp" />
-                        <source media="(min-width: 1024px)" srcSet="/recognitions.webp" />
+                        <source media="(max-width: 1023px)" srcSet="/recognitions-mob.gif" />
+                        <source media="(min-width: 1024px)" srcSet="/recognitions-1.gif" />
                         <img
                             src="/recognitions.webp"
                             alt="Accreditations and recognitions"
@@ -152,7 +152,7 @@ export default function AccreditationsRecognitions() {
                             height={1044}
                             loading="lazy"
                             decoding="async"
-                            className="h-[430px] w-full object-contain object-center transition-transform duration-700 lg:h-[500px] lg:object-cover"
+                            className="h-[430px] w-full object-contain object-center transition-transform duration-700 lg:h-[550px] lg:object-cover"
                         />
                     </picture>
                 </div>
