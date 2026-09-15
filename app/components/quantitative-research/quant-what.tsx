@@ -8,7 +8,13 @@ const bottomCards = [
         <rect x="3" y="18" width="5" height="10" rx="1.5" fill="white" />
         <rect x="11" y="12" width="5" height="16" rx="1.5" fill="white" />
         <rect x="19" y="7" width="5" height="21" rx="1.5" fill="white" />
-        <path d="M3 6 L13 2 L20 8 L29 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          d="M3 6 L13 2 L20 8 L29 4"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
   },
@@ -16,7 +22,13 @@ const bottomCards = [
     icon: (
       <svg viewBox="0 0 32 32" fill="none" className="h-7 w-7">
         <circle cx="16" cy="16" r="12" stroke="white" strokeWidth="2" />
-        <path d="M16 8 L16 16 L22 16" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          d="M16 8 L16 16 L22 16"
+          stroke="white"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
         <circle cx="25" cy="7" r="3" fill="white" />
       </svg>
     ),
@@ -25,25 +37,54 @@ const bottomCards = [
     icon: (
       <svg viewBox="0 0 32 32" fill="none" className="h-7 w-7">
         <circle cx="16" cy="16" r="12" stroke="white" strokeWidth="2" />
-        <path d="M10 16 L14 20 L22 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M16 4 L16 8 M28 16 L24 16 M16 28 L16 24 M4 16 L8 16" stroke="white" strokeWidth="1.5"
-          strokeLinecap="round" />
+        <path
+          d="M10 16 L14 20 L22 12"
+          stroke="white"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M16 4 L16 8 M28 16 L24 16 M16 28 L16 24 M4 16 L8 16"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },
   {
     icon: (
       <svg viewBox="0 0 32 32" fill="none" className="h-7 w-7">
-        <path d="M4 28 L14 18 L20 24 L28 10" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-        <rect x="2" y="26" width="28" height="2" rx="1" fill="white" opacity="0.4" />
+        <path
+          d="M4 28 L14 18 L20 24 L28 10"
+          stroke="white"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <rect
+          x="2"
+          y="26"
+          width="28"
+          height="2"
+          rx="1"
+          fill="white"
+          opacity="0.4"
+        />
       </svg>
     ),
   },
   {
     icon: (
       <svg viewBox="0 0 32 32" fill="none" className="h-7 w-7">
-        <path d="M6 16 H10 L14 6 L18 26 L22 16 H26" stroke="white" strokeWidth="2.5" strokeLinecap="round"
-          strokeLinejoin="round" />
+        <path
+          d="M6 16 H10 L14 6 L18 26 L22 16 H26"
+          stroke="white"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
   },
@@ -66,8 +107,15 @@ export default function QuantWhat({
 
   return (
     <section className="relative overflow-hidden bg-[#f0f7ff] pt-4 lg:pt-4">
-      <BackgroundShape variant={2} side="left" className="-left-24 bottom-[-180px] w-[320px] opacity-40 sm:w-[410px] lg:-left-2 lg:w-[490px]" />
-      <BackgroundShape variant={4} className="-right-24 top-8 w-[300px] opacity-35 sm:w-[380px] lg:-right-2 lg:w-[450px]" />
+      <BackgroundShape
+        variant={2}
+        side="left"
+        className="-left-24 bottom-[-180px] w-[320px] opacity-40 sm:w-[410px] lg:-left-2 lg:w-[490px]"
+      />
+      <BackgroundShape
+        variant={4}
+        className="-right-24 top-8 w-[300px] opacity-35 sm:w-[380px] lg:-right-2 lg:w-[450px]"
+      />
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         {/* Top row: heading left + quant-about image right */}
         <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-10">
@@ -92,8 +140,17 @@ export default function QuantWhat({
           {/* Right: API-provided section image */}
           <div className="relative flex w-full flex-1 items-center justify-center">
             <div className="relative w-full">
-              <Image src={content.image || "/quality/quant-about.png"} alt={content.imageAlt || `${content.headingLine1} ${content.headingLine2}`} width={1500} height={1000}
-                className="h-auto w-full object-contain" priority />
+              <Image
+                src={content.image || "/quality/quant-about.png"}
+                alt={
+                  content.imageAlt ||
+                  `${content.headingLine1} ${content.headingLine2}`
+                }
+                width={1500}
+                height={1000}
+                className="h-auto w-full object-contain"
+                priority
+              />
             </div>
           </div>
         </div>
@@ -103,9 +160,13 @@ export default function QuantWhat({
             const card = bottomCards[i % bottomCards.length];
 
             return (
-              <div key={i} className="relative min-w-[72vw] snap-center sm:min-w-0">
+              <div
+                key={i}
+                className="relative min-w-[72vw] snap-center sm:min-w-0"
+              >
                 {/* Card */}
-                <div className="
+                <div
+                  className="
           relative min-h-[140px]
           bg-gradient-to-r from-[#1dc3b3] to-[#48b6dc]
           rounded-tl-[12px]
@@ -115,9 +176,11 @@ export default function QuantWhat({
           p-5
           shadow-lg
           flex items-center
-        ">
+        "
+                >
                   {/* Icon Box */}
-                  <div className="
+                  <div
+                    className="
             absolute
             -top-4
             right-0
@@ -129,7 +192,8 @@ export default function QuantWhat({
             rounded-[8px]
             bg-[#57bde7]
             shadow-md
-          ">
+          "
+                  >
                     {card.icon}
                   </div>
 

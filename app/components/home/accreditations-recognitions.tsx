@@ -1,28 +1,26 @@
 import React from "react";
 
 export default function AccreditationsRecognitions() {
+  // Desktop lines (6)
+  const vlines = [
+    { left: "14%", delay: "0s" },
+    { left: "28%", delay: "0.8s" },
+    { left: "42%", delay: "1.6s" },
+    { left: "56%", delay: "0.4s" },
+    { left: "70%", delay: "1.2s" },
+    { left: "84%", delay: "2s" },
+  ];
 
-    // Desktop lines (6)
-    const vlines = [
-        { left: "14%", delay: "0s" },
-        { left: "28%", delay: "0.8s" },
-        { left: "42%", delay: "1.6s" },
-        { left: "56%", delay: "0.4s" },
-        { left: "70%", delay: "1.2s" },
-        { left: "84%", delay: "2s" },
-    ];
+  const mobileVlines = [
+    { left: "20%", delay: "0s" },
+    { left: "40%", delay: "0.8s" },
+    { left: "60%", delay: "1.6s" },
+    { left: "80%", delay: "1.6s" },
+  ];
 
-    const mobileVlines = [
-        { left: "20%", delay: "0s" },
-        { left: "40%", delay: "0.8s" },
-        { left: "60%", delay: "1.6s" },
-        { left: "80%", delay: "1.6s" },
-    ];
-
-    return (
-        <section className="relative overflow-hidden bg-[#eef5fb] py-8 lg:py-12">
-
-            <style>{`
+  return (
+    <section className="relative overflow-hidden bg-[#eef5fb] py-8 lg:py-12">
+      <style>{`
         @keyframes moveLineGlow {
           0% { top: -140px; }
           100% { top: 110%; }
@@ -81,82 +79,85 @@ export default function AccreditationsRecognitions() {
         }
       `}</style>
 
-            {/* ✅ Mobile Lines */}
-            {mobileVlines.map((line, i) => (
-                <div
-                    key={`m-${i}`}
-                    className="industry-v-line block lg:hidden"
-                    style={
-                        {
-                            left: line.left,
-                            "--line-delay": line.delay,
-                        } as React.CSSProperties & { "--line-delay": string }
-                    }
-                />
-            ))}
+      {/* ✅ Mobile Lines */}
+      {mobileVlines.map((line, i) => (
+        <div
+          key={`m-${i}`}
+          className="industry-v-line block lg:hidden"
+          style={
+            {
+              left: line.left,
+              "--line-delay": line.delay,
+            } as React.CSSProperties & { "--line-delay": string }
+          }
+        />
+      ))}
 
-            {/* ✅ Desktop Lines */}
-            {vlines.map((line, i) => (
-                <div
-                    key={`d-${i}`}
-                    className="industry-v-line hidden lg:block"
-                    style={
-                        {
-                            left: line.left,
-                            "--line-delay": line.delay,
-                        } as React.CSSProperties & { "--line-delay": string }
-                    }
-                />
-            ))}
+      {/* ✅ Desktop Lines */}
+      {vlines.map((line, i) => (
+        <div
+          key={`d-${i}`}
+          className="industry-v-line hidden lg:block"
+          style={
+            {
+              left: line.left,
+              "--line-delay": line.delay,
+            } as React.CSSProperties & { "--line-delay": string }
+          }
+        />
+      ))}
 
-            {/* Content */}
-            <div className="relative z-10 px-6 lg:px-16">
-                <div className="mx-auto max-w-6xl">
-                    <div className="mb-4 justify-between lg:mb-10 lg:flex lg:items-center">
-                        <h2
-                            className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[40px]"
-                            data-aos="soft-fade-up"
-                            data-aos-duration="900"
-                        >
-                            Accreditations <br /> & Recognitions
-                        </h2>
+      {/* Content */}
+      <div className="relative z-10 px-6 lg:px-16">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-4 justify-between lg:mb-10 lg:flex lg:items-center">
+            <h2
+              className="bg-gradient-to-r from-[#29c7c3] via-[#2fa9d6] to-[#4169e1] bg-clip-text text-2xl font-semibold leading-tight text-transparent lg:text-[40px]"
+              data-aos="soft-fade-up"
+              data-aos-duration="900"
+            >
+              Accreditations <br /> & Recognitions
+            </h2>
 
-                        <p
-                            className="mt-5 max-w-2xl text-sm leading-7 text-[#4b5563] sm:text-base"
-                            data-aos="soft-fade-up"
-                            data-aos-delay="140"
-                            data-aos-duration="900"
-                        >
-                            Insights Opinion is recognized for its commitment to research quality,
-                            data security, and dependable execution. Our ISO 9001, ISO 20252, and
-                            ISO 27001 certifications, alongside recognition from Quirk’s, Silicon
-                            India, and Forbes, reflect the standards expected from trusted top market
-                            research firms.
-                        </p>
-                    </div>
-                </div>
+            <p
+              className="mt-5 max-w-2xl text-sm leading-7 text-[#4b5563] sm:text-base"
+              data-aos="soft-fade-up"
+              data-aos-delay="140"
+              data-aos-duration="900"
+            >
+              Insights Opinion is recognized for its commitment to research
+              quality, data security, and dependable execution. Our ISO 9001,
+              ISO 20252, and ISO 27001 certifications, alongside recognition
+              from Quirk’s, Silicon India, and Forbes, reflect the standards
+              expected from trusted top market research firms.
+            </p>
+          </div>
+        </div>
 
-                <div
-                    className="relative lg:-mt-[80px] lg:p-0"
-                    data-aos="recognition-image-rise"
-                    data-aos-delay="120"
-                    data-aos-duration="1200"
-                >
-                    <picture>
-                        <source media="(max-width: 1023px)" srcSet="/recognitions-mob.gif" />
-                        <source media="(min-width: 1024px)" srcSet="/recognitions-1.gif" />
-                        <img
-                            src="/recognitions.webp"
-                            alt="Accreditations and recognitions"
-                            width={1920}
-                            height={1044}
-                            loading="lazy"
-                            decoding="async"
-                            className="h-[430px] w-full object-contain object-center transition-transform duration-700 lg:h-[550px] lg:object-cover"
-                        />
-                    </picture>
-                </div>
-            </div>
-        </section>
-    );
+        <div
+          className="relative lg:-mt-[80px] lg:p-0"
+          data-aos="recognition-image-rise"
+          data-aos-delay="120"
+          data-aos-duration="1200"
+        >
+          <picture>
+            <source
+              media="(max-width: 1023px)"
+              srcSet="/recognitions-mob.gif"
+            />
+            <source media="(min-width: 1024px)" srcSet="/recognitions-1.gif" />
+            <img
+              src="/recognitions.webp"
+              alt="Accreditations and recognitions"
+              width={1920}
+              height={1044}
+              loading="lazy"
+              decoding="async"
+              className="h-[430px] w-full object-contain object-center transition-transform duration-700 lg:h-[550px] lg:object-cover"
+            />
+          </picture>
+        </div>
+      </div>
+    </section>
+  );
 }
