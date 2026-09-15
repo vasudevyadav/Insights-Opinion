@@ -94,7 +94,7 @@ export default function CaseStudiesList({ caseStudies }: CaseStudiesListProps) {
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-10">
                     {visibleItems.map((item) => (
                         <article
-                            key={item.id}
+                            key={item.slug}
                             className="group relative overflow-hidden rounded-t-[16px] rounded-bl-[4px] rounded-br-[36px] border border-[#1d315d] bg-white shadow-sm transition-shadow hover:shadow-md"
                         >
                             {/* Card Image */}
@@ -112,12 +112,13 @@ export default function CaseStudiesList({ caseStudies }: CaseStudiesListProps) {
                             {/* Category Label — overlaps image bottom */}
                             <div className="absolute left-0 top-[156px] z-10 max-w-[80%] rounded-r-[5px] bg-gradient-to-r from-[#14b3a1] to-[#66b3ff] px-4 py-[6px] sm:top-[166px] lg:top-[176px]">
                                 <h3 className="truncate text-[13px] font-semibold leading-tight text-white">
-                                    {item.title}
+                                    {item.category}
                                 </h3>
                             </div>
 
                             {/* Card Body */}
                             <div className="px-4 pb-5 pt-6 sm:px-5">
+                                <h3 className="mb-3 text-lg font-semibold leading-snug text-[#1e2a4e]">{item.title}</h3>
                                 <p className="min-h-[90px] text-xs leading-[1.6] text-[#1e2a4e] line-clamp-6  lg:text-base">
                                     {item.description}
                                 </p>

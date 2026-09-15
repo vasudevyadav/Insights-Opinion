@@ -1,3 +1,5 @@
+import { caseStudies as localCaseStudies, type CaseStudy as LocalCaseStudy } from "./case-studies-data";
+
 export type CaseStudyDetail = {
   heading: string;
   overview: string[];
@@ -14,7 +16,7 @@ export type CaseStudyDetail = {
   results: string;
 };
 
-export type CaseStudy = {
+export type BackendCaseStudy = {
   id: number;
   category: string;
   title: string;
@@ -24,6 +26,8 @@ export type CaseStudy = {
   detail: CaseStudyDetail;
   seo?: ApiSeo;
 };
+
+export type CaseStudy = BackendCaseStudy | LocalCaseStudy;
 
 type RawCaseStudyDetail = {
   overview: string;
@@ -140,7 +144,7 @@ function normalizeCategory(raw: RawCaseStudy) {
   return "Other";
 }
 
-function normalizeCaseStudy(raw: RawCaseStudy): CaseStudy {
+function normalizeCaseStudy(raw: RawCaseStudy): BackendCaseStudy {
   const overview = parseOverview(raw.detail.overview, raw.detail.client);
   const methodology = parseListSection(
     raw.detail.methodology,
@@ -175,7 +179,7 @@ function normalizeCaseStudy(raw: RawCaseStudy): CaseStudy {
   };
 }
 
-export async function fetchCaseStudies(): Promise<CaseStudy[]> {
+async function fetchBackendCaseStudies(): Promise<BackendCaseStudy[]> {
   try {
     const res = await fetch(BASE_URL, { next: { revalidate: 60 } });
 
@@ -190,6 +194,16 @@ export async function fetchCaseStudies(): Promise<CaseStudy[]> {
     console.error("Failed to fetch case studies:", error);
     return [];
   }
+}
+
+// Local reports come first; a matching local slug takes precedence over the backend.
+export async function fetchCaseStudies(): Promise<CaseStudy[]> {
+  const backendCaseStudies = await fetchBackendCaseStudies();
+  const combined = new Map<string, CaseStudy>();
+  for (const study of [...localCaseStudies, ...backendCaseStudies]) {
+    if (!combined.has(study.slug)) combined.set(study.slug, study);
+  }
+  return [...combined.values()];
 }
 
 export async function fetchCaseStudy(slug: string): Promise<CaseStudy | null> {
