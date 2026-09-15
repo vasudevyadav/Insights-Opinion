@@ -118,7 +118,11 @@ export default function CaseStudiesList({ caseStudies }: CaseStudiesListProps) {
 
                             {/* Card Body */}
                             <div className="px-4 pb-5 pt-6 sm:px-5">
-                                <h3 className="mb-3 text-lg font-semibold leading-snug text-[#1e2a4e]">{item.title}</h3>
+                                <Link href={`/case-studies/${item.slug}`}>
+                                    <h3 className="mb-3 line-clamp-2 text-lg font-semibold leading-snug text-[#1e2a4e] transition-colors hover:text-[#13b3ad]">
+                                        {item.title}
+                                    </h3>
+                                </Link>
                                 <p className="min-h-[90px] text-xs leading-[1.6] text-[#1e2a4e] line-clamp-6  lg:text-base">
                                     {item.description}
                                 </p>

@@ -215,11 +215,11 @@ export default function CaseStudyDetail({
         <BackgroundShape variant={3} side="left" className="-left-24 top-[34%] w-[320px] opacity-45 sm:w-[400px] lg:-left-2 lg:w-[480px]" />
         <BackgroundShape variant={5} className="-right-24 bottom-[8%] w-[330px] opacity-40 sm:w-[410px] lg:-right-2 lg:w-[500px]" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className={"detail" in caseStudy ? "grid gap-10 lg:grid-cols-[minmax(0,1fr)_350px] lg:items-start xl:gap-14" : "space-y-10"}>
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_350px] lg:items-start xl:gap-14">
             {"detail" in caseStudy ? <BackendStudyDetail study={caseStudy} /> : <StudyReport study={caseStudy} />}
 
 
-            <aside className={"detail" in caseStudy ? "space-y-8 lg:sticky lg:top-28" : "grid gap-8 lg:grid-cols-2 lg:items-start"}>
+            <aside className="space-y-8 lg:sticky lg:top-28">
 
               <CallbackForm />
               <div className="space-y-6">
