@@ -143,7 +143,7 @@ export default function AccreditationsRecognitions() {
           <picture>
             <source
               media="(max-width: 1023px)"
-              srcSet="/recognitions-mob.gif"
+              srcSet="/home/inshite-opinin-mob.gif"
             />
             <source media="(min-width: 1024px)" srcSet="/recognitions-1.gif" />
             <img
